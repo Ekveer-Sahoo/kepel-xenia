@@ -2,8 +2,6 @@
 
 Kepel Xenia is a self-hosted AI gateway. It gives you one local endpoint that talks to every LLM provider you've connected, so your apps and CLI tools don't need separate integrations for Anthropic, OpenAI, Gemini, and the 290-odd others it supports.
 
-It's a customized fork of [OmniRoute](https://github.com/diegosouzapw/OmniRoute), rebranded and reworked with a monochrome, flat design and a few UX changes on top of the original.
-
 ## What it does
 
 Point any OpenAI-SDK-compatible client, or a CLI tool like Claude Code, at Xenia instead of the provider directly. From there it handles the rest:
