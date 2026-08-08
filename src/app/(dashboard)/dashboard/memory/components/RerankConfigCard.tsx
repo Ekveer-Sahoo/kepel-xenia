@@ -43,15 +43,11 @@ export default function RerankConfigCard({ settings, providers, onSave, saving }
           }}
           disabled={saving || (!rerankEnabled && !hasProvider)}
           aria-disabled={saving || (!rerankEnabled && !hasProvider)}
-          title={
-            !rerankEnabled && !hasProvider
-              ? t("rerank.noProviderWithKey")
-              : undefined
-          }
+          title={!rerankEnabled && !hasProvider ? t("rerank.noProviderWithKey") : undefined}
           role="switch"
           aria-checked={rerankEnabled}
           className={`relative w-11 h-6 rounded-full transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed ${
-            rerankEnabled ? "bg-violet-500" : "bg-border"
+            rerankEnabled ? "bg-gray-500" : "bg-border"
           }`}
         >
           <span
@@ -65,7 +61,7 @@ export default function RerankConfigCard({ settings, providers, onSave, saving }
       {rerankEnabled && (
         <>
           {/* Latency / cost warning */}
-          <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-400 flex items-start gap-2">
+          <div className="p-3 rounded-lg bg-gray-500/10 border border-gray-500/20 text-xs text-gray-400 flex items-start gap-2">
             <span className="material-symbols-outlined text-[14px] mt-0.5 shrink-0">warning</span>
             <span>{t("rerank.warning")}</span>
           </div>
@@ -77,7 +73,7 @@ export default function RerankConfigCard({ settings, providers, onSave, saving }
             {!hasProvider ? (
               <p
                 data-testid="rerank-no-provider-warning"
-                className="text-xs text-amber-400 flex items-center gap-1"
+                className="text-xs text-gray-400 flex items-center gap-1"
               >
                 <span className="material-symbols-outlined text-[12px]">warning</span>
                 {t("rerank.noProviderWithKey")}
@@ -88,7 +84,7 @@ export default function RerankConfigCard({ settings, providers, onSave, saving }
                 onChange={(e) => handleProviderModelChange(e.target.value)}
                 disabled={saving}
                 data-testid="rerank-provider-model-select"
-                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
               >
                 <option value="">{t("rerank.selectProviderModel")}</option>
                 {rerankProviders.map((p) =>
@@ -96,7 +92,7 @@ export default function RerankConfigCard({ settings, providers, onSave, saving }
                     <option key={m.id} value={m.id}>
                       {m.name}
                     </option>
-                  )),
+                  ))
                 )}
               </select>
             )}

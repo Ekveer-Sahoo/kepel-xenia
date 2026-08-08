@@ -5,15 +5,12 @@ import fsSync from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const {
-  ensureWindowsBuildProfileDirs,
-  getWindowsBuildProfileDir,
-  resolveNextBuildEnv,
-} = await import("../../scripts/build/build-next-isolated.mjs");
+const { ensureWindowsBuildProfileDirs, getWindowsBuildProfileDir, resolveNextBuildEnv } =
+  await import("../../scripts/build/build-next-isolated.mjs");
 
 // Port of decolua/9router#2402 ("fix(build): isolate Windows HOME/AppData during
 // next build"). Upstream wraps `npm run build` in a new `scripts/build-app.js`
-// entrypoint; OmniRoute's build already routes through
+// entrypoint; Xenia's build already routes through
 // `scripts/build/build-next-isolated.mjs` → resolveNextBuildEnv(), so the fix is
 // folded into that existing seam instead of adding a second build entrypoint.
 // `.github/workflows/electron-release.yml` already sanitizes USERPROFILE for one
@@ -76,7 +73,7 @@ test("ensureWindowsBuildProfileDirs is a no-op when the env has no APPDATA/LOCAL
 });
 
 test("ensureWindowsBuildProfileDirs creates the isolated AppData directories", async () => {
-  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "omniroute-win-home-test-"));
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "xenia-win-home-test-"));
   try {
     const env = {
       APPDATA: path.join(tempDir, "AppData", "Roaming"),

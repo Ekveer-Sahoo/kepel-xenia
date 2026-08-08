@@ -10,15 +10,15 @@ import {
 } from "@/lib/combos/testHealth";
 import { getCustomModels } from "@/lib/localDb";
 import { getProviderNodeById } from "@/lib/db/providers";
-import { sanitizeErrorMessage } from "@omniroute/open-sse/utils/error";
-import { withRateLimit } from "@omniroute/open-sse/services/rateLimitManager";
+import { sanitizeErrorMessage } from "@xenia/open-sse/utils/error";
+import { withRateLimit } from "@xenia/open-sse/services/rateLimitManager";
 import {
   isCreditsExhausted,
   isDailyQuotaExhausted,
-} from "@omniroute/open-sse/services/accountFallback";
+} from "@xenia/open-sse/services/accountFallback";
 import { looksLikeQuotaExhausted } from "@/shared/utils/classify429";
 
-const INTERNAL_ORIGIN = "http://omniroute.internal";
+const INTERNAL_ORIGIN = "http://xenia.internal";
 export const DEFAULT_MODEL_TEST_TIMEOUT_MS = 30_000;
 const DOLA_PRO_TEST_TIMEOUT_MS = 90_000;
 const GITHUB_PHI_REASONING_TEST_TIMEOUT_MS = 60_000;
@@ -154,12 +154,12 @@ export function buildInternalChatRequest(
       "Content-Type": "application/json",
       // Reuse the existing strict-mode internal bypass for live health checks.
       "X-Internal-Test": "combo-health-check",
-      "X-OmniRoute-No-Cache": "true",
+      "X-Xenia-No-Cache": "true",
       // #6240: a connection test must be clean — never let the operator's globally-enabled
       // Output Styles (e.g. "Ultra terse") leak a system prompt into a test-model call.
-      "X-OmniRoute-Compression": "off",
+      "X-Xenia-Compression": "off",
       "X-Request-Id": `model-test-${randomUUID()}`,
-      ...(connectionId ? { "X-OmniRoute-Connection": connectionId } : {}),
+      ...(connectionId ? { "X-Xenia-Connection": connectionId } : {}),
     },
     body: JSON.stringify(testBody),
     signal,
@@ -176,10 +176,10 @@ export function buildInternalRerankRequest(
     headers: {
       "Content-Type": "application/json",
       "X-Internal-Test": "combo-health-check",
-      "X-OmniRoute-No-Cache": "true",
-      "X-OmniRoute-Compression": "off",
+      "X-Xenia-No-Cache": "true",
+      "X-Xenia-Compression": "off",
       "X-Request-Id": `model-test-${randomUUID()}`,
-      ...(connectionId ? { "X-OmniRoute-Connection": connectionId } : {}),
+      ...(connectionId ? { "X-Xenia-Connection": connectionId } : {}),
     },
     body: JSON.stringify(testBody),
     signal,
@@ -195,7 +195,7 @@ function buildTinyWavFile(): File {
         0x00, 0x00, 0x02, 0x00, 0x10, 0x00, 0x64, 0x61, 0x74, 0x61, 0x00, 0x00, 0x00, 0x00,
       ]),
     ],
-    "omniroute-model-test.wav",
+    "xenia-model-test.wav",
     { type: "audio/wav" }
   );
 }
@@ -213,10 +213,10 @@ export function buildInternalAudioTranscriptionRequest(
     method: "POST",
     headers: {
       "X-Internal-Test": "combo-health-check",
-      "X-OmniRoute-No-Cache": "true",
-      "X-OmniRoute-Compression": "off",
+      "X-Xenia-No-Cache": "true",
+      "X-Xenia-Compression": "off",
       "X-Request-Id": `model-test-${randomUUID()}`,
-      ...(connectionId ? { "X-OmniRoute-Connection": connectionId } : {}),
+      ...(connectionId ? { "X-Xenia-Connection": connectionId } : {}),
     },
     body: formData,
     signal,
@@ -339,9 +339,10 @@ function isBotBlockMessage(message: string): boolean {
  * Reuses the routing path's existing quota vocabulary from accountFallback.ts
  * and classify429.ts instead of inventing a new vocabulary.
  */
-export function classifyTestErrorQuota(
-  errorText: string
-): { isQuota?: boolean; isTransient?: boolean } {
+export function classifyTestErrorQuota(errorText: string): {
+  isQuota?: boolean;
+  isTransient?: boolean;
+} {
   const trimmed = typeof errorText === "string" ? errorText.trim() : "";
   if (!trimmed) return {};
 
@@ -402,9 +403,9 @@ export async function runSingleModelTest(
   const testBody = isRerank
     ? {
         model: fullModelStr,
-        query: "What is OmniRoute?",
+        query: "What is Xenia?",
         documents: [
-          "OmniRoute routes AI requests across configured providers.",
+          "Xenia routes AI requests across configured providers.",
           "This document is unrelated to the test query.",
         ],
         top_n: 1,
@@ -553,7 +554,8 @@ export async function runSingleModelTest(
       // error, not a bot-block. A bare 403 status without quota/bot wording still
       // falls through to the generic error branch.
       const quotaFlags = classifyTestErrorQuota(error);
-      const isBotBlock = !quotaFlags.isQuota && (streamError.statusCode === 403 || isBotBlockMessage(error));
+      const isBotBlock =
+        !quotaFlags.isQuota && (streamError.statusCode === 403 || isBotBlockMessage(error));
       return {
         modelId: fullModelStr,
         status: rateLimited ? "rate_limited" : "error",

@@ -333,7 +333,7 @@ export default function QuotaCardExpanded({
           {t("loadingQuotas")}
         </div>
       ) : error ? (
-        <div className="text-[11px] text-red-500 flex items-start gap-1.5">
+        <div className="text-[11px] text-gray-500 flex items-start gap-1.5">
           <span className="material-symbols-outlined text-[13px]">error</span>
           <span>{error}</span>
         </div>
@@ -402,7 +402,7 @@ export default function QuotaCardExpanded({
         {refreshedLabel && (
           <span
             className={`text-[10px] tabular-nums ${
-              hasStaleData ? "text-amber-500" : "text-text-muted"
+              hasStaleData ? "text-gray-500" : "text-text-muted"
             }`}
             title={
               hasStaleData

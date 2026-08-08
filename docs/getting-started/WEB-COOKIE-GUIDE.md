@@ -6,7 +6,7 @@ lastUpdated: 2026-07-20
 
 # Web Cookie Providers
 
-Web Cookie providers let OmniRoute use an AI service through your existing browser session instead of an API key. They are useful when you already have access to a service through its website and want OmniRoute to use the same authenticated session.
+Web Cookie providers let Xenia use an AI service through your existing browser session instead of an API key. They are useful when you already have access to a service through its website and want Xenia to use the same authenticated session.
 
 Unlike API-key providers, Web Cookie providers authenticate using the credentials that your browser sends to the website.
 
@@ -18,7 +18,7 @@ Unlike API-key providers, Web Cookie providers authenticate using the credential
 
 Many authentication issues are caused by copying cookies from the wrong place.
 
-##  Do NOT copy from Cookie Storage
+## Do NOT copy from Cookie Storage
 
 Most browsers expose stored cookies through:
 
@@ -36,7 +36,7 @@ Although these cookies look correct, they may be:
 
 Using these values may cause authentication failures even if they appear valid.
 
-##  Copy from a Live Request
+## Copy from a Live Request
 
 Instead, use the cookies from a successful request:
 
@@ -51,7 +51,7 @@ DevTools
 
 The `Cookie` request header contains the exact authentication information that your browser successfully used.
 
-For most Web Cookie providers, this is the value that should be pasted into OmniRoute.
+For most Web Cookie providers, this is the value that should be pasted into Xenia.
 
 ---
 
@@ -65,7 +65,7 @@ The setup process is the same for most Web Cookie providers.
 4. Refresh the page.
 5. Open an authenticated chat or conversation request.
 6. Copy the required authentication credentials.
-7. Open OmniRoute.
+7. Open Xenia.
 8. Go to **Providers → Add Provider**.
 9. Select your Web Cookie provider.
 10. Paste the credentials.
@@ -80,14 +80,14 @@ The exact credentials required depend on the provider.
 
 Different websites store authentication differently. Some require only cookies, while others may require additional headers or tokens.
 
-| Provider | Credential Format | Provider Guide |
-|----------|-------------------|----------------|
-| Claude Web | Full Cookie request header | `docs/providers/CLAUDE_WEB.md` |
-| ChatGPT Web | _(verify)_ | |
-| Gemini Web | _(verify)_ | |
-| Copilot Web | _(verify)_ | |
-| Grok Web | _(verify)_ | |
-| ... | ... | ... |
+| Provider    | Credential Format          | Provider Guide                 |
+| ----------- | -------------------------- | ------------------------------ |
+| Claude Web  | Full Cookie request header | `docs/providers/CLAUDE_WEB.md` |
+| ChatGPT Web | _(verify)_                 |                                |
+| Gemini Web  | _(verify)_                 |                                |
+| Copilot Web | _(verify)_                 |                                |
+| Grok Web    | _(verify)_                 |                                |
+| ...         | ...                        | ...                            |
 
 > Update this table as new Web Cookie providers are added or existing providers change their authentication requirements.
 
@@ -149,7 +149,7 @@ Application
 
 ---
 
-## Cookie Works in Browser but Not in OmniRoute
+## Cookie Works in Browser but Not in Xenia
 
 Some providers include cookies that are only sent during authenticated requests.
 

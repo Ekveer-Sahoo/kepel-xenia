@@ -1,12 +1,12 @@
 import { handleChat } from "@/sse/handlers/chat";
-import { initTranslators } from "@omniroute/open-sse/translator/index.ts";
+import { initTranslators } from "@xenia/open-sse/translator/index.ts";
 import { withInjectionGuard } from "@/middleware/promptInjectionGuard";
 import { requireJsonContentType } from "@/shared/middleware/requireJsonContentType";
 import {
   withEarlyStreamKeepalive,
   ANTHROPIC_PING_FRAME,
-} from "@omniroute/open-sse/utils/earlyStreamKeepalive";
-import { resolveKeepaliveThreshold } from "@omniroute/open-sse/utils/keepaliveThreshold";
+} from "@xenia/open-sse/utils/earlyStreamKeepalive";
+import { resolveKeepaliveThreshold } from "@xenia/open-sse/utils/keepaliveThreshold";
 
 let initialized = false;
 
@@ -48,7 +48,7 @@ async function postHandler(request: any, context: any, preParsedBody: any = null
   await ensureInitialized();
   // Streaming Anthropic clients (Claude Code, the Anthropic SDK) drop the connection
   // when no bytes arrive while a large prompt is processed before the first token — a
-  // big context can exceed the client's stream/first-token watchdog. OmniRoute holds
+  // big context can exceed the client's stream/first-token watchdog. Xenia holds
   // the response until the first useful upstream byte (ensureStreamReadiness), so keep
   // the connection warm with early keepalives during that gap — same wrapper used by
   // /v1/responses (#2544). Anthropic clients ignore SSE comments for their watchdog, so
@@ -58,7 +58,12 @@ async function postHandler(request: any, context: any, preParsedBody: any = null
   if (accept.includes("text/event-stream")) {
     let model;
     try {
-      const body = preParsedBody ?? (await request.clone().json().catch(() => null));
+      const body =
+        preParsedBody ??
+        (await request
+          .clone()
+          .json()
+          .catch(() => null));
       model = body?.model;
     } catch {
       // body unavailable / non-JSON — fall back to the default keepalive threshold

@@ -138,7 +138,7 @@ test("event stream hidden when debugEnabled is false", () => {
   );
 });
 
-test("status discrepancy shows both OmniRoute and provider statuses", () => {
+test("status discrepancy shows both Xenia and provider statuses", () => {
   const html = renderToStaticMarkup(
     React.createElement(RequestLoggerDetail, {
       log: {
@@ -166,9 +166,9 @@ test("status discrepancy shows both OmniRoute and provider statuses", () => {
 
   assert.notEqual(html.indexOf("Upstream: 200"), -1, "Should display upstream/provider status");
   assert.notEqual(
-    html.indexOf("OmniRoute returned 504"),
+    html.indexOf("Xenia returned 504"),
     -1,
-    "Should indicate OmniRoute returned its own status"
+    "Should indicate Xenia returned its own status"
   );
 });
 
@@ -189,7 +189,7 @@ test("request logger detail renders stream chunks correctly", () => {
         provider: [
           'data: {"type": "message_start"}\n\n',
           'data: {"type": "content_block_start"}\n\n',
-          ": x-omniroute-latency-ms=1\n",
+          ": x-xenia-latency-ms=1\n",
           "data: [DONE]\n\n",
         ],
       },

@@ -70,7 +70,7 @@ function formatTimeAxis(ms: number): string {
 }
 
 function getStatusColor(status: number, active: boolean | undefined): string {
-  if (active) return "#6366F1";
+  if (active) return "#757575";
   return getHttpStatusStyle(status).bg;
 }
 
@@ -677,8 +677,8 @@ export default function RequestTimeline({
             bottom: 0,
           }}
         >
-          <div className="w-px h-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)] -translate-x-1/2" />
-          <div className="absolute top-[2px] -translate-x-1/2 bg-red-500 text-white text-[8px] font-mono px-1.5 py-0.5 rounded-b-sm font-bold tracking-wider">
+          <div className="w-px h-full bg-gray-500 shadow-[0_0_8px_rgba(239,68,68,0.6)] -translate-x-1/2" />
+          <div className="absolute top-[2px] -translate-x-1/2 bg-gray-500 text-white text-[8px] font-mono px-1.5 py-0.5 rounded-b-sm font-bold tracking-wider">
             NOW
           </div>
         </div>
@@ -721,7 +721,7 @@ export default function RequestTimeline({
               {hoveredLog.model || "unknown"}
             </span>
             {hoveredLog.active && (
-              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 font-medium">
+              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-gray-500/20 text-gray-400 font-medium">
                 active
               </span>
             )}
@@ -777,7 +777,7 @@ export default function RequestTimeline({
               </span>
             </div>
             {hoveredLog.error && (
-              <div className="mt-1 text-red-400 text-[9px] break-all">{hoveredLog.error}</div>
+              <div className="mt-1 text-gray-400 text-[9px] break-all">{hoveredLog.error}</div>
             )}
           </div>
         </div>
@@ -786,23 +786,23 @@ export default function RequestTimeline({
       {/* Legend */}
       <div className="flex items-center gap-3 px-4 py-1.5 border-t border-border text-[9px] shrink-0">
         <div className="flex items-center gap-1">
-          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#059669" }} />
+          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#666666" }} />
           <span className="text-text-muted">2xx</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#D97706" }} />
+          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#878787" }} />
           <span className="text-text-muted">4xx</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#DC2626" }} />
+          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#5c5c5c" }} />
           <span className="text-text-muted">5xx</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#6366F1" }} />
+          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#757575" }} />
           <span className="text-text-muted">Active</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#6B7280" }} />
+          <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: "#727272" }} />
           <span className="text-text-muted">Other</span>
         </div>
         <div className="ml-4 flex items-center gap-1.5 text-text-muted">

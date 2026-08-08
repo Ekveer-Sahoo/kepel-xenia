@@ -101,8 +101,8 @@ export default function CacheEntriesTab() {
       {loading ? (
         <div className="text-sm text-text-muted">{t("loading")}</div>
       ) : error ? (
-        <div className="flex items-center justify-between gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3">
-          <div className="text-sm text-red-300">{error}</div>
+        <div className="flex items-center justify-between gap-3 rounded-xl border border-gray-500/20 bg-gray-500/5 px-4 py-3">
+          <div className="text-sm text-gray-300">{error}</div>
           <Button variant="secondary" size="sm" onClick={() => fetchEntries(pagination.page)}>
             {t("refresh")}
           </Button>
@@ -132,7 +132,7 @@ export default function CacheEntriesTab() {
                     </td>
                     <td className="py-2 pr-4">{entry.model}</td>
                     <td className="py-2 pr-4 tabular-nums">{entry.hit_count}</td>
-                    <td className="py-2 pr-4 tabular-nums text-green-500">
+                    <td className="py-2 pr-4 tabular-nums text-gray-500">
                       {(entry.tokens_saved ?? 0).toLocaleString()}
                     </td>
                     <td className="py-2 pr-4 text-xs text-text-muted">
@@ -145,7 +145,7 @@ export default function CacheEntriesTab() {
                       <button
                         onClick={() => handleDelete(entry.signature)}
                         disabled={deleting === entry.signature}
-                        className="text-xs text-red-400 hover:text-red-300 disabled:opacity-50"
+                        className="text-xs text-gray-400 hover:text-gray-300 disabled:opacity-50"
                       >
                         {deleting === entry.signature ? "..." : "🗑️"}
                       </button>

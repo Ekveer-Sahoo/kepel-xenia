@@ -131,13 +131,13 @@ export function ModelTable({ byModel, summary }: ModelTableProps) {
                 <td className="px-4 py-2.5 text-right font-mono text-primary">
                   {fmt(m.promptTokens)}
                 </td>
-                <td className="px-4 py-2.5 text-right font-mono text-emerald-500">
+                <td className="px-4 py-2.5 text-right font-mono text-gray-500">
                   {fmt(m.completionTokens)}
                 </td>
                 <td className="px-4 py-2.5 text-right font-mono font-semibold">
                   {fmt(m.totalTokens)}
                 </td>
-                <td className="px-4 py-2.5 text-right font-mono text-amber-500">
+                <td className="px-4 py-2.5 text-right font-mono text-gray-500">
                   {fmtCost(m.cost)}
                 </td>
                 <td className="px-4 py-2.5 text-right">

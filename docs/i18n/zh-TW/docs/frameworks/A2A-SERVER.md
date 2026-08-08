@@ -1,12 +1,12 @@
 ---
-title: "OmniRoute A2A 伺服器文件"
+title: "Xenia A2A 伺服器文件"
 version: 3.8.40
 lastUpdated: 2026-06-28
 ---
 
-# OmniRoute A2A 伺服器文件
+# Xenia A2A 伺服器文件
 
-> Agent-to-Agent 協定 v0.3 — OmniRoute 作為智慧路由代理
+> Agent-to-Agent 協定 v0.3 — Xenia 作為智慧路由代理
 
 A2A 介面包含兩個面向：
 
@@ -21,7 +21,7 @@ A2A 介面包含兩個面向：
 curl http://localhost:20128/.well-known/agent.json
 ```
 
-回傳描述 OmniRoute 能力、技能及驗證需求的 Agent Card。
+回傳描述 Xenia 能力、技能及驗證需求的 Agent Card。
 
 Agent Card 中的 `version` 欄位源自 `process.env.npm_package_version`（參見 `src/app/.well-known/agent.json/route.ts:13`），因此每次發版都會與 `package.json` 自動同步。
 
@@ -139,22 +139,22 @@ curl -X POST http://localhost:20128/a2a \
 
 ## 可用技能
 
-OmniRoute 提供 6 個 A2A 技能，配置於 `src/lib/a2a/taskExecution.ts::A2A_SKILL_HANDLERS`。每個技能模組位於 `src/lib/a2a/skills/`。
+Xenia 提供 6 個 A2A 技能，配置於 `src/lib/a2a/taskExecution.ts::A2A_SKILL_HANDLERS`。每個技能模組位於 `src/lib/a2a/skills/`。
 
-| 技能               | ID                    | 描述                                                                               | 標籤                        | 範例                                   |
-| :----------------- | :-------------------- | :--------------------------------------------------------------------------------- | :-------------------------- | :------------------------------------- |
-| Smart Routing      | `smart-routing`       | 透過 OmniRoute 的 combo 引擎 + 評分，將提示路由至最佳提供者/組合                       | routing, providers          | "Route this prompt via the best model" |
-| Quota Management   | `quota-management`    | 回報各提供者的配額狀態，協助呼叫端決定何時限流或切換                                     | quota, providers            | "Check quota for anthropic"            |
-| Provider Discovery | `provider-discovery`  | 列出已安裝的提供者及其能力、免費方案標記、OAuth 狀態                                    | providers, discovery        | "What providers are available?"        |
-| Cost Analysis      | `cost-analysis`       | 根據目錄及近期使用量，估算請求/對話的成本                                               | cost, usage                 | "Estimate cost for this conversation"  |
-| Health Report      | `health-report`       | 彙總各提供者的斷路器、冷卻、鎖定狀態                                                  | health, resilience          | "Show health status of all providers"  |
-| List Capabilities  | `list-capabilities`   | 回傳完整的 42 項代理技能目錄，以 Markdown 表格呈現，附原始 SKILL.md 網址供注入上下文     | catalog, discovery, skills  | "List all OmniRoute capabilities"      |
+| 技能               | ID                   | 描述                                                                                 | 標籤                       | 範例                                   |
+| :----------------- | :------------------- | :----------------------------------------------------------------------------------- | :------------------------- | :------------------------------------- |
+| Smart Routing      | `smart-routing`      | 透過 Xenia 的 combo 引擎 + 評分，將提示路由至最佳提供者/組合                         | routing, providers         | "Route this prompt via the best model" |
+| Quota Management   | `quota-management`   | 回報各提供者的配額狀態，協助呼叫端決定何時限流或切換                                 | quota, providers           | "Check quota for anthropic"            |
+| Provider Discovery | `provider-discovery` | 列出已安裝的提供者及其能力、免費方案標記、OAuth 狀態                                 | providers, discovery       | "What providers are available?"        |
+| Cost Analysis      | `cost-analysis`      | 根據目錄及近期使用量，估算請求/對話的成本                                            | cost, usage                | "Estimate cost for this conversation"  |
+| Health Report      | `health-report`      | 彙總各提供者的斷路器、冷卻、鎖定狀態                                                 | health, resilience         | "Show health status of all providers"  |
+| List Capabilities  | `list-capabilities`  | 回傳完整的 42 項代理技能目錄，以 Markdown 表格呈現，附原始 SKILL.md 網址供注入上下文 | catalog, discovery, skills | "List all Xenia capabilities"          |
 
 > 注意：Agent Card 描述目前標示「36+ 個提供者」（`src/app/.well-known/agent.json/route.ts:26` 及 `:55`）。實際目錄已成長至 180+ 個提供者——該字串應在後續變更中更新（另開文件/程式碼待辦事項追蹤；此處不修改）。
 
 ### `list-capabilities` 技能詳情
 
-`list-capabilities` 技能對於需要在發送 API 呼叫前探索 OmniRoute 能力的外部代理尤其有用。它回傳結構化的 Markdown 表格產出：
+`list-capabilities` 技能對於需要在發送 API 呼叫前探索 Xenia 能力的外部代理尤其有用。它回傳結構化的 Markdown 表格產出：
 
 ```
 | ID | Name | Category | Area | Endpoints/Commands | Raw URL |
@@ -171,13 +171,13 @@ OmniRoute 提供 6 個 A2A 技能，配置於 `src/lib/a2a/taskExecution.ts::A2A
 
 JSON-RPC 端點 `/a2a` 是標準的 A2A 進入點。以下 REST 端點為儀表板和外部工具提供輔助存取：
 
-| 端點                          | 方法   | 描述                      | 驗證方式               |
-| :---------------------------- | :----- | :------------------------ | :--------------------- |
-| `/api/a2a/status`             | GET    | 伺服器狀態、已註冊技能    | (公開)                 |
-| `/api/a2a/tasks`              | GET    | 列出任務（可篩選）        | management             |
-| `/api/a2a/tasks/[id]`         | GET    | 依 ID 取得任務            | management             |
-| `/api/a2a/tasks/[id]/cancel`  | POST   | 取消執行中的任務           | management             |
-| `/.well-known/agent.json`     | GET    | Agent Card（A2A 探索）    | (公開，快取 3600 秒)   |
+| 端點                         | 方法 | 描述                   | 驗證方式             |
+| :--------------------------- | :--- | :--------------------- | :------------------- |
+| `/api/a2a/status`            | GET  | 伺服器狀態、已註冊技能 | (公開)               |
+| `/api/a2a/tasks`             | GET  | 列出任務（可篩選）     | management           |
+| `/api/a2a/tasks/[id]`        | GET  | 依 ID 取得任務         | management           |
+| `/api/a2a/tasks/[id]/cancel` | POST | 取消執行中的任務       | management           |
+| `/.well-known/agent.json`    | GET  | Agent Card（A2A 探索） | (公開，快取 3600 秒) |
 
 ---
 
@@ -239,14 +239,14 @@ submitted → working → completed
 
 ## 錯誤碼
 
-| 代碼   | 含義                        |
-| :----- | :-------------------------- |
-| -32700 | 解析錯誤（JSON 格式無效）   |
-| -32600 | 無效請求 / 未授權           |
-| -32601 | 方法或技能不存在            |
-| -32602 | 參數無效                    |
-| -32603 | 內部錯誤                    |
-| -32000 | A2A 端點已停用              |
+| 代碼   | 含義                      |
+| :----- | :------------------------ |
+| -32700 | 解析錯誤（JSON 格式無效） |
+| -32600 | 無效請求 / 未授權         |
+| -32601 | 方法或技能不存在          |
+| -32602 | 參數無效                  |
+| -32603 | 內部錯誤                  |
+| -32000 | A2A 端點已停用            |
 
 ---
 

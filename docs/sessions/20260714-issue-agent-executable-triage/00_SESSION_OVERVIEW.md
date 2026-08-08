@@ -8,13 +8,13 @@ lastUpdated: 2026-08-06
 
 Machine status: `in_progress`
 Updated at: `2026-07-14`
-Issue: `https://github.com/diegosouzapw/OmniRoute/issues/5980`
-PR: `https://github.com/diegosouzapw/OmniRoute/pull/7002`
+Issue: `https://github.com/diegosouzapw/Xenia/issues/5980`
+PR: `https://github.com/diegosouzapw/Xenia/pull/7002`
 
 ## Goal
 
 Deliver GitHub issue #5980 as a production issue-agent workflow. The workflow
-must execute recorded GitHub triage through OmniRoute routing, persist a complete
+must execute recorded GitHub triage through Xenia routing, persist a complete
 audit trail, return an actionable result, and cover all terminal outcomes.
 
 ## Current State
@@ -32,7 +32,7 @@ audit trail, return an actionable result, and cover all terminal outcomes.
 | decision_id | decision                                                                         | rationale                                                                                                      | status        |
 | ----------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------- |
 | DEC-001     | Use the in-process `POST` export from `/api/v1/chat/completions`                 | preserves existing admission, initialization, guardrails, and provider routing                                 | `implemented` |
-| DEC-002     | Keep issue-agent execution opt-in with `OMNIROUTE_ISSUE_AGENT_ENABLED=true`      | prevents unrequested autonomous execution                                                                      | `implemented` |
+| DEC-002     | Keep issue-agent execution opt-in with `XENIA_ISSUE_AGENT_ENABLED=true`          | prevents unrequested autonomous execution                                                                      | `implemented` |
 | DEC-003     | Treat AC1 as incomplete until policy and error semantics are verified end-to-end | request construction alone does not prove the chat route consumes the policy or returns correct terminal state | `active`      |
 
 ## Traceability

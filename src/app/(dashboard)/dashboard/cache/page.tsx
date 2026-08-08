@@ -122,9 +122,9 @@ function SectionBadge({
 }) {
   const toneClass =
     tone === "green"
-      ? "border-green-500/20 bg-green-500/10 text-green-300"
+      ? "border-gray-500/20 bg-gray-500/10 text-gray-300"
       : tone === "amber"
-        ? "border-amber-400/20 bg-amber-400/10 text-amber-300"
+        ? "border-gray-400/20 bg-gray-400/10 text-gray-300"
         : "border-border/40 bg-surface/50 text-text-muted";
 
   return (
@@ -151,7 +151,7 @@ function LinearMeter({
   helper?: string;
 }) {
   const colorClass =
-    tone === "blue" ? "bg-blue-400" : tone === "amber" ? "bg-amber-400" : "bg-emerald-500";
+    tone === "blue" ? "bg-gray-400" : tone === "amber" ? "bg-gray-400" : "bg-gray-500";
 
   return (
     <div className="space-y-1.5">
@@ -191,7 +191,7 @@ function InfoRow({ icon, children }: { icon: string; children: ReactNode }) {
   return (
     <div className="flex gap-2 text-sm text-text-muted">
       <span
-        className="material-symbols-outlined shrink-0 text-base leading-5 text-blue-400"
+        className="material-symbols-outlined shrink-0 text-base leading-5 text-gray-400"
         aria-hidden="true"
       >
         {icon}
@@ -290,7 +290,7 @@ function PromptTrendPanel({
         <DetailStat
           label={peakCacheRateLabel}
           value={`${((peakCacheRatePoint.cachedRequests / Math.max(peakCacheRatePoint.requests, 1)) * 100).toFixed(1)}%`}
-          accent="text-emerald-500"
+          accent="text-gray-500"
         />
       </div>
 
@@ -321,7 +321,7 @@ function PromptTrendPanel({
                   <div className="space-y-1.5">
                     <div className="h-2 overflow-hidden rounded-full bg-surface/60">
                       <div
-                        className="h-full rounded-full bg-emerald-500/85"
+                        className="h-full rounded-full bg-gray-500/85"
                         style={{ width: `${volumeWidth}%` }}
                       />
                     </div>
@@ -332,7 +332,7 @@ function PromptTrendPanel({
                   <div className="text-sm font-semibold tabular-nums text-text-main">
                     {cacheRate.toFixed(1)}%
                   </div>
-                  <div className="text-sm font-semibold tabular-nums text-cyan-400">
+                  <div className="text-sm font-semibold tabular-nums text-gray-400">
                     {point.cachedTokens.toLocaleString()}
                   </div>
                 </div>
@@ -528,7 +528,7 @@ export default function CachePage() {
                     label={t("cacheRate")}
                     value={`${promptCacheRate.toFixed(1)}%`}
                     sub={`${pc.requestsWithCacheControl.toLocaleString()} / ${pc.totalRequests.toLocaleString()} ${t("requests").toLowerCase()}`}
-                    accent="text-emerald-500"
+                    accent="text-gray-500"
                     size="hero"
                   />
                   <StatCard
@@ -536,7 +536,7 @@ export default function CachePage() {
                     label={t("cacheReuseRatio")}
                     value={`${promptReuseRatio.toFixed(1)}%`}
                     sub={t("cacheReuseRatioDesc")}
-                    accent="text-blue-400"
+                    accent="text-gray-400"
                     size="hero"
                   />
                   <StatCard
@@ -544,7 +544,7 @@ export default function CachePage() {
                     label={t("cachedTokens")}
                     value={pc.totalCachedTokens.toLocaleString()}
                     sub={t("cachedTokensRead")}
-                    accent="text-cyan-400"
+                    accent="text-gray-400"
                     size="hero"
                   />
                   <StatCard
@@ -552,7 +552,7 @@ export default function CachePage() {
                     label={t("cacheCreationTokens")}
                     value={pc.totalCacheCreationTokens.toLocaleString()}
                     sub={t("cacheCreationWrite")}
-                    accent="text-purple-400"
+                    accent="text-gray-400"
                     size="hero"
                   />
                   <StatCard
@@ -560,7 +560,7 @@ export default function CachePage() {
                     label={t("estCostSaved")}
                     value={`$${pc.estimatedCostSaved.toFixed(4)}`}
                     sub={t("promptCache")}
-                    accent="text-green-500"
+                    accent="text-gray-500"
                     size="hero"
                   />
                 </div>
@@ -612,16 +612,16 @@ export default function CachePage() {
                                 <td className="px-4 py-3 tabular-nums text-text-main">
                                   {data.inputTokens.toLocaleString()}
                                 </td>
-                                <td className="px-4 py-3 tabular-nums text-cyan-400">
+                                <td className="px-4 py-3 tabular-nums text-gray-400">
                                   {data.cachedTokens.toLocaleString()}
                                 </td>
-                                <td className="px-4 py-3 tabular-nums text-purple-400">
+                                <td className="px-4 py-3 tabular-nums text-gray-400">
                                   {data.cacheCreationTokens.toLocaleString()}
                                 </td>
-                                <td className="px-4 py-3 font-semibold tabular-nums text-blue-400">
+                                <td className="px-4 py-3 font-semibold tabular-nums text-gray-400">
                                   {reuseRatio.toFixed(1)}%
                                 </td>
-                                <td className="px-4 py-3 font-semibold tabular-nums text-emerald-500">
+                                <td className="px-4 py-3 font-semibold tabular-nums text-gray-500">
                                   {cacheRate.toFixed(1)}%
                                 </td>
                                 <td className="px-4 py-3 tabular-nums text-text-main">
@@ -707,7 +707,7 @@ export default function CachePage() {
             </div>
 
             {!semanticCacheEnabled && (
-              <div className="rounded-2xl border border-amber-400/20 bg-amber-400/10 px-4 py-3 text-sm text-amber-100">
+              <div className="rounded-2xl border border-gray-400/20 bg-gray-400/10 px-4 py-3 text-sm text-gray-100">
                 {t("semanticCacheDisabledDesc")}
               </div>
             )}
@@ -730,14 +730,14 @@ export default function CachePage() {
                 label={t("cacheHits")}
                 value={sc?.hits ?? 0}
                 sub={t("cacheHitsSub", { total: semanticTotalRequests })}
-                accent="text-green-500"
+                accent="text-gray-500"
               />
               <StatCard
                 icon="token"
                 label={t("tokensSaved")}
                 value={(sc?.tokensSaved ?? 0).toLocaleString()}
                 sub={t("tokensSavedSub")}
-                accent="text-blue-400"
+                accent="text-gray-400"
               />
             </div>
 
@@ -751,7 +751,7 @@ export default function CachePage() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <div className="text-3xl font-semibold tabular-nums text-emerald-500">
+                    <div className="text-3xl font-semibold tabular-nums text-gray-500">
                       {semanticHitRate.toFixed(1)}%
                     </div>
                     <div className="text-xs text-text-muted">{t("hitRate")}</div>
@@ -770,12 +770,12 @@ export default function CachePage() {
                   <DetailStat
                     label={t("hits")}
                     value={(sc?.hits ?? 0).toLocaleString()}
-                    accent="text-green-500"
+                    accent="text-gray-500"
                   />
                   <DetailStat
                     label={t("misses")}
                     value={(sc?.misses ?? 0).toLocaleString()}
-                    accent="text-red-400"
+                    accent="text-gray-400"
                   />
                   <DetailStat label={t("total")} value={semanticTotalRequests.toLocaleString()} />
                 </div>
@@ -787,7 +787,7 @@ export default function CachePage() {
                   <div className="mt-4 grid gap-3">
                     <InfoRow icon="info">{t("behaviorDeterministic")}</InfoRow>
                     <InfoRow icon="info">
-                      {t("behaviorBypass", { header: "X-OmniRoute-No-Cache: true" })}
+                      {t("behaviorBypass", { header: "X-Xenia-No-Cache: true" })}
                     </InfoRow>
                     <InfoRow icon="info">{t("behaviorTwoTier")}</InfoRow>
                     <InfoRow icon="info">
@@ -814,7 +814,7 @@ export default function CachePage() {
                     <DetailStat
                       label={t("dedupWindow")}
                       value={idp ? `${(idp.windowMs / 1000).toFixed(0)}s` : "0s"}
-                      accent="text-amber-300"
+                      accent="text-gray-300"
                     />
                   </div>
                 </div>

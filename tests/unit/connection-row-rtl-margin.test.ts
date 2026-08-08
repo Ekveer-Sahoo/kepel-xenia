@@ -6,7 +6,7 @@ import path from "node:path";
 
 // Repro for issue #7680 — RTL layout compatibility.
 //
-// OmniRoute sets <html dir="rtl"> for ar/fa/he/ur locales (src/app/layout.tsx:61,
+// Xenia sets <html dir="rtl"> for ar/fa/he/ur locales (src/app/layout.tsx:61,
 // config/i18n.json "rtl": ["ar","fa","he","ur"]) but src/app/globals.css has zero
 // logical-property / RTL-mirroring rules, while dashboard components use Tailwind's
 // *physical* spacing utilities (ml-/mr-/pl-/pr-/left-/right-/border-l-/border-r-).
@@ -38,9 +38,7 @@ const rowFile = path.join(
 test("ConnectionRow action-icon wrapper must use an RTL-mirroring (logical) spacing utility, not a physical one", () => {
   const source = readFileSync(rowFile, "utf8");
 
-  const match = source.match(
-    /<div className="flex gap-1 ([^"]*)transition-opacity">/
-  );
+  const match = source.match(/<div className="flex gap-1 ([^"]*)transition-opacity">/);
   assert.ok(match, "expected to find the action-icon wrapper div in ConnectionRow.tsx");
 
   const spacingClasses = match![1];

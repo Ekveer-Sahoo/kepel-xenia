@@ -2,10 +2,7 @@ import { request as undiciRequest } from "undici";
 import { requireManagementAuth } from "@/lib/api/requireManagementAuth";
 import { createErrorResponse, createErrorResponseFromUnknown } from "@/lib/api/errorResponse";
 import { getFreeProxyById, promoteFreeProxyToPool } from "@/lib/localDb";
-import {
-  createProxyDispatcher,
-  proxyConfigToUrl,
-} from "@omniroute/open-sse/utils/proxyDispatcher.ts";
+import { createProxyDispatcher, proxyConfigToUrl } from "@xenia/open-sse/utils/proxyDispatcher.ts";
 
 type ConnectivityTester = (
   host: string,

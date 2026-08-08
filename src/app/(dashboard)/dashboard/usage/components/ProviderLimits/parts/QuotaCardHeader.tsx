@@ -8,9 +8,9 @@ import { formatCountdown, type CardStatus } from "../utils";
 import { translateUsageOrFallback } from "../i18nFallback";
 
 const STATUS_DOT_CLASS: Record<CardStatus, string> = {
-  critical: "bg-rose-500 shadow-[0_0_0_2px_rgba(244,63,94,0.16)]",
-  alert: "bg-amber-400 shadow-[0_0_0_2px_rgba(251,191,36,0.2)]",
-  ok: "bg-emerald-500 shadow-[0_0_0_2px_rgba(16,185,129,0.18)]",
+  critical: "bg-gray-500 shadow-[0_0_0_2px_rgba(244,63,94,0.16)]",
+  alert: "bg-gray-400 shadow-[0_0_0_2px_rgba(251,191,36,0.2)]",
+  ok: "bg-gray-500 shadow-[0_0_0_2px_rgba(16,185,129,0.18)]",
   empty: "bg-slate-300 shadow-[0_0_0_2px_rgba(148,163,184,0.18)]",
 };
 
@@ -104,7 +104,7 @@ export default function QuotaCardHeader({
             </span>
             {hasStaleData && (
               <span
-                className="material-symbols-outlined shrink-0 text-[12px] leading-4 text-amber-500"
+                className="material-symbols-outlined shrink-0 text-[12px] leading-4 text-gray-500"
                 title={t("staleQuotaTooltip")}
               >
                 schedule
@@ -116,7 +116,7 @@ export default function QuotaCardHeader({
           </span>
           {tokenExpiryLabel && (
             <span
-              className={`text-[10px] truncate ${tokenCountdown ? "text-sky-500" : "text-rose-500"}`}
+              className={`text-[10px] truncate ${tokenCountdown ? "text-gray-500" : "text-gray-500"}`}
               title={tokenExpiryTitle}
             >
               {tokenExpiryLabel}
@@ -136,7 +136,7 @@ export default function QuotaCardHeader({
           title={toggleActiveLabel}
           aria-label={toggleActiveLabel}
           className={`p-1 rounded-md cursor-pointer transition-colors hover:bg-black/[0.04] dark:hover:bg-white/[0.04] disabled:opacity-40 disabled:cursor-not-allowed ${
-            isActive ? "text-text-muted" : "text-rose-500"
+            isActive ? "text-text-muted" : "text-gray-500"
           }`}
         >
           <span className="material-symbols-outlined text-[14px]">

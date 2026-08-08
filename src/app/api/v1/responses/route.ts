@@ -3,12 +3,12 @@ import {
   withEarlyStreamKeepalive,
   RESPONSES_STARTUP_THINKING_FRAME,
   OPENAI_RESPONSES_ERROR_FRAME,
-} from "@omniroute/open-sse/utils/earlyStreamKeepalive";
+} from "@xenia/open-sse/utils/earlyStreamKeepalive";
 import { withInjectionGuard } from "@/middleware/promptInjectionGuard";
 import { resolveResponsesApiModel } from "@/app/api/internal/codex-responses-ws/modelResolution";
 import { getModelInfo } from "@/sse/services/model";
 import { getComboByName } from "@/lib/db/combos";
-import { resolveKeepaliveThreshold } from "@omniroute/open-sse/utils/keepaliveThreshold";
+import { resolveKeepaliveThreshold } from "@xenia/open-sse/utils/keepaliveThreshold";
 
 // NOTE: We do NOT call initTranslators() here — the translator registry is
 // bootstrapped at module level inside open-sse/translator/index.ts when it
@@ -32,7 +32,7 @@ export async function OPTIONS() {
  * Rewrite a bare ChatGPT-style model id to the codex/ prefix when the model
  * resolves to a codex provider. This fixes the Codex CLI WS→HTTP fallback path:
  * the CLI sends bare "gpt-5.5" over HTTP after WS closes (1008 Policy), and
- * without this rewrite OmniRoute routes it to openrouter instead of codex.
+ * without this rewrite Xenia routes it to openrouter instead of codex.
  *
  * Accepts an optional `preParsedBody` (threaded from withInjectionGuard via #4041)
  * to avoid re-cloning the request when the body was already parsed upstream.

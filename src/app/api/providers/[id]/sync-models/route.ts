@@ -19,7 +19,7 @@ import { autoSyncClaudeProfilesFromLiveCatalog } from "@/lib/cli-helper/claudePr
 import { providerUsesCuratedModelsOnly } from "@/lib/providers/modelListingCapability";
 import { GET as getProviderModels } from "../models/route";
 import { isDegradedLocalCatalog } from "./degradedLocalCatalog";
-import { sanitizeErrorMessage } from "@omniroute/open-sse/utils/error";
+import { sanitizeErrorMessage } from "@xenia/open-sse/utils/error";
 
 type JsonRecord = Record<string, unknown>;
 

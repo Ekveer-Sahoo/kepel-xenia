@@ -36,11 +36,11 @@ interface UserBadge {
 }
 
 const TIER_CONFIG: Record<string, { labelKey: string; color: string; bg: string }> = {
-  bronze: { labelKey: "tiers.bronze", color: "text-amber-600", bg: "bg-amber-600/10" },
+  bronze: { labelKey: "tiers.bronze", color: "text-gray-600", bg: "bg-gray-600/10" },
   silver: { labelKey: "tiers.silver", color: "text-gray-300", bg: "bg-gray-300/10" },
-  gold: { labelKey: "tiers.gold", color: "text-yellow-400", bg: "bg-yellow-400/10" },
-  platinum: { labelKey: "tiers.platinum", color: "text-cyan-300", bg: "bg-cyan-300/10" },
-  diamond: { labelKey: "tiers.diamond", color: "text-violet-400", bg: "bg-violet-400/10" },
+  gold: { labelKey: "tiers.gold", color: "text-gray-400", bg: "bg-gray-400/10" },
+  platinum: { labelKey: "tiers.platinum", color: "text-gray-300", bg: "bg-gray-300/10" },
+  diamond: { labelKey: "tiers.diamond", color: "text-gray-400", bg: "bg-gray-400/10" },
 };
 
 const BADGE_ICONS: Record<string, string> = {
@@ -81,10 +81,10 @@ function BadgeIcon({ icon, earned }: { icon: string | null; earned: boolean }) {
 
 const RARITY_COLORS: Record<string, string> = {
   common: "text-gray-400 border-gray-500/30",
-  uncommon: "text-green-400 border-green-500/30",
-  rare: "text-blue-400 border-blue-500/30",
-  epic: "text-purple-400 border-purple-500/30",
-  legendary: "text-amber-400 border-amber-500/30",
+  uncommon: "text-gray-400 border-gray-500/30",
+  rare: "text-gray-400 border-gray-500/30",
+  epic: "text-gray-400 border-gray-500/30",
+  legendary: "text-gray-400 border-gray-500/30",
 };
 
 export default function ProfilePage() {
@@ -172,7 +172,7 @@ export default function ProfilePage() {
 
   return (
     <div className="flex flex-col gap-6">
-      {error && <div className="p-3 rounded-lg bg-red-500/10 text-red-400 text-sm">{error}</div>}
+      {error && <div className="p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm">{error}</div>}
 
       {/* Level & XP Card */}
       <Card>
@@ -192,7 +192,7 @@ export default function ProfilePage() {
                   {tg("tierLabel", { tier: tg(tierConfig.labelKey) })}
                 </Badge>
                 {streak > 0 && (
-                  <span className="text-sm text-orange-400 flex items-center gap-1">
+                  <span className="text-sm text-gray-400 flex items-center gap-1">
                     🔥 {tg("dayStreak", { count: streak })}
                   </span>
                 )}
@@ -211,7 +211,7 @@ export default function ProfilePage() {
             </div>
             <div className="w-full h-3 rounded-full bg-border overflow-hidden">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-all duration-500"
+                className="h-full rounded-full bg-gradient-to-r from-gray-500 to-gray-500 transition-all duration-500"
                 style={{ width: `${Math.min(xpProgress, 100)}%` }}
               />
             </div>
@@ -283,7 +283,7 @@ export default function ProfilePage() {
                   {!isEarned && badge.criteria && (
                     <div className="mt-2">
                       <div className="w-full h-1.5 rounded-full bg-border overflow-hidden">
-                        <div className="h-full w-0 rounded-full bg-violet-500/50" />
+                        <div className="h-full w-0 rounded-full bg-gray-500/50" />
                       </div>
                     </div>
                   )}
@@ -343,7 +343,7 @@ export default function ProfilePage() {
             )}
 
             {earnedIds.has(selectedBadge.id) && (
-              <div className="mt-4 p-3 rounded-lg bg-emerald-500/10 text-emerald-400 text-sm">
+              <div className="mt-4 p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm">
                 ✓{" "}
                 {tg("earnedOn", {
                   date: new Date(

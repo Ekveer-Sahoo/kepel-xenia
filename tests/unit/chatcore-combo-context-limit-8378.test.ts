@@ -14,7 +14,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-combo-ctxlimit-8378-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-combo-ctxlimit-8378-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -51,10 +51,7 @@ test.before(async () => {
 
   await combosDb.createCombo({
     name: COMBO_NAME,
-    models: [
-      `${MAIN_PROVIDER}/${MAIN_MODEL}`,
-      `${SIBLING_PROVIDER}/${SIBLING_MODEL}`,
-    ],
+    models: [`${MAIN_PROVIDER}/${MAIN_MODEL}`, `${SIBLING_PROVIDER}/${SIBLING_MODEL}`],
   });
 
   // Defensive: nothing in the expected (fixed) code path should ever reach

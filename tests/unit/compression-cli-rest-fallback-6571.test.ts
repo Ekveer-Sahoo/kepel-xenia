@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-// Repro for #6571 — REST-fallback path of `omniroute compression` (hit only when
+// Repro for #6571 — REST-fallback path of `xenia compression` (hit only when
 // /api/mcp/tools/call is not mounted, i.e. mcpCall()'s 404/501 branch) uses the
 // nonexistent `engine` field instead of the canonical `defaultMode` field, and
 // the table renderer prints "[object Object]" for nested object cells.
@@ -57,11 +57,12 @@ test("restCompressionStatus (via runCompressionStatus REST fallback) should surf
   }) as typeof fetch;
 
   try {
-    const { runCompressionStatus } = await import(
-      "../../bin/cli/commands/compression.mjs"
-    );
+    const { runCompressionStatus } = await import("../../bin/cli/commands/compression.mjs");
     const out = await captureStdout(() =>
-      runCompressionStatus({}, makeCmd("json") as unknown as Parameters<typeof runCompressionStatus>[1])
+      runCompressionStatus(
+        {},
+        makeCmd("json") as unknown as Parameters<typeof runCompressionStatus>[1]
+      )
     );
     const parsed = JSON.parse(out);
 
@@ -95,9 +96,7 @@ test("restSetEngine (via runCompressionEngineSet REST fallback) should PUT `defa
   }) as typeof fetch;
 
   try {
-    const { runCompressionEngineSet } = await import(
-      "../../bin/cli/commands/compression.mjs"
-    );
+    const { runCompressionEngineSet } = await import("../../bin/cli/commands/compression.mjs");
     await runCompressionEngineSet(
       "caveman",
       {},
@@ -119,7 +118,11 @@ test("restSetEngine (via runCompressionEngineSet REST fallback) should PUT `defa
       "standard",
       `expected PUT body to contain defaultMode:"standard" (caveman translated), got: ${JSON.stringify(body)}`
     );
-    assert.equal(body.engine, undefined, `PUT body must not contain a nonexistent "engine" key, got: ${JSON.stringify(body)}`);
+    assert.equal(
+      body.engine,
+      undefined,
+      `PUT body must not contain a nonexistent "engine" key, got: ${JSON.stringify(body)}`
+    );
   } finally {
     globalThis.fetch = origFetch;
   }

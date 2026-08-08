@@ -4,9 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(
-  path.join(os.tmpdir(), "omniroute-provider-model-routes-codex-")
-);
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-provider-model-routes-codex-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -179,7 +177,7 @@ test("provider models route merges live Codex models with the local catalog then
   // Live payload wins on overlapping fields; local catalog supplies local-only
   // variants. EXCEPTION: capacity limits (inputTokenLimit/outputTokenLimit)
   // merge conservatively — the smaller of live vs. pinned wins, never the
-  // larger, so a stale/inflated live number can never make OmniRoute promise
+  // larger, so a stale/inflated live number can never make Xenia promise
   // more context than the account can actually serve (#7012). Here the pinned
   // GPT-5.6 Codex contract (272000/128000, see GPT_5_6_CODEX_CAPABILITIES) is
   // smaller than the live payload's 999999/999999, so the pinned value wins.

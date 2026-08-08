@@ -1,4 +1,4 @@
-import type { AdaptiveAdmissionPublicSnapshot } from "@omniroute/open-sse/services/admission/runtime.ts";
+import type { AdaptiveAdmissionPublicSnapshot } from "@xenia/open-sse/services/admission/runtime.ts";
 
 type JsonRecord = Record<string, unknown>;
 

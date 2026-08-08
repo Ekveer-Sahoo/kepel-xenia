@@ -47,7 +47,7 @@ export function WebhookDeliveriesPanel({ webhookId, t }: WebhookDeliveriesPanelP
   }
 
   if (error) {
-    return <p className="py-4 text-center text-xs text-red-500">{error}</p>;
+    return <p className="py-4 text-center text-xs text-gray-500">{error}</p>;
   }
 
   if (deliveries.length === 0) {
@@ -78,7 +78,7 @@ export function WebhookDeliveriesPanel({ webhookId, t }: WebhookDeliveriesPanelP
               <td className="py-2 text-text-muted">
                 {new Date(d.created_at).toLocaleString()}
                 {d.error && (
-                  <p className="mt-0.5 truncate text-red-400" title={d.error}>
+                  <p className="mt-0.5 truncate text-gray-400" title={d.error}>
                     {d.error}
                   </p>
                 )}

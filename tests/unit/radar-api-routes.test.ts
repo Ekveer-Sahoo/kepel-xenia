@@ -25,7 +25,7 @@ import { SignJWT } from "jose";
 // Isolate DB + feature flag state
 // ---------------------------------------------------------------------------
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-radar-api-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-radar-api-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.STORAGE_ENCRYPTION_KEY = "test-encryption-key-for-radar-api-tests-32b!";
 process.env.JWT_SECRET = "test-jwt-secret-for-radar-api-tests";
@@ -63,7 +63,7 @@ async function authHeaders(): Promise<Record<string, string>> {
 // Helper to create a mock NextRequest-like object
 function mockGetRequest(
   url = "http://localhost:20128/api/radar/catalog",
-  headers: Record<string, string> = {},
+  headers: Record<string, string> = {}
 ): Request {
   return new Request(url, { method: "GET", headers });
 }
@@ -71,7 +71,7 @@ function mockGetRequest(
 function mockPostRequest(
   url: string,
   body?: unknown,
-  headers: Record<string, string> = {},
+  headers: Record<string, string> = {}
 ): Request {
   return new Request(url, {
     method: "POST",
@@ -131,7 +131,7 @@ test("POST /api/radar/settings: flag off => 404", async () => {
 
   const { POST } = await import("../../src/app/api/radar/settings/route.ts");
   const response = await POST(
-    mockPostRequest("http://localhost:20128/api/radar/settings", { optIn: true }),
+    mockPostRequest("http://localhost:20128/api/radar/settings", { optIn: true })
   );
   const body = await response.json();
 
@@ -190,7 +190,7 @@ test("POST /api/radar/settings: flag on, no auth => 401", async () => {
 
   const { POST } = await import("../../src/app/api/radar/settings/route.ts");
   const response = await POST(
-    mockPostRequest("http://localhost:20128/api/radar/settings", { optIn: true }),
+    mockPostRequest("http://localhost:20128/api/radar/settings", { optIn: true })
   );
   const body = await response.json();
 
@@ -242,8 +242,8 @@ test("POST /api/radar/settings: flag on, authenticated, set opt-in => success, n
         optIn: true,
         supporterKey: "omr_abcdef01234567890abcdef01234567890abcdef",
       },
-      await authHeaders(),
-    ),
+      await authHeaders()
+    )
   );
   const body = await response.json();
 
@@ -254,7 +254,7 @@ test("POST /api/radar/settings: flag on, authenticated, set opt-in => success, n
   assert.ok(body.supporterKey, "should return masked key");
   assert.ok(
     !body.supporterKey.includes("abcdef01234567890abcdef01234567890abcdef"),
-    "Must NOT echo the clear key",
+    "Must NOT echo the clear key"
   );
   assert.ok(body.supporterKey.startsWith("omr_****"), "Key should be masked with omr_**** prefix");
   assert.ok(body.supporterKey.length <= 12, "Masked key should be short");
@@ -269,8 +269,8 @@ test("POST /api/radar/settings: authenticated, invalid body => 400", async () =>
     mockPostRequest(
       "http://localhost:20128/api/radar/settings",
       { supporterKey: "invalid-key-format" },
-      await authHeaders(),
-    ),
+      await authHeaders()
+    )
   );
 
   assert.equal(response.status, 400);
@@ -284,7 +284,7 @@ test("POST /api/radar/settings: authenticated, empty body => 400", async () => {
 
   const settingsRoute = await import("../../src/app/api/radar/settings/route.ts");
   const response = await settingsRoute.POST(
-    mockPostRequest("http://localhost:20128/api/radar/settings", {}, await authHeaders()),
+    mockPostRequest("http://localhost:20128/api/radar/settings", {}, await authHeaders())
   );
 
   assert.equal(response.status, 400);
@@ -304,17 +304,13 @@ test("POST /api/radar/settings: authenticated, null key clears it", async () => 
     mockPostRequest(
       "http://localhost:20128/api/radar/settings",
       { supporterKey: "omr_abcdef01234567890abcdef01234567890abcdef" },
-      headers,
-    ),
+      headers
+    )
   );
 
   // Then clear it
   const response = await settingsRoute.POST(
-    mockPostRequest(
-      "http://localhost:20128/api/radar/settings",
-      { supporterKey: null },
-      headers,
-    ),
+    mockPostRequest("http://localhost:20128/api/radar/settings", { supporterKey: null }, headers)
   );
   const body = await response.json();
 
@@ -329,7 +325,7 @@ test("POST /api/radar/sync: flag on, authenticated, not opted in => status opt_o
 
   const syncRoute = await import("../../src/app/api/radar/sync/route.ts");
   const response = await syncRoute.POST(
-    mockPostRequest("http://localhost:20128/api/radar/sync", undefined, await authHeaders()),
+    mockPostRequest("http://localhost:20128/api/radar/sync", undefined, await authHeaders())
   );
   const body = await response.json();
 
@@ -346,8 +342,8 @@ test("POST /api/radar/sync: authenticated, invalid body => 400", async () => {
     mockPostRequest(
       "http://localhost:20128/api/radar/sync",
       { unexpected: true },
-      await authHeaders(),
-    ),
+      await authHeaders()
+    )
   );
 
   assert.equal(response.status, 400);
@@ -364,7 +360,7 @@ test("GET /api/radar/settings: flag on, authenticated, default state => optIn fa
 
   const { GET } = await import("../../src/app/api/radar/settings/route.ts");
   const response = await GET(
-    mockGetRequest("http://localhost:20128/api/radar/settings", await authHeaders()),
+    mockGetRequest("http://localhost:20128/api/radar/settings", await authHeaders())
   );
   const body = await response.json();
 
@@ -373,8 +369,8 @@ test("GET /api/radar/settings: flag on, authenticated, default state => optIn fa
   assert.equal(body.hasSupporterKey, false);
   assert.equal(body.supporterKeyMasked, null);
   // F4/T7: default claim/plans links are always present, opt-in or not.
-  assert.equal(body.contributorClaimUrl, "https://radar.omniroute.online/auth/github");
-  assert.equal(body.supporterPlansUrl, "https://radar.omniroute.online/planos");
+  assert.equal(body.contributorClaimUrl, "https://radar.xenia.online/auth/github");
+  assert.equal(body.supporterPlansUrl, "https://radar.xenia.online/planos");
 });
 
 test("GET /api/radar/settings: flag on, authenticated, after opt-in + key => reflects persisted state, never raw key", async () => {
@@ -389,12 +385,12 @@ test("GET /api/radar/settings: flag on, authenticated, after opt-in + key => ref
     mockPostRequest(
       "http://localhost:20128/api/radar/settings",
       { optIn: true, supporterKey: RAW_KEY },
-      headers,
-    ),
+      headers
+    )
   );
 
   const response = await settingsRoute.GET(
-    mockGetRequest("http://localhost:20128/api/radar/settings", headers),
+    mockGetRequest("http://localhost:20128/api/radar/settings", headers)
   );
   const text = await response.text();
   const body = JSON.parse(text);
@@ -415,7 +411,7 @@ test("GET /api/radar/settings: F4/T7 claim/plans links honor env overrides (fork
   try {
     const { GET } = await import("../../src/app/api/radar/settings/route.ts");
     const response = await GET(
-      mockGetRequest("http://localhost:20128/api/radar/settings", await authHeaders()),
+      mockGetRequest("http://localhost:20128/api/radar/settings", await authHeaders())
     );
     const body = await response.json();
 
@@ -448,17 +444,17 @@ test("all radar routes: 404 error responses (flag off) do NOT leak stack traces"
       response = await (route as { GET: (r: Request) => Promise<Response> }).GET(mockGetRequest());
     } else {
       response = await (route as { POST: (r: Request) => Promise<Response> }).POST(
-        mockPostRequest(`http://localhost:20128/api/radar/${route.name}`, {}),
+        mockPostRequest(`http://localhost:20128/api/radar/${route.name}`, {})
       );
     }
     const text = await response.text();
     assert.ok(
       !text.includes("at /"),
-      `${route.name}: response must not contain stack-like paths. Got: ${text.slice(0, 200)}`,
+      `${route.name}: response must not contain stack-like paths. Got: ${text.slice(0, 200)}`
     );
     assert.ok(
       !text.includes(".ts:") && !text.includes(".js:"),
-      `${route.name}: response must not contain file:line references. Got: ${text.slice(0, 200)}`,
+      `${route.name}: response must not contain file:line references. Got: ${text.slice(0, 200)}`
     );
   }
 });
@@ -470,7 +466,10 @@ test("all radar routes: 401 error responses (flag on, no auth) do NOT leak stack
   const routes = [
     { name: "catalog", GET: (await import("../../src/app/api/radar/catalog/route.ts")).GET },
     { name: "sync", POST: (await import("../../src/app/api/radar/sync/route.ts")).POST },
-    { name: "settings-post", POST: (await import("../../src/app/api/radar/settings/route.ts")).POST },
+    {
+      name: "settings-post",
+      POST: (await import("../../src/app/api/radar/settings/route.ts")).POST,
+    },
     { name: "settings-get", GET: (await import("../../src/app/api/radar/settings/route.ts")).GET },
   ];
 
@@ -480,18 +479,18 @@ test("all radar routes: 401 error responses (flag on, no auth) do NOT leak stack
       response = await (route as { GET: (r: Request) => Promise<Response> }).GET(mockGetRequest());
     } else {
       response = await (route as { POST: (r: Request) => Promise<Response> }).POST(
-        mockPostRequest(`http://localhost:20128/api/radar/${route.name.replace("-post", "")}`, {}),
+        mockPostRequest(`http://localhost:20128/api/radar/${route.name.replace("-post", "")}`, {})
       );
     }
     assert.equal(response.status, 401, `${route.name}: expected 401 without auth`);
     const text = await response.text();
     assert.ok(
       !text.includes("at /"),
-      `${route.name}: response must not contain stack-like paths. Got: ${text.slice(0, 200)}`,
+      `${route.name}: response must not contain stack-like paths. Got: ${text.slice(0, 200)}`
     );
     assert.ok(
       !text.includes(".ts:") && !text.includes(".js:"),
-      `${route.name}: response must not contain file:line references. Got: ${text.slice(0, 200)}`,
+      `${route.name}: response must not contain file:line references. Got: ${text.slice(0, 200)}`
     );
   }
 });

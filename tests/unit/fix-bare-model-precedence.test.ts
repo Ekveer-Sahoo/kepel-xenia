@@ -4,14 +4,13 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-bare-precedence-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-bare-precedence-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
 const providersDb = await import("../../src/lib/db/providers.ts");
-const { CODEX_NATIVE_UNPREFIXED_MODELS, getModelInfoCore } = await import(
-  "../../open-sse/services/model.ts"
-);
+const { CODEX_NATIVE_UNPREFIXED_MODELS, getModelInfoCore } =
+  await import("../../open-sse/services/model.ts");
 
 // #FIX: bare Codex-default model ids must route to the `codex` provider
 // (chatgpt.com OAuth) when no provider prefix is supplied, even when other

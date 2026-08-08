@@ -7,8 +7,7 @@
  * @module shared/utils/fetchTimeout
  */
 
-const DEFAULT_TIMEOUT_MS =
-  parseInt(process.env.OMNIROUTE_DEFAULT_FETCH_TIMEOUT_MS || "", 10) || 120000; // 2 minutes
+const DEFAULT_TIMEOUT_MS = parseInt(process.env.XENIA_DEFAULT_FETCH_TIMEOUT_MS || "", 10) || 120000; // 2 minutes
 const FETCH_TIMEOUT_MS = parseInt(process.env.FETCH_TIMEOUT_MS || "", 10) || DEFAULT_TIMEOUT_MS;
 
 interface FetchTimeoutOptions extends RequestInit {
@@ -19,7 +18,12 @@ interface FetchTimeoutOptions extends RequestInit {
 }
 
 export async function fetchWithTimeout(url: string | URL, options: FetchTimeoutOptions = {}) {
-  const { timeoutMs = FETCH_TIMEOUT_MS, signal: externalSignal, fetchFn, ...fetchOptions } = options;
+  const {
+    timeoutMs = FETCH_TIMEOUT_MS,
+    signal: externalSignal,
+    fetchFn,
+    ...fetchOptions
+  } = options;
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);

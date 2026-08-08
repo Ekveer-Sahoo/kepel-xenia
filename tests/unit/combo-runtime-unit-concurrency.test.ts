@@ -18,7 +18,7 @@ import {
 import { isRuntimeUnitAtConcurrencyCap } from "../../open-sse/services/combo/runtimeUnitCapacity.ts";
 import type { ResolvedComboUnit } from "../../open-sse/services/combo/types.ts";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-runtime-unit-cap-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-runtime-unit-cap-"));
 const ORIGINAL_DATA_DIR = process.env.DATA_DIR;
 process.env.DATA_DIR = TEST_DATA_DIR;
 

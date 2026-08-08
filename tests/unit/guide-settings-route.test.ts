@@ -9,7 +9,7 @@ import * as yaml from "js-yaml";
 const guideSettingsRoute =
   await import("../../src/app/api/cli-tools/guide-settings/[toolId]/route.ts");
 
-const DUMMY_HOME = path.join(os.tmpdir(), "omniroute-guide-settings-test-" + Date.now());
+const DUMMY_HOME = path.join(os.tmpdir(), "xenia-guide-settings-test-" + Date.now());
 const OPENCODE_CONFIG_PATH = path.join(DUMMY_HOME, ".config", "opencode", "opencode.json");
 // cliRuntime.ts hermes entry maps to .config/hermes/config.json (not .hermes/config.yaml)
 const HERMES_CONFIG_PATH = path.join(DUMMY_HOME, ".config", "hermes", "config.json");
@@ -31,7 +31,7 @@ async function createAuthCookie() {
 
 type HermesConfig = {
   model?: { default?: string; provider?: string; base_url?: string };
-  providers?: { omniroute?: { base_url?: string; api_key?: string } };
+  providers?: { xenia?: { base_url?: string; api_key?: string } };
 };
 
 async function buildRequest(toolId: string, body: unknown) {
@@ -79,10 +79,10 @@ test("guide-settings POST creates new hermes config.yaml if it doesn't exist", a
 
   const content = yaml.load(await fs.readFile(HERMES_CONFIG_PATH, "utf-8")) as HermesConfig;
   assert.equal(content.model?.default, "gpt-5.4-mini");
-  assert.equal(content.model?.provider, "omniroute");
+  assert.equal(content.model?.provider, "xenia");
   assert.equal(content.model?.base_url, "http://my-omni/v1");
-  assert.equal(content.providers?.omniroute?.base_url, "http://my-omni/v1");
-  assert.ok(String(content.providers?.omniroute?.api_key || "").startsWith("sk-"));
+  assert.equal(content.providers?.xenia?.base_url, "http://my-omni/v1");
+  assert.ok(String(content.providers?.xenia?.api_key || "").startsWith("sk-"));
 });
 
 test("guide-settings POST writes OpenCode config with current schema and multi-model selection", async () => {
@@ -119,17 +119,17 @@ test("guide-settings POST writes OpenCode config with current schema and multi-m
   const content = parse(await fs.readFile(OPENCODE_CONFIG_PATH, "utf-8"));
   assert.equal(content.$schema, "https://opencode.ai/config.json");
   assert.ok(content.provider.custom);
-  assert.equal(content.provider.omniroute.npm, "@ai-sdk/openai-compatible");
-  assert.equal(content.provider.omniroute.options.baseURL, "http://my-omni/v1");
-  assert.ok(content.provider.omniroute.options.apiKey.startsWith("sk-"));
-  assert.deepEqual(Object.keys(content.provider.omniroute.models), [
+  assert.equal(content.provider.xenia.npm, "@ai-sdk/openai-compatible");
+  assert.equal(content.provider.xenia.options.baseURL, "http://my-omni/v1");
+  assert.ok(content.provider.xenia.options.apiKey.startsWith("sk-"));
+  assert.deepEqual(Object.keys(content.provider.xenia.models), [
     "cc/claude-sonnet-4-20250514",
     "gg/gemini-2.5-pro",
   ]);
   assert.equal(content.providers, undefined);
 });
 
-test("guide-settings POST preserves existing OpenCode config fields while only updating provider.omniroute", async () => {
+test("guide-settings POST preserves existing OpenCode config fields while only updating provider.xenia", async () => {
   await fs.mkdir(path.dirname(OPENCODE_CONFIG_PATH), { recursive: true });
   await fs.writeFile(
     OPENCODE_CONFIG_PATH,
@@ -140,9 +140,9 @@ test("guide-settings POST preserves existing OpenCode config fields while only u
     "custom": {
       "name": "Custom Provider"
     },
-    "omniroute": {
+    "xenia": {
       "npm": "old-package",
-      "name": "Old OmniRoute",
+      "name": "Old Xenia",
       "options": {
         "baseURL": "http://old-host/v1",
         "apiKey": "old-key"
@@ -193,10 +193,10 @@ test("guide-settings POST preserves existing OpenCode config fields while only u
   assert.deepEqual(content.provider.custom, {
     name: "Custom Provider",
   });
-  assert.equal(content.provider.omniroute.npm, "@ai-sdk/openai-compatible");
-  assert.equal(content.provider.omniroute.options.baseURL, "http://my-omni/v1");
-  assert.ok(content.provider.omniroute.options.apiKey.startsWith("sk-"));
-  assert.deepEqual(content.provider.omniroute.models, {
+  assert.equal(content.provider.xenia.npm, "@ai-sdk/openai-compatible");
+  assert.equal(content.provider.xenia.options.baseURL, "http://my-omni/v1");
+  assert.ok(content.provider.xenia.options.apiKey.startsWith("sk-"));
+  assert.deepEqual(content.provider.xenia.models, {
     "cx/gpt-5.6-sol": { name: "GPT-5.6 Sol" },
     "opencode-go/kimi-k2.6": { name: "Kimi K2.6" },
   });

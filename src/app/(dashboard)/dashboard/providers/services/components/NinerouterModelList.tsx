@@ -79,8 +79,8 @@ export function NinerouterModelList() {
     <Card padding="md">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="size-8 rounded-lg flex items-center justify-center bg-cyan-500/10">
-            <span className="material-symbols-outlined text-cyan-500 text-xl">list</span>
+          <div className="size-8 rounded-lg flex items-center justify-center bg-gray-500/10">
+            <span className="material-symbols-outlined text-gray-500 text-xl">list</span>
           </div>
           <div>
             <h3 className="font-medium text-sm">{t("availableModels")}</h3>
@@ -110,7 +110,7 @@ export function NinerouterModelList() {
       </div>
 
       {error && (
-        <div className="flex items-center gap-1.5 mb-3 px-2 py-1.5 rounded text-xs bg-red-500/10 text-red-600 dark:text-red-400">
+        <div className="flex items-center gap-1.5 mb-3 px-2 py-1.5 rounded text-xs bg-gray-500/10 text-gray-600 dark:text-gray-400">
           <span className="material-symbols-outlined text-[12px]">error</span>
           {error}
         </div>

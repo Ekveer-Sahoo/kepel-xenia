@@ -70,19 +70,19 @@ interface BatchDetailModalProps {
 }
 
 const STATUS_STYLES: Record<string, string> = {
-  completed: "bg-emerald-500/15 text-emerald-400 border-emerald-500/25",
-  completed_with_failures: "bg-red-500/15 text-red-400 border-red-500/25",
-  failed: "bg-red-500/15 text-red-400 border-red-500/25",
-  in_progress: "bg-blue-500/15 text-blue-400 border-blue-500/25",
-  in_progress_with_failures: "bg-orange-500/15 text-orange-400 border-orange-500/25",
-  finalizing: "bg-violet-500/15 text-violet-400 border-violet-500/25",
-  finalizing_with_failures: "bg-orange-500/15 text-orange-400 border-orange-500/25",
-  validating: "bg-yellow-500/15 text-yellow-400 border-yellow-500/25",
-  cancelling: "bg-orange-500/15 text-orange-400 border-orange-500/25",
+  completed: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  completed_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  failed: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  in_progress: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  in_progress_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  finalizing: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  finalizing_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  validating: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  cancelling: "bg-gray-500/15 text-gray-400 border-gray-500/25",
   cancelled: "bg-gray-500/15 text-gray-400 border-gray-500/25",
-  cancelled_with_failures: "bg-red-500/15 text-red-400 border-red-500/25",
+  cancelled_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
   expired: "bg-gray-500/15 text-gray-400 border-gray-500/25",
-  expired_with_failures: "bg-orange-500/15 text-orange-400 border-orange-500/25",
+  expired_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
 };
 
 const STATUS_LABELS: Record<string, string> = {
@@ -141,12 +141,24 @@ function formatTs(ts: number | null | undefined): string {
   });
 }
 
-export default function BatchDetailModal({ batch, files, onClose, onActionDone }: BatchDetailModalProps) {
+export default function BatchDetailModal({
+  batch,
+  files,
+  onClose,
+  onActionDone,
+}: BatchDetailModalProps) {
   const t = useTranslations("common");
 
   // ── Action hook (F7) ─────────────────────────────────────────────────────────
-  const { cancelling, retrying, error: actionError, cancel, retry, downloadHrefOutput, downloadHrefErrors } =
-    useBatchActions({ onRefresh: onActionDone, t });
+  const {
+    cancelling,
+    retrying,
+    error: actionError,
+    cancel,
+    retry,
+    downloadHrefOutput,
+    downloadHrefErrors,
+  } = useBatchActions({ onRefresh: onActionDone, t });
 
   // ── Status flags ──────────────────────────────────────────────────────────────
   const isTerminal = ["completed", "failed", "cancelled", "expired"].includes(batch.status);
@@ -195,7 +207,10 @@ export default function BatchDetailModal({ batch, files, onClose, onActionDone }
               pending_actions
             </span>
             <div>
-              <h2 id="batch-detail-modal-title" className="text-base font-semibold text-[var(--color-text-main)]">
+              <h2
+                id="batch-detail-modal-title"
+                className="text-base font-semibold text-[var(--color-text-main)]"
+              >
                 Batch Details
               </h2>
               <div className="flex items-center gap-2 mt-0.5">
@@ -253,21 +268,21 @@ export default function BatchDetailModal({ batch, files, onClose, onActionDone }
               </div>
               <div className="h-2 rounded-full bg-[var(--color-bg-alt)] overflow-hidden flex">
                 <div
-                  className="h-full bg-emerald-500 transition-all"
+                  className="h-full bg-gray-500 transition-all"
                   style={{ width: `${donePct}%` }}
                 />
                 <div
-                  className="h-full bg-red-500 transition-all"
+                  className="h-full bg-gray-500 transition-all"
                   style={{ width: `${failedPct}%` }}
                 />
               </div>
               <div className="flex gap-4 text-xs text-[var(--color-text-muted)]">
                 <span>
-                  <span className="text-emerald-400 font-medium">{completed}</span> completed
+                  <span className="text-gray-400 font-medium">{completed}</span> completed
                 </span>
                 {failed > 0 && (
                   <span>
-                    <span className="text-red-400 font-medium">{failed}</span> failed
+                    <span className="text-gray-400 font-medium">{failed}</span> failed
                   </span>
                 )}
                 <span>
@@ -373,10 +388,10 @@ export default function BatchDetailModal({ batch, files, onClose, onActionDone }
           {/* Errors */}
           {batch.errors && (
             <div>
-              <h3 className="text-[11px] uppercase tracking-wider font-medium text-red-400 mb-3">
+              <h3 className="text-[11px] uppercase tracking-wider font-medium text-gray-400 mb-3">
                 Errors
               </h3>
-              <pre className="p-3 rounded-lg bg-red-500/5 border border-red-500/20 text-xs font-mono text-red-300 overflow-x-auto">
+              <pre className="p-3 rounded-lg bg-gray-500/5 border border-gray-500/20 text-xs font-mono text-gray-300 overflow-x-auto">
                 {JSON.stringify(batch.errors, null, 2)}
               </pre>
             </div>
@@ -424,7 +439,7 @@ export default function BatchDetailModal({ batch, files, onClose, onActionDone }
               <a
                 href={downloadHrefErrors(batch.errorFileId) ?? "#"}
                 download={`batch-${batch.id}-errors.jsonl`}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg bg-red-500/10 border border-red-500/25 text-red-400 hover:text-red-300 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg bg-gray-500/10 border border-gray-500/25 text-gray-400 hover:text-gray-300 transition-colors"
               >
                 <span className="material-symbols-outlined text-[16px]">error_outline</span>
                 {t("batchActionDownloadErrors")}
@@ -438,7 +453,7 @@ export default function BatchDetailModal({ batch, files, onClose, onActionDone }
                   if (
                     window.confirm(
                       t("batchDetailActionRetry") +
-                        ` (${batch.requestCountsFailed} ${t("batchActionRetry")})?`,
+                        ` (${batch.requestCountsFailed} ${t("batchActionRetry")})?`
                     )
                   ) {
                     const result = await retry({
@@ -451,7 +466,7 @@ export default function BatchDetailModal({ batch, files, onClose, onActionDone }
                   }
                 }}
                 disabled={retrying}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg bg-blue-500/10 border border-blue-500/25 text-blue-400 hover:text-blue-300 transition-colors disabled:opacity-50"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg bg-gray-500/10 border border-gray-500/25 text-gray-400 hover:text-gray-300 transition-colors disabled:opacity-50"
               >
                 <span className="material-symbols-outlined text-[16px]">
                   {retrying ? "hourglass_empty" : "refresh"}
@@ -470,7 +485,7 @@ export default function BatchDetailModal({ batch, files, onClose, onActionDone }
                   }
                 }}
                 disabled={cancelling}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg bg-orange-500/10 border border-orange-500/25 text-orange-400 hover:text-orange-300 transition-colors disabled:opacity-50 ml-auto"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg bg-gray-500/10 border border-gray-500/25 text-gray-400 hover:text-gray-300 transition-colors disabled:opacity-50 ml-auto"
               >
                 <span className="material-symbols-outlined text-[16px]">
                   {cancelling ? "hourglass_empty" : "close"}
@@ -481,7 +496,7 @@ export default function BatchDetailModal({ batch, files, onClose, onActionDone }
 
             {/* Action error — uses i18n key set by hook (D14: never raw err.message/stack) */}
             {actionError && (
-              <div role="alert" className="basis-full mt-1 text-xs text-red-400">
+              <div role="alert" className="basis-full mt-1 text-xs text-gray-400">
                 {/* actionError is an i18n key from the hook (e.g. "batchActionCancel").
                     Cast is needed because next-intl types its arg as a specific union;
                     the hook guarantees this is always a valid message key. */}

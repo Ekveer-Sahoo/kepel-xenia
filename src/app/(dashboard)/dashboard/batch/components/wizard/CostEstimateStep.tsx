@@ -77,12 +77,12 @@ export default function CostEstimateStep({
 
           {/* Batch cost (-50%) */}
           <div className="flex items-center justify-between px-4 py-3">
-            <span className="text-sm font-medium text-emerald-400">{t("wizardCostBatch")}</span>
+            <span className="text-sm font-medium text-gray-400">{t("wizardCostBatch")}</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-emerald-500/80 bg-emerald-500/10 rounded px-1.5 py-0.5">
+              <span className="text-xs text-gray-500/80 bg-gray-500/10 rounded px-1.5 py-0.5">
                 -50%
               </span>
-              <span className="text-sm font-semibold text-emerald-400">
+              <span className="text-sm font-semibold text-gray-400">
                 ${estimate.batchCostUsd.toFixed(4)}
               </span>
             </div>
@@ -91,12 +91,14 @@ export default function CostEstimateStep({
           {/* Savings */}
           <div className="flex items-center justify-between px-4 py-3">
             <span className="text-sm text-[var(--color-text-muted)]">{t("wizardCostSavings")}</span>
-            <span className="text-sm text-emerald-400">${estimate.savingsUsd.toFixed(4)}</span>
+            <span className="text-sm text-gray-400">${estimate.savingsUsd.toFixed(4)}</span>
           </div>
 
           {/* Stats */}
           <div className="flex items-center justify-between px-4 py-3">
-            <span className="text-xs text-[var(--color-text-muted)]">{t("wizardCostRequests")}</span>
+            <span className="text-xs text-[var(--color-text-muted)]">
+              {t("wizardCostRequests")}
+            </span>
             <span className="text-xs text-[var(--color-text-muted)]">
               {estimate.totalRequests.toLocaleString()} ·{" "}
               {estimate.estimatedInputTokens.toLocaleString()} {t("wizardCostInputTok")} ·{" "}
@@ -116,7 +118,9 @@ export default function CostEstimateStep({
       )}
 
       {/* Disclaimer */}
-      <p className="text-xs text-[var(--color-text-muted)] italic">{t("wizardCostEstimatedNotice")}</p>
+      <p className="text-xs text-[var(--color-text-muted)] italic">
+        {t("wizardCostEstimatedNotice")}
+      </p>
 
       {/* Warnings */}
       {estimate && estimate.warnings.length > 0 && (
@@ -124,7 +128,7 @@ export default function CostEstimateStep({
           {estimate.warnings.map((w) => (
             <div
               key={w}
-              className="rounded-lg border border-yellow-500/25 bg-yellow-500/10 px-3 py-2 text-xs text-yellow-400"
+              className="rounded-lg border border-gray-500/25 bg-gray-500/10 px-3 py-2 text-xs text-gray-400"
             >
               {w}
             </div>
@@ -136,7 +140,7 @@ export default function CostEstimateStep({
       {error && (
         <div
           role="alert"
-          className="rounded-lg border border-red-500/25 bg-red-500/10 px-3 py-2 text-sm text-red-400"
+          className="rounded-lg border border-gray-500/25 bg-gray-500/10 px-3 py-2 text-sm text-gray-400"
         >
           {error}
         </div>
@@ -151,7 +155,9 @@ export default function CostEstimateStep({
       >
         {creating ? (
           <>
-            <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>
+            <span className="material-symbols-outlined text-sm animate-spin">
+              progress_activity
+            </span>
             {t("wizardCreating")}
           </>
         ) : (

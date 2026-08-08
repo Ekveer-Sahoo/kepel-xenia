@@ -7,7 +7,7 @@
 // executor every Responses request through this gateway would 400.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { CheaperInferenceExecutor } from "@omniroute/open-sse/executors/cheaperinference.ts";
+import { CheaperInferenceExecutor } from "@xenia/open-sse/executors/cheaperinference.ts";
 
 const CREDENTIALS = { apiKey: "ir_live_test" } as never;
 
@@ -65,9 +65,8 @@ test("REGRESSION: targetFormat lookup resolves the provider ALIAS, not the id", 
   // returns null here, silently downgrading every Responses model to
   // chat-completions and 400ing upstream. This asserts the two keyings really do
   // differ, so the alias resolution in the executor is not accidental.
-  const { PROVIDER_MODELS, PROVIDER_ID_TO_ALIAS, getModelTargetFormat } = await import(
-    "@omniroute/open-sse/config/providerModels.ts"
-  );
+  const { PROVIDER_MODELS, PROVIDER_ID_TO_ALIAS, getModelTargetFormat } =
+    await import("@xenia/open-sse/config/providerModels.ts");
   assert.equal(PROVIDER_ID_TO_ALIAS.cheaperinference, "cinf");
   assert.ok(PROVIDER_MODELS.cinf, "PROVIDER_MODELS is keyed by alias");
   assert.equal(PROVIDER_MODELS.cheaperinference, undefined, "…and NOT by provider id");

@@ -833,7 +833,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
           type: "info",
           message: translateOrFallback(
             "tailscaleWaitingForLogin",
-            "Complete the Tailscale login in the opened browser tab. OmniRoute will retry automatically."
+            "Complete the Tailscale login in the opened browser tab. Xenia will retry automatically."
           ),
         });
 
@@ -861,7 +861,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
           type: "info",
           message: translateOrFallback(
             "tailscaleWaitingForFunnel",
-            "Enable Funnel for this device in the opened browser tab. OmniRoute will keep polling."
+            "Enable Funnel for this device in the opened browser tab. Xenia will keep polling."
           ),
         });
 
@@ -1138,11 +1138,11 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
     {
       running: {
         label: translateOrFallback("cloudflaredRunning", "Running"),
-        className: "bg-green-500/10 border-green-500/30 text-green-400",
+        className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
       },
       starting: {
         label: translateOrFallback("cloudflaredStarting", "Starting"),
-        className: "bg-blue-500/10 border-blue-500/30 text-blue-400",
+        className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
       },
       stopped: {
         label: translateOrFallback("cloudflaredStoppedState", "Stopped"),
@@ -1154,11 +1154,11 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
       },
       unsupported: {
         label: translateOrFallback("cloudflaredUnsupported", "Unsupported"),
-        className: "bg-amber-500/10 border-amber-500/30 text-amber-400",
+        className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
       },
       error: {
         label: translateOrFallback("cloudflaredError", "Error"),
-        className: "bg-red-500/10 border-red-500/30 text-red-400",
+        className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
       },
     };
   const cloudflaredActionLabel = cloudflaredStatus?.running
@@ -1174,11 +1174,11 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
   const tailscalePhaseMeta: Record<TailscaleTunnelPhase, { label: string; className: string }> = {
     running: {
       label: translateOrFallback("tailscaleRunning", "Running"),
-      className: "bg-green-500/10 border-green-500/30 text-green-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
     needs_login: {
       label: translateOrFallback("tailscaleNeedsLogin", "Needs Login"),
-      className: "bg-blue-500/10 border-blue-500/30 text-blue-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
     stopped: {
       label: translateOrFallback("tailscaleStoppedState", "Stopped"),
@@ -1190,11 +1190,11 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
     },
     unsupported: {
       label: translateOrFallback("tailscaleUnsupported", "Unsupported"),
-      className: "bg-amber-500/10 border-amber-500/30 text-amber-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
     error: {
       label: translateOrFallback("tailscaleError", "Error"),
-      className: "bg-red-500/10 border-red-500/30 text-red-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
   };
   const tailscaleActionLabel = tailscaleStatus?.running
@@ -1213,11 +1213,11 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
   const ngrokPhaseMeta: Record<NgrokTunnelPhase, { label: string; className: string }> = {
     running: {
       label: translateOrFallback("ngrokRunning", "Running"),
-      className: "bg-green-500/10 border-green-500/30 text-green-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
     starting: {
       label: translateOrFallback("ngrokStarting", "Starting"),
-      className: "bg-blue-500/10 border-blue-500/30 text-blue-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
     stopped: {
       label: translateOrFallback("ngrokStoppedState", "Stopped"),
@@ -1225,7 +1225,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
     },
     needs_auth: {
       label: translateOrFallback("ngrokNeedsAuth", "Needs Auth"),
-      className: "bg-amber-500/10 border-amber-500/30 text-amber-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
     not_installed: {
       label: translateOrFallback("ngrokNotInstalled", "Not installed"),
@@ -1233,11 +1233,11 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
     },
     unsupported: {
       label: translateOrFallback("ngrokUnsupported", "Unsupported"),
-      className: "bg-amber-500/10 border-amber-500/30 text-amber-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
     error: {
       label: translateOrFallback("ngrokError", "Error"),
-      className: "bg-red-500/10 border-red-500/30 text-red-400",
+      className: "bg-gray-500/10 border-gray-500/30 text-gray-400",
     },
   };
   const ngrokActionLabel = ngrokStatus?.running
@@ -1273,10 +1273,10 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
           <div
             className={`flex items-center gap-2 px-4 py-2.5 rounded-lg mb-4 text-sm font-medium animate-in fade-in slide-in-from-top-2 duration-300 ${
               cloudStatus.type === "success"
-                ? "bg-green-500/10 border border-green-500/30 text-green-400"
+                ? "bg-gray-500/10 border border-gray-500/30 text-gray-400"
                 : cloudStatus.type === "warning"
-                  ? "bg-amber-500/10 border border-amber-500/30 text-amber-400"
-                  : "bg-red-500/10 border border-red-500/30 text-red-400"
+                  ? "bg-gray-500/10 border border-gray-500/30 text-gray-400"
+                  : "bg-gray-500/10 border border-gray-500/30 text-gray-400"
             }`}
           >
             <span className="material-symbols-outlined text-[18px]">
@@ -1305,7 +1305,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             <div className="flex flex-col gap-1.5">
               {activeUrls.map(({ label, url, key }) => (
                 <div key={key} className="flex items-center gap-2 min-w-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0" />
                   <span className="text-xs text-text-muted w-20 shrink-0">{label}</span>
                   <code className="text-xs font-mono text-text-main flex-1 truncate min-w-0">
                     {url}
@@ -1328,7 +1328,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
         <div className="flex flex-col">
           {/* Local Server */}
           <div className="flex items-center gap-3 py-3">
-            <span className="material-symbols-outlined text-[18px] text-emerald-500 shrink-0">
+            <span className="material-symbols-outlined text-[18px] text-gray-500 shrink-0">
               computer
             </span>
             <div className="flex-1 min-w-0">
@@ -1352,8 +1352,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                 ))}
               </div>
             </div>
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-green-500/10 border border-green-500/30 text-green-400 shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-500/10 border border-gray-500/30 text-gray-400 shrink-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse" />
               {t("statusRunning")}
             </span>
             <button
@@ -1384,23 +1384,23 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             </span>
           </div>
 
-          {/* Cloud OmniRoute */}
+          {/* Cloud Xenia */}
           <div className="flex items-center gap-3 py-3">
-            <span className="material-symbols-outlined text-[18px] text-blue-400 shrink-0">
+            <span className="material-symbols-outlined text-[18px] text-gray-400 shrink-0">
               cloud
             </span>
             <div className="flex-1 min-w-0">
-              <span className="text-sm font-medium">{t("cloudOmniroute")}</span>
+              <span className="text-sm font-medium">{t("cloudXenia")}</span>
             </div>
             <span
               className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium border shrink-0 ${
                 cloudEnabled
-                  ? "bg-green-500/10 border-green-500/30 text-green-400"
+                  ? "bg-gray-500/10 border-gray-500/30 text-gray-400"
                   : "bg-surface border-border/70 text-text-muted"
               }`}
             >
               <span
-                className={`w-1.5 h-1.5 rounded-full shrink-0 ${cloudEnabled ? "bg-green-400 animate-pulse" : "bg-text-muted"}`}
+                className={`w-1.5 h-1.5 rounded-full shrink-0 ${cloudEnabled ? "bg-gray-400 animate-pulse" : "bg-text-muted"}`}
               />
               {cloudEnabled ? tc("active") : tc("disabled")}
             </span>
@@ -1411,7 +1411,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                 icon="cloud_off"
                 onClick={() => handleCloudToggle(false)}
                 disabled={cloudSyncing}
-                className="shrink-0 bg-red-500/10! text-red-500! hover:bg-red-500/20! border-red-500/30!"
+                className="shrink-0 bg-gray-500/10! text-gray-500! hover:bg-gray-500/20! border-gray-500/30!"
               >
                 {t("disableCloud")}
               </Button>
@@ -1437,7 +1437,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
           {showCloudflaredTunnel && (
             <div className="border-t border-border/30">
               <div className="flex items-center gap-3 py-3">
-                <span className="material-symbols-outlined text-[18px] text-orange-400 shrink-0">
+                <span className="material-symbols-outlined text-[18px] text-gray-400 shrink-0">
                   cloud_queue
                 </span>
                 <div className="flex-1 min-w-0">
@@ -1471,10 +1471,10 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                 <div
                   className={`mb-2 ml-7 flex items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
                     cloudflaredNotice.type === "success"
-                      ? "border-green-500/30 bg-green-500/10 text-green-400"
+                      ? "border-gray-500/30 bg-gray-500/10 text-gray-400"
                       : cloudflaredNotice.type === "info"
-                        ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
-                        : "border-red-500/30 bg-red-500/10 text-red-400"
+                        ? "border-gray-500/30 bg-gray-500/10 text-gray-400"
+                        : "border-gray-500/30 bg-gray-500/10 text-gray-400"
                   }`}
                 >
                   <span className="material-symbols-outlined text-[18px]">
@@ -1494,7 +1494,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                 </div>
               )}
               {cloudflaredStatus?.lastError && (
-                <p className="mb-2 ml-7 text-xs text-red-400">
+                <p className="mb-2 ml-7 text-xs text-gray-400">
                   {translateOrFallback("cloudflaredLastError", "Last error: {error}", {
                     error: cloudflaredStatus.lastError,
                   })}
@@ -1518,7 +1518,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                   }
                 }}
               >
-                <span className="material-symbols-outlined text-[18px] text-indigo-400 shrink-0">
+                <span className="material-symbols-outlined text-[18px] text-gray-400 shrink-0">
                   vpn_lock
                 </span>
                 <div className="flex-1 min-w-0">
@@ -1586,10 +1586,10 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                     <div
                       className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
                         tailscaleNotice.type === "success"
-                          ? "border-green-500/30 bg-green-500/10 text-green-400"
+                          ? "border-gray-500/30 bg-gray-500/10 text-gray-400"
                           : tailscaleNotice.type === "info"
-                            ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
-                            : "border-red-500/30 bg-red-500/10 text-red-400"
+                            ? "border-gray-500/30 bg-gray-500/10 text-gray-400"
+                            : "border-gray-500/30 bg-gray-500/10 text-gray-400"
                       }`}
                     >
                       <span className="material-symbols-outlined text-[18px]">
@@ -1610,7 +1610,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                   )}
                   <p className="text-xs text-text-muted">{tailscaleUrlNotice}</p>
                   {tailscaleStatus?.phase === "needs_login" && (
-                    <p className="text-xs text-blue-400">
+                    <p className="text-xs text-gray-400">
                       {translateOrFallback(
                         "tailscaleNeedsLoginHint",
                         "Authenticate this machine with Tailscale, then enable Funnel."
@@ -1646,7 +1646,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                     </p>
                   )}
                   {tailscaleStatus?.lastError && (
-                    <p className="text-xs text-red-400">
+                    <p className="text-xs text-gray-400">
                       {translateOrFallback("tailscaleLastError", "Last error: {error}", {
                         error: tailscaleStatus.lastError,
                       })}
@@ -1676,7 +1676,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                   }
                 }}
               >
-                <span className="material-symbols-outlined text-[18px] text-purple-400 shrink-0">
+                <span className="material-symbols-outlined text-[18px] text-gray-400 shrink-0">
                   public
                 </span>
                 <div className="flex-1 min-w-0">
@@ -1719,10 +1719,10 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                     <div
                       className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
                         ngrokNotice.type === "success"
-                          ? "border-green-500/30 bg-green-500/10 text-green-400"
+                          ? "border-gray-500/30 bg-gray-500/10 text-gray-400"
                           : ngrokNotice.type === "info"
-                            ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
-                            : "border-red-500/30 bg-red-500/10 text-red-400"
+                            ? "border-gray-500/30 bg-gray-500/10 text-gray-400"
+                            : "border-gray-500/30 bg-gray-500/10 text-gray-400"
                       }`}
                     >
                       <span className="material-symbols-outlined text-[18px]">
@@ -1764,7 +1764,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
                     </div>
                   )}
                   {ngrokStatus?.lastError && (
-                    <p className="text-xs text-red-400">
+                    <p className="text-xs text-gray-400">
                       {translateOrFallback("ngrokLastError", "Last error: {error}", {
                         error: ngrokStatus.lastError,
                       })}
@@ -1829,8 +1829,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
             <EndpointCard
               icon="chat"
-              iconColor="text-blue-500"
-              iconBg="bg-blue-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("chatCompletions")}
               path="/v1/chat/completions"
               models={endpointData.chat}
@@ -1841,8 +1841,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="code"
-              iconColor="text-indigo-500"
-              iconBg="bg-indigo-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("responses") || "Responses API"}
               path="/v1/responses"
               models={endpointData.chat}
@@ -1853,8 +1853,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="text_fields"
-              iconColor="text-orange-500"
-              iconBg="bg-orange-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("completionsLegacy") || "Completions (Legacy)"}
               path="/v1/completions"
               models={endpointData.chat}
@@ -1865,8 +1865,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="psychology"
-              iconColor="text-violet-500"
-              iconBg="bg-violet-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("messagesApi") || "Messages"}
               path="/v1/messages"
               models={null}
@@ -1881,7 +1881,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
         {/* Media & Multi-Modal */}
         <div className="mb-5">
           <div className="flex items-center gap-2 mb-3">
-            <span className="material-symbols-outlined text-sm text-purple-400">perm_media</span>
+            <span className="material-symbols-outlined text-sm text-gray-400">perm_media</span>
             <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider">
               {t("categoryMedia") || "Media & Multi-Modal"}
             </h3>
@@ -1890,8 +1890,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
             <EndpointCard
               icon="data_array"
-              iconColor="text-emerald-500"
-              iconBg="bg-emerald-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("embeddings")}
               path="/v1/embeddings"
               models={endpointData.embeddings}
@@ -1902,8 +1902,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="image"
-              iconColor="text-purple-500"
-              iconBg="bg-purple-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("imageGeneration")}
               path="/v1/images/generations"
               models={endpointData.images}
@@ -1914,8 +1914,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="edit_square"
-              iconColor="text-violet-500"
-              iconBg="bg-violet-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("imageEdits") || "Image Edits"}
               path="/v1/images/edits"
               models={endpointData.images}
@@ -1926,8 +1926,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="mic"
-              iconColor="text-rose-500"
-              iconBg="bg-rose-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("audioTranscription")}
               path="/v1/audio/transcriptions"
               models={endpointData.audioTranscription}
@@ -1938,8 +1938,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="record_voice_over"
-              iconColor="text-cyan-500"
-              iconBg="bg-cyan-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("textToSpeech")}
               path="/v1/audio/speech"
               models={endpointData.audioSpeech}
@@ -1950,8 +1950,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="music_note"
-              iconColor="text-fuchsia-500"
-              iconBg="bg-fuchsia-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("musicGeneration") || "Music Generation"}
               path="/v1/music/generations"
               models={endpointData.music}
@@ -1962,8 +1962,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="videocam"
-              iconColor="text-red-500"
-              iconBg="bg-red-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("videoGeneration") || "Video Generation"}
               path="/v1/videos/generations"
               models={endpointData.video}
@@ -1979,7 +1979,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
         {searchProviders.length > 0 && (
           <div className="mb-5">
             <div className="flex items-center gap-2 mb-3">
-              <span className="material-symbols-outlined text-sm text-cyan-400">
+              <span className="material-symbols-outlined text-sm text-gray-400">
                 travel_explore
               </span>
               <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider">
@@ -1990,8 +1990,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
               <EndpointCard
                 icon="search"
-                iconColor="text-cyan-500"
-                iconBg="bg-cyan-500/10"
+                iconColor="text-gray-500"
+                iconBg="bg-gray-500/10"
                 title={t("webSearch") || "Web Search"}
                 path="/v1/search"
                 models={searchProviders.map((p) => ({ id: p.id, owned_by: p.id, type: "search" }))}
@@ -2006,7 +2006,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
         {/* Utility & Management */}
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <span className="material-symbols-outlined text-sm text-amber-400">build</span>
+            <span className="material-symbols-outlined text-sm text-gray-400">build</span>
             <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider">
               {t("categoryUtility") || "Utility & Management"}
             </h3>
@@ -2015,8 +2015,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
             <EndpointCard
               icon="sort"
-              iconColor="text-amber-500"
-              iconBg="bg-amber-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("rerank")}
               path="/v1/rerank"
               models={endpointData.rerank}
@@ -2027,8 +2027,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="shield"
-              iconColor="text-orange-500"
-              iconBg="bg-orange-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("moderations")}
               path="/v1/moderations"
               models={endpointData.moderation}
@@ -2039,8 +2039,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="view_list"
-              iconColor="text-teal-500"
-              iconBg="bg-teal-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("batchApi") || "Batch API"}
               path="/v1/batches"
               models={null}
@@ -2051,8 +2051,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="folder"
-              iconColor="text-yellow-500"
-              iconBg="bg-yellow-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("filesApi") || "Files API"}
               path="/v1/files"
               models={null}
@@ -2062,8 +2062,8 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             />
             <EndpointCard
               icon="list"
-              iconColor="text-teal-500"
-              iconBg="bg-teal-500/10"
+              iconColor="text-gray-500"
+              iconBg="bg-gray-500/10"
               title={t("listModels") || "List Models"}
               path="/v1/models"
               models={null}
@@ -2084,11 +2084,11 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
         onClose={() => setShowCloudModal(false)}
       >
         <div className="flex flex-col gap-4">
-          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-            <p className="text-sm text-blue-800 dark:text-blue-200 font-medium mb-2">
+          <div className="bg-gray-50 dark:bg-gray-900/20 border border-gray-200 dark:border-gray-800 rounded-lg p-4">
+            <p className="text-sm text-gray-800 dark:text-gray-200 font-medium mb-2">
               {t("whatYouGet")}
             </p>
-            <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+            <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
               <li>• {t("cloudBenefitAccess")}</li>
               <li>• {t("cloudBenefitShare")}</li>
               <li>• {t("cloudBenefitPorts")}</li>
@@ -2096,11 +2096,11 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             </ul>
           </div>
 
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-            <p className="text-sm text-yellow-800 dark:text-yellow-200 font-medium mb-1">
+          <div className="bg-gray-50 dark:bg-gray-900/20 border border-gray-200 dark:border-gray-800 rounded-lg p-4">
+            <p className="text-sm text-gray-800 dark:text-gray-200 font-medium mb-1">
               {tc("note")}
             </p>
-            <ul className="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+            <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
               <li>• {t("cloudSessionNote")}</li>
               <li>• {t("cloudUnstableNote")}</li>
             </ul>
@@ -2111,12 +2111,12 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
             <div
               className={`flex items-center gap-3 p-3 rounded-lg border transition-all duration-300 ${
                 modalSuccess
-                  ? "bg-green-500/10 border-green-500/30"
+                  ? "bg-gray-500/10 border-gray-500/30"
                   : "bg-primary/10 border-primary/30"
               }`}
             >
               {modalSuccess ? (
-                <span className="material-symbols-outlined text-green-500 text-xl">
+                <span className="material-symbols-outlined text-gray-500 text-xl">
                   check_circle
                 </span>
               ) : (
@@ -2127,7 +2127,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
               <div className="flex-1">
                 <p
                   className={`text-sm font-medium ${
-                    modalSuccess ? "text-green-500" : "text-primary"
+                    modalSuccess ? "text-gray-500" : "text-primary"
                   }`}
                 >
                   {modalSuccess && t("cloudConnected")}
@@ -2175,16 +2175,16 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
         onClose={() => !cloudSyncing && setShowDisableModal(false)}
       >
         <div className="flex flex-col gap-4">
-          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+          <div className="bg-gray-50 dark:bg-gray-900/20 border border-gray-200 dark:border-gray-800 rounded-lg p-4">
             <div className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-red-600 dark:text-red-400">
+              <span className="material-symbols-outlined text-gray-600 dark:text-gray-400">
                 warning
               </span>
               <div>
-                <p className="text-sm text-red-800 dark:text-red-200 font-medium mb-1">
+                <p className="text-sm text-gray-800 dark:text-gray-200 font-medium mb-1">
                   {tc("warning")}
                 </p>
-                <p className="text-sm text-red-700 dark:text-red-300">{t("disableWarning")}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">{t("disableWarning")}</p>
               </div>
             </div>
           </div>
@@ -2211,7 +2211,7 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
               onClick={handleConfirmDisable}
               fullWidth
               disabled={cloudSyncing}
-              className="bg-red-500! hover:bg-red-600! text-white!"
+              className="bg-gray-500! hover:bg-gray-600! text-white!"
             >
               {cloudSyncing ? (
                 <span className="flex items-center gap-2">
@@ -2242,14 +2242,14 @@ export default function APIPageClient({ machineId }: Readonly<APIPageClientProps
         onClose={() => !tailscaleInstallBusy && setShowTailscaleInstallModal(false)}
       >
         <div className="flex flex-col gap-4">
-          <div className="rounded-lg border border-blue-500/30 bg-blue-500/10 p-4">
-            <p className="text-sm font-medium text-blue-300">
+          <div className="rounded-lg border border-gray-500/30 bg-gray-500/10 p-4">
+            <p className="text-sm font-medium text-gray-300">
               {translateOrFallback(
                 "tailscaleInstallIntro",
-                "Installs Tailscale on this machine and prepares OmniRoute to enable Funnel."
+                "Installs Tailscale on this machine and prepares Xenia to enable Funnel."
               )}
             </p>
-            <p className="mt-2 text-sm text-blue-200/80">
+            <p className="mt-2 text-sm text-gray-200/80">
               {translateOrFallback(
                 "tailscaleInstallPasswordHint",
                 "On macOS and Linux, sudo may be required for the package install and daemon start."

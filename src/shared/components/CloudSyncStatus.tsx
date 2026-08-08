@@ -19,10 +19,10 @@ import { useTranslations } from "next-intl";
 // store — it is not a cloud/telemetry service). Internal state keys, the
 // `cloud_*` material icons and the cloudSync.* wiring are intentionally kept.
 const STATUS_CONFIG = {
-  connected: { icon: "cloud_done", color: "text-green-500", labelKey: "synced" },
-  syncing: { icon: "cloud_sync", color: "text-blue-400 animate-pulse", labelKey: "syncing" },
-  disconnected: { icon: "cloud_off", color: "text-amber-500", labelKey: "off" },
-  error: { icon: "cloud_off", color: "text-red-400", labelKey: "error" },
+  connected: { icon: "cloud_done", color: "text-gray-500", labelKey: "synced" },
+  syncing: { icon: "cloud_sync", color: "text-gray-400 animate-pulse", labelKey: "syncing" },
+  disconnected: { icon: "cloud_off", color: "text-gray-500", labelKey: "off" },
+  error: { icon: "cloud_off", color: "text-gray-400", labelKey: "error" },
   disabled: { icon: "cloud_off", color: "text-text-muted/50", labelKey: "disabled" },
 };
 
@@ -100,7 +100,7 @@ export default function CloudSyncStatus({ collapsed = false }) {
       </span>
       {!collapsed && (
         <span
-          className={`truncate ${status === "connected" ? "text-green-500" : "text-text-muted"}`}
+          className={`truncate ${status === "connected" ? "text-gray-500" : "text-text-muted"}`}
         >
           {label}
         </span>

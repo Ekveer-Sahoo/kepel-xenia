@@ -2,7 +2,7 @@
  * Regression test for #6197 — default app log path must resolve under DATA_DIR,
  * not process.cwd().
  *
- * The globally-installed `omniroute` CLI runs from an arbitrary working directory
+ * The globally-installed `xenia` CLI runs from an arbitrary working directory
  * (whatever the user's shell happens to be in), so anchoring the default log file
  * to `process.cwd()` means file logging silently writes to (or fails under) a
  * directory unrelated to the app's data home. The `.env.example` docs promise the
@@ -50,20 +50,14 @@ test("getAppLogFilePath: default anchors to DATA_DIR, not process.cwd()", () => 
         path.resolve(dataDir).startsWith(path.resolve(process.cwd())),
       `log path must not be anchored to cwd; got ${resolved}`
     );
-    assert.equal(
-      resolved,
-      path.join(resolveDataDir(), "logs", "application", "app.log")
-    );
+    assert.equal(resolved, path.join(resolveDataDir(), "logs", "application", "app.log"));
   });
 });
 
 test("getAppLogFilePath: default with no DATA_DIR uses default data dir, not cwd", () => {
   withEnv({ DATA_DIR: undefined, APP_LOG_FILE_PATH: undefined }, () => {
     const resolved = getAppLogFilePath();
-    assert.equal(
-      resolved,
-      path.join(resolveDataDir(), "logs", "application", "app.log")
-    );
+    assert.equal(resolved, path.join(resolveDataDir(), "logs", "application", "app.log"));
   });
 });
 

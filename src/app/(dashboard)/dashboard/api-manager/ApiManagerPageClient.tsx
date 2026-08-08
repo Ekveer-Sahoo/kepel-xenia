@@ -934,12 +934,12 @@ export default function ApiManagerPageClient() {
     <div className="flex flex-col gap-8">
       {/* Error Banner */}
       {pageError && (
-        <div className="flex items-center gap-3 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-          <span className="material-symbols-outlined text-red-500">error</span>
-          <p className="text-sm text-red-700 dark:text-red-300 flex-1">{pageError}</p>
+        <div className="flex items-center gap-3 p-4 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+          <span className="material-symbols-outlined text-gray-500">error</span>
+          <p className="text-sm text-gray-700 dark:text-gray-300 flex-1">{pageError}</p>
           <button
             onClick={clearPageError}
-            className="text-red-500 hover:text-red-700 transition-colors"
+            className="text-gray-500 hover:text-gray-700 transition-colors"
           >
             <span className="material-symbols-outlined">close</span>
           </button>
@@ -965,8 +965,8 @@ export default function ApiManagerPageClient() {
       <Card>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center size-10 rounded-lg bg-amber-500/10 shrink-0">
-              <span className="material-symbols-outlined text-xl text-amber-500">vpn_key</span>
+            <div className="flex items-center justify-center size-10 rounded-lg bg-gray-500/10 shrink-0">
+              <span className="material-symbols-outlined text-xl text-gray-500">vpn_key</span>
             </div>
             <div>
               <h3 className="font-semibold">
@@ -1066,7 +1066,7 @@ export default function ApiManagerPageClient() {
                 >
                   <div className="col-span-2 flex items-center gap-2">
                     <span
-                      className={`material-symbols-outlined text-sm ${isRestricted ? "text-amber-500" : "text-emerald-500"}`}
+                      className={`material-symbols-outlined text-sm ${isRestricted ? "text-gray-500" : "text-gray-500"}`}
                     >
                       {isRestricted ? "lock" : "lock_open"}
                     </span>
@@ -1115,7 +1115,7 @@ export default function ApiManagerPageClient() {
                     <div className="flex flex-col items-start gap-1">
                       {/* QUOTA differentiation chips — prepended before existing badges */}
                       {keyIsQuota && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           {t("quotaModeOnly")}
                         </span>
                       )}
@@ -1123,13 +1123,13 @@ export default function ApiManagerPageClient() {
                         visibleGroups.map((groupName) => (
                           <span
                             key={groupName}
-                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-medium truncate max-w-full"
+                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium truncate max-w-full"
                           >
                             {groupName}
                           </span>
                         ))}
                       {keyIsQuota && extraGroupCount > 0 && (
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           +{extraGroupCount}
                         </span>
                       )}
@@ -1137,7 +1137,7 @@ export default function ApiManagerPageClient() {
                       {isRestricted ? (
                         <button
                           onClick={() => handleOpenPermissions(key)}
-                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium hover:bg-amber-500/20 transition-colors"
+                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-xs font-medium hover:bg-gray-500/20 transition-colors"
                         >
                           <span className="material-symbols-outlined text-[14px]">lock</span>
                           {t("modelsCount", { count: key.allowedModels!.length })}
@@ -1145,7 +1145,7 @@ export default function ApiManagerPageClient() {
                       ) : (
                         <button
                           onClick={() => handleOpenPermissions(key)}
-                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-medium hover:bg-green-500/20 transition-colors"
+                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-xs font-medium hover:bg-gray-500/20 transition-colors"
                         >
                           <span className="material-symbols-outlined text-[14px]">lock_open</span>
                           {t("allModels")}
@@ -1154,7 +1154,7 @@ export default function ApiManagerPageClient() {
                       {hasConnectionRestrictions && (
                         <button
                           onClick={() => handleOpenPermissions(key)}
-                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-medium hover:bg-blue-500/20 transition-colors"
+                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-xs font-medium hover:bg-gray-500/20 transition-colors"
                         >
                           <span className="material-symbols-outlined text-[14px]">cable</span>
                           {key.allowedConnections!.length} conn
@@ -1163,14 +1163,14 @@ export default function ApiManagerPageClient() {
                       {hasComboRestrictions && (
                         <button
                           onClick={() => handleOpenPermissions(key)}
-                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-medium hover:bg-teal-500/20 transition-colors"
+                          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-xs font-medium hover:bg-gray-500/20 transition-colors"
                         >
                           <span className="material-symbols-outlined text-[14px]">hub</span>
                           {key.allowedCombos!.length} combos
                         </button>
                       )}
                       {noLogEnabled && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-violet-500/10 text-violet-600 dark:text-violet-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">
                             visibility_off
                           </span>
@@ -1178,7 +1178,7 @@ export default function ApiManagerPageClient() {
                         </span>
                       )}
                       {key.autoResolve && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">
                             auto_fix_high
                           </span>
@@ -1186,7 +1186,7 @@ export default function ApiManagerPageClient() {
                         </span>
                       )}
                       {hasJsonStreamDefault && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">data_object</span>
                           {t("streamDefaultBadge")}
                         </span>
@@ -1198,26 +1198,26 @@ export default function ApiManagerPageClient() {
                         </span>
                       )}
                       {key.usageLimitEnabled === true && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-700 dark:text-gray-300 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">paid</span>
                           USD quota
                         </span>
                       )}
                       {hasProviderQuotaBypass && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-300 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-700 dark:text-gray-300 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">alt_route</span>
                           Bypass quota policy
                         </span>
                       )}
                       {hasSessionLimit && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">group</span>
                           Sessions: {activeSessions}/{maxSessions}
                         </span>
                       )}
                       {deviceCount > 0 && (
                         <span
-                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 text-[11px] font-medium"
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-700 dark:text-gray-300 text-[11px] font-medium"
                           title={t("devicesTooltip", { count: deviceCount })}
                         >
                           <span className="material-symbols-outlined text-[12px]">devices</span>
@@ -1225,13 +1225,13 @@ export default function ApiManagerPageClient() {
                         </span>
                       )}
                       {hasThrottle && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-yellow-500/10 text-yellow-700 dark:text-yellow-300 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-700 dark:text-gray-300 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">speed</span>+
                           {throttleDelayMs}ms
                         </span>
                       )}
                       {hasManageScope && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">
                             admin_panel_settings
                           </span>
@@ -1239,19 +1239,19 @@ export default function ApiManagerPageClient() {
                         </span>
                       )}
                       {!keyIsActive && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-red-500/10 text-red-600 dark:text-red-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">block</span>
                           {t("disabled")}
                         </span>
                       )}
                       {hasSchedule && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[11px] font-medium">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-medium">
                           <span className="material-symbols-outlined text-[12px]">schedule</span>
                           {t("scheduleActive")}
                         </span>
                       )}
                       {key.isBanned && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-red-600/10 text-red-700 dark:text-red-400 text-[11px] font-bold animate-pulse">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-600/10 text-gray-700 dark:text-gray-400 text-[11px] font-bold animate-pulse">
                           <span className="material-symbols-outlined text-[12px]">gavel</span>
                           BANNED
                         </span>
@@ -1270,7 +1270,7 @@ export default function ApiManagerPageClient() {
                       <span className="text-text-muted font-normal text-xs">{t("reqs")}</span>
                     </span>
                     {(stats?.totalRequests ?? 0) > 0 && (
-                      <span className="text-[10px] text-emerald-600 dark:text-emerald-400 tabular-nums">
+                      <span className="text-[10px] text-gray-600 dark:text-gray-400 tabular-nums">
                         {formatUsdCost(stats?.totalCost ?? 0, locale)}
                       </span>
                     )}
@@ -1288,7 +1288,7 @@ export default function ApiManagerPageClient() {
                   <div className="col-span-2 flex items-center justify-end gap-1">
                     <a
                       href={`/dashboard/costs?range=all&apiKeyIds=${encodeURIComponent(key.id)}&groupBy=model`}
-                      className="p-2 hover:bg-emerald-500/10 rounded text-text-muted hover:text-emerald-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
+                      className="p-2 hover:bg-gray-500/10 rounded text-text-muted hover:text-gray-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
                       title={`View costs for ${key.name}`}
                       aria-label={`View costs for ${key.name}`}
                     >
@@ -1296,7 +1296,7 @@ export default function ApiManagerPageClient() {
                     </a>
                     <button
                       onClick={() => handleRegenerateKey(key.id)}
-                      className="p-2 hover:bg-amber-500/10 rounded text-text-muted hover:text-amber-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
+                      className="p-2 hover:bg-gray-500/10 rounded text-text-muted hover:text-gray-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
                       title={t("regenerateKey")}
                     >
                       <span className="material-symbols-outlined text-[18px]">refresh</span>
@@ -1310,7 +1310,7 @@ export default function ApiManagerPageClient() {
                     </button>
                     <button
                       onClick={() => handleDeleteKey(key.id)}
-                      className="p-2 hover:bg-red-500/10 rounded text-red-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
+                      className="p-2 hover:bg-gray-500/10 rounded text-gray-500 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
                       title={t("deleteKey")}
                     >
                       <span className="material-symbols-outlined text-[18px]">delete</span>
@@ -1359,7 +1359,7 @@ export default function ApiManagerPageClient() {
                   <div>
                     {/* Quota keys section heading */}
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="material-symbols-outlined text-base text-violet-500">
+                      <span className="material-symbols-outlined text-base text-gray-500">
                         toll
                       </span>
                       <span className="text-sm font-medium text-text-main">
@@ -1368,7 +1368,7 @@ export default function ApiManagerPageClient() {
                       <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-surface/80 border border-border text-[11px] font-semibold text-text-muted">
                         {quotaKeys.length}
                       </span>
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 text-[11px] font-semibold">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400 text-[11px] font-semibold">
                         {t("quotaPill")}
                       </span>
                     </div>
@@ -1433,7 +1433,7 @@ export default function ApiManagerPageClient() {
               onClick={() => setNewKeyManageEnabled((prev) => !prev)}
               className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors shrink-0 ${
                 newKeyManageEnabled
-                  ? "bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30"
+                  ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                   : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
               }`}
             >
@@ -1463,7 +1463,7 @@ export default function ApiManagerPageClient() {
                 }
                 className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors shrink-0 ${
                   newKeySelfUsageEnabled
-                    ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30"
+                    ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                     : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
                 }`}
               >
@@ -1484,7 +1484,7 @@ export default function ApiManagerPageClient() {
                 onClick={() => setNewKeyAccountQuotaEnabled((prev) => !prev)}
                 className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors shrink-0 ${
                   newKeyAccountQuotaEnabled
-                    ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30"
+                    ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                     : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
                 } ${!newKeySelfUsageEnabled ? "opacity-50 cursor-not-allowed" : ""}`}
               >
@@ -1504,7 +1504,7 @@ export default function ApiManagerPageClient() {
                 onClick={() => setNewKeyAllowUsageCommand((prev) => !prev)}
                 className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors shrink-0 ${
                   newKeyAllowUsageCommand
-                    ? "bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-500/30"
+                    ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                     : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
                 }`}
               >
@@ -1514,9 +1514,9 @@ export default function ApiManagerPageClient() {
             </div>
           </div>
           {createError && (
-            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/30">
-              <span className="material-symbols-outlined text-red-500 text-sm">error</span>
-              <p className="text-sm text-red-700 dark:text-red-300 flex-1">{createError}</p>
+            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-500/10 border border-gray-500/30">
+              <span className="material-symbols-outlined text-gray-500 text-sm">error</span>
+              <p className="text-sm text-gray-700 dark:text-gray-300 flex-1">{createError}</p>
             </div>
           )}
           <div className="flex gap-2">
@@ -1551,16 +1551,16 @@ export default function ApiManagerPageClient() {
       {/* Created Key Modal */}
       <Modal isOpen={!!createdKey} title={t("keyCreated")} onClose={() => setCreatedKey(null)}>
         <div className="flex flex-col gap-4">
-          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+          <div className="bg-gray-50 dark:bg-gray-900/20 border border-gray-200 dark:border-gray-800 rounded-lg p-4">
             <div className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-green-600 dark:text-green-400">
+              <span className="material-symbols-outlined text-gray-600 dark:text-gray-400">
                 check_circle
               </span>
               <div>
-                <p className="text-sm text-green-800 dark:text-green-200 font-medium mb-1">
+                <p className="text-sm text-gray-800 dark:text-gray-200 font-medium mb-1">
                   {t("keyCreatedSuccess")}
                 </p>
-                <p className="text-sm text-green-700 dark:text-green-300">{t("keyCreatedNote")}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">{t("keyCreatedNote")}</p>
               </div>
             </div>
           </div>
@@ -2038,9 +2038,9 @@ const PermissionsModal = memo(function PermissionsModal({
 
         {/* Inline save error */}
         {saveError && (
-          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/30">
-            <span className="material-symbols-outlined text-red-500 text-sm">error</span>
-            <p className="text-sm text-red-700 dark:text-red-300 flex-1">{saveError}</p>
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-500/10 border border-gray-500/30">
+            <span className="material-symbols-outlined text-gray-500 text-sm">error</span>
+            <p className="text-sm text-gray-700 dark:text-gray-300 flex-1">{saveError}</p>
           </div>
         )}
 
@@ -2076,20 +2076,20 @@ const PermissionsModal = memo(function PermissionsModal({
         <div
           className={`flex items-start gap-2 p-3 rounded-lg ${
             allowAll
-              ? "bg-green-500/10 border border-green-500/30"
-              : "bg-amber-500/10 border border-amber-500/30"
+              ? "bg-gray-500/10 border border-gray-500/30"
+              : "bg-gray-500/10 border border-gray-500/30"
           }`}
         >
           <span
             className={`material-symbols-outlined text-[18px] ${
-              allowAll ? "text-green-500" : "text-amber-500"
+              allowAll ? "text-gray-500" : "text-gray-500"
             }`}
           >
             {allowAll ? "info" : "warning"}
           </span>
           <p
             className={`text-xs ${
-              allowAll ? "text-green-700 dark:text-green-300" : "text-amber-700 dark:text-amber-300"
+              allowAll ? "text-gray-700 dark:text-gray-300" : "text-gray-700 dark:text-gray-300"
             }`}
           >
             {allowAll
@@ -2115,8 +2115,8 @@ const PermissionsModal = memo(function PermissionsModal({
             onClick={() => setKeyIsActive((prev) => !prev)}
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
               keyIsActive
-                ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30"
-                : "bg-red-500/15 text-red-700 dark:text-red-300 border border-red-500/30"
+                ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
+                : "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
             }`}
           >
             <span className="material-symbols-outlined text-[14px]">
@@ -2227,7 +2227,7 @@ const PermissionsModal = memo(function PermissionsModal({
                   <button
                     type="button"
                     onClick={() => setRateLimits((prev) => prev.filter((_, i) => i !== index))}
-                    className="p-2 text-red-500 hover:bg-red-500/10 rounded transition-colors shrink-0"
+                    className="p-2 text-gray-500 hover:bg-gray-500/10 rounded transition-colors shrink-0"
                     title={t("apiManagerRemoveLimitTitle")}
                   >
                     <span className="material-symbols-outlined text-[18px]">delete</span>
@@ -2252,7 +2252,7 @@ const PermissionsModal = memo(function PermissionsModal({
               onClick={() => setScheduleEnabled((prev) => !prev)}
               className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors shrink-0 ${
                 scheduleEnabled
-                  ? "bg-orange-500/15 text-orange-700 dark:text-orange-300 border border-orange-500/30"
+                  ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                   : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
               }`}
             >
@@ -2352,7 +2352,7 @@ const PermissionsModal = memo(function PermissionsModal({
             onClick={() => setNoLogEnabled((prev) => !prev)}
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
               noLogEnabled
-                ? "bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30"
+                ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                 : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
             }`}
           >
@@ -2376,7 +2376,7 @@ const PermissionsModal = memo(function PermissionsModal({
             onClick={() => setAutoResolveEnabled((prev) => !prev)}
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
               autoResolveEnabled
-                ? "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30"
+                ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                 : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
             }`}
           >
@@ -2422,10 +2422,12 @@ const PermissionsModal = memo(function PermissionsModal({
         </div>
 
         {/* Ban Toggle (SECURITY) */}
-        <div className="flex items-start justify-between gap-3 p-3 rounded-lg border border-red-500/20 bg-red-500/5">
+        <div className="flex items-start justify-between gap-3 p-3 rounded-lg border border-gray-500/20 bg-gray-500/5">
           <div className="flex flex-col gap-1">
-            <p className="text-sm font-bold text-red-700 dark:text-red-400">{t("bannedStatus")}</p>
-            <p className="text-xs text-red-600 dark:text-red-300">
+            <p className="text-sm font-bold text-gray-700 dark:text-gray-400">
+              {t("bannedStatus")}
+            </p>
+            <p className="text-xs text-gray-600 dark:text-gray-300">
               Immediately revoke all access. Used for suspected abuse or compromised keys.
             </p>
           </div>
@@ -2435,7 +2437,7 @@ const PermissionsModal = memo(function PermissionsModal({
             onClick={() => setKeyIsBanned((prev) => !prev)}
             className={`inline-flex shrink-0 items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-bold transition-colors ${
               keyIsBanned
-                ? "bg-red-500 text-white shadow-sm"
+                ? "bg-gray-500 text-white shadow-sm"
                 : "bg-black/5 dark:bg-white/5 text-text-muted hover:bg-black/10 dark:hover:bg-white/10"
             }`}
           >
@@ -2493,7 +2495,7 @@ const PermissionsModal = memo(function PermissionsModal({
             onClick={() => setManageEnabled((prev) => !prev)}
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
               manageEnabled
-                ? "bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30"
+                ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                 : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
             }`}
           >
@@ -2519,7 +2521,7 @@ const PermissionsModal = memo(function PermissionsModal({
             }
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
               selfUsageEnabled
-                ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30"
+                ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                 : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
             }`}
           >
@@ -2535,7 +2537,7 @@ const PermissionsModal = memo(function PermissionsModal({
             onClick={() => setSelfAccountQuotaEnabled((prev) => !prev)}
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
               selfAccountQuotaEnabled
-                ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30"
+                ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                 : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
             } ${!selfUsageEnabled ? "opacity-50 cursor-not-allowed" : ""}`}
           >
@@ -2551,7 +2553,7 @@ const PermissionsModal = memo(function PermissionsModal({
             onClick={() => setUsageCommandEnabled((prev) => !prev)}
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
               usageCommandEnabled
-                ? "bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-500/30"
+                ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                 : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
             }`}
           >
@@ -2596,7 +2598,7 @@ const PermissionsModal = memo(function PermissionsModal({
             onClick={() => setDisableNonPublicModels((prev) => !prev)}
             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-semibold transition-colors ${
               disableNonPublicModels
-                ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30"
+                ? "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30"
                 : "bg-black/5 dark:bg-white/5 text-text-muted border border-border"
             }`}
           >
@@ -2623,7 +2625,7 @@ const PermissionsModal = memo(function PermissionsModal({
                 </button>
                 <button
                   onClick={handleDeselectAllModels}
-                  className="text-[10px] text-red-500 hover:bg-red-500/10 px-1.5 py-0.5 rounded transition-colors"
+                  className="text-[10px] text-gray-500 hover:bg-gray-500/10 px-1.5 py-0.5 rounded transition-colors"
                 >
                   {t("clear")}
                 </button>
@@ -2652,7 +2654,7 @@ const PermissionsModal = memo(function PermissionsModal({
                         <button
                           type="button"
                           onClick={() => handleToggleModel(modelId)}
-                          className="text-text-muted hover:text-red-500 transition-colors"
+                          className="text-text-muted hover:text-gray-500 transition-colors"
                           title={t("removeClaudeCodeDefault")}
                         >
                           <span className="material-symbols-outlined text-[12px]">close</span>
@@ -2694,7 +2696,7 @@ const PermissionsModal = memo(function PermissionsModal({
                                         family.id as ClaudeCodeBlockableFamilyId
                                       )
                                     }
-                                    className="text-text-muted hover:text-red-500 transition-colors"
+                                    className="text-text-muted hover:text-gray-500 transition-colors"
                                     title={`Block ${family.label} family`}
                                   >
                                     <span className="material-symbols-outlined text-[12px]">
@@ -2722,7 +2724,7 @@ const PermissionsModal = memo(function PermissionsModal({
                     <button
                       type="button"
                       onClick={() => handleToggleModel(modelId)}
-                      className="text-text-muted hover:text-red-500 transition-colors"
+                      className="text-text-muted hover:text-gray-500 transition-colors"
                     >
                       <span className="material-symbols-outlined text-[12px]">close</span>
                     </button>
@@ -2934,7 +2936,7 @@ const PermissionsModal = memo(function PermissionsModal({
                               {conn.name || conn.id.slice(0, 8)}
                             </span>
                             {!conn.isActive && (
-                              <span className="text-[9px] text-red-400 shrink-0">
+                              <span className="text-[9px] text-gray-400 shrink-0">
                                 {tc("inactive")}
                               </span>
                             )}

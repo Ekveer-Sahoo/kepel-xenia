@@ -206,7 +206,7 @@ export default function ModelRoutingSection({ combos: externalCombos }: { combos
               />
               <p className="text-[9px] text-text-muted mt-0.5">{t("patternHint")}</p>
               {patternIsPaidOnly && (
-                <p className="text-[9px] text-amber-500 mt-0.5">
+                <p className="text-[9px] text-gray-500 mt-0.5">
                   {t("paidModelPatternWarning") ||
                     "This pattern only matches paid models — enable paid models or adjust the pattern."}
                 </p>
@@ -297,7 +297,7 @@ export default function ModelRoutingSection({ combos: externalCombos }: { combos
                 }`}
             >
               <div className="flex items-center gap-3 min-w-0">
-                <code className="text-xs px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300 font-mono shrink-0">
+                <code className="text-xs px-1.5 py-0.5 rounded bg-gray-500/10 text-gray-700 dark:text-gray-300 font-mono shrink-0">
                   {m.pattern}
                 </code>
                 <span className="text-text-muted text-[10px]">→</span>
@@ -320,7 +320,7 @@ export default function ModelRoutingSection({ combos: externalCombos }: { combos
                   title={m.enabled ? t("disable") : t("enable")}
                 >
                   <span
-                    className={`material-symbols-outlined text-[14px] ${m.enabled ? "text-emerald-500" : "text-text-muted"}`}
+                    className={`material-symbols-outlined text-[14px] ${m.enabled ? "text-gray-500" : "text-text-muted"}`}
                   >
                     {m.enabled ? "toggle_on" : "toggle_off"}
                   </span>
@@ -336,10 +336,12 @@ export default function ModelRoutingSection({ combos: externalCombos }: { combos
                 </button>
                 <button
                   onClick={() => handleDelete(m.id)}
-                  className="p-1 rounded hover:bg-red-500/10 transition-colors"
+                  className="p-1 rounded hover:bg-gray-500/10 transition-colors"
                   title="Delete"
                 >
-                  <span className="material-symbols-outlined text-[14px] text-red-500">delete</span>
+                  <span className="material-symbols-outlined text-[14px] text-gray-500">
+                    delete
+                  </span>
                 </button>
               </div>
             </div>

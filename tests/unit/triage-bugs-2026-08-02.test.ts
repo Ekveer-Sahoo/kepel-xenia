@@ -14,7 +14,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 // The function that fixes the bug — we import it here to verify it works
-import { proxyConfigToUrl } from "@omniroute/open-sse/utils/proxyDispatcher";
+import { proxyConfigToUrl } from "@xenia/open-sse/utils/proxyDispatcher";
 
 // ── proxyConfigToUrl credential tests ──────────────────────────────────────
 

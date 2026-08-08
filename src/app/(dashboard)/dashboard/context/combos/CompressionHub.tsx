@@ -48,7 +48,7 @@ function Toggle({
       aria-label={ariaLabel}
       onClick={onChange}
       className={`relative w-10 h-5 rounded-full transition-colors ${
-        checked ? "bg-green-500" : "bg-border"
+        checked ? "bg-gray-500" : "bg-border"
       }`}
     >
       <span
@@ -262,7 +262,7 @@ export default function CompressionHub() {
             ariaLabel={t("contextEditingAria")}
           />
         </div>
-        <div className="flex items-start gap-2 rounded-lg border border-amber-500/40 bg-amber-500/5 px-3 py-2 text-xs text-amber-500">
+        <div className="flex items-start gap-2 rounded-lg border border-gray-500/40 bg-gray-500/5 px-3 py-2 text-xs text-gray-500">
           <span className="material-symbols-outlined text-[16px]">info</span>
           <span>{t("contextEditingNote")}</span>
         </div>

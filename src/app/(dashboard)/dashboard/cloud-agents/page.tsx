@@ -40,8 +40,8 @@ const CLOUD_AGENTS = [
     provider: "Google",
     descriptionKey: "agentDescriptions.jules",
     icon: "smart_toy",
-    iconBg: "bg-yellow-500/10",
-    iconColor: "text-yellow-600",
+    iconBg: "bg-gray-500/10",
+    iconColor: "text-gray-600",
   },
   {
     id: "devin",
@@ -49,8 +49,8 @@ const CLOUD_AGENTS = [
     provider: "Cognition",
     descriptionKey: "agentDescriptions.devin",
     icon: "psychology",
-    iconBg: "bg-blue-500/10",
-    iconColor: "text-blue-600",
+    iconBg: "bg-gray-500/10",
+    iconColor: "text-gray-600",
   },
   {
     id: "codex-cloud",
@@ -58,8 +58,8 @@ const CLOUD_AGENTS = [
     provider: "OpenAI",
     descriptionKey: "agentDescriptions.codexCloud",
     icon: "cloud",
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-600",
+    iconBg: "bg-gray-500/10",
+    iconColor: "text-gray-600",
   },
   {
     id: "cursor-cloud",
@@ -140,7 +140,7 @@ export default function CloudAgentsPage() {
   useEffect(() => {
     const loadSettings = setTimeout(() => {
       try {
-        const stored = localStorage.getItem("omniroute-cloud-agents-settings");
+        const stored = localStorage.getItem("xenia-cloud-agents-settings");
         if (stored) setSettings(JSON.parse(stored));
       } catch {
         // Ignore malformed or unavailable local storage.
@@ -153,7 +153,7 @@ export default function CloudAgentsPage() {
     const next = { ...settings, [key]: value };
     setSettings(next);
     try {
-      localStorage.setItem("omniroute-cloud-agents-settings", JSON.stringify(next));
+      localStorage.setItem("xenia-cloud-agents-settings", JSON.stringify(next));
     } catch {
       // ignore
     }
@@ -391,7 +391,7 @@ export default function CloudAgentsPage() {
   return (
     <div className="flex flex-col gap-6">
       {/* Header */}
-      <Card className="border-purple-500/20 bg-purple-500/5">
+      <Card className="border-gray-500/20 bg-gray-500/5">
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
             <h2 className="text-sm font-semibold text-text-main">{t("aboutTitle")}</h2>
@@ -399,7 +399,7 @@ export default function CloudAgentsPage() {
           </div>
           <div className="flex items-center gap-2">
             <span
-              className={`inline-block h-2 w-2 rounded-full ${settings.enabled ? "bg-emerald-500" : "bg-zinc-400"}`}
+              className={`inline-block h-2 w-2 rounded-full ${settings.enabled ? "bg-gray-500" : "bg-zinc-400"}`}
             />
             <span className="text-xs text-text-muted">
               {settings.enabled
@@ -418,7 +418,7 @@ export default function CloudAgentsPage() {
             onClick={() => setActiveTab(tab.id)}
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors flex items-center gap-1.5 ${
               activeTab === tab.id
-                ? "border-purple-500 text-purple-500"
+                ? "border-gray-500 text-gray-500"
                 : "border-transparent text-text-muted hover:text-text-main"
             }`}
           >
@@ -434,7 +434,7 @@ export default function CloudAgentsPage() {
           {/* Create task form */}
           <Card>
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-purple-500/10 text-purple-500">
+              <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
                 <span className="material-symbols-outlined text-[20px]">add_task</span>
               </div>
               <div>
@@ -476,7 +476,7 @@ export default function CloudAgentsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
                   label={t("repositoryName")}
-                  placeholder="omniroute"
+                  placeholder="xenia"
                   value={newTask.repoName}
                   onChange={(e) => setNewTask({ ...newTask, repoName: e.target.value })}
                   required
@@ -541,7 +541,7 @@ export default function CloudAgentsPage() {
               ))}
             </select>
             {hasActiveTasks && (
-              <span className="flex items-center gap-1.5 text-xs text-blue-500">
+              <span className="flex items-center gap-1.5 text-xs text-gray-500">
                 <span className="animate-pulse">●</span>
                 {t("autoRefreshing") || "Auto-refreshing"}
               </span>
@@ -571,7 +571,7 @@ export default function CloudAgentsPage() {
                       hover
                       className={`transition-all ${
                         selectedTask?.id === task.id
-                          ? "!border-purple-500 ring-1 ring-purple-500/20"
+                          ? "!border-gray-500 ring-1 ring-gray-500/20"
                           : ""
                       }`}
                       onClick={() => setSelectedTask(task)}
@@ -633,12 +633,12 @@ export default function CloudAgentsPage() {
 
                   {/* Awaiting approval: show plan */}
                   {selectedTask.status === "awaiting_approval" && getPlanText(selectedTask) && (
-                    <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 p-3">
+                    <div className="rounded-lg border border-gray-500/20 bg-gray-500/5 p-3">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="material-symbols-outlined text-[16px] text-amber-600">
+                        <span className="material-symbols-outlined text-[16px] text-gray-600">
                           description
                         </span>
-                        <span className="text-sm font-medium text-amber-700 dark:text-amber-400">
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-400">
                           {t("planReady")}
                         </span>
                       </div>
@@ -671,7 +671,7 @@ export default function CloudAgentsPage() {
                             key={activity.id}
                             className={`p-2 rounded-lg text-xs ${
                               activity.type === "message" || activity.type === "completion"
-                                ? "bg-purple-500/10 text-text-main"
+                                ? "bg-gray-500/10 text-text-main"
                                 : "bg-surface/40 text-text-main"
                             }`}
                           >
@@ -687,12 +687,12 @@ export default function CloudAgentsPage() {
 
                   {/* Result with PR link */}
                   {selectedTask.result && (
-                    <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-3">
+                    <div className="rounded-lg border border-gray-500/20 bg-gray-500/5 p-3">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="material-symbols-outlined text-[16px] text-emerald-600">
+                        <span className="material-symbols-outlined text-[16px] text-gray-600">
                           check_circle
                         </span>
-                        <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-400">
                           {t("result")}
                         </span>
                       </div>
@@ -704,7 +704,7 @@ export default function CloudAgentsPage() {
                           href={(selectedTask.result as Record<string, unknown>).prUrl as string}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 text-xs font-medium rounded-lg bg-purple-500/10 text-purple-600 hover:bg-purple-500/20 transition-colors"
+                          className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-500/10 text-gray-600 hover:bg-gray-500/20 transition-colors"
                         >
                           <span className="material-symbols-outlined text-[14px]">open_in_new</span>
                           {t("viewPR") || "View Pull Request"}
@@ -715,12 +715,12 @@ export default function CloudAgentsPage() {
 
                   {/* Error */}
                   {selectedTask.error && (
-                    <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-3">
+                    <div className="rounded-lg border border-gray-500/20 bg-gray-500/5 p-3">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="material-symbols-outlined text-[16px] text-red-500">
+                        <span className="material-symbols-outlined text-[16px] text-gray-500">
                           error
                         </span>
-                        <span className="text-sm font-medium text-red-600">{t("error")}</span>
+                        <span className="text-sm font-medium text-gray-600">{t("error")}</span>
                       </div>
                       <p className="text-xs text-text-muted">{selectedTask.error}</p>
                     </div>
@@ -757,7 +757,7 @@ export default function CloudAgentsPage() {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleDeleteTask(selectedTask.id)}
-                      className="text-red-500 hover:text-red-400"
+                      className="text-gray-500 hover:text-gray-400"
                     >
                       <span className="material-symbols-outlined text-[14px] mr-1">delete</span>
                       {t("delete")}
@@ -802,7 +802,7 @@ export default function CloudAgentsPage() {
                   {/* Connection status */}
                   <div className="flex items-center gap-2">
                     <span
-                      className={`h-2.5 w-2.5 rounded-full ${connected ? "bg-emerald-500" : "bg-red-500"}`}
+                      className={`h-2.5 w-2.5 rounded-full ${connected ? "bg-gray-500" : "bg-gray-500"}`}
                     />
                     <span className="text-xs text-text-muted">
                       {connected
@@ -858,7 +858,7 @@ export default function CloudAgentsPage() {
                 aria-checked={settings.enabled}
                 onClick={() => updateSetting("enabled", !settings.enabled)}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  settings.enabled ? "bg-purple-500" : "bg-zinc-300 dark:bg-zinc-600"
+                  settings.enabled ? "bg-gray-500" : "bg-zinc-300 dark:bg-zinc-600"
                 }`}
               >
                 <span
@@ -885,7 +885,7 @@ export default function CloudAgentsPage() {
                 aria-checked={settings.autoCreatePr}
                 onClick={() => updateSetting("autoCreatePr", !settings.autoCreatePr)}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  settings.autoCreatePr ? "bg-purple-500" : "bg-zinc-300 dark:bg-zinc-600"
+                  settings.autoCreatePr ? "bg-gray-500" : "bg-zinc-300 dark:bg-zinc-600"
                 }`}
               >
                 <span
@@ -912,7 +912,7 @@ export default function CloudAgentsPage() {
                 aria-checked={settings.requireApproval}
                 onClick={() => updateSetting("requireApproval", !settings.requireApproval)}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  settings.requireApproval ? "bg-purple-500" : "bg-zinc-300 dark:bg-zinc-600"
+                  settings.requireApproval ? "bg-gray-500" : "bg-zinc-300 dark:bg-zinc-600"
                 }`}
               >
                 <span

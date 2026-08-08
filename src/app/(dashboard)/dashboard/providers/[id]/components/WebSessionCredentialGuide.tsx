@@ -36,9 +36,9 @@ export default function WebSessionCredentialGuide({
 
   if (requirement.kind === "none") {
     return (
-      <div className="rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-3 py-3 text-sm text-text-muted">
+      <div className="rounded-lg border border-gray-500/25 bg-gray-500/10 px-3 py-3 text-sm text-text-muted">
         <div className="flex items-start gap-2">
-          <span className="material-symbols-outlined mt-0.5 text-[18px] text-emerald-500">
+          <span className="material-symbols-outlined mt-0.5 text-[18px] text-gray-500">
             check_circle
           </span>
           <div>
@@ -65,9 +65,9 @@ export default function WebSessionCredentialGuide({
     requirement.kind === "token" ? "Required token: {credential}" : "Required cookie: {credential}";
 
   return (
-    <div className="rounded-lg border border-purple-500/25 bg-purple-500/10 px-3 py-3 text-sm text-text-muted">
+    <div className="rounded-lg border border-gray-500/25 bg-gray-500/10 px-3 py-3 text-sm text-text-muted">
       <div className="flex items-start gap-2">
-        <span className="material-symbols-outlined mt-0.5 text-[18px] text-purple-500">cookie</span>
+        <span className="material-symbols-outlined mt-0.5 text-[18px] text-gray-500">cookie</span>
         <div className="space-y-2">
           <div>
             <p className="font-medium text-text-main">
@@ -131,7 +131,7 @@ export default function WebSessionCredentialGuide({
               )}
             </li>
           </ol>
-          <p className="text-xs text-amber-700 dark:text-amber-300">
+          <p className="text-xs text-gray-700 dark:text-gray-300">
             {providerText(
               t,
               "webSessionSecurityHint",

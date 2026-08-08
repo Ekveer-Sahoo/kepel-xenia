@@ -4,7 +4,7 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "omniroute-video-novita-"));
+process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "xenia-video-novita-"));
 
 const { handleVideoGeneration } = await import("../../open-sse/handlers/videoGeneration.ts");
 const { VIDEO_PROVIDERS } = await import("../../open-sse/config/videoRegistry.ts");
@@ -105,7 +105,13 @@ test("normalizeNovitaVideoParams tolerates missing/invalid fields", () => {
 test("buildNovitaSubmitBody omits unset optional fields", () => {
   assert.deepEqual(buildNovitaSubmitBody({ prompt: "hello" }), { prompt: "hello" });
   assert.deepEqual(
-    buildNovitaSubmitBody({ prompt: "hello", negativePrompt: "bad", duration: 5, width: 832, height: 480 }),
+    buildNovitaSubmitBody({
+      prompt: "hello",
+      negativePrompt: "bad",
+      duration: 5,
+      width: 832,
+      height: 480,
+    }),
     { prompt: "hello", negative_prompt: "bad", duration: 5, width: 832, height: 480 }
   );
 });

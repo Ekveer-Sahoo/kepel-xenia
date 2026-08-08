@@ -168,19 +168,19 @@ export default function Modal({
               >
                 <div
                   className={cn(
-                    "rounded-full bg-[#FF5F56]",
+                    "rounded-full bg-[#8e8e8e]",
                     compactHeader ? "w-2.5 h-2.5" : "w-3 h-3"
                   )}
                 />
                 <div
                   className={cn(
-                    "rounded-full bg-[#FFBD2E]",
+                    "rounded-full bg-[#c0c0c0]",
                     compactHeader ? "w-2.5 h-2.5" : "w-3 h-3"
                   )}
                 />
                 <div
                   className={cn(
-                    "rounded-full bg-[#27C93F]",
+                    "rounded-full bg-[#898989]",
                     compactHeader ? "w-2.5 h-2.5" : "w-3 h-3"
                   )}
                 />

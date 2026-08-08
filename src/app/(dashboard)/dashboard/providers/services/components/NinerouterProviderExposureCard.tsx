@@ -1,7 +1,7 @@
 /**
  * G-09 — Provider Exposure toggle for 9Router.
  * Persists the `providerExpose` field via POST /api/services/9router/provider-expose.
- * When enabled, 9Router models appear as `9router/...` in OmniRoute's model selection.
+ * When enabled, 9Router models appear as `9router/...` in Xenia's model selection.
  */
 "use client";
 
@@ -57,8 +57,8 @@ export function NinerouterProviderExposureCard() {
   return (
     <Card padding="md">
       <div className="flex items-center gap-3 mb-3">
-        <div className="size-8 rounded-lg flex items-center justify-center bg-purple-500/10">
-          <span className="material-symbols-outlined text-purple-500 text-xl">hub</span>
+        <div className="size-8 rounded-lg flex items-center justify-center bg-gray-500/10">
+          <span className="material-symbols-outlined text-gray-500 text-xl">hub</span>
         </div>
         <div>
           <h3 className="font-medium text-sm">{t("providerExposure")}</h3>
@@ -74,8 +74,8 @@ export function NinerouterProviderExposureCard() {
         <div
           className={`flex items-center gap-1.5 mb-3 px-2 py-1.5 rounded text-xs ${
             msg.ok
-              ? "bg-green-500/10 text-green-600 dark:text-green-400"
-              : "bg-red-500/10 text-red-600 dark:text-red-400"
+              ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
+              : "bg-gray-500/10 text-gray-600 dark:text-gray-400"
           }`}
         >
           <span className="material-symbols-outlined text-[12px]">

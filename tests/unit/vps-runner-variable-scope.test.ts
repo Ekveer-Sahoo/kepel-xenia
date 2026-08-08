@@ -20,7 +20,7 @@
  * `fast-gates` was the last holdout and the evidence for pinning it is unusually clean: across
  * 160 quality.yml runs it NEVER landed on a self-hosted runner — every non-skipped sample is
  * `GitHub Actions NNNN`. That was dead configuration, not a working escape hatch, and the
- * classifier is not at fault: ci.yml's Build ran on omniroute-113-7 and -6 in the same window.
+ * classifier is not at fault: ci.yml's Build ran on xenia-113-7 and -6 in the same window.
  */
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -68,7 +68,10 @@ test("it still governs the build-like jobs — the ones that actually need the R
     jobs.includes("build"),
     "the build is the whole reason the variable exists: 18-20 GB working set vs a 16 GB hosted runner"
   );
-  assert.ok(jobs.includes("publish"), "npm-publish falls back to a full build when the artifact is missing");
+  assert.ok(
+    jobs.includes("publish"),
+    "npm-publish falls back to a full build when the artifact is missing"
+  );
 });
 
 test("fast-gates specifically stays hosted", () => {

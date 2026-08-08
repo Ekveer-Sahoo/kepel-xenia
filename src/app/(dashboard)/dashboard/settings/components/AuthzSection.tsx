@@ -240,7 +240,7 @@ export default function AuthzSection() {
           </div>
           <h3 className="text-lg font-semibold">{t("authz.title")}</h3>
         </div>
-        <p className="text-sm text-red-500">{loadError ?? t("authz.loadError")}</p>
+        <p className="text-sm text-gray-500">{loadError ?? t("authz.loadError")}</p>
       </Card>
     );
   }
@@ -253,7 +253,7 @@ export default function AuthzSection() {
         <div
           data-testid="cors-wildcard-banner"
           role="alert"
-          className="flex items-start gap-3 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-amber-700 dark:text-amber-300"
+          className="flex items-start gap-3 rounded-lg border border-gray-500/40 bg-gray-500/10 px-4 py-3 text-gray-700 dark:text-gray-300"
         >
           <span className="material-symbols-outlined text-[20px] mt-0.5" aria-hidden="true">
             warning
@@ -268,7 +268,7 @@ export default function AuthzSection() {
       {/* Bypass policy editor */}
       <Card>
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-600 dark:text-gray-400">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               tune
             </span>
@@ -309,7 +309,7 @@ export default function AuthzSection() {
                   <div className="flex flex-col">
                     <code className="text-xs font-mono">{prefix}</code>
                     {locked && (
-                      <span className="text-[10px] text-red-500 mt-1">
+                      <span className="text-[10px] text-gray-500 mt-1">
                         {t("authz.bypass.cli_tools_runtime_note")}
                       </span>
                     )}
@@ -333,11 +333,11 @@ export default function AuthzSection() {
               .map((prefix) => (
                 <li
                   key={`locked:${prefix}`}
-                  className="flex items-center justify-between gap-3 rounded-md border border-red-500/30 bg-red-500/[0.04] px-3 py-2 opacity-80"
+                  className="flex items-center justify-between gap-3 rounded-md border border-gray-500/30 bg-gray-500/[0.04] px-3 py-2 opacity-80"
                 >
                   <div className="flex flex-col">
                     <code className="text-xs font-mono">{prefix}</code>
-                    <span className="text-[10px] text-red-500 mt-1">
+                    <span className="text-[10px] text-gray-500 mt-1">
                       {t("authz.bypass.cli_tools_runtime_note")}
                     </span>
                   </div>
@@ -371,11 +371,11 @@ export default function AuthzSection() {
         <div className="flex items-center justify-between gap-4 pt-4 mt-4 border-t border-border/50">
           <div className="text-sm">
             {dirty && (
-              <span className="text-amber-600 dark:text-amber-400">{t("authz.pending")}</span>
+              <span className="text-gray-600 dark:text-gray-400">{t("authz.pending")}</span>
             )}
             {status && (
               <span
-                className={`ml-3 ${status.type === "error" ? "text-red-500" : "text-green-500"}`}
+                className={`ml-3 ${status.type === "error" ? "text-gray-500" : "text-gray-500"}`}
               >
                 {status.message}
               </span>
@@ -487,7 +487,7 @@ export default function AuthzSection() {
             onChange={(e) => setCurrentPassword(e.target.value)}
             autoFocus
           />
-          {status?.type === "error" && <p className="text-sm text-red-500">{status.message}</p>}
+          {status?.type === "error" && <p className="text-sm text-gray-500">{status.message}</p>}
         </div>
       </Modal>
     </>

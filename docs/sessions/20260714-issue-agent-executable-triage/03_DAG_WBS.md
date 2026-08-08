@@ -27,5 +27,5 @@ Machine status: `in_progress`
 
 Every WBS item must maintain: `id`, `acceptance_criterion`, `status`, `source_paths`, `test_paths`, `command`, `expected`, `observed`, `evidence_sha`, `updated_at`, and `pr_url`.
 
-PR: `https://github.com/diegosouzapw/OmniRoute/pull/7002`  
-Issue: `https://github.com/diegosouzapw/OmniRoute/issues/5980`
+PR: `https://github.com/diegosouzapw/Xenia/pull/7002`  
+Issue: `https://github.com/diegosouzapw/Xenia/issues/5980`

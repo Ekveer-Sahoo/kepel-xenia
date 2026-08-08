@@ -4,7 +4,7 @@ title: Quality Gates Reference
 
 # Quality Gates Reference
 
-This document is the authoritative reference for all CI quality gates in OmniRoute.
+This document is the authoritative reference for all CI quality gates in Xenia.
 It describes each gate, what it validates, which CI job it runs in, whether it uses
 a ratchet baseline or a pass/fail policy, and whether it blocks the build or is advisory.
 
@@ -24,15 +24,15 @@ The CI source of truth is `.github/workflows/ci.yml`.
 branches moving with path-filtered fast gates, plus one advisory production-build signal for code
 changes:
 
-| Job                                              | Scope                                                                                                                                                                                                            | Blocking                                                                                  |
-| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `Build (advisory)`                               | Non-draft code PRs and Mergify queue branches; Node 24, `npm-ci-retry`, `check:node-runtime`, `npm run build` with `OMNIROUTE_USE_TURBOPACK=1`; no artifact upload because no downstream quality job consumes it | **Advisory** (`continue-on-error: true`; remove after one week of stable release-PR runs) |
-| `Docs Gates (fast-path)`                         | Docs/code PRs; API docs refs and docs-all                                                                                                                                                                        | Yes                                                                                       |
-| `Fast Quality Gates`                             | Code PRs; static checks, typecheck, dashboard typecheck, impacted unit tests                                                                                                                                     | Yes                                                                                       |
-| `Vitest (fast-path)`                             | Code PRs; fast vitest suite                                                                                                                                                                                      | Yes                                                                                       |
-| `Unit Tests fast-path`                           | Code PRs; 4-shard unit suite                                                                                                                                                                                     | Yes                                                                                       |
-| `No new ESLint warnings`                         | Code PRs; suppressions-aware lint guard                                                                                                                                                                          | Yes for own-origin, advisory for forks                                                    |
-| `Merge integrity (changelog + generated skills)` | Non-draft PRs; changelog and generated skill sync                                                                                                                                                                | Yes for own-origin, advisory for forks                                                    |
+| Job                                              | Scope                                                                                                                                                                                                        | Blocking                                                                                  |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `Build (advisory)`                               | Non-draft code PRs and Mergify queue branches; Node 24, `npm-ci-retry`, `check:node-runtime`, `npm run build` with `XENIA_USE_TURBOPACK=1`; no artifact upload because no downstream quality job consumes it | **Advisory** (`continue-on-error: true`; remove after one week of stable release-PR runs) |
+| `Docs Gates (fast-path)`                         | Docs/code PRs; API docs refs and docs-all                                                                                                                                                                    | Yes                                                                                       |
+| `Fast Quality Gates`                             | Code PRs; static checks, typecheck, dashboard typecheck, impacted unit tests                                                                                                                                 | Yes                                                                                       |
+| `Vitest (fast-path)`                             | Code PRs; fast vitest suite                                                                                                                                                                                  | Yes                                                                                       |
+| `Unit Tests fast-path`                           | Code PRs; 4-shard unit suite                                                                                                                                                                                 | Yes                                                                                       |
+| `No new ESLint warnings`                         | Code PRs; suppressions-aware lint guard                                                                                                                                                                      | Yes for own-origin, advisory for forks                                                    |
+| `Merge integrity (changelog + generated skills)` | Non-draft PRs; changelog and generated skill sync                                                                                                                                                            | Yes for own-origin, advisory for forks                                                    |
 
 ### Job: `lint`
 
@@ -195,12 +195,12 @@ Runs after `build`. Blocks merge on failure.
 
 These run on a cron schedule (and `workflow_dispatch`), never on PRs. All are advisory.
 
-| Workflow               | Validates                                                                                                                                           | Blocking     |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| `nightly-property`     | fast-check property tests with a random seed + high run count                                                                                       | **Advisory** |
-| `nightly-resilience`   | heap-growth gate, chaos fault-injection, k6 load/soak                                                                                               | **Advisory** |
-| `nightly-llm-security` | promptfoo injection guard (block mode) + garak probes (skipped without a provider secret)                                                           | **Advisory** |
-| `nightly-schemathesis` | OpenAPI contract fuzzing (schemathesis) against a live OmniRoute using `docs/openapi.yaml` — surfaces spec violations / unhandled 500s (Fase 8 B.4) | **Advisory** |
+| Workflow               | Validates                                                                                                                                       | Blocking     |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `nightly-property`     | fast-check property tests with a random seed + high run count                                                                                   | **Advisory** |
+| `nightly-resilience`   | heap-growth gate, chaos fault-injection, k6 load/soak                                                                                           | **Advisory** |
+| `nightly-llm-security` | promptfoo injection guard (block mode) + garak probes (skipped without a provider secret)                                                       | **Advisory** |
+| `nightly-schemathesis` | OpenAPI contract fuzzing (schemathesis) against a live Xenia using `docs/openapi.yaml` — surfaces spec violations / unhandled 500s (Fase 8 B.4) | **Advisory** |
 
 ---
 
@@ -358,7 +358,7 @@ allowlist is a false sense of quality.
 
 ## Agent tooling: LSP-in-the-loop (opt-in)
 
-Beyond the CI gates, OmniRoute ships an **opt-in** `agent-lsp` scaffold
+Beyond the CI gates, Xenia ships an **opt-in** `agent-lsp` scaffold
 (a project-level `.mcp.json`, Fase 7 Task 15). Create `.mcp.json`
 to expose a TypeScript language server to coding agents, so they resolve symbols /
 diagnostics **before** writing code — a compile-before-claim companion to

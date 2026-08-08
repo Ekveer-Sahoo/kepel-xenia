@@ -14,7 +14,7 @@ import os from "node:os";
 import path from "node:path";
 import http from "node:http";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-supervisor-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-supervisor-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.NODE_ENV = "test";
 process.env.DISABLE_SQLITE_AUTO_BACKUP = "true";
@@ -238,7 +238,7 @@ test("#6205: probeBeforeSpawn adopts a healthy existing instance (no spawn)", as
 // Regression test: the adopt branch used to call setToolStatus(tool, "running")
 // with no pid argument at all, leaving `pid` permanently null for any service
 // adopted on a supervisor restart (common in production — e.g. after
-// `systemctl --user restart omniroute.service`, sidecar child processes can
+// `systemctl --user restart xenia.service`, sidecar child processes can
 // outlive the restart and get adopted rather than spawned fresh). Downstream
 // consumers that key liveness tracking off pid would then treat a genuinely
 // healthy, running service as untrustworthy/stale. This asserts the resolved

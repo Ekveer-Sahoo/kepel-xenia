@@ -48,7 +48,7 @@ export interface AgentBridgeServerState {
   hasCachedPassword?: boolean;
   /** Server OS requires a sudo password and none is cached (#7836). */
   needsSudoPassword?: boolean;
-  /** Whether the OmniRoute server is running on Windows. */
+  /** Whether the Xenia server is running on Windows. */
   isWin?: boolean;
 }
 
@@ -232,14 +232,14 @@ export default function AgentBridgePageClient({
       {actionError && (
         <div
           role="alert"
-          className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/5 px-4 py-3 text-sm text-red-600 dark:text-red-400"
+          className="flex items-center gap-2 rounded-xl border border-gray-500/30 bg-gray-500/5 px-4 py-3 text-sm text-gray-600 dark:text-gray-400"
         >
           <span className="material-symbols-outlined text-[16px]">error</span>
           {actionError}
           <button
             type="button"
             onClick={() => setActionError(null)}
-            className="ml-auto text-red-500 hover:text-red-400"
+            className="ml-auto text-gray-500 hover:text-gray-400"
             aria-label={tc("dismissNotification")}
           >
             <span className="material-symbols-outlined text-[16px]">close</span>
@@ -251,7 +251,7 @@ export default function AgentBridgePageClient({
       {certGuide && (
         <div
           role="status"
-          className="rounded-xl border border-amber-500/30 bg-amber-500/5 px-4 py-3 text-sm text-amber-700 dark:text-amber-300"
+          className="rounded-xl border border-gray-500/30 bg-gray-500/5 px-4 py-3 text-sm text-gray-700 dark:text-gray-300"
         >
           <div className="flex items-center gap-2 font-medium">
             <span className="material-symbols-outlined text-[16px]">info</span>
@@ -259,7 +259,7 @@ export default function AgentBridgePageClient({
             <button
               type="button"
               onClick={() => setCertGuide(null)}
-              className="ml-auto text-amber-600 hover:text-amber-500"
+              className="ml-auto text-gray-600 hover:text-gray-500"
               aria-label={tc("dismissNotification")}
             >
               <span className="material-symbols-outlined text-[16px]">close</span>

@@ -53,7 +53,7 @@ export default function CacheTrends({
         </div>
       ) : error ? (
         <div className="flex flex-col items-center gap-3 py-6">
-          <span className="text-sm text-red-500">{error}</span>
+          <span className="text-sm text-gray-500">{error}</span>
           {onRetry && (
             <button
               onClick={onRetry}
@@ -103,7 +103,7 @@ export default function CacheTrends({
                   </div>
                   <div className="w-full flex flex-col justify-end h-full gap-px">
                     <div
-                      className="w-full bg-green-500/30 rounded-t"
+                      className="w-full bg-gray-500/30 rounded-t"
                       style={{ height: `${cachedHeight}%` }}
                     />
                     <div
@@ -125,7 +125,7 @@ export default function CacheTrends({
               <span>{t("total")}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-3 h-3 rounded bg-green-500/30" />
+              <div className="w-3 h-3 rounded bg-gray-500/30" />
               <span>{t("cached")}</span>
             </div>
           </div>

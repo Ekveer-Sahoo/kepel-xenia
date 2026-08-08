@@ -27,33 +27,29 @@ export function OmniSkillCard({ skill, selected, onClick }: OmniSkillCardProps):
 
   const modeColor =
     effectiveMode === "on"
-      ? "text-emerald-400"
+      ? "text-gray-400"
       : effectiveMode === "auto"
-        ? "text-amber-400"
+        ? "text-gray-400"
         : "text-text-muted";
 
   const modeDot =
-    effectiveMode === "on"
-      ? "bg-emerald-400"
-      : effectiveMode === "auto"
-        ? "bg-amber-400"
-        : "bg-border";
+    effectiveMode === "on" ? "bg-gray-400" : effectiveMode === "auto" ? "bg-gray-400" : "bg-border";
 
   return (
     <button
       role="button"
       onClick={onClick}
       aria-pressed={selected}
-      className={`w-full text-left rounded-lg border p-3 transition-all focus:outline-none focus:ring-2 focus:ring-violet-500/50 ${
+      className={`w-full text-left rounded-lg border p-3 transition-all focus:outline-none focus:ring-2 focus:ring-gray-500/50 ${
         selected
-          ? "border-violet-500 bg-violet-500/5"
+          ? "border-gray-500 bg-gray-500/5"
           : "border-border bg-surface/30 hover:border-border/80 hover:bg-surface/50"
       }`}
     >
       <div className="flex items-start gap-2">
         <div
           className={`flex items-center justify-center size-8 rounded-md shrink-0 ${
-            selected ? "bg-violet-500/20" : "bg-surface/60"
+            selected ? "bg-gray-500/20" : "bg-surface/60"
           }`}
         >
           <span className="material-symbols-outlined text-[18px] text-text-muted">
@@ -76,7 +72,7 @@ export function OmniSkillCard({ skill, selected, onClick }: OmniSkillCardProps):
               {skill.tags.slice(0, 3).map((tag) => (
                 <span
                   key={`${skill.id}-${tag}`}
-                  className="text-[10px] px-1.5 py-0.5 rounded bg-violet-500/10 text-violet-300"
+                  className="text-[10px] px-1.5 py-0.5 rounded bg-gray-500/10 text-gray-300"
                 >
                   {tag}
                 </span>
@@ -87,7 +83,9 @@ export function OmniSkillCard({ skill, selected, onClick }: OmniSkillCardProps):
         <div className="flex items-center gap-1.5 shrink-0">
           <span className={`inline-block size-2 rounded-full ${modeDot}`} />
           <span className={`text-[10px] font-medium ${modeColor}`}>
-            {t(effectiveMode === "on" ? "onMode" : effectiveMode === "auto" ? "autoMode" : "offMode")}
+            {t(
+              effectiveMode === "on" ? "onMode" : effectiveMode === "auto" ? "autoMode" : "offMode"
+            )}
           </span>
         </div>
       </div>

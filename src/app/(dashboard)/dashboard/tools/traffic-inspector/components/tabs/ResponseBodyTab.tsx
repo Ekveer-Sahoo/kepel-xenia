@@ -47,7 +47,7 @@ export function ResponseBodyTab({ request }: ResponseBodyTabProps) {
         )}
         <span className="ml-auto text-xs text-text-muted">{request.responseSize} B</span>
         {request.status === "in-flight" && (
-          <span className="text-xs text-amber-400 animate-pulse">{t("streaming")}</span>
+          <span className="text-xs text-gray-400 animate-pulse">{t("streaming")}</span>
         )}
       </div>
       <div className="flex-1 overflow-auto bg-bg-subtle rounded border border-border p-2">

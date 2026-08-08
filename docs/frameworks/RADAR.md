@@ -64,7 +64,7 @@ When both are on, the sync path is:
 1. `GET <feed base URL>/v1/catalog/latest` with an optional `Authorization: Bearer
 <supporter key>` header (see below).
 2. Nothing about the request, the operator, or their traffic is uploaded — it is a
-   plain, unauthenticated-by-default GET. OmniRoute never posts usage data, provider
+   plain, unauthenticated-by-default GET. Xenia never posts usage data, provider
    configuration, or model traffic to the feed service.
 3. The response is verified, validated, and cached locally (see
    [Security model](#security-model)). Nothing else touches the network for Radar.
@@ -90,22 +90,22 @@ supporter key. The OSS repo itself never issues one, never runs payment code, an
 destination pages, not in this repo (spec decision D14).
 
 - **"I'm a contributor"** — opens `RADAR_CONTRIBUTOR_CLAIM_URL` (default
-  `https://radar.omniroute.online/auth/github`), a GitHub OAuth claim flow hosted on
+  `https://radar.xenia.online/auth/github`), a GitHub OAuth claim flow hosted on
   the private radar server. It verifies the visitor's GitHub account and grants a
   supporter key to anyone with 5+ merged pull requests or a top-100 contributor spot
   on the repo.
 - **"Support the project"** — opens `RADAR_SUPPORTER_PLANS_URL` (default
-  `https://radar.omniroute.online/planos`), the payment/plans page.
+  `https://radar.xenia.online/planos`), the payment/plans page.
 
 Both URLs are resolved server-side (`src/lib/radar/links.ts`, same env-override
 pattern as `RADAR_FEED_URL`) and relayed to the dashboard through the existing
 `GET /api/radar/settings` response (`contributorClaimUrl`, `supporterPlansUrl`) — the
 client component never reads `process.env` itself.
 
-| Var                             | Purpose                                                                                      |
-| -------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `RADAR_CONTRIBUTOR_CLAIM_URL`   | Overrides the contributor-claim URL (default `https://radar.omniroute.online/auth/github`).   |
-| `RADAR_SUPPORTER_PLANS_URL`     | Overrides the supporter-plans URL (default `https://radar.omniroute.online/planos`).          |
+| Var                           | Purpose                                                                                 |
+| ----------------------------- | --------------------------------------------------------------------------------------- |
+| `RADAR_CONTRIBUTOR_CLAIM_URL` | Overrides the contributor-claim URL (default `https://radar.xenia.online/auth/github`). |
+| `RADAR_SUPPORTER_PLANS_URL`   | Overrides the supporter-plans URL (default `https://radar.xenia.online/planos`).        |
 
 Once a visitor has a key (`omr_` + 40 hex chars), it is set with `POST
 /api/radar/settings` (`{ supporterKey }`) — the same endpoint documented under
@@ -140,12 +140,12 @@ re-synced.
 ### Fork-friendly env overrides
 
 Two env vars let forks and self-hosters point the client at their own feed instead of
-the default OmniRoute service — see
+the default Xenia service — see
 [How to self-host a feed](#how-to-self-host-a-feed) below:
 
 | Var                 | Purpose                                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `RADAR_FEED_URL`    | Overrides the feed base URL (default `https://radar.omniroute.online`).                                      |
+| `RADAR_FEED_URL`    | Overrides the feed base URL (default `https://radar.xenia.online`).                                          |
 | `RADAR_FEED_PUBKEY` | Overrides the pinned public key (base64-DER SPKI or PEM), replacing the built-in array with this single key. |
 
 ### Version floor
@@ -207,20 +207,20 @@ The signed feed **body**'s `tier` field is always `"live"` — the feed service 
 **one signed artifact per version**, so the body cannot carry a per-request tier
 without invalidating the Ed25519 signature (re-signing per request would defeat the
 point of a pinned, cacheable, verifiable artifact). The tier actually served for a
-given request is instead carried in the **`x-omniroute-feed-tier` response header**,
+given request is instead carried in the **`x-xenia-feed-tier` response header**,
 decided server-side from the request's `Authorization` key.
 
 `syncRadar()` (`src/lib/radar/sync.ts::parseServedTierHeader()`) is the single place
 that resolves the tier a client should trust:
 
-1. Parse `x-omniroute-feed-tier` with `RadarTierSchema` (Zod) — an absent header, or
+1. Parse `x-xenia-feed-tier` with `RadarTierSchema` (Zod) — an absent header, or
    a value that isn't exactly `"community"` or `"live"`, is treated as **not
    present** (never trusted into the cache/UI as-is; this also covers older feed
    servers that predate the header).
 2. Fall back to the signed body's `tier` field (always `"live"`) only when step 1
    yields nothing.
 3. The resolved tier is what gets cached and returned as `{ status: "updated",
-   version, tier }` — this is the value the dashboard shows, never the raw body
+version, tier }` — this is the value the dashboard shows, never the raw body
    field.
 
 ---
@@ -262,16 +262,16 @@ Every merged entry carries an `origin` field the UI renders as a badge:
 
 Five local routes back the UI, all under `src/app/api/radar/`:
 
-| Route                   | Method | Purpose                                                                                          |
-| ----------------------- | ------ | -------------------------------------------------------------------------------------------------- |
-| `/api/radar/catalog`    | GET    | Returns the merged catalog (`getRadarCatalog()`) from the local cache.                            |
-| `/api/radar/sync`       | POST   | Triggers `syncRadar()` server-side; returns the resulting status.                                 |
-| `/api/radar/settings`   | GET    | Returns `{ optIn, hasSupporterKey, supporterKeyMasked }` — never the raw key.                     |
-| `/api/radar/settings`   | POST   | Sets opt-in and/or the (encrypted) supporter key.                                                 |
-| `/api/radar/referrals`  | GET    | Returns `{ fixed, campaigns, tier }` from the local cache — see [Referral links](#referral-links-free-credits) below. |
+| Route                  | Method | Purpose                                                                                                               |
+| ---------------------- | ------ | --------------------------------------------------------------------------------------------------------------------- |
+| `/api/radar/catalog`   | GET    | Returns the merged catalog (`getRadarCatalog()`) from the local cache.                                                |
+| `/api/radar/sync`      | POST   | Triggers `syncRadar()` server-side; returns the resulting status.                                                     |
+| `/api/radar/settings`  | GET    | Returns `{ optIn, hasSupporterKey, supporterKeyMasked }` — never the raw key.                                         |
+| `/api/radar/settings`  | POST   | Sets opt-in and/or the (encrypted) supporter key.                                                                     |
+| `/api/radar/referrals` | GET    | Returns `{ fixed, campaigns, tier }` from the local cache — see [Referral links](#referral-links-free-credits) below. |
 
 **Hard rule: these routes never proxy the feed service.** The browser only ever talks
-to the local OmniRoute server; `syncRadar()` is the single module in the whole client
+to the local Xenia server; `syncRadar()` is the single module in the whole client
 that touches the network for Radar (`src/lib/radar/sync.ts`), and it always runs
 server-side, never client-side. This keeps the feed URL and any supporter key
 out of client-facing network traffic entirely.
@@ -397,10 +397,10 @@ service without touching client code:
 
 1. Serve a `GET /v1/catalog/latest` endpoint returning a JSON body that satisfies
    `RadarFeedSchema` (`src/lib/radar/feedSchema.ts`) — top-level `feed:
-"omniroute-radar"`, `schemaVersion: 1`, `version`, `tier`, `providers`, `models`,
+"xenia-radar"`, `schemaVersion: 1`, `version`, `tier`, `providers`, `models`,
    `quirks`, and `totals`.
 2. Sign the exact response bytes with an Ed25519 key pair and return the base64
-   signature in the `x-omniroute-feed-signature` response header.
+   signature in the `x-xenia-feed-signature` response header.
 3. Set `RADAR_FEED_URL` to the new base URL and `RADAR_FEED_PUBKEY` to the matching
    public key (base64-DER SPKI or PEM) — see the
    [env var reference](../reference/ENVIRONMENT.md#27-radar-feed-self-hosting).

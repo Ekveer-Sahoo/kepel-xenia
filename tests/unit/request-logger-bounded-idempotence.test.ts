@@ -6,16 +6,15 @@
 //
 //   arrays  : [marker, ...24 items] is 25 entries, over the 24 limit, so a second pass dropped
 //             the marker plus one real item and rewrote originalLength as 25 instead of 800.
-//   objects : 80 keys + _omniroute_truncated_keys is 81, so a second pass evicted a real key to
+//   objects : 80 keys + _xenia_truncated_keys is 81, so a second pass evicted a real key to
 //             make room and reported 1 dropped instead of the true count.
 //   strings : the truncation marker was appended AFTER slicing to maxLength, so the "bounded"
 //             string was longer than the bound and got truncated again.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-const { cloneBoundedForLog, MAX_LOG_ARRAY_ITEMS } = await import(
-  "../../open-sse/utils/requestLogger.ts"
-);
+const { cloneBoundedForLog, MAX_LOG_ARRAY_ITEMS } =
+  await import("../../open-sse/utils/requestLogger.ts");
 
 const MAX_KEYS = 80;
 const MAX_STRING = 64 * 1024;
@@ -42,10 +41,10 @@ test("objects: second pass keeps the real keys and the true dropped count", () =
   const twice = cloneBoundedForLog(once) as Record<string, unknown>;
 
   assert.deepEqual(twice, once, "re-bounding must be a no-op");
-  assert.equal(once._omniroute_truncated_keys, 20, "100 keys minus the 80 retained");
-  assert.equal(twice._omniroute_truncated_keys, 20, "the dropped count must not be recomputed");
+  assert.equal(once._xenia_truncated_keys, 20, "100 keys minus the 80 retained");
+  assert.equal(twice._xenia_truncated_keys, 20, "the dropped count must not be recomputed");
   assert.equal(
-    Object.keys(twice).filter((k) => k !== "_omniroute_truncated_keys").length,
+    Object.keys(twice).filter((k) => k !== "_xenia_truncated_keys").length,
     MAX_KEYS,
     "a real key must not be evicted to make room for the marker"
   );

@@ -1,1 +1,1 @@
-- **feat(api):** add response content encoding verification — confirms Next.js compress:true and documents stripStaleForwardingHeaders behavior ([#6736](https://github.com/diegosouzapw/OmniRoute/issues/6736))
+- **feat(api):** add response content encoding verification — confirms Next.js compress:true and documents stripStaleForwardingHeaders behavior ([#6736](https://github.com/diegosouzapw/Xenia/issues/6736))

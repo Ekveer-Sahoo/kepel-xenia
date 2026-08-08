@@ -1,4 +1,4 @@
-# Plano de publicacao de integracoes OmniRoute nos repositorios upstream
+# Plano de publicacao de integracoes Xenia nos repositorios upstream
 
 > **Status da campanha de pesquisa:** `104/104` casos concluídos. Este plano continua sendo o procedimento de execução e publicação. A matriz final, inclusive os casos em que PR é inadequada ou impossível, está em `06-relatorio-final-104-clis-e-estrategia-prs.md`.
 
@@ -6,7 +6,7 @@
 **Escopo:** transformar a fila `CLI-000` a `CLI-103` em contribuicoes upstream verificadas,
 publicando PR, issue, guia de configuracao, adaptador ou conclusao de bloqueio conforme o mecanismo
 real de cada projeto.
-**Documentos-base:** `01-relatorio-pesquisa-clis-omniroute.md`,
+**Documentos-base:** `01-relatorio-pesquisa-clis-xenia.md`,
 `02-prioridade-integracoes-clis.md`, `03-plano-integracao-em-lotes.md` e
 `04-tracker-integracoes-clis.md`.
 
@@ -14,15 +14,15 @@ real de cada projeto.
 
 Para cada repositorio pesquisado, a campanha deve produzir exatamente um resultado principal:
 
-1. **PR upstream de integracao nominal:** adiciona provider/preset `omniroute`, configuracao,
+1. **PR upstream de integracao nominal:** adiciona provider/preset `xenia`, configuracao,
    documentacao e testes quando isso combina com a arquitetura do projeto.
 2. **PR upstream de compatibilidade generica:** melhora suporte a endpoint customizado sem acoplar
-   o projeto ao nome OmniRoute, acompanhado de documentacao comprovando o uso com OmniRoute.
+   o projeto ao nome Xenia, acompanhado de documentacao comprovando o uso com Xenia.
 3. **PR somente de documentacao:** registra uma configuracao funcional quando o codigo ja suporta
-   OmniRoute e o upstream aceita guias de terceiros.
+   Xenia e o upstream aceita guias de terceiros.
 4. **Issue-first:** solicita decisao de arquitetura ou permissao antes do patch quando a politica do
    repositorio, o desenho de providers ou o tamanho da mudanca exigirem alinhamento.
-5. **Configuracao sem PR:** documenta no OmniRoute um fluxo que ja funciona e para o qual uma mudanca
+5. **Configuracao sem PR:** documenta no Xenia um fluxo que ja funciona e para o qual uma mudanca
    upstream seria redundante ou rejeitada pela politica do projeto.
 6. **Adaptador ACP/MCP/wrapper:** contribui no ponto de extensao correto quando o projeto nao consome
    diretamente APIs de modelos.
@@ -42,10 +42,10 @@ todo repositorio independentemente da arquitetura, licenca ou politica de contri
 - Ler `README`, `CONTRIBUTING`, templates de issue/PR, `SECURITY`, licenca e instrucoes locais de
   agentes antes da implementacao.
 - Procurar issues e PRs abertas/fechadas sobre custom provider, base URL, OpenAI-compatible,
-  Anthropic-compatible, Gemini endpoint, proxy, gateway e OmniRoute antes de propor uma mudanca.
+  Anthropic-compatible, Gemini endpoint, proxy, gateway e Xenia antes de propor uma mudanca.
 - Registrar a base pesquisada por commit SHA ou release. Nao usar apenas `main` como evidencia.
 - Executar baseline antes da mudanca e distinguir falhas preexistentes de regressao.
-- Nunca expor `OMNIROUTE_API_KEY` ou qualquer outra credencial em comandos publicados, fixtures,
+- Nunca expor `XENIA_API_KEY` ou qualquer outra credencial em comandos publicados, fixtures,
   logs, commits, screenshots, PRs ou issues.
 - Nao inserir trailers, assinaturas ou rodapes de IA em commits, PRs ou issues.
 - Nao afirmar que uma integracao funciona sem um teste reproduzivel ou uma limitacao explicitamente
@@ -61,11 +61,11 @@ subagente e o registro que permite retomar o trabalho sem repetir ou perder evid
 ### 3.1 Cabecalho obrigatorio da task
 
 ```md
-# CLI-NNN - <projeto> - integracao OmniRoute upstream
+# CLI-NNN - <projeto> - integracao Xenia upstream
 
 - Repositorio canonico: <URL>
 - Prioridade/lote: <P0-P4 / lote>
-- Estado no catalogo OmniRoute: <integrated/not-in-catalog/parcial>
+- Estado no catalogo Xenia: <integrated/not-in-catalog/parcial>
 - Evidencia inicial: <resumo vindo do relatorio; ainda nao confirmado>
 - Worktree: <caminho isolado>
 - Branch planejada: <definir somente depois de ler as regras upstream>
@@ -88,7 +88,7 @@ O subagente deve responder, com links e caminhos de codigo:
 7. Como a autenticacao e resolvida: variavel de ambiente, arquivo, keyring, OAuth ou header custom?
 8. Como os modelos sao definidos ou descobertos? O cliente chama um endpoint de modelos?
 9. Streaming, tool calling, reasoning, imagens e cancelamento funcionam pelo caminho escolhido?
-10. Ja existe issue, PR, discussao ou documentacao para endpoints customizados ou OmniRoute?
+10. Ja existe issue, PR, discussao ou documentacao para endpoints customizados ou Xenia?
 11. Quais comandos oficiais executam install, format, lint, typecheck, build e testes?
 12. Qual contribuicao agrega valor real: codigo nominal, compatibilidade generica, docs, issue,
     wrapper, MCP/ACP, somente configuracao ou nenhum patch?
@@ -99,11 +99,11 @@ Antes de editar, preencher uma decisao:
 
 | Decisao | Quando usar | Saida esperada |
 |---|---|---|
-| `pr-provider` | O upstream possui catalogo/presets de providers | Provider/preset OmniRoute, docs e testes |
-| `pr-generic` | Falta uma capacidade generica necessaria, como base URL customizavel | Patch generico, docs e teste com OmniRoute |
+| `pr-provider` | O upstream possui catalogo/presets de providers | Provider/preset Xenia, docs e testes |
+| `pr-generic` | Falta uma capacidade generica necessaria, como base URL customizavel | Patch generico, docs e teste com Xenia |
 | `pr-docs` | O codigo ja funciona e o upstream aceita guias de integracao | Guia minimo e validado |
 | `issue-first` | Mudanca arquitetural, politica incerta ou mantenedor exige proposta | Issue com evidencia e desenho do patch |
-| `config-only` | Tudo funciona por configuracao e um PR seria redundante | Guia no OmniRoute e smoke test |
+| `config-only` | Tudo funciona por configuracao e um PR seria redundante | Guia no Xenia e smoke test |
 | `adapter-acp` | ACP e o ponto real de integracao | Adaptador/registro ACP e testes |
 | `adapter-mcp` | MCP e o ponto real de integracao | Config/servidor MCP e testes |
 | `wrapper` | O projeto apenas lanca outro agente | Wrapper/env forwarding e teste do filho |
@@ -128,7 +128,7 @@ nao seria uma experiencia suportada.
 
 - Ler integralmente as regras do repositorio aplicaveis aos arquivos que podem mudar.
 - Mapear provider registry, configuracao, transporte HTTP, auth, modelo, streaming e ferramentas.
-- Pesquisar issues/PRs por termos de compatibilidade e pelo nome OmniRoute.
+- Pesquisar issues/PRs por termos de compatibilidade e pelo nome Xenia.
 - Registrar commit/release, caminhos e links de evidencia na task.
 - Escolher o gate de contribuicao da secao 3.3.
 
@@ -154,7 +154,7 @@ A ordem de preferencia e:
 
 O patch normalmente deve cobrir:
 
-- identificador e nome de exibicao `omniroute`, se presets nomeados forem aceitos;
+- identificador e nome de exibicao `xenia`, se presets nomeados forem aceitos;
 - base URL correta e sem dupla concatenacao de versao;
 - chave obtida de ambiente ou storage seguro;
 - configuracao/descoberta de modelo;
@@ -179,7 +179,7 @@ generico existente ja resolve o caso.
 Para PR somente de documentacao, substituir o teste vermelho por uma validacao real dos comandos e
 do arquivo de configuracao documentado. Nao sintetizar exemplos que nao foram executados.
 
-### Fase PR-5 - Validar contra OmniRoute
+### Fase PR-5 - Validar contra Xenia
 
 Escolher a matriz compativel com o cliente:
 
@@ -225,9 +225,9 @@ duvida material sobre a politica do upstream.
 
 Convencoes de branch sugeridas, sujeitas ao padrao de cada upstream:
 
-- `feat/omniroute-provider` para provider/preset nominal;
+- `feat/xenia-provider` para provider/preset nominal;
 - `feat/custom-base-url` para capacidade generica;
-- `docs/omniroute-setup` para documentacao validada;
+- `docs/xenia-setup` para documentacao validada;
 - `fix/custom-endpoint-versioning` para correcao de raiz versus `/v1`/`/v1beta`.
 
 ### Fase PR-8 - Corpo da PR
@@ -249,7 +249,7 @@ Explain the user problem and the existing extension point. Avoid marketing claim
 
 - `<official upstream command>`
 - `<focused test command>`
-- `<sanitized OmniRoute smoke test and result>`
+- `<sanitized Xenia smoke test and result>`
 
 ## Compatibility notes
 
@@ -264,8 +264,8 @@ No unrelated refactors or credential changes.
 ```
 
 O titulo deve descrever a mudanca, nao a campanha. Exemplos de formato, sujeitos ao estilo do
-upstream: `Add OmniRoute provider preset`, `Support configurable OpenAI-compatible base URLs` ou
-`Document OmniRoute as a custom endpoint`.
+upstream: `Add Xenia provider preset`, `Support configurable OpenAI-compatible base URLs` ou
+`Document Xenia as a custom endpoint`.
 
 ### Fase PR-9 - Issue-first ou fallback
 
@@ -294,7 +294,7 @@ Depois da publicacao:
 - marcar `accepted` somente depois de merge/aceite comprovado;
 - marcar `rejected` com o motivo fornecido pelo upstream;
 - se a PR ficar inativa, registrar `awaiting-maintainer`, sem declarar abandono prematuramente;
-- manter o guia/catalogo OmniRoute coerente com o estado real do upstream.
+- manter o guia/catalogo Xenia coerente com o estado real do upstream.
 
 O acompanhamento pode usar a skill `babysit` individualmente para uma PR aberta. Como essa skill
 acompanha uma unica PR, nunca agrupar tres PRs em uma mesma execucao dela.
@@ -308,7 +308,7 @@ Uma task individual termina com:
 - baseline e validacao final comparados;
 - branch/commit reais, quando criados;
 - PR/issue reais, quando publicados;
-- status no catalogo OmniRoute;
+- status no catalogo Xenia;
 - limitacoes e proximo passo;
 - linha correspondente no tracker atualizada.
 
@@ -356,7 +356,7 @@ contribuicao.
 ### Onda 0 - referencia e infraestrutura da campanha
 
 - `CLI-000` jcode: acompanhar issue upstream e PR de referencia; concluir a secao prometida no
-  README do OmniRoute.
+  README do Xenia.
 - Preparar o modelo de task individual e aplicar o mesmo tracker a todos os novos repositorios.
 
 ### Onda 1 - P0.1 a P0.5
@@ -366,7 +366,7 @@ contribuicao.
 - `CLI-002` Claw Code: confirmar provider OpenAI-compatible e propor preset/docs minimos.
 - `CLI-003` Plandex: confirmar o registro de providers customizados e propor provider/preset.
 - `CLI-004` MiMo Code: confirmar o adapter OpenAI-compatible e propor configuracao/provider.
-- `CLI-005` Trae Agent: confirmar `model_providers` e propor entrada OmniRoute/documentacao.
+- `CLI-005` Trae Agent: confirmar `model_providers` e propor entrada Xenia/documentacao.
 - `CLI-006` Kimi CLI: escolher uma superficie suportada e evitar um patch que misture tres
   protocolos sem testes.
 - `CLI-007` Every Code: reutilizar a arquitetura herdada do Codex quando ainda aplicavel.
@@ -494,13 +494,13 @@ pushes `0`, forks `0`, PRs `0`, issues `0`, Discussions `0`.
 Resultado P2.9:
 
 - `CLI-067` nanobot: `config-only` pelo provider dinâmico OpenAI-compatible. A base correta inclui
-  `/api/v1`; `omniroute/auto` seleciona o provider custom e envia `auto` no wire. Chat, SSE, tools,
+  `/api/v1`; `xenia/auto` seleciona o provider custom e envia `auto` no wire. Chat, SSE, tools,
   reasoning, usage, imagens, discovery e retry foram validados. Sem publicação upstream.
 - `CLI-068` ZeroClaw: `config-only` pela família `custom`, com `uri=/v1`, modelo `auto`, wire Chat e
   `native_tools=true`. Responses é opt-in. Suite de provider, config, fmt e smoke HTTP passaram.
   Sem provider nominal ou publicação upstream.
 - `CLI-069` NanoClaw: `config-only` pelo provider Claude existente, apontando a raiz Anthropic do
-  OmniRoute sem `/v1/messages` e usando OneCLI para a credencial. Codex e OpenCode têm bloqueios
+  Xenia sem `/v1/messages` e usando OneCLI para a credencial. Codex e OpenCode têm bloqueios
   upstream reproduzidos (#3155/#1984/#2985) e ficam fora do caminho de produção atual.
 
 Estado final P2.9: commits `0`, pushes `0`, forks `0`, PRs `0`, issues `0`, Discussions `0`.
@@ -629,7 +629,7 @@ Resultado P3.1:
 
 - `CLI-076` VibePod: `config-only` pelo agente Claude Code com raiz Anthropic `/api`; wrapper injeta env no container. Codex sem chave automática permanece não comprovado.
 - `CLI-077` zeroshot: `config-only` pelo gateway OpenAI `/api/v1`; 22 testes focados verdes; limitações de streaming JSON, reasoning e MCP registradas.
-- `CLI-078` Fractal: `config-only` por Codex Responses em `CODEX_HOME` por node; servidores tmux quentes podem perder `OMNIROUTE_API_KEY`, recomendando fix genérico upstream.
+- `CLI-078` Fractal: `config-only` por Codex Responses em `CODEX_HOME` por node; servidores tmux quentes podem perder `XENIA_API_KEY`, recomendando fix genérico upstream.
 
 Estado final P3.1: commits `0`, pushes `0`, forks `0`, PRs `0`, issues `0`, Discussions `0`. Pesquisa acumulada: `79/104` (`76,0%`); pendentes: `25/104` (`24,0%`).
 
@@ -637,8 +637,8 @@ Resultado P3.2: Bernstein `config-only` por openai_agents; Traycer `config-only`
 
 Resultado P2.11:
 
-- `CLI-073` Moltis: `config-only`, provider `custom-omniroute`, `/api/v1`, `auto`, Chat/SSE/tools e capacidades multimodais. 401 testes e fmt passaram. Sem publicação.
-- `CLI-074` GitClaw/GitAgent: `config-only`, loader OpenAI-compatible com `GITAGENT_MODEL_BASE_URL`, `OPENAI_API_KEY` e `omniroute:auto`. Build, 65 testes e smoke passaram. Sem publicação.
+- `CLI-073` Moltis: `config-only`, provider `custom-xenia`, `/api/v1`, `auto`, Chat/SSE/tools e capacidades multimodais. 401 testes e fmt passaram. Sem publicação.
+- `CLI-074` GitClaw/GitAgent: `config-only`, loader OpenAI-compatible com `GITAGENT_MODEL_BASE_URL`, `OPENAI_API_KEY` e `xenia:auto`. Build, 65 testes e smoke passaram. Sem publicação.
 - `CLI-075` LionClaw: `patch-required`/`issue-first`. O runtime Codex confinado não recebe `config.toml`/provider secret; preparar proposta genérica alinhada à [#157](https://github.com/moshthepitt/lionclaw/issues/157), sem PR até revisão do mantenedor.
 
 Estado final P2.11: commits `0`, pushes `0`, forks `0`, PRs `0`, issues `0`, Discussions `0`. Pesquisa acumulada: `76/104` (`73,1%`); pendentes: `28/104` (`26,9%`).

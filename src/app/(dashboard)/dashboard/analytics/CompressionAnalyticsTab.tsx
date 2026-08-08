@@ -399,7 +399,7 @@ export default function CompressionAnalyticsTab() {
 
       {/* Info note */}
       <div className="text-xs text-text-muted border border-border rounded-lg p-3 flex items-start gap-2">
-        <span className="material-symbols-outlined text-[16px] text-blue-500 mt-0.5">info</span>
+        <span className="material-symbols-outlined text-[16px] text-gray-500 mt-0.5">info</span>
         <span>
           {t.rich("compressionAnalyticsInfo", {
             strong: (chunks) => <strong>{chunks}</strong>,

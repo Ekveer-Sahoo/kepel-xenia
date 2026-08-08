@@ -1,7 +1,7 @@
 import crypto from "node:crypto";
 
-const SALT = "omniroute-cli-auth-v1";
-export const CLI_TOKEN_HEADER = "x-omniroute-cli-token";
+const SALT = "xenia-cli-auth-v1";
+export const CLI_TOKEN_HEADER = "x-xenia-cli-token";
 
 let _cached = null;
 

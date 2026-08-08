@@ -50,7 +50,7 @@ test("ServerSupervisor starts Node with IPv4-first DNS", async () => {
   };
   syncBuiltinESMExports();
 
-  const dataDir = mkdtempSync(join(tmpdir(), "omniroute-ipv4-first-"));
+  const dataDir = mkdtempSync(join(tmpdir(), "xenia-ipv4-first-"));
   const previousDataDir = process.env.DATA_DIR;
   process.env.DATA_DIR = dataDir;
 

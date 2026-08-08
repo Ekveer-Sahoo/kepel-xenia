@@ -1,4 +1,4 @@
-# Relatório final — campanha de 104 integrações CLI OmniRoute
+# Relatório final — campanha de 104 integrações CLI Xenia
 
 **Data de fechamento:** 2026-08-03  
 **Escopo:** `CLI-000` a `CLI-103`  
@@ -14,7 +14,7 @@ O documento autoritativo, com uma linha para cada caso, é o [tracker completo](
 - estado de contribuição upstream;
 - branch e commit quando existentes;
 - URL de PR e/ou issue quando publicados;
-- estado no catálogo OmniRoute;
+- estado no catálogo Xenia;
 - observações, limitações, testes e próximo passo.
 
 Além do tracker, existem fichas técnicas individuais em `_tasks/cli-integrations/`. A cobertura foi auditada e agora há uma ficha para cada ID `CLI-000`–`CLI-103`; o caso `CLI-000` jcode foi adicionado como ficha de referência nesta revisão.
@@ -30,7 +30,7 @@ Além do tracker, existem fichas técnicas individuais em `_tasks/cli-integratio
 | MCP/wrapper/ACP como caminho principal | 2 | Integrar a camada de ferramentas/orquestração, sem falsificar provider de inferência |
 | Outros casos híbridos | 1 | Seguir a combinação específica descrita no tracker |
 
-Os números são derivados do campo `Tipo` do tracker; categorias podem se sobrepor em casos híbridos. Atualmente há **7 PRs reais** e **9 issues reais** registrados no tracker, além de cinco entradas locais marcadas como integradas ao catálogo OmniRoute. Nenhum link foi inventado para os 97 casos sem publicação externa.
+Os números são derivados do campo `Tipo` do tracker; categorias podem se sobrepor em casos híbridos. Atualmente há **7 PRs reais** e **9 issues reais** registrados no tracker, além de cinco entradas locais marcadas como integradas ao catálogo Xenia. Nenhum link foi inventado para os 97 casos sem publicação externa.
 
 ## O que foi feito na campanha
 
@@ -40,7 +40,7 @@ Os números são derivados do campo `Tipo` do tracker; categorias podem se sobre
 4. Uso de Codebase Memory para índices upstream e verificação de cobertura; faixas parciais foram lidas diretamente quando aplicável.
 5. Classificação por configuração, patch, PR documental, issue-first, MCP, wrapper ou bloqueio.
 6. Registro de comandos, base URL, autenticação, modelos, streaming, tools, reasoning, imagens, MCP/ACP/A2A, testes e limitações.
-7. Consolidação de cada lote com commit separado no OmniRoute e no repositório `_tasks`.
+7. Consolidação de cada lote com commit separado no Xenia e no repositório `_tasks`.
 8. Atualização final do tracker, plano de integração, plano de publicação e handoff.
 9. Nenhuma credencial real, publicação externa ou técnica de interceptação não autorizada foi utilizada.
 
@@ -58,8 +58,8 @@ Processo por caso:
 2. Criar worktree/branch baseada na versão local vigente.
 3. Executar baseline upstream e registrar falhas preexistentes.
 4. Escrever teste RED que demonstre a lacuna.
-5. Implementar o menor patch genérico possível — preferir `openai-compatible`, `base_url` ou provider abstrato a um provider nominal OmniRoute.
-6. Executar GREEN: testes focados, suite upstream, lint, format, typecheck/build e smoke com fake server ou OmniRoute local usando placeholder.
+5. Implementar o menor patch genérico possível — preferir `openai-compatible`, `base_url` ou provider abstrato a um provider nominal Xenia.
+6. Executar GREEN: testes focados, suite upstream, lint, format, typecheck/build e smoke com fake server ou Xenia local usando placeholder.
 7. Revisar segurança: nenhuma chave em argv, logs, fixtures, URL ou artefato; erros sanitizados; streaming/tools/cancelamento cobertos.
 8. Abrir PR somente se contribuições externas forem aceitas. O corpo deve explicar problema, solução genérica, compatibilidade, testes, limitações e não conter marketing/texto de IA.
 9. Se o repositório bloquear fork/PR ou pedir discussão prévia, abrir issue de proposta com o mesmo patch/reprodução, sem enviar PR prematuramente.
@@ -69,7 +69,7 @@ Processo por caso:
 
 Aplicar quando a arquitetura é adequada, mas há bloqueio de governança, firewall, CLA, fork fechado, dúvida de protocolo ou necessidade de decisão do autor. A issue deve conter:
 
-- caso de uso OmniRoute;
+- caso de uso Xenia;
 - configuração atualmente possível;
 - lacuna reproduzível;
 - proposta genérica;
@@ -86,21 +86,21 @@ Aplicar aos casos em que o upstream já suporta a integração e uma mudança de
 - ficha individual;
 - receita validada;
 - smoke test e limitações;
-- eventual documentação externa/local do OmniRoute;
+- eventual documentação externa/local do Xenia;
 - issue somente se houver pedido de documentação ou descoberta de bug real.
 
-Não criar provider nominal ou PR apenas para adicionar a palavra “OmniRoute”.
+Não criar provider nominal ou PR apenas para adicionar a palavra “Xenia”.
 
 ### Trilha D — MCP, wrapper ou bloqueio seguro
 
 Aplicar a control-planes, produtos fechados e CLIs sem rota de inferência substituível. O resultado pode ser:
 
-- MCP remoto/stdio do OmniRoute;
+- MCP remoto/stdio do Xenia;
 - wrapper local claramente identificado como wrapper;
 - solicitação oficial de custom provider;
 - registro de bloqueio e gate legal/ToS.
 
-Nunca mascarar OmniRoute como Claude/Codex, falsificar executável, interceptar TLS ou reutilizar tokens privados para fabricar uma PR upstream.
+Nunca mascarar Xenia como Claude/Codex, falsificar executável, interceptar TLS ou reutilizar tokens privados para fabricar uma PR upstream.
 
 ## Ordem recomendada de execução
 

@@ -11,7 +11,7 @@ import { cn } from "@/shared/utils/cn";
 
 const SAMPLE_TEXT = `data: {"id":"chatcmpl_demo","object":"chat.completion.chunk","created":1745366400,"model":"gpt-4o-mini","choices":[{"index":0,"delta":{"role":"assistant","content":"Hello"},"finish_reason":null}]}
 
-data: {"id":"chatcmpl_demo","object":"chat.completion.chunk","created":1745366400,"model":"gpt-4o-mini","choices":[{"index":0,"delta":{"content":" from OmniRoute"},"finish_reason":null}]}
+data: {"id":"chatcmpl_demo","object":"chat.completion.chunk","created":1745366400,"model":"gpt-4o-mini","choices":[{"index":0,"delta":{"content":" from Xenia"},"finish_reason":null}]}
 
 data: {"id":"chatcmpl_demo","object":"chat.completion.chunk","created":1745366400,"model":"gpt-4o-mini","choices":[{"index":0,"delta":{},"finish_reason":"stop"}],"usage":{"prompt_tokens":12,"completion_tokens":4,"total_tokens":16}}
 
@@ -281,7 +281,7 @@ export default function StreamTransformerAccordion({
                 <p>
                   {translateOrFallback(
                     "streamTransformerDescription",
-                    "Paste a chat completions SSE stream, run it through OmniRoute's Responses transformer, and inspect the emitted response.* events before wiring a client."
+                    "Paste a chat completions SSE stream, run it through Xenia's Responses transformer, and inspect the emitted response.* events before wiring a client."
                   )}
                 </p>
               </div>
@@ -326,7 +326,7 @@ export default function StreamTransformerAccordion({
                   <div
                     role="alert"
                     data-testid="error-display"
-                    className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-600 dark:text-red-400"
+                    className="rounded-lg border border-gray-500/30 bg-gray-500/10 px-3 py-2 text-sm text-gray-600 dark:text-gray-400"
                   >
                     {error}
                   </div>

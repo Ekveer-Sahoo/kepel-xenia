@@ -19,12 +19,11 @@ test(
     "getSqlJsAdapter() poisons every later query against the SAME singleton " +
     "(documents WHY the probe/close pattern is unsafe for sql.js — #7494)",
   async () => {
-    const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-7494-mech-"));
+    const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-7494-mech-"));
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     try {
-      const { preInitSqlJs, getSqlJsAdapter } = await import(
-        "../../src/lib/db/adapters/driverFactory"
-      );
+      const { preInitSqlJs, getSqlJsAdapter } =
+        await import("../../src/lib/db/adapters/driverFactory");
 
       const boot = await preInitSqlJs(sqliteFile);
       boot.exec("CREATE TABLE t (id INTEGER)");
@@ -32,9 +31,7 @@ test(
 
       const probe = getSqlJsAdapter(sqliteFile);
       probe!
-        .prepare(
-          "SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'"
-        )
+        .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'")
         .get();
       probe!.close();
 
@@ -56,12 +53,11 @@ test(
     "adapter — it is the module-global singleton getDbInstance()'s probe/reopen " +
     "pattern relies on staying alive across the probe step (#7494)",
   async () => {
-    const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-7494-guard-"));
+    const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-7494-guard-"));
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     try {
-      const { preInitSqlJs, getSqlJsAdapter } = await import(
-        "../../src/lib/db/adapters/driverFactory"
-      );
+      const { preInitSqlJs, getSqlJsAdapter } =
+        await import("../../src/lib/db/adapters/driverFactory");
       const { closeProbeIfSafe } = await import("../../src/lib/db/core");
 
       const boot = await preInitSqlJs(sqliteFile);
@@ -72,9 +68,7 @@ test(
       // the guarded helper instead of a raw .close() call.
       const probe = getSqlJsAdapter(sqliteFile);
       probe!
-        .prepare(
-          "SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'"
-        )
+        .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='schema_migrations'")
         .get();
       closeProbeIfSafe(probe);
 
@@ -103,7 +97,7 @@ test(
   "closeProbeIfSafe() still closes per-handle drivers (better-sqlite3) — the " +
     "guard is sql.js-specific, not a blanket no-op",
   async () => {
-    const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-7494-real-"));
+    const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-7494-real-"));
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     try {
       const { tryOpenSync } = await import("../../src/lib/db/adapters/driverFactory");

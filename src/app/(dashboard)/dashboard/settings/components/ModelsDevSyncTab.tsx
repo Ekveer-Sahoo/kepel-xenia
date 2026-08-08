@@ -153,7 +153,7 @@ export default function ModelsDevSyncTab() {
     return (
       <Card>
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               sync
             </span>
@@ -186,7 +186,7 @@ export default function ModelsDevSyncTab() {
       {/* Main sync card */}
       <Card>
         <div className="flex items-center gap-3 mb-5">
-          <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               database
             </span>
@@ -198,7 +198,7 @@ export default function ModelsDevSyncTab() {
           {feedback && (
             <span
               className={`ml-auto text-xs font-medium flex items-center gap-1 ${
-                feedback.type === "success" ? "text-emerald-500" : "text-red-500"
+                feedback.type === "success" ? "text-gray-500" : "text-gray-500"
               }`}
             >
               <span className="material-symbols-outlined text-[14px]">
@@ -219,7 +219,7 @@ export default function ModelsDevSyncTab() {
             onClick={toggleEnabled}
             disabled={saving}
             className={`relative w-11 h-6 rounded-full transition-colors ${
-              enabled ? "bg-blue-500" : "bg-border"
+              enabled ? "bg-gray-500" : "bg-border"
             }`}
             role="switch"
             aria-checked={enabled}
@@ -237,7 +237,7 @@ export default function ModelsDevSyncTab() {
           <div className="p-4 rounded-lg bg-surface/30 border border-border/30 mb-4">
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm font-medium">{t("modelsDevInterval")}</p>
-              <span className="text-sm font-mono tabular-nums text-blue-400">
+              <span className="text-sm font-mono tabular-nums text-gray-400">
                 {draftIntervalHours}h
               </span>
             </div>
@@ -250,7 +250,7 @@ export default function ModelsDevSyncTab() {
               onChange={(e) => setDraftIntervalHours(parseInt(e.target.value))}
               onMouseUp={(e) => updateInterval(parseInt((e.target as HTMLInputElement).value))}
               onBlur={(e) => updateInterval(parseInt(e.target.value))}
-              className="w-full accent-blue-500"
+              className="w-full accent-gray-500"
             />
             <div className="flex justify-between text-xs text-text-muted mt-1">
               <span>1h</span>
@@ -266,7 +266,7 @@ export default function ModelsDevSyncTab() {
           <button
             onClick={triggerSync}
             disabled={syncing}
-            className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50 transition-colors flex items-center gap-2"
+            className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors flex items-center gap-2"
           >
             <span
               className={`material-symbols-outlined text-[16px] ${syncing ? "animate-spin" : ""}`}
@@ -287,7 +287,7 @@ export default function ModelsDevSyncTab() {
       {status && (status.providerCount > 0 || status.modelCount > 0) && (
         <Card>
           <div className="flex items-center gap-3 mb-5">
-            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
                 bar_chart
               </span>
@@ -300,25 +300,25 @@ export default function ModelsDevSyncTab() {
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="p-4 rounded-lg bg-surface/30 border border-border/30 text-center">
-              <p className="text-2xl font-bold text-blue-400">
+              <p className="text-2xl font-bold text-gray-400">
                 {status.providerCount.toLocaleString()}
               </p>
               <p className="text-xs text-text-muted mt-1">{t("providers")}</p>
             </div>
             <div className="p-4 rounded-lg bg-surface/30 border border-border/30 text-center">
-              <p className="text-2xl font-bold text-emerald-400">
+              <p className="text-2xl font-bold text-gray-400">
                 {status.modelCount.toLocaleString()}
               </p>
               <p className="text-xs text-text-muted mt-1">{t("modelsWithPricing")}</p>
             </div>
             <div className="p-4 rounded-lg bg-surface/30 border border-border/30 text-center">
-              <p className="text-2xl font-bold text-violet-400">
+              <p className="text-2xl font-bold text-gray-400">
                 {status.capabilityCount.toLocaleString()}
               </p>
               <p className="text-xs text-text-muted mt-1">{t("capabilities")}</p>
             </div>
             <div className="p-4 rounded-lg bg-surface/30 border border-border/30 text-center">
-              <p className="text-2xl font-bold text-amber-400">
+              <p className="text-2xl font-bold text-gray-400">
                 {status.lastSyncModelCount > 0 ? status.lastSyncModelCount.toLocaleString() : "—"}
               </p>
               <p className="text-xs text-text-muted mt-1">{t("lastSyncCount")}</p>
@@ -336,7 +336,7 @@ export default function ModelsDevSyncTab() {
       {/* Info card */}
       <Card>
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               info
             </span>

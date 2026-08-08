@@ -18,7 +18,7 @@ import type { RiskGateStats } from "./riskGate/riskGateStep.ts";
 import type { QuantumLockConfig, QuantumLockStats } from "./quantumLock/quantumPatterns.ts";
 
 // Re-export so consumers that already import from this module (e.g. src/lib/db/compression.ts)
-// can get ENGINE_IDS without a second bare `@omniroute/open-sse/...engineCatalog.ts` specifier.
+// can get ENGINE_IDS without a second bare `@xenia/open-sse/...engineCatalog.ts` specifier.
 // That bare alias resolves under tsc/tsx but NOT under vitest (Vite externalizes a brand-new
 // open-sse module to Node, which then can't load the `.ts` subpath), whereas this module is
 // already in Vite's graph and its relative `./engineCatalog.ts` import resolves in-pipeline.
@@ -376,8 +376,8 @@ export const DEFAULT_CODEX_RESPONSES_CONFIG: CodexResponsesConfig = {
 };
 
 export const DEFAULT_COMPRESSION_CONFIG: CompressionConfig = {
-  enabled: false,
-  defaultMode: "off",
+  enabled: true,
+  defaultMode: "stacked",
   autoTriggerMode: "lite",
   autoTriggerTokens: 0,
   cacheMinutes: 5,
@@ -390,7 +390,7 @@ export const DEFAULT_COMPRESSION_CONFIG: CompressionConfig = {
     { engine: "rtk", intensity: "standard" },
     { engine: "caveman", intensity: "full" },
   ],
-  engines: Object.fromEntries(ENGINE_IDS.map((id) => [id, { enabled: false }])),
+  engines: Object.fromEntries(ENGINE_IDS.map((id) => [id, { enabled: true }])),
   activeComboId: null,
   ultraEngine: "heuristic",
   ultraSlmPrewarm: false,
@@ -399,7 +399,7 @@ export const DEFAULT_COMPRESSION_CONFIG: CompressionConfig = {
 };
 
 export const DEFAULT_CAVEMAN_CONFIG: CavemanConfig = {
-  enabled: false,
+  enabled: true,
   compressRoles: ["user"],
   skipRules: [],
   minMessageLength: 50,
@@ -417,13 +417,13 @@ export const DEFAULT_CAVEMAN_CONFIG: CavemanConfig = {
 };
 
 export const DEFAULT_CAVEMAN_OUTPUT_MODE_CONFIG: CavemanOutputModeConfig = {
-  enabled: false,
+  enabled: true,
   intensity: "lite",
   autoClarity: true,
 };
 
 export const DEFAULT_RTK_CONFIG: RtkConfig = {
-  enabled: false,
+  enabled: true,
   intensity: "minimal",
   applyToToolResults: true,
   applyToCodeBlocks: false,
@@ -452,7 +452,7 @@ export const DEFAULT_COMPRESSION_LANGUAGE_CONFIG: CompressionLanguageConfig = {
 };
 
 export const DEFAULT_CONTEXT_EDITING_CONFIG: ContextEditingConfig = {
-  enabled: false,
+  enabled: true,
 };
 
 /** Aging thresholds for progressive message degradation (Phase 3) */

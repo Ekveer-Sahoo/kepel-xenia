@@ -1,7 +1,7 @@
 /**
  * Issue #8353 — Missing OpenCode Go reasoning variants.
  *
- * OpenCode's local Go registry exposes effort-tier aliases that OmniRoute did
+ * OpenCode's local Go registry exposes effort-tier aliases that Xenia did
  * not register or resolve. These tests cover:
  *  1. Catalog exposure on opencode-go (and absence on opencode-zen)
  *  2. parseEffortLevel → base + effort for every listed alias
@@ -12,19 +12,18 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-const { parseEffortLevel, OpencodeExecutor } = (await import(
-  "../../open-sse/executors/opencode.ts"
-)) as {
-  parseEffortLevel: (model: string) => { baseModel: string; effort: string } | null;
-  OpencodeExecutor: new (provider: string) => {
-    transformRequest: (
-      model: string,
-      body: Record<string, unknown>,
-      stream: boolean,
-      credentials: unknown
-    ) => Record<string, unknown>;
+const { parseEffortLevel, OpencodeExecutor } =
+  (await import("../../open-sse/executors/opencode.ts")) as {
+    parseEffortLevel: (model: string) => { baseModel: string; effort: string } | null;
+    OpencodeExecutor: new (provider: string) => {
+      transformRequest: (
+        model: string,
+        body: Record<string, unknown>,
+        stream: boolean,
+        credentials: unknown
+      ) => Record<string, unknown>;
+    };
   };
-};
 
 const { REGISTRY } = (await import("../../open-sse/config/providerRegistry.ts")) as {
   REGISTRY: Record<

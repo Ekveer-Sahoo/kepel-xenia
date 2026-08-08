@@ -1,37 +1,37 @@
 ---
-title: "System wtyczek CLI OmniRoute"
+title: "System wtyczek CLI Xenia"
 version: 3.8.40
 lastUpdated: 2026-06-28
 ---
 
-# System wtyczek CLI OmniRoute
+# System wtyczek CLI Xenia
 
-Rozszerzaj CLI `omniroute` bez modyfikowania jego rdzenia. Wtyczki stosują konwencję nazewnictwa `omniroute-cmd-*`, podobnie jak `gh extension` lub `kubectl plugin`.
+Rozszerzaj CLI `xenia` bez modyfikowania jego rdzenia. Wtyczki stosują konwencję nazewnictwa `xenia-cmd-*`, podobnie jak `gh extension` lub `kubectl plugin`.
 
 ## Szybki start
 
 ```bash
 # Install a plugin from npm
-omniroute plugin install stripe
+xenia plugin install stripe
 
 # Install a local plugin in development
-omniroute plugin install ./my-plugin
+xenia plugin install ./my-plugin
 
 # List installed plugins
-omniroute plugin list
+xenia plugin list
 
 # Scaffold a new plugin
-omniroute plugin scaffold myplugin
-cd omniroute-cmd-myplugin
-omniroute plugin install .
+xenia plugin scaffold myplugin
+cd xenia-cmd-myplugin
+xenia plugin install .
 ```
 
 ## Anatomia wtyczki
 
-Wtyczka to pakiet npm o nazwie `omniroute-cmd-<name>` (lub `@scope/omniroute-cmd-<name>`).
+Wtyczka to pakiet npm o nazwie `xenia-cmd-<name>` (lub `@scope/xenia-cmd-<name>`).
 
 ```
-omniroute-cmd-myplugin/
+xenia-cmd-myplugin/
 ├── package.json     # must have "type": "module" and "main": "index.mjs"
 ├── index.mjs        # exports register(program, ctx) + optional meta
 └── README.md
@@ -41,12 +41,12 @@ omniroute-cmd-myplugin/
 
 ```json
 {
-  "name": "omniroute-cmd-myplugin",
+  "name": "xenia-cmd-myplugin",
   "version": "0.1.0",
   "type": "module",
   "main": "index.mjs",
-  "engines": { "omniroute": ">=4.0.0" },
-  "keywords": ["omniroute-plugin", "omniroute-cmd"]
+  "engines": { "xenia": ">=4.0.0" },
+  "keywords": ["xenia-plugin", "xenia-cmd"]
 }
 ```
 
@@ -56,8 +56,8 @@ omniroute-cmd-myplugin/
 export const meta = {
   name: "myplugin",
   version: "0.1.0",
-  description: "My plugin for OmniRoute",
-  omnirouteApi: ">=4.0.0",
+  description: "My plugin for Xenia",
+  xeniaApi: ">=4.0.0",
 };
 
 export function register(program, ctx) {
@@ -83,7 +83,7 @@ Obiekt `ctx` przekazywany do `register(program, ctx)`:
 
 | Property                     | Type             | Description                                                 |
 | ---------------------------- | ---------------- | ----------------------------------------------------------- |
-| `ctx.apiFetch(path, opts)`   | `async function` | Uwierzytelniony fetch do serwera OmniRoute                  |
+| `ctx.apiFetch(path, opts)`   | `async function` | Uwierzytelniony fetch do serwera Xenia                      |
 | `ctx.emit(data, opts)`       | `function`       | Wyjście w formacie table/json/jsonl/csv wg flagi `--output` |
 | `ctx.t(key)`                 | `async function` | Wyszukiwanie tłumaczenia i18n                               |
 | `ctx.withSpinner(label, fn)` | `async function` | Opakowuje async fn w spinner ora                            |
@@ -94,21 +94,21 @@ Obiekt `ctx` przekazywany do `register(program, ctx)`:
 
 Wtyczki są wykrywane z:
 
-1. `~/.omniroute/plugins/<name>/` — instalacje lokalne użytkownika
-2. `OMNIROUTE_PLUGIN_PATH` env var — niestandardowy katalog
+1. `~/.xenia/plugins/<name>/` — instalacje lokalne użytkownika
+2. `XENIA_PLUGIN_PATH` env var — niestandardowy katalog
 
 Błędy ładowania są przechwytywane i wypisywane jako ostrzeżenia — uszkodzona wtyczka nigdy nie zawiesza CLI.
 
 ## Bezpieczeństwo
 
-Wtyczki działają z tymi samymi uprawnieniami procesu Node.js co `omniroute`. Instaluj wtyczki wyłącznie ze źródeł, którym ufasz. `omniroute plugin install` wyświetla wyraźne ostrzeżenie i wymaga `--yes` albo interaktywnego potwierdzenia.
+Wtyczki działają z tymi samymi uprawnieniami procesu Node.js co `xenia`. Instaluj wtyczki wyłącznie ze źródeł, którym ufasz. `xenia plugin install` wyświetla wyraźne ostrzeżenie i wymaga `--yes` albo interaktywnego potwierdzenia.
 
 ## Publikowanie
 
-1. Upewnij się, że `package.json` ma `"keywords": ["omniroute-plugin"]`
+1. Upewnij się, że `package.json` ma `"keywords": ["xenia-plugin"]`
 2. `npm publish` jak zwykle
-3. Użytkownicy odkrywają wtyczki przez `omniroute plugin search <query>` (przeszukuje rejestr npm)
+3. Użytkownicy odkrywają wtyczki przez `xenia plugin search <query>` (przeszukuje rejestr npm)
 
 ## Przykładowa wtyczka
 
-Zobacz [`examples/omniroute-cmd-hello/`](../../examples/omniroute-cmd-hello/index.mjs) — minimalny działający przykład z `meta` + `register()`.
+Zobacz [`examples/xenia-cmd-hello/`](../../examples/xenia-cmd-hello/index.mjs) — minimalny działający przykład z `meta` + `register()`.

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { AI_PROVIDERS } from "@/shared/constants/providers";
-import { resolveProviderServiceKinds } from "@omniroute/open-sse/config/mediaServiceKinds.ts";
+import { resolveProviderServiceKinds } from "@xenia/open-sse/config/mediaServiceKinds.ts";
 import type { MediaKind } from "../components/mediaKinds";
 import { MEDIA_KINDS } from "../components/mediaKinds";
 import MediaProviderKindNav from "../components/MediaProviderKindNav";
@@ -75,14 +75,14 @@ export default async function MediaProviderKindPage({ params }: PageProps) {
                   <div className="flex items-center gap-2">
                     <div
                       className="size-7 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ backgroundColor: `${p.color ?? "#64748b"}15` }}
+                      style={{ backgroundColor: `${p.color ?? "#727272"}15` }}
                     >
                       <ProviderIcon providerId={p.id} size={20} type="color" />
                     </div>
                     <span className="text-sm font-medium truncate">{p.name}</span>
                   </div>
                   {p.hasFree && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 w-fit">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/10 border border-gray-500/20 text-gray-600 dark:text-gray-400 w-fit">
                       Free
                     </span>
                   )}

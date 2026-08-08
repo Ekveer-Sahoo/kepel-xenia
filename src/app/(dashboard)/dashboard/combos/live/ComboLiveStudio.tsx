@@ -81,7 +81,7 @@ function FleetOverview({ comboEvents }: FleetOverviewProps) {
               <span
                 key={p}
                 className="text-[11px] px-2 py-0.5 rounded-full font-medium"
-                style={{ backgroundColor: "#22c55e20", color: "#22c55e" }}
+                style={{ backgroundColor: "#89898920", color: "#898989" }}
               >
                 {p}
               </span>
@@ -99,7 +99,7 @@ function FleetOverview({ comboEvents }: FleetOverviewProps) {
               <span
                 key={p}
                 className="text-[11px] px-2 py-0.5 rounded-full font-medium"
-                style={{ backgroundColor: "#ef444420", color: "#ef4444" }}
+                style={{ backgroundColor: "#77777720", color: "#777777" }}
               >
                 {p}
               </span>
@@ -157,7 +157,7 @@ function DisconnectedBanner() {
       className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-bg/80 text-xs text-muted shrink-0"
       data-testid="combo-disconnected-banner"
     >
-      <span className="text-amber-500 font-semibold">●</span>
+      <span className="text-gray-500 font-semibold">●</span>
       <span>{t("liveDisconnected")}</span>
     </div>
   );
@@ -308,7 +308,7 @@ export function ComboLiveStudio({
             {displayRun.strategy && (
               <span
                 className="text-xs px-1.5 py-0.5 rounded-full font-semibold"
-                style={{ backgroundColor: "#6366f120", color: "#6366f1" }}
+                style={{ backgroundColor: "#75757520", color: "#757575" }}
               >
                 {displayRun.strategy}
               </span>
@@ -321,10 +321,10 @@ export function ComboLiveStudio({
               style={{
                 color:
                   displayRun.outcome === "succeeded"
-                    ? "#22c55e"
+                    ? "#898989"
                     : displayRun.outcome === "exhausted"
-                      ? "#ef4444"
-                      : "#f59e0b",
+                      ? "#777777"
+                      : "#a7a7a7",
               }}
               data-testid="run-outcome"
             >

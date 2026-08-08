@@ -9,12 +9,12 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { CORS_HEADERS, handleCorsOptions } from "@/shared/utils/cors";
-import { buildErrorBody } from "@omniroute/open-sse/utils/error.ts";
+import { buildErrorBody } from "@xenia/open-sse/utils/error.ts";
 import { getApiKeyRequestScope } from "@/app/api/v1/_helpers/apiKeyScope";
 import {
   getAutoComboCandidates,
   isUnknownAutoChannelError,
-} from "@omniroute/open-sse/handlers/autoComboCandidates.ts";
+} from "@xenia/open-sse/handlers/autoComboCandidates.ts";
 
 const channelParamSchema = z
   .string()
@@ -26,10 +26,7 @@ export async function OPTIONS() {
   return handleCorsOptions();
 }
 
-export async function GET(
-  request: Request,
-  { params }: { params: Promise<{ channel: string }> }
-) {
+export async function GET(request: Request, { params }: { params: Promise<{ channel: string }> }) {
   const scope = await getApiKeyRequestScope(request);
   if (scope.rejection) return scope.rejection;
 

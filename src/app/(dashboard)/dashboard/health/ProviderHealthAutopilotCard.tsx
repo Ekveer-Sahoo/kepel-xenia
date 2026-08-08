@@ -60,15 +60,15 @@ type AutopilotReport = {
 };
 
 const STATUS_STYLES: Record<AutopilotReport["status"], string> = {
-  healthy: "bg-green-500/10 text-green-400 border-green-500/20",
-  warning: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-  critical: "bg-red-500/10 text-red-400 border-red-500/20",
+  healthy: "bg-gray-500/10 text-gray-400 border-gray-500/20",
+  warning: "bg-gray-500/10 text-gray-400 border-gray-500/20",
+  critical: "bg-gray-500/10 text-gray-400 border-gray-500/20",
 };
 
 const SEVERITY_STYLES: Record<AutopilotIssue["severity"], string> = {
-  info: "bg-blue-500/10 text-blue-300 border-blue-500/20",
-  warning: "bg-amber-500/10 text-amber-300 border-amber-500/20",
-  critical: "bg-red-500/10 text-red-300 border-red-500/20",
+  info: "bg-gray-500/10 text-gray-300 border-gray-500/20",
+  warning: "bg-gray-500/10 text-gray-300 border-gray-500/20",
+  critical: "bg-gray-500/10 text-gray-300 border-gray-500/20",
 };
 
 const SEVERITY_RANK: Record<AutopilotIssue["severity"], number> = {
@@ -355,7 +355,7 @@ export default function ProviderHealthAutopilotCard() {
       )}
 
       {error ? (
-        <div className="mt-4 rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2 text-sm text-red-300">
+        <div className="mt-4 rounded-lg border border-gray-500/20 bg-gray-500/10 px-3 py-2 text-sm text-gray-300">
           {error}
         </div>
       ) : loading && !report ? (
@@ -387,10 +387,10 @@ export default function ProviderHealthAutopilotCard() {
                 <span
                   className={`w-fit rounded-full border px-2 py-1 text-xs font-medium ${
                     provider.state === "down"
-                      ? "border-red-500/20 bg-red-500/10 text-red-300"
+                      ? "border-gray-500/20 bg-gray-500/10 text-gray-300"
                       : provider.state === "degraded"
-                        ? "border-amber-500/20 bg-amber-500/10 text-amber-300"
-                        : "border-green-500/20 bg-green-500/10 text-green-300"
+                        ? "border-gray-500/20 bg-gray-500/10 text-gray-300"
+                        : "border-gray-500/20 bg-gray-500/10 text-gray-300"
                   }`}
                 >
                   {t(`providerState.${provider.state}`)}

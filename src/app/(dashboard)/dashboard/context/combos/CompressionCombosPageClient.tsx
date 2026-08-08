@@ -318,7 +318,7 @@ function NamedCombosManager() {
               {combo.id === activeComboId && (
                 <span
                   data-testid={`active-badge-${combo.id}`}
-                  className="rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-500"
+                  className="rounded-full bg-gray-500/10 px-2 py-1 text-xs font-medium text-gray-500"
                 >
                   ● {t("active")}
                 </span>

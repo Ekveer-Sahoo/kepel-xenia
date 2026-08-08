@@ -67,7 +67,7 @@ function DailyTrendChartBody({ chartData, hasCost }) {
             <YAxis
               yAxisId="cost"
               orientation="right"
-              tick={{ fontSize: 8, fill: "#f59e0b" }}
+              tick={{ fontSize: 8, fill: "#a7a7a7" }}
               axisLine={false}
               tickLine={false}
               tickFormatter={(v) => `$${v.toFixed(2)}`}
@@ -86,7 +86,7 @@ function DailyTrendChartBody({ chartData, hasCost }) {
           <Bar
             dataKey={t("chartOutput")}
             stackId="a"
-            fill="#10b981"
+            fill="#808080"
             opacity={0.7}
             radius={[3, 3, 0, 0]}
             animationDuration={600}
@@ -96,7 +96,7 @@ function DailyTrendChartBody({ chartData, hasCost }) {
               yAxisId="cost"
               type="monotone"
               dataKey={t("chartCost")}
-              stroke="#f59e0b"
+              stroke="#a7a7a7"
               strokeWidth={2}
               dot={false}
               animationDuration={600}
@@ -109,11 +109,11 @@ function DailyTrendChartBody({ chartData, hasCost }) {
           <span className="w-2 h-2 rounded-full bg-primary/70" /> {t("chartInput")}
         </span>
         <span className="flex items-center gap-1">
-          <span className="w-2 h-2 rounded-full bg-emerald-500/70" /> {t("chartOutput")}
+          <span className="w-2 h-2 rounded-full bg-gray-500/70" /> {t("chartOutput")}
         </span>
         {hasCost && (
           <span className="flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-amber-500/70" /> {t("chartCost")} ($)
+            <span className="w-2 h-2 rounded-full bg-gray-500/70" /> {t("chartCost")} ($)
           </span>
         )}
       </div>

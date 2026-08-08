@@ -1,49 +1,49 @@
-# Szybki start: uruchom OmniRoute w 3 minuty
+# Szybki start: uruchom Xenia w 3 minuty
 
-> **TL;DR**: Zainstaluj → Podłącz darmowego providera → Skieruj IDE na OmniRoute. Gotowe.
+> **TL;DR**: Zainstaluj → Podłącz darmowego providera → Skieruj IDE na Xenia. Gotowe.
 
 ---
 
-## Krok 1: Zainstaluj OmniRoute
+## Krok 1: Zainstaluj Xenia
 
 Wybierz preferowaną metodę:
 
 ### Opcja A: npm (zalecane)
 
 ```bash
-npm install -g omniroute
+npm install -g xenia
 ```
 
 ### Opcja B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name xenia -p 20128:20128 diegosouzapw/xenia:latest
 ```
 
 ### Opcja C: Ze źródeł
 
 ```bash
-git clone https://github.com/diegosouzapw/OmniRoute.git
-cd OmniRoute
+git clone https://github.com/diegosouzapw/Xenia.git
+cd Xenia
 npm install
 npm run dev
 ```
 
 ---
 
-## Krok 2: Uruchom OmniRoute
+## Krok 2: Uruchom Xenia
 
 ```bash
-omniroute
+xenia
 ```
 
-OmniRoute startuje pod adresem `http://localhost:20128`. Dashboard otwiera się automatycznie.
+Xenia startuje pod adresem `http://localhost:20128`. Dashboard otwiera się automatycznie.
 
 ---
 
 ## Krok 3: Podłącz darmowego providera
 
-Możesz korzystać z OmniRoute **bez żadnych opłat**, podłączając darmowego providera.
+Możesz korzystać z Xenia **bez żadnych opłat**, podłączając darmowego providera.
 
 ### Opcja A: Kiro (darmowy Claude — bez karty kredytowej)
 
@@ -73,7 +73,7 @@ Możesz korzystać z OmniRoute **bez żadnych opłat**, podłączając darmowego
 
 ## Krok 4: Sprawdź, czy działa
 
-W [API Keys](http://localhost:20128/dashboard/api-manager) utwórz nowy klucz. Zapisz go — nie pojawi się ponownie. Pamiętaj: ten klucz służy narzędziom do dostępu do OmniRoute, a nie do upstreamowych providerów.
+W [API Keys](http://localhost:20128/dashboard/api-manager) utwórz nowy klucz. Zapisz go — nie pojawi się ponownie. Pamiętaj: ten klucz służy narzędziom do dostępu do Xenia, a nie do upstreamowych providerów.
 
 ```bash
 curl http://localhost:20128/v1/models -H "Authorization: Bearer YOUR_KEY"
@@ -83,7 +83,7 @@ Powinieneś zobaczyć listę podłączonych modeli.
 
 ---
 
-## Krok 5: Skieruj IDE lub CLI na OmniRoute
+## Krok 5: Skieruj IDE lub CLI na Xenia
 
 W swoim IDE lub narzędziu CLI ustaw:
 
@@ -93,7 +93,7 @@ API Key:  [skopiuj z Dashboard → Endpoints]
 Model:    auto
 ```
 
-To wszystko! Twoje IDE korzysta teraz z OmniRoute z automatycznym wyborem providera.
+To wszystko! Twoje IDE korzysta teraz z Xenia z automatycznym wyborem providera.
 
 ### Przykład IDE: VSCode/Continue.dev
 
@@ -101,14 +101,14 @@ To wszystko! Twoje IDE korzysta teraz z OmniRoute z automatycznym wyborem provid
 2. Zaktualizuj `~/.continue/config.yaml`, dodając następujące linie:
 
 ```
-  - name: OmniRoute - Auto
+  - name: Xenia - Auto
     provider: openai
     model: auto
     apiBase: http://localhost:20128/v1
     apiKey: <YOUR_KEY>
 ```
 
-3. W panelu czatu Continue.dev wybierz `OmniRoute - Auto` — żądania będą szły do OmniRoute.
+3. W panelu czatu Continue.dev wybierz `Xenia - Auto` — żądania będą szły do Xenia.
 4. (Opcjonalnie) Ćwiczenie dla czytelnika — niech Twoje IDE uzupełni `config.yaml` o pozostałe gotowe konfiguracje 😊
 
 ### Przykład CLI: Codex CLI
@@ -117,26 +117,26 @@ To wszystko! Twoje IDE korzysta teraz z OmniRoute z automatycznym wyborem provid
    Na macOS/Linux (dodaj do `~/.bashrc` lub `~/.zshrc`):
 
 ```bash
-export OMNIROUTE_API_KEY="<YOUR_KEY>"
+export XENIA_API_KEY="<YOUR_KEY>"
 ```
 
 Dla Windows (Command Prompt):
 
 ```
-setx OMNIROUTE_API_KEY <YOUR_KEY>
+setx XENIA_API_KEY <YOUR_KEY>
 ```
 
-2. Uruchom Codex skonfigurowany pod OmniRoute. Wpisz:
+2. Uruchom Codex skonfigurowany pod Xenia. Wpisz:
 
 ```
-omniroute launch-codex --model auto
+xenia launch-codex --model auto
 ```
 
-Możesz to zrobić ręcznie przez `codex` i parametry wiersza poleceń wskazujące endpoint oraz klucz API, ale powyższa komenda sprawia, że OmniRoute zajmuje się wszystkim za Ciebie.
+Możesz to zrobić ręcznie przez `codex` i parametry wiersza poleceń wskazujące endpoint oraz klucz API, ale powyższa komenda sprawia, że Xenia zajmuje się wszystkim za Ciebie.
 
-3. CLI powinno teraz wysyłać żądania do OmniRoute.
+3. CLI powinno teraz wysyłać żądania do Xenia.
 
-### Potwierdź, że narzędzie routuje przez OmniRoute
+### Potwierdź, że narzędzie routuje przez Xenia
 
 Szczegóły żądania zobaczysz, klikając [Monitoring/Logs](http://localhost:20128/dashboard/logs) na lewym pasku bocznym. Kliknięcie wpisu pokazuje więcej szczegółów. Przy okazji zobaczysz, jakie informacje wysyła Twój ulubiony harness — przydatne edukacyjnie i przy debugowaniu.
 
@@ -144,7 +144,7 @@ Szczegóły żądania zobaczysz, klikając [Monitoring/Logs](http://localhost:20
 
 ## Co dalej?
 
-- **[Auto-Combo Guide](./AUTO-COMBO-GUIDE.md)** — Pozwól OmniRoute wybrać najlepsze AI za Ciebie
+- **[Auto-Combo Guide](./AUTO-COMBO-GUIDE.md)** — Pozwól Xenia wybrać najlepsze AI za Ciebie
 - **[Providers Guide](./PROVIDERS-GUIDE.md)** — Podłącz więcej providerów (darmowych i płatnych)
 - **[Free Tiers Guide](./FREE-TIERS-GUIDE.md)** — Darmowe AI bez karty kredytowej
 - **[Troubleshooting](./TROUBLESHOOTING.md)** — Rozwiązywanie typowych problemów
@@ -159,19 +159,19 @@ Szczegóły żądania zobaczysz, klikając [Monitoring/Logs](http://localhost:20
 
 ### „Czym jest `auto`?"
 
-`auto` każe OmniRoute automatycznie wybrać najlepszego providera dla każdego żądania. Uwzględnia szybkość, koszt, jakość i dostępność. Szczegóły w [Auto-Combo Guide](./AUTO-COMBO-GUIDE.md).
+`auto` każe Xenia automatycznie wybrać najlepszego providera dla każdego żądania. Uwzględnia szybkość, koszt, jakość i dostępność. Szczegóły w [Auto-Combo Guide](./AUTO-COMBO-GUIDE.md).
 
 ### „Ile to kosztuje?"
 
-Sam OmniRoute jest **darmowy i open-source**. Płacisz tylko za providerów, z których korzystasz. Wiele ma darmowe limity — zobacz [Free Tiers Guide](./FREE-TIERS-GUIDE.md).
+Sam Xenia jest **darmowy i open-source**. Płacisz tylko za providerów, z których korzystasz. Wiele ma darmowe limity — zobacz [Free Tiers Guide](./FREE-TIERS-GUIDE.md).
 
 ### „Czy działa z Claude Code / Cursor / Copilot?"
 
-**Tak!** OmniRoute działa z każdym narzędziem obsługującym format OpenAI. Ustaw base URL na `http://localhost:20128/v1`. Konkretne instrukcje znajdziesz w [CLI Tools Guide](../reference/CLI-TOOLS.md).
+**Tak!** Xenia działa z każdym narzędziem obsługującym format OpenAI. Ustaw base URL na `http://localhost:20128/v1`. Konkretne instrukcje znajdziesz w [CLI Tools Guide](../reference/CLI-TOOLS.md).
 
 ### „Co jeśli provider padnie?"
 
-OmniRoute automatycznie pomija niedziałających providerów i próbuje kolejnego. Nic nie musisz robić. Szczegóły w [Auto-Combo Guide](./AUTO-COMBO-GUIDE.md).
+Xenia automatycznie pomija niedziałających providerów i próbuje kolejnego. Nic nie musisz robić. Szczegóły w [Auto-Combo Guide](./AUTO-COMBO-GUIDE.md).
 
 ---
 
@@ -179,4 +179,4 @@ OmniRoute automatycznie pomija niedziałających providerów i próbuje kolejneg
 
 - **[Troubleshooting](./TROUBLESHOOTING.md)** — Typowe problemy i rozwiązania
 - **[Discord](https://discord.gg/U47eFqAXCn)** — Wsparcie społeczności
-- **[GitHub Issues](https://github.com/diegosouzapw/OmniRoute/issues)** — Zgłaszanie błędów
+- **[GitHub Issues](https://github.com/diegosouzapw/Xenia/issues)** — Zgłaszanie błędów

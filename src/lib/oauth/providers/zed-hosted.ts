@@ -5,7 +5,7 @@ import {
   decryptZedAccessToken,
   fetchZedAuthenticatedUser,
   resolveZedOrganizationId,
-} from "@omniroute/open-sse/shared/zedAuth.ts";
+} from "@xenia/open-sse/shared/zedAuth.ts";
 
 /**
  * Zed Hosted Models OAuth provider.

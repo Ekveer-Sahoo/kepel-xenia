@@ -321,10 +321,10 @@ export default function ClaudeToolCard({
 
           {!checkingClaude && claudeStatus && !cliReady && (
             <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-                <span className="material-symbols-outlined text-yellow-500">warning</span>
+              <div className="flex items-center gap-3 p-4 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+                <span className="material-symbols-outlined text-gray-500">warning</span>
                 <div className="flex-1">
-                  <p className="font-medium text-yellow-600 dark:text-yellow-400">
+                  <p className="font-medium text-gray-600 dark:text-gray-400">
                     {claudeStatus.installed
                       ? t("cliNotRunnable", { tool: "Claude" })
                       : t("cliNotInstalled", { tool: "Claude" })}
@@ -341,7 +341,7 @@ export default function ClaudeToolCard({
                 <div className="flex items-center gap-2">
                   {/*
                     Always surface Manual Config even when the CLI is not
-                    detected locally — typical of remote OmniRoute
+                    detected locally — typical of remote Xenia
                     deployments where the CLI lives on the user's machine,
                     not on the server. Upstream report: #589.
                   */}
@@ -479,7 +479,7 @@ export default function ClaudeToolCard({
                     {modelMappings[model.alias] && (
                       <button
                         onClick={() => onModelMappingChange(model.alias, "")}
-                        className="p-1 text-text-muted hover:text-red-500 rounded transition-colors"
+                        className="p-1 text-text-muted hover:text-gray-500 rounded transition-colors"
                         title={t("clear")}
                       >
                         <span className="material-symbols-outlined text-[14px]">close</span>
@@ -500,7 +500,7 @@ export default function ClaudeToolCard({
 
               {message && (
                 <div
-                  className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs ${message.type === "success" ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-600"}`}
+                  className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs ${message.type === "success" ? "bg-gray-500/10 text-gray-600" : "bg-gray-500/10 text-gray-600"}`}
                 >
                   <span className="material-symbols-outlined text-[14px]">
                     {message.type === "success" ? "check_circle" : "error"}
@@ -524,7 +524,7 @@ export default function ClaudeToolCard({
                   variant="outline"
                   size="sm"
                   onClick={handleResetSettings}
-                  disabled={!claudeStatus?.hasOmniRoute}
+                  disabled={!claudeStatus?.hasXenia}
                   loading={restoring}
                 >
                   <span className="material-symbols-outlined text-[14px] mr-1">restore</span>

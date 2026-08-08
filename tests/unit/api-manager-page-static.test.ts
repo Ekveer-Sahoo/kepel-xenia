@@ -32,7 +32,7 @@ test("permissions modal uses i18n for management access description", () => {
   );
 
   assert.match(managementBlock, /\{t\("managementAccessDesc"\)\}/);
-  assert.doesNotMatch(managementBlock, /Allow this API key to manage OmniRoute configuration\./);
+  assert.doesNotMatch(managementBlock, /Allow this API key to manage Xenia configuration\./);
 });
 
 test("permissions modal converts API key expiration ISO timestamps to local datetime input values", () => {
@@ -131,7 +131,10 @@ test("API-key model fallback preserves combo pseudo-models", () => {
   const source = readApiManagerPage();
   const fallbackBlock = source.slice(
     source.indexOf("const [fallbackRes, combosRes] = await Promise.all"),
-    source.indexOf("} catch (error)", source.indexOf("const [fallbackRes, combosRes] = await Promise.all"))
+    source.indexOf(
+      "} catch (error)",
+      source.indexOf("const [fallbackRes, combosRes] = await Promise.all")
+    )
   );
 
   assert.match(fallbackBlock, /fetch\("\/api\/models\?all=true"\)/);

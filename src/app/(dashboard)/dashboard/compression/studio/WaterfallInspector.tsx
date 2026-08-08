@@ -6,9 +6,9 @@ import { useTranslations } from "next-intl";
 // ── Helpers ───────────────────────────────────────────────────────────────
 
 function savingsColor(pct: number): string {
-  if (pct >= 30) return "#22c55e";
-  if (pct >= 15) return "#f59e0b";
-  return "#6b7280";
+  if (pct >= 30) return "#898989";
+  if (pct >= 15) return "#a7a7a7";
+  return "#727272";
 }
 
 function pctWidth(tokIn: number, tokOut: number): string {
@@ -25,7 +25,7 @@ function fmt(n: number): string {
 function StepRow({ step, maxTokens }: { step: CompressionEngineStep; maxTokens: number }) {
   const t = useTranslations("compressionStudio");
   const skipped = step.originalTokens === step.compressedTokens;
-  const color = skipped ? "#6b7280" : savingsColor(step.savingsPercent);
+  const color = skipped ? "#727272" : savingsColor(step.savingsPercent);
   const barWidthIn = maxTokens > 0 ? (step.originalTokens / maxTokens) * 100 : 100;
   const barWidthOut = maxTokens > 0 ? (step.compressedTokens / maxTokens) * 100 : 100;
 
@@ -36,7 +36,7 @@ function StepRow({ step, maxTokens }: { step: CompressionEngineStep; maxTokens: 
     >
       {/* Engine label */}
       <div className="w-28 shrink-0">
-        <span className="text-xs font-semibold" style={{ color: skipped ? "#6b7280" : color }}>
+        <span className="text-xs font-semibold" style={{ color: skipped ? "#727272" : color }}>
           {step.engine}
         </span>
         {skipped && (
@@ -132,22 +132,22 @@ export function WaterfallInspector({ run, className = "" }: WaterfallInspectorPr
 
       {/* Footer — OUTPUT */}
       <div className="flex items-center gap-3 py-2 border-t border-border mt-1">
-        <span className="w-28 shrink-0 text-xs font-semibold text-green-500">✦ {t("output")}</span>
+        <span className="w-28 shrink-0 text-xs font-semibold text-gray-500">✦ {t("output")}</span>
         <div className="flex-1">
           <div className="h-2 rounded-full bg-border/30 overflow-hidden">
             <div
-              className="h-full rounded-full bg-green-500"
+              className="h-full rounded-full bg-gray-500"
               style={{ width: pctWidth(run.originalTokens, run.compressedTokens) }}
             />
           </div>
         </div>
         <div className="w-36 shrink-0 text-right">
-          <div className="text-xs font-semibold text-green-500">
+          <div className="text-xs font-semibold text-gray-500">
             {t("tokenCount", { count: run.compressedTokens })}
           </div>
           <div
             className="text-[11px] font-bold"
-            style={{ color: "#22c55e" }}
+            style={{ color: "#898989" }}
             data-testid="waterfall-total-savings"
           >
             {`-${run.savingsPercent.toFixed(1)}%`}
@@ -160,7 +160,7 @@ export function WaterfallInspector({ run, className = "" }: WaterfallInspectorPr
         <span>
           {fmt(run.originalTokens)} → {fmt(run.compressedTokens)} {t("tokenShort")}
         </span>
-        <span className="text-green-500 font-bold">−{run.savingsPercent.toFixed(1)}%</span>
+        <span className="text-gray-500 font-bold">−{run.savingsPercent.toFixed(1)}%</span>
         {run.comboId && <span className="font-mono opacity-70">{run.comboId}</span>}
         <span className="ml-auto opacity-60">{run.mode}</span>
       </div>

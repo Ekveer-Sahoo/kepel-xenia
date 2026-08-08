@@ -3,7 +3,7 @@ import {
   handleCodexImageEdit,
   handleImageEdit,
   handleOpenAIImageEdit,
-} from "@omniroute/open-sse/handlers/imageGeneration.ts";
+} from "@xenia/open-sse/handlers/imageGeneration.ts";
 import { createInjectionGuard } from "@/middleware/promptInjectionGuard";
 import {
   getProviderCredentialsWithQuotaPreflight,
@@ -13,9 +13,9 @@ import {
   parseImageModel,
   getImageProvider,
   getImageModelEntry,
-} from "@omniroute/open-sse/config/imageRegistry.ts";
-import { errorResponse, unavailableResponse } from "@omniroute/open-sse/utils/error.ts";
-import { HTTP_STATUS } from "@omniroute/open-sse/config/constants.ts";
+} from "@xenia/open-sse/config/imageRegistry.ts";
+import { errorResponse, unavailableResponse } from "@xenia/open-sse/utils/error.ts";
+import { HTTP_STATUS } from "@xenia/open-sse/config/constants.ts";
 import * as log from "@/sse/utils/logger";
 import { toJsonErrorPayload } from "@/shared/utils/upstreamError";
 import { enforceApiKeyPolicy } from "@/shared/utils/apiKeyPolicy";
@@ -25,8 +25,8 @@ import {
   validateCodexImageEditReferences,
 } from "@/lib/images/imageRouteModel";
 import { resolveProxyForConnection } from "@/lib/localDb";
-import { runWithProxyContext } from "@omniroute/open-sse/utils/proxyFetch.ts";
-import { isCodexFreePlan } from "@omniroute/open-sse/executors/codex/tools.ts";
+import { runWithProxyContext } from "@xenia/open-sse/utils/proxyFetch.ts";
+import { isCodexFreePlan } from "@xenia/open-sse/executors/codex/tools.ts";
 import {
   getBodySizeLimit,
   readRequestBodyWithLimit,
@@ -55,7 +55,7 @@ const ImageEditJsonSchema = z
  *
  * Two upstream shapes are supported:
  *  - **chatgpt-web**: an "edit" only makes sense if the uploaded image was originally
- *    generated through OmniRoute — we then have its `{conversationId, parentMessageId}`
+ *    generated through Xenia — we then have its `{conversationId, parentMessageId}`
  *    cached and can continue the saved chatgpt.com conversation node (the only way to
  *    actually edit the image instead of generating an unrelated one).
  *  - **custom OpenAI-compatible providers** (#3214/#3215): forward a multipart edit to
@@ -207,7 +207,8 @@ function buildAdobeFireflyEditDataUrls(
     }
   }
   if (dataUrls.length === 0 && imageBytes && imageBytes.length > 0) {
-    const mime = typeof imageMime === "string" && imageMime.startsWith("image/") ? imageMime : "image/png";
+    const mime =
+      typeof imageMime === "string" && imageMime.startsWith("image/") ? imageMime : "image/png";
     dataUrls.push(`data:${mime};base64,${imageBytes.toString("base64")}`);
   }
   return dataUrls;
@@ -250,7 +251,10 @@ async function handleAdobeFireflyEditRequest(params: {
     resolvedModel
   );
   if (!credentials) {
-    return errorResponse(HTTP_STATUS.UNAUTHORIZED, `No credentials for provider: ${parsed.provider}`);
+    return errorResponse(
+      HTTP_STATUS.UNAUTHORIZED,
+      `No credentials for provider: ${parsed.provider}`
+    );
   }
   if (credentials.allRateLimited) {
     return unavailableResponse(
@@ -363,10 +367,7 @@ async function postHandler(request: Request, _context?: unknown) {
       : providerConfig?.format === "codex-responses"
         ? Number.POSITIVE_INFINITY
         : MAX_NON_CODEX_IMAGE_EDIT_REFERENCES;
-  if (
-    providerConfig?.format !== "codex-responses" &&
-    imageInputCount > maxRefsForProvider
-  ) {
+  if (providerConfig?.format !== "codex-responses" && imageInputCount > maxRefsForProvider) {
     return errorResponse(
       HTTP_STATUS.BAD_REQUEST,
       providerConfig?.format === "adobe-firefly-image"

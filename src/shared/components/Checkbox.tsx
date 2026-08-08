@@ -8,7 +8,7 @@ interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 /**
  * Checkbox — token-driven native checkbox (brand accent + keyboard focus ring).
- * Replaces the ad-hoc `<input type="checkbox" style={{ accentColor: "#6366f1" }}>`
+ * Replaces the ad-hoc `<input type="checkbox" style={{ accentColor: "#757575" }}>`
  * pattern scattered across the dashboard. Optional `label` wraps it in a clickable row.
  */
 export default function Checkbox({ label, className, id, ...props }: CheckboxProps) {

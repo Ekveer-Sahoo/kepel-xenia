@@ -170,7 +170,7 @@ export default function MitmProxyTab() {
   };
 
   const statusTone = status.running
-    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-600"
+    ? "border-gray-500/30 bg-gray-500/10 text-gray-600"
     : "border-border bg-sidebar text-text-muted";
 
   return (
@@ -206,8 +206,8 @@ export default function MitmProxyTab() {
         <div
           className={`mb-5 rounded-lg border px-4 py-3 text-sm ${
             feedback.type === "success"
-              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-600"
-              : "border-red-500/30 bg-red-500/10 text-red-600"
+              ? "border-gray-500/30 bg-gray-500/10 text-gray-600"
+              : "border-gray-500/30 bg-gray-500/10 text-gray-600"
           }`}
         >
           {feedback.message}
@@ -226,7 +226,9 @@ export default function MitmProxyTab() {
                 onClick={toggleMitm}
                 disabled={saving || loading}
                 className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors disabled:opacity-40 ${
-                  status.running ? "bg-red-500 hover:bg-red-600" : "bg-primary hover:bg-primary/90"
+                  status.running
+                    ? "bg-gray-500 hover:bg-gray-600"
+                    : "bg-primary hover:bg-primary/90"
                 }`}
               >
                 <span className="material-symbols-outlined text-[18px]">
@@ -293,8 +295,8 @@ export default function MitmProxyTab() {
               <span
                 className={`rounded-full border px-2 py-1 text-xs ${
                   status.certExists
-                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-600"
-                    : "border-amber-500/30 bg-amber-500/10 text-amber-600"
+                    ? "border-gray-500/30 bg-gray-500/10 text-gray-600"
+                    : "border-gray-500/30 bg-gray-500/10 text-gray-600"
                 }`}
               >
                 {status.certExists ? t("available") : t("missing")}

@@ -46,7 +46,7 @@ to AFTER the proof, not before it.
 
 **Owner flow after the workflow goes green:**
 
-1. `npm stage list omniroute` — find the stage id (also printed in the workflow summary).
+1. `npm stage list xenia` — find the stage id (also printed in the workflow summary).
 2. Verify the staged bytes (recommended): `npm stage download <id>`, then install the
    downloaded tarball into a temp prefix and boot it (`npm run check:pack-boot` automates
    the same pack→install→boot verdict in CI).
@@ -58,13 +58,14 @@ to AFTER the proof, not before it.
 legacy immediate `npm publish` (use only if staging itself misbehaves; record why).
 
 **One-time hardening (owner, npmjs.com):** configure the Trusted Publisher for
-`omniroute` in stage-only mode so a leaked long-lived token cannot `npm publish`
+`xenia` in stage-only mode so a leaked long-lived token cannot `npm publish`
 directly from anywhere — CI can only stage; only the owner's 2FA releases.
 
-**Broken-artifact playbook (unchanged):** `npm deprecate omniroute@<bad> "<reason> — use <fixed>"`
+**Broken-artifact playbook (unchanged):** `npm deprecate xenia@<bad> "<reason> — use <fixed>"`
 as the default reflex (minutes, reversible); `npm unpublish` only inside the 72h/no-dependents
 window and never as the first move. Docker: never rewrite a version tag — rollback is
 repointing `latest` to the last good digest.
+
 ## Hotfix Fast-Lane (label `hotfix`)
 
 A PR labeled `hotfix` skips the heavy CI matrix (9-shard E2E, coverage ratchet,
@@ -170,7 +171,7 @@ Breaking changes: add `BREAKING CHANGE:` footer or `!` after the scope (e.g. `fe
 - [ ] `npm run i18n:check` exits 0 — translation state (`.i18n-state.json`) in sync with source docs (no drifted sources in strict mode; warn-mode advisory is acceptable for last-minute doc touch-ups, but should be 0 before tagging)
 - [ ] `npm run i18n:check-ui-coverage` exits 0 — every UI locale at or above the 80% coverage floor
 - [ ] `npm run i18n:sync-ui:dry` reports 0 missing keys across all 42 locales
-- [ ] If source English docs changed, run `npm run i18n:run` (requires `OMNIROUTE_TRANSLATION_API_KEY` in `.env`) before tagging
+- [ ] If source English docs changed, run `npm run i18n:run` (requires `XENIA_TRANSLATION_API_KEY` in `.env`) before tagging
 - [ ] Translation contributions can be deferred to next release if minor (track in CHANGELOG)
 
 ### Database Migrations
@@ -179,7 +180,7 @@ Breaking changes: add `BREAKING CHANGE:` footer or `!` after the scope (e.g. `fe
   - [ ] Each migration is idempotent (`CREATE TABLE IF NOT EXISTS`, etc.)
   - [ ] Migrations wrapped in transactions
   - [ ] Numbered correctly (no gaps in sequence)
-- [ ] Test on fresh install: delete `~/.omniroute/omniroute.db` and run `npm run dev`
+- [ ] Test on fresh install: delete `~/.xenia/xenia.db` and run `npm run dev`
 - [ ] Test on existing install: backup DB, run migration, verify schema
 - [ ] WAL files (`-wal`, `-shm`) handled correctly if migration rewrites tables
 
@@ -214,7 +215,7 @@ The repository uses three distinct output directories — never mix them up:
 | `.build/` | Build intermediates — `next build` output (`distDir`)    | No (gitignored) |
 | `dist/`   | Shippable npm bundle — assembled by `assembleStandalone` | No (gitignored) |
 
-> **Operator note:** the remote VPS image directory remains `/usr/lib/node_modules/omniroute/app/`.
+> **Operator note:** the remote VPS image directory remains `/usr/lib/node_modules/xenia/app/`.
 > Only the **in-repo** build output moved (`app/` → `dist/`). The deploy skills rsync
 > `dist/` contents into the remote `app/` dir — no VPS path changes required.
 
@@ -318,12 +319,12 @@ Before shipping any release that includes embedded services changes, verify:
 
 Before shipping any v3.8.x release, verify these additional items:
 
-- [ ] `omniroute --tray` boots on macOS (systray2 installed into `~/.omniroute/runtime/`)
-- [ ] `omniroute --tray` boots on Linux (requires DISPLAY; graceful error if not set)
-- [ ] `omniroute --tray` boots on Windows (PowerShell NotifyIcon, no extra binaries)
-- [ ] `omniroute config tray enable` creates autostart entry; disable removes it
-- [ ] `npm install -g omniroute@<this-version>` runs postinstall without fatal exit
-- [ ] Update path keeps optional deps: `omniroute update --apply` and the auto-updater
+- [ ] `xenia --tray` boots on macOS (systray2 installed into `~/.xenia/runtime/`)
+- [ ] `xenia --tray` boots on Linux (requires DISPLAY; graceful error if not set)
+- [ ] `xenia --tray` boots on Windows (PowerShell NotifyIcon, no extra binaries)
+- [ ] `xenia config tray enable` creates autostart entry; disable removes it
+- [ ] `npm install -g xenia@<this-version>` runs postinstall without fatal exit
+- [ ] Update path keeps optional deps: `xenia update --apply` and the auto-updater
       run `npm install -g … --include=optional` so `optionalDependencies` (better-sqlite3,
       keytar, tls-client, and the llmlingua SLM stack: `@atjsh/llmlingua-2`,
       `@huggingface/transformers@3.5.2`, `@tensorflow/tfjs`, `js-tiktoken`) survive an update.
@@ -335,13 +336,13 @@ Before shipping any v3.8.x release, verify these additional items:
       optional instance — the standalone trace bundles only transformers, not the dynamically-imported
       optionals, so without this the worker would load llmlingua-2 against the root's transformers
       and the SLM tier would silently fail-open.
-- [ ] `omniroute status` works with no `.env` (CLI token path, loopback only)
+- [ ] `xenia status` works with no `.env` (CLI token path, loopback only)
 - [ ] `curl http://localhost:20128/api/shutdown` returns 401 (always-protected route)
 - [ ] `curl -H "host: evil.com" http://localhost:20128/api/mcp/sse` returns 401 (loopback guard)
 - [ ] SQLite runtime resolves to `bundled` on first run (bundled binary valid for platform)
 - [ ] SQLite runtime falls back to `runtime` when `node_modules/better-sqlite3` is deleted
 - [ ] Smart MCP filter compresses real `playwright-mcp browser_snapshot` output (≥50% reduction)
-- [ ] All 10 `skills/omniroute*/SKILL.md` files are publicly fetchable via raw GitHub URL
+- [ ] All 10 `skills/xenia*/SKILL.md` files are publicly fetchable via raw GitHub URL
 - [ ] Onboarding wizard shows "How It Works" tier tour step on fresh setup
 - [ ] Home dashboard tier coverage widget shows configured/active counts
 

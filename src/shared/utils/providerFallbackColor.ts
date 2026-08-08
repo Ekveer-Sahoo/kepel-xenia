@@ -6,17 +6,17 @@
  * other custom provider even though its label was already resolved correctly. See #8328.
  */
 
-// Small palette of visually distinguishable, saturated colors — spread far enough apart in
-// hue to stay distinguishable side-by-side on both light and dark topology backgrounds.
+// Small palette of visually distinguishable grays — spread across the lightness range
+// to stay distinguishable side-by-side on both light and dark topology backgrounds.
 export const FALLBACK_COLOR_PALETTE: readonly string[] = [
-  "#0ea5e9", // sky
-  "#a855f7", // purple
-  "#f59e0b", // amber
-  "#10b981", // emerald
-  "#ec4899", // pink
-  "#6366f1", // indigo
-  "#14b8a6", // teal
-  "#f97316", // orange
+  "#404040",
+  "#8a8a8a",
+  "#262626",
+  "#a3a3a3",
+  "#525252",
+  "#c2c2c2",
+  "#171717",
+  "#737373",
 ];
 
 /** FNV-1a hash — fast, deterministic, and well-distributed for short id strings. */

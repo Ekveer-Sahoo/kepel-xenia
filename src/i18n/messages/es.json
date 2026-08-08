@@ -394,7 +394,7 @@
     "showConfiguredOnly": "Mostrar solo configurados",
     "showFreeOnly": "Solo gratis",
     "addFirstProvider": "Añade tu primer proveedor",
-    "addFirstProviderDesc": "Conecta un proveedor de IA para empezar a enrutar solicitudes a través de OmniRoute. Puedes usar proveedores gratuitos, claves de API o cuentas OAuth.",
+    "addFirstProviderDesc": "Conecta un proveedor de IA para empezar a enrutar solicitudes a través de Xenia. Puedes usar proveedores gratuitos, claves de API o cuentas OAuth.",
     "learnMore": "Más información",
     "includeDomains": "Incluir dominios",
     "promptCache": "Caché de prompts",
@@ -935,7 +935,7 @@
     "batchConceptRetentionNote": "Los archivos de resultados y errores se conservan durante 30 días (Anthropic: 29 días)"
   },
   "disabled": "Desactivado",
-  "featureFlagOmnirouteEmergencyFallbackDescription": "Enruta las solicitudes que hayan agotado el presupuesto al proveedor/modelo fallback gratuito de emergencia.",
+  "featureFlagXeniaEmergencyFallbackDescription": "Enruta las solicitudes que hayan agotado el presupuesto al proveedor/modelo fallback gratuito de emergencia.",
   "featureFlagArenaEloSyncEnabledDescription": "Activa la sincronización periódica del ELO de la clasificación de Arena AI para los rankings de inteligencia de modelos.",
   "featureFlagExposeCcDiscoveryAliasesDescription": "__MISSING__:Advertise claude/&lt;provider&gt;/&lt;model&gt; mirror ids on /v1/models so Claude Code gateway model discovery lists non-Claude models. Warning: doubles catalog entries for all clients when enabled globally.",
   "sidebar": {
@@ -980,8 +980,8 @@
     "auditLog": "Registro de auditoría",
     "shutdown": "Apagar",
     "restart": "Reiniciar",
-    "shutdownConfirm": "¿Apagar OmniRoute?",
-    "restartConfirm": "¿Reiniciar OmniRoute?",
+    "shutdownConfirm": "¿Apagar Xenia?",
+    "restartConfirm": "¿Reiniciar Xenia?",
     "version": "v{version}",
     "debug": "Depurar",
     "system": "Sistema",
@@ -1214,11 +1214,11 @@
     "trafficInspector": "Inspector de tráfico",
     "trafficInspectorSubtitle": "Monitorizar llamadas LLM y depurar tráfico HTTPS",
     "cliCode": "Código CLI",
-    "cliCodeSubtitle": "Herramientas de código que apuntan a OmniRoute",
+    "cliCodeSubtitle": "Herramientas de código que apuntan a Xenia",
     "cliAgents": "Agentes CLI",
     "cliAgentsSubtitle": "Agentes CLI autónomos",
     "acpAgents": "Agentes ACP",
-    "acpAgentsSubtitle": "CLIs generadas por OmniRoute",
+    "acpAgentsSubtitle": "CLIs generadas por Xenia",
     "skipToContent": "Saltar al contenido",
     "mainNavigation": "Navegación principal",
     "unpinSection": "Desanclar sección",
@@ -1503,7 +1503,7 @@
     "cliTools": "Herramientas CLI",
     "cliToolsDescription": "Configura herramientas de CLI",
     "home": "Inicio",
-    "homeDescription": "Te damos la bienvenida a OmniRoute",
+    "homeDescription": "Te damos la bienvenida a Xenia",
     "endpoint": "Endpoints",
     "endpointDescription": "Gestiona endpoints proxy, MCP, A2A y endpoints de API",
     "mcp": "Servidor MCP",
@@ -1522,7 +1522,7 @@
     "cacheDescription": "Supervisa la eficiencia de la caché de prompts del proveedor y la reutilización local de respuestas semánticas.",
     "limitsDescription": "Configura rate limits y cuotas por clave de API y proveedor",
     "runtimeDescription": "Observabilidad del runtime en tiempo real: circuit breakers, cooldowns, bloqueos de modelos, sesiones y alertas de cuota",
-    "apiManagerDescription": "Gestiona claves de API y el control de acceso para tu instancia de OmniRoute",
+    "apiManagerDescription": "Gestiona claves de API y el control de acceso para tu instancia de Xenia",
     "batchDescription": "Procesa grandes volúmenes de solicitudes de forma asíncrona mediante llamadas a la API por lotes",
     "contextCavemanDescription": "Compresión de mensajes basada en reglas, paquetes de idioma, analíticas y controles del modo de salida.",
     "contextRtkDescription": "Compresión adaptada a comandos para salidas de herramientas, logs de terminal y resultados de compilación.",
@@ -2031,7 +2031,7 @@
     "direct": "directo",
     "routeUnableToLoad": "No se puede cargar la explicación de la ruta",
     "routeNoRequestLogs": "No hay registros de solicitudes disponibles",
-    "routeNoRequestLogsDescription": "Envía tráfico a través de OmniRoute primero. Las explicaciones de las rutas se generan a partir de registros de llamadas estructurados y persistentes.",
+    "routeNoRequestLogsDescription": "Envía tráfico a través de Xenia primero. Las explicaciones de las rutas se generan a partir de registros de llamadas estructurados y persistentes.",
     "routeDecisionSummary": "Resumen de decisiones",
     "routeConfidence": "Confianza: {confidence}",
     "routeScore": "Puntuación de ruta",
@@ -2103,7 +2103,7 @@
     "keyName": "Nombre de la clave",
     "keyNamePlaceholder": "p. ej. Clave de producción",
     "keyNameDesc": "Elige un nombre descriptivo para identificar el propósito de esta clave",
-    "managementAccessDesc": "Permite que esta clave de API gestione la configuración de OmniRoute.",
+    "managementAccessDesc": "Permite que esta clave de API gestione la configuración de Xenia.",
     "selfServiceVisibility": "Visibilidad de autoservicio",
     "selfServiceVisibilityDesc": "Controla lo que esta clave puede ver sobre su propio uso y la cuota compartida del proveedor upstream.",
     "ownUsageVisibility": "Coste propio y uso de tokens",
@@ -2302,7 +2302,7 @@
     "imagePromptPlaceholder": "Un paisaje sereno con montañas al atardecer...",
     "videoPromptPlaceholder": "Un timelapse de una flor floreciendo...",
     "musicPromptPlaceholder": "Música electrónica animada con pads de sintetizador...",
-    "speechTextPlaceholder": "¡Hola! Bienvenido a OmniRoute, tu puerta de enlace de IA inteligente...",
+    "speechTextPlaceholder": "¡Hola! Bienvenido a Xenia, tu puerta de enlace de IA inteligente...",
     "transcriptionPlaceholder": "Sube un archivo de audio para transcribir...",
     "noImagesReturned": "No se devolvió ninguna imagen. Es posible que el proveedor haya aceptado la solicitud pero haya devuelto datos vacíos.",
     "generatedImageAlt": "Imagen generada {index}",
@@ -2484,7 +2484,7 @@
     "video": "Vídeo",
     "videoSample": "Un timelapse de nubes sobre una cordillera",
     "webFetch": "Obtención web",
-    "webSearchSample": "¿Qué es la pasarela OmniRoute AI?",
+    "webSearchSample": "¿Qué es la pasarela Xenia AI?",
     "noActiveProviderDescription": "Ningún proveedor de búsqueda activo. Configura uno en Proveedores.",
     "configureProviders": "Configurar proveedores",
     "compareQuery": "Consulta a comparar",
@@ -2562,7 +2562,7 @@
     "configurationSaved": "Configuración guardada correctamente.",
     "failedToSave": "No se pudo guardar la configuración.",
     "noApiKeysCreateOne": "Sin claves de API. Crea una en la página de claves",
-    "defaultOmnirouteKey": "sk_omniroute (predeterminada)",
+    "defaultXeniaKey": "sk_xenia (predeterminada)",
     "selectModel": "Seleccionar modelo",
     "selectModelForAlias": "Seleccionar modelo para {alias}",
     "selectModelForTool": "Seleccionar modelo para {tool}",
@@ -2607,13 +2607,13 @@
       "xhigh": "Muy alto"
     },
     "howItWorks": "Cómo funciona:",
-    "antigravityHowWorksDesc": "Antigravity envía solicitudes al endpoint de Google. MITM las intercepta y las redirige a OmniRoute.",
-    "antigravityStep1": "1. Inicia MITM para enrutar las solicitudes a través de OmniRoute.",
+    "antigravityHowWorksDesc": "Antigravity envía solicitudes al endpoint de Google. MITM las intercepta y las redirige a Xenia.",
+    "antigravityStep1": "1. Inicia MITM para enrutar las solicitudes a través de Xenia.",
     "antigravityStep2Prefix": "2. Añade",
     "antigravityStep2Suffix": "a tu archivo hosts como 127.0.0.1.",
     "antigravityStep3": "3. Abre Antigravity y las solicitudes se enviarán a través del proxy.",
-    "mitmHowWorksDesc": "{toolName} envía solicitudes al endpoint de su proveedor. MITM las intercepta y las redirige a OmniRoute.",
-    "mitmStep1": "1. Inicia MITM para enrutar las solicitudes a través de OmniRoute.",
+    "mitmHowWorksDesc": "{toolName} envía solicitudes al endpoint de su proveedor. MITM las intercepta y las redirige a Xenia.",
+    "mitmStep1": "1. Inicia MITM para enrutar las solicitudes a través de Xenia.",
     "mitmStep2Prefix": "2. Añade",
     "mitmStep2Suffix": "a tu archivo hosts como 127.0.0.1.",
     "mitmStep3": "3. Abre {toolName} y las solicitudes se enviarán a través del proxy.",
@@ -2659,13 +2659,13 @@
     "applied": "¡Aplicado!",
     "failed": "Error",
     "resetDone": "¡Restablecido!",
-    "omnirouteConfiguredOpenAiCompatible": "OmniRoute está configurado como proveedor compatible con OpenAI",
+    "xeniaConfiguredOpenAiCompatible": "Xenia está configurado como proveedor compatible con OpenAI",
     "provider": "Proveedor",
     "model": "Modelo",
     "providers": "Proveedores",
     "auth": "Autenticación",
     "noApiKeysAvailable": "No hay claves de API disponibles",
-    "usingDefaultOmniroute": "Usando el valor por defecto: sk_omniroute",
+    "usingDefaultXenia": "Usando el valor por defecto: sk_xenia",
     "updateConfig": "Actualizar configuración",
     "applyConfig": "Aplicar configuración",
     "noBackupsAvailable": "No hay copias de seguridad disponibles.",
@@ -2695,19 +2695,19 @@
       "claude": "Úsalo cuando quieras flujos de trabajo de planificación sólidos y refactorizaciones largas de varios archivos con Claude Code.",
       "codex": "Úsalo cuando tu equipo esté estandarizado en los flujos de OpenAI Codex CLI y la autenticación basada en perfiles.",
       "droid": "Úsalo cuando necesites un agente de terminal ligero enfocado en codificación rápida y bucles de ejecución de comandos.",
-      "openclaw": "Úsalo cuando quieras un agente de codificación al estilo Open Claw pero enrutado a través de las políticas de OmniRoute.",
-      "cline": "Úsalo cuando configures agentes de codificación dentro de editores y quieras una configuración guiada con modelos de OmniRoute.",
+      "openclaw": "Úsalo cuando quieras un agente de codificación al estilo Open Claw pero enrutado a través de las políticas de Xenia.",
+      "cline": "Úsalo cuando configures agentes de codificación dentro de editores y quieras una configuración guiada con modelos de Xenia.",
       "kilo": "Úsalo cuando tu flujo de trabajo dependa de comandos de Kilo Code y de ediciones iterativas rápidas.",
-      "cursor": "Úsalo cuando codifiques en Cursor y necesites modelos personalizados compatibles con OpenAI a través de OmniRoute.",
+      "cursor": "Úsalo cuando codifiques en Cursor y necesites modelos personalizados compatibles con OpenAI a través de Xenia.",
       "continue": "Úsalo cuando ejecutes Continue en IDEs y necesites una configuración de proveedor portátil basada en JSON.",
       "opencode": "Úsalo cuando prefieras ejecuciones de agentes nativos de terminal y automatización mediante scripts a través de OpenCode.",
-      "kiro": "Úsalo al integrar Kiro y controlar el enrutamiento de modelos de forma centralizada desde OmniRoute.",
-      "windsurf": "Úsalo cuando quieras un IDE centrado en IA con modelos de Codeium/Windsurf enrutados a través de OmniRoute.",
-      "antigravity": "Úsalo cuando el tráfico de Antigravity/Kiro deba interceptarse a través de MITM y enrutarse a OmniRoute.",
-      "copilot": "Úsalo cuando quieras una experiencia de chat al estilo Copilot aplicando las claves y reglas de enrutamiento de OmniRoute.",
-      "amp": "Úsalo cuando quieras flujos de trabajo de atajos con Amp pero necesites aplicar los alias y reglas de enrutamiento de OmniRoute.",
+      "kiro": "Úsalo al integrar Kiro y controlar el enrutamiento de modelos de forma centralizada desde Xenia.",
+      "windsurf": "Úsalo cuando quieras un IDE centrado en IA con modelos de Codeium/Windsurf enrutados a través de Xenia.",
+      "antigravity": "Úsalo cuando el tráfico de Antigravity/Kiro deba interceptarse a través de MITM y enrutarse a Xenia.",
+      "copilot": "Úsalo cuando quieras una experiencia de chat al estilo Copilot aplicando las claves y reglas de enrutamiento de Xenia.",
+      "amp": "Úsalo cuando quieras flujos de trabajo de atajos con Amp pero necesites aplicar los alias y reglas de enrutamiento de Xenia.",
       "hermes": "Úsalo cuando necesites un asistente de IA ligero e integrado en la terminal para tareas rápidas.",
-      "hermes-agent": "Úsalo cuando necesites Hermes Agent (de Nousresearch) con modelos predeterminados, de delegación, visión y auxiliares enrutados a través de OmniRoute.",
+      "hermes-agent": "Úsalo cuando necesites Hermes Agent (de Nousresearch) con modelos predeterminados, de delegación, visión y auxiliares enrutados a través de Xenia.",
       "custom": "Úsalo para implementaciones de herramientas personalizadas o configuraciones genéricas compatibles con OpenAI."
     },
     "toolDescriptions": {
@@ -2821,7 +2821,7 @@
         },
         "notes": {
           "0": "OpenCode requiere la configuración de la clave de API.",
-          "1": "Establece la URL base en tu endpoint de OmniRoute."
+          "1": "Establece la URL base en tu endpoint de Xenia."
         }
       },
       "kiro": {
@@ -2832,7 +2832,7 @@
           },
           "2": {
             "title": "URL base",
-            "desc": "Pega la URL de tu endpoint de OmniRoute"
+            "desc": "Pega la URL de tu endpoint de Xenia"
           },
           "3": {
             "title": "Clave de API"
@@ -2861,7 +2861,7 @@
           },
           "4": {
             "title": "Clave de API",
-            "desc": "Selecciona tu clave de API de OmniRoute"
+            "desc": "Selecciona tu clave de API de Xenia"
           },
           "5": {
             "title": "Seleccionar modelo",
@@ -2871,7 +2871,7 @@
       }
     },
     "autoConfiguredTab": "Configuración automática",
-    "toolCategoriesDesc": "Configura asistentes de programación IA para enrutar a través de OmniRoute",
+    "toolCategoriesDesc": "Configura asistentes de programación IA para enrutar a través de Xenia",
     "allToolsTab": "Todas las herramientas",
     "guidedClientsTab": "Clientes guiados",
     "mitmClientsTab": "Clientes MITM",
@@ -2884,8 +2884,8 @@
     "customCliNameLabel": "Nombre de la CLI",
     "customCliNamePlaceholder": "p. ej., CLI de mi equipo",
     "customCliDefaultModelLabel": "Modelo predeterminado",
-    "customCliDefaultModelHelp": "Utilice cualquier ID de modelo o combinación de OmniRoute. La mayoría de las CLI compatibles con OpenAI solo necesitan la URL base /v1 más una cadena de modelo.",
-    "customCliKeyHelper": "Para instalaciones locales, OmniRoute puede utilizar sk_omniroute. En modo nube, elija una de sus claves de API de gestión.",
+    "customCliDefaultModelHelp": "Utilice cualquier ID de modelo o combinación de Xenia. La mayoría de las CLI compatibles con OpenAI solo necesitan la URL base /v1 más una cadena de modelo.",
+    "customCliKeyHelper": "Para instalaciones locales, Xenia puede utilizar sk_xenia. En modo nube, elija una de sus claves de API de gestión.",
     "customCliAliasMappingsLabel": "Mapeos de alias",
     "customCliAliasMappingsHelp": "Alias de ayuda opcionales para scripts contenedores o archivos de configuración que requieran nombres abreviados estables.",
     "customCliAddAlias": "Añadir alias",
@@ -2893,7 +2893,7 @@
     "customCliAliasPlaceholder": "p. ej., revisión",
     "customCliTargetModelLabel": "Modelo objetivo",
     "customCliEndpointHintLabel": "Cómo configurar el endpoint",
-    "customCliEndpointHint": "Dirija cualquier cliente compatible con OpenAI a la URL base de OmniRoute /v1. El endpoint de chat completions sin procesar es {endpoint}. Utilice el bloque JSON cuando la herramienta requiera un objeto proveedor, o el script de entorno cuando lea variables OPENAI_*.",
+    "customCliEndpointHint": "Dirija cualquier cliente compatible con OpenAI a la URL base de Xenia /v1. El endpoint de chat completions sin procesar es {endpoint}. Utilice el bloque JSON cuando la herramienta requiera un objeto proveedor, o el script de entorno cuando lea variables OPENAI_*.",
     "customCliEnvBlockTitle": "Fragmento de entorno/shell",
     "customCliJsonBlockTitle": "Bloque JSON del proveedor",
     "networkError": "Error de red",
@@ -2917,13 +2917,13 @@
     "hermesSelectBeforePreview": "Seleccione modelos para los roles, o asegúrese de que los roles estén cargados, antes de previsualizar.",
     "hermesPreviewFailed": "Error al generar la vista previa",
     "hermesSavedTo": "Guardado en {path}",
-    "hermesFirstSetupTitle": "Configuración inicial mediante OmniRoute el {date}",
+    "hermesFirstSetupTitle": "Configuración inicial mediante Xenia el {date}",
     "hermesSinceSetup": "{time} desde la configuración",
     "hermesConfiguredRoles": "{configured}/{total} roles",
     "hermesQuickApply": "Aplicar rápidamente el mismo modelo a todos los roles:",
     "hermesApplyModelToAll": "Aplicar {model} a cada rol",
-    "hermesViaOmniRoute": "{provider} (vía OmniRoute)",
-    "hermesNotOmniRoute": "{provider} (no es OmniRoute)",
+    "hermesViaXenia": "{provider} (vía Xenia)",
+    "hermesNotXenia": "{provider} (no es Xenia)",
     "hermesRemovePendingRole": "Eliminar este rol de los cambios pendientes",
     "hermesApply": "Aplicar al agente Hermes",
     "hermesRolesWillUpdate": "{count, plural, one {# rol será actualizado} other {# roles serán actualizados}}",
@@ -2954,7 +2954,7 @@
     "ccOnboardingTitle": "__MISSING__:settings.json for gateway model discovery",
     "ccOnboardingCopy": "__MISSING__:Copy",
     "ccOnboardingCopied": "__MISSING__:Copied",
-    "ccOnboardingKeyPlaceholder": "__MISSING__:<your OmniRoute API key>",
+    "ccOnboardingKeyPlaceholder": "__MISSING__:<your Xenia API key>",
     "ccOnboardingWindowNote": "__MISSING__:Claude Code assumes a 200K context window for any model id it does not recognize. For a model with a different real window, add CLAUDE_CODE_AUTO_COMPACT_WINDOW just under it so auto-compaction does not fire too early."
   },
   "combos": {
@@ -3042,7 +3042,7 @@
     "concurrencyPerModel": "Concurrencia / Modelo",
     "queueTimeout": "Tiempo de espera de cola (ms)",
     "contextRelayHandoffThreshold": "Umbral de transferencia",
-    "contextRelayHandoffThresholdHelp": "Cuando el uso de la cuota alcanza este umbral, OmniRoute genera un resumen de transferencia estructurado antes de que se agote la cuenta activa.",
+    "contextRelayHandoffThresholdHelp": "Cuando el uso de la cuota alcanza este umbral, Xenia genera un resumen de transferencia estructurado antes de que se agote la cuenta activa.",
     "contextRelayMaxMessages": "Máximo de mensajes para el resumen",
     "contextRelayMaxMessagesHelp": "Limita cuánta historia reciente se condensa en el resumen de transferencia.",
     "contextRelaySummaryModel": "Modelo de resumen",
@@ -3636,7 +3636,7 @@
     "moderationsDesc": "Moderación de contenido y clasificación de seguridad",
     "responsesDesc": "API de respuestas de OpenAI para Codex y workflows agénticos avanzados",
     "listModelsDesc": "Listar todos los modelos disponibles en todos los proveedores conectados",
-    "settingsApiDesc": "Leer y modificar la configuración de OmniRoute a través de la API",
+    "settingsApiDesc": "Leer y modificar la configuración de Xenia a través de la API",
     "settingsApi": "API de ajustes",
     "categoryCore": "APIs principales",
     "categoryMedia": "Medios y Multi-Modal",
@@ -3723,9 +3723,9 @@
     "openMcpDashboard": "Abrir gestión de MCP",
     "openA2aDashboard": "Abrir gestión de A2A",
     "mcpQuickStartTitle": "Inicio rápido de MCP",
-    "mcpQuickStartStep1": "Ejecuta el servidor MCP mediante `omniroute --mcp`.",
+    "mcpQuickStartStep1": "Ejecuta el servidor MCP mediante `xenia --mcp`.",
     "mcpQuickStartStep2": "Configura tu cliente MCP para conectar a través del transporte stdio.",
-    "mcpQuickStartStep3": "Invoca herramientas como `omniroute_get_health` y `omniroute_list_combos`.",
+    "mcpQuickStartStep3": "Invoca herramientas como `xenia_get_health` y `xenia_list_combos`.",
     "a2aQuickStartTitle": "Inicio rápido de A2A",
     "a2aQuickStartStep1": "Descubre la tarjeta de agente en `/.well-known/agent.json`.",
     "a2aQuickStartStep2": "Envía solicitudes JSON-RPC a `POST /a2a` usando `message/send` o `message/stream`.",
@@ -3744,9 +3744,9 @@
     "videoDesc": "Genera vídeos utilizando modelos de IA como ComfyUI y Stable Video Diffusion.",
     "tailscaleRequestFailed": "No se pudo cargar el estado de Tailscale",
     "tailscaleEnableFailed": "No se pudo habilitar Tailscale Funnel",
-    "tailscaleWaitingForLogin": "Completa el inicio de sesión de Tailscale en la pestaña del navegador abierta. OmniRoute lo reintentará automáticamente.",
+    "tailscaleWaitingForLogin": "Completa el inicio de sesión de Tailscale en la pestaña del navegador abierta. Xenia lo reintentará automáticamente.",
     "tailscaleLoginTimedOut": "Se agotó el tiempo de espera para el inicio de sesión de Tailscale",
-    "tailscaleWaitingForFunnel": "Habilita Funnel para este dispositivo en la pestaña del navegador abierta. OmniRoute seguirá comprobando el estado.",
+    "tailscaleWaitingForFunnel": "Habilita Funnel para este dispositivo en la pestaña del navegador abierta. Xenia seguirá comprobando el estado.",
     "tailscaleFunnelTimedOut": "Se agotó el tiempo de espera para habilitar Tailscale Funnel",
     "tailscaleStarted": "Tailscale Funnel habilitado",
     "tailscaleDisableFailed": "No se pudo deshabilitar Tailscale Funnel",
@@ -3770,7 +3770,7 @@
     "tailscaleBinaryPath": "Binario: {path}",
     "tailscaleLastError": "Último error: {error}",
     "tailscaleInstallTitle": "Instalar Tailscale",
-    "tailscaleInstallIntro": "Instala Tailscale en esta máquina y prepara OmniRoute para habilitar Funnel.",
+    "tailscaleInstallIntro": "Instala Tailscale en esta máquina y prepara Xenia para habilitar Funnel.",
     "tailscaleInstallPasswordHint": "En macOS y Linux, es posible que se requiera sudo para la instalación del paquete y el inicio del demonio.",
     "tailscaleSudoPlaceholder": "Contraseña de sudo opcional",
     "tailscaleInstalling": "Instalando",
@@ -3850,7 +3850,7 @@
     "vscodeAliasModelsLabel": "Modelos de VS Code",
     "vscodeAliasChatLabel": "Chat de VS Code",
     "localServer": "Servidor local",
-    "cloudOmniroute": "Cloud OmniRoute",
+    "cloudXenia": "Cloud Xenia",
     "copyUrl": "Copiar URL",
     "badgeLoopbackTooltip": "Este endpoint solo es accesible localmente (solo loopback)",
     "badgeAlwaysProtectedTooltip": "Este endpoint siempre está protegido y requiere autorización",
@@ -3930,7 +3930,7 @@
     "disableLabel": "Desactivar {label}",
     "enableLabel": "Activar {label}",
     "transportMode": "Modo de transporte",
-    "transportStdioDesc": "Local: el IDE genera el proceso a través de omniroute --mcp",
+    "transportStdioDesc": "Local: el IDE genera el proceso a través de xenia --mcp",
     "transportSseDesc": "Remoto: Server-Sent Events sobre HTTP",
     "transportStreamableHttpDesc": "Remoto: HTTP bidireccional moderno",
     "copy": "Copiar",
@@ -4083,7 +4083,7 @@
     "compactOld": "Compactar antiguas",
     "concept": {
       "title": "Memoria conversacional",
-      "description": "OmniRoute aprende de cada conversación, recordando hechos, episodios, procedimientos y conceptos semánticos que hacen que las respuestas sean más precisas y conscientes del contexto.",
+      "description": "Xenia aprende de cada conversación, recordando hechos, episodios, procedimientos y conceptos semánticos que hacen que las respuestas sean más precisas y conscientes del contexto.",
       "howWorksToggle": "Cómo funciona",
       "howWorksContent": "1. Extracción automática: al final de cada respuesta, los hechos y episodios se detectan y guardan automáticamente.\n2. Recuperación: antes de cada respuesta, se buscan las memorias más relevantes mediante FTS5 (exacta), vector (semántica) o RRF híbrido.\n3. Inyección: las memorias relevantes se inyectan en el contexto del asistente para mejorar la calidad de la respuesta.\n4. Gestión: utiliza esta página para ver, editar, exportar y compactar memorias antiguas."
     },
@@ -4192,7 +4192,7 @@
       "enableDesc": "Cuando está activado, Qdrant se utiliza como el vector store principal",
       "banner": "Vector store de Nivel 2: una alternativa externa y escalable al sqlite-vec integrado (Nivel 1). Actívalo solo si tienes un conjunto de memoria muy grande o quieres memoria compartida entre instancias; la mayoría de los usuarios tienen suficiente con sqlite-vec. Cuando está activado, se convierte en el almacén principal y automáticamente recurre a sqlite-vec si no está disponible.",
       "hostHelp": "Docker local: http://localhost:6333 · Qdrant Cloud: URL de tu clúster",
-      "collectionHelp": "Cualquier nombre: OmniRoute lo crea en el primer uso",
+      "collectionHelp": "Cualquier nombre: Xenia lo crea en el primer uso",
       "embeddingModelHelp": "Establece la dimensión del vector automáticamente en el primer uso. Las memorias existentes no se rellenan y cambiar el modelo después de que existan datos requiere una nueva colección.",
       "testConnection": "Probar conexión",
       "testing": "Probando...",
@@ -4340,7 +4340,7 @@
   },
   "health": {
     "title": "Estado del sistema",
-    "description": "Monitoreo en tiempo real de tu instancia de OmniRoute",
+    "description": "Monitoreo en tiempo real de tu instancia de Xenia",
     "healthy": "Saludable",
     "degraded": "Degradado",
     "down": "Inactivo",
@@ -4476,7 +4476,7 @@
   },
   "telemetry": {
     "title": "Telemetría del sistema",
-    "description": "Señales continuas de solicitud, tiempo de ejecución, sesión y memoria de este proceso OmniRoute.",
+    "description": "Señales continuas de solicitud, tiempo de ejecución, sesión y memoria de este proceso Xenia.",
     "uptime": "Tiempo de actividad",
     "totalRequests": "Solicitudes totales",
     "avgLatency": "Latencia media",
@@ -4673,7 +4673,7 @@
     "passwordsMismatch": "Las contraseñas no coinciden",
     "setupComplete": "¡Configuración completa!",
     "goToDashboard": "Ir al panel →",
-    "welcomeDesc": "OmniRoute es tu proxy de API de IA local. Enruta solicitudes a múltiples proveedores de IA con equilibrio de carga, failover y seguimiento de uso.",
+    "welcomeDesc": "Xenia es tu proxy de API de IA local. Enruta solicitudes a múltiples proveedores de IA con equilibrio de carga, failover y seguimiento de uso.",
     "multiProvider": "Multiproveedor",
     "usageTracking": "Seguimiento de uso",
     "securityDesc": "Establece una contraseña para proteger tu panel, o sáltalo por ahora.",
@@ -4687,7 +4687,7 @@
     "noProviderFound": "No se encontró ningún proveedor. Puedes añadir uno desde el panel más tarde.",
     "testFailed": "La prueba falló, pero puedes configurarlo más tarde.",
     "couldNotTest": "No se pudo realizar la prueba en este momento. Puedes probar desde el panel.",
-    "doneDesc": "¡Todo listo! Tu instancia de OmniRoute está configurada y lista para hacer proxy de solicitudes de IA.",
+    "doneDesc": "¡Todo listo! Tu instancia de Xenia está configurada y lista para hacer proxy de solicitudes de IA.",
     "yourEndpoint": "Tu endpoint:",
     "continue": "Continuar",
     "retry": "Reintentar",
@@ -4697,7 +4697,7 @@
     "provider": "Proveedor",
     "apiKeyHelp": "Una clave de API es una contraseña para servicios de IA. Obtén una en el sitio web de tu proveedor (ej. platform.openai.com, console.anthropic.com).",
     "tier": {
-      "subtitle": "OmniRoute organiza los proveedores en tres niveles para que el enrutamiento prefiera primero la ruta más fiable y de menor coste.",
+      "subtitle": "Xenia organiza los proveedores en tres niveles para que el enrutamiento prefiera primero la ruta más fiable y de menor coste.",
       "flowCaption": "Las solicitudes pasan primero por tus cuotas de suscripción, luego por proveedores baratos de pago por token y, finalmente, por proveedores de nivel gratuito: automático y sin configuración.",
       "afterSetup": "después de la configuración.",
       "tier1": {
@@ -4714,7 +4714,7 @@
       },
       "configure": "Configurar proveedores"
     },
-    "tierFlowDiagramAlt": "Diagrama de fallback de 3 niveles de OmniRoute",
+    "tierFlowDiagramAlt": "Diagrama de fallback de 3 niveles de Xenia",
     "apiKeyMgmt": "Gestión de claves de API"
   },
   "providers": {
@@ -4725,7 +4725,7 @@
     "showFreeOnly": "Solo gratuitos",
     "addProvider": "Añadir proveedor",
     "addFirstProvider": "Añade tu primer proveedor",
-    "addFirstProviderDesc": "Conecta un proveedor de IA para empezar a enrutar solicitudes a través de OmniRoute. Puedes usar proveedores gratuitos, claves de API o cuentas OAuth.",
+    "addFirstProviderDesc": "Conecta un proveedor de IA para empezar a enrutar solicitudes a través de Xenia. Puedes usar proveedores gratuitos, claves de API o cuentas OAuth.",
     "learnMore": "Más información",
     "importFromFile": "Importar desde archivo",
     "importFromFileTitle": "Importar proveedores desde archivo",
@@ -4748,7 +4748,7 @@
     "adaptaTutorial": {
       "title": "Cómo conectar Adapta Web",
       "introPrefix": "Adapta se autentica a través de Clerk. El token",
-      "introSuffix": "es un JWT de larga duración que permite a OmniRoute refrescar las sesiones automáticamente.",
+      "introSuffix": "es un JWT de larga duración que permite a Xenia refrescar las sesiones automáticamente.",
       "or": "o",
       "step1Title": "Abrir chat de Adapta",
       "step1DescPrefix": "Abre",
@@ -4767,7 +4767,7 @@
       "step5Title": "Pégalo aquí y guarda",
       "step5DescPrefix": "Haz clic en",
       "step5DescMiddle": "pega el valor",
-      "step5DescSuffix": "en el campo de clave de API y guarda. OmniRoute refrescará la sesión automáticamente.",
+      "step5DescSuffix": "en el campo de clave de API y guarda. Xenia refrescará la sesión automáticamente.",
       "tipLabel": "Consejo:",
       "tipPrefix": "La cookie",
       "tipSuffix": "es de larga duración, normalmente meses. Solo necesitas renovarla si cierras sesión o Adapta invalida la sesión."
@@ -5137,7 +5137,7 @@
     "compatDoNotPreserveDeveloper": "No conservar el rol developer",
     "compatBadgeNoPreserve": "Sin conservar",
     "compatProtocolLabel": "Protocolo de solicitud del cliente",
-    "compatProtocolHint": "Estas opciones se aplican cuando OmniRoute detecta la estructura de esta solicitud (OpenAI Chat, Responses API o Anthropic Messages).",
+    "compatProtocolHint": "Estas opciones se aplican cuando Xenia detecta la estructura de esta solicitud (OpenAI Chat, Responses API o Anthropic Messages).",
     "compatProtocolOpenAI": "OpenAI Chat Completions",
     "compatProtocolOpenAIResponses": "OpenAI Responses API",
     "compatProtocolClaude": "Anthropic Messages",
@@ -5172,15 +5172,15 @@
     "paramFiltersResetSuccess": "Configuración del filtro de parámetros restablecida a los valores predeterminados",
     "paramFiltersResetError": "No se pudo restablecer la configuración del filtro de parámetros: {error}",
     "interceptionSectionTitle": "Intercepción de herramientas web",
-    "interceptionSectionHint": "Enruta las llamadas a las herramientas nativas web_search / web_fetch de este proveedor a través de los endpoints de búsqueda y obtención propios de OmniRoute, en lugar de dejar que el proveedor las ejecute de forma nativa. Desactivado por defecto; el comportamiento existente no cambia.",
+    "interceptionSectionHint": "Enruta las llamadas a las herramientas nativas web_search / web_fetch de este proveedor a través de los endpoints de búsqueda y obtención propios de Xenia, en lugar de dejar que el proveedor las ejecute de forma nativa. Desactivado por defecto; el comportamiento existente no cambia.",
     "interceptSearchLabel": "Interceptar web_search",
-    "interceptSearchHint": "Reescribir las llamadas a la herramienta nativa web_search a /v1/search de OmniRoute.",
+    "interceptSearchHint": "Reescribir las llamadas a la herramienta nativa web_search a /v1/search de Xenia.",
     "interceptFetchLabel": "Interceptar web_fetch",
-    "interceptFetchHint": "Reescribir las llamadas a la herramienta nativa web_fetch a /v1/web/fetch de OmniRoute.",
+    "interceptFetchHint": "Reescribir las llamadas a la herramienta nativa web_fetch a /v1/web/fetch de Xenia.",
     "interceptionLoadError": "No se pudieron cargar los ajustes de intercepción: {error}",
     "interceptionSaveError": "No se pudieron guardar los ajustes de intercepción: {error}",
     "compatUpstreamHeadersLabel": "Cabeceras upstream adicionales",
-    "compatUpstreamHeadersHint": "Ajuste de privilegios elevados: mismo nivel de confianza que editar las credenciales de la API del proveedor; solo deben usarlo administradores de confianza. Se fusiona después de que OmniRoute añada la autenticación de la clave de API del proveedor. Si una cabecera personalizada usa el mismo nombre que una existente (p. ej., Authorization), tu valor reemplaza completamente la cabecera autogenerada (incluido el token Bearer); el upstream solo ve lo que escribiste, no la clave de los ajustes. Una configuración incorrecta puede causar errores 401 o romper la autenticación upstream. Una fila por cabecera (p. ej., Authentication adicional para algunas pasarelas). Pasa el ratón o enfoca el valor para previsualizar. Se guarda al perder el foco, hacer clic fuera o cerrar este panel.",
+    "compatUpstreamHeadersHint": "Ajuste de privilegios elevados: mismo nivel de confianza que editar las credenciales de la API del proveedor; solo deben usarlo administradores de confianza. Se fusiona después de que Xenia añada la autenticación de la clave de API del proveedor. Si una cabecera personalizada usa el mismo nombre que una existente (p. ej., Authorization), tu valor reemplaza completamente la cabecera autogenerada (incluido el token Bearer); el upstream solo ve lo que escribiste, no la clave de los ajustes. Una configuración incorrecta puede causar errores 401 o romper la autenticación upstream. Una fila por cabecera (p. ej., Authentication adicional para algunas pasarelas). Pasa el ratón o enfoca el valor para previsualizar. Se guarda al perder el foco, hacer clic fuera o cerrar este panel.",
     "compatUpstreamHeaderName": "Nombre de la cabecera",
     "compatUpstreamHeaderValue": "Valor",
     "compatUpstreamAddRow": "Añadir cabecera",
@@ -5342,7 +5342,7 @@
     "codexImportTabUpload": "Subir archivo",
     "codexImportTabPaste": "Pegar JSON",
     "codexImportFileLabel": "Elegir auth.json",
-    "codexImportFileHint": "Selecciona el archivo auth.json exportado desde Codex o desde OmniRoute.",
+    "codexImportFileHint": "Selecciona el archivo auth.json exportado desde Codex o desde Xenia.",
     "codexImportPasteLabel": "Pegar el contenido JSON",
     "codexImportEmailLabel": "Correo electrónico de la cuenta",
     "codexImportEmailHint": "Detectado automáticamente desde el archivo; edita si es necesario.",
@@ -5413,7 +5413,7 @@
     "t3ChatWebCookieHint": "Abre t3.chat → DevTools → Aplicación → Almacenamiento local → https://t3.chat, copia 'convex-session-id'. Luego abre DevTools → Red, copia el encabezado completo de la cookie de cualquier solicitud de chat. Pegue ambos valores en los campos siguientes.",
     "t3ChatWebCookiePlaceholder": "convex-session-id=abc123...",
     "grokWebCookieHint": "Abre x.com (Grok), abre DevTools → Application → Cookies y copia las cookies de sesión requeridas.",
-    "blockClaudeExtraUsageDescription": "Cuando está activado, OmniRoute marca esta conexión de Claude como no disponible tan pronto como la API de uso informe de uso adicional en cola, para que el fallback cambie a otra conexión en lugar de continuar con la facturación adicional de pago por uso.",
+    "blockClaudeExtraUsageDescription": "Cuando está activado, Xenia marca esta conexión de Claude como no disponible tan pronto como la API de uso informe de uso adicional en cola, para que el fallback cambie a otra conexión en lugar de continuar con la facturación adicional de pago por uso.",
     "blockClaudeExtraUsageLabel": "Bloquear el uso adicional de Claude",
     "disableCoolingDescription": "Omite el enfriamiento transitorio para que esta conexión siga estando disponible incluso después de errores recuperables (los estados terminales como bloqueado/caducado siguen aplicándose).",
     "disableCoolingLabel": "Desactivar el enfriamiento para esta conexión",
@@ -5436,7 +5436,7 @@
     "ccCompatibleNamePlaceholder": "Relé CC de producción",
     "ccCompatiblePrefixHint": "Se utiliza en alias de modelos como prefijo/id-de-modelo.",
     "ccCompatiblePrefixPlaceholder": "cc",
-    "ccCompatibleValidationHint": "Usa este proveedor solo para relés que den servicio exclusivamente a clientes de Claude Code. OmniRoute reescribe cualquier solicitud entrante al formato de cable compatible con Claude Code para que dichos relés la acepten. Si solo quieres usar la CLI de Claude Code o no estás seguro de qué significa este tipo de relé, utiliza un proveedor compatible con Anthropic normal en su lugar.",
+    "ccCompatibleValidationHint": "Usa este proveedor solo para relés que den servicio exclusivamente a clientes de Claude Code. Xenia reescribe cualquier solicitud entrante al formato de cable compatible con Claude Code para que dichos relés la acepten. Si solo quieres usar la CLI de Claude Code o no estás seguro de qué significa este tipo de relé, utiliza un proveedor compatible con Anthropic normal en su lugar.",
     "claudeExtraUsageShort": "Uso adicional",
     "claudeExtraUsageToggleTitle": "Bloquear el recuento de uso adicional de Claude para esta conexión",
     "codex5hToggleTitle": "Rastrear la cuota de 5 horas de Codex para esta conexión",
@@ -5483,7 +5483,7 @@
     "googlePseInfo": "Configuración de Google Programmable Search Engine (PSE).",
     "antigravityProjectIdHint": "Anulación opcional para solicitudes de Antigravity Cloud Code. Déjelo en blanco para utilizar el proyecto descubierto durante Google OAuth.",
     "antigravityClientProfileLabel": "Perfil de cliente",
-    "antigravityClientProfileHint": "Elige qué identidad de cliente de Antigravity presenta OmniRoute a la API.",
+    "antigravityClientProfileHint": "Elige qué identidad de cliente de Antigravity presenta Xenia a la API.",
     "antigravityClientProfileIde": "IDE",
     "antigravityClientProfileCli": "CLI",
     "codexFastTierActiveChip": "El nivel rápido de Codex está activo",
@@ -5512,7 +5512,7 @@
     "tierOverrideFree": "Gratuito",
     "tierOverrideCheap": "Económico",
     "tierOverridePremium": "Prémium",
-    "tierOverrideHelpText": "Asigna este proveedor a un nivel de enrutamiento fijo en lugar de dejar que OmniRoute lo infiera a partir de los precios del modelo.",
+    "tierOverrideHelpText": "Asigna este proveedor a un nivel de enrutamiento fijo en lugar de dejar que Xenia lo infiera a partir de los precios del modelo.",
     "museSparkWebCookieHint": "Introduce la cookie de sesión para Muse Spark.",
     "museSparkWebCookiePlaceholder": "session=...",
     "oauth": "OAuth",
@@ -5603,7 +5603,7 @@
     "zedNoCredentials": "No se han encontrado credenciales de Zed en el llavero",
     "zedUnsupportedCredentials": "Se han encontrado {count} credencial(es) en el llavero, pero ninguna coincide con los proveedores compatibles",
     "zedManualTitle": "Importación manual de token",
-    "zedManualDescription": "Usa esta opción cuando OmniRoute se ejecute en Docker o el llavero no esté disponible. Pega la clave de API que Zed guardó en <path>~/.config/zed/settings.json</path> o cópiala desde el panel de ajustes de Zed AI.",
+    "zedManualDescription": "Usa esta opción cuando Xenia se ejecute en Docker o el llavero no esté disponible. Pega la clave de API que Zed guardó en <path>~/.config/zed/settings.json</path> o cópiala desde el panel de ajustes de Zed AI.",
     "zedPasteApiKey": "Pega la clave de API…",
     "zedSaving": "Guardando…",
     "zedImportAction": "Importar",
@@ -5653,9 +5653,9 @@
     "webFetchTooltip": "Proveedores que extraen contenido de URLs web (HTML → Markdown, extracción, captura de pantalla)",
     "webFetchProvidersHeading": "Proveedores de Web Fetch",
     "compatibleProvidersDesc": "Endpoints compatibles con OpenAI y Anthropic que alojas o configuras. Dirige cualquier SDK de OpenAI a tu propia URL y enruta las solicitudes aquí.",
-    "oauthProvidersDesc": "Proveedores autenticados mediante OAuth: inicia sesión una vez y OmniRoute gestionará la rotación de tokens automáticamente.",
+    "oauthProvidersDesc": "Proveedores autenticados mediante OAuth: inicia sesión una vez y Xenia gestionará la rotación de tokens automáticamente.",
     "webCookieProvidersDesc": "Estos proveedores utilizan sesiones web del navegador, cookies o tokens web en lugar de claves API. Abre un proveedor para añadir la credencial de sesión requerida.",
-    "apiKeyProvidersDesc": "Proveedores estándar de clave de API. Añade tu clave una vez y OmniRoute se encargará del enrutamiento, los reintentos y la limitación de velocidad en tu nombre.",
+    "apiKeyProvidersDesc": "Proveedores estándar de clave de API. Añade tu clave una vez y Xenia se encargará del enrutamiento, los reintentos y la limitación de velocidad en tu nombre.",
     "noAuthProvidersDesc": "Endpoints abiertos que no requieren credenciales; listos para usar de inmediato sin ningún registro.",
     "upstreamProxyProvidersDesc": "Enruta el tráfico saliente a través de un proxy ascendente antes de que llegue al proveedor. Útil para redes corporativas o inspección de tráfico.",
     "webFetchProvidersDesc": "Proveedores que obtienen y extraen contenido de URLs web. Úsalos para fundamentar prompts con datos web en directo.",
@@ -5732,7 +5732,7 @@
     "onboardingModelsPath": "Ruta de modelos",
     "onboardingCreateSaveTest": "Crear, guardar y probar",
     "onboardingConnectProvider": "Conectar {provider}",
-    "onboardingOAuthFlowDescription": "OmniRoute abrirá el flujo OAuth existente para este proveedor. Tras iniciar sesión, el asistente recargará la conexión guardada y ejecutará la misma prueba de conexión que en la página del proveedor.",
+    "onboardingOAuthFlowDescription": "Xenia abrirá el flujo OAuth existente para este proveedor. Tras iniciar sesión, el asistente recargará la conexión guardada y ejecutará la misma prueba de conexión que en la página del proveedor.",
     "onboardingStartOAuthFlow": "Iniciar flujo OAuth",
     "onboardingProviderDescriptions": {
       "360ai": "Obtén tu clave de API en ai.360.cn",
@@ -5745,10 +5745,10 @@
       "bailian-coding-plan": "Conecta Alibaba Coding Plan con una clave de API.",
       "bedrock": "Integración nativa con Bedrock: la detección de modelos utiliza modelos base y perfiles de inferencia de Bedrock, mientras que el chat utiliza las APIs regionales Bedrock Runtime Converse/ConverseStream.",
       "anthropic": "Conecta Anthropic con una clave de API.",
-      "ant-ling": "Regístrate y crea una clave de API en la consola de Ant Ling API (https://chat.ant-ling.com/open) y pégala aquí. OmniRoute enruta el tráfico de chat a https://api.ant-ling.com/v1/chat/completions; el proveedor es compatible con OpenAI y también expone una interfaz compatible con Anthropic.",
+      "ant-ling": "Regístrate y crea una clave de API en la consola de Ant Ling API (https://chat.ant-ling.com/open) y pégala aquí. Xenia enruta el tráfico de chat a https://api.ant-ling.com/v1/chat/completions; el proveedor es compatible con OpenAI y también expone una interfaz compatible con Anthropic.",
       "api-airforce": "Obtén tu clave de API en https://panel.api.airforce; endpoint compatible con OpenAI en https://api.airforce/v1",
       "arcee-ai": "Obtén tu clave de API en arcee.ai",
-      "azure-ai": "Foundry utiliza la interfaz OpenAI v1 con nombres de despliegue como modelos. OmniRoute normaliza las URLs de recursos raíz a los endpoints v1 chat y /models.",
+      "azure-ai": "Foundry utiliza la interfaz OpenAI v1 con nombres de despliegue como modelos. Xenia normaliza las URLs de recursos raíz a los endpoints v1 chat y /models.",
       "azure-openai": "Utiliza tu clave de API de Azure OpenAI. La URL base debe ser el endpoint de tu recurso, por ejemplo: https://my-resource.openai.azure.com.",
       "bai": "Clave de API Bearer para la pasarela LLM de b.ai compatible con OpenAI (distinta de TheB.AI). Crea una clave en https://docs.b.ai y utiliza https://api.b.ai/v1 como URL base compatible con OpenAI.",
       "baichuan": "Obtén tu clave de API en platform.baichuan-ai.com",
@@ -5766,7 +5766,7 @@
       "chutes": "Clave de API Bearer para la pasarela de Chutes compatible con OpenAI.",
       "clarifai": "Clarifai expone chat, respuestas y /models compatibles con OpenAI en /v2/ext/openai/v1. Los modelos públicos/comunitarios suelen requerir un PAT; las claves con ámbito de aplicación solo funcionan para recursos dentro de esa aplicación.",
       "cloudflare-ai": "Requiere API Token Y Account ID (disponibles en dash.cloudflare.com).",
-      "clova-studio": "CLOVA Studio (HyperCLOVA X) es compatible con OpenAI en /v1/openai. OmniRoute sondea /v1/openai/models y enruta el tráfico de chat a /v1/openai/chat/completions. Utiliza el host actual clovastudio.stream.ntruss.com; el endpoint heredado clovastudio.apigw.ntruss.com está siendo retirado.",
+      "clova-studio": "CLOVA Studio (HyperCLOVA X) es compatible con OpenAI en /v1/openai. Xenia sondea /v1/openai/models y enruta el tráfico de chat a /v1/openai/chat/completions. Utiliza el host actual clovastudio.stream.ntruss.com; el endpoint heredado clovastudio.apigw.ntruss.com está siendo retirado.",
       "codestral": "Conecta Codestral con una clave de API.",
       "cohere": "Prueba gratuita: 1000 llamadas a la API al mes para pruebas, no se requiere tarjeta de crédito.",
       "command-code": "Crea o copia una clave de API de Command Code y pégala aquí como token Bearer.",
@@ -5779,7 +5779,7 @@
       "dgrid": "Crea una clave de API de DGrid en https://dgrid.ai y utiliza https://api.dgrid.ai/v1 como URL base compatible con OpenAI.",
       "dify": "Obtén la clave de API de tu instancia de Dify.",
       "digitalocean": "Conecta DigitalOcean con una clave de API.",
-      "dit": "dit.ai (Distributed Intelligence Trade) es un router/pasarela compatible con OpenAI con precios dinámicos por solicitud, que expone /v1/chat/completions en https://api.dit.ai/v1. OmniRoute utiliza el protocolo OpenAI; los análisis de gasto/ahorro se encuentran en el panel de dit.ai.",
+      "dit": "dit.ai (Distributed Intelligence Trade) es un router/pasarela compatible con OpenAI con precios dinámicos por solicitud, que expone /v1/chat/completions en https://api.dit.ai/v1. Xenia utiliza el protocolo OpenAI; los análisis de gasto/ahorro se encuentran en el panel de dit.ai.",
       "doubao": "Obtén tu clave de API en console.volcengine.com",
       "empower": "Empower expone chat compatible con OpenAI en https://app.empower.dev/api/v1 con soporte para llamadas a herramientas en empower-functions.",
       "factory": "Obtén tu clave de API de Factory en https://app.factory.ai/settings/api-keys y pégala como token Bearer. Endpoint compatible con OpenAI en https://api.factory.ai/v1.",
@@ -5816,7 +5816,7 @@
       "internlm": "Cuota mensual gratuita de ~1M de tokens de entrada / 3M de salida (~10 RPM).",
       "jina-ai": "Clave de API Bearer para la API de rerank de Jina AI.",
       "jina-reader": "Conecta Jina Reader con una clave de API.",
-      "kenari": "Kenari expone un endpoint de chat completions compatible con OpenAI en https://kenari.id/v1/chat/completions, además de un catálogo /v1/models en vivo que cubre Claude, GPT, DeepSeek, GLM, Kimi y más. OmniRoute utiliza el protocolo OpenAI y lista los modelos mediante passthrough.",
+      "kenari": "Kenari expone un endpoint de chat completions compatible con OpenAI en https://kenari.id/v1/chat/completions, además de un catálogo /v1/models en vivo que cubre Claude, GPT, DeepSeek, GLM, Kimi y más. Xenia utiliza el protocolo OpenAI y lista los modelos mediante passthrough.",
       "kie": "Conecta KIE.AI con una clave de API.",
       "kilo-gateway": "Conecta Kilo Gateway con una clave de API.",
       "kimi": "Conecta Kimi con una clave de API.",
@@ -5833,23 +5833,23 @@
       "minimax-cn": "Conecta Minimax (China) con una clave de API.",
       "minimax": "Conecta Minimax Coding con una clave de API.",
       "mistral": "Nivel de experimento gratuito: acceso limitado por tasa a todos los modelos, no se requiere tarjeta de crédito.",
-      "modal": "Modal suele servir aplicaciones compatibles con OpenAI alojadas por el usuario en /v1. OmniRoute sondeará /v1/models y enrutará el tráfico de chat a /v1/chat/completions.",
+      "modal": "Modal suele servir aplicaciones compatibles con OpenAI alojadas por el usuario en /v1. Xenia sondeará /v1/models y enrutará el tráfico de chat a /v1/chat/completions.",
       "modelscope": "Nivel gratuito mediante ModelScope API-Inference (se requiere cuenta de Alibaba).",
       "monsterapi": "Obtén una clave de API en monsterapi.ai",
       "moonshot": "Conecta Kimi con una clave de API.",
       "morph": "Nivel gratuito: 250 mil créditos al mes, 0 $",
       "nanogpt": "Conecta NanoGPT con una clave de API.",
       "nebius": "Créditos de prueba de ~1 $ al registrarse para realizar pruebas de API",
-      "nlpcloud": "NLP Cloud utiliza una API de chatbot propietaria en lugar de chat/completions de OpenAI. OmniRoute adapta los mensajes de OpenAI a entrada/contexto/historial y expone un catálogo local de modelos de chatbot compatibles.",
+      "nlpcloud": "NLP Cloud utiliza una API de chatbot propietaria en lugar de chat/completions de OpenAI. Xenia adapta los mensajes de OpenAI a entrada/contexto/historial y expone un catálogo local de modelos de chatbot compatibles.",
       "nomic": "Obtén una clave de API en atlas.nomic.ai",
       "nous-research": "Nous expone una interfaz /v1 compatible con OpenAI con un amplio catálogo remoto de /models. El endpoint /chat/completions requiere una clave de API válida para la inferencia programática.",
       "novita": "Créditos de prueba de 0,50 $ al registrarse (válidos durante aproximadamente 1 año)",
       "nscale": "Créditos gratuitos de 5 $ al registrarse para pruebas de inferencia",
       "nube": "Conecta Nube.sh con una clave de API.",
       "nvidia": "Acceso gratuito para desarrolladores: ~40 RPM, más de 70 modelos (Kimi K2.5, GLM 4.7, DeepSeek V3.2...)",
-      "oci": "OCI expone endpoints de chat y respuestas compatibles con OpenAI. El ID de proyecto es opcional en OmniRoute, pero puede ser necesario para las respuestas y los workflows agénticos.",
+      "oci": "OCI expone endpoints de chat y respuestas compatibles con OpenAI. El ID de proyecto es opcional en Xenia, pero puede ser necesario para las respuestas y los workflows agénticos.",
       "ollama-cloud": "Conecta Ollama Cloud con una clave de API.",
-      "openadapter": "OpenAdapter expone un endpoint de completados de chat compatible con OpenAI en https://api.openadapter.in/v1/chat/completions, que agrupa más de 70 modelos de código abierto (DeepSeek, Qwen, Kimi, MiniMax, GLM, Llama, Mistral, …). OmniRoute utiliza el protocolo de OpenAI.",
+      "openadapter": "OpenAdapter expone un endpoint de completados de chat compatible con OpenAI en https://api.openadapter.in/v1/chat/completions, que agrupa más de 70 modelos de código abierto (DeepSeek, Qwen, Kimi, MiniMax, GLM, Llama, Mistral, …). Xenia utiliza el protocolo de OpenAI.",
       "openai": "Conecta OpenAI con una clave de API.",
       "opencode-go": "Conecta OpenCode Go con una clave de API.",
       "opencode-zen": "Conecta OpenCode Zen con una clave de API.",
@@ -5867,12 +5867,12 @@
       "puter": "Obtén el token en puter.com/dashboard → Copy Auth Token",
       "qiniu": "Crea una clave de API de inferencia de IA de Qiniu en https://portal.qiniu.com/ai-inference/api-key y, a continuación, pégala aquí como token Bearer. Endpoint compatible con OpenAI en https://api.qnaigc.com/v1, haciendo proxy de DeepSeek, Claude, Kimi y más con una sola clave.",
       "recraft": "Conecta Recraft con una clave de API.",
-      "reka": "Reka Chat es compatible con OpenAI en /v1. OmniRoute explora /v1/models y enruta el tráfico de chat a /v1/chat/completions.",
+      "reka": "Reka Chat es compatible con OpenAI en /v1. Xenia explora /v1/models y enruta el tráfico de chat a /v1/chat/completions.",
       "requesty": "Crea una clave de API en https://app.requesty.ai y, a continuación, pégala aquí como token Bearer. Endpoint compatible con OpenAI en https://router.requesty.ai/v1, con un catálogo de /v1/models en directo.",
-      "runwayml": "La generación de vídeo de Runway se basa en tareas. OmniRoute envía trabajos de texto a vídeo o imagen a vídeo, sondea /v1/tasks/[id] y normaliza los resultados de vídeo finalizados para devolverlos en la respuesta /v1/videos/generations similar a la de OpenAI.",
+      "runwayml": "La generación de vídeo de Runway se basa en tareas. Xenia envía trabajos de texto a vídeo o imagen a vídeo, sondea /v1/tasks/[id] y normaliza los resultados de vídeo finalizados para devolverlos en la respuesta /v1/videos/generations similar a la de OpenAI.",
       "sambanova": "Créditos gratuitos de 5 $ al registrarse (validez de 30 días), no se requiere tarjeta de crédito",
       "sap": "El descubrimiento de modelos utiliza /v2/lm/scenarios/foundation-models/models en AI_API_URL. Las solicitudes de chat utilizan deploymentUrl/chat/completions y requieren AI-Resource-Group.",
-      "sarvam": "Sarvam AI es compatible con OpenAI en /v1. OmniRoute explora /v1/models y enruta el tráfico de chat a /v1/chat/completions. Los modelos están optimizados para idiomas índicos.",
+      "sarvam": "Sarvam AI es compatible con OpenAI en /v1. Xenia explora /v1/models y enruta el tráfico de chat a /v1/chat/completions. Los modelos están optimizados para idiomas índicos.",
       "scaleway": "1 millón de tokens gratuitos para cuentas nuevas (cumplimiento de la normativa europea de protección de datos en París), Qwen3 235B y Llama 70B",
       "sensenova": "Obtén una clave de API en platform.sensenova.cn",
       "siliconflow": "Créditos gratuitos de 1 $ y modelos gratuitos de forma permanente tras la verificación de identidad",
@@ -5880,14 +5880,14 @@
       "sparkdesk": "Obtén una clave de API en console.xfyun.cn",
       "stability-ai": "Conecta Stability AI con una clave de API.",
       "stepfun": "Obtén una clave de API en platform.stepfun.com",
-      "sumopod": "SumoPod expone un endpoint de completados de chat compatible con OpenAI en https://ai.sumopod.com/v1/chat/completions, además de un catálogo de /v1/models en directo. OmniRoute utiliza el protocolo de OpenAI y enumera los modelos mediante transferencia directa (passthrough).",
+      "sumopod": "SumoPod expone un endpoint de completados de chat compatible con OpenAI en https://ai.sumopod.com/v1/chat/completions, además de un catálogo de /v1/models en directo. Xenia utiliza el protocolo de OpenAI y enumera los modelos mediante transferencia directa (passthrough).",
       "suno": "Pega la cookie de sesión de suno.ai (autenticación de Clerk)",
       "synthetic": "Conecta Synthetic con una clave de API.",
       "tencent": "Obtén una clave de API en console.cloud.tencent.com",
       "thebai": "Clave de API Bearer para la pasarela compatible con OpenAI de TheB.AI.",
       "tinyfish": "X-API-Key de agent.tinyfish.ai/api-keys",
       "together": "Conecta Together AI con una clave de API.",
-      "tokenrouter": "TokenRouter expone un endpoint de completados de chat compatible con OpenAI en https://api.tokenrouter.com/v1/chat/completions, además de un catálogo de /v1/models operativo. OmniRoute utiliza el protocolo de OpenAI.",
+      "tokenrouter": "TokenRouter expone un endpoint de completados de chat compatible con OpenAI en https://api.tokenrouter.com/v1/chat/completions, además de un catálogo de /v1/models operativo. Xenia utiliza el protocolo de OpenAI.",
       "topaz": "Conecta Topaz con una clave de API.",
       "typhoon": "Typhoon es compatible con OpenAI en /v1. Desarrollado por SCB 10X (Tailandia); typhoon-v2.5-30b-a3b-instruct es un modelo multilingüe diseñado inicialmente para el tailandés.",
       "udio": "Pega la cookie de sesión de udio.com (autenticación de Supabase)",
@@ -5903,12 +5903,12 @@
       "wafer": "Clave de API de https://wafer.ai",
       "wandb": "Conecta Weights & Biases Inference con una clave de API.",
       "writer": "Writer Palmyra es compatible con OpenAI en https://api.writer.com/v1. palmyra-x5 ofrece una ventana de contexto de 1 millón de tokens.",
-      "x5lab": "X5Lab expone un endpoint de completados de chat compatible con OpenAI en https://api.x5lab.dev/v1/chat/completions, además de un catálogo de /v1/models en directo. OmniRoute utiliza el protocolo de OpenAI y enumera los modelos mediante transferencia directa (passthrough).",
+      "x5lab": "X5Lab expone un endpoint de completados de chat compatible con OpenAI en https://api.x5lab.dev/v1/chat/completions, además de un catálogo de /v1/models en directo. Xenia utiliza el protocolo de OpenAI y enumera los modelos mediante transferencia directa (passthrough).",
       "xai": "Conecta xAI (Grok) con una clave de API.",
       "xiaomi-mimo": "Conecta Xiaomi MiMo con una clave de API.",
       "yi": "Obtén una clave de API en platform.lingyiwanwu.com",
       "zai": "Clave de API de https://open.bigmodel.cn/usercenter/apikeys",
-      "zenmux": "ZenMux expone un endpoint de completados de chat compatible con OpenAI en /api/v1/chat/completions, además de superficies de protocolo de Anthropic Messages (/api/anthropic/v1/messages) y Google Gemini (/api/vertex-ai). OmniRoute utiliza el protocolo de OpenAI.",
+      "zenmux": "ZenMux expone un endpoint de completados de chat compatible con OpenAI en /api/v1/chat/completions, además de superficies de protocolo de Anthropic Messages (/api/anthropic/v1/messages) y Google Gemini (/api/vertex-ai). Xenia utiliza el protocolo de OpenAI.",
       "galadriel": "Conecta Galadriel con una clave de API.",
       "predibase": "Créditos de prueba gratuita de 25 $ (validez de 30 días)",
       "chenzk": "Pasarela compatible con OpenAI con un catálogo de modelos en directo en chenzk.top.",
@@ -5928,7 +5928,7 @@
       "cline": "Conecta Cline con el flujo de OAuth existente.",
       "cursor": "Conecta Cursor IDE con el flujo de OAuth existente.",
       "github": "Conecta GitHub Copilot con el flujo de OAuth existente.",
-      "gitlab-duo": "Aplicación OAuth con los ámbitos ai_features + read_user. Configura GITLAB_DUO_OAUTH_CLIENT_ID y, opcionalmente, GITLAB_DUO_OAUTH_CLIENT_SECRET en esta instancia de OmniRoute.",
+      "gitlab-duo": "Aplicación OAuth con los ámbitos ai_features + read_user. Configura GITLAB_DUO_OAUTH_CLIENT_ID y, opcionalmente, GITLAB_DUO_OAUTH_CLIENT_SECRET en esta instancia de Xenia.",
       "kilocode": "Conecta Kilo Code con el flujo de OAuth existente.",
       "kimi-coding": "Conecta Kimi Coding con el flujo de OAuth existente.",
       "kiro": "Nivel gratuito: 50 créditos/mes (~25K-100K tokens). ⚠️ Los términos de servicio de Kiro prohíben el uso de proxies/arneses de terceros.",
@@ -5979,10 +5979,10 @@
     "bulkAddFormatHintCloudflare": "Una clave por línea. Formato: name|accountId|apiKey (ID de cuenta de Cloudflare + clave de API).",
     "lmarenaWebCookieHint": "Abra arena.ai, inicie sesión y copie el encabezado Cookie completo de una solicitud de red. Incluya arena-auth-prod-v1.0 y arena-auth-prod-v1.1 (y fragmentos adicionales si los hay), preferiblemente con cf_clearance. No pegue solo la cookie vacía arena-auth-prod-v1. Opcional: providerSpecificData.recaptchaV3Token si create-evaluation sigue devolviendo 403.",
     "kimiOfficialSupporterBadge": "Colaborador fundador",
-    "kimiOfficialSupporterTooltip": "Kimi (Moonshot AI) es un Open Source Friend fundador de OmniRoute",
+    "kimiOfficialSupporterTooltip": "Kimi (Moonshot AI) es un Open Source Friend fundador de Xenia",
     "cheaperInferenceSupporterBadge": "Amigo del código abierto",
-    "cheaperInferenceSupporterTooltip": "Cheaper Inference apoya a OmniRoute como amigo del código abierto",
-    "kimiPartnerLinkNote": "Enlace de socio: apoya a OmniRoute sin coste adicional para usted",
+    "cheaperInferenceSupporterTooltip": "Cheaper Inference apoya a Xenia como amigo del código abierto",
+    "kimiPartnerLinkNote": "Enlace de socio: apoya a Xenia sin coste adicional para usted",
     "ccAliasSectionTitle": "__MISSING__:Expose in Claude Code (claude/…)",
     "ccAliasSectionHint": "__MISSING__:Advertise this provider's models under claude/&lt;provider&gt;/&lt;model&gt; mirror ids so Claude Code's gateway model discovery can list them. Off by default — enabling this doubles catalog entries for all clients.",
     "ccAliasProviderLevelLabel": "__MISSING__:Provider default",
@@ -6025,7 +6025,7 @@
     "routingOpDropBlockContainsDesc": "Elimina bloques de sistema COMPLETOS (no solo párrafos) cuyo texto contenga cualquiera de las subcadenas listadas. Úselo cuando un bloque entero contenga huellas digitales y desee eliminarlo; por ejemplo, una descripción de servidor MCP inyectada.",
     "routingOpPrependSystemBlockDesc": "Inserta un nuevo bloque de texto al PRINCIPIO de la matriz del sistema. Úselo para añadir la identidad del SDK 'You are a Claude agent, built on Anthropic's Claude Agent SDK.' que espera el clasificador de Anthropic.",
     "routingOpAppendSystemBlockDesc": "Inserta un nuevo bloque de texto al FINAL de la matriz del sistema. Úselo para adiciones cosméticas que no necesitan estar en la posición [0].",
-    "routingOpInjectBillingHeaderDesc": "Antepone el bloque de texto especial 'x-anthropic-billing-header: cc_version=...; cc_entrypoint=...; cch=...;' que valida el clasificador de Anthropic. Requerido para endpoints de retransmisión de puente CC; para el proveedor nativo de Claude, OmniRoute ya inyecta su propia línea de facturación, por lo que esta operación suele ser redundante allí.",
+    "routingOpInjectBillingHeaderDesc": "Antepone el bloque de texto especial 'x-anthropic-billing-header: cc_version=...; cc_entrypoint=...; cch=...;' que valida el clasificador de Anthropic. Requerido para endpoints de retransmisión de puente CC; para el proveedor nativo de Claude, Xenia ya inyecta su propia línea de facturación, por lo que esta operación suele ser redundante allí.",
     "routingOpObfuscateWordsDesc": "Inserta un carácter Zero-Width-Joiner después de la primera letra de cada palabra listada, de modo que 'opencode' se convierte en 'o‍pencode'. Se lee igual para los humanos pero evita las coincidencias de palabras del clasificador. Afecta a bloques de sistema, mensajes de usuario/asistente y descripciones de herramientas.",
     "routingNeedlesHint": "Lista de subcadenas. Un párrafo coincide si contiene CUALQUIERA de ellas. Añada una por línea mediante 'Añadir entrada'.",
     "routingPrefixesHint": "Lista de cadenas. Un párrafo coincide si empieza por cualquiera de ellas (el espacio en blanco inicial se recorta antes de comparar).",
@@ -6038,7 +6038,7 @@
     "routingBlockTextHint": "Texto completo del nuevo bloque de sistema. Use una cadena literal; el bloque de sistema solo almacena texto.",
     "routingIdempotencyKeyHint": "Opcional. Si se establece, la operación se omite cuando ya existe un bloque cuyo texto comienza con esta clave. Evita el doble antepuesto en reintentos.",
     "routingBillingEntrypointHint": "Valor inyectado como 'cc_entrypoint='. Anthropic acepta 'sdk-cli' (Agent SDK), 'cli' (Claude Code CLI) u otros valores documentados.",
-    "routingBillingVersionFormatHint": "Cómo se calcula el hash de compilación de 3 caracteres después de cc_version=. 'ex-machina' = sha256 de CCH_SALT+caracteres-del-primer-mensaje-de-usuario+versión (por mensaje). 'omniroute-daystamp' = sha256 de AAAA-MM-DD+versión (estable por día).",
+    "routingBillingVersionFormatHint": "Cómo se calcula el hash de compilación de 3 caracteres después de cc_version=. 'ex-machina' = sha256 de CCH_SALT+caracteres-del-primer-mensaje-de-usuario+versión (por mensaje). 'xenia-daystamp' = sha256 de AAAA-MM-DD+versión (estable por día).",
     "routingBillingCchAlgoHint": "Cómo se calcula el token cch= de 5 caracteres. 'sha256-first-user' = sha256 del texto del primer mensaje del usuario. 'xxhash64-body' = la firma a nivel de cuerpo lo rellena más tarde. 'static-zero' = marcador de posición literal '00000'.",
     "routingObfuscateWordsHint": "Palabras en minúsculas a ofuscar. La inserción de ZWJ se aplica sin distinguir entre mayúsculas y minúsculas, por lo que 'opencode' también coincide con 'OpenCode' y 'OPENCODE'.",
     "routingObfuscateTargetsHint": "Qué regiones del cuerpo escanear en busca de las palabras: bloques de sistema, mensajes de usuario/asistente y/o descripciones de herramientas.",
@@ -6115,8 +6115,8 @@
     "memoryTitle": "Memoria",
     "memoryDesc": "Memoria conversacional persistente entre sesiones",
     "memoryEnabled": "Habilitar memoria",
-    "memoryEnabledDesc": "Cuando está habilitado, OmniRoute inyectará contexto pasado relevante.",
-    "memoryTokenCostWarning": "Atención: con la memoria habilitada, OmniRoute inyecta hasta {tokens} tokens de contexto recuperado en cada solicitud de chat; esto aumenta el uso de tokens y el coste. Para omitir la inyección en una solicitud específica, envíe el encabezado \"x-omniroute-no-memory: true\".",
+    "memoryEnabledDesc": "Cuando está habilitado, Xenia inyectará contexto pasado relevante.",
+    "memoryTokenCostWarning": "Atención: con la memoria habilitada, Xenia inyecta hasta {tokens} tokens de contexto recuperado en cada solicitud de chat; esto aumenta el uso de tokens y el coste. Para omitir la inyección en una solicitud específica, envíe el encabezado \"x-xenia-no-memory: true\".",
     "maxTokens": "Máximo de tokens",
     "retentionDays": "Retención",
     "recent": "Reciente",
@@ -6300,7 +6300,7 @@
     "invalidFaviconFileType": "Tipo de archivo no válido. Sube un archivo PNG, ICO, SVG, GIF o WebP.",
     "failedToReadFile": "No se pudo leer el archivo",
     "startOnLogin": "Iniciar al iniciar sesión",
-    "startOnLoginDesc": "Iniciar automáticamente OmniRoute al arrancar el sistema y ejecutarlo en segundo plano en la bandeja del sistema.",
+    "startOnLoginDesc": "Iniciar automáticamente Xenia al arrancar el sistema y ejecutarlo en segundo plano en la bandeja del sistema.",
     "flushCache": "Vaciar caché",
     "flushing": "Vaciando…",
     "size": "Tamaño",
@@ -6338,7 +6338,7 @@
     "healthcheckProxyUrl": "URL del proxy",
     "healthcheckLatency": "Latencia",
     "proxyDocumentationScopeTitle": "Resolución del ámbito del proxy",
-    "proxyDocumentationScopeDescBefore": "OmniRoute resuelve el proxy de salida en orden de prioridad:",
+    "proxyDocumentationScopeDescBefore": "Xenia resuelve el proxy de salida en orden de prioridad:",
     "proxyDocumentationScopeOrder": "combo → cuenta → proveedor → global",
     "proxyDocumentationScopeDescAfter": ". Gana el ámbito más específico.",
     "proxyDocumentationAddTitle": "Añadir un proxy personalizado",
@@ -6980,7 +6980,7 @@
     "qdrantEmbeddingModel": "Modelo de embedding",
     "qdrantHelpTitle": "Ayuda de configuración rápida",
     "qdrantHelpQuickTitle": "Configuración rápida (Qdrant + OpenRouter)",
-    "qdrantHelpStep1": "1. Host: IP/URL de Qdrant, Puerto: 6333, Colección: omniroute_memory.",
+    "qdrantHelpStep1": "1. Host: IP/URL de Qdrant, Puerto: 6333, Colección: xenia_memory.",
     "qdrantHelpStep2": "2. Si usas nvidia/llama-nemotron-embed-vl-1b-v2:free, usa una dimensión de colección de 2048.",
     "qdrantHelpStep3": "3. Campo de modelo: openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free.",
     "qdrantHelpStep4": "4. Guarda, prueba la conexión y luego prueba la búsqueda.",
@@ -7073,9 +7073,9 @@
     "oneproxySuccess": "Éxito",
     "oneproxyFailed": "Fallido",
     "routingAntigravitySignatureTitle": "Modo de caché de firma Antigravity",
-    "routingAntigravitySignatureDesc": "Controla si OmniRoute reutiliza solo las firmas de razonamiento de Gemini almacenadas o acepta firmas validadas proporcionadas por el cliente en flujos de llamadas a herramientas compatibles con Antigravity.",
+    "routingAntigravitySignatureDesc": "Controla si Xenia reutiliza solo las firmas de razonamiento de Gemini almacenadas o acepta firmas validadas proporcionadas por el cliente en flujos de llamadas a herramientas compatibles con Antigravity.",
     "routingAntigravitySignatureEnabledLabel": "Activado",
-    "routingAntigravitySignatureEnabledDesc": "Comportamiento actual. Ignora las firmas proporcionadas por el cliente y sigue usando el flujo de OmniRoute almacenado.",
+    "routingAntigravitySignatureEnabledDesc": "Comportamiento actual. Ignora las firmas proporcionadas por el cliente y sigue usando el flujo de Xenia almacenado.",
     "routingAntigravitySignatureBypassLabel": "Bypass",
     "routingAntigravitySignatureBypassDesc": "Acepta firmas proporcionadas por el cliente tras una validación ligera y recurre a la firma almacenada si no es válida.",
     "routingAntigravitySignatureBypassStrictLabel": "Bypass estricto",
@@ -7084,12 +7084,12 @@
     "routingServerRejectedSave": "⚠ El servidor rechazó guardar:",
     "routingAddTransformOp": "Agregar una operación de transformación",
     "routingClientCacheControlTitle": "Control de caché del cliente",
-    "routingClientCacheControlDesc": "Configura si OmniRoute preserva los marcadores cache_control proporcionados por el cliente.",
-    "routingClientCacheControlAutoDesc": "Para flujos deterministas compatibles con Claude, preserva el cache_control proporcionado por el cliente tal cual. Si la solicitud no tiene cache_control, OmniRoute no inyecta ningún marcador propio para mantener la compatibilidad con proxies de terceros compatibles con CC.",
+    "routingClientCacheControlDesc": "Configura si Xenia preserva los marcadores cache_control proporcionados por el cliente.",
+    "routingClientCacheControlAutoDesc": "Para flujos deterministas compatibles con Claude, preserva el cache_control proporcionado por el cliente tal cual. Si la solicitud no tiene cache_control, Xenia no inyecta ningún marcador propio para mantener la compatibilidad con proxies de terceros compatibles con CC.",
     "routingClientCacheControlAlwaysLabel": "Preservar siempre",
     "routingClientCacheControlAlwaysDesc": "Reenvía siempre los encabezados cache_control proporcionados por el cliente a los proveedores ascendentes tal cual.",
     "routingClientCacheControlNeverLabel": "No preservar nunca",
-    "routingClientCacheControlNeverDesc": "Elimina siempre los encabezados cache_control del cliente y permite que OmniRoute gestione el almacenamiento en caché donde los flujos nativos del proveedor lo admitan.",
+    "routingClientCacheControlNeverDesc": "Elimina siempre los encabezados cache_control del cliente y permite que Xenia gestione el almacenamiento en caché donde los flujos nativos del proveedor lo admitan.",
     "routingZeroConfigTitle": "Enrutamiento automático sin configuración",
     "routingZeroConfigDesc": "Habilita la selección automática de proveedores usando el prefijo auto/. Cuando está activado, las solicitudes a auto, auto/coding, auto/fast, etc., se enrutarán dinámicamente entre todos los proveedores conectados.",
     "routingDefaultAutoVariant": "Variante automática predeterminada",
@@ -7099,7 +7099,7 @@
     "visionBridgeEnabledDesc": "Activa el puente de pre-llamada que reemplaza las partes de imagen con texto extraído.",
     "visionBridgeModel": "Modelo de puente",
     "visionBridgeModelPlaceholder": "openai/gpt-4o-mini",
-    "visionBridgeModelHint": "Se puede usar cualquier ID de modelo de OmniRoute que admita visión.",
+    "visionBridgeModelHint": "Se puede usar cualquier ID de modelo de Xenia que admita visión.",
     "visionBridgePrompt": "Prompt del puente",
     "visionBridgePromptPlaceholder": "Describe esta imagen de manera concisa.",
     "visionBridgePromptHint": "Se envía al modelo de visión antes de que la descripción extraída se inyecte de nuevo en la solicitud original.",
@@ -7217,7 +7217,7 @@
     "redisLauncherRunning": "En ejecución",
     "redisLauncherReachable": "Accesible",
     "redisLauncherError": "Error: {message}",
-    "redisLauncherHint": "Equivalente a ejecutar `omniroute redis up`. El contenedor se llama `omniroute-redis` y escucha en 127.0.0.1:6379.",
+    "redisLauncherHint": "Equivalente a ejecutar `xenia redis up`. El contenedor se llama `xenia-redis` y escucha en 127.0.0.1:6379.",
     "compressionSettingsAutoTriggerMode": "Modo de disparo automático",
     "compressionSettingsMcpDescriptionCompression": "Compresión de descripción MCP",
     "mcpAccessibilityTitle": "Salida de accesibilidad MCP",
@@ -7327,7 +7327,7 @@
     "cliproxyapiStatus": "Estado de CLIProxyAPI",
     "cliproxyapiNotDetected": "No detectado",
     "cliproxyapiImportAuthTitle": "Importar cuentas de CLIProxyAPI",
-    "cliproxyapiImportAuthDesc": "Importa las cuentas OAuth que CLIProxyAPI ya tiene guardadas en ~/.cli-proxy-api/ como conexiones de OmniRoute para que no tengas que iniciar sesión en cada una de nuevo. Se importarán los tipos de cuenta compatibles (Gemini, Codex, Claude, Antigravity, Qwen, Kimi); el resto se omitirán.",
+    "cliproxyapiImportAuthDesc": "Importa las cuentas OAuth que CLIProxyAPI ya tiene guardadas en ~/.cli-proxy-api/ como conexiones de Xenia para que no tengas que iniciar sesión en cada una de nuevo. Se importarán los tipos de cuenta compatibles (Gemini, Codex, Claude, Antigravity, Qwen, Kimi); el resto se omitirán.",
     "cliproxyapiImportAuthButton": "Importar cuentas",
     "payloadRulesTitle": "Reglas de payload",
     "payloadRulesDesc": "Configura las mutaciones del payload de la solicitud por modelo y protocolo. Los cambios se guardan en los ajustes y se recargan en caliente en el tiempo de ejecución inmediatamente después de guardar.",
@@ -7371,7 +7371,7 @@
     "modelCooldownsReasonRemaining": "motivo: {reason} • restante: {remaining}",
     "modelCooldownsReactivate": "Reactivar",
     "responsesStateTitle": "Estado de las respuestas",
-    "responsesStateDesc": "Controla cómo reenvía OmniRoute previous_response_id.",
+    "responsesStateDesc": "Controla cómo reenvía Xenia previous_response_id.",
     "responsesStateModeLabel": "Gestión de previous_response_id",
     "responsesStateModeAuto": "Automático",
     "responsesStateModeStrip": "Eliminar",
@@ -7380,7 +7380,7 @@
     "responsesStateSaveError": "Error al actualizar el ajuste de estado de respuestas",
     "codexFastTierTitle": "Codex Fast Tier",
     "codexFastTierDesc": "Inyecta globalmente service_tier=priority para las solicitudes de OpenAI Codex.",
-    "codexFastTierHint": "Cuando está habilitado, OmniRoute añade service_tier=priority a las solicitudes salientes de Codex para las conexiones que aún no especifican un tier. El tier priority requiere una clave de API de OpenAI Enterprise o la ruta de Codex con autenticación de ChatGPT; otros tipos de claves recibirán un error relacionado con el tier por parte de OpenAI. Los ajustes por conexión en la página del proveedor Codex tienen prioridad.",
+    "codexFastTierHint": "Cuando está habilitado, Xenia añade service_tier=priority a las solicitudes salientes de Codex para las conexiones que aún no especifican un tier. El tier priority requiere una clave de API de OpenAI Enterprise o la ruta de Codex con autenticación de ChatGPT; otros tipos de claves recibirán un error relacionado con el tier por parte de OpenAI. Los ajustes por conexión en la página del proveedor Codex tienen prioridad.",
     "codexFastTierSaveError": "Error al actualizar el ajuste de Codex Fast Tier",
     "codexAutoPingTitle": "Autoping de cuota de Codex",
     "codexAutoPingDesc": "Opcional por conexión: envía una solicitud diminuta justo después de que se reinicie la ventana de sesión de Codex para que no esté fría cuando la necesites.",
@@ -7396,7 +7396,7 @@
     "codexFastTierModelCheckbox": "Habilitar Fast Tier para {model}",
     "claudeFastModeTitle": "Claude Fast Mode",
     "claudeFastModeDesc": "Activa el Fast Mode de Anthropic (speed:\"fast\") en las solicitudes de Claude seleccionadas.",
-    "claudeFastModeHint": "Anthropic no admite oficialmente Fast Mode para clientes de tipo SDK. Cuando está habilitado, OmniRoute reenvía una cabecera X-CPA-Force-Fast-Mode para que una compilación emparejada de CLIProxyAPI pueda suplantar el punto de entrada. Solo los modelos Opus enumerados están limitados por la comprobación del lado del cliente de Anthropic. El nivel de suscripción, el plan Max y el saldo de créditos de Fast Mode se siguen aplicando en el servidor; Anthropic puede devolver out_of_credits incluso con el interruptor activado.",
+    "claudeFastModeHint": "Anthropic no admite oficialmente Fast Mode para clientes de tipo SDK. Cuando está habilitado, Xenia reenvía una cabecera X-CPA-Force-Fast-Mode para que una compilación emparejada de CLIProxyAPI pueda suplantar el punto de entrada. Solo los modelos Opus enumerados están limitados por la comprobación del lado del cliente de Anthropic. El nivel de suscripción, el plan Max y el saldo de créditos de Fast Mode se siguen aplicando en el servidor; Anthropic puede devolver out_of_credits incluso con el interruptor activado.",
     "claudeFastModeModelsLabel": "Aplicado a los modelos ({count})",
     "claudeFastModeModelCheckbox": "Habilitar Fast Mode para {model}",
     "claudeFastModeSaveError": "Error al actualizar el ajuste de Claude Fast Mode",
@@ -7492,7 +7492,7 @@
     "resilienceWaitForCooldownEffect": "Espera en el servidor y reintenta cuando expira el primer tiempo de reutilización",
     "resilienceWaitForCooldownDesc": "Esto solo afecta a la solicitud actual. No almacena el estado de la conexión ni del proveedor.",
     "resilienceEnableServerWait": "Habilitar espera del lado del servidor",
-    "resilienceEnableServerWaitDesc": "Cuando está habilitado, OmniRoute espera a que expire el primer tiempo de reutilización y reintenta automáticamente.",
+    "resilienceEnableServerWaitDesc": "Cuando está habilitado, Xenia espera a que expire el primer tiempo de reutilización y reintenta automáticamente.",
     "resilienceMaxAttempts": "Intentos máximos",
     "resilienceMaxWaitPerAttempt": "Espera máxima por intento",
     "resilienceComboCooldownWaitTitle": "Espera de tiempo de reutilización combinado de cuota compartida",
@@ -7527,7 +7527,7 @@
     "vercelRelaySuccess": "Vercel Relay desplegado correctamente",
     "vercelRelayButton": "Desplegar Vercel Relay",
     "vercelRelayModalTitle": "Desplegar Vercel Relay",
-    "vercelRelayWarning": "Advertencia: Se requiere un token de despliegue de Vercel. Este token solo se utilizará para crear el relay serverless y nunca será almacenado por OmniRoute.",
+    "vercelRelayWarning": "Advertencia: Se requiere un token de despliegue de Vercel. Este token solo se utilizará para crear el relay serverless y nunca será almacenado por Xenia.",
     "vercelRelayTokenLabel": "Token de acceso de Vercel",
     "vercelRelayProjectNameLabel": "Nombre del proyecto de Vercel",
     "vercelRelayFreeTierNote": "Los relays son endpoints proxy ligeros desplegados en el nivel gratuito de Vercel para evitar limitaciones de red/región local.",
@@ -7536,7 +7536,7 @@
     "deployRelayButton": "Desplegar Relay",
     "denoRelayButton": "Desplegar Deno Relay",
     "denoRelayModalTitle": "Desplegar Deno Relay",
-    "denoRelayWarning": "Advertencia: Se requiere un token de organización de Deno Deploy. Este token solo se utilizará para crear la aplicación relay y nunca será almacenado por OmniRoute.",
+    "denoRelayWarning": "Advertencia: Se requiere un token de organización de Deno Deploy. Este token solo se utilizará para crear la aplicación relay y nunca será almacenado por Xenia.",
     "denoRelayTokenLabel": "Token de organización de Deno Deploy",
     "denoRelayOrgDomainLabel": "Dominio de la organización",
     "denoRelayProjectNameLabel": "Nombre de la aplicación Deno",
@@ -8001,7 +8001,7 @@
     "port": "puerto {port}",
     "externalBadge": "Gestionado externamente",
     "externalTitle": "9Router externo detectado",
-    "externalDescription": "OmniRoute encontró 9Router en {host}:{port}. Su ciclo de vida, logs, actualizaciones y clave de servicio siguen siendo gestionados por la instalación externa.",
+    "externalDescription": "Xenia encontró 9Router en {host}:{port}. Su ciclo de vida, logs, actualizaciones y clave de servicio siguen siendo gestionados por la instalación externa.",
     "start": "Iniciar",
     "starting": "Iniciando…",
     "stop": "Detener",
@@ -8013,9 +8013,9 @@
     "install": "Instalar",
     "installing": "Instalando…",
     "autoStart": "Inicio automático",
-    "autoStartDescription": "Iniciar {name} automáticamente al arrancar OmniRoute",
+    "autoStartDescription": "Iniciar {name} automáticamente al arrancar Xenia",
     "apiKey": "Clave de API",
-    "apiKeyDescription": "Clave utilizada por OmniRoute para autenticarse con {name}",
+    "apiKeyDescription": "Clave utilizada por Xenia para autenticarse con {name}",
     "keyRotated": "Clave rotada: {name} reiniciado para aplicar la nueva clave",
     "keyRotateFailed": "Error al rotar la clave",
     "keyRevealFailed": "Error al revelar la clave",
@@ -8034,7 +8034,7 @@
     "version": "Versión",
     "versionHint": "Introduce “latest” o una versión específica (por ejemplo, 1.2.3).",
     "servicePort": "Puerto",
-    "servicePortHint": "OmniRoute y 9Router deben usar puertos diferentes. El puerto predeterminado de 9Router es 20130.",
+    "servicePortHint": "Xenia y 9Router deben usar puertos diferentes. El puerto predeterminado de 9Router es 20130.",
     "installationFailed": "Error en la instalación (HTTP {status})",
     "installationSucceeded": "9Router instalado correctamente. Iniciando…",
     "networkInstallFailed": "Error de red: no se pudo contactar con el endpoint de instalación",
@@ -8052,7 +8052,7 @@
     "providerExposure": "Exposición del proveedor",
     "providerExposureDescription": "Exponer modelos de 9Router como destino de enrutamiento bajo el prefijo <prefix>9router/</prefix>.",
     "providerExposureLabel": "Exponer como <prefix>9router/…</prefix>",
-    "providerExposureHint": "Cuando está activado, los modelos descubiertos aparecen en los selectores de proveedores en todo OmniRoute.",
+    "providerExposureHint": "Cuando está activado, los modelos descubiertos aparecen en los selectores de proveedores en todo Xenia.",
     "providerExposureUpdateFailed": "Error al actualizar (HTTP {status})",
     "providerExposureNetworkFailed": "Error de red: no se pudo actualizar el ajuste de exposición del proveedor",
     "webUi": "Interfaz web de 9Router",
@@ -8073,7 +8073,7 @@
     "saved": "Guardado",
     "saveFailed": "Error al guardar el ajuste",
     "modelMapping": "Mapeo de modelos",
-    "modelMappingDescription": "Mapear IDs de modelos de OmniRoute a IDs de modelos de CLIProxyAPI (por ejemplo, <example>\"gpt-4o\": \"openai-gpt-4o\"</example>)",
+    "modelMappingDescription": "Mapear IDs de modelos de Xenia a IDs de modelos de CLIProxyAPI (por ejemplo, <example>\"gpt-4o\": \"openai-gpt-4o\"</example>)",
     "modelMappingEditor": "Editor JSON de mapeo de modelos",
     "mappingSaved": "Mapeo guardado",
     "mappingSaveFailed": "Error al guardar el mapeo",
@@ -8133,7 +8133,7 @@
   },
   "translator": {
     "title": "Traductor",
-    "metaTitle": "Playground del traductor | OmniRoute",
+    "metaTitle": "Playground del traductor | Xenia",
     "metaDescription": "Depura, prueba y visualiza las traducciones de formatos de API entre proveedores",
     "playgroundTitle": "Playground del traductor",
     "playground": "Playground",
@@ -8141,11 +8141,11 @@
     "chatTester": "Probador de chat",
     "testBench": "Banco de pruebas",
     "liveMonitor": "Monitor en directo",
-    "modeDescriptionPlayground": "Pega cualquier cuerpo de solicitud de API y observa cómo OmniRoute lo traduce entre los formatos de los proveedores (OpenAI ↔ Claude ↔ Gemini ↔ Responses API)",
-    "modeDescriptionChatTester": "Envía solicitudes de chat reales a través de OmniRoute e inspecciona todo el recorrido: entrada, solicitud traducida, respuesta del proveedor y salida traducida.",
+    "modeDescriptionPlayground": "Pega cualquier cuerpo de solicitud de API y observa cómo Xenia lo traduce entre los formatos de los proveedores (OpenAI ↔ Claude ↔ Gemini ↔ Responses API)",
+    "modeDescriptionChatTester": "Envía solicitudes de chat reales a través de Xenia e inspecciona todo el recorrido: entrada, solicitud traducida, respuesta del proveedor y salida traducida.",
     "modeDescriptionTestBench": "Ejecuta escenarios predefinidos y compara la compatibilidad entre proveedores y modelos.",
-    "modeDescriptionLiveMonitor": "Observa los eventos de traducción en tiempo real a medida que las solicitudes fluyen a través de OmniRoute.",
-    "modeDescriptionFallback": "Depura, prueba y visualiza cómo OmniRoute traduce las solicitudes de API entre proveedores.",
+    "modeDescriptionLiveMonitor": "Observa los eventos de traducción en tiempo real a medida que las solicitudes fluyen a través de Xenia.",
+    "modeDescriptionFallback": "Depura, prueba y visualiza cómo Xenia traduce las solicitudes de API entre proveedores.",
     "recentTranslations": "Traducciones recientes",
     "noTranslations": "Aún no hay traducciones",
     "source": "Origen",
@@ -8162,7 +8162,7 @@
     "notAvailableSymbol": "—",
     "liveAutoRefreshing": "En directo — Actualización automática",
     "paused": "En pausa",
-    "eventsAppearHint": "Los eventos de traducción aparecen aquí a medida que las solicitudes fluyen a través de OmniRoute. Utiliza cualquiera de estos métodos para generar eventos:",
+    "eventsAppearHint": "Los eventos de traducción aparecen aquí a medida que las solicitudes fluyen a través de Xenia. Utiliza cualquiera de estos métodos para generar eventos:",
     "chatTesterTab": "Pestaña de probador de chat",
     "testBenchTab": "Pestaña de banco de pruebas",
     "externalApiCalls": "Llamadas a API externas",
@@ -8171,12 +8171,12 @@
     "ok": "OK",
     "errorShort": "ERR",
     "formatConverter": "Conversor de formatos",
-    "formatConverterDescription": "Pega o escribe un cuerpo de solicitud JSON. El traductor detectará automáticamente el formato de origen y lo convertirá al formato de destino. Utiliza esto para depurar cómo OmniRoute traduce las solicitudes entre formatos (OpenAI ↔ Claude ↔ Gemini ↔ Responses API).",
+    "formatConverterDescription": "Pega o escribe un cuerpo de solicitud JSON. El traductor detectará automáticamente el formato de origen y lo convertirá al formato de destino. Utiliza esto para depurar cómo Xenia traduce las solicitudes entre formatos (OpenAI ↔ Claude ↔ Gemini ↔ Responses API).",
     "translationPathHubSpoke": "{source} → OpenAI (intermedio) → {target}",
     "translationPathDirect": "{source} → {target} (traductor directo)",
     "translationPathPassthrough": "Mismo formato: no se necesita traducción",
     "openaiIntermediatePanel": "OpenAI intermedio",
-    "autoFeaturesTitle": "Lo que OmniRoute hace automáticamente",
+    "autoFeaturesTitle": "Lo que Xenia hace automáticamente",
     "autoFeaturesCount": "8 características",
     "featureReasoningCache": "Caché de razonamiento",
     "featureReasoningCacheDesc": "Reinyecta reasoning_content en caché para modelos con modo de pensamiento (DeepSeek V4, Kimi K2, Qwen) cuando los clientes lo omiten del historial de conversación.",
@@ -8311,7 +8311,7 @@
     "clientRequest": "Solicitud de cliente",
     "clientRequestDescription": "El cuerpo de la solicitud tal como lo enviaría su cliente",
     "formatDetected": "Formato detectado",
-    "formatDetectedDescription": "OmniRoute detecta automáticamente el formato de la API a partir de la estructura de la solicitud",
+    "formatDetectedDescription": "Xenia detecta automáticamente el formato de la API a partir de la estructura de la solicitud",
     "openaiIntermediate": "Intermedio OpenAI",
     "openaiIntermediateDescription": "Todos los formatos se normalizan primero al formato de OpenAI (el puente universal)",
     "providerFormat": "Formato del proveedor",
@@ -8329,12 +8329,12 @@
     "eventSourcesLabel": "Fuentes de eventos:",
     "eventSourceTranslatorPage": "• Página de traductor (Chat Tester, Test Bench)",
     "eventSourceMainPipeline": "• Canalización de solicitudes principal (tráfico CLI/IDE/API)",
-    "liveMonitorDescriptionPrefix": "Muestra los eventos de traducción a medida que las llamadas a la API fluyen a través de OmniRoute. Los eventos provienen del búfer en memoria (se restablece al reiniciar). Use",
+    "liveMonitorDescriptionPrefix": "Muestra los eventos de traducción a medida que las llamadas a la API fluyen a través de Xenia. Los eventos provienen del búfer en memoria (se restablece al reiniciar). Use",
     "liveMonitorDescriptionSuffix": ", o llamadas a la API externas para generar eventos.",
     "streamTransformer": "Transformador de stream",
     "modeDescriptionStreamTransformer": "Ejecute streams SSE de finalización de chat a través del transformador de respuestas.",
     "streamTransformerTitle": "Transformador de stream de respuestas",
-    "streamTransformerDescription": "Pegue un stream SSE de finalización de chat, ejecútelo a través del transformador de respuestas de OmniRoute e inspeccione los eventos response.* emitidos antes de conectar un cliente.",
+    "streamTransformerDescription": "Pegue un stream SSE de finalización de chat, ejecútelo a través del transformador de respuestas de Xenia e inspeccione los eventos response.* emitidos antes de conectar un cliente.",
     "loadTextSample": "Cargar muestra de texto",
     "loadToolSample": "Cargar muestra de llamada a herramienta",
     "transformToResponses": "Transformar en respuestas",
@@ -8377,7 +8377,7 @@
     "simpleAppUsesLabel": "Mi aplicación usa",
     "simpleAppUsesHint": "El formato de API que usa su aplicación (p. ej., SDK de Anthropic = claude).",
     "simpleSendToLabel": "Enviar a",
-    "simpleSendToHint": "Dónde enviar realmente la solicitud (un proveedor conectado en OmniRoute).",
+    "simpleSendToHint": "Dónde enviar realmente la solicitud (un proveedor conectado en Xenia).",
     "simpleStartWithLabel": "Empezar con",
     "simpleStartWithExamplePlaceholder": "Seleccione un ejemplo predefinido",
     "simpleStartWithCustomOption": "Pegue su solicitud (avanzado)",
@@ -8486,7 +8486,7 @@
     "define": "Definir",
     "defineStepDescription": "Cree casos de prueba con prompts de entrada y criterios de salida esperados utilizando estrategias como contiene, regex o coincidencia exacta.",
     "run": "Ejecutar",
-    "runStepDescription": "Ejecuta casos de prueba en tus endpoints de LLM a través de OmniRoute. Cada caso se envía como una solicitud de API real.",
+    "runStepDescription": "Ejecuta casos de prueba en tus endpoints de LLM a través de Xenia. Cada caso se envía como una solicitud de API real.",
     "evaluate": "Evaluar",
     "evaluateStepDescription": "Se comparan las respuestas con los criterios esperados. Consulta el resultado (superado/no superado) de cada caso con métricas de latencia y comentarios detallados.",
     "evalsStrategyContainsLabel": "Contiene",
@@ -8547,14 +8547,14 @@
     "noResultsYet": "Aún no hay resultados",
     "testCasesCount": "Casos de prueba ({count})",
     "noTestCasesDefined": "No hay casos de prueba definidos",
-    "runEvalHint": "Haz clic en \"Ejecutar evaluación\" para ejecutar todos los casos en tu endpoint de LLM. Cada prueba envía una solicitud real a través de OmniRoute.",
+    "runEvalHint": "Haz clic en \"Ejecutar evaluación\" para ejecutar todos los casos en tu endpoint de LLM. Cada prueba envía una solicitud real a través de Xenia.",
     "notifyNoTestCases": "No hay casos de prueba definidos para esta suite",
     "notifyAllCasesPassed": "Los {total} casos se han superado ✅",
     "notifySomeCasesFailed": "{passed}/{total} superados, {failed} no superados",
     "notifyEvalRunFailed": "La ejecución de la evaluación ha fallado",
     "notifyEvalTitle": "Evaluación: {name}",
     "modelEvals": "Evaluaciones de modelos",
-    "evalsHeroDescription": "Prueba y valida tus endpoints de LLM ejecutando suites de evaluación predefinidas. Cada suite contiene casos de prueba que envían prompt reales a través de OmniRoute y comparan las respuestas con los criterios esperados, lo que te ayuda a detectar regresiones, comparar modelos y garantizar la calidad de las respuestas entre proveedores.",
+    "evalsHeroDescription": "Prueba y valida tus endpoints de LLM ejecutando suites de evaluación predefinidas. Cada suite contiene casos de prueba que envían prompt reales a través de Xenia y comparan las respuestas con los criterios esperados, lo que te ayuda a detectar regresiones, comparar modelos y garantizar la calidad de las respuestas entre proveedores.",
     "qualityValidation": "Validación de calidad",
     "modelComparison": "Comparación de modelos",
     "regressionDetection": "Detección de regresiones",
@@ -8936,7 +8936,7 @@
     "loading": "Cargando...",
     "invalidPassword": "Contraseña no válida",
     "errorOccurredRetry": "Se ha producido un error. Inténtalo de nuevo.",
-    "configureInstance": "Vamos a configurar tu instancia de OmniRoute",
+    "configureInstance": "Vamos a configurar tu instancia de Xenia",
     "runOnboardingWizard": "Ejecuta el asistente de configuración inicial para establecer tu contraseña y conectar tu primer proveedor de IA.",
     "startOnboarding": "Iniciar configuración",
     "secureYourInstance": "Protege tu instancia",
@@ -8956,14 +8956,14 @@
     "featureUsageTrackingDesc": "Monitorea costes y tokens",
     "resetPassword": "Restablecer contraseña",
     "resetDescription": "Elige un método para recuperar el acceso a tu panel",
-    "stopServer": "Detener el servidor OmniRoute",
+    "stopServer": "Detener el servidor Xenia",
     "processing": "Procesando...",
     "pleaseWait": "Espera mientras completamos la autorización.",
     "authSuccess": "¡Autorización correcta!",
     "copyUrl": "Copiar esta URL",
     "accessDenied": "Acceso denegado",
     "methodCliTitle": "Método 1: Restablecimiento por CLI",
-    "methodCliDescription": "Ejecuta el siguiente comando en el servidor donde se está ejecutando OmniRoute:",
+    "methodCliDescription": "Ejecuta el siguiente comando en el servidor donde se está ejecutando Xenia:",
     "methodCliHint": "Esto te pedirá que establezcas una nueva contraseña. El servidor debe estar detenido previamente.",
     "methodManualTitle": "Método 2: Restablecimiento manual",
     "methodManualDescription": "Elimina la contraseña de la base de datos y establece una nueva al iniciar:",
@@ -8986,12 +8986,12 @@
     "waitingForQoderAuthorization": "Esperando autorización de Qoder...",
     "exchangingCodeForTokens": "Intercambiando código por tokens...",
     "nodeIncompatibleTitle": "Versión de Node.js incompatible",
-    "nodeIncompatibleDesc": "Estás ejecutando Node.js {version}, que queda fuera de la política de entornos de ejecución seguros compatibles con OmniRoute. Utiliza una versión LTS parcheada de Node.js 20.x o 22.x.",
+    "nodeIncompatibleDesc": "Estás ejecutando Node.js {version}, que queda fuera de la política de entornos de ejecución seguros compatibles con Xenia. Utiliza una versión LTS parcheada de Node.js 20.x o 22.x.",
     "nodeIncompatibleFixLabel": "Solución: instala una versión LTS parcheada de Node.js 22",
-    "nodeIncompatibleHint": "OmniRoute requiere Node.js 22.22.2+ (22.x LTS) o 24.0.0+ (24.x LTS). Se recomienda Node 24 LTS."
+    "nodeIncompatibleHint": "Xenia requiere Node.js 22.22.2+ (22.x LTS) o 24.0.0+ (24.x LTS). Se recomienda Node 24 LTS."
   },
   "landing": {
-    "brandName": "OmniRoute",
+    "brandName": "Xenia",
     "navigateHome": "Ir al inicio",
     "toggleMenu": "Alternar menú",
     "featuresLink": "Características",
@@ -9011,6 +9011,8 @@
     "featureEasySetupDesc": "Pútsalo en marcha en cuestión de minutos con el comando npx.",
     "featureModelFallbackTitle": "Fallback de modelos",
     "featureModelFallbackDesc": "Cambia de proveedor automáticamente en caso de fallo o alta latencia.",
+    "featureAutoFailoverTitle": "Automatic Account Switching",
+    "featureAutoFailoverDesc": "Rotates to your next connected account the instant one hits a rate limit or quota.",
     "featureUsageTrackingTitle": "Seguimiento de uso",
     "featureUsageTrackingDesc": "Analíticas detalladas y supervisión de costes en todos los modelos.",
     "featureOAuthApiKeysTitle": "OAuth y claves de API",
@@ -9021,17 +9023,17 @@
     "featureCliSupportDesc": "Funciona con Claude Code, Codex, Cline, Cursor y más.",
     "featureDashboardTitle": "Panel",
     "featureDashboardDesc": "Panel visual para el análisis de tráfico en tiempo real.",
-    "howItWorks": "Cómo funciona OmniRoute",
+    "howItWorks": "Cómo funciona Xenia",
     "howItWorksDescription": "Los datos fluyen sin interrupciones desde tu aplicación, a través de nuestra capa de enrutamiento inteligente, hasta el mejor proveedor para la tarea.",
     "howItWorksStep1Title": "1. CLI y SDKs",
     "howItWorksStep1Description": "Tus solicitudes se originan en tus herramientas favoritas o en nuestro SDK unificado. Solo tienes que cambiar la URL base.",
-    "howItWorksStep2Title": "2. Hub de OmniRoute",
+    "howItWorksStep2Title": "2. Hub de Xenia",
     "howItWorksStep2Description": "Nuestro motor analiza el prompt, comprueba el estado del proveedor y enruta hacia la menor latencia o coste.",
     "howItWorksStep3Title": "3. Proveedores de IA",
     "howItWorksStep3Description": "OpenAI, Anthropic, Gemini u otros atienden la solicitud al instante.",
     "getStartedIn30Seconds": "Empieza en 30 segundos",
-    "getStartedDescription": "Instala OmniRoute, configura tus proveedores mediante el panel web y empieza a enrutar solicitudes de IA.",
-    "installOmniRoute": "Instalar OmniRoute",
+    "getStartedDescription": "Instala Xenia, configura tus proveedores mediante el panel web y empieza a enrutar solicitudes de IA.",
+    "installXenia": "Instalar Xenia",
     "installStepDescription": "Ejecuta el comando npx para iniciar el servidor al instante",
     "openDashboard": "Abrir panel",
     "openDashboardStepDescription": "Configura proveedores y claves de API a través de la interfaz web",
@@ -9040,7 +9042,7 @@
     "terminal": "terminal",
     "copy": "Copiar",
     "copied": "✓ Copiado",
-    "startingOmniRoute": "Iniciando OmniRoute...",
+    "startingXenia": "Iniciando Xenia...",
     "serverRunningOnLabel": "Servidor ejecutándose en",
     "dashboardLabel": "Panel de control",
     "readyToRoute": "¡Listo para el enrutamiento! ✓",
@@ -9057,7 +9059,7 @@
     "legal": "Aviso legal",
     "mitLicense": "Licencia MIT",
     "footerTagline": "El endpoint unificado para la generación de IA. Conecte, enrute y gestione sus proveedores de IA con facilidad.",
-    "copyright": "© {year} OmniRoute. Todos los derechos reservados.",
+    "copyright": "© {year} Xenia. Todos los derechos reservados.",
     "flowToolClaudeCode": "Claude Code",
     "flowToolOpenAICodex": "OpenAI Codex",
     "flowToolCline": "Cline",
@@ -9068,7 +9070,7 @@
     "flowProviderGithubCopilot": "GitHub Copilot",
     "interactiveDiagram": "Diagrama interactivo visible en escritorio",
     "ctaTitle": "¿Listo para simplificar su infraestructura de IA?",
-    "ctaDescription": "Únase a los desarrolladores que están optimizando sus integraciones de IA con OmniRoute. Código abierto y gratuito para empezar.",
+    "ctaDescription": "Únase a los desarrolladores que están optimizando sus integraciones de IA con Xenia. Código abierto y gratuito para empezar.",
     "startFree": "Empezar gratis",
     "readDocumentation": "Leer documentación"
   },
@@ -9113,9 +9115,9 @@
     "quickStartStep4Prefix": "Apunte su IDE o cliente de API a",
     "quickStartStep4Suffix": "Use el prefijo del proveedor, por ejemplo",
     "deploySetupTitle": "Guía de configuración",
-    "deploySetupText": "Instalación paso a paso, configuración del entorno y tutorial de primera ejecución para OmniRoute.",
+    "deploySetupText": "Instalación paso a paso, configuración del entorno y tutorial de primera ejecución para Xenia.",
     "deployElectronTitle": "Escritorio (Electron)",
-    "deployElectronText": "Ejecute OmniRoute como una aplicación de escritorio nativa en Windows, macOS y Linux.",
+    "deployElectronText": "Ejecute Xenia como una aplicación de escritorio nativa en Windows, macOS y Linux.",
     "deployDockerTitle": "Docker",
     "deployDockerText": "Despliegue en contenedores con Docker Compose; listo para entornos de producción y Kubernetes.",
     "deployVmTitle": "Máquina virtual",
@@ -9123,9 +9125,9 @@
     "deployFlyTitle": "Fly.io",
     "deployFlyText": "Despliegue en el edge runtime de Fly.io con un archivo fly.toml y un único comando de despliegue.",
     "deployPwaTitle": "PWA",
-    "deployPwaText": "Instale OmniRoute como una Progressive Web App en Android, iOS y navegadores de escritorio.",
+    "deployPwaText": "Instale Xenia como una Progressive Web App en Android, iOS y navegadores de escritorio.",
     "deployTermuxTitle": "Termux (Android)",
-    "deployTermuxText": "Ejecute OmniRoute en modo headless en Android mediante Termux. Acceda al panel de control desde su navegador móvil.",
+    "deployTermuxText": "Ejecute Xenia en modo headless en Android mediante Termux. Acceda al panel de control desde su navegador móvil.",
     "featureRoutingTitle": "Enrutamiento multiproveedor",
     "featureRoutingText": "Enrute solicitudes a más de 30 proveedores de IA a través de un único endpoint compatible con OpenAI. Admite APIs de chat, respuestas, audio e imágenes.",
     "featureCombosTitle": "Combos y balanceo",
@@ -9171,24 +9173,24 @@
     "clientClaudeBullet1Middle": "(Claude) o",
     "clientClaudeBullet1Suffix": "(Antigravity) como prefijo.",
     "clientWindsurfTitle": "Windsurf",
-    "clientWindsurfBullet1": "Use OmniRoute como URL base compatible con OpenAI y mantenga prefijos de proveedor explícitos para un enrutamiento determinista.",
+    "clientWindsurfBullet1": "Use Xenia como URL base compatible con OpenAI y mantenga prefijos de proveedor explícitos para un enrutamiento determinista.",
     "clientWindsurfBullet2": "Apunte los modelos a `/v1/chat/completions` para tráfico general y conserve `/v1/responses` para flujos estilo Codex.",
     "clientWindsurfBullet3": "Use Panel de control -> Herramientas CLI para obtener una guía de configuración de Windsurf lista para usar.",
     "clientClineTitle": "Cline",
     "clientClineBullet1": "Cline funciona mejor con prefijos explícitos de proveedor/modelo para que el router nunca tenga que adivinar el backend.",
-    "clientClineBullet2": "Use `/v1/chat/completions` para modelos generales y reutilice la misma URL base de OmniRoute en diferentes cuentas.",
+    "clientClineBullet2": "Use `/v1/chat/completions` para modelos generales y reutilice la misma URL base de Xenia en diferentes cuentas.",
     "clientClineBullet3": "Use el panel de Proveedores para validar OAuth/clave de API antes de depurar problemas de runtime de Cline.",
     "clientKimiTitle": "Kimi Coding",
-    "clientKimiBullet1": "Use OmniRoute como URL base estable mientras rota cuentas o combos de proveedores por debajo.",
+    "clientKimiBullet1": "Use Xenia como URL base estable mientras rota cuentas o combos de proveedores por debajo.",
     "clientKimiBullet2": "Prefiera modelos con prefijo en flujos de codificación para que el fallback y el registro de auditoría permanezcan explícitos.",
     "clientKimiBullet3": "Use `/v1/responses` cuando desee enrutamiento nativo estilo Responses para clientes que usan herramientas.",
     "protocolsTitle": "Protocolos: MCP y A2A",
-    "protocolsDescription": "OmniRoute expone dos protocolos operativos además de las APIs compatibles con OpenAI: MCP para ejecución de herramientas y A2A para flujos de trabajo agente-a-agente.",
+    "protocolsDescription": "Xenia expone dos protocolos operativos además de las APIs compatibles con OpenAI: MCP para ejecución de herramientas y A2A para flujos de trabajo agente-a-agente.",
     "protocolMcpTitle": "MCP (Model Context Protocol)",
-    "protocolMcpDesc": "Use MCP sobre stdio para permitir que los clientes descubran y llamen a herramientas de OmniRoute con visibilidad de auditoría.",
-    "protocolMcpStep1": "Inicie el transporte MCP con `omniroute --mcp`.",
+    "protocolMcpDesc": "Use MCP sobre stdio para permitir que los clientes descubran y llamen a herramientas de Xenia con visibilidad de auditoría.",
+    "protocolMcpStep1": "Inicie el transporte MCP con `xenia --mcp`.",
     "protocolMcpStep2": "Apunte su cliente MCP al transporte stdio.",
-    "protocolMcpStep3": "Llame a `omniroute_get_health` y `omniroute_list_combos` para validar la conectividad.",
+    "protocolMcpStep3": "Llame a `xenia_get_health` y `xenia_list_combos` para validar la conectividad.",
     "protocolA2aTitle": "A2A (Agent2Agent)",
     "protocolA2aDesc": "Use A2A JSON-RPC para enviar tareas de forma síncrona o mediante streaming SSE.",
     "protocolA2aStep1": "Lea `/.well-known/agent.json` para el descubrimiento de agentes.",
@@ -9248,7 +9250,7 @@
     "mgmtPayloadRulesGetNote": "Obtiene las reglas de transformación del payload.",
     "mgmtPayloadRulesUpdateNote": "Actualiza las reglas de transformación del payload.",
     "mcpToolsTitle": "Herramientas MCP",
-    "mcpToolsDescription": "OmniRoute expone {count} herramientas a través del Model Context Protocol para la orquestación de agentes.",
+    "mcpToolsDescription": "Xenia expone {count} herramientas a través del Model Context Protocol para la orquestación de agentes.",
     "mcpToolsCount": "{count} herramientas",
     "mcpToolsToc": "Herramientas MCP",
     "mcpToolsRoutingTitle": "Enrutamiento y descubrimiento",
@@ -9292,10 +9294,10 @@
     "clearHistory": "Borrar el historial de uso en cualquier momento",
     "configureRetention": "Configurar políticas de retención de registros",
     "backupRestore": "Copia de seguridad y restauración de la base de datos",
-    "privacyMetadataTitle": "Política de privacidad | OmniRoute",
-    "privacyMetadataDescription": "Política de privacidad para el enrutador proxy de API de IA OmniRoute.",
-    "termsMetadataTitle": "Términos de servicio | OmniRoute",
-    "termsMetadataDescription": "Términos de servicio para el enrutador proxy de API de IA OmniRoute.",
+    "privacyMetadataTitle": "Política de privacidad | Xenia",
+    "privacyMetadataDescription": "Política de privacidad para el enrutador proxy de API de IA Xenia.",
+    "termsMetadataTitle": "Términos de servicio | Xenia",
+    "termsMetadataDescription": "Términos de servicio para el enrutador proxy de API de IA Xenia.",
     "backToHome": "Volver al inicio",
     "lastUpdated": "Última actualización: {date}",
     "policyLastUpdatedDate": "13 de febrero de 2026",
@@ -9303,7 +9305,7 @@
     "questionsVisit": "¿Tienes dudas? Visita nuestro",
     "githubRepository": "repositorio de GitHub",
     "privacySection1Title": "1. Arquitectura local primero",
-    "privacySection1Text": "OmniRoute está diseñada como una aplicación local. Todo el procesamiento y almacenamiento de datos se realiza íntegramente en tu máquina. No hay ningún servidor centralizado que recopile tu información.",
+    "privacySection1Text": "Xenia está diseñada como una aplicación local. Todo el procesamiento y almacenamiento de datos se realiza íntegramente en tu máquina. No hay ningún servidor centralizado que recopile tu información.",
     "privacySection2Title": "2. Datos que almacenamos",
     "privacyDataStoredIn": "Los siguientes datos se almacenan localmente en",
     "privacyDataProviderConfigurationsDesc": "URLs de conexión, tipos de proveedores y ajustes de prioridad",
@@ -9311,9 +9313,9 @@
     "privacyDataUsageLogsDesc": "recuentos de solicitudes, uso de tokens, nombres de modelos, marcas de tiempo y tiempos de respuesta",
     "privacyDataApplicationSettingsDesc": "preferencias de tema, estrategia de enrutamiento y configuraciones de combos",
     "privacySection3Title": "3. Sin telemetría",
-    "privacySection3Text": "OmniRoute no recopila telemetría, analíticas ni informes de fallos. No se envían datos a nosotros ni a terceros. Tus patrones de uso, llamadas a la API y configuraciones permanecen completamente privados.",
+    "privacySection3Text": "Xenia no recopila telemetría, analíticas ni informes de fallos. No se envían datos a nosotros ni a terceros. Tus patrones de uso, llamadas a la API y configuraciones permanecen completamente privados.",
     "privacySection4Title": "4. Proveedores de IA de terceros",
-    "privacySection4Text": "Cuando realizas llamadas a la API a través de OmniRoute, tus solicitudes se reenvían a los proveedores de IA que hayas configurado (por ejemplo: OpenAI, Anthropic, Google). Estos proveedores tienen sus propias políticas de privacidad que rigen cómo gestionan tus datos. Por favor, consulta:",
+    "privacySection4Text": "Cuando realizas llamadas a la API a través de Xenia, tus solicitudes se reenvían a los proveedores de IA que hayas configurado (por ejemplo: OpenAI, Anthropic, Google). Estos proveedores tienen sus propias políticas de privacidad que rigen cómo gestionan tus datos. Por favor, consulta:",
     "privacyOpenAiPolicy": "Política de privacidad de OpenAI",
     "privacyAnthropicPolicy": "Política de privacidad de Anthropic",
     "privacyGooglePolicy": "Política de privacidad de Google",
@@ -9325,21 +9327,21 @@
     "privacySection7TextStart": "Como todos los datos se almacenan localmente, tienes el control absoluto. Puedes eliminar tus datos en cualquier momento borrando el",
     "privacySection7TextEnd": "directorio o utilizando las funciones de copia de seguridad y restauración de la base de datos en el panel.",
     "termsSection1Title": "1. Descripción general",
-    "termsSection1Text": "OmniRoute es un enrutador proxy de API de IA local que opera íntegramente en tu máquina. Enruta solicitudes a múltiples proveedores de IA con balanceo de carga, conmutación por error y seguimiento de uso.",
+    "termsSection1Text": "Xenia es un enrutador proxy de API de IA local que opera íntegramente en tu máquina. Enruta solicitudes a múltiples proveedores de IA con balanceo de carga, conmutación por error y seguimiento de uso.",
     "termsSection2Title": "2. Responsabilidades del usuario",
     "termsResponsibilityApiKeys": "Eres el único responsable de gestionar tus propias claves de API y credenciales para proveedores de IA de terceros (OpenAI, Anthropic, Google, etc.).",
-    "termsResponsibilityCompliance": "Debes cumplir con los términos de servicio de cada proveedor de IA cuya API accedas a través de OmniRoute.",
-    "termsResponsibilitySecurity": "Eres responsable de la seguridad de tu instalación local de OmniRoute, incluyendo el establecimiento de una contraseña y la restricción del acceso a la red.",
+    "termsResponsibilityCompliance": "Debes cumplir con los términos de servicio de cada proveedor de IA cuya API accedas a través de Xenia.",
+    "termsResponsibilitySecurity": "Eres responsable de la seguridad de tu instalación local de Xenia, incluyendo el establecimiento de una contraseña y la restricción del acceso a la red.",
     "termsSection3Title": "3. Cómo funciona",
-    "termsSection3Text": "OmniRoute actúa como un proxy intermediario. Las llamadas a la API enviadas a OmniRoute se traducen y reenvían a tus proveedores de IA configurados. OmniRoute no modifica el contenido de tus solicitudes o respuestas más allá de la traducción de protocolo necesaria.",
+    "termsSection3Text": "Xenia actúa como un proxy intermediario. Las llamadas a la API enviadas a Xenia se traducen y reenvían a tus proveedores de IA configurados. Xenia no modifica el contenido de tus solicitudes o respuestas más allá de la traducción de protocolo necesaria.",
     "termsSection4Title": "4. Tratamiento de datos",
     "termsDataStoredLocally": "Todos los datos se almacenan localmente en tu máquina en una base de datos SQLite.",
-    "termsNoTransmission": "OmniRoute no transmite ningún dato a servidores externos a menos que habilites explícitamente las funciones de sincronización en la nube.",
+    "termsNoTransmission": "Xenia no transmite ningún dato a servidores externos a menos que habilites explícitamente las funciones de sincronización en la nube.",
     "termsDataLocationText": "Los registros de uso, las claves de API y la configuración se almacenan en",
     "termsSection5Title": "5. Descargo de responsabilidad",
-    "termsSection5Text": "OmniRoute se proporciona \"tal cual\" sin garantía de ningún tipo. No nos hacemos responsables de ningún coste derivado del uso de la API, interrupciones del servicio o pérdida de datos. Mantén siempre copias de seguridad de tu configuración.",
+    "termsSection5Text": "Xenia se proporciona \"tal cual\" sin garantía de ningún tipo. No nos hacemos responsables de ningún coste derivado del uso de la API, interrupciones del servicio o pérdida de datos. Mantén siempre copias de seguridad de tu configuración.",
     "termsSection6Title": "6. Código abierto",
-    "termsSection6Text": "OmniRoute es software de código abierto. Eres libre de inspeccionarlo, modificarlo y distribuirlo bajo los términos de su licencia."
+    "termsSection6Text": "Xenia es software de código abierto. Eres libre de inspeccionarlo, modificarlo y distribuirlo bajo los términos de su licencia."
   },
   "agents": {
     "title": "Agentes CLI",
@@ -9360,43 +9362,43 @@
     "scanning": "Escaneando el sistema en busca de agentes CLI...",
     "opencodeIntegration": "Integración con OpenCode",
     "opencodeDetected": "opencode {version} detectado",
-    "opencodeDesc": "Genera un {configFile} listo para usar con tu URL base de OmniRoute y todos los modelos disponibles; colócalo en la raíz de tu proyecto y ejecuta {command}.",
+    "opencodeDesc": "Genera un {configFile} listo para usar con tu URL base de Xenia y todos los modelos disponibles; colócalo en la raíz de tu proyecto y ejecuta {command}.",
     "downloadConfig": "Descargar {file}",
     "downloaded": "¡Descargado!",
     "setupGuideTitle": "Guía de configuración",
     "openCliTools": "Abrir herramientas CLI",
     "setupGuideDetectCliTitle": "Detectar CLIs instaladas",
-    "setupGuideDetectCliDesc": "Haz clic en Actualizar después de instalar o actualizar una CLI para que OmniRoute pueda volver a escanear los binarios y las versiones.",
+    "setupGuideDetectCliDesc": "Haz clic en Actualizar después de instalar o actualizar una CLI para que Xenia pueda volver a escanear los binarios y las versiones.",
     "setupGuideCustomAgentTitle": "Registrar binario personalizado",
     "setupGuideCustomAgentDesc": "Usa Añadir agente personalizado cuando tu CLI no esté en la lista integrada. Proporciona el nombre del binario y el comando de versión.",
     "setupGuideCommandMissingTitle": "Solucionar 'command not found'",
     "setupGuideCommandMissingDesc": "Asegúrate de que el comando CLI existe en el PATH, abre una nueva sesión de terminal y vuelve a pulsar Actualizar.",
     "cliToolsRedirectTitle": "¿Quieres configurar tu IDE?",
-    "cliToolsRedirectDesc": "Si quieres apuntar Claude Code, Cursor, Codex o cualquier IDE a OmniRoute como proxy, ve a Herramientas CLI en su lugar. Esta página es para lo inverso: usar binarios CLI locales como destinos de ejecución a través de los cuales OmniRoute puede iniciar y enrutar solicitudes.",
+    "cliToolsRedirectDesc": "Si quieres apuntar Claude Code, Cursor, Codex o cualquier IDE a Xenia como proxy, ve a Herramientas CLI en su lugar. Esta página es para lo inverso: usar binarios CLI locales como destinos de ejecución a través de los cuales Xenia puede iniciar y enrutar solicitudes.",
     "spawnArgsPlaceholder": "ej., --quiet, --json, --no-auto-commits",
     "binaryNamePlaceholder": "ej., mi-agente o /usr/local/bin/llm-cli",
     "versionCommandPlaceholder": "ej., mi-agente --version",
     "architectureTitle": "Cómo funcionan los destinos de agentes",
     "flowLocalBinary": "3 · Proceso CLI con su propia autenticación",
-    "flowOmniRoute": "1 · La solicitud llega a OmniRoute",
+    "flowXenia": "1 · La solicitud llega a Xenia",
     "agentNamePlaceholder": "ej., Mi agente personalizado",
-    "architectureDescription": "Cuando llega una solicitud, OmniRoute puede iniciar un binario CLI local (ej., claude, codex, goose) y canalizar la solicitud a través de él. La CLI procesa la solicitud utilizando sus propias credenciales y devuelve el resultado a través de OmniRoute.",
+    "architectureDescription": "Cuando llega una solicitud, Xenia puede iniciar un binario CLI local (ej., claude, codex, goose) y canalizar la solicitud a través de él. La CLI procesa la solicitud utilizando sus propias credenciales y devuelve el resultado a través de Xenia.",
     "flowExecute": "4 · Respuesta devuelta al cliente",
-    "flowSpawn": "2 · OmniRoute inicia el binario local",
+    "flowSpawn": "2 · Xenia inicia el binario local",
     "cliToolsRedirectCta": "Ir a herramientas CLI →",
     "comparisonTitle": "Herramientas CLI frente a destinos de agentes: ¿Cuál es la diferencia?",
     "comparisonCliToolsLabel": "Página de herramientas CLI",
-    "comparisonCliToolsTitle": "Tu IDE envía solicitudes a través de OmniRoute",
-    "comparisonCliToolsDesc": "Configure Claude Code, Codex, Cursor y otros IDE para utilizar OmniRoute como su URL base de API. OmniRoute actúa como un proxy y enruta las solicitudes a sus proveedores configurados.",
+    "comparisonCliToolsTitle": "Tu IDE envía solicitudes a través de Xenia",
+    "comparisonCliToolsDesc": "Configure Claude Code, Codex, Cursor y otros IDE para utilizar Xenia como su URL base de API. Xenia actúa como un proxy y enruta las solicitudes a sus proveedores configurados.",
     "comparisonAgentsLabel": "Esta página (objetivos del agente)",
-    "comparisonAgentsTitle": "OmniRoute envía solicitudes a herramientas CLI locales",
-    "comparisonAgentsDesc": "OmniRoute puede generar archivos binarios CLI locales (claude, codex, goose) como servidores de ejecución. La herramienta CLI procesa la solicitud utilizando su propia autenticación y devuelve el resultado.",
-    "comparisonSummary": "En resumen: Herramientas CLI = configura herramientas para que apunten a OmniRoute. Objetivos del agente = OmniRoute utiliza herramientas como endpoints.",
+    "comparisonAgentsTitle": "Xenia envía solicitudes a herramientas CLI locales",
+    "comparisonAgentsDesc": "Xenia puede generar archivos binarios CLI locales (claude, codex, goose) como servidores de ejecución. La herramienta CLI procesa la solicitud utilizando su propia autenticación y devuelve el resultado.",
+    "comparisonSummary": "En resumen: Herramientas CLI = configura herramientas para que apunten a Xenia. Objetivos del agente = Xenia utiliza herramientas como endpoints.",
     "agentUseCaseHint": "Se puede utilizar como objetivo de ejecución a través del protocolo ACP",
     "flowDiagramClient": "Aplicación cliente",
     "flowDiagramClientDesc": "SDK, API o servicio ascendente",
-    "flowDiagramOmniRoute": "OmniRoute",
-    "flowDiagramOmniRouteDesc": "Recibe la solicitud y selecciona el objetivo",
+    "flowDiagramXenia": "Xenia",
+    "flowDiagramXeniaDesc": "Recibe la solicitud y selecciona el objetivo",
     "flowDiagramSpawn": "Proceso de generación",
     "flowDiagramSpawnDesc": "Inicia el binario CLI a través de stdio",
     "flowDiagramCli": "Agente CLI",
@@ -9414,19 +9416,19 @@
     "browseAllSkillsOnGithub": "Explora todas las habilidades en GitHub",
     "apiSkills": "Habilidades API",
     "cliSkills": "Habilidades CLI",
-    "apiSkillsSubtitle": "{count} habilidades — controla OmniRoute a través de REST / HTTP",
-    "cliSkillsSubtitle": "{count} habilidades — controla OmniRoute a través del binario omniroute de terminal",
+    "apiSkillsSubtitle": "{count} habilidades — controla Xenia a través de REST / HTTP",
+    "cliSkillsSubtitle": "{count} habilidades — controla Xenia a través del binario xenia de terminal",
     "howToUseStep1": "Haz clic en <bold>{copyUrl}</bold> en la habilidad que deseas que tu agente conozca.",
     "howToUseStep2": "En tu agente de IA (Claude, Cursor, Cline…), dile:",
     "howToUseStep2Code": "Usa la skill en [pasted-url]",
-    "howToUseStep3": "El agente obtiene el SKILL.md y aprende la API o CLI de OmniRoute; no se necesita documentación manual."
+    "howToUseStep3": "El agente obtiene el SKILL.md y aprende la API o CLI de Xenia; no se necesita documentación manual."
   },
   "cloudAgents": {
     "title": "Agentes en la nube",
     "description": "Gestiona agentes de codificación autónomos (Jules, Devin, Codex Cloud)",
     "loading": "Cargando tareas...",
     "aboutTitle": "Acerca de los agentes en la nube",
-    "aboutDescription": "Los agentes en la nube son asistentes de codificación de IA remotos que pueden ejecutar tareas de forma autónoma. Funcionan de manera diferente a los agentes CLI locales: interactúas con ellos a través de la API de OmniRoute.",
+    "aboutDescription": "Los agentes en la nube son asistentes de codificación de IA remotos que pueden ejecutar tareas de forma autónoma. Funcionan de manera diferente a los agentes CLI locales: interactúas con ellos a través de la API de Xenia.",
     "howItWorksTitle": "Cómo funciona:",
     "howItWorksDesc": "Crear una tarea → El agente analiza y propone un plan → Tú apruebas → El agente ejecuta → Se devuelven los resultados",
     "newTaskTitle": "Crear nueva tarea",
@@ -9455,7 +9457,7 @@
     "settingsTitle": "Ajustes del agente en la nube",
     "settingsDesc": "Configura las preferencias locales para los agentes en la nube.",
     "settingEnableAgents": "Habilitar agentes en la nube",
-    "settingEnableAgentsDesc": "Permitir que OmniRoute orqueste agentes de codificación autónomos.",
+    "settingEnableAgentsDesc": "Permitir que Xenia orqueste agentes de codificación autónomos.",
     "settingAutoPR": "Crear PR automáticamente",
     "settingAutoPRDesc": "Cuando se complete una tarea, crea automáticamente un Pull Request con los cambios.",
     "settingRequireApproval": "Requerir aprobación del plan",
@@ -9619,8 +9621,8 @@
     "tableProvider": "Proveedor",
     "tableModel": "Modelo",
     "performanceTitle": "Rendimiento",
-    "semanticCacheSectionDesc": "El caché de respuestas deterministas propio de OmniRoute. Cuando está habilitado, las solicitudes repetidas sin streaming con temperature=0 se pueden servir localmente sin contactar con el proveedor de origen.",
-    "semanticCacheDisabledDesc": "El caché semántico está deshabilitado. OmniRoute omitirá la reutilización de respuestas locales hasta que lo vuelvas a activar en los ajustes.",
+    "semanticCacheSectionDesc": "El caché de respuestas deterministas propio de Xenia. Cuando está habilitado, las solicitudes repetidas sin streaming con temperature=0 se pueden servir localmente sin contactar con el proveedor de origen.",
+    "semanticCacheDisabledDesc": "El caché semántico está deshabilitado. Xenia omitirá la reutilización de respuestas locales hasta que lo vuelvas a activar en los ajustes.",
     "semanticEntriesDesc": "Registros de caché semántico persistentes almacenados actualmente en SQLite. La actividad de caché de prompt del lado del proveedor no se muestra aquí.",
     "searchEntries": "Buscar entradas...",
     "search": "Buscar",
@@ -9726,20 +9728,20 @@
     "deviceCodeYourCode": "Tu código",
     "deviceCodeWaiting": "Esperando autorización...",
     "googleLoopbackTitle": "__MISSING__:Google sign-in can't complete from this address",
-    "googleLoopbackWhatHappens": "__MISSING__:Google only releases the authorization code once <code>{redirectUri}</code> is reachable from the browser that approves the sign-in. Here that address points at this computer, not at the OmniRoute server — so the consent screen hangs instead of redirecting, and there is no callback URL to copy.",
+    "googleLoopbackWhatHappens": "__MISSING__:Google only releases the authorization code once <code>{redirectUri}</code> is reachable from the browser that approves the sign-in. Here that address points at this computer, not at the Xenia server — so the consent screen hangs instead of redirecting, and there is no callback URL to copy.",
     "googleLoopbackRecommended": "__MISSING__:Recommended — run this on your own computer, then paste the result below:",
-    "googleLoopbackHelperNote": "__MISSING__:It opens the Google consent locally (where 127.0.0.1 works) and prints a one-line omniroute-cred-v1.… blob. Paste that blob into the Step 2 field below — it accepts a credential blob as well as a callback URL.",
-    "googleLoopbackTunnelLabel": "__MISSING__:Or forward the dashboard port over SSH and reload OmniRoute through the tunnel:",
+    "googleLoopbackHelperNote": "__MISSING__:It opens the Google consent locally (where 127.0.0.1 works) and prints a one-line xenia-cred-v1.… blob. Paste that blob into the Step 2 field below — it accepts a credential blob as well as a callback URL.",
+    "googleLoopbackTunnelLabel": "__MISSING__:Or forward the dashboard port over SSH and reload Xenia through the tunnel:",
     "googleLoopbackTunnelNote": "__MISSING__:Replace {userPlaceholder} with your SSH username, keep the terminal open, then open {localUrl} and connect again from there.",
     "googleLoopbackHeadlessAlt": "__MISSING__:For fully headless use with no local callback at all, <a>configure your own Google OAuth credentials</a> plus a public base URL.",
-    "remoteAccessInfo": "Acceso remoto: dado que estás accediendo a OmniRoute de forma remota, después de la autorización verás una página de error (localhost no encontrado). Esto es normal; simplemente copia la URL completa de la barra de direcciones de tu navegador y pégala a continuación.",
+    "remoteAccessInfo": "Acceso remoto: dado que estás accediendo a Xenia de forma remota, después de la autorización verás una página de error (localhost no encontrado). Esto es normal; simplemente copia la URL completa de la barra de direcciones de tu navegador y pégala a continuación.",
     "loopbackMismatchTitle": "__MISSING__:Sign-in can't complete from this address",
     "loopbackMismatchWhatHappened": "__MISSING__:What's happening",
-    "loopbackMismatchExplanation": "__MISSING__:After you approve the login, {providerName} always sends the browser back to <code>{redirectUri}</code>. That address points at the computer running this browser, not at the OmniRoute server — so the authorization code never reaches OmniRoute and the provider fails the sign-in without showing an error.",
+    "loopbackMismatchExplanation": "__MISSING__:After you approve the login, {providerName} always sends the browser back to <code>{redirectUri}</code>. That address points at the computer running this browser, not at the Xenia server — so the authorization code never reaches Xenia and the provider fails the sign-in without showing an error.",
     "loopbackMismatchHowToFix": "__MISSING__:How to fix it",
-    "loopbackMismatchStep1": "__MISSING__:On this computer, open a terminal and start an SSH tunnel to the OmniRoute server:",
+    "loopbackMismatchStep1": "__MISSING__:On this computer, open a terminal and start an SSH tunnel to the Xenia server:",
     "loopbackMismatchStep1Note": "__MISSING__:Replace {userPlaceholder} with your SSH username. Keep this terminal open until the connection shows as active — both ports are needed: one serves the dashboard, the other receives the callback.",
-    "loopbackMismatchStep2": "__MISSING__:In this browser, reopen OmniRoute through the tunnel:",
+    "loopbackMismatchStep2": "__MISSING__:In this browser, reopen Xenia through the tunnel:",
     "loopbackMismatchStep3": "__MISSING__:Then connect {providerName} again from the new tab. The callback now reaches the server and the login completes normally.",
     "loopbackMismatchAlternative": "__MISSING__:No SSH access? If this provider offers a token import tab, connect with a token instead — that path doesn't use a loopback callback.",
     "step1OpenUrl": "Paso 1: Abre esta URL en tu navegador",
@@ -10171,16 +10173,16 @@
     "musicSample": "Una pista ambiental tranquila con piano cálido y cuerdas suaves",
     "noAudioUrl": "La respuesta no incluye una URL de audio: {response}",
     "music": "Música",
-    "embeddingSample": "OmniRoute enruta las solicitudes de IA a través de múltiples proveedores.",
+    "embeddingSample": "Xenia enruta las solicitudes de IA a través de múltiples proveedores.",
     "embedding": "Embedding",
     "imageSample": "Una ciudad futurista al atardecer, iluminación cinematográfica",
     "image": "Imagen",
-    "ttsSample": "Hola desde OmniRoute. Esta es una prueba de texto a voz.",
+    "ttsSample": "Hola desde Xenia. Esta es una prueba de texto a voz.",
     "textToSpeech": "Texto a voz",
     "videoSample": "Un avión de papel volando sobre una ciudad futurista",
     "video": "Vídeo",
     "webFetch": "Obtención web",
-    "webSearchSample": "¿Qué es OmniRoute?",
+    "webSearchSample": "¿Qué es Xenia?",
     "webSearch": "Búsqueda web",
     "documentUrl": "URL del documento",
     "browserAudioUnsupported": "Tu navegador no admite audio.",
@@ -10236,7 +10238,7 @@
     "cacheUp": "UP",
     "semantic": "Semántico",
     "upstream": "Upstream",
-    "semanticCacheHit": "Acierto de caché semántica (servido por OmniRoute)",
+    "semanticCacheHit": "Acierto de caché semántica (servido por Xenia)",
     "upstreamResponse": "Respuesta del proveedor upstream",
     "noApiKey": "Sin clave de API",
     "requestedRoutedTitle": "Solicitado {requested}, enrutado como {routed}",
@@ -10534,12 +10536,12 @@
   },
   "plugins": {
     "title": "Plugins",
-    "description": "Instala y gestiona plugins para ampliar la funcionalidad de OmniRoute",
+    "description": "Instala y gestiona plugins para ampliar la funcionalidad de Xenia",
     "loading": "Cargando plugins...",
     "scanning": "Escaneando...",
     "scanForPlugins": "Escanear plugins",
     "noPlugins": "No hay plugins instalados",
-    "noPluginsDescription": "Coloca los directorios de plugins en ~/.omniroute/plugins/ y haz clic en Escanear.",
+    "noPluginsDescription": "Coloca los directorios de plugins en ~/.xenia/plugins/ y haz clic en Escanear.",
     "activate": "Activar",
     "deactivate": "Desactivar",
     "uninstall": "Desinstalar",
@@ -10569,7 +10571,7 @@
     "installedTab": "Instalados",
     "marketplaceTab": "Marketplace",
     "marketplaceUrlLabel": "URL de Marketplace personalizada",
-    "marketplaceUrlPlaceholder": "Dejar vacío para el registro oficial de Omniroute",
+    "marketplaceUrlPlaceholder": "Dejar vacío para el registro oficial de Xenia",
     "saveMarketplaceUrl": "Guardar y recargar",
     "marketplaceUrlSaved": "URL de Marketplace actualizada",
     "marketplaceEmpty": "No se encontraron plugins en el marketplace.",
@@ -10692,7 +10694,7 @@
   },
   "agentBridge": {
     "title": "AgentBridge",
-    "subtitle": "Usa agentes de IDE con modelos de OmniRoute: no requiere configuración",
+    "subtitle": "Usa agentes de IDE con modelos de Xenia: no requiere configuración",
     "riskBannerTitle": "Úsalo bajo tu propia responsabilidad",
     "riskBannerBody": "AgentBridge intercepta el tráfico HTTPS de los agentes de IDE. Al activarlo, aceptas la responsabilidad de cumplir con los términos de servicio de cada agente. Nunca lo uses en dispositivos o redes donde la inspección TLS esté prohibida.",
     "riskBannerDismiss": "Descartar",
@@ -10742,7 +10744,7 @@
     "investigatingNotice": "Este agente está bajo investigación. Los hosts y la superficie de la API aún están siendo confirmados. La configuración estará disponible una vez que se documente la API ascendente.",
     "modelMappingsLabel": "Mapeos de modelos",
     "sourceModel": "Modelo de origen (nativo del agente)",
-    "targetModel": "Modelo de destino (OmniRoute)",
+    "targetModel": "Modelo de destino (Xenia)",
     "noMappings": "No hay mapeos de modelos configurados. Ejecuta el asistente de configuración para detectar modelos automáticamente.",
     "selectModel": "Seleccionar…",
     "saveMappings": "Guardar asignaciones",
@@ -10849,7 +10851,7 @@
   },
   "relay": {
     "title": "Proxies de retransmisión sin servidor",
-    "description": "Crea endpoints de API públicos que actúen como proxy hacia OmniRoute con limitación de tasa y control de acceso",
+    "description": "Crea endpoints de API públicos que actúen como proxy hacia Xenia con limitación de tasa y control de acceso",
     "created": "Token de retransmisión creado",
     "createFailed": "Error al crear el token",
     "toggleFailed": "Error al cambiar el estado del token",
@@ -11012,25 +11014,25 @@
     "concept": {
       "code": {
         "title": "Código CLI",
-        "phrase": "Herramientas de código que apuntas a OmniRoute",
-        "flow": "Tú → Código CLI → OmniRoute → Proveedor",
+        "phrase": "Herramientas de código que apuntas a Xenia",
+        "flow": "Tú → Código CLI → Xenia → Proveedor",
         "seeOther": "Ver →"
       },
       "agent": {
         "title": "Agentes CLI",
-        "phrase": "Agentes CLI autónomos de propósito general que apuntas a OmniRoute",
-        "flow": "Tú → Agente CLI → OmniRoute → Proveedor",
+        "phrase": "Agentes CLI autónomos de propósito general que apuntas a Xenia",
+        "flow": "Tú → Agente CLI → Xenia → Proveedor",
         "seeOther": "Ver →"
       },
       "acp": {
         "title": "Agentes ACP",
-        "phrase": "CLIs que OmniRoute inicia como backend de ejecución (flujo inverso)",
-        "flow": "Cliente → OmniRoute → iniciar CLI (stdio/ACP) → respuesta",
+        "phrase": "CLIs que Xenia inicia como backend de ejecución (flujo inverso)",
+        "flow": "Cliente → Xenia → iniciar CLI (stdio/ACP) → respuesta",
         "seeOther": "Ver →"
       }
     },
     "comparison": {
-      "title": "Entiende los 3 tipos de CLI en OmniRoute",
+      "title": "Entiende los 3 tipos de CLI en Xenia",
       "thisPage": "Esta página",
       "open": "Abrir →",
       "code": {
@@ -11088,7 +11090,7 @@
   },
   "cliCode": {
     "pageTitle": "Código CLI",
-    "pageSubtitle": "Herramientas de código que apuntan a OmniRoute",
+    "pageSubtitle": "Herramientas de código que apuntan a Xenia",
     "searchPlaceholder": "Buscar CLI…",
     "filterDetectionLabel": "Detección",
     "filterBaseUrlLabel": "URL base",
@@ -11113,7 +11115,7 @@
   },
   "acpAgents": {
     "pageTitle": "Agentes ACP",
-    "pageSubtitle": "CLIs que OmniRoute inicia como backend de ejecución",
+    "pageSubtitle": "CLIs que Xenia inicia como backend de ejecución",
     "scanning": "Detectando agentes…",
     "refresh": "Actualizar",
     "setupGuideTitle": "Guía de configuración",
@@ -11148,7 +11150,7 @@
     "catalog": {
       "omni-auth": {
         "name": "Autenticación",
-        "description": "Gestiona la autenticación mediante clave de API y los tokens de sesión. Empieza aquí para autenticar solicitudes mediante token Bearer, obtener cookies de sesión y configurar los requisitos de inicio de sesión para la API de OmniRoute."
+        "description": "Gestiona la autenticación mediante clave de API y los tokens de sesión. Empieza aquí para autenticar solicitudes mediante token Bearer, obtener cookies de sesión y configurar los requisitos de inicio de sesión para la API de Xenia."
       },
       "omni-providers": {
         "name": "Proveedores",
@@ -11164,7 +11166,7 @@
       },
       "omni-api-keys": {
         "name": "Claves de API",
-        "description": "Crea, lista, rota y revoca claves de API de OmniRoute. Controla los ámbitos, límites de gasto y caducidad de cada clave. Las claves regulan el acceso a todos los endpoints de proxy y gestión."
+        "description": "Crea, lista, rota y revoca claves de API de Xenia. Controla los ámbitos, límites de gasto y caducidad de cada clave. Las claves regulan el acceso a todos los endpoints de proxy y gestión."
       },
       "omni-usage-logs": {
         "name": "Uso y registros",
@@ -11200,15 +11202,15 @@
       },
       "omni-cli-tools": {
         "name": "Herramientas CLI",
-        "description": "Gestiona integraciones de herramientas CLI expuestas a través de la API. Lista, configura e invoca plugins de herramientas CLI que amplían la superficie de automatización de OmniRoute."
+        "description": "Gestiona integraciones de herramientas CLI expuestas a través de la API. Lista, configura e invoca plugins de herramientas CLI que amplían la superficie de automatización de Xenia."
       },
       "omni-tunnels": {
         "name": "Túneles",
-        "description": "Crea y gestiona túneles seguros (ngrok, Cloudflare Tunnel, personalizados) para exponer OmniRoute a internet o compartir el acceso con agentes remotos y pipelines de CI."
+        "description": "Crea y gestiona túneles seguros (ngrok, Cloudflare Tunnel, personalizados) para exponer Xenia a internet o compartir el acceso con agentes remotos y pipelines de CI."
       },
       "omni-sync-cloud": {
         "name": "Sincronización en la nube",
-        "description": "Sincroniza la configuración, las conexiones de proveedores y los ajustes de OmniRoute con el almacenamiento en la nube (y viceversa). Gestiona la autenticación de trabajadores en la nube y los destinos de copia de seguridad remota."
+        "description": "Sincroniza la configuración, las conexiones de proveedores y los ajustes de Xenia con el almacenamiento en la nube (y viceversa). Gestiona la autenticación de trabajadores en la nube y los destinos de copia de seguridad remota."
       },
       "omni-db-backups": {
         "name": "Base de datos y copias de seguridad",
@@ -11220,11 +11222,11 @@
       },
       "omni-mcp": {
         "name": "Servidor MCP",
-        "description": "Conéctate al servidor MCP de OmniRoute (37 herramientas, 3 transportes: SSE/stdio/HTTP). Abarca enrutamiento, caché, compresión, memoria, habilidades, proveedores y herramientas de auditoría en 16 ámbitos de permisos."
+        "description": "Conéctate al servidor MCP de Xenia (37 herramientas, 3 transportes: SSE/stdio/HTTP). Abarca enrutamiento, caché, compresión, memoria, habilidades, proveedores y herramientas de auditoría en 16 ámbitos de permisos."
       },
       "omni-agents-a2a": {
         "name": "Agentes y protocolo A2A",
-        "description": "Interactúa con OmniRoute a través del protocolo de agente a agente JSON-RPC 2.0. 6 habilidades A2A integradas: smart-routing, quota-management, provider-discovery, cost-analysis, health-report, list-capabilities."
+        "description": "Interactúa con Xenia a través del protocolo de agente a agente JSON-RPC 2.0. 6 habilidades A2A integradas: smart-routing, quota-management, provider-discovery, cost-analysis, health-report, list-capabilities."
       },
       "omni-version-manager": {
         "name": "Gestor de versiones",
@@ -11236,7 +11238,7 @@
       },
       "cli-serve": {
         "name": "CLI: Servir",
-        "description": "Inicia, detiene y reinicia el servidor de OmniRoute desde la CLI. Gestiona el modo daemon, la configuración de puertos, la recuperación automática, la integración con la bandeja del sistema y el acceso directo al panel."
+        "description": "Inicia, detiene y reinicia el servidor de Xenia desde la CLI. Gestiona el modo daemon, la configuración de puertos, la recuperación automática, la integración con la bandeja del sistema y el acceso directo al panel."
       },
       "cli-health": {
         "name": "CLI: Estado de salud",
@@ -11248,7 +11250,7 @@
       },
       "cli-keys": {
         "name": "CLI: Claves de API",
-        "description": "Crea, lista, rota y revoca claves de API de OmniRoute desde la CLI. Gestiona flujos de OAuth para la autenticación de proveedores e inspecciona los ámbitos y la caducidad de las claves."
+        "description": "Crea, lista, rota y revoca claves de API de Xenia desde la CLI. Gestiona flujos de OAuth para la autenticación de proveedores e inspecciona los ámbitos y la caducidad de las claves."
       },
       "cli-models": {
         "name": "CLI: Modelos",
@@ -11256,7 +11258,7 @@
       },
       "cli-chat": {
         "name": "CLI: Chat",
-        "description": "Envía completados de chat, haz streaming de respuestas e inicia una sesión REPL interactiva desde la CLI. Compatible con todos los proveedores de OmniRoute, enrutamiento por combos y configuración de prompts del sistema."
+        "description": "Envía completados de chat, haz streaming de respuestas e inicia una sesión REPL interactiva desde la CLI. Compatible con todos los proveedores de Xenia, enrutamiento por combos y configuración de prompts del sistema."
       },
       "cli-routing": {
         "name": "CLI: Enrutamiento y combos",
@@ -11284,7 +11286,7 @@
       },
       "cli-a2a": {
         "name": "CLI: Protocolo A2A",
-        "description": "Interactúa con el servidor A2A de OmniRoute desde la CLI. Envía tareas, inspecciona el historial de ejecución de habilidades y prueba el protocolo de agente a agente JSON-RPC 2.0 de forma interactiva."
+        "description": "Interactúa con el servidor A2A de Xenia desde la CLI. Envía tareas, inspecciona el historial de ejecución de habilidades y prueba el protocolo de agente a agente JSON-RPC 2.0 de forma interactiva."
       },
       "cli-tunnel": {
         "name": "CLI: Túneles",
@@ -11292,7 +11294,7 @@
       },
       "cli-backup-sync": {
         "name": "CLI: Copias de seguridad y sincronización",
-        "description": "Realiza copias de seguridad y restaura datos de OmniRoute desde la CLI. Activa snapshots incrementales, sincroniza con almacenamiento en la nube, gestiona programaciones de respaldo y restaura a partir de archivos de archivo."
+        "description": "Realiza copias de seguridad y restaura datos de Xenia desde la CLI. Activa snapshots incrementales, sincroniza con almacenamiento en la nube, gestiona programaciones de respaldo y restaura a partir de archivos de archivo."
       },
       "cli-policy-audit": {
         "name": "CLI: Directivas y auditoría",
@@ -11316,11 +11318,11 @@
       },
       "cli-skill-collector": {
         "name": "CLI: Recopilador de habilidades de agentes",
-        "description": "Detecta herramientas de desarrollo CLI instaladas (Claude Code, Codex, Cursor, Copilot, Cline y más), busca en GitHub habilidades de agentes compatibles y las instala en las herramientas detectadas a través de las API integradas de OmniRoute."
+        "description": "Detecta herramientas de desarrollo CLI instaladas (Claude Code, Codex, Cursor, Copilot, Cline y más), busca en GitHub habilidades de agentes compatibles y las instala en las herramientas detectadas a través de las API integradas de Xenia."
       },
       "config-codex-cli": {
         "name": "Configuración: Codex CLI",
-        "description": "Flujo de trabajo de agente paso a paso para configurar OpenAI Codex CLI en cualquier máquina (Linux, macOS, Windows) para que use OmniRoute como backend compatible con OpenAI. Detecta el sistema operativo y la shell, escribe el archivo config.toml y 7 perfiles con nombre, establece variables de entorno y verifica la configuración."
+        "description": "Flujo de trabajo de agente paso a paso para configurar OpenAI Codex CLI en cualquier máquina (Linux, macOS, Windows) para que use Xenia como backend compatible con OpenAI. Detecta el sistema operativo y la shell, escribe el archivo config.toml y 7 perfiles con nombre, establece variables de entorno y verifica la configuración."
       },
       "omni-github-skills": {
         "name": "Descubrimiento de habilidades en GitHub",
@@ -11328,16 +11330,16 @@
       }
     },
     "pageTitle": "Habilidades de agentes",
-    "pageSubtitle": "Enseña a tu agente a operar OmniRoute — 23 áreas de API + 21 familias de CLI",
+    "pageSubtitle": "Enseña a tu agente a operar Xenia — 23 áreas de API + 21 familias de CLI",
     "conceptCard": {
       "agent": {
         "title": "Habilidades de agentes — Salientes",
-        "description": "Las habilidades de agentes son documentos SKILL.md legibles por máquina que los agentes de IA externos (Claude Code, Cursor, Copilot…) obtienen de GitHub para aprender a operar OmniRoute mediante REST o CLI. Son leídas por el agente, no ejecutadas por OmniRoute.",
+        "description": "Las habilidades de agentes son documentos SKILL.md legibles por máquina que los agentes de IA externos (Claude Code, Cursor, Copilot…) obtienen de GitHub para aprender a operar Xenia mediante REST o CLI. Son leídas por el agente, no ejecutadas por Xenia.",
         "crossLinkLabel": "Comprende la diferencia →"
       },
       "omni": {
         "title": "Habilidades de Omni — Entrantes",
-        "description": "Las habilidades de Omni son herramientas de entorno aislado (sandbox) que OmniRoute inyecta en el contexto del modelo en cada solicitud. Son ejecutadas por OmniRoute, no leídas por el agente.",
+        "description": "Las habilidades de Omni son herramientas de entorno aislado (sandbox) que Xenia inyecta en el contexto del modelo en cada solicitud. Son ejecutadas por Xenia, no leídas por el agente.",
         "crossLinkLabel": "Comprende la diferencia →"
       },
       "comparison": {
@@ -11345,18 +11347,18 @@
         "colOmni": "Habilidades de Omni",
         "whatIs": {
           "label": "Qué es",
-          "agent": "SKILL.md legible por máquina que enseña a un agente externo a operar OmniRoute",
-          "omni": "Herramientas ejecutables que OmniRoute inyecta como herramientas en las solicitudes de LLM"
+          "agent": "SKILL.md legible por máquina que enseña a un agente externo a operar Xenia",
+          "omni": "Herramientas ejecutables que Xenia inyecta como herramientas en las solicitudes de LLM"
         },
         "direction": {
           "label": "Dirección",
-          "agent": "Saliente: el agente externo aprende a controlar OmniRoute",
-          "omni": "Entrante: OmniRoute proporciona herramientas a los modelos que pasan a través de él"
+          "agent": "Saliente: el agente externo aprende a controlar Xenia",
+          "omni": "Entrante: Xenia proporciona herramientas a los modelos que pasan a través de él"
         },
         "executor": {
           "label": "Ejecutor",
           "agent": "Agente externo (lee markdown → actúa vía API/CLI)",
-          "omni": "OmniRoute (intercepta tool_calls, Docker sandbox)"
+          "omni": "Xenia (intercepta tool_calls, Docker sandbox)"
         },
         "storage": {
           "label": "Almacenamiento",
@@ -11365,8 +11367,8 @@
         },
         "tagline": {
           "label": "Eslogan",
-          "agent": "Enseña a tu agente a usar OmniRoute",
-          "omni": "Proporciona herramientas ejecutables a los modelos de OmniRoute"
+          "agent": "Enseña a tu agente a usar Xenia",
+          "omni": "Proporciona herramientas ejecutables a los modelos de Xenia"
         }
       }
     },
@@ -11382,7 +11384,7 @@
     "coverageLabel": "Cobertura",
     "mcpUrl": "URL de MCP",
     "a2aLink": "A2A",
-    "mcpPrompt": "Añade este endpoint de MCP a tu agente para darle 37 herramientas de OmniRoute.",
+    "mcpPrompt": "Añade este endpoint de MCP a tu agente para darle 37 herramientas de Xenia.",
     "a2aPrompt": "Registra esta tarjeta de agente con tu orquestador para habilitar la delegación de tareas A2A.",
     "refresh": "Actualizar",
     "copyUrl": "Copiar URL",
@@ -11507,7 +11509,7 @@
     "rank": "Posición",
     "name": "Nombre",
     "score": "Puntuación",
-    "leaderboardEmpty": "Aún no hay entradas para este ámbito. ¡Empieza a usar OmniRoute para aparecer en el leaderboard!",
+    "leaderboardEmpty": "Aún no hay entradas para este ámbito. ¡Empieza a usar Xenia para aparecer en el leaderboard!",
     "profileLoadFailed": "Error al cargar los datos del perfil",
     "levelTitles": {
       "beginner": "Principiante",
@@ -11527,7 +11529,7 @@
     "dayStreak": "Racha de {count} días",
     "levelProgress": "Nivel {current} → {next}",
     "totalXpEarned": "{count} XP total ganada",
-    "maintainStreak": "¡Sigue usando OmniRoute cada día para mantener tu racha!",
+    "maintainStreak": "¡Sigue usando Xenia cada día para mantener tu racha!",
     "badgesTitle": "Insignias ({earned}/{total})",
     "noBadges": "Aún no hay insignias disponibles.",
     "hiddenBadge": "Logro oculto",
@@ -11552,22 +11554,22 @@
       "first-token": {
         "name": "Primer token",
         "description": "Realizaste tu primera solicitud de API",
-        "criteria": "Completa tu primera solicitud de API a través de OmniRoute."
+        "criteria": "Completa tu primera solicitud de API a través de Xenia."
       },
       "token-consumer": {
         "name": "Consumidor de tokens",
         "description": "Realizaste 1.000 solicitudes de API",
-        "criteria": "Completa 1.000 solicitudes de API a través de OmniRoute."
+        "criteria": "Completa 1.000 solicitudes de API a través de Xenia."
       },
       "token-machine": {
         "name": "Máquina de tokens",
         "description": "Realizaste 10.000 solicitudes de API",
-        "criteria": "Completa 10.000 solicitudes de API a través de OmniRoute."
+        "criteria": "Completa 10.000 solicitudes de API a través de Xenia."
       },
       "token-whale": {
         "name": "Ballena de tokens",
         "description": "Realizaste 100.000 solicitudes de API",
-        "criteria": "Completa 100.000 solicitudes de API a través de OmniRoute."
+        "criteria": "Completa 100.000 solicitudes de API a través de Xenia."
       },
       "generous": {
         "name": "Generoso",
@@ -11617,22 +11619,22 @@
       "daily-user": {
         "name": "Usuario diario",
         "description": "Activo durante 3 días consecutivos",
-        "criteria": "Usa OmniRoute durante 3 días consecutivos."
+        "criteria": "Usa Xenia durante 3 días consecutivos."
       },
       "weekly-warrior": {
         "name": "Guerrero semanal",
         "description": "Activo durante 7 días consecutivos",
-        "criteria": "Usa OmniRoute durante 7 días consecutivos."
+        "criteria": "Usa Xenia durante 7 días consecutivos."
       },
       "monthly-master": {
         "name": "Maestro mensual",
         "description": "Activo durante 30 días consecutivos",
-        "criteria": "Usa OmniRoute durante 30 días consecutivos."
+        "criteria": "Usa Xenia durante 30 días consecutivos."
       },
       "unstoppable": {
         "name": "Imparable",
         "description": "Activo durante 365 días consecutivos",
-        "criteria": "Usa OmniRoute durante 365 días consecutivos."
+        "criteria": "Usa Xenia durante 365 días consecutivos."
       },
       "early-adopter": {
         "name": "Pionero",
@@ -11647,7 +11649,7 @@
       "contributor": {
         "name": "Colaborador",
         "description": "Has fusionado 1 pull request",
-        "criteria": "Consigue que se fusione 1 pull request en OmniRoute."
+        "criteria": "Consigue que se fusione 1 pull request en Xenia."
       },
       "community-leader": {
         "name": "Líder de la comunidad",
@@ -11748,16 +11750,16 @@
       "PROXY_AUTO_SELECT_ENABLED": {
         "description": "Cuando no haya ningún proxy asignado a una conexión, seleccionar automáticamente el primer proxy del registro que funcione. Está desactivado por predeterminación porque, de lo contrario, un proxy de registro se convierte en un fallback global para todo el tráfico (#3332)."
       },
-      "OMNIROUTE_CONTROL_PLANE_PROXY_DIRECT_FALLBACK": {
+      "XENIA_CONTROL_PLANE_PROXY_DIRECT_FALLBACK": {
         "description": "Permitir que los flujos de OAuth y validación de proveedores ignoren un proxy fijado cuando fallen las comprobaciones de accesibilidad del proxy. Está desactivado por predeterminación porque esto puede cambiar la IP de salida de la cuenta."
       },
       "MITM_DISABLE_TLS_VERIFY": {
         "description": "Deshabilitar la verificación de certificados TLS para el proxy MITM."
       },
-      "OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS": {
+      "XENIA_ALLOW_PRIVATE_PROVIDER_URLS": {
         "description": "Permitir URLs de proveedores que apunten a redes privadas o internas."
       },
-      "OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS": {
+      "XENIA_ALLOW_LOCAL_PROVIDER_URLS": {
         "description": "Permitir proveedores en localhost, LAN y rangos de IP privadas. Esto es necesario para los modelos locales compatibles con OpenAI y está habilitado de forma predeterminada. Los endpoints de metadatos en la nube, como 169.254.169.254, permanecen bloqueados."
       },
       "ENABLE_CC_COMPATIBLE_PROVIDER": {
@@ -11775,28 +11777,28 @@
       "RESPONSES_PASSTHROUGH_DROP_COMMENTARY": {
         "description": "Eliminar los elementos de salida internos de la fase de comentarios de los streams de paso directo (passthrough) de la API Responses antes de reenviarlos a los clientes. Desactiva este flag para recibir comentarios sin procesar del upstream."
       },
-      "OMNIROUTE_MCP_ENFORCE_SCOPES": {
+      "XENIA_MCP_ENFORCE_SCOPES": {
         "description": "Aplicar restricciones de ámbito (scopes) para el acceso a herramientas MCP."
       },
-      "OMNIROUTE_MCP_COMPRESS_DESCRIPTIONS": {
+      "XENIA_MCP_COMPRESS_DESCRIPTIONS": {
         "description": "Comprimir las descripciones de las herramientas MCP para reducir el uso de tokens."
       },
-      "OMNIROUTE_ENABLE_RUNTIME_BACKGROUND_TASKS": {
+      "XENIA_ENABLE_RUNTIME_BACKGROUND_TASKS": {
         "description": "Habilitar el procesamiento de tareas en segundo plano en tiempo de ejecución."
       },
-      "OMNIROUTE_DISABLE_BACKGROUND_SERVICES": {
+      "XENIA_DISABLE_BACKGROUND_SERVICES": {
         "description": "Deshabilitar todos los servicios en segundo plano, incluida la actualización de cuotas y la sincronización."
       },
-      "OMNIROUTE_RTK_TRUST_PROJECT_FILTERS": {
+      "XENIA_RTK_TRUST_PROJECT_FILTERS": {
         "description": "Confiar en los filtros RTK a nivel de proyecto sin validación."
       },
-      "OMNIROUTE_ENABLE_LIVE_WS": {
+      "XENIA_ENABLE_LIVE_WS": {
         "description": "Iniciar el servidor WebSocket del panel en tiempo real al importar en el puerto de bucle local 20132. Establece el flag en 0 o false para deshabilitarlo. La exposición en LAN también requiere LIVE_WS_HOST=0.0.0.0 y LIVE_WS_ALLOWED_ORIGINS."
       },
-      "OMNIROUTE_CODEX_WS_ENABLED": {
+      "XENIA_CODEX_WS_ENABLED": {
         "description": "Permitir que Codex utilice Responses a través de WebSocket. Cuando está deshabilitado, Codex recurre a Responses mediante HTTP como fallback."
       },
-      "OMNIROUTE_EMERGENCY_FALLBACK": {
+      "XENIA_EMERGENCY_FALLBACK": {
         "description": "Enrutar las solicitudes cuyo presupuesto se haya agotado hacia el proveedor y modelo de fallback gratuito de emergencia."
       },
       "STREAM_RECOVERY_ENABLED": {
@@ -11823,16 +11825,16 @@
       "PRICING_SYNC_ENABLED": {
         "description": "Sincronizar los datos de precios automáticamente. La variable de entorno PRICING_SYNC_ENABLED también debe estar establecida en true."
       },
-      "OMNIROUTE_AUTO_SYNC_CODEX_PROFILES": {
+      "XENIA_AUTO_SYNC_CODEX_PROFILES": {
         "description": "Tras la sincronización de proveedores y modelos, regenerar los perfiles de ~/.codex/*.config.toml a partir del catálogo activo. Esto nunca cambia la configuración activa o predeterminada de Codex y está desactivado por predeterminación."
       },
-      "OMNIROUTE_AUTO_SYNC_CLAUDE_PROFILES": {
+      "XENIA_AUTO_SYNC_CLAUDE_PROFILES": {
         "description": "Tras la sincronización de proveedores y modelos, regenerar los perfiles de ~/.claude/profiles/<name>/settings.json a partir del catálogo activo. Esto nunca cambia la configuración activa o predeterminada de Claude y está desactivado por predeterminación."
       },
-      "OMNIROUTE_DISABLE_LOCAL_HEALTHCHECK": {
+      "XENIA_DISABLE_LOCAL_HEALTHCHECK": {
         "description": "Deshabilitar el endpoint de comprobación de salud de la instancia local."
       },
-      "OMNIROUTE_DISABLE_TOKEN_HEALTHCHECK": {
+      "XENIA_DISABLE_TOKEN_HEALTHCHECK": {
         "description": "Deshabilitar la comprobación de salud de validación de tokens."
       },
       "SKILLS_SANDBOX_NETWORK_ENABLED": {
@@ -12181,8 +12183,8 @@
     "noProviderOverrides": "Sin anulaciones: todos los proveedores activos participarán con sus modelos predeterminados"
   },
   "kimiSponsorBanner": {
-    "title": "Kimi (Moonshot AI) es el amigo de código abierto fundador de OmniRoute",
-    "description": "Kimi K3 aporta una ventana de contexto de 1M de tokens y un rendimiento de código de vanguardia a OmniRoute a una fracción del coste.",
+    "title": "Kimi (Moonshot AI) es el amigo de código abierto fundador de Xenia",
+    "description": "Kimi K3 aporta una ventana de contexto de 1M de tokens y un rendimiento de código de vanguardia a Xenia a una fracción del coste.",
     "cta": "Obtener Kimi Code",
     "partnerLinkNote": "Enlace de socio",
     "dismissAriaLabel": "Descartar"
@@ -12209,14 +12211,14 @@
     "activateDescription": "Radar enriquece el catálogo de modelos gratuito con inteligencia de la comunidad: disponibilidad de modelos actualizada, cuotas y guías de configuración.",
     "privacyNoUpload": "No se ha subido nada: tus datos permanecen locales",
     "privacyOnlySigned": "Solo se descarga metadatos firmados criptográficamente",
-    "privacyLocalOnly": "Todo el procesamiento ocurre en tu instancia de OmniRoute",
+    "privacyLocalOnly": "Todo el procesamiento ocurre en tu instancia de Xenia",
     "activateButton": "Activar",
     "activating": "Activando...",
     "claimSectionTitle": "Don't have a supporter key yet?",
     "contributorButton": "I'm a contributor",
     "contributorHint": "Verify your GitHub account — 5+ merged pull requests or a top-100 contributor spot unlocks a free supporter key.",
     "supporterButton": "Support the project",
-    "supporterHint": "Support OmniRoute to get a supporter key with the live catalog and extra perks.",
+    "supporterHint": "Support Xenia to get a supporter key with the live catalog and extra perks.",
     "colProvider": "Proveedor",
     "colModel": "Modelo",
     "colQuota": "Cuota",
@@ -12231,7 +12233,7 @@
     "capThinking": "Pensando",
     "catalogTab": "Catalog",
     "freeCreditsTab": "Free credits",
-    "freeCreditsSubtitle": "Referral links from Radar-tracked providers — using them costs you nothing extra and helps support OmniRoute.",
+    "freeCreditsSubtitle": "Referral links from Radar-tracked providers — using them costs you nothing extra and helps support Xenia.",
     "fixedLinksEmpty": "No referral links available yet. Sync Radar to check for updates.",
     "requiredActionLabel": "What to do:",
     "claimButton": "Claim credits",

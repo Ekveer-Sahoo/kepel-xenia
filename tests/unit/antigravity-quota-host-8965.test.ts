@@ -19,7 +19,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-ag-host-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-ag-host-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = "test-ag-host-secret";
 
@@ -57,7 +57,8 @@ test("#8965: quota reads use the runtime host (daily-cloudcode-pa), not cloudcod
   const cloudcodeCount = { value: 0 };
 
   globalThis.fetch = (async (input: RequestInfo | URL) => {
-    const url = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
+    const url =
+      typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
 
     if (url.includes("daily-cloudcode-pa.googleapis.com")) {
       dailyCount.value++;
@@ -167,7 +168,8 @@ test("#8965 behavioral impact: live quota source + weekly bucket unreachable whe
   core.resetDbInstance();
 
   globalThis.fetch = (async (input: RequestInfo | URL) => {
-    const url = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
+    const url =
+      typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
 
     if (url.includes("daily-cloudcode-pa.googleapis.com")) {
       if (url.includes("retrieveUserQuotaSummary")) {

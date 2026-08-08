@@ -56,7 +56,7 @@ export default function BurnRateChartInner({ usage }: BurnRateChartInnerProps) {
     <div className="space-y-1">
       <div className="flex items-center justify-between text-[10px] text-text-muted">
         <span className="font-semibold uppercase tracking-wide">{t("burnRateTitle")}</span>
-        {exhaustionLabel && <span className="text-amber-400 font-semibold">{exhaustionLabel}</span>}
+        {exhaustionLabel && <span className="text-gray-400 font-semibold">{exhaustionLabel}</span>}
       </div>
       <div className="h-24">
         <ResponsiveContainer width="100%" height="100%">
@@ -73,7 +73,7 @@ export default function BurnRateChartInner({ usage }: BurnRateChartInnerProps) {
             <Line
               type="monotone"
               dataKey="consumed"
-              stroke="#a78bfa"
+              stroke="#a0a0a0"
               strokeWidth={2}
               dot={false}
               strokeDasharray="4 2"

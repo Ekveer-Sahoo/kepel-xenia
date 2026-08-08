@@ -23,8 +23,8 @@ const REDOC_HTML = `<!DOCTYPE html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>OmniRoute API Reference</title>
-    <meta name="description" content="Redoc-rendered OpenAPI 3.0 spec for the OmniRoute v1 API." />
+    <title>Xenia API Reference</title>
+    <meta name="description" content="Redoc-rendered OpenAPI 3.0 spec for the Xenia v1 API." />
     <link rel="icon" href="/favicon.ico" />
     <style>
       body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -59,7 +59,7 @@ const REDOC_HTML = `<!DOCTYPE html>
             requiredPropsFirst: true,
             sortPropsAlphabetically: false,
             theme: {
-              colors: { primary: { main: "#0066cc" } },
+              colors: { primary: { main: "#535353" } },
               typography: { fontSize: "15px", fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" },
             },
           },

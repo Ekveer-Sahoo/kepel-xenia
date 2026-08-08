@@ -43,7 +43,7 @@ Machine status: `in_progress`
 
 | aru_id  | type        | statement                                                                                | mitigation                                                                | status |
 | ------- | ----------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------ |
-| ARU-001 | risk        | `X-OmniRoute-Mode` may not be a consumed routing-policy input in the chat route          | trace the policy contract and test an observable policy effect            | `open` |
+| ARU-001 | risk        | `X-Xenia-Mode` may not be a consumed routing-policy input in the chat route              | trace the policy contract and test an observable policy effect            | `open` |
 | ARU-002 | risk        | current catch maps all thrown execution errors to HTTP 400 and does not persist them     | introduce typed terminal outcomes and persistence before response mapping | `open` |
 | ARU-003 | risk        | current audit row is emitted before execution and cannot represent final execution state | replace/extend with append-only lifecycle records or durable run storage  | `open` |
 | ARU-004 | uncertainty | provider response metadata may differ by adapter                                         | normalize accounting fields and preserve unknowns explicitly              | `open` |

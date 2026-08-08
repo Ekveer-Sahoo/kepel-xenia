@@ -87,7 +87,7 @@ export default function BackgroundDegradationTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-5">
-        <div className="p-2 rounded-lg bg-sky-500/10 text-sky-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             speed
           </span>
@@ -102,7 +102,7 @@ export default function BackgroundDegradationTab() {
           </p>
         </div>
         {status === "saved" && (
-          <span className="text-xs font-medium text-emerald-500 flex items-center gap-1">
+          <span className="text-xs font-medium text-gray-500 flex items-center gap-1">
             <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
             {t("saved") || "Saved"}
           </span>
@@ -130,13 +130,13 @@ export default function BackgroundDegradationTab() {
 
       {/* Stats */}
       {config.stats && config.stats.detected > 0 && (
-        <div className="flex items-center gap-4 p-3 rounded-lg bg-sky-500/5 border border-sky-500/20 mb-4">
+        <div className="flex items-center gap-4 p-3 rounded-lg bg-gray-500/5 border border-gray-500/20 mb-4">
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-[16px] text-sky-400">analytics</span>
+            <span className="material-symbols-outlined text-[16px] text-gray-400">analytics</span>
             <span className="text-xs text-text-muted">
               {t("tasksDetected") || "Tasks detected"}:
             </span>
-            <span className="text-sm font-mono font-semibold text-sky-400">
+            <span className="text-sm font-mono font-semibold text-gray-400">
               {config.stats.detected}
             </span>
           </div>
@@ -171,7 +171,7 @@ export default function BackgroundDegradationTab() {
               <button
                 onClick={addMapping}
                 disabled={saving || !newFrom.trim() || !newTo.trim()}
-                className="px-3 py-2 rounded-lg text-sm font-medium bg-sky-500/10 text-sky-500 hover:bg-sky-500/20 disabled:opacity-50 transition-all"
+                className="px-3 py-2 rounded-lg text-sm font-medium bg-gray-500/10 text-gray-500 hover:bg-gray-500/20 disabled:opacity-50 transition-all"
               >
                 {t("add") || "Add"}
               </button>
@@ -182,15 +182,15 @@ export default function BackgroundDegradationTab() {
               <div className="rounded-lg border border-border/30 divide-y divide-border/20 max-h-48 overflow-y-auto">
                 {mapEntries.map(([from, to]) => (
                   <div key={from} className="flex items-center gap-3 px-4 py-2">
-                    <code className="text-xs text-orange-400/80 flex-1 truncate">{from}</code>
+                    <code className="text-xs text-gray-400/80 flex-1 truncate">{from}</code>
                     <span className="material-symbols-outlined text-[14px] text-text-muted">
                       arrow_forward
                     </span>
-                    <code className="text-xs text-sky-400/80 flex-1 truncate">{to}</code>
+                    <code className="text-xs text-gray-400/80 flex-1 truncate">{to}</code>
                     <button
                       onClick={() => removeMapping(from)}
                       disabled={saving}
-                      className="p-1 rounded hover:bg-red-500/10 text-text-muted hover:text-red-400 transition-all"
+                      className="p-1 rounded hover:bg-gray-500/10 text-text-muted hover:text-gray-400 transition-all"
                     >
                       <span className="material-symbols-outlined text-[16px]">close</span>
                     </button>
@@ -217,12 +217,12 @@ export default function BackgroundDegradationTab() {
                 placeholder={t("newPattern") || 'e.g. "generate a title"'}
                 value={newPattern}
                 onChange={(e) => setNewPattern(e.target.value)}
-                className="flex-1 px-3 py-2 rounded-lg text-sm bg-surface border border-border/50 focus:border-sky-500/50 focus:outline-none"
+                className="flex-1 px-3 py-2 rounded-lg text-sm bg-surface border border-border/50 focus:border-gray-500/50 focus:outline-none"
               />
               <button
                 onClick={addPattern}
                 disabled={saving || !newPattern.trim()}
-                className="px-3 py-2 rounded-lg text-sm font-medium bg-sky-500/10 text-sky-500 hover:bg-sky-500/20 disabled:opacity-50 transition-all"
+                className="px-3 py-2 rounded-lg text-sm font-medium bg-gray-500/10 text-gray-500 hover:bg-gray-500/20 disabled:opacity-50 transition-all"
               >
                 {t("add") || "Add"}
               </button>
@@ -233,12 +233,12 @@ export default function BackgroundDegradationTab() {
               {(config.detectionPatterns || []).map((pattern, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-sky-500/10 text-sky-400 border border-sky-500/20"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-gray-500/10 text-gray-400 border border-gray-500/20"
                 >
                   {pattern}
                   <button
                     onClick={() => removePattern(idx)}
-                    className="hover:text-red-400 transition-colors"
+                    className="hover:text-gray-400 transition-colors"
                     disabled={saving}
                   >
                     <span className="material-symbols-outlined text-[12px]">close</span>

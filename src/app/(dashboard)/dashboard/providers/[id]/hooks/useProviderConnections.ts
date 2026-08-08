@@ -46,7 +46,7 @@ const PAGE_SIZE = 50;
 
 /**
  * Upstream proxy routing mode for Claude-Code-compatible providers. `native`
- * uses OmniRoute's own executor; `cliproxyapi`/`dario` route every request
+ * uses Xenia's own executor; `cliproxyapi`/`dario` route every request
  * through that backend directly; `fallback` tries native first and retries
  * via `fallbackBackend` on failure. Mirrors the `mode` enum in
  * src/app/api/upstream-proxy/[providerId]/route.ts.
@@ -493,7 +493,7 @@ export function useProviderConnections(
   };
 
   const UPSTREAM_PROXY_MODE_MESSAGES: Record<UpstreamProxyMode, string> = {
-    native: "Requests now use native OmniRoute (direct)",
+    native: "Requests now use native Xenia (direct)",
     cliproxyapi: "Requests now route through CLIProxyAPI (deeper emulation)",
     dario: "Requests now route through Dario (Claude subscription proxy)",
     fallback: "Requests try native first, retrying via the configured backend on failure",

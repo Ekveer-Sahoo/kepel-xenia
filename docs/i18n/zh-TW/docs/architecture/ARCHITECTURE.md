@@ -1,10 +1,10 @@
 ---
-title: "OmniRoute 架構"
+title: "Xenia 架構"
 version: 3.8.40
 lastUpdated: 2026-06-28
 ---
 
-# OmniRoute 架構
+# Xenia 架構
 
 🌐 **語言：** 🇺🇸 [English](./ARCHITECTURE.md) | 🇧🇷 [Português (Brasil)](../i18n/pt-BR/docs/architecture/ARCHITECTURE.md) | 🇪🇸 [Español](../i18n/es/docs/architecture/ARCHITECTURE.md) | 🇫🇷 [Français](../i18n/fr/docs/architecture/ARCHITECTURE.md) | 🇮🇹 [Italiano](../i18n/it/docs/architecture/ARCHITECTURE.md) | 🇷🇺 [Русский](../i18n/ru/docs/architecture/ARCHITECTURE.md) | 🇨🇳 [中文 (简体)](../i18n/zh-CN/docs/architecture/ARCHITECTURE.md) | 🇩🇪 [Deutsch](../i18n/de/docs/architecture/ARCHITECTURE.md) | 🇮🇳 [हिन्दी](../i18n/in/docs/architecture/ARCHITECTURE.md) | 🇹🇭 [ไทย](../i18n/th/docs/architecture/ARCHITECTURE.md) | 🇺🇦 [Українська](../i18n/uk-UA/docs/architecture/ARCHITECTURE.md) | 🇸🇦 [العربية](../i18n/ar/docs/architecture/ARCHITECTURE.md) | 🇯🇵 [日本語](../i18n/ja/docs/architecture/ARCHITECTURE.md) | 🇻🇳 [Tiếng Việt](../i18n/vi/docs/architecture/ARCHITECTURE.md) | 🇧🇬 [Български](../i18n/bg/docs/architecture/ARCHITECTURE.md) | 🇩🇰 [Dansk](../i18n/da/docs/architecture/ARCHITECTURE.md) | 🇫🇮 [Suomi](../i18n/fi/docs/architecture/ARCHITECTURE.md) | 🇮🇱 [עברית](../i18n/he/docs/architecture/ARCHITECTURE.md) | 🇭🇺 [Magyar](../i18n/hu/docs/architecture/ARCHITECTURE.md) | 🇮🇩 [Bahasa Indonesia](../i18n/id/docs/architecture/ARCHITECTURE.md) | 🇰🇷 [한국어](../i18n/ko/docs/architecture/ARCHITECTURE.md) | 🇲🇾 [Bahasa Melayu](../i18n/ms/docs/architecture/ARCHITECTURE.md) | 🇳🇱 [Nederlands](../i18n/nl/docs/architecture/ARCHITECTURE.md) | 🇳🇴 [Norsk](../i18n/no/docs/architecture/ARCHITECTURE.md) | 🇵🇹 [Português (Portugal)](../i18n/pt/docs/architecture/ARCHITECTURE.md) | 🇷🇴 [Română](../i18n/ro/docs/architecture/ARCHITECTURE.md) | 🇵🇱 [Polski](../i18n/pl/docs/architecture/ARCHITECTURE.md) | 🇸🇰 [Slovenčina](../i18n/sk/docs/architecture/ARCHITECTURE.md) | 🇸🇪 [Svenska](../i18n/sv/docs/architecture/ARCHITECTURE.md) | 🇵🇭 [Filipino](../i18n/phi/docs/architecture/ARCHITECTURE.md) | 🇨🇿 [Čeština](../i18n/cs/docs/architecture/ARCHITECTURE.md) | 🇭🇰 [中文 (繁體)](../i18n/zh-TW/docs/architecture/ARCHITECTURE.md)
 
@@ -12,7 +12,7 @@ _最後更新：2026-06-28_
 
 ## 執行摘要
 
-OmniRoute 是一個建構於 Next.js 上的本地 AI 路由閘道與儀表板。
+Xenia 是一個建構於 Next.js 上的本地 AI 路由閘道與儀表板。
 它提供單一的 OpenAI 相容端點（`/v1/*`），並透過轉換、備援、令牌刷新與用量追蹤，將流量路由至多個上游提供者。
 
 核心能力：
@@ -166,7 +166,7 @@ flowchart LR
         BROWSER[瀏覽器儀表板]
     end
 
-    subgraph Router[OmniRoute 本地程序]
+    subgraph Router[Xenia 本地程序]
         API[V1 相容性 API\n/v1/*]
         DASH[儀表板 + 管理 API\n/api/*]
         CORE[SSE + 轉換核心\nopen-sse + src/sse]
@@ -327,7 +327,7 @@ OAuth 提供者模組（`src/lib/oauth/providers/` 下的 16 個個別檔案）�
 
 ## 5) 嵌入式服務（v3.8.4）
 
-OmniRoute 可以安裝、監督並路由至本地運行的 AI 工具程序，
+Xenia 可以安裝、監督並路由至本地運行的 AI 工具程序，
 稱為**嵌入式服務**。v3.8.4 中提供了兩項：9Router 和 CLIProxyAPI。
 
 架構層：
@@ -426,7 +426,7 @@ Jules）包裝在統一的 DB 支援任務生命週期後方。所有任務建�
 - 配額快取：`src/domain/quotaCache.ts`
 - 降級狀態：`src/domain/degradation.ts`
 - 設定稽核：`src/domain/configAudit.ts`
-- OmniRoute 回應中繼資料建置器：`src/domain/omnirouteResponseMeta.ts`
+- Xenia 回應中繼資料建置器：`src/domain/xeniaResponseMeta.ts`
 - 評估子系統：`src/domain/assessment/` — 定期評估任務
 
 ### E. 授權管線
@@ -493,7 +493,7 @@ FSM 轉換結果饋入自動組合的評分，對背景/自動化任務偏向較
 
 - 核心基礎設施：`src/lib/db/core.ts`（better-sqlite3、遷移、WAL）
 - 重新匯出外觀：`src/lib/localDb.ts`（供呼叫者使用的薄相容層）
-- 檔案：`${DATA_DIR}/storage.sqlite`（或設定了 `$XDG_CONFIG_HOME/omniroute/storage.sqlite` 時使用該路徑，否則為 `~/.omniroute/storage.sqlite`）
+- 檔案：`${DATA_DIR}/storage.sqlite`（或設定了 `$XDG_CONFIG_HOME/xenia/storage.sqlite` 時使用該路徑，否則為 `~/.xenia/storage.sqlite`）
 - 實體（表格 + KV 命名空間）：providerConnections、providerNodes、modelAliases、combos、apiKeys、settings、pricing、**customModels**、**proxyConfig**、**ipFilter**、**thinkingBudget**、**systemPrompt**
 
 用量持久化：
@@ -789,7 +789,7 @@ flowchart LR
         Browser[儀表板瀏覽器]
     end
 
-    subgraph ContainerOrProcess[OmniRoute 執行時期]
+    subgraph ContainerOrProcess[Xenia 執行時期]
         Next[Next.js 伺服器\nPORT=20128]
         Core[SSE 核心 + 執行器]
         MainDB[(storage.sqlite)]
@@ -908,7 +908,7 @@ flowchart LR
 
 ## 提供者相容性矩陣
 
-> **注意：** 以下矩陣為 OmniRoute v3.8.0 中 237 個已註冊提供者的代表性樣本。
+> **注意：** 以下矩陣為 Xenia v3.8.0 中 237 個已註冊提供者的代表性樣本。
 > 完整且持續更新的清單，請參閱
 > [`docs/reference/PROVIDER_REFERENCE.md`](../reference/PROVIDER_REFERENCE.md)（自動產生）或
 > `src/shared/constants/providers.ts`（載入時經 Zod 驗證）中的權威來源。
@@ -1092,7 +1092,7 @@ flowchart LR
 - 從客戶端接收到的原始請求
 - 實際發送給上游的轉換後請求
 - 重建為 JSON 的提供者回應；串流回應壓縮為最終摘要加上串流中繼資料
-- OmniRoute 回傳的最終客戶端回應；串流回應以相同壓縮摘要形式儲存
+- Xenia 回傳的最終客戶端回應；串流回應以相同壓縮摘要形式儲存
 
 ## 安全敏感邊界
 
@@ -1119,11 +1119,11 @@ flowchart LR
 
 ## 已知架構說明
 
-1. `usageDb` 與 `localDb` 共用相同的基礎目錄政策（`DATA_DIR` → `XDG_CONFIG_HOME/omniroute` → `~/.omniroute`），附舊版檔案遷移。
+1. `usageDb` 與 `localDb` 共用相同的基礎目錄政策（`DATA_DIR` → `XDG_CONFIG_HOME/xenia` → `~/.xenia`），附舊版檔案遷移。
 2. `/api/v1/route.ts` 委派給與 `/api/v1/models` 相同的統一目錄建置器（`src/app/api/v1/models/catalog.ts`），以避免語意漂移。
 3. 啟用時請求記錄器寫入完整標頭/主體；請將記錄目錄視為敏感資訊。
 4. 雲端行為取決於正確的 `NEXT_PUBLIC_BASE_URL` 與雲端端點可達性。
-5. `open-sse/` 目錄以 `@omniroute/open-sse` **npm workspace 套件**形式發布。原始碼透過 `@omniroute/open-sse/...` 匯入（由 Next.js `transpilePackages` 解析）。本文件中的檔案路徑為求一致仍使用目錄名稱 `open-sse/`。
+5. `open-sse/` 目錄以 `@xenia/open-sse` **npm workspace 套件**形式發布。原始碼透過 `@xenia/open-sse/...` 匯入（由 Next.js `transpilePackages` 解析）。本文件中的檔案路徑為求一致仍使用目錄名稱 `open-sse/`。
 6. 儀表板中的圖表使用 **Recharts**（基於 SVG）實現可存取、互動式的分析視覺化（模型用量長條圖、含成功率的提供者 breakdown 表格）。
 7. E2E 測試使用 **Playwright**（`tests/e2e/`），透過 `npm run test:e2e` 執行。單元測試使用 **Node.js test runner**（`tests/unit/`），透過 `npm run test:unit` 執行。`src/` 下的原始碼為 **TypeScript**（`.ts`/`.tsx`）；`open-sse/` workspace 保持 JavaScript（`.js`）。
 8. 設定頁面分為 7 個分頁：一般、外觀、AI、安全性、路由、韌性、進階。韌性頁面僅設定請求佇列、連線冷卻、提供者斷路器與等待冷卻行為；斷路器執行時期狀態顯示在健康狀態頁面上。
@@ -1134,7 +1134,7 @@ flowchart LR
 ## 操作驗證檢查清單
 
 - 從原始碼建置：`npm run build`
-- 建置 Docker 映像：`docker build -t omniroute .`
+- 建置 Docker 映像：`docker build -t xenia .`
 - 啟動服務並驗證：
 - `GET /api/settings`
 - `GET /api/v1/models`

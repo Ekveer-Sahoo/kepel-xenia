@@ -11,7 +11,7 @@
  * records one name for it and silently treats the other as already applied — the
  * migration never runs, on every already-provisioned database.
  *
- * This suite pins the extension point: `OMNIROUTE_EXTRA_MIGRATIONS_DIRS` maps
+ * This suite pins the extension point: `XENIA_EXTRA_MIGRATIONS_DIRS` maps
  * `namespace=directory` entries (separated by `path.delimiter`), and files found
  * there are recorded as `<namespace>-<number>` so they can never collide with the
  * upstream numeric slots. Unset (the default, and always the case for a plain
@@ -30,7 +30,7 @@
  *     (`--import tsx/esm --import setupPolyfill --import isolateDataDir`); an
  *     earlier revision did that, passed locally and failed in CI. The extra
  *     directories, by contrast, are resolved at CALL time, so each test varies only
- *     `OMNIROUTE_EXTRA_MIGRATIONS_DIRS`.
+ *     `XENIA_EXTRA_MIGRATIONS_DIRS`.
  *
  *  2. Tests are registered WITHOUT top-level `await`. The bodies are synchronous,
  *     so awaiting each one drains the event loop between tests and `--test-force-exit`
@@ -64,7 +64,7 @@ writeMigrations(CORE_DIR, {
   "001_initial_schema.sql": "CREATE TABLE core_one (id INTEGER);",
   "002_core_two.sql": "CREATE TABLE core_two (id INTEGER);",
 });
-process.env.OMNIROUTE_MIGRATIONS_DIR = CORE_DIR;
+process.env.XENIA_MIGRATIONS_DIR = CORE_DIR;
 process.env.DISABLE_SQLITE_AUTO_BACKUP = "true";
 
 const { runMigrations } = await import("../../src/lib/db/migrationRunner.ts");
@@ -90,15 +90,15 @@ interface RunResult {
 
 /** Run the migrations against a fresh in-memory DB with the given extra-dir spec. */
 function runWithExtras(extraSpec: string | null): RunResult {
-  const prev = process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS;
-  if (extraSpec === null) delete process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS;
-  else process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS = extraSpec;
+  const prev = process.env.XENIA_EXTRA_MIGRATIONS_DIRS;
+  if (extraSpec === null) delete process.env.XENIA_EXTRA_MIGRATIONS_DIRS;
+  else process.env.XENIA_EXTRA_MIGRATIONS_DIRS = extraSpec;
 
   const db = new Database(":memory:");
   try {
     const count = runMigrations(db as never, { isNewDb: true });
     const rows = db
-      .prepare("SELECT version, name FROM _omniroute_migrations ORDER BY rowid")
+      .prepare("SELECT version, name FROM _xenia_migrations ORDER BY rowid")
       .all() as Array<{ version: string; name: string }>;
     const tables = (
       db.prepare("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name").all() as Array<{
@@ -108,8 +108,8 @@ function runWithExtras(extraSpec: string | null): RunResult {
     return { count, rows, tables };
   } finally {
     db.close();
-    if (prev === undefined) delete process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS;
-    else process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS = prev;
+    if (prev === undefined) delete process.env.XENIA_EXTRA_MIGRATIONS_DIRS;
+    else process.env.XENIA_EXTRA_MIGRATIONS_DIRS = prev;
   }
 }
 
@@ -192,7 +192,7 @@ test("spec malformada estoura em vez de ignorar o diretório", async () => {
 
   assert.throws(
     () => runWithExtras(eeDir), // sem "namespace="
-    /OMNIROUTE_EXTRA_MIGRATIONS_DIRS/,
+    /XENIA_EXTRA_MIGRATIONS_DIRS/,
     "entrada sem namespace= é configuração inválida, não um diretório a ignorar"
   );
 });
@@ -266,8 +266,8 @@ test("rodar duas vezes não reaplica as migrations do diretório extra", async (
   const eeDir = mkTempDir("mig-idem-");
   writeMigrations(eeDir, { "001_ee_idem.sql": "CREATE TABLE ee_idem (id INTEGER);" });
 
-  const prev = process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS;
-  process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS = `ee=${eeDir}`;
+  const prev = process.env.XENIA_EXTRA_MIGRATIONS_DIRS;
+  process.env.XENIA_EXTRA_MIGRATIONS_DIRS = `ee=${eeDir}`;
   const db = new Database(":memory:");
   try {
     const first = runMigrations(db as never, { isNewDb: true });
@@ -276,7 +276,7 @@ test("rodar duas vezes não reaplica as migrations do diretório extra", async (
     assert.equal(second, 0, "segunda execução não tem nada pendente");
   } finally {
     db.close();
-    if (prev === undefined) delete process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS;
-    else process.env.OMNIROUTE_EXTRA_MIGRATIONS_DIRS = prev;
+    if (prev === undefined) delete process.env.XENIA_EXTRA_MIGRATIONS_DIRS;
+    else process.env.XENIA_EXTRA_MIGRATIONS_DIRS = prev;
   }
 });

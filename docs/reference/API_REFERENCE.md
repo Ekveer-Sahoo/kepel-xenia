@@ -8,7 +8,7 @@ lastUpdated: 2026-06-28
 
 🌐 **Languages:** 🇺🇸 [English](./API_REFERENCE.md) | 🇧🇷 [Português (Brasil)](../i18n/pt-BR/docs/reference/API_REFERENCE.md) | 🇪🇸 [Español](../i18n/es/docs/reference/API_REFERENCE.md) | 🇫🇷 [Français](../i18n/fr/docs/reference/API_REFERENCE.md) | 🇮🇹 [Italiano](../i18n/it/docs/reference/API_REFERENCE.md) | 🇷🇺 [Русский](../i18n/ru/docs/reference/API_REFERENCE.md) | 🇨🇳 [中文 (简体)](../i18n/zh-CN/docs/reference/API_REFERENCE.md) | 🇩🇪 [Deutsch](../i18n/de/docs/reference/API_REFERENCE.md) | 🇮🇳 [हिन्दी](../i18n/in/docs/reference/API_REFERENCE.md) | 🇹🇭 [ไทย](../i18n/th/docs/reference/API_REFERENCE.md) | 🇺🇦 [Українська](../i18n/uk-UA/docs/reference/API_REFERENCE.md) | 🇸🇦 [العربية](../i18n/ar/docs/reference/API_REFERENCE.md) | 🇯🇵 [日本語](../i18n/ja/docs/reference/API_REFERENCE.md) | 🇻🇳 [Tiếng Việt](../i18n/vi/docs/reference/API_REFERENCE.md) | 🇧🇬 [Български](../i18n/bg/docs/reference/API_REFERENCE.md) | 🇩🇰 [Dansk](../i18n/da/docs/reference/API_REFERENCE.md) | 🇫🇮 [Suomi](../i18n/fi/docs/reference/API_REFERENCE.md) | 🇮🇱 [עברית](../i18n/he/docs/reference/API_REFERENCE.md) | 🇭🇺 [Magyar](../i18n/hu/docs/reference/API_REFERENCE.md) | 🇮🇩 [Bahasa Indonesia](../i18n/id/docs/reference/API_REFERENCE.md) | 🇰🇷 [한국어](../i18n/ko/docs/reference/API_REFERENCE.md) | 🇲🇾 [Bahasa Melayu](../i18n/ms/docs/reference/API_REFERENCE.md) | 🇳🇱 [Nederlands](../i18n/nl/docs/reference/API_REFERENCE.md) | 🇳🇴 [Norsk](../i18n/no/docs/reference/API_REFERENCE.md) | 🇵🇹 [Português (Portugal)](../i18n/pt/docs/reference/API_REFERENCE.md) | 🇷🇴 [Română](../i18n/ro/docs/reference/API_REFERENCE.md) | 🇵🇱 [Polski](../i18n/pl/docs/reference/API_REFERENCE.md) | 🇸🇰 [Slovenčina](../i18n/sk/docs/reference/API_REFERENCE.md) | 🇸🇪 [Svenska](../i18n/sv/docs/reference/API_REFERENCE.md) | 🇵🇭 [Filipino](../i18n/phi/docs/reference/API_REFERENCE.md) | 🇨🇿 [Čeština](../i18n/cs/docs/reference/API_REFERENCE.md)
 
-Complete reference for all OmniRoute API endpoints.
+Complete reference for all Xenia API endpoints.
 
 ---
 
@@ -61,32 +61,32 @@ Content-Type: application/json
 
 ### Custom Headers
 
-| Header                   | Direction | Description                                                                                                                                                                       |
-| ------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `X-OmniRoute-No-Cache`   | Request   | Set to `true` to bypass cache                                                                                                                                                     |
-| `x-omniroute-no-memory`  | Request   | Set to `true` to skip memory + skills injection for this request (mirrors no-cache; avoids the per-call token/cost overhead)                                                      |
-| `X-OmniRoute-Progress`   | Request   | Set to `true` for progress events                                                                                                                                                 |
-| `X-Session-Id`           | Request   | Sticky session key for external session affinity                                                                                                                                  |
-| `x_session_id`           | Request   | Underscore variant also accepted (direct HTTP)                                                                                                                                    |
-| `X-OmniRoute-Session-Id` | Request   | Caller-supplied session/conversation tag (also feeds memory). When present, persisted verbatim to `call_logs.session_tag` for per-session cost attribution (#8249) — never synthesized when absent |
-| `Idempotency-Key`        | Request   | Dedup key (5s window)                                                                                                                                                             |
-| `X-Request-Id`           | Request   | Alternative dedup key                                                                                                                                                             |
-| `X-OmniRoute-Cache`      | Response  | `HIT` or `MISS` (non-streaming)                                                                                                                                                   |
-| `X-OmniRoute-Idempotent` | Response  | `true` if deduplicated                                                                                                                                                            |
-| `X-OmniRoute-Progress`   | Response  | `enabled` if progress tracking on                                                                                                                                                 |
-| `X-OmniRoute-Session-Id` | Response  | Effective session ID used by OmniRoute                                                                                                                                            |
-| `X-OmniRoute-Request-Id` | Response  | Request correlation id (when known)                                                                                                                                               |
-| `X-OmniRoute-Version`    | Response  | OmniRoute build version (always present)                                                                                                                                          |
-| `X-OmniRoute-Cost-Saved` | Response  | USD the cache avoided on a HIT (cache hits only)                                                                                                                                  |
-| `X-OmniRoute-Decision`   | Response  | Routing trace: `strategy=<name>; provider=<alias>; latency_ms=<n>` (`<name>` is the combo strategy, or `single` for a non-combo request) — always present on completion responses |
+| Header               | Direction | Description                                                                                                                                                                                        |
+| -------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `X-Xenia-No-Cache`   | Request   | Set to `true` to bypass cache                                                                                                                                                                      |
+| `x-xenia-no-memory`  | Request   | Set to `true` to skip memory + skills injection for this request (mirrors no-cache; avoids the per-call token/cost overhead)                                                                       |
+| `X-Xenia-Progress`   | Request   | Set to `true` for progress events                                                                                                                                                                  |
+| `X-Session-Id`       | Request   | Sticky session key for external session affinity                                                                                                                                                   |
+| `x_session_id`       | Request   | Underscore variant also accepted (direct HTTP)                                                                                                                                                     |
+| `X-Xenia-Session-Id` | Request   | Caller-supplied session/conversation tag (also feeds memory). When present, persisted verbatim to `call_logs.session_tag` for per-session cost attribution (#8249) — never synthesized when absent |
+| `Idempotency-Key`    | Request   | Dedup key (5s window)                                                                                                                                                                              |
+| `X-Request-Id`       | Request   | Alternative dedup key                                                                                                                                                                              |
+| `X-Xenia-Cache`      | Response  | `HIT` or `MISS` (non-streaming)                                                                                                                                                                    |
+| `X-Xenia-Idempotent` | Response  | `true` if deduplicated                                                                                                                                                                             |
+| `X-Xenia-Progress`   | Response  | `enabled` if progress tracking on                                                                                                                                                                  |
+| `X-Xenia-Session-Id` | Response  | Effective session ID used by Xenia                                                                                                                                                                 |
+| `X-Xenia-Request-Id` | Response  | Request correlation id (when known)                                                                                                                                                                |
+| `X-Xenia-Version`    | Response  | Xenia build version (always present)                                                                                                                                                               |
+| `X-Xenia-Cost-Saved` | Response  | USD the cache avoided on a HIT (cache hits only)                                                                                                                                                   |
+| `X-Xenia-Decision`   | Response  | Routing trace: `strategy=<name>; provider=<alias>; latency_ms=<n>` (`<name>` is the combo strategy, or `single` for a non-combo request) — always present on completion responses                  |
 
 > Nginx note: if you rely on underscore headers (for example `x_session_id`), enable `underscores_in_headers on;`.
 
-> **Cost telemetry headers:** non-streaming success responses also carry the `X-OmniRoute-*` cost-telemetry set — `X-OmniRoute-Response-Cost` (USD, fixed 10 decimals; `0.0000000000` for free/unpriced), `X-OmniRoute-Tokens-In` / `X-OmniRoute-Tokens-Out`, `X-OmniRoute-Model`, `X-OmniRoute-Provider`, `X-OmniRoute-Latency-Ms`, `X-OmniRoute-Cache-Hit`, and `X-OmniRoute-Fallback-Attempts` (only when > 0), plus `X-OmniRoute-Request-Id` and `X-OmniRoute-Version`. These are emitted by chat completions, `/v1/responses`, `/v1/messages`, **and the media endpoints** — `/v1/embeddings`, `/v1/images/generations`, `/v1/audio/speech`, `/v1/audio/transcriptions`, `/v1/rerank`, `/v1/videos/generations`, `/v1/music/generations`, and `/v1/moderations` (always cost `0`). Media cost is computed per modality (per-image, per-second, per-character, per search-unit) when pricing is available, otherwise `0` (fail-open).
+> **Cost telemetry headers:** non-streaming success responses also carry the `X-Xenia-*` cost-telemetry set — `X-Xenia-Response-Cost` (USD, fixed 10 decimals; `0.0000000000` for free/unpriced), `X-Xenia-Tokens-In` / `X-Xenia-Tokens-Out`, `X-Xenia-Model`, `X-Xenia-Provider`, `X-Xenia-Latency-Ms`, `X-Xenia-Cache-Hit`, and `X-Xenia-Fallback-Attempts` (only when > 0), plus `X-Xenia-Request-Id` and `X-Xenia-Version`. These are emitted by chat completions, `/v1/responses`, `/v1/messages`, **and the media endpoints** — `/v1/embeddings`, `/v1/images/generations`, `/v1/audio/speech`, `/v1/audio/transcriptions`, `/v1/rerank`, `/v1/videos/generations`, `/v1/music/generations`, and `/v1/moderations` (always cost `0`). Media cost is computed per modality (per-image, per-second, per-character, per search-unit) when pricing is available, otherwise `0` (fail-open).
 
-> **Cache-hit cost semantics:** on a semantic-cache HIT (`X-OmniRoute-Cache-Hit: true`) no upstream call is made, so `X-OmniRoute-Response-Cost` is `0.0000000000` (the **incremental** cost of serving the hit). The original/would-have-been cost is reported separately in `X-OmniRoute-Cost-Saved`. Billing consumers should sum `X-OmniRoute-Response-Cost` (hits cost nothing); cache analytics can aggregate `X-OmniRoute-Cost-Saved`.
+> **Cache-hit cost semantics:** on a semantic-cache HIT (`X-Xenia-Cache-Hit: true`) no upstream call is made, so `X-Xenia-Response-Cost` is `0.0000000000` (the **incremental** cost of serving the hit). The original/would-have-been cost is reported separately in `X-Xenia-Cost-Saved`. Billing consumers should sum `X-Xenia-Response-Cost` (hits cost nothing); cache analytics can aggregate `X-Xenia-Cost-Saved`.
 
-### `x-omniroute-compression`
+### `x-xenia-compression`
 
 Per-request override of the compression plan. Highest precedence — beats the routing-combo
 override, the active profile, auto-trigger, and the panel Default. Values:
@@ -108,7 +108,7 @@ Notes:
 The applied plan is echoed back in the response header:
 
 ```
-X-OmniRoute-Compression: <mode>; source=<source>
+X-Xenia-Compression: <mode>; source=<source>
 ```
 
 where `<source>` is one of `request-header`, `routing-override`, `active-profile`, `auto-trigger`, `default`, or `off`.
@@ -137,7 +137,7 @@ is either `{"type":"url","url":"https://..."}` or
 
 Security and transport bounds:
 
-- Remote media URLs must be public HTTPS. OmniRoute fetches them server-side with redirect
+- Remote media URLs must be public HTTPS. Xenia fetches them server-side with redirect
   revalidation, timeout, decoded size limits, public DNS checks, and connection pinning to a
   validated answer before the provider call. Providers never receive the original remote URL.
 - Inline base64 media is limited to 8 MiB decoded per item and 16 MiB decoded across the request.
@@ -210,10 +210,10 @@ Authorization: Bearer your-api-key
 
 ### No-thinking model variants
 
-For thinking-capable Claude models, `/v1/models` also advertises a **no-thinking** variant whose id is prefixed with `claude-3-omniroute-no-thinking/`:
+For thinking-capable Claude models, `/v1/models` also advertises a **no-thinking** variant whose id is prefixed with `claude-3-xenia-no-thinking/`:
 
 ```
-claude-3-omniroute-no-thinking/<provider>/<model>
+claude-3-xenia-no-thinking/<provider>/<model>
 ```
 
 Selecting this id (e.g. in a Claude Code config that always attaches a `thinking` block) resolves back to the real `<provider>/<model>` with reasoning suppressed — `thinking:{type:"disabled"}` on the `/v1/messages` path, or the `reasoning`/`reasoning_effort` fields dropped on the `/v1/chat/completions` path. The variant is only listed for Claude-family models that support thinking **and** honor `disabled` (so e.g. adaptive-only models that reject `disabled` are excluded). Operators can force the variant on or off per model via `ModelSpec.noThinkingAlias`.
@@ -266,7 +266,7 @@ Use this endpoint when a sidecar runs out-of-process and cannot import
 
 All POST routes follow the same shape: `Bearer your-api-key` + Zod-validated JSON body (`v1RerankSchema`, `v1ModerationSchema`, `v1AudioSpeechSchema`, etc., see `src/shared/validation/schemas.ts`). 4xx is returned on schema failure.
 
-For clients that cannot attach `Authorization: Bearer ...`, OmniRoute also accepts API keys in the URL via either query-string compatibility (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) or the dedicated `/api/v1/vscode/{token}/...` endpoints documented below.
+For clients that cannot attach `Authorization: Bearer ...`, Xenia also accepts API keys in the URL via either query-string compatibility (`?token=...`, `?apiKey=...`, `?api_key=...`, `?key=...`) or the dedicated `/api/v1/vscode/{token}/...` endpoints documented below.
 
 ```bash
 # Rerank
@@ -349,9 +349,9 @@ Web/search provider abstraction (Tavily, Brave, Exa, Serper, etc.).
 Extract content from a URL via a configured web-fetch provider (Firecrawl, Jina
 Reader, Tavily Extract, TinyFish Fetch).
 
-| Method | Path           | Description                                                              |
-| ------ | -------------- | ------------------------------------------------------------------------- |
-| POST   | `/v1/web/fetch` | Fetch/scrape a URL — body validated by `v1WebFetchSchema`               |
+| Method | Path            | Description                                               |
+| ------ | --------------- | --------------------------------------------------------- |
+| POST   | `/v1/web/fetch` | Fetch/scrape a URL — body validated by `v1WebFetchSchema` |
 
 **Auth:** Bearer API key (`extractApiKey` + `isValidApiKey`). Policy enforced via `enforceApiKeyPolicy`.
 
@@ -384,8 +384,8 @@ Validates a WebSocket upgrade handshake and returns the wire protocol example me
 
 ```bash
 # Same host:port as the HTTP API (default 20128); upgrade the connection:
-wscat -c "ws://localhost:20128/v1/responses?api_key=<OMNIROUTE_API_KEY>"
-# (or: -H "Authorization: Bearer <OMNIROUTE_API_KEY>")
+wscat -c "ws://localhost:20128/v1/responses?api_key=<XENIA_API_KEY>"
+# (or: -H "Authorization: Bearer <XENIA_API_KEY>")
 
 # First frame MUST be response.create:
 { "type": "response.create", "model": "gpt-5.5", "input": [ { "role": "user", "content": "hi" } ] }
@@ -408,35 +408,35 @@ must be the active entrypoint (it is, by default, when `app/server-ws.mjs` exist
 The OpenAI **Codex CLI** validates the model name client-side when
 `supports_websockets = true` and **rejects provider-prefixed ids** like
 `codex/gpt-5.5` (`The 'codex/gpt-5.5' model is not supported when using Codex with
-a ChatGPT account`). Send the **bare** id (e.g. `gpt-5.5`). OmniRoute's bridge is
+a ChatGPT account`). Send the **bare** id (e.g. `gpt-5.5`). Xenia's bridge is
 codex-only, so it re-resolves a bare id as a codex model
 (`resolveCodexWsModelInfo`) before tunneling upstream — even though a bare
 `gpt-5.5` would otherwise route to another provider over HTTP.
 
 #### Configuring the OpenAI Codex CLI
 
-Point the Codex CLI at OmniRoute by adding a custom provider with WebSocket
+Point the Codex CLI at Xenia by adding a custom provider with WebSocket
 support to `~/.codex/config.toml` (use a separate `CODEX_HOME` to avoid touching
 an existing config):
 
 ```toml
 model = "gpt-5.5"                 # bare id — NOT "codex/gpt-5.5"
-model_provider = "omniroute"
+model_provider = "xenia"
 
-[model_providers.omniroute]
-name = "OmniRoute (WS)"
+[model_providers.xenia]
+name = "Xenia (WS)"
 base_url = "http://localhost:20128/v1"   # no trailing slash; the WS URL is derived (use https/wss in production)
 wire_api = "responses"                    # only supported value since Feb 2026
 supports_websockets = true                # enables the Responses-over-WS transport
-env_key = "OMNIROUTE_API_KEY"             # holds the OmniRoute API key (Bearer)
+env_key = "XENIA_API_KEY"             # holds the Xenia API key (Bearer)
 ```
 
 ```bash
-export OMNIROUTE_API_KEY=sk-...           # an OmniRoute API key (any key if REQUIRE_API_KEY=false)
+export XENIA_API_KEY=sk-...           # an Xenia API key (any key if REQUIRE_API_KEY=false)
 codex exec "Responda apenas: PONG"
 ```
 
-The CLI upgrades `base_url + /responses` to a WebSocket and OmniRoute tunnels it
+The CLI upgrades `base_url + /responses` to a WebSocket and Xenia tunnels it
 to the selected codex OAuth connection. Validated end-to-end against the local
 server: ChatGPT returns `codex.rate_limits` + `response.created` and streams the
 completion.
@@ -525,15 +525,15 @@ Response example:
 
 ### Usage & Analytics
 
-| Endpoint                    | Method          | Description                     |
-| --------------------------- | --------------- | ------------------------------- |
-| `/api/usage/history`        | GET             | Usage history                   |
-| `/api/usage/logs`           | GET             | Usage logs                      |
-| `/api/usage/request-logs`   | GET             | Request-level logs              |
-| `/api/usage/[connectionId]` | GET             | Per-connection usage            |
-| `/api/usage/token-limits`   | GET/POST/DELETE | Per-API-key token-limit budgets |
-| `/api/usage/model-latency-stats` | GET        | Rolling per-provider/model latency aggregate (avg/p50/p95/p99, success rate); filters: `windowHours`/`minSamples`/`maxRows`/`provider`/`model` (#6873) |
-| `/api/usage/cache-health`   | GET             | Prompt-cache health summary over `call_logs` — write/read ratio, p50/p90/p99 write-size distribution, heavy-write concentration, per-model split, and a `healthy`/`degraded`/`thrash`/`no-data` verdict; query params `range` (`1h`\|`24h`\|`7d`\|`30d`, default `24h`) and optional `model` (#8827) |
+| Endpoint                         | Method          | Description                                                                                                                                                                                                                                                                                          |
+| -------------------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/api/usage/history`             | GET             | Usage history                                                                                                                                                                                                                                                                                        |
+| `/api/usage/logs`                | GET             | Usage logs                                                                                                                                                                                                                                                                                           |
+| `/api/usage/request-logs`        | GET             | Request-level logs                                                                                                                                                                                                                                                                                   |
+| `/api/usage/[connectionId]`      | GET             | Per-connection usage                                                                                                                                                                                                                                                                                 |
+| `/api/usage/token-limits`        | GET/POST/DELETE | Per-API-key token-limit budgets                                                                                                                                                                                                                                                                      |
+| `/api/usage/model-latency-stats` | GET             | Rolling per-provider/model latency aggregate (avg/p50/p95/p99, success rate); filters: `windowHours`/`minSamples`/`maxRows`/`provider`/`model` (#6873)                                                                                                                                               |
+| `/api/usage/cache-health`        | GET             | Prompt-cache health summary over `call_logs` — write/read ratio, p50/p90/p99 write-size distribution, heavy-write concentration, per-model split, and a `healthy`/`degraded`/`thrash`/`no-data` verdict; query params `range` (`1h`\|`24h`\|`7d`\|`30d`, default `24h`) and optional `model` (#8827) |
 
 ### Settings
 
@@ -693,7 +693,7 @@ Repairs missing or corrupted OAuth environment variables for a specific provider
 {
   "success": true,
   "repaired": ["CLAUDE_CODE_OAUTH_CLIENT_ID", "CLAUDE_CODE_OAUTH_CLIENT_SECRET"],
-  "backupPath": "/home/user/.omniroute/backups/env-repair-2026-04-11.bak"
+  "backupPath": "/home/user/.xenia/backups/env-repair-2026-04-11.bak"
 }
 ```
 
@@ -780,7 +780,7 @@ Notes:
 
 - The tokenized aliases reuse the same handlers as `/v1/*` and `/api/tags`; response shapes stay identical.
 - Prefer `Authorization: Bearer ...` whenever the client supports custom headers.
-- URL-based tokens may appear in reverse-proxy logs, browser history, and telemetry outside OmniRoute. Treat them as a compatibility option, not the default authentication mode.
+- URL-based tokens may appear in reverse-proxy logs, browser history, and telemetry outside Xenia. Treat them as a compatibility option, not the default authentication mode.
 
 ---
 
@@ -888,7 +888,7 @@ Higher-level routing combos (already summarized under `/api/combos*`) can also b
 
 ## Webhooks
 
-Outbound webhook subscriptions for OmniRoute events (request completion, quota exhaustion, key rotation, etc.).
+Outbound webhook subscriptions for Xenia events (request completion, quota exhaustion, key rotation, etc.).
 
 | Method | Path                      | Description                                                           |
 | ------ | ------------------------- | --------------------------------------------------------------------- |
@@ -921,7 +921,7 @@ Used by the auto-key management subsystem to issue and rotate API keys against a
 
 ## Agents Protocol
 
-Cloud agent tasks (Claude Code, Codex Cloud, OpenHands, etc.) executed remotely on behalf of OmniRoute users.
+Cloud agent tasks (Claude Code, Codex Cloud, OpenHands, etc.) executed remotely on behalf of Xenia users.
 
 | Method | Path                          | Description                                                                                                                                   |
 | ------ | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -967,7 +967,7 @@ Outbound HTTP(S)/SOCKS proxies that can be assigned to providers, accounts, or g
 
 ## Resilience (extended)
 
-OmniRoute exposes three independent temporary-failure mechanisms; the management endpoints below let operators read and override them:
+Xenia exposes three independent temporary-failure mechanisms; the management endpoints below let operators read and override them:
 
 | Scope               | State storage                              | Read                                      | Reset / clear                               |
 | ------------------- | ------------------------------------------ | ----------------------------------------- | ------------------------------------------- |
@@ -996,7 +996,7 @@ Full conceptual reference and breaker defaults: see [`CLAUDE.md`](../../CLAUDE.m
 
 ## Skills
 
-Skill framework for extending OmniRoute with custom executable handlers, plus marketplace integrations.
+Skill framework for extending Xenia with custom executable handlers, plus marketplace integrations.
 
 | Method | Path                              | Description                                                                                                                |
 | ------ | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -1033,7 +1033,7 @@ Persistent conversational/factual memory store, scoped per API key / session.
 
 ## MCP Server
 
-OmniRoute ships an embedded Model Context Protocol server with 3 transports (stdio, SSE, streamable-http) and scoped tools. The dashboard endpoints below read status/audit data and proxy the HTTP transports.
+Xenia ships an embedded Model Context Protocol server with 3 transports (stdio, SSE, streamable-http) and scoped tools. The dashboard endpoints below read status/audit data and proxy the HTTP transports.
 
 | Method | Path | Description |
 | ------ | ---------------------- | ------------------------------------------------------------------------------------------------ | -------------------- |
@@ -1055,13 +1055,13 @@ OmniRoute ships an embedded Model Context Protocol server with 3 transports (std
 
 ## A2A Server
 
-OmniRoute exposes an A2A (Agent-to-Agent) JSON-RPC 2.0 endpoint plus a REST wrapper for inspection/dashboard use.
+Xenia exposes an A2A (Agent-to-Agent) JSON-RPC 2.0 endpoint plus a REST wrapper for inspection/dashboard use.
 
 ### JSON-RPC
 
 ```bash
 POST /a2a
-Authorization: Bearer your-api-key   # optional unless OMNIROUTE_API_KEY is set
+Authorization: Bearer your-api-key   # optional unless XENIA_API_KEY is set
 Content-Type: application/json
 
 {
@@ -1104,7 +1104,7 @@ Returns the public A2A agent card (name, description, capabilities, skill catalo
 | GET    | `/api/a2a/tasks/[id]`        | Retrieve one task                                                                                               |
 | POST   | `/api/a2a/tasks/[id]/cancel` | Cancel a task                                                                                                   |
 
-**Auth:** the REST helpers run without management auth (dashboard-readable); the JSON-RPC `/a2a` route uses Bearer `OMNIROUTE_API_KEY` if configured.
+**Auth:** the REST helpers run without management auth (dashboard-readable); the JSON-RPC `/a2a` route uses Bearer `XENIA_API_KEY` if configured.
 
 ---
 
@@ -1284,7 +1284,7 @@ Admin-only endpoints for operational management.
 
 ## CLI Tools Management
 
-Manage CLI tools that integrate with OmniRoute (antigravity, chipotle, commandCode,
+Manage CLI tools that integrate with Xenia (antigravity, chipotle, commandCode,
 devin-cli, etc.). See [Provider Reference](./PROVIDER_REFERENCE.md) for the full list.
 
 | Method | Path                                    | Description                                                                                    |
@@ -1398,7 +1398,7 @@ See [Skills Framework](../frameworks/SKILLS.md) for full details.
 
 ## Plugins
 
-Manage OmniRoute plugins (third-party extensions).
+Manage Xenia plugins (third-party extensions).
 
 | Method | Path                             | Description                               |
 | ------ | -------------------------------- | ----------------------------------------- |
@@ -1424,7 +1424,7 @@ Shadow / A-B comparison of providers is **not a standalone REST surface** — it
 
 ## Guardrails
 
-Inspect the runtime guardrails (PII detection, prompt injection detection, vision bridging). Guardrails run on every request; per-call opt-out is via the `x-omniroute-disabled-guardrails` request header — there is no persisted enable/disable surface.
+Inspect the runtime guardrails (PII detection, prompt injection detection, vision bridging). Guardrails run on every request; per-call opt-out is via the `x-xenia-disabled-guardrails` request header — there is no persisted enable/disable surface.
 
 | Method | Path                   | Description                                                                              |
 | ------ | ---------------------- | ---------------------------------------------------------------------------------------- |

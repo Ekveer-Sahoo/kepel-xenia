@@ -71,7 +71,7 @@ export default function StatusPage() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">System Status</h1>
             <p className="text-text-muted mt-1">
-              Live operational snapshot for OmniRoute core services.
+              Live operational snapshot for Xenia core services.
             </p>
           </div>
           <button
@@ -94,8 +94,8 @@ export default function StatusPage() {
         )}
 
         {!loading && error && (
-          <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-6" role="alert">
-            <h2 className="text-lg font-semibold text-red-600 dark:text-red-400">
+          <div className="rounded-xl border border-gray-500/30 bg-gray-500/10 p-6" role="alert">
+            <h2 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
               Health Check Failed
             </h2>
             <p className="mt-2 text-sm text-text-muted">{error}</p>

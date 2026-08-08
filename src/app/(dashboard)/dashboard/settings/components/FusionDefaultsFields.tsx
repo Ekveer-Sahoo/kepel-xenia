@@ -78,8 +78,8 @@ export default function FusionDefaultsFields({
         onChange={(e) => setTuning({ panelHardTimeoutMs: num(e.target.value) })}
         className="text-sm md:col-span-2"
       />
-      <div className="md:col-span-2 rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
-        <p className="text-xs text-blue-700 dark:text-blue-300">
+      <div className="md:col-span-2 rounded-lg border border-gray-500/20 bg-gray-500/5 p-3">
+        <p className="text-xs text-gray-700 dark:text-gray-300">
           {translateOrFallback(
             t,
             "fusionDefaultsNote",

@@ -241,12 +241,12 @@ import {
 } from "../utils/thinkingBudget.ts";
 
 /**
- * Strip the OmniRoute provider prefix from tool model fields (e.g.
+ * Strip the Xenia provider prefix from tool model fields (e.g.
  * `cc/claude-opus-4-8` → `claude-opus-4-8`). Versioned built-in tool types carry
  * an 8-digit date suffix (`advisor_20260301`, `bash_20250124`); non-versioned
  * server tools (Task/subagent, web_search) carry the same prefixed model. The
  * real Claude CLI sends a bare model id there, never a prefixed one, so a leaked
- * OmniRoute prefix makes Anthropic reject the request.
+ * Xenia prefix makes Anthropic reject the request.
  *
  * Two mechanisms, applied to any tool with a string `model`:
  * 1. Versioned built-in types (`type` matches `_\d{8}$`): strip the last path
@@ -931,23 +931,23 @@ export class BaseExecutor {
             for (const t of tb.tools as Array<Record<string, unknown>>) {
               delete t.cache_control;
             }
-            // Also strip OmniRoute provider prefix from versioned built-in tool
+            // Also strip Xenia provider prefix from versioned built-in tool
             // model fields (e.g. cc/claude-opus-4-8 → claude-opus-4-8).
             stripVersionedToolModelPrefix(tb.tools);
           }
 
           // Per-request behavior overrides via custom client headers.
-          //   x-omniroute-effort:   low | medium | high | xhigh | max | off
-          //   x-omniroute-thinking: adaptive | off
+          //   x-xenia-effort:   low | medium | high | xhigh | max | off
+          //   x-xenia-thinking: adaptive | off
           // A header value applies only when the corresponding body field is
           // not already set; "off" force-strips the field.
           const headerEffort = (
-            clientHeaders?.["x-omniroute-effort"] ?? clientHeaders?.["X-OmniRoute-Effort"]
+            clientHeaders?.["x-xenia-effort"] ?? clientHeaders?.["X-Xenia-Effort"]
           )
             ?.trim()
             .toLowerCase();
           const headerThinking = (
-            clientHeaders?.["x-omniroute-thinking"] ?? clientHeaders?.["X-OmniRoute-Thinking"]
+            clientHeaders?.["x-xenia-thinking"] ?? clientHeaders?.["X-Xenia-Thinking"]
           )
             ?.trim()
             .toLowerCase();
@@ -1003,7 +1003,7 @@ export class BaseExecutor {
           } else if (!effThinking && !headerEffort && isClaudeCodeClient) {
             // Default Claude Code logic when no override headers are present.
             // Generic OpenAI-compatible clients that route through native Claude OAuth
-            // must opt in with x-omniroute-thinking; force-injecting adaptive thinking
+            // must opt in with x-xenia-thinking; force-injecting adaptive thinking
             // leaks non-standard reasoning replay fields back into those clients.
             const isHaiku = typeof tb.model === "string" && tb.model.includes("haiku");
             // #5312 RC-B: honor the operator's proxy-level Thinking-Budget mode.
@@ -1065,7 +1065,7 @@ export class BaseExecutor {
           // For any Claude OAuth request, ignore client-supplied metadata.user_id /
           // X-Claude-Code-Session-Id and synthesize per-account: the CC device_id from
           // ~/.claude.json is shared across every account on one machine, which lets
-          // Anthropic correlate accounts behind one OmniRoute.
+          // Anthropic correlate accounts behind one Xenia.
           const cloakIdentity = isClaudeCodeClient || hasClaudeOAuthToken;
           const upstreamUserId = cloakIdentity ? null : parseUpstreamMetadataUserId(tb);
           if (upstreamUserId) {
@@ -1185,7 +1185,7 @@ export class BaseExecutor {
           delete headers["X-Stainless-Helper-Method"];
 
           // OS/arch follow the host running the signed binary. Runtime version
-          // is pinned to the captured CLI wire image, not OmniRoute's Node.
+          // is pinned to the captured CLI wire image, not Xenia's Node.
           headers["X-Stainless-Arch"] = stainlessArch();
           headers["X-Stainless-Lang"] = "js";
           headers["X-Stainless-OS"] = stainlessOS();

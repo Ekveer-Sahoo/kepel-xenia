@@ -9,7 +9,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCachedProviderConnectionById, updateProviderConnection } from "@/lib/localDb";
 import { requireManagementAuth } from "@/lib/api/requireManagementAuth";
-import { sanitizeErrorMessage } from "@omniroute/open-sse/utils/error.ts";
+import { sanitizeErrorMessage } from "@xenia/open-sse/utils/error.ts";
 
 const ADOBE_FIREFLY_SLUGS = new Set(["adobe-firefly", "firefly"]);
 
@@ -46,7 +46,7 @@ export async function POST(
     // Playwright service that intercepts that request instead.
     if (ADOBE_FIREFLY_SLUGS.has(providerSlug)) {
       const { startAdobeFireflyBrowserLogin } =
-        await import("@omniroute/open-sse/services/adobeFireflyBrowserLogin.ts");
+        await import("@xenia/open-sse/services/adobeFireflyBrowserLogin.ts");
       const fireflyResult = await startAdobeFireflyBrowserLogin(timeout);
 
       if (fireflyResult.success && fireflyResult.credentials) {
@@ -95,7 +95,7 @@ export async function POST(
     // TOKEN_EXTRACTION_CONFIGS can find the extraction config.
     // Bug: the previous code passed `id` (connection UUID), so the lookup always
     // missed and returned "No extraction config" without launching a browser.
-    const { inAppLoginService } = await import("@omniroute/open-sse/services/inAppLoginService.ts");
+    const { inAppLoginService } = await import("@xenia/open-sse/services/inAppLoginService.ts");
 
     const result = await inAppLoginService.startLogin(providerSlug || id, { timeout });
 

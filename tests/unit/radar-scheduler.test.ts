@@ -6,7 +6,7 @@ import path from "node:path";
 
 // Isolate DATA_DIR before any src import — the scheduler module's default deps
 // reference the DB layer (never invoked here: every test injects its deps).
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-test-radar-scheduler-"));
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-test-radar-scheduler-"));
 process.env.DATA_DIR = tmpDir;
 
 const {
@@ -110,18 +110,21 @@ test("radar sync scheduler", async (t) => {
     assert.equal(syncCalls.length, 1);
   });
 
-  await t.test("ensure: registers one hourly timer, fires an immediate tick, idempotent", async () => {
-    const { d, timers, syncCalls } = deps();
-    assert.equal(ensureRadarSyncScheduler(d), true);
-    assert.equal(timers.registered.length, 1);
-    assert.equal(timers.registered[0].ms, RADAR_SCHEDULER_TICK_MS);
-    // The immediate tick is fire-and-forget; give the microtask queue a turn.
-    await new Promise((resolve) => setImmediate(resolve));
-    assert.equal(syncCalls.length, 1, "immediate tick should have synced the stale cache");
-    // Second ensure is a no-op — no second timer.
-    assert.equal(ensureRadarSyncScheduler(d), false);
-    assert.equal(timers.registered.length, 1);
-  });
+  await t.test(
+    "ensure: registers one hourly timer, fires an immediate tick, idempotent",
+    async () => {
+      const { d, timers, syncCalls } = deps();
+      assert.equal(ensureRadarSyncScheduler(d), true);
+      assert.equal(timers.registered.length, 1);
+      assert.equal(timers.registered[0].ms, RADAR_SCHEDULER_TICK_MS);
+      // The immediate tick is fire-and-forget; give the microtask queue a turn.
+      await new Promise((resolve) => setImmediate(resolve));
+      assert.equal(syncCalls.length, 1, "immediate tick should have synced the stale cache");
+      // Second ensure is a no-op — no second timer.
+      assert.equal(ensureRadarSyncScheduler(d), false);
+      assert.equal(timers.registered.length, 1);
+    }
+  );
 
   await t.test("init: flag off => never arms (flag-off boot stays timer-free)", () => {
     const { d, timers } = deps({ getFlag: () => false });

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * OmniRoute — Co-locate the LLMLingua-2 runtime into the raw Next standalone build.
+ * Xenia — Co-locate the LLMLingua-2 runtime into the raw Next standalone build.
  *
  * WHY: `npm run build` produces `.build/next/standalone/` and THIS machine's PM2
  * deployment runs `server.js` from that directory directly (not the assembled

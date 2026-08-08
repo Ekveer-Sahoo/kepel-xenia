@@ -16,7 +16,7 @@
 //       [it.url.pathname, it.info.url].some(n => n.includes(process.arch))
 //     ) ?? filteredFiles.shift();
 //
-// The Intel dmg is named `OmniRoute-X.Y.Z.dmg` — no arch suffix. On an Intel Mac
+// The Intel dmg is named `Xenia-X.Y.Z.dmg` — no arch suffix. On an Intel Mac
 // `process.arch` is `"x64"`, no file URL contains "x64", the find misses, and the fallback
 // takes the FIRST entry. With an arm64-only manifest that is the ARM dmg.
 //
@@ -94,7 +94,12 @@ export function mergeManifests(manifests) {
     // The legacy top-level fields older clients read must agree with the first entry.
     path: primary.url,
     sha512: primary.sha512,
-    releaseDate: usable.map((m) => m.releaseDate).filter(Boolean).sort().pop() ?? "",
+    releaseDate:
+      usable
+        .map((m) => m.releaseDate)
+        .filter(Boolean)
+        .sort()
+        .pop() ?? "",
   };
 }
 

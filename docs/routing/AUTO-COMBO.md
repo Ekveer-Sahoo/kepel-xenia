@@ -1,10 +1,10 @@
 ---
-title: "OmniRoute Auto-Combo Engine"
+title: "Xenia Auto-Combo Engine"
 version: 3.8.40
 lastUpdated: 2026-06-28
 ---
 
-# OmniRoute Auto-Combo Engine
+# Xenia Auto-Combo Engine
 
 > **For Users**: Looking for a quick start? See the [Auto-Combo User Guide](../getting-started/AUTO-COMBO-GUIDE.md) for simple explanations and examples.
 
@@ -61,7 +61,7 @@ model: "auto/cheap"           # cheapest per token
 
 **What happens:**
 
-1. OmniRoute detects `auto/` prefix in `src/sse/handlers/chat.ts`
+1. Xenia detects `auto/` prefix in `src/sse/handlers/chat.ts`
 2. Queries all **active provider connections** from the database
 3. Filters to those with valid credentials (API key or OAuth token)
 4. Determines the model per connection (`connection.defaultModel` or provider's first model)
@@ -89,7 +89,7 @@ the existing resilience reads (never raw breaker `state`):
 - model lockout — `isModelLocked(provider, connectionId, model)`
 
 Each candidate also carries this API key's `excluded` flag. Exclusions are stored
-per-API-key (`auto_candidate_overrides` table, migration `128`) — OmniRoute is
+per-API-key (`auto_candidate_overrides` table, migration `128`) — Xenia is
 single-tenant with no `users` table, so `apiKeyId` is the closest real per-caller
 identity — and enforced at the candidate-pool chokepoint in
 `open-sse/services/autoCombo/virtualFactory.ts` via the pure, unit-tested
@@ -133,13 +133,13 @@ Auto-scoring selects best provider/model per request
 A combo whose `name` is identical to a bare model id (e.g. a combo named
 `gpt-5.5`) is an **intentional, supported pattern**, not a bug: it is the
 mechanism for per-model-id provider fallback documented in
-[#6940](https://github.com/diegosouzapw/OmniRoute/issues/6940). Because combo
+[#6940](https://github.com/diegosouzapw/Xenia/issues/6940). Because combo
 resolution is checked before bare-model-id resolution
 (`getComboForModel()` in `src/sse/services/model.ts`), a request for the bare
 id `gpt-5.5` is routed through the combo's targets (e.g.
 `acme-responses/gpt-5.5`, `backup-responses/gpt-5.5`) instead of straight to
 a single provider — this reuses the combo-before-rewrite precedence built for
-[#3227/#3233](https://github.com/diegosouzapw/OmniRoute/issues/3227) and is
+[#3227/#3233](https://github.com/diegosouzapw/Xenia/issues/3227) and is
 regression-tested by `tests/unit/responses-combo-resolution-3227.test.ts` and
 `tests/unit/combo-name-codex-responses-rewrite.test.ts`.
 
@@ -215,19 +215,19 @@ combo's stored config. These apply only to the `auto` strategy and only for the 
 that carries them; the combo's saved `modePack`/`budgetCap`/`budgetFallback` are used
 when the header is absent.
 
-| Header                        | Accepts                                                                                                                                                                                 | Effect                                                                                                                                                                                                                                               |
-| :---------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `X-OmniRoute-Mode`            | a preset alias (`fast`, `balanced`, `quality`, `cheap`, `reliable`, `offline`) or a raw pack name (`ship-fast`, `cost-saver`, `quality-first`, `offline-friendly`, `reliability-first`) | Overrides the scoring weights for this request. `balanced`/`default` force the default weights (no pack). Unknown values are ignored (config preserved).                                                                                             |
-| `X-OmniRoute-Budget`          | a positive number (max USD per request)                                                                                                                                                 | Hard cost ceiling: candidates whose estimated cost exceeds it are filtered before selection. What happens when **every** candidate exceeds it is controlled by `X-OmniRoute-Budget-Fallback` below.                                                  |
-| `X-OmniRoute-Budget-Fallback` | `cheapest` (default, aliases: `cheapest-viable`, `soft`) or `strict` (aliases: `block`, `hard`)                                                                                         | `cheapest`: falls back to the globally cheapest candidate even though it still exceeds the cap (legacy behavior). `strict`: refuses to select — the request fails fast with `HTTP 402` instead of silently overspending. Unknown values are ignored. |
+| Header                    | Accepts                                                                                                                                                                                 | Effect                                                                                                                                                                                                                                               |
+| :------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `X-Xenia-Mode`            | a preset alias (`fast`, `balanced`, `quality`, `cheap`, `reliable`, `offline`) or a raw pack name (`ship-fast`, `cost-saver`, `quality-first`, `offline-friendly`, `reliability-first`) | Overrides the scoring weights for this request. `balanced`/`default` force the default weights (no pack). Unknown values are ignored (config preserved).                                                                                             |
+| `X-Xenia-Budget`          | a positive number (max USD per request)                                                                                                                                                 | Hard cost ceiling: candidates whose estimated cost exceeds it are filtered before selection. What happens when **every** candidate exceeds it is controlled by `X-Xenia-Budget-Fallback` below.                                                      |
+| `X-Xenia-Budget-Fallback` | `cheapest` (default, aliases: `cheapest-viable`, `soft`) or `strict` (aliases: `block`, `hard`)                                                                                         | `cheapest`: falls back to the globally cheapest candidate even though it still exceeds the cap (legacy behavior). `strict`: refuses to select — the request fails fast with `HTTP 402` instead of silently overspending. Unknown values are ignored. |
 
 ```bash
 # Force the fastest profile, cap this request at $0.05, and hard-block instead of overspending
 curl -sS http://localhost:20128/v1/chat/completions \
   -H "Content-Type: application/json" \
-  -H "X-OmniRoute-Mode: fast" \
-  -H "X-OmniRoute-Budget: 0.05" \
-  -H "X-OmniRoute-Budget-Fallback: strict" \
+  -H "X-Xenia-Mode: fast" \
+  -H "X-Xenia-Budget: 0.05" \
+  -H "X-Xenia-Budget-Fallback: strict" \
   -d '{"model":"auto","messages":[{"role":"user","content":"hi"}]}'
 ```
 
@@ -238,7 +238,7 @@ resolved values feed the engine's existing `config.modePack` / `config.budgetCap
 
 ## All Routing Strategies
 
-OmniRoute's combo engine supports **19 routing strategies** (declared in `src/shared/constants/routingStrategies.ts` → `ROUTING_STRATEGY_VALUES`). The Auto Combo engine itself is exposed under the `auto` strategy; the others are available for persisted combos.
+Xenia's combo engine supports **19 routing strategies** (declared in `src/shared/constants/routingStrategies.ts` → `ROUTING_STRATEGY_VALUES`). The Auto Combo engine itself is exposed under the `auto` strategy; the others are available for persisted combos.
 
 | Strategy            | Description                                                                                                                                                                               |
 | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -580,7 +580,7 @@ You can register your own `RouterStrategy` implementation via the public API:
 import {
   registerStrategy,
   type RouterStrategy,
-} from "@omniroute/open-sse/services/autoCombo/routerStrategy";
+} from "@xenia/open-sse/services/autoCombo/routerStrategy";
 
 class MyCustomStrategy implements RouterStrategy {
   readonly name = "my-custom";
@@ -694,11 +694,11 @@ This suite runs in CI (`test:integration` job) with `--test-concurrency=1` and
 
 ### Gated live smoke (NOT in CI — real providers)
 
-| Command                                | What it does                                                                   |
-| :------------------------------------- | :----------------------------------------------------------------------------- |
-| `npm run test:combo:live`              | In-process real routing with `RUN_COMBO_LIVE=1`; snapshots a live OmniRoute DB |
-| `npm run test:combo:live:vps`          | HTTP calls against a live OmniRoute server (set `COMBO_LIVE_BASE_URL`)         |
-| `npm run test:combo:live:vps:failover` | Same, with deliberate failover scenarios                                       |
+| Command                                | What it does                                                               |
+| :------------------------------------- | :------------------------------------------------------------------------- |
+| `npm run test:combo:live`              | In-process real routing with `RUN_COMBO_LIVE=1`; snapshots a live Xenia DB |
+| `npm run test:combo:live:vps`          | HTTP calls against a live Xenia server (set `COMBO_LIVE_BASE_URL`)         |
+| `npm run test:combo:live:vps:failover` | Same, with deliberate failover scenarios                                   |
 
 These smoke tests exercise the real wire path (combo → provider → completion). They are
 intentionally excluded from CI because they require live credentials and VPS access.

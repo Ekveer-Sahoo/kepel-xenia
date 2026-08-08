@@ -24,7 +24,11 @@
 
 import test from "node:test";
 import assert from "node:assert/strict";
-import { RadarFeedSchema, type RadarFeed, type RadarReferral } from "../../src/lib/radar/feedSchema.ts";
+import {
+  RadarFeedSchema,
+  type RadarFeed,
+  type RadarReferral,
+} from "../../src/lib/radar/feedSchema.ts";
 import { findDefaultReferral } from "../../src/lib/radar/referrals.ts";
 import { getRadarReferrals, getDefaultReferralFor } from "../../src/lib/radar/index.ts";
 
@@ -34,7 +38,7 @@ import { getRadarReferrals, getDefaultReferralFor } from "../../src/lib/radar/in
 
 function baseFeed(): Record<string, unknown> {
   return {
-    feed: "omniroute-radar",
+    feed: "xenia-radar",
     schemaVersion: 1,
     version: "2026-08-07.1",
     generatedAt: new Date().toISOString(),
@@ -50,7 +54,7 @@ function baseFeed(): Record<string, unknown> {
 function makeReferral(overrides: Partial<RadarReferral> = {}): RadarReferral {
   return {
     provider: "groq",
-    url: "https://groq.com/?ref=omniroute",
+    url: "https://groq.com/?ref=xenia",
     kind: "fixo",
     validUntil: null,
     requiredAction: null,
@@ -100,7 +104,7 @@ test("RadarFeedSchema: full referrals section round-trips", () => {
 test("RadarFeedSchema: rejects a referral with a non-https url", () => {
   const feed = {
     ...baseFeed(),
-    referrals: { fixed: [makeReferral({ url: "http://groq.com/?ref=omniroute" })], campaigns: [] },
+    referrals: { fixed: [makeReferral({ url: "http://groq.com/?ref=xenia" })], campaigns: [] },
   };
   assert.throws(() => RadarFeedSchema.parse(feed));
 });

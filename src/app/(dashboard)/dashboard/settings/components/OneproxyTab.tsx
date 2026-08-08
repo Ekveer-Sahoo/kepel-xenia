@@ -121,17 +121,17 @@ export default function OneproxyTab() {
 
   const qualityColor = (score: number | null) => {
     if (score == null) return "bg-gray-500";
-    if (score >= 80) return "bg-green-500";
-    if (score >= 50) return "bg-yellow-500";
-    return "bg-red-500";
+    if (score >= 80) return "bg-gray-500";
+    if (score >= 50) return "bg-gray-500";
+    return "bg-gray-500";
   };
 
   const protocolBadge = (type: string) => {
     const colors: Record<string, string> = {
-      http: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-      https: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-      socks4: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-      socks5: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+      http: "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
+      https: "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
+      socks4: "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
+      socks5: "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
     };
     return colors[type] || "bg-gray-100 text-gray-800";
   };
@@ -161,8 +161,8 @@ export default function OneproxyTab() {
         <div
           className={`p-3 rounded-lg text-sm ${
             syncResult.startsWith("Synced")
-              ? "bg-green-50 text-green-800 dark:bg-green-900/30 dark:text-green-300"
-              : "bg-red-50 text-red-800 dark:bg-red-900/30 dark:text-red-300"
+              ? "bg-gray-50 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
+              : "bg-gray-50 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
           }`}
         >
           {syncResult}
@@ -176,7 +176,7 @@ export default function OneproxyTab() {
             <div className="text-sm text-text-muted">{t("oneproxyTotalProxies")}</div>
           </Card>
           <Card className="p-4">
-            <div className="text-2xl font-bold text-green-600">{stats.active}</div>
+            <div className="text-2xl font-bold text-gray-600">{stats.active}</div>
             <div className="text-sm text-text-muted">Active</div>
           </Card>
           <Card className="p-4">
@@ -279,15 +279,15 @@ export default function OneproxyTab() {
                     <td className="py-2 px-3 text-text-main">{proxy.anonymity || "—"}</td>
                     <td className="py-2 px-3">
                       {proxy.googleAccess ? (
-                        <span className="text-green-600">&#10003;</span>
+                        <span className="text-gray-600">&#10003;</span>
                       ) : (
-                        <span className="text-red-600">&#10007;</span>
+                        <span className="text-gray-600">&#10007;</span>
                       )}
                     </td>
                     <td className="py-2 px-3">
                       <button
                         onClick={() => handleDelete(proxy.id)}
-                        className="text-red-500 hover:text-red-700 text-xs"
+                        className="text-gray-500 hover:text-gray-700 text-xs"
                       >
                         Delete
                       </button>
@@ -308,7 +308,7 @@ export default function OneproxyTab() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
             <div>
               <span className="text-text-muted">{t("oneproxyLastSyncLabel")} </span>
-              <span className={status.lastSyncSuccess ? "text-green-600" : "text-red-600"}>
+              <span className={status.lastSyncSuccess ? "text-gray-600" : "text-gray-600"}>
                 {status.lastSyncSuccess ? t("oneproxySuccess") : t("oneproxyFailed")}
               </span>
             </div>
@@ -323,7 +323,7 @@ export default function OneproxyTab() {
             {status.lastSyncError && (
               <div className="col-span-full">
                 <span className="text-text-muted">{t("oneproxyErrorLabel")} </span>
-                <span className="text-red-600 text-xs">{status.lastSyncError}</span>
+                <span className="text-gray-600 text-xs">{status.lastSyncError}</span>
               </div>
             )}
           </div>

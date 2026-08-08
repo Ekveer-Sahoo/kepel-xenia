@@ -42,11 +42,11 @@ export function getModelSyncInternalBaseUrl(): string {
 
 export function resolveModelSyncInternalBaseUrl(_candidate?: string): string {
   const { dashboardPort } = getRuntimePorts();
-  const nativeTls = process.env.OMNIROUTE_INTERNAL_SCHEME === "https";
+  const nativeTls = process.env.XENIA_INTERNAL_SCHEME === "https";
   const origin = nativeTls
     ? `https://localhost:${dashboardPort}`
     : `http://127.0.0.1:${dashboardPort}`;
-  return `${origin}${normalizeInternalBasePath(process.env.OMNIROUTE_BASE_PATH)}`;
+  return `${origin}${normalizeInternalBasePath(process.env.XENIA_BASE_PATH)}`;
 }
 
 export function createPinnedModelSyncTlsConnector(
@@ -112,7 +112,7 @@ export const fetchModelSyncInternal: typeof fetch = async (input, init = {}) => 
 };
 
 const globalState = globalThis as typeof globalThis & {
-  __omnirouteModelSyncInternalAuthToken?: string;
+  __xeniaModelSyncInternalAuthToken?: string;
 };
 
 let schedulerTimer: NodeJS.Timeout | null = null;
@@ -121,8 +121,8 @@ let internalAuthToken: string | null = null;
 
 function getInternalAuthToken(): string {
   if (!internalAuthToken) {
-    internalAuthToken = globalState.__omnirouteModelSyncInternalAuthToken || randomUUID();
-    globalState.__omnirouteModelSyncInternalAuthToken = internalAuthToken;
+    internalAuthToken = globalState.__xeniaModelSyncInternalAuthToken || randomUUID();
+    globalState.__xeniaModelSyncInternalAuthToken = internalAuthToken;
   }
   return internalAuthToken;
 }
@@ -136,8 +136,8 @@ export function buildModelSyncInternalHeaders(): Record<string, string> {
 }
 
 export function isModelSyncInternalRequest(request: { headers: Headers }): boolean {
-  if (!internalAuthToken && globalState.__omnirouteModelSyncInternalAuthToken) {
-    internalAuthToken = globalState.__omnirouteModelSyncInternalAuthToken;
+  if (!internalAuthToken && globalState.__xeniaModelSyncInternalAuthToken) {
+    internalAuthToken = globalState.__xeniaModelSyncInternalAuthToken;
   }
   const headerToken = request.headers.get(MODEL_SYNC_INTERNAL_AUTH_HEADER);
   return Boolean(headerToken && internalAuthToken && headerToken === internalAuthToken);
@@ -259,7 +259,7 @@ async function runSyncCycle(apiBaseUrl: string): Promise<void> {
 
 /**
  * Start the model sync scheduler.
- * @param apiBaseUrl — internal base URL to call OmniRoute's own API
+ * @param apiBaseUrl — internal base URL to call Xenia's own API
  * @param intervalMs — sync interval in milliseconds (default: 24h)
  */
 export function startModelSyncScheduler(

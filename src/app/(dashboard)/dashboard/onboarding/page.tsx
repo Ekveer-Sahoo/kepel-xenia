@@ -10,12 +10,12 @@ const STEP_IDS = ["welcome", "tiers", "security", "provider", "test", "done"];
 const STEP_ICONS = ["waving_hand", "layers", "lock", "dns", "play_circle", "check_circle"];
 
 const COMMON_PROVIDERS = [
-  { id: "openai", name: "OpenAI", color: "#10A37F" },
-  { id: "anthropic", name: "Anthropic", color: "#D97757" },
-  { id: "google", name: "Google AI", color: "#4285F4" },
-  { id: "openrouter", name: "OpenRouter", color: "#6B21A8" },
-  { id: "groq", name: "Groq", color: "#F55036" },
-  { id: "mistral", name: "Mistral", color: "#FF7000" },
+  { id: "openai", name: "OpenAI", color: "#737373" },
+  { id: "anthropic", name: "Anthropic", color: "#919191" },
+  { id: "google", name: "Google AI", color: "#7e7e7e" },
+  { id: "openrouter", name: "OpenRouter", color: "#474747" },
+  { id: "groq", name: "Groq", color: "#7e7e7e" },
+  { id: "mistral", name: "Mistral", color: "#8e8e8e" },
 ];
 
 export default function OnboardingWizard() {
@@ -231,7 +231,7 @@ export default function OnboardingWizard() {
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
                   i < step
-                    ? "bg-green-500/20 text-green-400"
+                    ? "bg-gray-500/20 text-gray-400"
                     : i === step
                       ? "bg-primary/20 text-primary ring-2 ring-primary/40"
                       : "bg-white/5 text-text-muted"
@@ -246,7 +246,7 @@ export default function OnboardingWizard() {
               {i < STEPS.length - 1 && (
                 <div
                   className={`w-8 h-0.5 rounded-full transition-colors ${
-                    i < step ? "bg-green-500/40" : "bg-white/10"
+                    i < step ? "bg-gray-500/40" : "bg-white/10"
                   }`}
                 />
               )}
@@ -260,7 +260,7 @@ export default function OnboardingWizard() {
           <div className="text-center mb-6">
             <span
               className={`material-symbols-outlined text-[48px] mb-3 block ${
-                currentStep.id === "done" ? "text-green-400" : "text-primary"
+                currentStep.id === "done" ? "text-gray-400" : "text-primary"
               }`}
             >
               {currentStep.icon}
@@ -338,7 +338,7 @@ export default function OnboardingWizard() {
                       className="w-full px-4 py-2.5 bg-white/[0.04] border border-white/10 rounded-lg text-text-main text-sm placeholder:text-text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/40"
                     />
                     {capsLockOn && (
-                      <p className="text-xs text-amber-500 dark:text-amber-400 flex items-center gap-1 animate-in fade-in duration-200">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 animate-in fade-in duration-200">
                         <span className="material-symbols-outlined text-[14px]" aria-hidden="true">
                           keyboard_capslock
                         </span>
@@ -346,7 +346,7 @@ export default function OnboardingWizard() {
                       </p>
                     )}
                     {password && confirmPassword && password !== confirmPassword && (
-                      <p className="text-xs text-red-400">{t("passwordsMismatch")}</p>
+                      <p className="text-xs text-gray-400">{t("passwordsMismatch")}</p>
                     )}
                   </div>
                 )}
@@ -417,14 +417,14 @@ export default function OnboardingWizard() {
                   </div>
                 )}
                 {testStatus === "success" && (
-                  <div className="flex items-center justify-center gap-2 text-green-400">
+                  <div className="flex items-center justify-center gap-2 text-gray-400">
                     <span className="material-symbols-outlined text-[20px]">check_circle</span>
                     <span className="text-sm">{testMessage}</span>
                   </div>
                 )}
                 {testStatus === "error" && (
                   <div className="space-y-3">
-                    <div className="flex items-center justify-center gap-2 text-amber-400">
+                    <div className="flex items-center justify-center gap-2 text-gray-400">
                       <span className="material-symbols-outlined text-[20px]">warning</span>
                       <span className="text-sm">{testMessage}</span>
                     </div>
@@ -517,7 +517,7 @@ export default function OnboardingWizard() {
               {isLastStep && (
                 <button
                   onClick={handleFinish}
-                  className="px-6 py-2.5 bg-green-500 rounded-lg text-white font-medium text-sm hover:bg-green-500/90 transition-colors cursor-pointer"
+                  className="px-6 py-2.5 bg-gray-500 rounded-lg text-white font-medium text-sm hover:bg-gray-500/90 transition-colors cursor-pointer"
                 >
                   {t("goToDashboard")}
                 </button>

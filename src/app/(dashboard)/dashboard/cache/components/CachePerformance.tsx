@@ -17,9 +17,9 @@ interface CachePerformanceProps {
 }
 
 function HitRateBar({ hitRate, label }: { hitRate: number; label: string }) {
-  const colorClass = hitRate >= 70 ? "bg-green-500" : hitRate >= 40 ? "bg-amber-400" : "bg-red-500";
+  const colorClass = hitRate >= 70 ? "bg-gray-500" : hitRate >= 40 ? "bg-gray-400" : "bg-gray-500";
   const textClass =
-    hitRate >= 70 ? "text-green-500" : hitRate >= 40 ? "text-amber-400" : "text-red-500";
+    hitRate >= 70 ? "text-gray-500" : hitRate >= 40 ? "text-gray-400" : "text-gray-500";
 
   return (
     <div
@@ -84,7 +84,7 @@ export default function CachePerformance({
         {/* Error state */}
         {error && (
           <div className="flex flex-col gap-2">
-            <p className="text-sm text-red-400">{error}</p>
+            <p className="text-sm text-gray-400">{error}</p>
             {onRetry && (
               <button
                 onClick={onRetry}
@@ -126,11 +126,11 @@ export default function CachePerformance({
             {/* Hit / Miss / Total breakdown */}
             <div className="grid grid-cols-3 gap-4 pt-3 border-t border-border/30 text-center">
               <div>
-                <div className="text-lg font-semibold tabular-nums text-green-500">{hits}</div>
+                <div className="text-lg font-semibold tabular-nums text-gray-500">{hits}</div>
                 <div className="text-xs text-text-muted mt-0.5">{t("hits")}</div>
               </div>
               <div>
-                <div className="text-lg font-semibold tabular-nums text-red-400">{misses}</div>
+                <div className="text-lg font-semibold tabular-nums text-gray-400">{misses}</div>
                 <div className="text-xs text-text-muted mt-0.5">{t("misses")}</div>
               </div>
               <div>

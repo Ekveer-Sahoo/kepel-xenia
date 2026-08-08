@@ -48,22 +48,22 @@ const COLORS = {
   success: {
     bg: BG_DARK,
     border: "rgba(16, 185, 129, 0.6)",
-    icon: "#10b981",
+    icon: "#808080",
   },
   error: {
     bg: BG_DARK,
     border: "rgba(239, 68, 68, 0.6)",
-    icon: "#ef4444",
+    icon: "#777777",
   },
   warning: {
     bg: BG_DARK,
     border: "rgba(245, 158, 11, 0.6)",
-    icon: "#fbbf24",
+    icon: "#bfbfbf",
   },
   info: {
     bg: BG_DARK,
     border: "rgba(59, 130, 246, 0.6)",
-    icon: "#3b82f6",
+    icon: "#7a7a7a",
   },
 };
 

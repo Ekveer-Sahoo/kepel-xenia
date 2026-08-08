@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-json-migration-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-json-migration-"));
 const ORIGINAL_DATA_DIR = process.env.DATA_DIR;
 process.env.DATA_DIR = TEST_DATA_DIR;
 
@@ -143,7 +143,6 @@ test("runJsonMigration normalizes legacy combo strategy names at the import boun
   assert.equal(byId.get("combo-usage").config.strategy, "context-optimized");
   assert.equal(byId.get("combo-unknown").strategy, "priority");
 });
-
 
 test("runJsonMigration rejects invalid combo invariants atomically", () => {
   const db = core.getDbInstance();

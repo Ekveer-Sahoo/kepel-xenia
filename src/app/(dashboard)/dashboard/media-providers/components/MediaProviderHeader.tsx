@@ -40,7 +40,7 @@ export default function MediaProviderHeader({
       <div className="flex items-start gap-4">
         <div
           className="size-12 rounded-xl flex items-center justify-center shrink-0"
-          style={{ backgroundColor: `${providerColor ?? "#64748b"}20` }}
+          style={{ backgroundColor: `${providerColor ?? "#727272"}20` }}
         >
           <ProviderIcon providerId={providerId} size={32} type="color" />
         </div>
@@ -51,7 +51,7 @@ export default function MediaProviderHeader({
               {kindLabel}
             </span>
             {hasFree && (
-              <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-gray-500/10 border border-gray-500/20 text-gray-600 dark:text-gray-400">
                 Free
               </span>
             )}

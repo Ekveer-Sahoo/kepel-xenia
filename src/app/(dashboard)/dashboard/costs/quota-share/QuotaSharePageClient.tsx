@@ -65,11 +65,11 @@ function StatCard({
 }) {
   const color =
     tone === "amber"
-      ? "text-amber-400"
+      ? "text-gray-400"
       : tone === "red"
-        ? "text-red-400"
+        ? "text-gray-400"
         : tone === "green"
-          ? "text-emerald-400"
+          ? "text-gray-400"
           : "text-text-main";
   return (
     <div className="rounded-lg border border-border/40 bg-bg-subtle/30 px-4 py-3">
@@ -415,15 +415,17 @@ export default function QuotaSharePageClient() {
       {removeError && (
         <div
           role="alert"
-          className="flex items-start gap-2 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-[12px] text-red-700 dark:text-red-200"
+          className="flex items-start gap-2 rounded-lg border border-gray-500/40 bg-gray-500/10 px-3 py-2 text-[12px] text-gray-700 dark:text-gray-200"
         >
-          <span className="material-symbols-outlined text-[16px] text-red-500 shrink-0">error</span>
+          <span className="material-symbols-outlined text-[16px] text-gray-500 shrink-0">
+            error
+          </span>
           <span className="flex-1">{removeError}</span>
           <button
             type="button"
             onClick={() => setRemoveError(null)}
             aria-label={t("dismiss")}
-            className="shrink-0 text-red-500 hover:text-red-400 cursor-pointer"
+            className="shrink-0 text-gray-500 hover:text-gray-400 cursor-pointer"
           >
             <span className="material-symbols-outlined text-[16px]">close</span>
           </button>
@@ -448,18 +450,18 @@ export default function QuotaSharePageClient() {
       </div>
 
       {/* Beta banner — scoped to this page only */}
-      <div className="flex items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-[12px] text-amber-700 dark:text-amber-200">
-        <span className="material-symbols-outlined text-[16px] text-amber-500 shrink-0">
+      <div className="flex items-center gap-2 rounded-lg border border-gray-500/40 bg-gray-500/10 px-3 py-2 text-[12px] text-gray-700 dark:text-gray-200">
+        <span className="material-symbols-outlined text-[16px] text-gray-500 shrink-0">
           science
         </span>
         <span className="flex-1">
           <span className="font-semibold">{t("betaTitle")}</span> — {t("betaText")}
         </span>
         <a
-          href="https://github.com/diegosouzapw/OmniRoute/issues/new?labels=quota-share,beta&title=%5Bquota-share%5D%20"
+          href="https://github.com/diegosouzapw/Xenia/issues/new?labels=quota-share,beta&title=%5Bquota-share%5D%20"
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 inline-flex items-center gap-1 font-medium text-amber-600 dark:text-amber-300 hover:underline"
+          className="shrink-0 inline-flex items-center gap-1 font-medium text-gray-600 dark:text-gray-300 hover:underline"
         >
           <span className="material-symbols-outlined text-[14px]">bug_report</span>
           {t("betaReportLink")}
@@ -545,7 +547,7 @@ export default function QuotaSharePageClient() {
           <button
             type="button"
             onClick={() => void handleDeleteGroup()}
-            className="flex items-center gap-1 text-xs text-text-muted hover:text-red-400 transition-colors"
+            className="flex items-center gap-1 text-xs text-text-muted hover:text-gray-400 transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">delete</span>
             {t("deleteGroup")}
@@ -669,13 +671,13 @@ export default function QuotaSharePageClient() {
           {selectedGroupId === "all" && orphanPools.length > 0 && (
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-amber-400">
+                <span className="material-symbols-outlined text-[16px] text-gray-400">
                   folder_off
                 </span>
                 <span className="text-sm font-semibold text-text-main">{t("ungroupedTitle")}</span>
                 <span className="text-[11px] text-text-muted">({orphanPools.length})</span>
               </div>
-              <p className="text-[11px] text-amber-400/80">{t("ungroupedHint")}</p>
+              <p className="text-[11px] text-gray-400/80">{t("ungroupedHint")}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 {orphanPools.map((pool) => (
                   <PoolCardWithUsage

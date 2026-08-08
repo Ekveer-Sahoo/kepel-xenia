@@ -18,7 +18,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-fusion-6771-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-fusion-6771-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = process.env.API_KEY_SECRET || "fusion-6771-test-secret";
 
@@ -73,7 +73,11 @@ test("6771: tool-bearing request bypasses panel fan-out — single call, tools i
   });
 
   // Exactly one call — not once per panel member + once for the judge.
-  assert.equal(calls.length, 1, `expected exactly 1 call, got: ${calls.map((c) => c.model).join(", ")}`);
+  assert.equal(
+    calls.length,
+    1,
+    `expected exactly 1 call, got: ${calls.map((c) => c.model).join(", ")}`
+  );
   assert.equal(calls[0].model, "judge/model");
 
   // The forwarded body still contains the original tools/tool_choice unmodified.
@@ -105,7 +109,7 @@ test("6771: tool-bearing request with no explicit judgeModel targets panel[0]", 
   assert.deepEqual(calls, ["panel/a"]);
 });
 
-test("6771: tools present but tool_choice:\"none\" still goes through normal fan-out+judge path", async () => {
+test('6771: tools present but tool_choice:"none" still goes through normal fan-out+judge path', async () => {
   const calls: string[] = [];
   const handleSingleModel = async (_b: Body, m: string) => {
     calls.push(m);

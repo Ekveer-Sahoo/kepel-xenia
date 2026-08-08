@@ -99,7 +99,7 @@ export default function CreatePoolModal({
             ))}
           </select>
           {connections.length === 0 && (
-            <p className="text-[10px] text-amber-400 mt-1">{t("noEligibleConnections")}</p>
+            <p className="text-[10px] text-gray-400 mt-1">{t("noEligibleConnections")}</p>
           )}
         </div>
 
@@ -137,7 +137,11 @@ export default function CreatePoolModal({
                       : "border-border text-text-muted hover:text-text-main"
                   }`}
                 >
-                  {p === "hard" ? t("policyHard") : p === "soft" ? t("policySoft") : t("policyBurst")}
+                  {p === "hard"
+                    ? t("policyHard")
+                    : p === "soft"
+                      ? t("policySoft")
+                      : t("policyBurst")}
                 </button>
               ))}
             </div>
@@ -167,7 +171,7 @@ export default function CreatePoolModal({
         )}
 
         {error && (
-          <p className="text-[11px] text-red-400 bg-red-500/10 px-3 py-2 rounded">{error}</p>
+          <p className="text-[11px] text-gray-400 bg-gray-500/10 px-3 py-2 rounded">{error}</p>
         )}
 
         <div className="flex justify-end gap-2 pt-2 border-t border-border/40">

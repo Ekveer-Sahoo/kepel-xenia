@@ -87,9 +87,9 @@ function ResetCreditConfirmation({
 }) {
   return (
     <div className="space-y-4">
-      <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-4">
+      <div className="rounded-lg border border-gray-500/30 bg-gray-500/10 p-4">
         <div className="flex items-start gap-3">
-          <span className="material-symbols-outlined text-amber-500">warning</span>
+          <span className="material-symbols-outlined text-gray-500">warning</span>
           <div>
             <p className="font-semibold text-text-main">
               {tr("confirmRedeemResetCreditTitle", "Redeem this reset credit?")}

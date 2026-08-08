@@ -67,7 +67,7 @@ export default function VscodeTokenAliasCard({
     }
 
     const storedCopilotKeyId =
-      typeof window !== "undefined" ? window.localStorage.getItem("omniroute-cli-key-copilot") : null;
+      typeof window !== "undefined" ? window.localStorage.getItem("xenia-cli-key-copilot") : null;
 
     return (
       (storedCopilotKeyId ? cliApiKeys.find((key) => key.id === storedCopilotKeyId) : null) ??
@@ -146,10 +146,10 @@ export default function VscodeTokenAliasCard({
   }
 
   return (
-    <div className={`rounded-lg border border-sky-500/20 bg-sky-500/5 p-3 ${className}`.trim()}>
+    <div className={`rounded-lg border border-gray-500/20 bg-gray-500/5 p-3 ${className}`.trim()}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
             {t("vscodeAliasTitle")}
           </p>
           <p className="mt-1 text-xs text-text-muted">{description}</p>
@@ -194,7 +194,7 @@ function CopyableEndpointRow({
   const rowClassName =
     variant === "catalog"
       ? "flex items-center gap-2 min-w-0 rounded-lg border border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] px-3 py-2.5"
-      : "flex items-center gap-2 min-w-0 rounded-md border border-sky-500/15 bg-background/60 px-2.5 py-2";
+      : "flex items-center gap-2 min-w-0 rounded-md border border-gray-500/15 bg-background/60 px-2.5 py-2";
 
   return (
     <div className={rowClassName}>

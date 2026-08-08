@@ -5,18 +5,17 @@ import os from "node:os";
 import path from "node:path";
 
 // Regression guard: the RADAR_ENABLED feature flag must default to OFF so that
-// a vanilla OmniRoute install is byte-identical to today.  The Radar module
+// a vanilla Xenia install is byte-identical to today.  The Radar module
 // (catalog feed screens and data sync) is a freemium add-on and must never
 // activate without explicit operator opt-in.
 
 // Isolate DB state so the resolution chain (DB override > env > default) reads
 // a clean store and we exercise the definition default, not a leaked override.
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-test-radar-default-"));
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-test-radar-default-"));
 process.env.DATA_DIR = tmpDir;
 
-const { FEATURE_FLAG_DEFINITIONS } = await import(
-  "../../src/shared/constants/featureFlagDefinitions.ts"
-);
+const { FEATURE_FLAG_DEFINITIONS } =
+  await import("../../src/shared/constants/featureFlagDefinitions.ts");
 
 test("RADAR_ENABLED feature flag defaults to OFF", async (t) => {
   const def = (key: string) => FEATURE_FLAG_DEFINITIONS.find((d) => d.key === key);
@@ -37,11 +36,7 @@ test("RADAR_ENABLED feature flag defaults to OFF", async (t) => {
 
   await t.test("RADAR_ENABLED category is 'policies'", () => {
     const d = def("RADAR_ENABLED");
-    assert.strictEqual(
-      d!.category,
-      "policies",
-      "RADAR_ENABLED must be in the 'policies' category"
-    );
+    assert.strictEqual(d!.category, "policies", "RADAR_ENABLED must be in the 'policies' category");
   });
 
   await t.test("RADAR_ENABLED type is 'boolean'", () => {

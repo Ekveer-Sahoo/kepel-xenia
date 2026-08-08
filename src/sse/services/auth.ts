@@ -26,8 +26,8 @@ import {
   getQuotaWindowStatus,
   isQuotaExhaustedForRequest,
 } from "@/domain/quotaCache";
-import { getQuotaScopeLabelForProvider } from "@omniroute/open-sse/services/antigravityQuotaFamily.ts";
-import { getCreditsMode } from "@omniroute/open-sse/services/antigravityCredits.ts";
+import { getQuotaScopeLabelForProvider } from "@xenia/open-sse/services/antigravityQuotaFamily.ts";
+import { getCreditsMode } from "@xenia/open-sse/services/antigravityCredits.ts";
 import {
   isAccountUnavailable,
   getUnavailableUntil,
@@ -41,27 +41,27 @@ import {
   hasPerModelQuota,
   getRuntimeProviderProfile,
   recordModelLockoutFailure,
-} from "@omniroute/open-sse/services/accountFallback.ts";
-import { isLocalProvider } from "@omniroute/open-sse/config/providerRegistry.ts";
-import { COOLDOWN_MS, RateLimitReason } from "@omniroute/open-sse/config/constants.ts";
+} from "@xenia/open-sse/services/accountFallback.ts";
+import { isLocalProvider } from "@xenia/open-sse/config/providerRegistry.ts";
+import { COOLDOWN_MS, RateLimitReason } from "@xenia/open-sse/config/constants.ts";
 import {
   preflightQuota,
   isQuotaPreflightEnabled,
-} from "@omniroute/open-sse/services/quotaPreflight.ts";
+} from "@xenia/open-sse/services/quotaPreflight.ts";
 import { resolveResilienceSettings } from "@/lib/resilience/settings";
 import { resolveModelLockoutSettings } from "@/lib/resilience/modelLockoutSettings";
-import { syncHealthFromDB, type KeyHealth } from "@omniroute/open-sse/services/apiKeyRotator.ts";
+import { syncHealthFromDB, type KeyHealth } from "@xenia/open-sse/services/apiKeyRotator.ts";
 import {
   classifyProviderError,
   PROVIDER_ERROR_TYPES,
-} from "@omniroute/open-sse/services/errorClassifier.ts";
+} from "@xenia/open-sse/services/errorClassifier.ts";
 
 import {
   getCodexModelScope,
   getCodexQuotaWindowFilterForModel,
   toCodexBaseQuotaWindowName,
   toCodexScopedQuotaWindowName,
-} from "@omniroute/open-sse/config/codexQuotaScopes.ts";
+} from "@xenia/open-sse/config/codexQuotaScopes.ts";
 import {
   getProviderById,
   getProviderAlias,
@@ -197,7 +197,7 @@ export function extractSessionAffinityKey(
   const headerKey = normalizeSessionKey(
     readHeaderValue(headers, "x-codex-session-id") ??
       readHeaderValue(headers, "x-session-id") ??
-      readHeaderValue(headers, "x-omniroute-session"),
+      readHeaderValue(headers, "x-xenia-session"),
     "header"
   );
   if (headerKey) return headerKey;
@@ -2030,7 +2030,10 @@ export async function markAccountUnavailable(
         ? "model"
         : getQuotaScopeLabelForProvider(provider, model);
       const antigravityFamilyInferredBaseCooldownMs =
-        !usesExactAntigravityLock && provider === "antigravity" && quotaScope === "family" && status === 429
+        !usesExactAntigravityLock &&
+        provider === "antigravity" &&
+        quotaScope === "family" &&
+        status === 429
           ? ANTIGRAVITY_FAMILY_INFERRED_BASE_COOLDOWN_MS
           : null;
       const lockout = recordModelLockoutFailure(
@@ -2409,7 +2412,7 @@ function readNonEmptyUrlToken(request: AuthRequestLike): string | null {
  *
  * Honors explicit auth headers and (for client-facing routes only) a
  * path-scoped URL token:
- * - `Authorization: Bearer <key>` (OpenAI / OmniRoute / Codex CLI / Bearer clients)
+ * - `Authorization: Bearer <key>` (OpenAI / Xenia / Codex CLI / Bearer clients)
  * - `x-api-key: <key>` (Anthropic Messages API contract — Claude Code,
  *   `@anthropic-ai/sdk`, any SDK that sets `anthropic-version`) / `x-goog-api-key` (#7034)
  * - `/vscode/<key>/...` (path-scoped tokenized aliases — only when `allowUrl`)
@@ -2421,7 +2424,7 @@ function readNonEmptyUrlToken(request: AuthRequestLike): string | null {
  * speaking the Anthropic Messages API contract. Without this scoping,
  * non-Anthropic SDKs that happen to set `x-api-key` (or local-mode tools
  * with placeholder keys) would be treated as authenticated attempts and
- * rejected by per-route gates that compare against OmniRoute keys.
+ * rejected by per-route gates that compare against Xenia keys.
  *
  * `opts.allowUrl` (default `true`) gates the path-scoped URL token. Management
  * auth MUST pass `allowUrl: false` — a credential in the URL must never
@@ -2467,7 +2470,7 @@ export function extractApiKey(request: AuthRequestLike, opts?: { allowUrl?: bool
 
 /**
  * Validate API key (optional - for local use can skip).
- * Feature #1350: Supports OMNIROUTE_API_KEY / ROUTER_API_KEY env vars as
+ * Feature #1350: Supports XENIA_API_KEY / ROUTER_API_KEY env vars as
  * persistent passthrough keys that always validate, surviving Docker
  * restarts and backup restores without DB dependency.
  */
@@ -2475,7 +2478,7 @@ export async function isValidApiKey(apiKey: string) {
   if (!apiKey) return false;
 
   // Persistent env-var key — always valid regardless of DB state (#1350)
-  const envKey = process.env.OMNIROUTE_API_KEY || process.env.ROUTER_API_KEY;
+  const envKey = process.env.XENIA_API_KEY || process.env.ROUTER_API_KEY;
   if (envKey && apiKey === envKey) return true;
 
   return await validateApiKey(apiKey);

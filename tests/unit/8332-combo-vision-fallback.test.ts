@@ -17,7 +17,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-rr-compat-8332-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-rr-compat-8332-"));
 const ORIGINAL_DATA_DIR = process.env.DATA_DIR;
 process.env.DATA_DIR = TEST_DATA_DIR;
 
@@ -153,7 +153,11 @@ test(
       [],
       "vision-incapable rr-blind must never receive the image_url body, even as a last-resort fallback"
     );
-    assert.notEqual(result.status, 200, "must not silently succeed via the vision-incapable target");
+    assert.notEqual(
+      result.status,
+      200,
+      "must not silently succeed via the vision-incapable target"
+    );
   }
 );
 

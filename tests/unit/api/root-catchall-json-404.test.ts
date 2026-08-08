@@ -6,14 +6,12 @@ import assert from "node:assert/strict";
  * /openai/*, /metrics, /debug, /.env) previously fell through to the Next.js
  * app-router `not-found.tsx`, which returned the dashboard HTML shell (~200 KB)
  * to CLI/SDK callers. next.config.mjs now rewrites those prefixes under /api/*
- * so they hit `/api/[...omnirouteApiCatchAll]` (#6424) — this suite verifies
+ * so they hit `/api/[...xeniaApiCatchAll]` (#6424) — this suite verifies
  * that catch-all still responds with a JSON not_found body for those rewritten
  * paths (path assertion mirrors the URL the handler sees post-rewrite).
  */
 
-const catchAll = await import(
-  "../../../src/app/api/[...omnirouteApiCatchAll]/route.ts"
-);
+const catchAll = await import("../../../src/app/api/[...xeniaApiCatchAll]/route.ts");
 
 function makeReq(pathname: string, method = "GET"): Request {
   return new Request(`http://localhost:20128${pathname}`, { method });
@@ -56,7 +54,7 @@ test("api catchall returns JSON 404 for rewritten /debug and /.env", async () =>
     assert.equal(res.status, 404, `${p} status`);
     assert.ok(
       (res.headers.get("content-type") || "").includes("application/json"),
-      `${p} content-type`,
+      `${p} content-type`
     );
     const body = (await res.json()) as { error: { type: string } };
     assert.equal(body.error.type, "not_found", `${p} error.type`);
@@ -65,7 +63,7 @@ test("api catchall returns JSON 404 for rewritten /debug and /.env", async () =>
 
 test("api catchall returns JSON 404 for unknown /v1beta/* via nested api catch-all", async () => {
   // /v1beta/foo rewrites to /api/v1beta/foo; since no v1beta-specific
-  // catch-all exists, Next.js falls through to /api/[...omnirouteApiCatchAll].
+  // catch-all exists, Next.js falls through to /api/[...xeniaApiCatchAll].
   const res = await catchAll.GET(makeReq("/api/v1beta/nonexistent"));
   assert.equal(res.status, 404);
   const body = (await res.json()) as { error: { type: string; path?: string } };
@@ -77,6 +75,6 @@ test("api catchall OPTIONS preflight exposes CORS headers for rewritten paths", 
   const res = await catchAll.OPTIONS();
   assert.ok(
     res.headers.get("access-control-allow-methods"),
-    "OPTIONS must expose CORS methods header",
+    "OPTIONS must expose CORS methods header"
   );
 });

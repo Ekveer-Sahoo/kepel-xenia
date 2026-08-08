@@ -6,13 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const BIN = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "..",
-  "bin",
-  "omniroute.mjs"
-);
+const BIN = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "bin", "xenia.mjs");
 
 function runCli(dataDir: string): { code: number | null; stdout: string; stderr: string } {
   const cleanEnv = { ...process.env };
@@ -20,7 +14,7 @@ function runCli(dataDir: string): { code: number | null; stdout: string; stderr:
   delete cleanEnv.JWT_SECRET;
   delete cleanEnv.API_KEY_SECRET;
   delete cleanEnv.DATA_DIR;
-  const isolatedHome = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-migration-home-"));
+  const isolatedHome = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-migration-home-"));
   try {
     const res = spawnSync("node", [BIN, "config", "list", "--json"], {
       cwd: dataDir,
@@ -30,7 +24,7 @@ function runCli(dataDir: string): { code: number | null; stdout: string; stderr:
         HOME: isolatedHome,
         USERPROFILE: isolatedHome,
         NO_UPDATE_NOTIFIER: "1",
-        OMNIROUTE_CLI_SKIP_REPO_ENV: "1",
+        XENIA_CLI_SKIP_REPO_ENV: "1",
       },
       timeout: 60_000,
       encoding: "utf-8",
@@ -42,14 +36,14 @@ function runCli(dataDir: string): { code: number | null; stdout: string; stderr:
 }
 
 // #7302: Electron persists secrets to <DATA_DIR>/server.env (electron/main.js), but the CLI
-// (bin/omniroute.mjs) only ever loaded <DATA_DIR>/.env — so migrating storage.sqlite +
+// (bin/xenia.mjs) only ever loaded <DATA_DIR>/.env — so migrating storage.sqlite +
 // server.env from the desktop app to the CLI silently lost STORAGE_ENCRYPTION_KEY and
 // permanently corrupted every encrypted credential. The CLI must recognize server.env as a
 // legacy/migration fallback source when .env is absent, without letting it override an
 // existing .env.
 
 test("#7302: CLI must recognize DATA_DIR/server.env (Electron's secrets file) when migrating an existing database", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-migration-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-migration-"));
   try {
     fs.writeFileSync(path.join(dir, "storage.sqlite"), "fake-existing-db-with-real-data");
     const electronKey = "electron-storage-key-0123456789abcdef0123456789abcdef";
@@ -72,7 +66,8 @@ test("#7302: CLI must recognize DATA_DIR/server.env (Electron's secrets file) wh
       envContent,
       new RegExp(`STORAGE_ENCRYPTION_KEY=${electronKey}`),
       "the Electron-persisted STORAGE_ENCRYPTION_KEY from server.env must be honored " +
-        "after migrating to the CLI install — got .env content: " + JSON.stringify(envContent)
+        "after migrating to the CLI install — got .env content: " +
+        JSON.stringify(envContent)
     );
 
     assert.doesNotMatch(
@@ -87,7 +82,7 @@ test("#7302: CLI must recognize DATA_DIR/server.env (Electron's secrets file) wh
 });
 
 test("#7302: an existing DATA_DIR/.env must still win over DATA_DIR/server.env when both exist", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-migration-winner-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-migration-winner-"));
   try {
     fs.writeFileSync(path.join(dir, "storage.sqlite"), "fake-existing-db-with-real-data");
     const cliKey = "cli-owned-storage-key-fedcba9876543210fedcba9876543210";

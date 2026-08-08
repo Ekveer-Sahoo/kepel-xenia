@@ -37,9 +37,9 @@ This is line ten and still counting to make the block big enough.`;
 
 const SMALL_TEXT = "Short content that should NOT be compressed.";
 
-const RETRIEVE_TOOL_OPENAI = { type: "function", function: { name: "omniroute_ccr_retrieve" } };
-const RETRIEVE_TOOL_FLAT = { name: "omniroute_ccr_retrieve" };
-const RETRIEVE_TOOL_CLAUDE = { name: "omniroute_ccr_retrieve", input_schema: {} };
+const RETRIEVE_TOOL_OPENAI = { type: "function", function: { name: "xenia_ccr_retrieve" } };
+const RETRIEVE_TOOL_FLAT = { name: "xenia_ccr_retrieve" };
+const RETRIEVE_TOOL_CLAUDE = { name: "xenia_ccr_retrieve", input_schema: {} };
 
 type Msg = { role: string; content: string };
 
@@ -145,24 +145,28 @@ describe("ccr protocol instruction (#8033)", () => {
     const messages = result.body["messages"] as Array<{ role: string; content: unknown }>;
     const instruction = messages[0].content as string;
 
-    assert.ok(instruction.includes("omniroute_ccr_retrieve"), "must mention the tool name");
+    assert.ok(instruction.includes("xenia_ccr_retrieve"), "must mention the tool name");
     assert.ok(
       instruction.includes("[CCR retrieve hash=<24hex> chars=N]"),
       "must show the marker shape"
     );
-    assert.match(
-      instruction,
-      /verbatim|exact/i,
-      "must stress verbatim/exact copying of the hash"
-    );
+    assert.match(instruction, /verbatim|exact/i, "must stress verbatim/exact copying of the hash");
     assert.match(instruction, /24/, "must mention the 24-character length of the hash");
     assert.ok(instruction.includes("dedup:ref"), "must mention the dedup:ref contract");
   });
 
   it("recognizes all three tools[] shapes: OpenAI nested, flat, Claude", () => {
-    assert.equal(callerSupportsCcrRetrieve({ tools: [RETRIEVE_TOOL_OPENAI] }), true, "OpenAI nested shape");
+    assert.equal(
+      callerSupportsCcrRetrieve({ tools: [RETRIEVE_TOOL_OPENAI] }),
+      true,
+      "OpenAI nested shape"
+    );
     assert.equal(callerSupportsCcrRetrieve({ tools: [RETRIEVE_TOOL_FLAT] }), true, "flat shape");
-    assert.equal(callerSupportsCcrRetrieve({ tools: [RETRIEVE_TOOL_CLAUDE] }), true, "Claude shape");
+    assert.equal(
+      callerSupportsCcrRetrieve({ tools: [RETRIEVE_TOOL_CLAUDE] }),
+      true,
+      "Claude shape"
+    );
     assert.equal(callerSupportsCcrRetrieve({ tools: [] }), false, "empty tools array");
     assert.equal(callerSupportsCcrRetrieve({}), false, "absent tools field");
     assert.equal(

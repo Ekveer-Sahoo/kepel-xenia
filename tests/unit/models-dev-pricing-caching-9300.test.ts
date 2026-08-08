@@ -14,7 +14,7 @@ import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const testDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-pricing-cache-"));
+const testDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-pricing-cache-"));
 process.env.DATA_DIR = testDataDir;
 
 const modulePath = path.join(process.cwd(), "src/lib/modelsDevSync.ts");
@@ -47,7 +47,9 @@ describe("getModelsDevPricing caching (#9300)", () => {
     modelsDev = await importFresh("9300-cache");
 
     // Seed pricing data into DB
-    modelsDev.saveModelsDevPricing(PRICING_DATA as Record<string, Record<string, Record<string, number>>>);
+    modelsDev.saveModelsDevPricing(
+      PRICING_DATA as Record<string, Record<string, Record<string, number>>>
+    );
 
     // Reset cache to ensure a clean read from DB
     // (saveModelsDevPricing clears the cache, so next get will load from DB)

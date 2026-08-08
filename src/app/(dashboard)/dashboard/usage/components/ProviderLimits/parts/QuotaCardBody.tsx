@@ -104,7 +104,7 @@ export default function QuotaCardBody({
 
   if (error) {
     return (
-      <div className="px-3 py-3 text-[11px] text-red-500 flex items-start gap-1.5">
+      <div className="px-3 py-3 text-[11px] text-gray-500 flex items-start gap-1.5">
         <span className="material-symbols-outlined text-[13px] mt-0.5">error</span>
         <span className="truncate">{error}</span>
       </div>

@@ -114,7 +114,7 @@ export default function BudgetTelemetryCards() {
               <span className="font-mono">{policies.lockedIdentifiers?.length ?? 0}</span>
             </div>
             {policies.circuitBreakers?.some((cb) => cb.state === "OPEN") && (
-              <div className="mt-2 px-2 py-1 rounded bg-red-500/10 text-red-400 text-xs">
+              <div className="mt-2 px-2 py-1 rounded bg-gray-500/10 text-gray-400 text-xs">
                 {t("openCircuitBreakersDetected")}
               </div>
             )}

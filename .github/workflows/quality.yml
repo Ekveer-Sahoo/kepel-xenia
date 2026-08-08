@@ -17,7 +17,7 @@ env:
   # CI must never mutate the runner's OS trust store (2026-07-05: a cert-flow
   # test installed a fake PEM on a persistent self-hosted runner and broke all
   # system TLS). Belt-and-suspenders with tests/_setup/isolateDataDir.ts.
-  OMNIROUTE_SKIP_SYSTEM_TRUST: "1"
+  XENIA_SKIP_SYSTEM_TRUST: "1"
   CI_NODE_VERSION: "24"
 
 jobs:
@@ -78,7 +78,7 @@ jobs:
       - run: npm run check:node-runtime
       - run: npm run build
         env:
-          OMNIROUTE_USE_TURBOPACK: "1"
+          XENIA_USE_TURBOPACK: "1"
       # No artifact upload here: the PR-to-release quality workflow has no
       # downstream package/e2e jobs that consume the Next.js build output.
 
@@ -115,8 +115,8 @@ jobs:
     # PINNED to hosted (gap 19). This job carried the USE_VPS_RUNNER expression, and that
     # expression was DEAD CONFIGURATION: across 160 quality.yml runs the job never once landed on
     # a self-hosted runner — every non-skipped sample is `GitHub Actions NNNN`. The classifier is
-    # not at fault: in the same window ci.yml's Build demonstrably ran on omniroute-113-7 and
-    # omniroute-113-6, so self-hosted runs are visible when they happen.
+    # not at fault: in the same window ci.yml's Build demonstrably ran on xenia-113-7 and
+    # xenia-113-6, so self-hosted runs are visible when they happen.
     #
     # And if it ever HAD fired it would have inherited the measured penalty, because this job's
     # first two steps are exactly the bottleneck: actions/setup-node + npm ci took 20m06s on .113
@@ -393,7 +393,7 @@ jobs:
         uses: trunk-io/analytics-uploader@385f1ccdf345b4532dc4b6c665dd432b702b8e28 # v2.1.2
         with:
           junit-paths: trunk-junit/**/*.xml
-          org-slug: omniroute
+          org-slug: xenia
           token: ${{ secrets.TRUNK_TOKEN }}
 
   fast-unit:

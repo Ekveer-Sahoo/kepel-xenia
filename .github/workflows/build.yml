@@ -42,16 +42,16 @@ jobs:
           npm run build:release
         env:
           NODE_OPTIONS: "--max-old-space-size=12288"
-          OMNIROUTE_BUILD_MEMORY_MB: "12288"
-          OMNIROUTE_USE_TURBOPACK: "1"
+          XENIA_BUILD_MEMORY_MB: "12288"
+          XENIA_USE_TURBOPACK: "1"
 
       - name: Archive build outputs
         run: |
-          tar -czf omniroute-build.tar.gz .build dist
+          tar -czf xenia-build.tar.gz .build dist
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: omniroute-build
-          path: omniroute-build.tar.gz
+          name: xenia-build
+          path: xenia-build.tar.gz
           retention-days: 7

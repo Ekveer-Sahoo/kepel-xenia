@@ -269,7 +269,7 @@ export default function RawJsonPanel({
           <>
             {/* Error banner */}
             {errorMessage && (
-              <div className="flex items-start gap-2 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-500">
+              <div className="flex items-start gap-2 px-3 py-2 rounded-lg bg-gray-500/10 border border-gray-500/20 text-sm text-gray-500">
                 <span
                   className="material-symbols-outlined text-[16px] mt-0.5 shrink-0"
                   aria-hidden="true"
@@ -482,7 +482,7 @@ export default function RawJsonPanel({
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span
-                          className="material-symbols-outlined text-[18px] text-amber-500"
+                          className="material-symbols-outlined text-[18px] text-gray-500"
                           aria-hidden="true"
                         >
                           hub

@@ -42,7 +42,7 @@ export default function ClineToolCard({
 
   const getConfigStatus = () => {
     if (!cliReady) return null;
-    if (!clineStatus.hasOmniRoute) return "not_configured";
+    if (!clineStatus.hasXenia) return "not_configured";
     const baseUrlVal = clineStatus.settings?.openAiBaseUrl || "";
     const localMatch = baseUrlVal.includes("localhost") || baseUrlVal.includes("127.0.0.1");
     const cloudMatch = cloudEnabled && CLOUD_URL && baseUrlVal.startsWith(CLOUD_URL);
@@ -168,7 +168,7 @@ export default function ClineToolCard({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           baseUrl: normalizedBaseUrl,
-          apiKey: !cloudEnabled ? "sk_omniroute" : null,
+          apiKey: !cloudEnabled ? "sk_xenia" : null,
           keyId: selectedKeyId,
           model: selectedModel,
         }),
@@ -278,7 +278,7 @@ export default function ClineToolCard({
               {/* Runtime status */}
               <div className="flex items-start gap-3 p-3 rounded-lg border bg-bg-secondary/50 border-border">
                 <span
-                  className={`material-symbols-outlined text-lg ${cliReady ? "text-green-500" : "text-yellow-500"}`}
+                  className={`material-symbols-outlined text-lg ${cliReady ? "text-gray-500" : "text-gray-500"}`}
                 >
                   {cliReady ? "check_circle" : "warning"}
                 </span>
@@ -313,13 +313,13 @@ export default function ClineToolCard({
                 <>
                   {/* Current config info */}
                   {configStatus === "configured" && (
-                    <div className="flex items-start gap-3 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
-                      <span className="material-symbols-outlined text-green-500 text-lg">
+                    <div className="flex items-start gap-3 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+                      <span className="material-symbols-outlined text-gray-500 text-lg">
                         check_circle
                       </span>
                       <div className="flex flex-col gap-1">
-                        <p className="text-sm text-green-700 dark:text-green-300">
-                          {t("omnirouteConfiguredOpenAiCompatible")}
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          {t("xeniaConfiguredOpenAiCompatible")}
                         </p>
                         <p className="text-xs text-text-muted">
                           {t("provider")}: <strong>openai</strong> • {t("model")}:{" "}
@@ -375,7 +375,7 @@ export default function ClineToolCard({
                       </select>
                     ) : (
                       <p className="text-sm text-text-muted">
-                        {cloudEnabled ? t("noApiKeysAvailable") : t("usingDefaultOmniroute")}
+                        {cloudEnabled ? t("noApiKeysAvailable") : t("usingDefaultXenia")}
                       </p>
                     )}
                   </div>
@@ -405,7 +405,7 @@ export default function ClineToolCard({
                   {/* Message */}
                   {message && (
                     <div
-                      className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm ${message.type === "success" ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-600"}`}
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm ${message.type === "success" ? "bg-gray-500/10 text-gray-600" : "bg-gray-500/10 text-gray-600"}`}
                     >
                       <span className="material-symbols-outlined text-[16px]">
                         {message.type === "success" ? "check_circle" : "error"}

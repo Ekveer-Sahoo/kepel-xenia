@@ -8,8 +8,8 @@
  * chat.ts re-exports both, so the public surface and tests/unit/chat-build-client-raw-request
  * are unchanged.
  */
-import { mergeAbortSignals } from "@omniroute/open-sse/executors/base.ts";
-import { cloneBoundedForLog } from "@omniroute/open-sse/utils/requestLogger.ts";
+import { mergeAbortSignals } from "@xenia/open-sse/executors/base.ts";
+import { cloneBoundedForLog } from "@xenia/open-sse/utils/requestLogger.ts";
 
 export function buildClientRawRequest(request: Request, body: unknown) {
   const url = new URL(request.url);

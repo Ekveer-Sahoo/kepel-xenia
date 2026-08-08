@@ -14,7 +14,7 @@ export default function ProvidersError({
       aria-live="assertive"
     >
       <div className="text-center space-y-4">
-        <h2 className="text-xl font-semibold text-red-600 dark:text-red-400">
+        <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-400">
           Failed to load providers
         </h2>
         <p className="text-text-muted max-w-md">
@@ -24,7 +24,7 @@ export default function ProvidersError({
           <p className="text-xs text-text-muted font-mono">Error ID: {_error.digest}</p>
         )}
         {process.env.NODE_ENV === "development" && _error?.message && (
-          <p className="text-xs text-red-600 dark:text-red-400 font-mono">{_error.message}</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400 font-mono">{_error.message}</p>
         )}
         <button
           onClick={reset}

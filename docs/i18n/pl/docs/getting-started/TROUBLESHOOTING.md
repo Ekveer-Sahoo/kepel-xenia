@@ -10,17 +10,17 @@ lastUpdated: 2026-06-28
 
 🌐 **Languages:** 🇺🇸 [English](./TROUBLESHOOTING.md) | 🇧🇷 [Português (Brasil)](../i18n/pt-BR/docs/guides/TROUBLESHOOTING.md) | 🇪🇸 [Español](../i18n/es/docs/guides/TROUBLESHOOTING.md) | 🇫🇷 [Français](../i18n/fr/docs/guides/TROUBLESHOOTING.md) | 🇮🇹 [Italiano](../i18n/it/docs/guides/TROUBLESHOOTING.md) | 🇷🇺 [Русский](../i18n/ru/docs/guides/TROUBLESHOOTING.md) | 🇨🇳 [中文 (简体)](../i18n/zh-CN/docs/guides/TROUBLESHOOTING.md) | 🇩🇪 [Deutsch](../i18n/de/docs/guides/TROUBLESHOOTING.md) | 🇮🇳 [हिन्दी](../i18n/in/docs/guides/TROUBLESHOOTING.md) | 🇹🇭 [ไทย](../i18n/th/docs/guides/TROUBLESHOOTING.md) | 🇺🇦 [Українська](../i18n/uk-UA/docs/guides/TROUBLESHOOTING.md) | 🇸🇦 [العربية](../i18n/ar/docs/guides/TROUBLESHOOTING.md) | 🇯🇵 [日本語](../i18n/ja/docs/guides/TROUBLESHOOTING.md) | 🇻🇳 [Tiếng Việt](../i18n/vi/docs/guides/TROUBLESHOOTING.md) | 🇧🇬 [Български](../i18n/bg/docs/guides/TROUBLESHOOTING.md) | 🇩🇰 [Dansk](../i18n/da/docs/guides/TROUBLESHOOTING.md) | 🇫🇮 [Suomi](../i18n/fi/docs/guides/TROUBLESHOOTING.md) | 🇮🇱 [עברית](../i18n/he/docs/guides/TROUBLESHOOTING.md) | 🇭🇺 [Magyar](../i18n/hu/docs/guides/TROUBLESHOOTING.md) | 🇮🇩 [Bahasa Indonesia](../i18n/id/docs/guides/TROUBLESHOOTING.md) | 🇰🇷 [한국어](../i18n/ko/docs/guides/TROUBLESHOOTING.md) | 🇲🇾 [Bahasa Melayu](../i18n/ms/docs/guides/TROUBLESHOOTING.md) | 🇳🇱 [Nederlands](../i18n/nl/docs/guides/TROUBLESHOOTING.md) | 🇳🇴 [Norsk](../i18n/no/docs/guides/TROUBLESHOOTING.md) | 🇵🇹 [Português (Portugal)](../i18n/pt/docs/guides/TROUBLESHOOTING.md) | 🇷🇴 [Română](../i18n/ro/docs/guides/TROUBLESHOOTING.md) | 🇵🇱 [Polski](../i18n/pl/docs/guides/TROUBLESHOOTING.md) | 🇸🇰 [Slovenčina](../i18n/sk/docs/guides/TROUBLESHOOTING.md) | 🇸🇪 [Svenska](../i18n/sv/docs/guides/TROUBLESHOOTING.md) | 🇵🇭 [Filipino](../i18n/phi/docs/guides/TROUBLESHOOTING.md) | 🇨🇿 [Čeština](../i18n/cs/docs/guides/TROUBLESHOOTING.md)
 
-Typowe problemy i rozwiązania dla OmniRoute.
+Typowe problemy i rozwiązania dla Xenia.
 
 ---
 
 ## Szybki przewodnik
 
-**Nowy w OmniRoute?** Zacznij tutaj — te wskazówki rozwiązują 90% problemów:
+**Nowy w Xenia?** Zacznij tutaj — te wskazówki rozwiązują 90% problemów:
 
 | Widzę to                | Co to oznacza                      | Co zrobić                                                                            |
 | ----------------------- | ---------------------------------- | ------------------------------------------------------------------------------------ |
-| "Can't connect"         | OmniRoute nie działa               | Uruchom `omniroute` lub `docker restart omniroute`                                   |
+| "Can't connect"         | Xenia nie działa                   | Uruchom `xenia` lub `docker restart xenia`                                           |
 | "Invalid API key"       | Klucz jest błędny lub wygasł       | Skopiuj ponownie klucz ze strony providera                                           |
 | "Rate limit exceeded"   | Wysyłasz zbyt wiele żądań          | Poczekaj 1 minutę albo użyj `model: "auto"` do automatycznego fallbacku              |
 | "Quota exceeded"        | Wykorzystałeś darmowy/płatny limit | Podłącz więcej providerów albo użyj darmowych (Kiro, Pollinations)                   |
@@ -36,9 +36,9 @@ Typowe problemy i rozwiązania dla OmniRoute.
 
 ## Ostrzeżenia npm install (ERESOLVE / peer / deprecated)
 
-Po `npm install -g omniroute` możesz zobaczyć lawinę ostrzeżeń typu `npm warn ERESOLVE`, komunikaty o peer-dependency oraz `deprecated`. **Są one oczekiwane i nieszkodliwe.** Instalacja się powiodła, jeśli w wyniku widać `added <N> packages`.
+Po `npm install -g xenia` możesz zobaczyć lawinę ostrzeżeń typu `npm warn ERESOLVE`, komunikaty o peer-dependency oraz `deprecated`. **Są one oczekiwane i nieszkodliwe.** Instalacja się powiodła, jeśli w wyniku widać `added <N> packages`.
 
-Ostrzeżenia pochodzą z przestarzałych zakresów peer-dependency w pakietach firm trzecich, których OmniRoute nie kontroluje:
+Ostrzeżenia pochodzą z przestarzałych zakresów peer-dependency w pakietach firm trzecich, których Xenia nie kontroluje:
 
 1. **`marked-terminal` chce `marked >=1 <16`, znaleziono `marked@18`** — w praktyce działa poprawnie; zakres peer po stronie upstream jest po prostu nieaktualny.
 2. **`deprecated prebuild-install@7.1.3`** — helper do pobierania natywnych binarek. Istotny dopiero później, jeśli provider web-cookie zgłosi brak natywnej binarki `tls-client-node` (osobny problem, nie spowodowany tym ostrzeżeniem).
@@ -49,16 +49,16 @@ Ostrzeżenia pochodzą z przestarzałych zakresów peer-dependency w pakietach f
 
 ## Szybkie poprawki
 
-| Problem                                             | Rozwiązanie                                                                                                                                                                |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pierwsze logowanie nie działa                       | Ustaw `INITIAL_PASSWORD` w `.env` (brak wbudowanego domyślnego hasła)                                                                                                      |
-| Dashboard otwiera się na złym porcie                | Ustaw `PORT=20128` i `NEXT_PUBLIC_BASE_URL=http://localhost:20128`                                                                                                         |
-| Brak logów na dysku                                 | Ustaw `APP_LOG_TO_FILE=true` i upewnij się, że przechwytywanie call log jest włączone                                                                                      |
-| EACCES: permission denied                           | Ustaw `DATA_DIR=/path/to/writable/dir`, aby nadpisać `~/.omniroute`                                                                                                        |
-| Strategia routingu się nie zapisuje                 | Zaktualizuj do najnowszego wydania v3.x (poprawka schematu Zod dla persystencji ustawień weszła we wcześniejszych wersjach)                                                |
-| Crash logowania / pusta strona                      | Sprawdź wersję Node.js — zobacz [Zgodność z Node.js](#nodejs-compatibility) poniżej                                                                                        |
-| `dlopen` / `slice is not valid mach-o file` (macOS) | Uruchom `cd $(npm root -g)/omniroute/app && npm rebuild better-sqlite3 && omniroute` — zobacz [przebudowa modułu natywnego na macOS](#macos-native-module-rebuild) poniżej |
-| Proxy "fetch failed"                                | Upewnij się, że konfiguracja proxy jest ustawiona na właściwym poziomie — zobacz [Problemy z proxy](#proxy-issues) poniżej                                                 |
+| Problem                                             | Rozwiązanie                                                                                                                                                        |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Pierwsze logowanie nie działa                       | Ustaw `INITIAL_PASSWORD` w `.env` (brak wbudowanego domyślnego hasła)                                                                                              |
+| Dashboard otwiera się na złym porcie                | Ustaw `PORT=20128` i `NEXT_PUBLIC_BASE_URL=http://localhost:20128`                                                                                                 |
+| Brak logów na dysku                                 | Ustaw `APP_LOG_TO_FILE=true` i upewnij się, że przechwytywanie call log jest włączone                                                                              |
+| EACCES: permission denied                           | Ustaw `DATA_DIR=/path/to/writable/dir`, aby nadpisać `~/.xenia`                                                                                                    |
+| Strategia routingu się nie zapisuje                 | Zaktualizuj do najnowszego wydania v3.x (poprawka schematu Zod dla persystencji ustawień weszła we wcześniejszych wersjach)                                        |
+| Crash logowania / pusta strona                      | Sprawdź wersję Node.js — zobacz [Zgodność z Node.js](#nodejs-compatibility) poniżej                                                                                |
+| `dlopen` / `slice is not valid mach-o file` (macOS) | Uruchom `cd $(npm root -g)/xenia/app && npm rebuild better-sqlite3 && xenia` — zobacz [przebudowa modułu natywnego na macOS](#macos-native-module-rebuild) poniżej |
+| Proxy "fetch failed"                                | Upewnij się, że konfiguracja proxy jest ustawiona na właściwym poziomie — zobacz [Problemy z proxy](#proxy-issues) poniżej                                         |
 
 ---
 
@@ -68,7 +68,7 @@ Ostrzeżenia pochodzą z przestarzałych zakresów peer-dependency w pakietach f
 
 ### Strona logowania się wykrzacza lub pokazuje błąd "Module self-registration"
 
-**Przyczyna:** Uruchamiasz wersję Node.js poniżej zatwierdzonego bezpiecznego poziomu runtime OmniRoute. Najczęstszy przypadek to starszy patch Node 22 lub 24 poniżej wymaganego przez OmniRoute poziomu bezpieczeństwa.
+**Przyczyna:** Uruchamiasz wersję Node.js poniżej zatwierdzonego bezpiecznego poziomu runtime Xenia. Najczęstszy przypadek to starszy patch Node 22 lub 24 poniżej wymaganego przez Xenia poziomu bezpieczeństwa.
 
 **Objawy:**
 
@@ -84,8 +84,8 @@ Ostrzeżenia pochodzą z przestarzałych zakresów peer-dependency w pakietach f
    nvm use 24
    ```
 2. Sprawdź wersję: `node --version` powinno pokazać `v24.0.0` lub nowsze w linii LTS 24.x
-3. Zainstaluj ponownie OmniRoute: `npm install -g omniroute`
-4. Uruchom ponownie: `omniroute`
+3. Zainstaluj ponownie Xenia: `npm install -g xenia`
+4. Uruchom ponownie: `xenia`
 
 > **Wspierane bezpieczne wersje:** `>=22.22.2 <23` lub `>=24.0.0 <27`. Node.js 24.x LTS (Krypton) oraz Node.js 26 są w pełni wspierane.
 
@@ -93,7 +93,7 @@ Ostrzeżenia pochodzą z przestarzałych zakresów peer-dependency w pakietach f
 
 <a name="macos-native-module-rebuild"></a>
 
-**Przyczyna:** Po globalnym `npm install -g omniroute` natywna binarka `better-sqlite3` w pakiecie mogła zostać skompilowana pod inną architekturę lub ABI Node.js niż ta, która działa lokalnie. To częste na macOS (Apple Silicon i Intel), gdy prebuilt nie pasuje do środowiska.
+**Przyczyna:** Po globalnym `npm install -g xenia` natywna binarka `better-sqlite3` w pakiecie mogła zostać skompilowana pod inną architekturę lub ABI Node.js niż ta, która działa lokalnie. To częste na macOS (Apple Silicon i Intel), gdy prebuilt nie pasuje do środowiska.
 
 **Objawy:**
 
@@ -102,15 +102,15 @@ Ostrzeżenia pochodzą z przestarzałych zakresów peer-dependency w pakietach f
 - Pełny przykład:
 
 ```
-dlopen(/Users/<user>/.nvm/versions/node/v24.14.1/lib/node_modules/omniroute/app/node_modules/better-sqlite3/build/Release/better_sqlite3.node, 0x0001): tried: '...' (slice is not valid mach-o file)
+dlopen(/Users/<user>/.nvm/versions/node/v24.14.1/lib/node_modules/xenia/app/node_modules/better-sqlite3/build/Release/better_sqlite3.node, 0x0001): tried: '...' (slice is not valid mach-o file)
 ```
 
 **Naprawa — przebuduj pod lokalne środowisko (bez downgrade Node.js):**
 
 ```bash
-cd $(npm root -g)/omniroute/app
+cd $(npm root -g)/xenia/app
 npm rebuild better-sqlite3
-omniroute
+xenia
 ```
 
 > **Uwaga:** To rekompiluje natywny binding względem lokalnej wersji Node.js i architektury CPU, usuwając niedopasowanie binarki. Oficjalnie wspierany zakres runtime to **`>=22.22.2 <23` lub `>=24.0.0 <27`** (`SUPPORTED_NODE_RANGE` w `src/shared/utils/nodeRuntimeSupport.ts`, zgodny z polem `engines` w `package.json`). Node.js 24.x LTS (Krypton) oraz Node.js 26 są w pełni wspierane z `better-sqlite3` v12.x.
@@ -137,7 +137,7 @@ omniroute
 
 **Przyczyna:** Na Node.js 22 dispatcher undici@8 jest niekompatybilny z wbudowaną implementacją `fetch()` w Node.
 
-**Naprawa (v3.5.5+):** OmniRoute używa teraz własnej funkcji `fetch()` z undici, gdy aktywny jest dispatcher proxy, co zapewnia spójne zachowanie. Zaktualizuj do v3.5.5+.
+**Naprawa (v3.5.5+):** Xenia używa teraz własnej funkcji `fetch()` z undici, gdy aktywny jest dispatcher proxy, co zapewnia spójne zachowanie. Zaktualizuj do v3.5.5+.
 
 ---
 
@@ -164,7 +164,7 @@ omniroute
 
 ### Wygasły token OAuth
 
-OmniRoute automatycznie odświeża tokeny. Jeśli problemy trwają:
+Xenia automatycznie odświeża tokeny. Jeśli problemy trwają:
 
 1. Dashboard → Provider → Reconnect
 2. Usuń i dodaj ponownie połączenie providera
@@ -196,7 +196,7 @@ zobacz [`docs/guides/KIRO_SETUP.md`](../guides/KIRO_SETUP.md).
 ### Błędy synchronizacji chmury
 
 1. Sprawdź, czy `BASE_URL` wskazuje na działającą instancję (np. `http://localhost:20128`)
-2. Sprawdź, czy `CLOUD_URL` wskazuje na endpoint chmury (np. `https://omniroute.dev`)
+2. Sprawdź, czy `CLOUD_URL` wskazuje na endpoint chmury (np. `https://xenia.dev`)
 3. Utrzymuj wartości `NEXT_PUBLIC_*` zgodne z wartościami po stronie serwera
 
 ### Cloud `stream=false` zwraca 500
@@ -357,13 +357,13 @@ Profile providerów wspierają te ustawienia:
 
 ### Anti-thundering herd
 
-Gdy wiele równoległych żądań trafia w providera z limitem zapytań, OmniRoute używa mutexa + auto rate-limiting, aby serializować żądania i zapobiegać awariom kaskadowym. Działa to automatycznie dla providerów z kluczem API.
+Gdy wiele równoległych żądań trafia w providera z limitem zapytań, Xenia używa mutexa + auto rate-limiting, aby serializować żądania i zapobiegać awariom kaskadowym. Działa to automatycznie dla providerów z kluczem API.
 
 ---
 
 ## Opcjonalna taksonomia awarii RAG / LLM (16 problemów)
 
-Część użytkowników OmniRoute stawia bramkę przed stackami RAG lub agentów. W takich setupach często widać dziwny wzorzec: OmniRoute wygląda na zdrowe (providery w górze, profile routingu OK, brak alertów rate limit), a ostateczna odpowiedź i tak jest błędna.
+Część użytkowników Xenia stawia bramkę przed stackami RAG lub agentów. W takich setupach często widać dziwny wzorzec: Xenia wygląda na zdrowe (providery w górze, profile routingu OK, brak alertów rate limit), a ostateczna odpowiedź i tak jest błędna.
 
 W praktyce te incydenty zwykle pochodzą z downstreamowego pipeline'u RAG, a nie z samej bramki.
 
@@ -382,17 +382,17 @@ Idea jest prosta:
 
 1. Gdy badziesz złą odpowiedź, zbierz:
    - zadanie użytkownika i żądanie
-   - trasę lub combo providerów w OmniRoute
+   - trasę lub combo providerów w Xenia
    - kontekst RAG użyty downstream (pobrane dokumenty, tool calls itd.)
 2. Zmapuj incydent na jeden lub dwa numery WFGY ProblemMap (`No.1` … `No.16`).
-3. Zapisz numer we własnym dashboardzie, runbooku lub trackerze incydentów obok logów OmniRoute.
+3. Zapisz numer we własnym dashboardzie, runbooku lub trackerze incydentów obok logów Xenia.
 4. Użyj odpowiadającej strony WFGY, by zdecydować, czy zmienić stack RAG, retriever, czy strategię routingu.
 
 Pełny tekst i konkretne przepisy są tutaj (licencja MIT, tylko tekst):
 
 - [WFGY ProblemMap README](https://github.com/onestardao/WFGY/blob/main/ProblemMap/README.md)
 
-Możesz zignorować tę sekcję, jeśli nie uruchamiasz pipeline'ów RAG ani agentów za OmniRoute.
+Możesz zignorować tę sekcję, jeśli nie uruchamiasz pipeline'ów RAG ani agentów za Xenia.
 
 ---
 
@@ -416,7 +416,7 @@ Problemy specyficzne dla wydania v3.8.0 i ich obecne obejścia. Gdy poprawka wej
 **Naprawa:**
 
 1. Sprawdź, że zarówno `WINDSURF_FIREBASE_API_KEY`, jak i `WINDSURF_API_KEY` są ustawione w `.env`
-2. Zrestartuj OmniRoute, aby nowe wartości env zostały wczytane
+2. Zrestartuj Xenia, aby nowe wartości env zostały wczytane
 3. Ponów przepływ OAuth z **Dashboard → Providers → Windsurf → Reconnect**
 
 ### Błędy auth Devin CLI
@@ -435,7 +435,7 @@ Problemy specyficzne dla wydania v3.8.0 i ich obecne obejścia. Gdy poprawka wej
 
 1. Zainstaluj Devin CLI dla swojej platformy
 2. Ustaw `CLI_DEVIN_BIN=/usr/local/bin/devin` (lub rzeczywistą ścieżkę) w `.env`
-3. Zrestartuj OmniRoute i przetestuj ponownie w **Dashboard → CLI Tools**
+3. Zrestartuj Xenia i przetestuj ponownie w **Dashboard → CLI Tools**
 
 ### Cooldown modelu utknął (ręczny reset)
 
@@ -460,7 +460,7 @@ Problemy specyficzne dla wydania v3.8.0 i ich obecne obejścia. Gdy poprawka wej
 
 **Naprawa:**
 
-- Uruchom `omniroute providers` z CLI, aby ponownie wywołać przepływ OAuth, albo
+- Uruchom `xenia providers` z CLI, aby ponownie wywołać przepływ OAuth, albo
 - Ponów OAuth z **Dashboard → Providers → Command Code → Reconnect**
 
 ### ModelScope zwraca agresywne cooldowny 429
@@ -477,20 +477,20 @@ Problemy specyficzne dla wydania v3.8.0 i ich obecne obejścia. Gdy poprawka wej
 - Upewnij się, że jesteś na v3.8.0 lub nowszej
 - Sprawdź, że przełącznik `useUpstream429BreakerHints` jest włączony w **Settings → Resilience**
 
-### Brak OMNIROUTE_WS_BRIDGE_SECRET w produkcji
+### Brak XENIA_WS_BRIDGE_SECRET w produkcji
 
 **Objawy:**
 
 - 401 na każdym żądaniu mostka WebSocket Codex/Responses na zdalnym hoście produkcyjnym
 - Handshake mostka WebSocket zamyka się natychmiast po połączeniu
 
-**Przyczyna:** Zmienna środowiskowa `OMNIROUTE_WS_BRIDGE_SECRET` nie jest ustawiona w środowisku produkcyjnym.
+**Przyczyna:** Zmienna środowiskowa `XENIA_WS_BRIDGE_SECRET` nie jest ustawiona w środowisku produkcyjnym.
 
 **Naprawa:**
 
 1. Wygeneruj losowy sekret: `openssl rand -hex 32`
-2. Ustaw `OMNIROUTE_WS_BRIDGE_SECRET=<random-secret>` w env serwera produkcyjnego (oraz każdego klienta łączącego się z mostkiem)
-3. Zrestartuj OmniRoute
+2. Ustaw `XENIA_WS_BRIDGE_SECRET=<random-secret>` w env serwera produkcyjnego (oraz każdego klienta łączącego się z mostkiem)
+3. Zrestartuj Xenia
 
 ### Responses API: tryb background zdegradowany do synchronicznego
 
@@ -510,7 +510,7 @@ Problemy specyficzne dla wydania v3.8.0 i ich obecne obejścia. Gdy poprawka wej
 
 ## Nadal utknąłeś?
 
-- **GitHub Issues**: [github.com/diegosouzapw/OmniRoute/issues](https://github.com/diegosouzapw/OmniRoute/issues)
+- **GitHub Issues**: [github.com/diegosouzapw/Xenia/issues](https://github.com/diegosouzapw/Xenia/issues)
 - **Architektura**: Zobacz [`docs/architecture/ARCHITECTURE.md`](../architecture/ARCHITECTURE.md) po szczegóły wewnętrzne
 - **API Reference**: Zobacz [`docs/reference/API_REFERENCE.md`](../reference/API_REFERENCE.md) po wszystkie endpointy
 - **Health Dashboard**: Sprawdź **Dashboard → Health** pod kątem statusu systemu w czasie rzeczywistym

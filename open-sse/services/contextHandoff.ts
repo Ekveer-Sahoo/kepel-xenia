@@ -77,7 +77,7 @@ export const DEFAULT_UNIVERSAL_HANDOFF_CONFIG: UniversalHandoffConfig = {
   preserveSystemPrompt: true,
 };
 
-export const SKIP_UNIVERSAL_HANDOFF_FLAG = "_omnirouteSkipUniversalHandoff";
+export const SKIP_UNIVERSAL_HANDOFF_FLAG = "_xeniaSkipUniversalHandoff";
 
 export function resolveUniversalHandoffConfig(
   comboConfig: Record<string, unknown> | null | undefined,
@@ -230,7 +230,10 @@ function formatMessagesForPrompt(messages: MessageLike[]): string {
     .join("\n\n");
 }
 
-export function selectMessagesForSummary(messages: MessageLike[], maxMessages: number): MessageLike[] {
+export function selectMessagesForSummary(
+  messages: MessageLike[],
+  maxMessages: number
+): MessageLike[] {
   const validMessages = messages.filter((m) => m && typeof m === "object");
   const system = validMessages.filter(
     (m) => typeof m.role === "string" && (m.role === "system" || m.role === "developer")
@@ -395,8 +398,8 @@ async function generateHandoffAsync(options: {
     stream: false,
     max_tokens: DEFAULT_SUMMARY_RESPONSE_TOKENS,
     temperature: 0.1,
-    _omnirouteSkipContextRelay: true,
-    _omnirouteInternalRequest: "context-handoff",
+    _xeniaSkipContextRelay: true,
+    _xeniaInternalRequest: "context-handoff",
   };
 
   const response = await options.handleSingleModel(summaryBody, summaryModel);
@@ -632,8 +635,8 @@ async function generateUniversalHandoffAsync(options: {
     stream: false,
     max_tokens: DEFAULT_SUMMARY_RESPONSE_TOKENS,
     temperature: 0.1,
-    _omnirouteSkipContextRelay: true,
-    _omnirouteInternalRequest: "universal-handoff",
+    _xeniaSkipContextRelay: true,
+    _xeniaInternalRequest: "universal-handoff",
   };
 
   const response = await options.handleSingleModel(summaryBody, summaryModel);

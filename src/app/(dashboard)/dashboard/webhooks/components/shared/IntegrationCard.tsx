@@ -15,10 +15,10 @@ const KIND_ICONS: Record<AnyKind, string> = {
 };
 
 const KIND_COLORS: Record<AnyKind, string> = {
-  slack: "text-emerald-500",
-  telegram: "text-blue-500",
-  discord: "text-violet-500",
-  custom: "text-amber-500",
+  slack: "text-gray-500",
+  telegram: "text-gray-500",
+  discord: "text-gray-500",
+  custom: "text-gray-500",
   email: "text-text-muted",
   pagerduty: "text-text-muted",
   teams: "text-text-muted",

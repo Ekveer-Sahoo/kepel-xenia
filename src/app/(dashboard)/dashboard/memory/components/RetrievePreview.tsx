@@ -39,13 +39,13 @@ export default function RetrievePreview({ result }: Props) {
           <span className="font-mono text-text-main">{resolution.strategyUsed}</span>
         </p>
         {resolution.rerankApplied && (
-          <p className="text-emerald-400">
+          <p className="text-gray-400">
             <span className="material-symbols-outlined text-[12px] align-middle mr-1">check</span>
             {t("playground.rerankApplied")}
           </p>
         )}
         {resolution.fallbackReason && (
-          <p className="text-amber-400">
+          <p className="text-gray-400">
             <span className="material-symbols-outlined text-[12px] align-middle mr-1">warning</span>
             {t("playground.fallback")}: {resolution.fallbackReason}
           </p>
@@ -54,9 +54,7 @@ export default function RetrievePreview({ result }: Props) {
 
       {/* Results list */}
       {memories.length === 0 ? (
-        <div className="p-6 text-center text-sm text-text-muted">
-          {t("playground.noResults")}
-        </div>
+        <div className="p-6 text-center text-sm text-text-muted">{t("playground.noResults")}</div>
       ) : (
         <div className="space-y-2">
           {memories.map((m) => (
@@ -92,7 +90,7 @@ export default function RetrievePreview({ result }: Props) {
         </span>
         <div className="h-1.5 w-24 rounded-full bg-border overflow-hidden">
           <div
-            className="h-full rounded-full bg-violet-500"
+            className="h-full rounded-full bg-gray-500"
             style={{
               width: `${Math.min(100, (totalTokensUsed / Math.max(1, budgetMaxTokens)) * 100).toFixed(1)}%`,
             }}

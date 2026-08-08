@@ -28,10 +28,10 @@ const KIND_ICONS: Record<WebhookKind, string> = {
 };
 
 const KIND_COLORS: Record<WebhookKind, string> = {
-  slack: "text-emerald-500",
-  telegram: "text-blue-500",
-  discord: "text-violet-500",
-  custom: "text-amber-500",
+  slack: "text-gray-500",
+  telegram: "text-gray-500",
+  discord: "text-gray-500",
+  custom: "text-gray-500",
 };
 
 function getStatus(wh: WebhookItem): "active" | "inactive" | "errored" {
@@ -80,9 +80,9 @@ export function WebhookCard({
         <span
           className={`shrink-0 rounded-full border px-2 py-0.5 text-xs font-medium ${
             status === "active"
-              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+              ? "border-gray-500/30 bg-gray-500/10 text-gray-600 dark:text-gray-300"
               : status === "errored"
-                ? "border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300"
+                ? "border-gray-500/30 bg-gray-500/10 text-gray-600 dark:text-gray-300"
                 : "border-border bg-sidebar text-text-muted"
           }`}
         >
@@ -124,7 +124,7 @@ export function WebhookCard({
             type="button"
             onClick={() => onDelete(webhook)}
             title={t("delete")}
-            className="rounded-lg p-2 text-red-500 transition-colors hover:bg-red-500/10"
+            className="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-500/10"
           >
             <span className="material-symbols-outlined text-[18px]">delete</span>
           </button>

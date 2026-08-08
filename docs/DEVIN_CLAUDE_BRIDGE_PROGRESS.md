@@ -14,7 +14,7 @@ Updated: 2026-07-28
 ## Implemented architecture
 
 - Claude Code runs only inside the non-root bridge container with its own empty config
-  volume and local OmniRoute base URL.
+  volume and local Xenia base URL.
 - `devin-cli-agentic` preserves Anthropic messages, tool schemas, `tool_use`, and
   `tool_result`, then calls the official Devin CLI over ACP stdio.
 - The executor starts `devin acp --agent-type summarizer`. This is the only fixed official
@@ -102,7 +102,7 @@ used. The dedicated Docker volumes remain role-separated. No credential value is
 the repository or evidence output.
 
 During the early baseline, a focused test without isolated `DATA_DIR` initialized the
-repository's normal OmniRoute database at `/Users/lucasisrael/.omniroute/storage.sqlite`.
+repository's normal Xenia database at `/Users/lucasisrael/.xenia/storage.sqlite`.
 It was not rolled back or touched again. Every bridge command now pins database and temporary
 paths under the worktree's `.sandbox` directory.
 

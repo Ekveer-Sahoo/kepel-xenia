@@ -14,7 +14,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-codewhale-settings-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-codewhale-settings-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = "test-api-key-secret-codewhale";
 process.env.JWT_SECRET = "test-jwt-secret-codewhale";
@@ -22,7 +22,8 @@ process.env.JWT_SECRET = "test-jwt-secret-codewhale";
 const core = await import("../../src/lib/db/core.ts");
 const localDb = await import("../../src/lib/localDb.ts");
 
-const { GET, POST, DELETE } = await import("../../src/app/api/cli-tools/codewhale-settings/route.ts");
+const { GET, POST, DELETE } =
+  await import("../../src/app/api/cli-tools/codewhale-settings/route.ts");
 
 async function resetStorage() {
   delete process.env.INITIAL_PASSWORD;
@@ -113,7 +114,7 @@ test("codewhale-settings POST: writes primary ~/.codewhale/config.toml for a fre
       const primaryPath = path.join(tmpHome, ".codewhale", "config.toml");
       assert.ok(fs.existsSync(primaryPath), "Primary ~/.codewhale/config.toml must be written");
       const content = fs.readFileSync(primaryPath, "utf-8");
-      assert.ok(content.includes("managed by OmniRoute"), "Config should have OmniRoute marker");
+      assert.ok(content.includes("managed by Xenia"), "Config should have Xenia marker");
       assert.ok(content.includes("http://localhost:20128"), "Config should contain base URL");
       assert.ok(content.includes("[openai]"), "Config should have [openai] section");
 
@@ -189,15 +190,15 @@ test("codewhale-settings GET: falls back to legacy ~/.deepseek/config.toml when 
     fs.mkdirSync(legacyDir, { recursive: true });
     fs.writeFileSync(
       path.join(legacyDir, "config.toml"),
-      '# managed by OmniRoute (plan 14)\n[openai]\nbase_url = "http://localhost:20128"\n'
+      '# managed by Xenia (plan 14)\n[openai]\nbase_url = "http://localhost:20128"\n'
     );
 
     const res = await GET(new Request("http://localhost/api/cli-tools/codewhale-settings"));
     assert.equal(res.status, 200);
     const body = await res.json();
     if (body.config) {
-      assert.ok(body.config.includes("managed by OmniRoute"));
-      assert.equal(body.hasOmniRoute, true);
+      assert.ok(body.config.includes("managed by Xenia"));
+      assert.equal(body.hasXenia, true);
     }
   } finally {
     process.env.HOME = origHome;
@@ -219,11 +220,11 @@ test("codewhale-settings DELETE: removes primary and legacy config files", async
     fs.mkdirSync(legacyDir, { recursive: true });
     fs.writeFileSync(
       path.join(primaryDir, "config.toml"),
-      '# managed by OmniRoute (plan 14)\n[openai]\nbase_url = "http://localhost:20128"\n'
+      '# managed by Xenia (plan 14)\n[openai]\nbase_url = "http://localhost:20128"\n'
     );
     fs.writeFileSync(
       path.join(legacyDir, "config.toml"),
-      '# managed by OmniRoute (plan 14)\n[openai]\nbase_url = "http://localhost:20128"\n'
+      '# managed by Xenia (plan 14)\n[openai]\nbase_url = "http://localhost:20128"\n'
     );
 
     const res = await DELETE(

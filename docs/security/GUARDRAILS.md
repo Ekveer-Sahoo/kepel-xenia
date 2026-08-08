@@ -10,7 +10,7 @@ lastUpdated: 2026-06-28
 > **Last updated:** 2026-06-28 — v3.8.40 (injection-guard coverage + 16 KB scan bound + red-team)
 
 Guardrails enforce safety, policy, and content transformations at the boundary
-between OmniRoute and upstream providers. Each guardrail can inspect (and
+between Xenia and upstream providers. Each guardrail can inspect (and
 optionally reject, transform, or annotate) request payloads (`preCall`) and
 upstream responses (`postCall`).
 
@@ -58,11 +58,11 @@ Flow:
 5. Return `modifiedPayload` + meta (`imagesProcessed`, `processingTimeMs`,
    `visionModel`).
 
-**Self-loop admission bypass:** when the describe call routes through OmniRoute's
+**Self-loop admission bypass:** when the describe call routes through Xenia's
 own `/v1` self-loop (non-standard provider model), the sub-request sends
-`x-omniroute-admission-bypass: internal` and is authenticated with the resolved
-self-loop credential — the local `sk_omniroute` sentinel in local mode, or the
-operator-configured `OMNIROUTE_API_KEY` / `ROUTER_API_KEY` env key (#1350) so
+`x-xenia-admission-bypass: internal` and is authenticated with the resolved
+self-loop credential — the local `sk_xenia` sentinel in local mode, or the
+operator-configured `XENIA_API_KEY` / `ROUTER_API_KEY` env key (#1350) so
 `REQUIRE_API_KEY=true` deployments can still run the describe call. The bypass
 is only honored for those exact credentials, so external clients cannot use the
 header to skip admission.
@@ -232,7 +232,7 @@ request. Sources (all optional, all merged):
 - `apiKeyInfo.disabledGuardrails`
 - Request body `disabledGuardrails` (top-level)
 - Request body `metadata.disabledGuardrails`
-- Header `x-omniroute-disabled-guardrails` (or legacy
+- Header `x-xenia-disabled-guardrails` (or legacy
   `x-disabled-guardrails`)
 
 Values may be arrays of strings or a comma-separated string; names are
@@ -359,7 +359,7 @@ dispatch) has two jobs:
   previous instructions…", DAN-style jailbreaks) asserts the response carries
   `error.code === "SECURITY_001"`, i.e. the guard actually rejected the request.
 - **`garak` (advisory)** — runs garak `--probes promptinject,dan,leakreplay`
-  against a local OmniRoute instance (`http://localhost:20128/v1`). Gated on a
+  against a local Xenia instance (`http://localhost:20128/v1`). Gated on a
   provider secret (`PROMPTFOO_PROVIDER_KEY`); skips gracefully and is suffixed
   `|| true`, so it reports without failing CI.
 

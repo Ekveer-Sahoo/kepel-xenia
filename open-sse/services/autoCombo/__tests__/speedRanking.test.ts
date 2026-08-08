@@ -3,16 +3,12 @@
  *
  * Covers the pure `rankBySpeed` function used by:
  *   - the runtime `LatencyStrategyImpl` (routerStrategy.ts)
- *   - the `omniroute_pick_fastest_model` MCP tool
+ *   - the `xenia_pick_fastest_model` MCP tool
  *   - the latency-optimized playground preview (via the same shared core)
  */
 
 import { describe, it, expect } from "vitest";
-import {
-  rankBySpeed,
-  pickFastest,
-  DEFAULT_SPEED_WEIGHTS,
-} from "../speedRanking";
+import { rankBySpeed, pickFastest, DEFAULT_SPEED_WEIGHTS } from "../speedRanking";
 import type { SpeedCandidate } from "../speedRanking";
 
 function candidate(overrides: Partial<SpeedCandidate> = {}): SpeedCandidate {
@@ -134,8 +130,18 @@ describe("rankBySpeed — metric weighting", () => {
       avgE2ELatencyMs: 1500,
       p95LatencyMs: 1600,
     };
-    const lowTps: SpeedCandidate = candidate({ provider: "low", model: "m", ...base, avgTokensPerSecond: 20 });
-    const highTps: SpeedCandidate = candidate({ provider: "high", model: "m", ...base, avgTokensPerSecond: 200 });
+    const lowTps: SpeedCandidate = candidate({
+      provider: "low",
+      model: "m",
+      ...base,
+      avgTokensPerSecond: 20,
+    });
+    const highTps: SpeedCandidate = candidate({
+      provider: "high",
+      model: "m",
+      ...base,
+      avgTokensPerSecond: 200,
+    });
     const ranked = rankBySpeed([lowTps, highTps]);
     expect(ranked[0].provider).toBe("high");
   });

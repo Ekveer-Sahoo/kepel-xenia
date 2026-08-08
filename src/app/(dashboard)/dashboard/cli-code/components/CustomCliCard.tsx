@@ -58,8 +58,8 @@ export default function CustomCliCard({
   const keyToUse =
     selectedKeyObj?.key ||
     (!cloudEnabled
-      ? "sk_omniroute"
-      : translateOrFallback("yourApiKeyPlaceholder", "sk-your-omniroute-key"));
+      ? "sk_xenia"
+      : translateOrFallback("yourApiKeyPlaceholder", "sk-your-xenia-key"));
   const baseUrlWithV1 = normalizeOpenAiBaseUrl(baseUrl || DEFAULT_DISPLAY_BASE_URL);
   const chatCompletionsEndpoint = `${baseUrlWithV1}/chat/completions`;
 
@@ -121,14 +121,14 @@ export default function CustomCliCard({
     <Card padding="sm" className="overflow-hidden">
       <div className="flex items-center justify-between hover:cursor-pointer" onClick={onToggle}>
         <div className="flex items-center gap-3">
-          <div className="size-8 rounded-lg flex items-center justify-center shrink-0 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+          <div className="size-8 rounded-lg flex items-center justify-center shrink-0 bg-gray-500/10 text-gray-600 dark:text-gray-400">
             <span className="material-symbols-outlined text-xl">{tool.icon || "terminal"}</span>
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <h3 className="font-medium text-sm">{tool.name}</h3>
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                <span className="size-1.5 rounded-full bg-emerald-500" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400">
+                <span className="size-1.5 rounded-full bg-gray-500" />
                 {translateOrFallback("custom", "Custom")}
               </span>
             </div>
@@ -144,11 +144,11 @@ export default function CustomCliCard({
 
       {isExpanded && (
         <div className="mt-6 pt-6 border-t border-border space-y-5">
-          <div className="flex items-start gap-3 p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
-            <span className="material-symbols-outlined text-emerald-500 text-lg">
+          <div className="flex items-start gap-3 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+            <span className="material-symbols-outlined text-gray-500 text-lg">
               tips_and_updates
             </span>
-            <div className="text-sm text-emerald-700 dark:text-emerald-300">
+            <div className="text-sm text-gray-700 dark:text-gray-300">
               <p className="font-medium">
                 {translateOrFallback("customCliBuilderTitle", "OpenAI-compatible CLI builder")}
               </p>
@@ -162,13 +162,13 @@ export default function CustomCliCard({
           </div>
 
           {!hasActiveProviders && (
-            <div className="flex items-start gap-3 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-              <span className="material-symbols-outlined text-yellow-500 text-lg">warning</span>
+            <div className="flex items-start gap-3 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+              <span className="material-symbols-outlined text-gray-500 text-lg">warning</span>
               <div>
-                <p className="text-sm font-medium text-yellow-700 dark:text-yellow-300">
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   {translateOrFallback("noActiveProviders", "No active providers")}
                 </p>
-                <p className="text-xs text-yellow-700/80 dark:text-yellow-300/80">
+                <p className="text-xs text-gray-700/80 dark:text-gray-300/80">
                   {translateOrFallback(
                     "customCliNoModels",
                     "Connect at least one provider to populate the model selectors."
@@ -215,7 +215,7 @@ export default function CustomCliCard({
                 <p className="mt-2 text-xs text-text-muted">
                   {translateOrFallback(
                     "customCliDefaultModelHelp",
-                    "Use any OmniRoute model ID or combo. Most OpenAI-compatible CLIs only need the /v1 base URL plus a model string."
+                    "Use any Xenia model ID or combo. Most OpenAI-compatible CLIs only need the /v1 base URL plus a model string."
                   )}
                 </p>
               </div>
@@ -244,7 +244,7 @@ export default function CustomCliCard({
                 <p className="mt-2 text-xs text-text-muted">
                   {translateOrFallback(
                     "customCliKeyHelper",
-                    "For local installs OmniRoute can use sk_omniroute. In cloud mode, pick one of your management API keys."
+                    "For local installs Xenia can use sk_xenia. In cloud mode, pick one of your management API keys."
                   )}
                 </p>
               </div>
@@ -329,7 +329,7 @@ export default function CustomCliCard({
             <p className="mt-1">
               {translateOrFallback(
                 "customCliEndpointHint",
-                "Point any OpenAI-compatible client to the OmniRoute /v1 base URL. The raw chat completions endpoint is {endpoint}. Use the JSON block when the tool wants a provider object, or the env script when it reads OPENAI_* variables.",
+                "Point any OpenAI-compatible client to the Xenia /v1 base URL. The raw chat completions endpoint is {endpoint}. Use the JSON block when the tool wants a provider object, or the env script when it reads OPENAI_* variables.",
                 { endpoint: chatCompletionsEndpoint }
               )}
             </p>

@@ -60,17 +60,17 @@ export default function DiversityScoreCard() {
 
   const scorePercentage = Math.round((data.score || 0) * 100);
 
-  let riskColor = "text-green-500";
-  let gaugeColor = "bg-green-500";
+  let riskColor = "text-gray-500";
+  let gaugeColor = "bg-gray-500";
   let riskLabel = t("diversityHealthy");
 
   if (scorePercentage < 40) {
-    riskColor = "text-red-500";
-    gaugeColor = "bg-red-500";
+    riskColor = "text-gray-500";
+    gaugeColor = "bg-gray-500";
     riskLabel = t("diversityRiskHigh");
   } else if (scorePercentage < 70) {
-    riskColor = "text-amber-500";
-    gaugeColor = "bg-amber-500";
+    riskColor = "text-gray-500";
+    gaugeColor = "bg-gray-500";
     riskLabel = t("diversityRiskModerate");
   }
 
@@ -99,10 +99,10 @@ export default function DiversityScoreCard() {
           <span
             className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-medium ${
               scorePercentage < 40
-                ? "bg-red-500/10 text-red-500"
+                ? "bg-gray-500/10 text-gray-500"
                 : scorePercentage < 70
-                  ? "bg-amber-500/10 text-amber-500"
-                  : "bg-green-500/10 text-green-500"
+                  ? "bg-gray-500/10 text-gray-500"
+                  : "bg-gray-500/10 text-gray-500"
             }`}
           >
             {t("diversityShannonEntropy")}

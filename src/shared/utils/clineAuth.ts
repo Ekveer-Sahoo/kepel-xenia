@@ -63,7 +63,7 @@ export function applyClineProtocolHeaders(
     "X-Title": "Cline",
     "User-Agent": `Cline/${clientVersion}`,
     "X-IS-MULTIROOT": context.isMultiRoot === true ? "true" : "false",
-    "X-CLIENT-TYPE": cleanHeaderValue(context.clientType) ?? "omniroute",
+    "X-CLIENT-TYPE": cleanHeaderValue(context.clientType) ?? "xenia",
     "X-CLIENT-VERSION": clientVersion,
     "X-PLATFORM": cleanHeaderValue(context.platform) ?? process.platform ?? "unknown",
     "X-PLATFORM-VERSION": cleanHeaderValue(context.platformVersion) ?? process.version ?? "unknown",

@@ -14,13 +14,13 @@
  * performed — a rate-limited/failing explicit provider surfaces its own error.
  */
 
-import { errorResponse, unavailableResponse } from "@omniroute/open-sse/utils/error.ts";
-import { HTTP_STATUS } from "@omniroute/open-sse/config/constants.ts";
+import { errorResponse, unavailableResponse } from "@xenia/open-sse/utils/error.ts";
+import { HTTP_STATUS } from "@xenia/open-sse/config/constants.ts";
 import {
   handleWebFetch,
   type WebFetchCredentials,
   type WebFetchResult,
-} from "@omniroute/open-sse/handlers/webFetch.ts";
+} from "@xenia/open-sse/handlers/webFetch.ts";
 import * as log from "@/sse/utils/logger";
 import {
   extractApiKey,
@@ -198,7 +198,13 @@ async function resolveAutoSelectTarget(): Promise<ResolvedWebFetchTarget> {
       continue;
     }
     if (creds) {
-      return { ok: true, provider: pid, credentials: creds, tried: new Set([pid]), isExplicit: false };
+      return {
+        ok: true,
+        provider: pid,
+        credentials: creds,
+        tried: new Set([pid]),
+        isExplicit: false,
+      };
     }
   }
 
@@ -267,7 +273,11 @@ export async function POST(request: Request) {
 
   log.info("WEB_FETCH", `${target.provider} | ${body.url} | format=${body.format}`);
 
-  const { result, provider: finalProvider, poolExhausted } = await executeWithFallback(
+  const {
+    result,
+    provider: finalProvider,
+    poolExhausted,
+  } = await executeWithFallback(
     {
       url: body.url,
       format: body.format,

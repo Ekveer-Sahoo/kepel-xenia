@@ -11,7 +11,7 @@
  * NOTE: the upstream PR used a /1e12 divisor (100x under-report) — this port
  * uses the doc-verified /1e10 divisor instead.
  *
- * OmniRoute previously always estimated cost from token counts × static
+ * Xenia previously always estimated cost from token counts × static
  * pricing, discarding this exact figure. This test proves calculateCost()/
  * computeCostFromPricing() now trust the exact figure when present, and
  * still fall back to the token-based estimate when it is absent (control).
@@ -38,10 +38,7 @@ test("computeCostFromPricing: xAI exact cost_in_usd_ticks overrides the token-ba
     ...TOKENS_1M_EACH,
     cost_in_usd_ticks: DOC_EXAMPLE_TICKS,
   });
-  assert.ok(
-    Math.abs(cost - DOC_EXAMPLE_USD) < 1e-9,
-    `expected ${DOC_EXAMPLE_USD}, got ${cost}`
-  );
+  assert.ok(Math.abs(cost - DOC_EXAMPLE_USD) < 1e-9, `expected ${DOC_EXAMPLE_USD}, got ${cost}`);
   assert.notEqual(cost, 3, "must not fall back to the $3 token-based estimate");
 });
 

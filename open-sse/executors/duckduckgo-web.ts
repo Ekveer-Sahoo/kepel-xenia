@@ -112,7 +112,7 @@ const SEEDED_COOKIES: ReadonlyArray<readonly [string, string]> = [
 function shouldUseBrowserBacked(): boolean {
   const flag = process.env.WEB_COOKIE_USE_BROWSER;
   if (flag === "1" || flag === "true" || flag === "on") return true;
-  const poolFlag = process.env.OMNIROUTE_BROWSER_POOL;
+  const poolFlag = process.env.XENIA_BROWSER_POOL;
   return poolFlag === "on" || poolFlag === "1" || poolFlag === "true";
 }
 
@@ -224,7 +224,7 @@ function mergeHeadersCaseInsensitive(
 
 /**
  * #8000: DuckDuckGo's free Duck.ai lineup churns and the catalog fell behind. Map every
- * retired id OmniRoute historically advertised to the current wire id served by
+ * retired id Xenia historically advertised to the current wire id served by
  * `duckchat/v1/models` (captured 2026-07-22) — a retired/unknown `model` yields a 400
  * `ERR_BAD_REQUEST` from `duckchat/v1/chat`. Current free wire ids: gpt-5.4-mini,
  * gpt-5.4-nano, claude-haiku-4-5, mistral-small-2603, tinfoil/gpt-oss-120b, tinfoil/gemma4-31b.
@@ -471,7 +471,7 @@ export class DuckDuckGoWebExecutor extends BaseExecutor {
       return errorResponse(503, "DuckDuckGo circuit breaker open — upstream unavailable");
     }
 
-    // Browser-backed path: opt-in via OMNIROUTE_BROWSER_POOL=on or
+    // Browser-backed path: opt-in via XENIA_BROWSER_POOL=on or
     // WEB_COOKIE_USE_BROWSER=1. Routes the chat through a shared
     // Playwright/Cloakbrowser page so DDG's VQD challenge is solved by
     // a real browser. Latency is dominated by page navigation + AI wait

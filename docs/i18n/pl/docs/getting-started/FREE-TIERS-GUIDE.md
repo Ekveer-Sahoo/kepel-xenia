@@ -1,6 +1,6 @@
 # Przewodnik po darmowych planach: darmowe AI bez karty kredytowej
 
-> **TL;DR**: OmniRoute agreguje darmowe plany od 50+ providerów. Podłącz wielu darmowych providerów, aby uzyskać nielimitowane darmowe AI z automatycznym fallbackiem.
+> **TL;DR**: Xenia agreguje darmowe plany od 50+ providerów. Podłącz wielu darmowych providerów, aby uzyskać nielimitowane darmowe AI z automatycznym fallbackiem.
 
 ---
 
@@ -8,7 +8,7 @@
 
 Wielu providerów AI oferuje **darmowe użycie** — bez karty kredytowej. To jak darmowe próbki w sklepie spożywczym. Możesz wypróbować produkt bez płacenia.
 
-OmniRoute **agreguje** te darmowe plany w jeden endpoint. Zamiast rejestrować się w 10 różnych serwisach, podłączasz je wszystkie do OmniRoute i używasz `model: "auto"`, aby automatycznie wybrać najlepszą darmową opcję dla każdego żądania.
+Xenia **agreguje** te darmowe plany w jeden endpoint. Zamiast rejestrować się w 10 różnych serwisach, podłączasz je wszystkie do Xenia i używasz `model: "auto"`, aby automatycznie wybrać najlepszą darmową opcję dla każdego żądania.
 
 ---
 
@@ -57,7 +57,7 @@ Ci providerzy mają **darmowe plany** z określonymi limitami:
 
 ## Jak łączyć darmowe plany
 
-Siła OmniRoute to **stackowanie darmowych planów**. Zamiast polegać na jednym providerze, podłączasz wielu darmowych providerów i pozwalasz OmniRoute automatycznie wybrać najlepszego dla każdego żądania.
+Siła Xenia to **stackowanie darmowych planów**. Zamiast polegać na jednym providerze, podłączasz wielu darmowych providerów i pozwalasz Xenia automatycznie wybrać najlepszego dla każdego żądania.
 
 ### Przykład: nielimitowane darmowe AI
 
@@ -68,7 +68,7 @@ Podłącz tych 4 providerów, aby uzyskać **nielimitowane darmowe AI**:
 3. **Pollinations** — bez klucza (wiele modeli)
 4. **LongCat** — 10M tokenów jednorazowo (backup, wymaga KYC)
 
-Następnie użyj `model: "auto"`, a OmniRoute:
+Następnie użyj `model: "auto"`, a Xenia:
 
 - Najpierw spróbuje Kiro (najlepsza jakość)
 - Jeśli Kiro jest zajęty → spróbuje OpenCode Free
@@ -180,15 +180,15 @@ Podłącz 3–4 darmowych providerów, aby uzyskać najlepsze doświadczenie.
 
 ---
 
-## Jak OmniRoute usprawnia darmowe plany
+## Jak Xenia usprawnia darmowe plany
 
 ### 1. Automatyczny fallback
 
-Jeśli jeden darmowy provider jest zajęty lub niedostępny, OmniRoute automatycznie próbuje następnego. Nie musisz nic robić.
+Jeśli jeden darmowy provider jest zajęty lub niedostępny, Xenia automatycznie próbuje następnego. Nie musisz nic robić.
 
 ### 2. Inteligentny routing
 
-OmniRoute wybiera **najlepszego darmowego providera** dla każdego żądania na podstawie:
+Xenia wybiera **najlepszego darmowego providera** dla każdego żądania na podstawie:
 
 - Szybkość — który provider jest teraz najszybszy?
 - Jakość — który provider najlepiej pasuje do tego zadania?
@@ -196,11 +196,11 @@ OmniRoute wybiera **najlepszego darmowego providera** dla każdego żądania na 
 
 ### 3. Oszczędność tokenów
 
-Funkcja **compression** w OmniRoute oszczędza 15–95% tokenów. Dzięki temu darmowy limit starcza **5–20× dłużej**.
+Funkcja **compression** w Xenia oszczędza 15–95% tokenów. Dzięki temu darmowy limit starcza **5–20× dłużej**.
 
 ### 4. Obsługa wielu kont
 
-Jeśli masz wiele kont u tego samego providera, OmniRoute traktuje każde jako osobnego kandydata. To podwaja lub potroja Twój darmowy limit.
+Jeśli masz wiele kont u tego samego providera, Xenia traktuje każde jako osobnego kandydata. To podwaja lub potroja Twój darmowy limit.
 
 ---
 
@@ -238,7 +238,7 @@ Policzmy, ile darmowego AI możesz uzyskać:
 
 ### „Czy to naprawdę za darmo?”
 
-**Tak!** To oficjalne darmowe plany providerów. OmniRoute tylko ułatwia korzystanie z nich wszystkich naraz.
+**Tak!** To oficjalne darmowe plany providerów. Xenia tylko ułatwia korzystanie z nich wszystkich naraz.
 
 ### „Czy darmowy plan się wyczerpie?”
 
@@ -250,7 +250,7 @@ Niektórzy providerzy mają limity (np. 50 kredytów/miesiąc u Kiro), ale inni 
 
 ### „Gdzie jest haczyk?”
 
-Nie ma haczyka! Providerzy oferują darmowe plany, żeby przyciągnąć użytkowników. OmniRoute tylko ułatwia korzystanie z nich wszystkich naraz.
+Nie ma haczyka! Providerzy oferują darmowe plany, żeby przyciągnąć użytkowników. Xenia tylko ułatwia korzystanie z nich wszystkich naraz.
 
 ### „Jak uzyskać większy darmowy limit?”
 
@@ -267,7 +267,7 @@ Nie ma haczyka! Providerzy oferują darmowe plany, żeby przyciągnąć użytkow
 
 ## Co dalej?
 
-- **[Przewodnik Auto-Combo](./AUTO-COMBO-GUIDE.md)** — pozwól OmniRoute wybrać najlepsze AI
+- **[Przewodnik Auto-Combo](./AUTO-COMBO-GUIDE.md)** — pozwól Xenia wybrać najlepsze AI
 - **[Przewodnik po providerach](./PROVIDERS-GUIDE.md)** — podłącz więcej providerów
 - **[Rozwiązywanie problemów](./TROUBLESHOOTING.md)** — napraw typowe problemy
 - **[Referencja darmowych planów](../reference/FREE_TIERS.md)** — pełna lista darmowych planów

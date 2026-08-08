@@ -54,7 +54,7 @@ function PageHeader() {
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-3">
         <h1 className="text-2xl font-semibold">OmniGlyph</h1>
-        <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600 dark:text-amber-400">
+        <span className="rounded-full border border-gray-500/40 bg-gray-500/10 px-2 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-400">
           {t("preview")}
         </span>
       </div>
@@ -86,7 +86,7 @@ function BeforeAfterCard() {
     <Card className="p-6">
       <div className="mb-1 flex items-baseline justify-between">
         <h2 className="text-lg font-semibold">{t("beforeAfterTitle")}</h2>
-        <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
+        <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
           {t("blockSavings", { percent: SAMPLE_METRICS.savingsPct })}
         </span>
       </div>
@@ -144,9 +144,7 @@ function GatesCard() {
             <div className="flex flex-col">
               <span className="text-sm font-medium">
                 {t(`gates.${g.id}.label`)} —{" "}
-                <span className="text-emerald-600 dark:text-emerald-400">
-                  {t(`gates.${g.id}.pass`)}
-                </span>
+                <span className="text-gray-600 dark:text-gray-400">{t(`gates.${g.id}.pass`)}</span>
               </span>
               <span className="text-xs text-text-muted">{t(`gates.${g.id}.why`)}</span>
             </div>

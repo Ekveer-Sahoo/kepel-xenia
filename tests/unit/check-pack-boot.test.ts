@@ -24,10 +24,7 @@ const SCRIPT_PATH = path.join(
 );
 
 test("pickTarball extracts the filename from npm pack --json output", () => {
-  assert.equal(
-    pickTarball('[{"filename":"omniroute-3.8.49.tgz","size":1}]'),
-    "omniroute-3.8.49.tgz"
-  );
+  assert.equal(pickTarball('[{"filename":"xenia-3.8.49.tgz","size":1}]'), "xenia-3.8.49.tgz");
 });
 
 test("pickTarball normalizes scoped slashes to the on-disk dash form", () => {
@@ -104,7 +101,7 @@ test("source guard: the gate polls the real health endpoint of the INSTALLED bin
   assert.ok(src.includes("/api/monitoring/health"), "must poll the health endpoint");
   assert.ok(src.includes("/api/settings"), "must verify a real application write and read");
   assert.ok(
-    src.includes('OMNIROUTE_PACK_BOOT_FORCE_SQLJS: "1"'),
+    src.includes('XENIA_PACK_BOOT_FORCE_SQLJS: "1"'),
     "must force the packaged sql.js tier during this smoke"
   );
   assert.ok(src.indexOf("npm") < src.indexOf("spawn"), "pack+install must precede the boot spawn");

@@ -46,7 +46,7 @@ function LinkCard({ label, url, icon, prompt }: LinkCardProps): JSX.Element {
             onClick={() => void handleCopy()}
             className={`flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] font-medium transition-colors shrink-0 ${
               copied
-                ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
+                ? "bg-gray-500/10 text-gray-700 dark:text-gray-400"
                 : "bg-bg text-text-muted hover:text-text-main"
             }`}
             title={t("copyUrl")}

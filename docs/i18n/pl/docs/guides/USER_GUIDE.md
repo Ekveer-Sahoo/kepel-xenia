@@ -8,7 +8,7 @@ lastUpdated: 2026-06-28
 
 🌐 **Languages:** 🇺🇸 [English](./USER_GUIDE.md) | 🇧🇷 [Português (Brasil)](../i18n/pt-BR/docs/guides/USER_GUIDE.md) | 🇪🇸 [Español](../i18n/es/docs/guides/USER_GUIDE.md) | 🇫🇷 [Français](../i18n/fr/docs/guides/USER_GUIDE.md) | 🇮🇹 [Italiano](../i18n/it/docs/guides/USER_GUIDE.md) | 🇷🇺 [Русский](../i18n/ru/docs/guides/USER_GUIDE.md) | 🇨🇳 [中文 (简体)](../i18n/zh-CN/docs/guides/USER_GUIDE.md) | 🇩🇪 [Deutsch](../i18n/de/docs/guides/USER_GUIDE.md) | 🇮🇳 [हिन्दी](../i18n/in/docs/guides/USER_GUIDE.md) | 🇹🇭 [ไทย](../i18n/th/docs/guides/USER_GUIDE.md) | 🇺🇦 [Українська](../i18n/uk-UA/docs/guides/USER_GUIDE.md) | 🇸🇦 [العربية](../i18n/ar/docs/guides/USER_GUIDE.md) | 🇯🇵 [日本語](../i18n/ja/docs/guides/USER_GUIDE.md) | 🇻🇳 [Tiếng Việt](../i18n/vi/docs/guides/USER_GUIDE.md) | 🇧🇬 [Български](../i18n/bg/docs/guides/USER_GUIDE.md) | 🇩🇰 [Dansk](../i18n/da/docs/guides/USER_GUIDE.md) | 🇫🇮 [Suomi](../i18n/fi/docs/guides/USER_GUIDE.md) | 🇮🇱 [עברית](../i18n/he/docs/guides/USER_GUIDE.md) | 🇭🇺 [Magyar](../i18n/hu/docs/guides/USER_GUIDE.md) | 🇮🇩 [Bahasa Indonesia](../i18n/id/docs/guides/USER_GUIDE.md) | 🇰🇷 [한국어](../i18n/ko/docs/guides/USER_GUIDE.md) | 🇲🇾 [Bahasa Melayu](../i18n/ms/docs/guides/USER_GUIDE.md) | 🇳🇱 [Nederlands](../i18n/nl/docs/guides/USER_GUIDE.md) | 🇳🇴 [Norsk](../i18n/no/docs/guides/USER_GUIDE.md) | 🇵🇹 [Português (Portugal)](../i18n/pt/docs/guides/USER_GUIDE.md) | 🇷🇴 [Română](../i18n/ro/docs/guides/USER_GUIDE.md) | 🇵🇱 [Polski](../i18n/pl/docs/guides/USER_GUIDE.md) | 🇸🇰 [Slovenčina](../i18n/sk/docs/guides/USER_GUIDE.md) | 🇸🇪 [Svenska](../i18n/sv/docs/guides/USER_GUIDE.md) | 🇵🇭 [Filipino](../i18n/phi/docs/guides/USER_GUIDE.md) | 🇨🇿 [Čeština](../i18n/cs/docs/guides/USER_GUIDE.md)
 
-Kompletny przewodnik po konfiguracji providerów, tworzeniu combo, integracji narzędzi CLI i wdrażaniu OmniRoute.
+Kompletny przewodnik po konfiguracji providerów, tworzeniu combo, integracji narzędzi CLI i wdrażaniu Xenia.
 
 ---
 
@@ -138,10 +138,10 @@ Models:
   cc/claude-haiku-4-5-20251001
 ```
 
-**Wskazówka:** Używaj Opus do złożonych zadań, Sonnet dla szybkości. OmniRoute śledzi limit per model!
+**Wskazówka:** Używaj Opus do złożonych zadań, Sonnet dla szybkości. Xenia śledzi limit per model!
 
 Trasy zgodne z Claude i Claude Code zachowują poziom myślenia `max` dla modeli Opus i Sonnet
-Modele Haiku nie akceptują poziomu wysiłku `max`, więc OmniRoute obniża to
+Modele Haiku nie akceptują poziomu wysiłku `max`, więc Xenia obniża to
 żądanie do wysokiego budżetu myślenia przed wysłaniem upstream.
 
 #### OpenAI Codex (Plus/Pro)
@@ -192,7 +192,7 @@ Models:
 
 #### Kimi K2 ($9/mies. ryczałt)
 
-1. Subskrybuj: [Moonshot AI](https://platform.kimi.ai?aff=omniroute)
+1. Subskrybuj: [Moonshot AI](https://platform.kimi.ai?aff=xenia)
 2. Pobierz klucz API → Dashboard → Add API Key
 
 **Użyj:** `kimi/kimi-k2.5` — **Wskazówka:** Stałe $9/mies. za 10M tokenów = efektywny koszt $0.90/1M!
@@ -266,7 +266,7 @@ Cost: $0 forever!
 ```
 Settings → Models → Advanced:
   OpenAI API Base URL: http://localhost:20128/v1
-  OpenAI API Key: [from omniroute dashboard]
+  OpenAI API Key: [from xenia dashboard]
   Model: cc/claude-opus-4-7
 ```
 
@@ -278,7 +278,7 @@ Edytuj `~/.claude/settings.json`:
 {
   "env": {
     "ANTHROPIC_BASE_URL": "http://localhost:20128",
-    "ANTHROPIC_AUTH_TOKEN": "your-omniroute-api-key"
+    "ANTHROPIC_AUTH_TOKEN": "your-xenia-api-key"
   }
 }
 ```
@@ -289,7 +289,7 @@ Użyj tutaj root endpointu zgodnego z Claude. Nie dopisuj `/v1` do `ANTHROPIC_BA
 
 ```bash
 export OPENAI_BASE_URL="http://localhost:20128"
-export OPENAI_API_KEY="your-omniroute-api-key"
+export OPENAI_API_KEY="your-xenia-api-key"
 codex "your prompt"
 ```
 
@@ -301,14 +301,14 @@ Edytuj `~/.openclaw/openclaw.json`:
 {
   "agents": {
     "defaults": {
-      "model": { "primary": "omniroute/if/kimi-k2.7-code" }
+      "model": { "primary": "xenia/if/kimi-k2.7-code" }
     }
   },
   "models": {
     "providers": {
-      "omniroute": {
+      "xenia": {
         "baseUrl": "http://localhost:20128/v1",
-        "apiKey": "your-omniroute-api-key",
+        "apiKey": "your-xenia-api-key",
         "api": "openai-completions",
         "models": [{ "id": "if/kimi-k2.7-code", "name": "Kimi K2.7 Code" }]
       }
@@ -335,42 +335,42 @@ Model: cc/claude-opus-4-7
 ### Globalna instalacja npm (zalecane)
 
 ```bash
-npm install -g omniroute
+npm install -g xenia
 
 # Create config directory
-mkdir -p ~/.omniroute
+mkdir -p ~/.xenia
 
 # Create .env file (see .env.example)
-cp .env.example ~/.omniroute/.env
+cp .env.example ~/.xenia/.env
 
 # Start server
-omniroute
+xenia
 # Or with custom port:
-omniroute --port 3000
+xenia --port 3000
 ```
 
-CLI automatycznie ładuje `.env` z `~/.omniroute/.env` lub `./.env`.
+CLI automatycznie ładuje `.env` z `~/.xenia/.env` lub `./.env`.
 
 ### Odinstalowywanie
 
-Gdy nie potrzebujesz już OmniRoute, mamy dwa szybkie skrypty do czystego usunięcia:
+Gdy nie potrzebujesz już Xenia, mamy dwa szybkie skrypty do czystego usunięcia:
 
-| Polecenie                | Działanie                                                                        |
-| ------------------------ | -------------------------------------------------------------------------------- |
-| `npm run uninstall`      | Usuwa aplikację systemową, ale **zachowuje DB i konfiguracje** w `~/.omniroute`. |
-| `npm run uninstall:full` | Usuwa aplikację ORAZ trwale **kasuje wszystkie konfiguracje, klucze i bazy**.    |
+| Polecenie                | Działanie                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| `npm run uninstall`      | Usuwa aplikację systemową, ale **zachowuje DB i konfiguracje** w `~/.xenia`.  |
+| `npm run uninstall:full` | Usuwa aplikację ORAZ trwale **kasuje wszystkie konfiguracje, klucze i bazy**. |
 
-> Uwaga: Aby uruchomić te polecenia, przejdź do folderu projektu OmniRoute (jeśli klonowałeś) i je wykonaj. Alternatywnie, przy instalacji globalnej możesz po prostu uruchomić `npm uninstall -g omniroute`.
+> Uwaga: Aby uruchomić te polecenia, przejdź do folderu projektu Xenia (jeśli klonowałeś) i je wykonaj. Alternatywnie, przy instalacji globalnej możesz po prostu uruchomić `npm uninstall -g xenia`.
 
 ### Wdrożenie na VPS
 
 ```bash
-git clone https://github.com/diegosouzapw/OmniRoute.git
-cd OmniRoute && npm install && npm run build
+git clone https://github.com/diegosouzapw/Xenia.git
+cd Xenia && npm install && npm run build
 
 export JWT_SECRET="your-secure-secret-change-this"
 export INITIAL_PASSWORD="your-password"
-export DATA_DIR="/var/lib/omniroute"
+export DATA_DIR="/var/lib/xenia"
 export PORT="20128"
 export HOSTNAME="0.0.0.0"
 export NODE_ENV="production"
@@ -378,7 +378,7 @@ export NEXT_PUBLIC_BASE_URL="http://localhost:20128"
 export API_KEY_SECRET="endpoint-proxy-api-key-secret"
 
 npm run start
-# Or: pm2 start npm --name omniroute -- start
+# Or: pm2 start npm --name xenia -- start
 ```
 
 ### Wdrożenie PM2 (mało pamięci)
@@ -387,10 +387,10 @@ Na serwerach z ograniczoną RAM użyj opcji limitu pamięci:
 
 ```bash
 # With 512MB limit (default)
-pm2 start npm --name omniroute -- start
+pm2 start npm --name xenia -- start
 
 # Or with custom memory limit
-OMNIROUTE_MEMORY_MB=512 pm2 start npm --name omniroute -- start
+XENIA_MEMORY_MB=512 pm2 start npm --name xenia -- start
 
 # Or using ecosystem.config.js
 pm2 start ecosystem.config.js
@@ -402,12 +402,12 @@ Utwórz `ecosystem.config.js`:
 module.exports = {
   apps: [
     {
-      name: "omniroute",
+      name: "xenia",
       script: "npm",
       args: "start",
       env: {
         NODE_ENV: "production",
-        OMNIROUTE_MEMORY_MB: "512",
+        XENIA_MEMORY_MB: "512",
         JWT_SECRET: "your-secret",
         INITIAL_PASSWORD: "your-password",
       },
@@ -422,24 +422,24 @@ module.exports = {
 
 ```bash
 # Build image (default = runner-cli with codex/claude/droid preinstalled)
-docker build -t omniroute:cli .
+docker build -t xenia:cli .
 
 # Portable mode (recommended)
-docker run -d --name omniroute -p 20128:20128 --env-file ./.env -v omniroute-data:/app/data omniroute:cli
+docker run -d --name xenia -p 20128:20128 --env-file ./.env -v xenia-data:/app/data xenia:cli
 ```
 
 Dla trybu zintegrowanego z hostem i binariami CLI zobacz sekcję Docker w głównej dokumentacji.
 
 ### Void Linux (xbps-src)
 
-Użytkownicy Void Linux mogą spakować i zainstalować OmniRoute natywnie przez framework cross-kompilacji `xbps-src`. Automatyzuje to build standalone Node.js wraz z wymaganymi natywnymi bindingami `better-sqlite3`.
+Użytkownicy Void Linux mogą spakować i zainstalować Xenia natywnie przez framework cross-kompilacji `xbps-src`. Automatyzuje to build standalone Node.js wraz z wymaganymi natywnymi bindingami `better-sqlite3`.
 
 <details>
 <summary><b>Zobacz szablon xbps-src</b></summary>
 
 ```bash
-# Template file for 'omniroute'
-pkgname=omniroute
+# Template file for 'xenia'
+pkgname=xenia
 version=3.8.0
 revision=1
 hostmakedepends="nodejs python3 make"
@@ -447,11 +447,11 @@ depends="openssl"
 short_desc="Universal AI gateway with smart routing for multiple LLM providers"
 maintainer="zenobit <zenobit@disroot.org>"
 license="MIT"
-homepage="https://github.com/diegosouzapw/OmniRoute"
-distfiles="https://github.com/diegosouzapw/OmniRoute/archive/refs/tags/v${version}.tar.gz"
+homepage="https://github.com/diegosouzapw/Xenia"
+distfiles="https://github.com/diegosouzapw/Xenia/archive/refs/tags/v${version}.tar.gz"
 checksum=009400afee90a9f32599d8fe734145cfd84098140b7287990183dde45ae2245b
-system_accounts="_omniroute"
-omniroute_homedir="/var/lib/omniroute"
+system_accounts="_xenia"
+xenia_homedir="/var/lib/xenia"
 export NODE_ENV=production
 export npm_config_engine_strict=false
 export npm_config_loglevel=error
@@ -501,26 +501,26 @@ do_check() {
 }
 
 do_install() {
-	vmkdir usr/lib/omniroute/.next
-	vcopy .next/standalone/. usr/lib/omniroute/.next/standalone
+	vmkdir usr/lib/xenia/.next
+	vcopy .next/standalone/. usr/lib/xenia/.next/standalone
 
 	# Prevent removal of empty Next.js app router dirs by the post-install hook
 	for _d in \
 		.next/standalone/.next/server/app/dashboard \
 		.next/standalone/.next/server/app/dashboard/settings \
 		.next/standalone/.next/server/app/dashboard/providers; do
-		touch "${DESTDIR}/usr/lib/omniroute/${_d}/.keep"
+		touch "${DESTDIR}/usr/lib/xenia/${_d}/.keep"
 	done
 
-	cat > "${WRKDIR}/omniroute" <<'EOF'
+	cat > "${WRKDIR}/xenia" <<'EOF'
 #!/bin/sh
 export PORT="${PORT:-20128}"
-export DATA_DIR="${DATA_DIR:-${XDG_DATA_HOME:-${HOME}/.local/share}/omniroute}"
+export DATA_DIR="${DATA_DIR:-${XDG_DATA_HOME:-${HOME}/.local/share}/xenia}"
 export APP_LOG_TO_FILE="${APP_LOG_TO_FILE:-false}"
 mkdir -p "${DATA_DIR}"
-exec node /usr/lib/omniroute/.next/standalone/server.js "$@"
+exec node /usr/lib/xenia/.next/standalone/server.js "$@"
 EOF
-	vbin "${WRKDIR}/omniroute"
+	vbin "${WRKDIR}/xenia"
 }
 
 post_install() {
@@ -532,28 +532,28 @@ post_install() {
 
 ### Zmienne środowiskowe
 
-| Zmienna                                 | Domyślnie                            | Opis                                                                                                                     |
-| --------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `JWT_SECRET`                            | `omniroute-default-secret-change-me` | Sekret podpisu JWT (**zmień w produkcji**)                                                                               |
-| `INITIAL_PASSWORD`                      | `CHANGEME`                           | Hasło pierwszego logowania                                                                                               |
-| `DATA_DIR`                              | `~/.omniroute`                       | Katalog danych (db, usage, logi)                                                                                         |
-| `PORT`                                  | domyślne frameworka                  | Port usługi (`20128` w przykładach)                                                                                      |
-| `HOSTNAME`                              | domyślne frameworka                  | Host nasłuchiwania (Docker domyślnie `0.0.0.0`)                                                                          |
-| `NODE_ENV`                              | domyślne runtime                     | Ustaw `production` przy wdrożeniu                                                                                        |
-| `NEXT_PUBLIC_BASE_URL`                  | `http://localhost:20128`             | Publiczny bazowy URL widoczny w dashboardzie i na serwerze (zastępuje legacy `BASE_URL`)                                 |
-| `NEXT_PUBLIC_CLOUD_URL`                 | `https://omniroute.dev`              | Bazowy URL endpointu cloud sync (zastępuje legacy `CLOUD_URL`)                                                           |
-| `API_KEY_SECRET`                        | `endpoint-proxy-api-key-secret`      | Sekret HMAC dla generowanych kluczy API                                                                                  |
-| `REQUIRE_API_KEY`                       | `false`                              | Wymuszaj klucz API Bearer na `/v1/*`                                                                                     |
-| `ALLOW_API_KEY_REVEAL`                  | `false`                              | Pozwól zalogowanym użytkownikom dashboardu na żądanie odsłaniać pełne zapisane wartości kluczy API                       |
-| `PROVIDER_LIMITS_SYNC_INTERVAL_MINUTES` | `70`                                 | Częstotliwość odświeżania cache Provider Limits po stronie serwera; przyciski w UI nadal wymuszają ręczną synchronizację |
-| `DISABLE_SQLITE_AUTO_BACKUP`            | `false`                              | Wyłącz automatyczne snapshoty SQLite przed zapisem/importem/przywróceniem; ręczne kopie nadal działają                   |
-| `APP_LOG_TO_FILE`                       | `true`                               | Włącza zapis logów aplikacji i audytu na dysk                                                                            |
-| `AUTH_COOKIE_SECURE`                    | `false`                              | Wymuś cookie auth `Secure` (za reverse proxy HTTPS)                                                                      |
-| `CLOUDFLARED_BIN`                       | unset                                | Użyj istniejącego binarium `cloudflared` zamiast zarządzanego pobierania                                                 |
-| `CLOUDFLARED_PROTOCOL`                  | `http2`                              | Transport dla zarządzanych Quick Tunnels (`http2`, `quic` lub `auto`)                                                    |
-| `OMNIROUTE_MEMORY_MB`                   | `512`                                | Limit sterty Node.js w MB                                                                                                |
-| `PROMPT_CACHE_MAX_SIZE`                 | `50`                                 | Maks. wpisów cache promptów                                                                                              |
-| `SEMANTIC_CACHE_MAX_SIZE`               | `100`                                | Maks. wpisów semantic cache                                                                                              |
+| Zmienna                                 | Domyślnie                        | Opis                                                                                                                     |
+| --------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `JWT_SECRET`                            | `xenia-default-secret-change-me` | Sekret podpisu JWT (**zmień w produkcji**)                                                                               |
+| `INITIAL_PASSWORD`                      | `CHANGEME`                       | Hasło pierwszego logowania                                                                                               |
+| `DATA_DIR`                              | `~/.xenia`                       | Katalog danych (db, usage, logi)                                                                                         |
+| `PORT`                                  | domyślne frameworka              | Port usługi (`20128` w przykładach)                                                                                      |
+| `HOSTNAME`                              | domyślne frameworka              | Host nasłuchiwania (Docker domyślnie `0.0.0.0`)                                                                          |
+| `NODE_ENV`                              | domyślne runtime                 | Ustaw `production` przy wdrożeniu                                                                                        |
+| `NEXT_PUBLIC_BASE_URL`                  | `http://localhost:20128`         | Publiczny bazowy URL widoczny w dashboardzie i na serwerze (zastępuje legacy `BASE_URL`)                                 |
+| `NEXT_PUBLIC_CLOUD_URL`                 | `https://xenia.dev`              | Bazowy URL endpointu cloud sync (zastępuje legacy `CLOUD_URL`)                                                           |
+| `API_KEY_SECRET`                        | `endpoint-proxy-api-key-secret`  | Sekret HMAC dla generowanych kluczy API                                                                                  |
+| `REQUIRE_API_KEY`                       | `false`                          | Wymuszaj klucz API Bearer na `/v1/*`                                                                                     |
+| `ALLOW_API_KEY_REVEAL`                  | `false`                          | Pozwól zalogowanym użytkownikom dashboardu na żądanie odsłaniać pełne zapisane wartości kluczy API                       |
+| `PROVIDER_LIMITS_SYNC_INTERVAL_MINUTES` | `70`                             | Częstotliwość odświeżania cache Provider Limits po stronie serwera; przyciski w UI nadal wymuszają ręczną synchronizację |
+| `DISABLE_SQLITE_AUTO_BACKUP`            | `false`                          | Wyłącz automatyczne snapshoty SQLite przed zapisem/importem/przywróceniem; ręczne kopie nadal działają                   |
+| `APP_LOG_TO_FILE`                       | `true`                           | Włącza zapis logów aplikacji i audytu na dysk                                                                            |
+| `AUTH_COOKIE_SECURE`                    | `false`                          | Wymuś cookie auth `Secure` (za reverse proxy HTTPS)                                                                      |
+| `CLOUDFLARED_BIN`                       | unset                            | Użyj istniejącego binarium `cloudflared` zamiast zarządzanego pobierania                                                 |
+| `CLOUDFLARED_PROTOCOL`                  | `http2`                          | Transport dla zarządzanych Quick Tunnels (`http2`, `quic` lub `auto`)                                                    |
+| `XENIA_MEMORY_MB`                       | `512`                            | Limit sterty Node.js w MB                                                                                                |
+| `PROMPT_CACHE_MAX_SIZE`                 | `50`                             | Maks. wpisów cache promptów                                                                                              |
+| `SEMANTIC_CACHE_MAX_SIZE`               | `100`                            | Maks. wpisów semantic cache                                                                                              |
 
 Pełną listę zmiennych środowiskowych znajdziesz w [README](../README.md).
 
@@ -610,7 +610,7 @@ Pełną listę zmiennych środowiskowych znajdziesz w [README](../README.md).
 
 **Inni zgodni providerzy** (wybrane): `cohere`, `databricks`, `snowflake`, `together`, `vertex`, `alibaba`, `alibaba-cn`, `bedrock` (via `aws-bedrock`), `azure-ai`, `openrouter` (passthrough catalog), `siliconflow`, `hyperbolic`, `huggingface`, `featherless-ai`, `cloudflare-ai`, `scaleway`, `deepinfra`, `vercel-ai-gateway`, `bazaarlink`, `friendliai`, `nous-research`, `reka`, `volcengine`, `ai21`, `gigachat`. Each maintains its own model list in `providerRegistry.ts` and can be auto-synced when the provider exposes a `/models` endpoint.
 
-**Uwaga o ID modeli:** OmniRoute używa natywnych ID providerów (`claude-opus-4-8`, `gpt-5.5`, `glm-5.1`, `MiniMax-M2.7`, `kimi-k2.5`, `grok-4.20-0309-reasoning`). Some IDs include dotted versions because that is how the upstream API expects them. If a model is not listed above, run `omniroute models --search <term>` or hit `GET /api/models/catalog` to confirm availability.
+**Uwaga o ID modeli:** Xenia używa natywnych ID providerów (`claude-opus-4-8`, `gpt-5.5`, `glm-5.1`, `MiniMax-M2.7`, `kimi-k2.5`, `grok-4.20-0309-reasoning`). Some IDs include dotted versions because that is how the upstream API expects them. If a model is not listed above, run `xenia models --search <term>` or hit `GET /api/models/catalog` to confirm availability.
 
 </details>
 
@@ -639,35 +639,35 @@ Uwagi:
 - Providerzy OpenRouter oraz zgodni z OpenAI/Anthropic są zarządzani wyłącznie z **Available Models**. Ręczne dodawanie, import i auto-sync trafiają do tej samej listy dostępnych modeli, więc nie ma osobnej sekcji Custom Models dla tych providerów.
 - Sekcja **Custom Models** jest przeznaczona dla providerów, które nie udostępniają zarządzanego importu dostępnych modeli.
 
-### Łączenie peerów OmniRoute
+### Łączenie peerów Xenia
 
-Inną bramę OmniRoute możesz dodać jako provider **Custom OpenAI-compatible**. Użyj
+Inną bramę Xenia możesz dodać jako provider **Custom OpenAI-compatible**. Użyj
 bazowego URL peeru `/v1` oraz dedykowanego klucza API o minimalnych uprawnieniach wydanego przez ten peer.
 
 Dla łańcuchów wzajemnych lub multi-hop włącz opcjonalną ochronę przed pętlami na każdej bramie:
 
 ```bash
 # gateway-a
-OMNIROUTE_INSTANCE_ID=gateway-a
-OMNIROUTE_PEER_URLS=http://gateway-b:20128/v1
-OMNIROUTE_PEER_MAX_HOPS=4
+XENIA_INSTANCE_ID=gateway-a
+XENIA_PEER_URLS=http://gateway-b:20128/v1
+XENIA_PEER_MAX_HOPS=4
 ```
 
 ```bash
 # gateway-b
-OMNIROUTE_INSTANCE_ID=gateway-b
-OMNIROUTE_PEER_URLS=http://gateway-a:20128/v1
-OMNIROUTE_PEER_MAX_HOPS=4
+XENIA_INSTANCE_ID=gateway-b
+XENIA_PEER_URLS=http://gateway-a:20128/v1
+XENIA_PEER_MAX_HOPS=4
 ```
 
 Tylko żądania wysyłane na jawnie dozwolony URL peeru otrzymują nagłówek
-`X-OmniRoute-Peer-Trace`. Brama odrzuca powtórzone ID instancji lub wyczerpany budżet hopów
+`X-Xenia-Peer-Trace`. Brama odrzuca powtórzone ID instancji lub wyczerpany budżet hopów
 kodem HTTP `508 Loop Detected`; zwykli providerzy upstream nie otrzymują metadanych peer.
 
 Łączenie peerów to nie replikacja bazy ani failover hosta. Każda brama utrzymuje niezależny
 stan SQLite, cache, liczniki limitów i sesje. Użyj reverse proxy ze health-checkiem lub failoveru
 klienta dla dostępności active/passive lub active/active i nigdy nie montuj jednej bazy SQLite
-do wielu uruchomionych instancji OmniRoute.
+do wielu uruchomionych instancji Xenia.
 
 ### Dedykowane trasy providerów
 
@@ -718,7 +718,7 @@ Zwraca modele pogrupowane według providera z typami (`chat`, `embedding`, `imag
 - Dostępne w **Dashboard → Endpoints** dla Dockera i innych wdrożeń self-hosted
 - Tworzy tymczasowy URL `https://*.trycloudflare.com` przekierowujący na Twój endpoint OpenAI-compatible `/v1`
 - Pierwsze włączenie instaluje `cloudflared` tylko gdy potrzeba; kolejne restarty używają tego samego zarządzanego binarium
-- Quick Tunnels nie są automatycznie przywracane po restarcie OmniRoute lub kontenera; włącz je ponownie z dashboardu w razie potrzeby
+- Quick Tunnels nie są automatycznie przywracane po restarcie Xenia lub kontenera; włącz je ponownie z dashboardu w razie potrzeby
 - URL-e tuneli są efemeryczne i zmieniają się przy każdym stop/start tunelu
 - Zarządzane Quick Tunnels domyślnie używają transportu HTTP/2, by uniknąć głośnych ostrzeżeń QUIC UDP w ograniczonych kontenerach
 - Ustaw `CLOUDFLARED_PROTOCOL=quic` lub `auto`, jeśli chcesz nadpisać wybór transportu
@@ -727,15 +727,15 @@ Zwraca modele pogrupowane według providera z typami (`chat`, `embedding`, `imag
 
 ### Inteligencja bramy LLM (faza 9)
 
-- **Semantic Cache** — automatycznie cache'uje odpowiedzi non-streaming z temperature=0 (pomiń przez `X-OmniRoute-No-Cache: true`)
+- **Semantic Cache** — automatycznie cache'uje odpowiedzi non-streaming z temperature=0 (pomiń przez `X-Xenia-No-Cache: true`)
 - **Idempotencja żądań** — deduplikuje żądania w ciągu 5s przez nagłówek `Idempotency-Key` lub `X-Request-Id`
-- **Śledzenie postępu** — opcjonalne zdarzenia SSE `event: progress` przez nagłówek `X-OmniRoute-Progress: true`
+- **Śledzenie postępu** — opcjonalne zdarzenia SSE `event: progress` przez nagłówek `X-Xenia-Progress: true`
 
 ---
 
 ### Translator Playground
 
-Dostęp: **Dashboard → Translator**. Debuguj i wizualizuj, jak OmniRoute tłumaczy żądania API między providerami.
+Dostęp: **Dashboard → Translator**. Debuguj i wizualizuj, jak Xenia tłumaczy żądania API między providerami.
 
 || Tryb | Cel ||
 | ---------------- | -------------------------------------------------------------------------------------- |
@@ -788,7 +788,7 @@ Dla zewnętrznej afinity sesji (np. agenci Claude Code/Codex za reverse proxy) w
 X-Session-Id: your-session-key
 ```
 
-OmniRoute akceptuje też `x_session_id` i zwraca efektywny klucz sesji w `X-OmniRoute-Session-Id`.
+Xenia akceptuje też `x_session_id` i zwraca efektywny klucz sesji w `X-Xenia-Session-Id`.
 
 Jeśli używasz Nginxa i wysyłasz nagłówki w formie z podkreśleniem, włącz:
 
@@ -824,7 +824,7 @@ Chain: production-fallback
 
 Konfiguruj w **Dashboard → Settings → Resilience**.
 
-OmniRoute implementuje odporność na poziomie providera w pięciu komponentach:
+Xenia implementuje odporność na poziomie providera w pięciu komponentach:
 
 1. **Kolejka żądań i pacing** — kształtowanie żądań na poziomie systemu:
    - **Requests Per Minute (RPM)** — maks. żądań na minutę per konto
@@ -849,7 +849,7 @@ OmniRoute implementuje odporność na poziomie providera w pięciu komponentach:
 
    Stan runtime breakera providera jest pokazywany wyłącznie na **Dashboard → Health**.
 
-4. **Wait For Cooldown** — jeśli każde połączenie-kandydat jest już w cooldown, OmniRoute może poczekać na najwcześniejszy cooldown i automatycznie ponowić to samo żądanie klienta.
+4. **Wait For Cooldown** — jeśli każde połączenie-kandydat jest już w cooldown, Xenia może poczekać na najwcześniejszy cooldown i automatycznie ponowić to samo żądanie klienta.
 
 5. **Rate Limit Auto-Detection** — gdy providerzy upstream zwracają jawne okna oczekiwania, te wskazówki nadpisują lokalny connection cooldown (gdy ustawienie włączone).
 
@@ -883,7 +883,7 @@ curl -X POST http://localhost:20128/api/db-backups/import \
 
 **Przypadki użycia:**
 
-- Migruj OmniRoute między maszynami
+- Migruj Xenia między maszynami
 - Twórz zewnętrzne kopie na disaster recovery
 - Udostępniaj konfiguracje członkom zespołu (export all → udostępnij archiwum)
 
@@ -935,7 +935,7 @@ curl http://localhost:20128/api/usage/budget
 
 ### Transkrypcja audio
 
-OmniRoute obsługuje transkrypcję audio przez endpoint zgodny z OpenAI:
+Xenia obsługuje transkrypcję audio przez endpoint zgodny z OpenAI:
 
 ```bash
 POST /v1/audio/transcriptions
@@ -1009,7 +1009,7 @@ Wyłącz **Reasoning token buffer**, gdy providerzy upstream wymagają ścisłyc
 limitów `max_tokens` / `maxOutputTokens`. Po włączeniu routing combo dodaje zapas reasoning-model
 tylko dla modeli ze znanym limitem wyjścia i zostawia limit tokenów klienta bez zmian, gdy
 bezpieczna wartość z buforem przekroczyłaby ten limit. Jeśli limit klienta jest już powyżej znanego limitu,
-OmniRoute obcina go do tego limitu przed wysłaniem żądania upstream.
+Xenia obcina go do tego limitu przed wysłaniem żądania upstream.
 
 ---
 
@@ -1032,7 +1032,7 @@ Dostęp: **Dashboard → Health**. Przegląd zdrowia systemu w czasie rzeczywist
 
 ## 🤖 Auto-routing (bez konfiguracji)
 
-OmniRoute ma wbudowany **auto-router oparty na score**, który wybiera najlepszy model dla każdego żądania spośród podłączonych providerów — bez utrzymywania combo. Wystarczy wysłać żądanie z jednym z prefiksów `auto/*`, a OmniRoute złoży wirtualne combo w locie, oceniając kandydatów pod kątem opóźnienia, kosztu, success rate, dopasowania kontekstu, przydatności modelu do zadania, ostatnich błędów, quoty i stanu circuit breakera.
+Xenia ma wbudowany **auto-router oparty na score**, który wybiera najlepszy model dla każdego żądania spośród podłączonych providerów — bez utrzymywania combo. Wystarczy wysłać żądanie z jednym z prefiksów `auto/*`, a Xenia złoży wirtualne combo w locie, oceniając kandydatów pod kątem opóźnienia, kosztu, success rate, dopasowania kontekstu, przydatności modelu do zadania, ostatnich błędów, quoty i stanu circuit breakera.
 
 | Prefiks        | Optymalizuje pod                                                                   |
 | -------------- | ---------------------------------------------------------------------------------- |
@@ -1048,7 +1048,7 @@ Przykład:
 
 ```bash
 curl -X POST http://localhost:20128/v1/chat/completions \
-  -H "Authorization: Bearer $OMNIROUTE_KEY" \
+  -H "Authorization: Bearer $XENIA_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "auto/coding",
@@ -1063,13 +1063,13 @@ Auto-router jest w pełni opisany w [AUTO-COMBO.md](../routing/AUTO-COMBO.md) �
 
 ## 🔌 Integracja MCP i A2A
 
-OmniRoute jest jednocześnie **serwerem MCP** (Model Context Protocol) i **serwerem A2A** (Agent-to-Agent JSON-RPC 2.0). Każde IDE lub host agentów zgodny z MCP może wywoływać narzędzia OmniRoute bezpośrednio — bez dodatkowego wrappera.
+Xenia jest jednocześnie **serwerem MCP** (Model Context Protocol) i **serwerem A2A** (Agent-to-Agent JSON-RPC 2.0). Każde IDE lub host agentów zgodny z MCP może wywoływać narzędzia Xenia bezpośrednio — bez dodatkowego wrappera.
 
 ### Transporty MCP
 
 - **SSE**: `http://localhost:20128/api/mcp/sse`
 - **Streamable HTTP**: `http://localhost:20128/api/mcp/stream`
-- **stdio**: `omniroute --mcp` (dla wtyczek IDE preferujących stdio)
+- **stdio**: `xenia --mcp` (dla wtyczek IDE preferujących stdio)
 
 ### Połącz Claude Desktop
 
@@ -1078,8 +1078,8 @@ Edytuj `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
 ```json
 {
   "mcpServers": {
-    "omniroute": {
-      "command": "omniroute",
+    "xenia": {
+      "command": "xenia",
       "args": ["--mcp"]
     }
   }
@@ -1098,7 +1098,7 @@ Narzędzia MCP są pogrupowane w 10 zakresów: `analytics`, `auth`, `billing`, `
 
 ## 🧠 System Skills
 
-OmniRoute udostępnia rozszerzalny **framework skills** (`src/lib/skills/`), dzięki czemu agenci i endpoint A2A mogą uruchamiać rutyny domenowe (np. `code-review`, `summarize`, `extract-facts`, `web-research`).
+Xenia udostępnia rozszerzalny **framework skills** (`src/lib/skills/`), dzięki czemu agenci i endpoint A2A mogą uruchamiać rutyny domenowe (np. `code-review`, `summarize`, `extract-facts`, `web-research`).
 
 - **Marketplace UI** — przeglądaj i instaluj skills w **Dashboard → Skills**
 - **Per-key scopes** — ogranicz, które klucze API mogą wywoływać które skills
@@ -1110,7 +1110,7 @@ Pełna referencja: [SKILLS.md](../frameworks/SKILLS.md).
 
 ## 💾 System Memory
 
-OmniRoute przechowuje **długoterminową pamięć konwersacyjną** z hybrydowym retrieval:
+Xenia przechowuje **długoterminową pamięć konwersacyjną** z hybrydowym retrieval:
 
 - **SQLite FTS5** do wyszukiwania keyword po poprzednich turach
 - **Qdrant vector store** (opcjonalnie) do semantic recall
@@ -1123,11 +1123,11 @@ Zarządzaj pamięcią w **Dashboard → Memory** (szukaj, edytuj, eksportuj, czy
 
 ## 🔔 Webhooki
 
-Subskrybuj zdarzenia OmniRoute do monitoringu i automatyzacji w czasie rzeczywistym.
+Subskrybuj zdarzenia Xenia do monitoringu i automatyzacji w czasie rzeczywistym.
 
 - Utwórz webhook w **Dashboard → Webhooks** z docelowym URL i sekretem podpisu HMAC
 - Dostępne zdarzenia: `request.completed`, `request.failed`, `provider.unavailable`, `budget.exceeded`, `combo.switched`, `circuit_breaker.opened`, `circuit_breaker.closed`
-- Każdy payload zawiera `X-OmniRoute-Signature` (HMAC-SHA256) do weryfikacji
+- Każdy payload zawiera `X-Xenia-Signature` (HMAC-SHA256) do weryfikacji
 - Ponowienia: 3 próby z exponential backoff, potem dead-letter queue
 
 Pełny schemat w [WEBHOOKS.md](../frameworks/WEBHOOKS.md).
@@ -1136,11 +1136,11 @@ Pełny schemat w [WEBHOOKS.md](../frameworks/WEBHOOKS.md).
 
 ## ☁️ Cloud Agents
 
-OmniRoute integruje się z cloud coding agents (**OpenAI Codex Cloud**, **Devin**, **Jules**, **Antigravity**), dzięki czemu możesz wysyłać długotrwałe zadania z tego samego dashboardu, który obsługuje lokalny routing.
+Xenia integruje się z cloud coding agents (**OpenAI Codex Cloud**, **Devin**, **Jules**, **Antigravity**), dzięki czemu możesz wysyłać długotrwałe zadania z tego samego dashboardu, który obsługuje lokalny routing.
 
 - Twórz zadania w **Dashboard → Cloud Agents** lub przez `POST /api/v1/agents/tasks`
 - Śledź status, logi i artefakty per zadanie
-- Własny klucz API per provider — credentials nigdy nie opuszczają instancji OmniRoute
+- Własny klucz API per provider — credentials nigdy nie opuszczają instancji Xenia
 
 Pełna referencja: [CLOUD_AGENT.md](../frameworks/CLOUD_AGENT.md).
 
@@ -1148,30 +1148,30 @@ Pełna referencja: [CLOUD_AGENT.md](../frameworks/CLOUD_AGENT.md).
 
 ## 🛠️ Zarządzanie programistyczne
 
-Możesz zarządzać każdym zasobem OmniRoute (providerzy, combo, klucze, ustawienia) przez HTTP, używając klucza zarządzania.
+Możesz zarządzać każdym zasobem Xenia (providerzy, combo, klucze, ustawienia) przez HTTP, używając klucza zarządzania.
 
 Wygeneruj klucz w **Dashboard → API Keys → New Key → Scope: manage**, następnie:
 
 ```bash
 # List providers
 curl http://localhost:20128/api/providers \
-  -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY"
+  -H "Authorization: Bearer $XENIA_MANAGE_KEY"
 
 # Add a provider connection
 curl -X POST http://localhost:20128/api/providers \
-  -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY" \
+  -H "Authorization: Bearer $XENIA_MANAGE_KEY" \
   -H "Content-Type: application/json" \
   -d '{ "provider": "openai", "apiKey": "sk-...", "name": "main" }'
 
 # Create a combo
 curl -X POST http://localhost:20128/api/combos \
-  -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY" \
+  -H "Authorization: Bearer $XENIA_MANAGE_KEY" \
   -H "Content-Type: application/json" \
   -d '{ "name": "premium", "strategy": "priority", "models": [{ "model": "cc/claude-opus-4-7" }, { "model": "glm/glm-5.1" }] }'
 
 # List/create API keys
-curl http://localhost:20128/api/keys -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY"
-curl -X POST http://localhost:20128/api/keys -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY" \
+curl http://localhost:20128/api/keys -H "Authorization: Bearer $XENIA_MANAGE_KEY"
+curl -X POST http://localhost:20128/api/keys -H "Authorization: Bearer $XENIA_MANAGE_KEY" \
   -d '{ "name": "ci-bot", "scopes": ["chat"] }'
 ```
 
@@ -1181,38 +1181,38 @@ Zobacz [API_REFERENCE.md](../reference/API_REFERENCE.md) po pełny katalog endpo
 
 ## 💻 Wewnętrzne CLI
 
-OmniRoute dostarcza wewnętrzne CLI (`omniroute …`) do setupu, diagnostyki i kontroli runtime.
+Xenia dostarcza wewnętrzne CLI (`xenia …`) do setupu, diagnostyki i kontroli runtime.
 
 ```bash
-omniroute setup                    # Interactive wizard (password, providers, combos)
-omniroute setup --non-interactive  # CI-friendly
-omniroute doctor                   # Health diagnostics (data dir, DB, providers, ports)
-omniroute providers available      # List supported providers
-omniroute providers list           # List configured connections
-omniroute providers test <id>      # Live test a provider connection
-omniroute combos list              # List combos
-omniroute combos switch <name>     # Set default combo
-omniroute models                   # List available models (--json, --search)
-omniroute keys add | list | remove # Manage API keys from the terminal
-omniroute backup                   # Snapshot config + DB
-omniroute restore [<timestamp>]    # Restore from a snapshot
-omniroute health                   # Detailed health (breakers, cache, memory)
-omniroute quota                    # Provider quota usage
-omniroute mcp status               # MCP server status
-omniroute a2a status               # A2A server status
-omniroute tunnel list|create|stop  # Cloudflare/Tailscale/ngrok tunnels
-omniroute reset-password           # Reset the admin password
-omniroute --mcp                    # Start MCP server over stdio
-omniroute --port 3000              # Start the server on a custom port
+xenia setup                    # Interactive wizard (password, providers, combos)
+xenia setup --non-interactive  # CI-friendly
+xenia doctor                   # Health diagnostics (data dir, DB, providers, ports)
+xenia providers available      # List supported providers
+xenia providers list           # List configured connections
+xenia providers test <id>      # Live test a provider connection
+xenia combos list              # List combos
+xenia combos switch <name>     # Set default combo
+xenia models                   # List available models (--json, --search)
+xenia keys add | list | remove # Manage API keys from the terminal
+xenia backup                   # Snapshot config + DB
+xenia restore [<timestamp>]    # Restore from a snapshot
+xenia health                   # Detailed health (breakers, cache, memory)
+xenia quota                    # Provider quota usage
+xenia mcp status               # MCP server status
+xenia a2a status               # A2A server status
+xenia tunnel list|create|stop  # Cloudflare/Tailscale/ngrok tunnels
+xenia reset-password           # Reset the admin password
+xenia --mcp                    # Start MCP server over stdio
+xenia --port 3000              # Start the server on a custom port
 ```
 
-Wskazówka: połącz `omniroute doctor --json` z narzędziem monitoringu, by alertować o niezdrowych providerach.
+Wskazówka: połącz `xenia doctor --json` z narzędziem monitoringu, by alertować o niezdrowych providerach.
 
 ---
 
 ## 🖥️ Aplikacja desktopowa (Electron)
 
-OmniRoute jest dostępny jako natywna aplikacja desktopowa na Windows, macOS i Linux.
+Xenia jest dostępny jako natywna aplikacja desktopowa na Windows, macOS i Linux.
 
 ### Instalacja
 
@@ -1253,9 +1253,9 @@ Wyjście → `electron/dist-electron/`
 
 ### Zmienne środowiskowe
 
-| Zmienna               | Domyślnie | Opis                               |
-| --------------------- | --------- | ---------------------------------- |
-| `OMNIROUTE_PORT`      | `20128`   | Port serwera                       |
-| `OMNIROUTE_MEMORY_MB` | `512`     | Limit sterty Node.js (64–16384 MB) |
+| Zmienna           | Domyślnie | Opis                               |
+| ----------------- | --------- | ---------------------------------- |
+| `XENIA_PORT`      | `20128`   | Port serwera                       |
+| `XENIA_MEMORY_MB` | `512`     | Limit sterty Node.js (64–16384 MB) |
 
 📖 Pełna dokumentacja: [`electron/README.md`](../../electron/README.md)

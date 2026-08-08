@@ -86,7 +86,7 @@ export default function RtkLearnDiscoverCard() {
       <p className="mt-1 text-xs text-text-muted">{t("learnDiscoverDesc")}</p>
 
       {error && (
-        <p className="mt-3 text-xs text-red-600 dark:text-red-400" data-testid="rtk-ld-error">
+        <p className="mt-3 text-xs text-gray-600 dark:text-gray-400" data-testid="rtk-ld-error">
           {error}
         </p>
       )}

@@ -10,6 +10,7 @@ import type { Viewport } from "next";
 import { PwaRegister } from "@/shared/components/PwaRegister";
 import { LocaleAutoDetect } from "@/shared/components/LocaleAutoDetect";
 import { BasePathNetworkProvider } from "@/shared/components/BasePathNetworkProvider";
+import { CustomCursor } from "@/shared/components/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,19 +18,22 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0b0f1a",
+  themeColor: "#0f0f0f",
   viewportFit: "cover",
 };
 
 export async function generateMetadata() {
   const settings = await getSettings();
-  const instanceName = settings?.instanceName || "OmniRoute";
+  const instanceName = settings?.instanceName || "Xenia";
   const customFaviconUrl = settings?.customFaviconUrl || settings?.customFaviconBase64;
+  // Browser tab title carries the "Kepel" attribution; every other in-app surface
+  // (sidebar, login screen, app chrome) shows the short "Xenia" wordmark only.
+  const tabTitleName = instanceName === "Xenia" ? "Kepel Xenia" : instanceName;
 
   return {
-    title: `${instanceName} — AI Gateway for Multi-Provider LLMs`,
+    title: `${tabTitleName} — AI Gateway for Multi-Provider LLMs`,
     description:
-      "OmniRoute is an AI gateway for multi-provider LLMs. One endpoint for all your AI providers.",
+      "Xenia is an AI gateway for multi-provider LLMs. One endpoint for all your AI providers.",
     manifest: "/manifest.webmanifest",
     applicationName: instanceName,
     appleWebApp: {
@@ -138,7 +142,7 @@ export default async function RootLayout({ children }) {
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#6366f1] focus:text-white focus:rounded-lg focus:text-sm focus:font-semibold focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#757575] focus:text-white focus:rounded-lg focus:text-sm focus:font-semibold focus:shadow-lg"
         >
           {t("skipToContent")}
         </a>
@@ -149,6 +153,7 @@ export default async function RootLayout({ children }) {
             <ThemeProvider>{children}</ThemeProvider>
           </BasePathNetworkProvider>
         </NextIntlClientProvider>
+        <CustomCursor />
       </body>
     </html>
   );

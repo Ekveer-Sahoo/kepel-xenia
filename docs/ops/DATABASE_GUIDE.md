@@ -6,7 +6,7 @@ lastUpdated: 2026-06-28
 
 # Database Schema & Operations Guide
 
-> **TL;DR**: OmniRoute uses **SQLite with WAL journaling** as its primary store, with **AES-256-GCM** encryption at rest for sensitive fields. This guide covers the schema, migrations, backup/recovery, and operational runbooks.
+> **TL;DR**: Xenia uses **SQLite with WAL journaling** as its primary store, with **AES-256-GCM** encryption at rest for sensitive fields. This guide covers the schema, migrations, backup/recovery, and operational runbooks.
 
 **Sources:**
 
@@ -21,7 +21,7 @@ lastUpdated: 2026-06-28
 
 ## Why SQLite?
 
-OmniRoute chose SQLite over PostgreSQL/MySQL for several reasons:
+Xenia chose SQLite over PostgreSQL/MySQL for several reasons:
 
 | Factor          | SQLite                            | PostgreSQL                        |
 | --------------- | --------------------------------- | --------------------------------- |
@@ -32,7 +32,7 @@ OmniRoute chose SQLite over PostgreSQL/MySQL for several reasons:
 | **Backup**      | Single-file copy                  | `pg_dump` or filesystem snapshot  |
 | **Use case**    | Per-user install, embedded        | Multi-tenant SaaS                 |
 
-For **single-user, single-instance** deployments (the primary OmniRoute use case), SQLite is simpler and faster.
+For **single-user, single-instance** deployments (the primary Xenia use case), SQLite is simpler and faster.
 
 ### WAL Journaling
 
@@ -57,9 +57,9 @@ The SQLite file is stored at:
 
 | OS      | Path                                                     |
 | ------- | -------------------------------------------------------- |
-| Linux   | `~/.omniroute/storage.sqlite`                            |
-| macOS   | `~/.omniroute/storage.sqlite`                            |
-| Windows | `%USERPROFILE%\.omniroute\storage.sqlite`                |
+| Linux   | `~/.xenia/storage.sqlite`                                |
+| macOS   | `~/.xenia/storage.sqlite`                                |
+| Windows | `%USERPROFILE%\.xenia\storage.sqlite`                    |
 | Docker  | `/app/data/storage.sqlite` (configurable via `DATA_DIR`) |
 
 Companion files:
@@ -71,14 +71,14 @@ Companion files:
 **Override the location:**
 
 ```bash
-DATA_DIR=/custom/path omniroute
+DATA_DIR=/custom/path xenia
 ```
 
 ---
 
 ## Domain Module Architecture
 
-OmniRoute's database has **94 domain modules** in `src/lib/db/`. Each module:
+Xenia's database has **94 domain modules** in `src/lib/db/`. Each module:
 
 - Owns one or more specific tables
 - Exports typed CRUD functions
@@ -87,7 +87,7 @@ OmniRoute's database has **94 domain modules** in `src/lib/db/`. Each module:
 
 ### The 94 DB Modules
 
-OmniRoute has **94 module files** in `src/lib/db/`. Below is a sampling of core modules; see the directory listing for the complete list:
+Xenia has **94 module files** in `src/lib/db/`. Below is a sampling of core modules; see the directory listing for the complete list:
 
 | Module                  | Tables                                                         | Responsibility                                                            |
 | ----------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -183,7 +183,7 @@ The full list of ~30+ tables is in `src/lib/db/migrations/`.
 
 ## Migrations
 
-OmniRoute uses **versioned, idempotent migrations** in `src/lib/db/migrations/`. Each migration is a single SQL file named `NNN_description.sql`.
+Xenia uses **versioned, idempotent migrations** in `src/lib/db/migrations/`. Each migration is a single SQL file named `NNN_description.sql`.
 
 ### Migration Naming
 
@@ -199,7 +199,7 @@ OmniRoute uses **versioned, idempotent migrations** in `src/lib/db/migrations/`.
 
 At startup, `migrationRunner.ts`:
 
-1. Creates `_omniroute_migrations` table if not exists
+1. Creates `_xenia_migrations` table if not exists
 2. Queries for already-applied migrations
 3. Applies any new migrations in order, each in a transaction
 4. Records each applied migration with timestamp
@@ -253,7 +253,7 @@ UPDATE combos SET priority = 100 WHERE priority IS NULL;
 CREATE INDEX IF NOT EXISTS idx_combos_priority ON combos(priority);
 ```
 
-> **Backwards-incompatible changes** (e.g., dropping columns) are tricky. OmniRoute does NOT support downgrade — once a migration is applied, the schema change is permanent. Plan accordingly.
+> **Backwards-incompatible changes** (e.g., dropping columns) are tricky. Xenia does NOT support downgrade — once a migration is applied, the schema change is permanent. Plan accordingly.
 
 ---
 
@@ -307,7 +307,7 @@ For performance reasons, the following are stored in plaintext:
 
 ## Encryption Caveats (v3.8.16+)
 
-OmniRoute uses **`migrateLegacyEncryptedString()`** to handle two encryption schemes transparently:
+Xenia uses **`migrateLegacyEncryptedString()`** to handle two encryption schemes transparently:
 
 - **Legacy** (pre-v3.5.0): XOR-based "encryption" (not real crypto)
 - **Current**: AES-256-GCM with proper IV and auth tag
@@ -343,7 +343,7 @@ Cache is invalidated on every write to the corresponding table.
 
 ```bash
 # Use the CLI to create a local backup
-omniroute backup create --name pre-migration
+xenia backup create --name pre-migration
 
 # Or via the API
 curl -X PUT http://localhost:20128/api/db-backups \
@@ -363,7 +363,7 @@ The backup file includes:
 
 ```bash
 # Via CLI
-omniroute restore pre-migration
+xenia restore pre-migration
 
 # Via API
 curl -X POST http://localhost:20128/api/db-backups/restore \
@@ -378,25 +378,25 @@ curl -X POST http://localhost:20128/api/db-backups/restore \
 
 ```bash
 # Enable automated daily backups via CLI
-omniroute backup auto enable --cron "0 2 * * *" --retention 7
+xenia backup auto enable --cron "0 2 * * *" --retention 7
 ```
 
 The schedule is executed server-side by a background job that ticks every 30 seconds
 (default) and evaluates the cron expression against local server time.
 
-| Variable                                    | Default | Description                                                                                                   |
-| ------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------- |
-| `OMNIROUTE_BACKUP_SCHEDULE_JOB_INTERVAL_MS` | `30000` | Tick interval in ms (min `5000`). Must be shorter than 60 s to reliably land inside the matching cron minute. |
+| Variable                                | Default | Description                                                                                                   |
+| --------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| `XENIA_BACKUP_SCHEDULE_JOB_INTERVAL_MS` | `30000` | Tick interval in ms (min `5000`). Must be shorter than 60 s to reliably land inside the matching cron minute. |
 
 ### SQLite Hot Backup
 
 For zero-downtime backup of a live DB:
 
 ```bash
-sqlite3 ~/.omniroute/storage.sqlite ".backup /backups/omniroute-hot.db"
+sqlite3 ~/.xenia/storage.sqlite ".backup /backups/xenia-hot.db"
 ```
 
-This uses SQLite's online backup API — safe to run while OmniRoute is running.
+This uses SQLite's online backup API — safe to run while Xenia is running.
 
 ---
 
@@ -439,10 +439,10 @@ PRAGMA mmap_size = 268435456;  -- 256MB
 
 ### Compaction
 
-Long-running OmniRoute instances benefit from occasional `VACUUM`:
+Long-running Xenia instances benefit from occasional `VACUUM`:
 
 ```bash
-sqlite3 ~/.omniroute/storage.sqlite "VACUUM;"
+sqlite3 ~/.xenia/storage.sqlite "VACUUM;"
 ```
 
 Run monthly during low-traffic windows. (WAL mode reduces the need, but doesn't eliminate it.)
@@ -477,7 +477,7 @@ Returns:
 Run `PRAGMA integrity_check` to detect corruption:
 
 ```bash
-sqlite3 ~/.omniroute/storage.sqlite "PRAGMA integrity_check;"
+sqlite3 ~/.xenia/storage.sqlite "PRAGMA integrity_check;"
 # Should print: ok
 ```
 
@@ -493,15 +493,15 @@ The `-wal` file is missing but `-shm` and main DB are intact:
 
 ```bash
 # Recovers automatically on next open
-omniroute
+xenia
 ```
 
 If SQLite can't auto-recover:
 
 ```bash
-sqlite3 ~/.omniroute/storage.sqlite ".recover" > recovered.sql
+sqlite3 ~/.xenia/storage.sqlite ".recover" > recovered.sql
 sqlite3 recovered.db < recovered.sql
-mv recovered.db ~/.omniroute/storage.sqlite
+mv recovered.db ~/.xenia/storage.sqlite
 ```
 
 ### Scenario 2: Main DB File Corrupted
@@ -509,7 +509,7 @@ mv recovered.db ~/.omniroute/storage.sqlite
 Restore from backup:
 
 ```bash
-omniroute sync pull --merge   # or: omniroute backup restore <backup-id>
+xenia sync pull --merge   # or: xenia backup restore <backup-id>
 ```
 
 ### Scenario 3: Encryption Key Lost
@@ -524,7 +524,7 @@ SQLite will return `SQLITE_FULL` errors. Free disk space, then:
 
 ```bash
 # Checkpoint WAL to free up space
-sqlite3 ~/.omniroute/storage.sqlite "PRAGMA wal_checkpoint(TRUNCATE);"
+sqlite3 ~/.xenia/storage.sqlite "PRAGMA wal_checkpoint(TRUNCATE);"
 ```
 
 ---
@@ -534,13 +534,13 @@ sqlite3 ~/.omniroute/storage.sqlite "PRAGMA wal_checkpoint(TRUNCATE);"
 ### Inspect a Table
 
 ```bash
-sqlite3 ~/.omniroute/storage.sqlite "SELECT * FROM api_keys LIMIT 5;"
+sqlite3 ~/.xenia/storage.sqlite "SELECT * FROM api_keys LIMIT 5;"
 ```
 
 ### Count Rows in All Tables
 
 ```bash
-sqlite3 ~/.omniroute/storage.sqlite <<EOF
+sqlite3 ~/.xenia/storage.sqlite <<EOF
 SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';
 EOF
 ```
@@ -548,14 +548,14 @@ EOF
 ### Reset (Wipe) All Data
 
 ```bash
-# Stop OmniRoute first
-omniroute stop
+# Stop Xenia first
+xenia stop
 
 # Delete the DB file
-rm ~/.omniroute/storage.sqlite*
+rm ~/.xenia/storage.sqlite*
 
 # Restart (will recreate empty DB)
-omniroute
+xenia
 ```
 
 For a **selective** reset (keep providers, wipe usage):
@@ -569,7 +569,7 @@ DELETE FROM proxy_logs WHERE timestamp < datetime('now', '-30 day');
 ### Export Single Table
 
 ```bash
-sqlite3 ~/.omniroute/storage.sqlite <<EOF
+sqlite3 ~/.xenia/storage.sqlite <<EOF
 .mode csv
 .output api_keys.csv
 SELECT * FROM api_keys;
@@ -586,7 +586,7 @@ Another process is holding a write lock. Either:
 
 - Wait for the other process to finish (check `lsof | grep storage.sqlite`)
 - Kill the other process
-- If persistent, restart OmniRoute
+- If persistent, restart Xenia
 
 ### "Foreign key constraint failed"
 
@@ -616,10 +616,10 @@ PRAGMA mmap_size = 0;
 
 The migration ran in a transaction, so it should have rolled back. If not:
 
-1. **Stop OmniRoute** (prevent further attempts)
+1. **Stop Xenia** (prevent further attempts)
 2. **Check the DB state** with `sqlite3`
 3. **Manually fix** the partial migration
-4. **Re-run** OmniRoute (the migration will be retried)
+4. **Re-run** Xenia (the migration will be retried)
 
 To prevent this, always test migrations on a copy first.
 

@@ -290,36 +290,36 @@ function FeatureChip({
 }) {
   const colorMap = {
     purple: {
-      shell: "border-purple-500/20 bg-purple-500/5",
-      icon: "text-purple-500",
+      shell: "border-gray-500/20 bg-gray-500/5",
+      icon: "text-gray-500",
     },
     blue: {
-      shell: "border-blue-500/20 bg-blue-500/5",
-      icon: "text-blue-500",
+      shell: "border-gray-500/20 bg-gray-500/5",
+      icon: "text-gray-500",
     },
     amber: {
-      shell: "border-amber-500/20 bg-amber-500/5",
-      icon: "text-amber-500",
+      shell: "border-gray-500/20 bg-gray-500/5",
+      icon: "text-gray-500",
     },
     emerald: {
-      shell: "border-emerald-500/20 bg-emerald-500/5",
-      icon: "text-emerald-500",
+      shell: "border-gray-500/20 bg-gray-500/5",
+      icon: "text-gray-500",
     },
     cyan: {
-      shell: "border-cyan-500/20 bg-cyan-500/5",
-      icon: "text-cyan-500",
+      shell: "border-gray-500/20 bg-gray-500/5",
+      icon: "text-gray-500",
     },
     orange: {
-      shell: "border-orange-500/20 bg-orange-500/5",
-      icon: "text-orange-500",
+      shell: "border-gray-500/20 bg-gray-500/5",
+      icon: "text-gray-500",
     },
     pink: {
-      shell: "border-pink-500/20 bg-pink-500/5",
-      icon: "text-pink-500",
+      shell: "border-gray-500/20 bg-gray-500/5",
+      icon: "text-gray-500",
     },
     indigo: {
-      shell: "border-indigo-500/20 bg-indigo-500/5",
-      icon: "text-indigo-500",
+      shell: "border-gray-500/20 bg-gray-500/5",
+      icon: "text-gray-500",
     },
   }[color];
 

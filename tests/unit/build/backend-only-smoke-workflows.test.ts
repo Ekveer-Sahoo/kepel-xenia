@@ -1,5 +1,5 @@
 // Regression guard for #7226: API-only smoke/nightly workflows must build with
-// OMNIROUTE_BUILD_BACKEND_ONLY=1 so `npm run build:cli`'s fallback full build
+// XENIA_BUILD_BACKEND_ONLY=1 so `npm run build:cli`'s fallback full build
 // (scripts/build/prepublish.ts -> build-next-isolated.mjs) skips the ~126-leaf-page
 // dashboard UI graph these workflows never exercise. Without this env var, the
 // "Build CLI bundle" step silently runs a full Next.js production build inline,
@@ -39,7 +39,7 @@ function loadWorkflow(fileName: string): WorkflowDoc {
 
 function isBackendOnly(step: WorkflowStep): boolean {
   const env = step.env || {};
-  return env.OMNIROUTE_BUILD_BACKEND_ONLY === "1" || env.OMNIROUTE_BUILD_PROFILE === "backend";
+  return env.XENIA_BUILD_BACKEND_ONLY === "1" || env.XENIA_BUILD_PROFILE === "backend";
 }
 
 // jobName: null selector means "any job" — used when a file has exactly one
@@ -59,7 +59,7 @@ const TARGETS: Target[] = [
 ];
 
 for (const { file, jobName, stepName } of TARGETS) {
-  test(`${file} :: ${jobName} '${stepName}' step sets OMNIROUTE_BUILD_BACKEND_ONLY=1 (skips dashboard UI build the API-only smoke job never exercises)`, () => {
+  test(`${file} :: ${jobName} '${stepName}' step sets XENIA_BUILD_BACKEND_ONLY=1 (skips dashboard UI build the API-only smoke job never exercises)`, () => {
     const doc = loadWorkflow(file);
     const job = doc.jobs[jobName];
     assert.ok(job, `${file} must have a '${jobName}' job`);
@@ -68,7 +68,7 @@ for (const { file, jobName, stepName } of TARGETS) {
     assert.equal(
       isBackendOnly(step),
       true,
-      `${file}'s '${jobName}' -> '${stepName}' step must set OMNIROUTE_BUILD_BACKEND_ONLY=1 or OMNIROUTE_BUILD_PROFILE=backend`
+      `${file}'s '${jobName}' -> '${stepName}' step must set XENIA_BUILD_BACKEND_ONLY=1 or XENIA_BUILD_PROFILE=backend`
     );
   });
 }
@@ -78,7 +78,10 @@ test("npm-publish.yml 'Build CLI bundle (standalone app)' step must NOT be backe
   const publishJob = Object.values(doc.jobs).find((job) =>
     job.steps.some((s) => s.name === "Build CLI bundle (standalone app)")
   );
-  assert.ok(publishJob, "npm-publish.yml must have a job with a 'Build CLI bundle (standalone app)' step");
+  assert.ok(
+    publishJob,
+    "npm-publish.yml must have a job with a 'Build CLI bundle (standalone app)' step"
+  );
   const step = publishJob!.steps.find((s) => s.name === "Build CLI bundle (standalone app)")!;
   assert.equal(
     isBackendOnly(step),

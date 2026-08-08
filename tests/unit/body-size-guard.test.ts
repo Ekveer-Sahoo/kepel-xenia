@@ -173,7 +173,7 @@ test("/api/v1/files route guard allows 15 MB (10 MB+ real-world scenario)", () =
   assert.equal(checkBodySize(request, getBodySizeLimit("/api/v1/files")), null);
 });
 
-test("media routes bypass OmniRoute's configured body-size limit", () => {
+test("media routes bypass Xenia's configured body-size limit", () => {
   assert.equal(MAX_BODY_BYTES_MEDIA, Number.POSITIVE_INFINITY);
   assert.equal(MAX_BODY_BYTES_IMAGE_EDIT, MAX_BODY_BYTES_MEDIA);
   assert.equal(
@@ -198,7 +198,7 @@ test("media routes bypass OmniRoute's configured body-size limit", () => {
   );
 });
 
-test("media routes never return OmniRoute's PAYLOAD_TOO_LARGE response", () => {
+test("media routes never return Xenia's PAYLOAD_TOO_LARGE response", () => {
   for (const pathname of [
     "/api/v1/images/generations",
     "/api/v1/videos/generations",
@@ -223,7 +223,7 @@ test("provider media matching does not unbound adjacent provider routes", () => 
   }
 });
 
-test("image edit body reader does not enforce an OmniRoute media limit", async () => {
+test("image edit body reader does not enforce an Xenia media limit", async () => {
   const request = new Request("http://localhost/api/v1/images/edits", {
     method: "POST",
     headers: { "content-length": String(Number.MAX_SAFE_INTEGER) },

@@ -2,16 +2,15 @@
  * QA P0 — sanitized auto-combo diagnostic trace.
  * Guards the new `errorResponseWithComboDiagnostics` / `sanitizeComboDiagnostics`
  * helpers: they must surface pool size + attempt order + exclusion reasons as
- * both `x-omniroute-combo-*` headers and a `diagnostics` body field, while the
+ * both `x-xenia-combo-*` headers and a `diagnostics` body field, while the
  * sanitizer is the secret-containment boundary (only provider/model/reason ids +
  * counts may ever escape — never keys/tokens/credentials).
  */
 import test from "node:test";
 import assert from "node:assert/strict";
 
-const { errorResponseWithComboDiagnostics, sanitizeComboDiagnostics } = await import(
-  "../../open-sse/utils/error.ts"
-);
+const { errorResponseWithComboDiagnostics, sanitizeComboDiagnostics } =
+  await import("../../open-sse/utils/error.ts");
 
 test("combo diagnostics: headers + body carry the sanitized trace (code override preserved)", async () => {
   const res = errorResponseWithComboDiagnostics(
@@ -28,10 +27,10 @@ test("combo diagnostics: headers + body carry the sanitized trace (code override
   );
 
   assert.equal(res.status, 503);
-  assert.equal(res.headers.get("x-omniroute-combo-pool-size"), "3");
-  assert.equal(res.headers.get("x-omniroute-combo-attempted"), "2");
-  assert.match(res.headers.get("x-omniroute-combo-excluded") || "", /openai\/gpt-x:exhausted/);
-  assert.equal(res.headers.get("x-omniroute-combo-terminal-reason"), "all_accounts_inactive");
+  assert.equal(res.headers.get("x-xenia-combo-pool-size"), "3");
+  assert.equal(res.headers.get("x-xenia-combo-attempted"), "2");
+  assert.match(res.headers.get("x-xenia-combo-excluded") || "", /openai\/gpt-x:exhausted/);
+  assert.equal(res.headers.get("x-xenia-combo-terminal-reason"), "all_accounts_inactive");
 
   const body = await res.json();
   assert.equal(body.error.code, "ALL_ACCOUNTS_INACTIVE");
@@ -89,7 +88,9 @@ test("combo diagnostics: terminalReason with a non-Latin1 char (em dash) must no
       {
         poolSize: 4,
         attempted: 1,
-        excluded: [{ provider: "deepseek", model: "deepseek-v4-flash-free", reason: "quality — bad" }],
+        excluded: [
+          { provider: "deepseek", model: "deepseek-v4-flash-free", reason: "quality — bad" },
+        ],
         attemptOrder: [{ provider: "deepseek", model: "deepseek-v4-flash-free" }],
         terminalReason,
       }
@@ -112,7 +113,7 @@ test("combo diagnostics: JSON body keeps the original non-Latin1 text even thoug
     }
   );
   // Header value must be a valid Latin1 ByteString — em dash (U+2014) replaced.
-  assert.equal(res.headers.get("x-omniroute-combo-terminal-reason"), terminalReason.replace("—", "?"));
+  assert.equal(res.headers.get("x-xenia-combo-terminal-reason"), terminalReason.replace("—", "?"));
   const body = await res.json();
   // JSON body keeps the original, readable (unsanitized) em dash.
   assert.equal(body.diagnostics.terminalReason, terminalReason);

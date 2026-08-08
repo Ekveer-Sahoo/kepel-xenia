@@ -1,13 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {
-  existsSync,
-  mkdtempSync,
-  mkdirSync,
-  readFileSync,
-  rmSync,
-  writeFileSync,
-} from "node:fs";
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
 
@@ -45,10 +38,7 @@ function mkPkg(
   }
 }
 
-function buildLlmlinguaRoot(
-  rootDir: string,
-  transformersVersion = "3.5.2"
-): void {
+function buildLlmlinguaRoot(rootDir: string, transformersVersion = "3.5.2"): void {
   const rootNm = join(rootDir, "node_modules");
 
   mkPkg(
@@ -110,18 +100,13 @@ function createStandalone(rootDir: string): {
     recursive: true,
   });
 
-  writeFileSync(
-    join(standaloneDir, "package.json"),
-    JSON.stringify({ name: "standalone-test" })
-  );
+  writeFileSync(join(standaloneDir, "package.json"), JSON.stringify({ name: "standalone-test" }));
 
   return { distDir, standaloneDir };
 }
 
 test("#9166 standalone assembly includes the complete LLMLingua runtime closure", () => {
-  const root = mkdtempSync(
-    join(tmpdir(), "omniroute-docker-llmlingua-9166-")
-  );
+  const root = mkdtempSync(join(tmpdir(), "xenia-docker-llmlingua-9166-"));
 
   try {
     buildLlmlinguaRoot(root);
@@ -143,24 +128,13 @@ test("#9166 standalone assembly includes the complete LLMLingua runtime closure"
       "onnxruntime-node",
     ]) {
       assert.ok(
-        existsSync(
-          join(standaloneDir, "node_modules", packageName, "package.json")
-        ),
+        existsSync(join(standaloneDir, "node_modules", packageName, "package.json")),
         `${packageName} must be present in the standalone runtime`
       );
     }
 
     assert.ok(
-      existsSync(
-        join(
-          standaloneDir,
-          "node_modules",
-          "@atjsh",
-          "llmlingua-2",
-          "dist",
-          "index.js"
-        )
-      ),
+      existsSync(join(standaloneDir, "node_modules", "@atjsh", "llmlingua-2", "dist", "index.js")),
       "the complete LLMLingua package payload must be copied"
     );
   } finally {
@@ -169,21 +143,15 @@ test("#9166 standalone assembly includes the complete LLMLingua runtime closure"
 });
 
 test("#9166 standalone assembly never overwrites an already pinned transformers instance", () => {
-  const root = mkdtempSync(
-    join(tmpdir(), "omniroute-docker-llmlingua-pinned-9166-")
-  );
+  const root = mkdtempSync(join(tmpdir(), "xenia-docker-llmlingua-pinned-9166-"));
 
   try {
     buildLlmlinguaRoot(root, "4.2.0");
     const { distDir, standaloneDir } = createStandalone(root);
 
-    mkPkg(
-      join(standaloneDir, "node_modules"),
-      "@huggingface/transformers",
-      {
-        version: "3.5.2",
-      }
-    );
+    mkPkg(join(standaloneDir, "node_modules"), "@huggingface/transformers", {
+      version: "3.5.2",
+    });
 
     assembleStandalone({
       distDir,
@@ -194,13 +162,7 @@ test("#9166 standalone assembly never overwrites an already pinned transformers 
 
     const targetManifest = JSON.parse(
       readFileSync(
-        join(
-          standaloneDir,
-          "node_modules",
-          "@huggingface",
-          "transformers",
-          "package.json"
-        ),
+        join(standaloneDir, "node_modules", "@huggingface", "transformers", "package.json"),
         "utf8"
       )
     );
@@ -212,14 +174,7 @@ test("#9166 standalone assembly never overwrites an already pinned transformers 
     );
 
     assert.ok(
-      existsSync(
-        join(
-          standaloneDir,
-          "node_modules",
-          "onnxruntime-node",
-          "package.json"
-        )
-      ),
+      existsSync(join(standaloneDir, "node_modules", "onnxruntime-node", "package.json")),
       "missing dependencies from the transformers closure must still be copied"
     );
   } finally {
@@ -228,10 +183,7 @@ test("#9166 standalone assembly never overwrites an already pinned transformers 
 });
 
 test("#9166 Docker explicitly installs and validates LLMLingua optionals", () => {
-  const dockerfile = readFileSync(
-    new URL("../../Dockerfile", import.meta.url),
-    "utf8"
-  );
+  const dockerfile = readFileSync(new URL("../../Dockerfile", import.meta.url), "utf8");
 
   const builderStart = dockerfile.indexOf("FROM base AS builder");
   const runnerStart = dockerfile.indexOf("FROM base AS runner-base");

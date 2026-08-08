@@ -94,7 +94,7 @@ export default function ActivityFeedClient() {
       {/* Error */}
       {error && (
         <div
-          className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
+          className="p-4 rounded-lg bg-gray-500/10 border border-gray-500/30 text-gray-400 text-sm"
           role="alert"
         >
           {error}

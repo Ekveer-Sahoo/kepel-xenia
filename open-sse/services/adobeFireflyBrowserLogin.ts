@@ -88,7 +88,7 @@ export function accountLabelFromAdobeJwt(token: string): string {
 
 /** Resolve system Chrome/Edge executable. Exported for unit tests. */
 export function resolveSystemBrowserExecutable(): string | null {
-  const configured = process.env.OMNIROUTE_LOGIN_BROWSER_PATH?.trim();
+  const configured = process.env.XENIA_LOGIN_BROWSER_PATH?.trim();
   if (configured && existsSync(configured)) return configured;
 
   const pf = process.env.ProgramFiles || "C:\\Program Files";
@@ -397,7 +397,7 @@ export async function startAdobeFireflyBrowserLogin(
       success: false,
       error:
         "No Chrome or Edge browser found for Adobe Firefly sign-in. " +
-        "Install Google Chrome or Microsoft Edge, or set OMNIROUTE_LOGIN_BROWSER_PATH, " +
+        "Install Google Chrome or Microsoft Edge, or set XENIA_LOGIN_BROWSER_PATH, " +
         "or paste the IMS Bearer JWT from firefly-3p.ff.adobe.io.",
     };
   }
@@ -405,7 +405,7 @@ export async function startAdobeFireflyBrowserLogin(
   let userDataDir: string | null = null;
   let child: ChildProcess | null = null;
   try {
-    userDataDir = mkdtempSync(join(tmpdir(), "omniroute-firefly-login-"));
+    userDataDir = mkdtempSync(join(tmpdir(), "xenia-firefly-login-"));
     const port = await getFreeLoopbackPort();
 
     const args = [

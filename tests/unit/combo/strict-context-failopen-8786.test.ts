@@ -17,14 +17,13 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-8786-ctx-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-8786-ctx-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../../src/lib/db/core.ts");
 const { getModelContextLimit } = await import("../../../src/lib/modelCapabilities.ts");
-const { applyContextRequirements } = await import(
-  "../../../open-sse/services/combo/contextRequirements.ts"
-);
+const { applyContextRequirements } =
+  await import("../../../open-sse/services/combo/contextRequirements.ts");
 
 test.after(() => {
   core.resetDbInstance();

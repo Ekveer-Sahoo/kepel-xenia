@@ -97,12 +97,12 @@ export async function runAssessmentMigration(dbPath: string): Promise<void> {
   db.exec(MIGRATION_SQL);
 
   const versionRow = db
-    .prepare("SELECT COUNT(*) as count FROM _omniroute_migrations WHERE name = ?")
+    .prepare("SELECT COUNT(*) as count FROM _xenia_migrations WHERE name = ?")
     .get("assessment_engine") as { count: number };
   if (versionRow.count === 0) {
-    db.prepare(
-      "INSERT INTO _omniroute_migrations (name, applied_at) VALUES (?, datetime('now'))"
-    ).run("assessment_engine");
+    db.prepare("INSERT INTO _xenia_migrations (name, applied_at) VALUES (?, datetime('now'))").run(
+      "assessment_engine"
+    );
   }
 
   db.close();

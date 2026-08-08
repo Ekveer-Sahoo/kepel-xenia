@@ -17,14 +17,14 @@ import {
 } from "recharts";
 
 const CHART_COLORS = [
-  "#10b981",
-  "#06b6d4",
-  "#f59e0b",
-  "#8b5cf6",
-  "#ef4444",
-  "#14b8a6",
-  "#6366f1",
-  "#ec4899",
+  "#808080",
+  "#858585",
+  "#a7a7a7",
+  "#7c7c7c",
+  "#777777",
+  "#858585",
+  "#757575",
+  "#828282",
 ];
 
 function createCurrencyFormatter(locale: string) {
@@ -166,7 +166,7 @@ export function CostTrendCard({
             <Line
               type="monotone"
               dataKey="cost"
-              stroke="#10b981"
+              stroke="#808080"
               strokeWidth={2.5}
               dot={false}
               activeDot={{ r: 4 }}
@@ -229,7 +229,7 @@ export function WeeklyPatternCard({
                 borderRadius: "12px",
               }}
             />
-            <Bar dataKey="tokens" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="tokens" fill="#7c7c7c" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

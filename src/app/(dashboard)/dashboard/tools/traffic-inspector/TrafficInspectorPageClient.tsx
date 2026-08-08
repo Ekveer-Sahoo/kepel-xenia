@@ -100,9 +100,7 @@ export function TrafficInspectorPageClient() {
       {filters.sessionId !== undefined && (
         <div className="shrink-0 px-4 pb-2">
           <HistoricSessionBanner
-            sessionName={
-              recorder.sessions.find((s) => s.id === filters.sessionId)?.name ?? null
-            }
+            sessionName={recorder.sessions.find((s) => s.id === filters.sessionId)?.name ?? null}
             onBackToLive={() => setSessionId(undefined)}
           />
         </div>
@@ -178,7 +176,10 @@ export function TrafficInspectorPageClient() {
 
           {collapsed && (
             <div className="flex-1 flex items-start justify-center pt-4">
-              <span className="text-xs text-text-muted font-mono" style={{ writingMode: "vertical-rl" }}>
+              <span
+                className="text-xs text-text-muted font-mono"
+                style={{ writingMode: "vertical-rl" }}
+              >
                 {streamState.total} reqs
               </span>
             </div>
@@ -188,7 +189,7 @@ export function TrafficInspectorPageClient() {
         {/* Drag handle */}
         <div
           onMouseDown={startDrag}
-          className="w-1 bg-border hover:bg-blue-500 cursor-col-resize shrink-0 transition-colors"
+          className="w-1 bg-border hover:bg-gray-500 cursor-col-resize shrink-0 transition-colors"
           aria-hidden="true"
         />
 

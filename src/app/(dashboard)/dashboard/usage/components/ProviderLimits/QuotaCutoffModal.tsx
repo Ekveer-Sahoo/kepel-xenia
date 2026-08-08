@@ -216,7 +216,7 @@ export default function QuotaCutoffModal({
         })}
       </div>
       {error && (
-        <div className="mt-3 text-sm text-red-500 flex items-center gap-1.5">
+        <div className="mt-3 text-sm text-gray-500 flex items-center gap-1.5">
           <span className="material-symbols-outlined text-[16px]">error</span>
           {error}
         </div>

@@ -117,9 +117,11 @@ export function PlaygroundCard({
 
       {/* Error display */}
       {error && (
-        <div className="mt-3 flex items-start gap-2 rounded-lg bg-red-500/10 border border-red-500/20 px-3 py-2">
-          <span className="material-symbols-outlined text-[16px] text-red-400 shrink-0">error</span>
-          <p className="text-xs text-red-400">{error}</p>
+        <div className="mt-3 flex items-start gap-2 rounded-lg bg-gray-500/10 border border-gray-500/20 px-3 py-2">
+          <span className="material-symbols-outlined text-[16px] text-gray-400 shrink-0">
+            error
+          </span>
+          <p className="text-xs text-gray-400">{error}</p>
         </div>
       )}
 

@@ -38,11 +38,10 @@ function isBuildProcess(): boolean {
   return typeof process !== "undefined" && process.env.NEXT_PHASE === "phase-production-build";
 }
 
-
 // ── State (globalThis survives HMR re-evaluation) ───────────────────────
 
 declare global {
-  var __omnirouteLocalHC:
+  var __xeniaLocalHC:
     | {
         initialized: boolean;
         sweepTimer: ReturnType<typeof setTimeout> | null;
@@ -53,15 +52,15 @@ declare global {
 }
 
 function getLHCState() {
-  if (!globalThis.__omnirouteLocalHC) {
-    globalThis.__omnirouteLocalHC = {
+  if (!globalThis.__xeniaLocalHC) {
+    globalThis.__xeniaLocalHC = {
       initialized: false,
       sweepTimer: null,
       healthCache: new Map(),
       sweepInProgress: false,
     };
   }
-  return globalThis.__omnirouteLocalHC;
+  return globalThis.__xeniaLocalHC;
 }
 
 const healthCache = getLHCState().healthCache;
@@ -76,7 +75,7 @@ function isEnvFlagEnabled(name: string): boolean {
 
 function isLocalHealthCheckDisabled(): boolean {
   return (
-    isEnvFlagEnabled("OMNIROUTE_DISABLE_LOCAL_HEALTHCHECK") ||
+    isEnvFlagEnabled("XENIA_DISABLE_LOCAL_HEALTHCHECK") ||
     isBuildProcess() ||
     isAutomatedTestProcess()
   );

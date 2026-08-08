@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { NOAUTH_PROVIDERS, OAUTH_PROVIDERS } from "@/shared/constants/providers";
-import type { ProviderTier } from "@omniroute/open-sse/services/tierTypes";
+import type { ProviderTier } from "@xenia/open-sse/services/tierTypes";
 
 type TierCount = { configured: number; active: number };
 type Coverage = { tier1: TierCount; tier2: TierCount; tier3: TierCount };
@@ -43,9 +43,9 @@ const TIER_LABELS: Record<string, string> = {
   tier3: "Free",
 };
 const TIER_COLORS: Record<string, string> = {
-  tier1: "text-amber-500",
-  tier2: "text-green-500",
-  tier3: "text-indigo-400",
+  tier1: "text-gray-500",
+  tier2: "text-gray-500",
+  tier3: "text-gray-400",
 };
 
 export function TierCoverageWidget() {
@@ -110,12 +110,12 @@ export function TierCoverageWidget() {
             <div className={`text-2xl font-bold ${colorClass}`}>{active}</div>
             <div className="text-xs text-text-muted mt-0.5">{label}</div>
             {configured > 0 && active < configured && (
-              <div className="text-xs text-amber-500 mt-0.5">{configured - active} inactive</div>
+              <div className="text-xs text-gray-500 mt-0.5">{configured - active} inactive</div>
             )}
             {configured === 0 && (
               <Link
                 href="/dashboard/providers/new"
-                className="text-xs text-blue-400 underline mt-0.5 block"
+                className="text-xs text-gray-400 underline mt-0.5 block"
               >
                 {t("add")}
               </Link>

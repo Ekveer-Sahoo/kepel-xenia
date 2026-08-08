@@ -3,7 +3,7 @@
  *
  * Verifies:
  *  1. All 44 skill IDs from catalog have skills/{id}/ folder with SKILL.md.
- *  2. Zero omniroute-* folders remain (post-prune: old omniroute-* skill dirs were removed).
+ *  2. Zero xenia-* folders remain (post-prune: old xenia-* skill dirs were removed).
  *  3. 12 specific IDs have <!-- skill:custom-start --> ... <!-- skill:custom-end --> blocks:
  *     omni-mcp, omni-compression, cli-providers, cli-eval, omni-agents-a2a,
  *     omni-combos-routing, omni-auth, omni-resilience, omni-inference, cli-serve.
@@ -15,7 +15,8 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 
-const { API_SKILL_IDS, CLI_SKILL_IDS, CONFIG_SKILL_IDS } = await import("../../src/lib/agentSkills/catalog.ts");
+const { API_SKILL_IDS, CLI_SKILL_IDS, CONFIG_SKILL_IDS } =
+  await import("../../src/lib/agentSkills/catalog.ts");
 
 const SKILLS_DIR = path.resolve(process.cwd(), "skills");
 const ALL_IDS = [...API_SKILL_IDS, ...CLI_SKILL_IDS, ...CONFIG_SKILL_IDS] as string[];
@@ -61,21 +62,21 @@ test("all 44 catalog IDs have a skills/{id}/SKILL.md file", () => {
   assert.deepEqual(missing, [], `Missing SKILL.md files: ${missing.join(", ")}`);
 });
 
-// ── §2: No omniroute-* directories remain ────────────────────────────────────
+// ── §2: No xenia-* directories remain ────────────────────────────────────
 
-test("skills/ has zero omniroute-* directories (all pruned)", () => {
+test("skills/ has zero xenia-* directories (all pruned)", () => {
   if (!fs.existsSync(SKILLS_DIR)) {
     // If skills dir doesn't exist at all, nothing to prune
     return;
   }
   const entries = fs.readdirSync(SKILLS_DIR, { withFileTypes: true });
-  const omniRouteDirs = entries
-    .filter((e) => e.isDirectory() && e.name.startsWith("omniroute-"))
+  const xeniaDirs = entries
+    .filter((e) => e.isDirectory() && e.name.startsWith("xenia-"))
     .map((e) => e.name);
   assert.deepEqual(
-    omniRouteDirs,
+    xeniaDirs,
     [],
-    `Found omniroute-* directories that should have been pruned: ${omniRouteDirs.join(", ")}`,
+    `Found xenia-* directories that should have been pruned: ${xeniaDirs.join(", ")}`
   );
 });
 
@@ -85,11 +86,7 @@ test("skills/ directory only contains expected catalog IDs plus README", () => {
   const dirs = entries.filter((e) => e.isDirectory()).map((e) => e.name);
   const expectedSet = new Set(ALL_IDS);
   const unexpected = dirs.filter((d) => !expectedSet.has(d));
-  assert.deepEqual(
-    unexpected,
-    [],
-    `Unexpected directories in skills/: ${unexpected.join(", ")}`,
-  );
+  assert.deepEqual(unexpected, [], `Unexpected directories in skills/: ${unexpected.join(", ")}`);
 });
 
 // ── §3: 10 specific IDs have custom blocks ───────────────────────────────────
@@ -97,18 +94,15 @@ test("skills/ directory only contains expected catalog IDs plus README", () => {
 for (const id of CUSTOM_BLOCK_IDS) {
   test(`skills/${id}/SKILL.md has <!-- skill:custom-start --> block`, () => {
     const skillPath = path.join(SKILLS_DIR, id, "SKILL.md");
-    assert.ok(
-      fs.existsSync(skillPath),
-      `skills/${id}/SKILL.md does not exist`,
-    );
+    assert.ok(fs.existsSync(skillPath), `skills/${id}/SKILL.md does not exist`);
     const content = fs.readFileSync(skillPath, "utf-8");
     assert.ok(
       content.includes("<!-- skill:custom-start -->"),
-      `skills/${id}/SKILL.md missing <!-- skill:custom-start --> block`,
+      `skills/${id}/SKILL.md missing <!-- skill:custom-start --> block`
     );
     assert.ok(
       content.includes("<!-- skill:custom-end -->"),
-      `skills/${id}/SKILL.md missing <!-- skill:custom-end --> block`,
+      `skills/${id}/SKILL.md missing <!-- skill:custom-end --> block`
     );
   });
 }
@@ -130,7 +124,7 @@ test("exactly 13 skills have custom blocks", () => {
   assert.deepEqual(
     withCustomBlocks.sort(),
     expectedIds,
-    `Expected exactly these 13 custom-block IDs: ${expectedIds.join(", ")}\nActual: ${withCustomBlocks.join(", ")}`,
+    `Expected exactly these 13 custom-block IDs: ${expectedIds.join(", ")}\nActual: ${withCustomBlocks.join(", ")}`
   );
 });
 

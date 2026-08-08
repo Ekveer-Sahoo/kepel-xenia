@@ -44,10 +44,10 @@ function scoreLabel(score: number): string {
 }
 
 function scoreColor(score: number): string {
-  if (score >= 0.85) return "text-green-400";
-  if (score >= 0.7) return "text-emerald-400";
-  if (score >= 0.55) return "text-yellow-400";
-  return "text-orange-400";
+  if (score >= 0.85) return "text-gray-400";
+  if (score >= 0.7) return "text-gray-400";
+  if (score >= 0.55) return "text-gray-400";
+  return "text-gray-400";
 }
 
 const CATEGORY_OPTIONS = [
@@ -87,9 +87,7 @@ export default function FreeProviderRankingsPage() {
         if (opts?.configuredOnly) params.set("configuredOnly", "1");
         if (opts?.availableOnly) params.set("availableOnly", "1");
         const qs = params.toString();
-        const url = qs
-          ? `/api/free-provider-rankings?${qs}`
-          : "/api/free-provider-rankings";
+        const url = qs ? `/api/free-provider-rankings?${qs}` : "/api/free-provider-rankings";
         const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
@@ -132,8 +130,8 @@ export default function FreeProviderRankingsPage() {
             onClick={() => setFilter(opt.value)}
             className={`px-4 py-2 text-sm font-medium rounded-lg border transition-colors ${
               filter === opt.value
-                ? "bg-violet-500 border-violet-500 text-white"
-                : "border-border text-text-muted hover:text-text-main hover:border-violet-500/50"
+                ? "bg-gray-500 border-gray-500 text-white"
+                : "border-border text-text-muted hover:text-text-main hover:border-gray-500/50"
             }`}
           >
             {t(opt.labelKey)}
@@ -148,8 +146,8 @@ export default function FreeProviderRankingsPage() {
           aria-pressed={configuredOnly}
           className={`px-4 py-2 text-sm font-medium rounded-lg border transition-colors ${
             configuredOnly
-              ? "bg-emerald-500 border-emerald-500 text-white"
-              : "border-border text-text-muted hover:text-text-main hover:border-emerald-500/50"
+              ? "bg-gray-500 border-gray-500 text-white"
+              : "border-border text-text-muted hover:text-text-main hover:border-gray-500/50"
           }`}
         >
           {t("filterConfiguredOnly")}
@@ -160,8 +158,8 @@ export default function FreeProviderRankingsPage() {
           title={t("filterAvailableOnlyHelp")}
           className={`px-4 py-2 text-sm font-medium rounded-lg border transition-colors ${
             availableOnly
-              ? "bg-emerald-500 border-emerald-500 text-white"
-              : "border-border text-text-muted hover:text-text-main hover:border-emerald-500/50"
+              ? "bg-gray-500 border-gray-500 text-white"
+              : "border-border text-text-muted hover:text-text-main hover:border-gray-500/50"
           }`}
         >
           {t("filterAvailableOnly")}
@@ -177,8 +175,8 @@ export default function FreeProviderRankingsPage() {
             aria-pressed={typeFilter === opt.value}
             className={`px-4 py-2 text-sm font-medium rounded-lg border transition-colors ${
               typeFilter === opt.value
-                ? "bg-violet-500 border-violet-500 text-white"
-                : "border-border text-text-muted hover:text-text-main hover:border-violet-500/50"
+                ? "bg-gray-500 border-gray-500 text-white"
+                : "border-border text-text-muted hover:text-text-main hover:border-gray-500/50"
             }`}
           >
             {t(opt.labelKey)}
@@ -190,8 +188,8 @@ export default function FreeProviderRankingsPage() {
           title={t("sortTypeFirstHelp")}
           className={`px-4 py-2 text-sm font-medium rounded-lg border transition-colors ${
             groupByType
-              ? "bg-emerald-500 border-emerald-500 text-white"
-              : "border-border text-text-muted hover:text-text-main hover:border-emerald-500/50"
+              ? "bg-gray-500 border-gray-500 text-white"
+              : "border-border text-text-muted hover:text-text-main hover:border-gray-500/50"
           }`}
         >
           {t("sortTypeFirst")}
@@ -199,7 +197,7 @@ export default function FreeProviderRankingsPage() {
       </div>
       <p className="text-xs text-text-muted">{t("typeLegend")}</p>
 
-      {error && <div className="p-3 rounded-lg bg-red-500/10 text-red-400 text-sm">{error}</div>}
+      {error && <div className="p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm">{error}</div>}
 
       {loading ? (
         <div className="flex items-center justify-center min-h-[200px]">
@@ -215,10 +213,10 @@ export default function FreeProviderRankingsPage() {
                   <div
                     className={`absolute top-0 left-0 right-0 h-1 ${
                       idx === 0
-                        ? "bg-gradient-to-r from-amber-400 to-yellow-600"
+                        ? "bg-gradient-to-r from-gray-400 to-gray-600"
                         : idx === 1
                           ? "bg-gradient-to-r from-gray-300 to-gray-500"
-                          : "bg-gradient-to-r from-amber-600 to-orange-800"
+                          : "bg-gradient-to-r from-gray-600 to-gray-800"
                     }`}
                   />
                   <div className="flex items-center gap-4">
@@ -308,10 +306,10 @@ export default function FreeProviderRankingsPage() {
                           <span
                             className={`text-xs px-2 py-1 rounded ${
                               provider.category === "noauth"
-                                ? "bg-green-500/10 text-green-500"
+                                ? "bg-gray-500/10 text-gray-500"
                                 : provider.category === "oauth"
-                                  ? "bg-blue-500/10 text-blue-500"
-                                  : "bg-purple-500/10 text-purple-500"
+                                  ? "bg-gray-500/10 text-gray-500"
+                                  : "bg-gray-500/10 text-gray-500"
                             }`}
                           >
                             {provider.category.toUpperCase()}

@@ -27,19 +27,19 @@ interface LogEntry {
 const LEVEL_COLORS: Record<string, string> = {
   debug: "text-gray-400",
   trace: "text-gray-500",
-  info: "text-cyan-400",
-  warn: "text-yellow-400",
-  error: "text-red-400",
-  fatal: "text-fuchsia-400",
+  info: "text-gray-400",
+  warn: "text-gray-400",
+  error: "text-gray-400",
+  fatal: "text-gray-400",
 };
 
 const LEVEL_BG: Record<string, string> = {
   debug: "bg-gray-500/10 border-gray-500/20",
   trace: "bg-gray-500/10 border-gray-500/20",
-  info: "bg-cyan-500/10 border-cyan-500/20",
-  warn: "bg-yellow-500/10 border-yellow-500/20",
-  error: "bg-red-500/10 border-red-500/20",
-  fatal: "bg-fuchsia-500/10 border-fuchsia-500/20",
+  info: "bg-gray-500/10 border-gray-500/20",
+  warn: "bg-gray-500/10 border-gray-500/20",
+  error: "bg-gray-500/10 border-gray-500/20",
+  fatal: "bg-gray-500/10 border-gray-500/20",
 };
 
 const POLL_INTERVAL = 5000; // 5 seconds
@@ -183,7 +183,7 @@ export default function ConsoleLogViewer() {
           title={autoScroll ? tv("disableAutoScroll") : tv("enableAutoScroll")}
           className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
             autoScroll
-              ? "bg-cyan-500/15 text-cyan-400 border-cyan-500/30"
+              ? "bg-gray-500/15 text-gray-400 border-gray-500/30"
               : "bg-[var(--color-bg)] text-[var(--color-text-muted)] border-[var(--color-border)]"
           }`}
         >
@@ -204,7 +204,7 @@ export default function ConsoleLogViewer() {
 
         {/* Status */}
         <div className="flex items-center gap-2 ml-auto text-xs text-[var(--color-text-muted)]">
-          <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          <span className="inline-block w-2 h-2 rounded-full bg-gray-500 animate-pulse" />
           <span>{tv("entryCount", { count: filteredLogs.length })}</span>
           <span className="text-[var(--color-text-muted)]/50">•</span>
           <span>{tv("lastHour")}</span>
@@ -220,7 +220,7 @@ export default function ConsoleLogViewer() {
       {/* Error */}
       {error && (
         <div
-          className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
+          className="p-4 rounded-lg bg-gray-500/10 border border-gray-500/30 text-gray-400 text-sm"
           role="alert"
         >
           <span className="material-symbols-outlined text-[16px] align-middle mr-2">error</span>
@@ -232,26 +232,26 @@ export default function ConsoleLogViewer() {
       {/* Console output */}
       <div
         ref={scrollRef}
-        className="rounded-xl border border-[var(--color-border)] bg-[#0d1117] overflow-auto font-mono text-xs leading-relaxed"
+        className="rounded-xl border border-[var(--color-border)] bg-[#101010] overflow-auto font-mono text-xs leading-relaxed"
         style={{ maxHeight: "calc(100vh - 340px)", minHeight: "400px" }}
         role="log"
         aria-label={tv("consoleAria")}
         aria-live="polite"
       >
         {/* Header bar */}
-        <div className="sticky top-0 z-10 px-4 py-2 bg-[#161b22] border-b border-[#30363d] flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
-          <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-          <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
-          <span className="ml-3 text-[#8b949e] text-[11px]">
-            OmniRoute — {tv("applicationConsole")}
+        <div className="sticky top-0 z-10 px-4 py-2 bg-[#1a1a1a] border-b border-[#353535] flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-[#8e8e8e]" />
+          <div className="w-3 h-3 rounded-full bg-[#c0c0c0]" />
+          <div className="w-3 h-3 rounded-full bg-[#898989]" />
+          <span className="ml-3 text-[#929292] text-[11px]">
+            Xenia — {tv("applicationConsole")}
           </span>
         </div>
 
         {/* Log entries */}
         <div className="p-3 space-y-px">
           {filteredLogs.length === 0 && !loading ? (
-            <div className="text-[#8b949e] text-center py-12">
+            <div className="text-[#929292] text-center py-12">
               <span className="material-symbols-outlined text-[40px] block mb-2 opacity-30">
                 terminal
               </span>
@@ -271,11 +271,11 @@ export default function ConsoleLogViewer() {
                 <div
                   key={idx}
                   className={`group flex items-start gap-2 px-2 py-1 rounded hover:bg-white/5 transition-colors ${
-                    level === "error" || level === "fatal" ? "bg-red-500/5" : ""
+                    level === "error" || level === "fatal" ? "bg-gray-500/5" : ""
                   }`}
                 >
                   {/* Timestamp */}
-                  <span className="text-[#484f58] whitespace-nowrap shrink-0 select-none">
+                  <span className="text-[#4e4e4e] whitespace-nowrap shrink-0 select-none">
                     {formatTime(entry.timestamp)}
                   </span>
 
@@ -287,14 +287,14 @@ export default function ConsoleLogViewer() {
                   </span>
 
                   {/* Component */}
-                  {comp && <span className="text-purple-400/80 shrink-0">[{comp}]</span>}
+                  {comp && <span className="text-gray-400/80 shrink-0">[{comp}]</span>}
 
                   {/* Message */}
-                  <span className="text-[#c9d1d9] flex-1 break-all">
+                  <span className="text-[#d0d0d0] flex-1 break-all">
                     {msg}
                     {/* Extra meta */}
                     {correlationId && (
-                      <span className="text-[#484f58] ml-2">cid:{correlationId.slice(0, 8)}</span>
+                      <span className="text-[#4e4e4e] ml-2">cid:{correlationId.slice(0, 8)}</span>
                     )}
                   </span>
 
@@ -302,7 +302,7 @@ export default function ConsoleLogViewer() {
                   <button
                     onClick={() => handleCopy(entry, idx)}
                     title={tv("copyLogEntry")}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0 text-[#8b949e] hover:text-white"
+                    className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0 text-[#929292] hover:text-white"
                   >
                     <span className="material-symbols-outlined text-[14px]">
                       {copiedIdx === idx ? "check" : "content_copy"}
@@ -314,7 +314,7 @@ export default function ConsoleLogViewer() {
           )}
 
           {loading && filteredLogs.length === 0 && (
-            <div className="text-[#8b949e] text-center py-12">
+            <div className="text-[#929292] text-center py-12">
               <span className="material-symbols-outlined text-[24px] animate-spin block mb-2">
                 progress_activity
               </span>

@@ -93,7 +93,7 @@ export function TopBarControls({
             onClick={() => onProfileChange(id)}
             className={cn(
               "px-2 py-0.5 text-xs rounded focus-ring",
-              profile === id ? "bg-blue-600 text-white" : "text-text-muted hover:text-text-main"
+              profile === id ? "bg-gray-600 text-white" : "text-text-muted hover:text-text-main"
             )}
           >
             {profileLabels[id]}
@@ -107,14 +107,14 @@ export function TopBarControls({
         placeholder={t("filterHost")}
         defaultValue={filters.host ?? ""}
         onChange={(e) => onHostChange(e.target.value || undefined)}
-        className="rounded border border-border bg-bg-subtle px-2 py-1 text-xs text-text-main w-32 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        className="rounded border border-border bg-bg-subtle px-2 py-1 text-xs text-text-main w-32 focus:outline-none focus:ring-1 focus:ring-gray-500"
       />
 
       {/* Status filter */}
       <select
         value={filters.status ?? ""}
         onChange={(e) => onStatusChange((e.target.value as ListFilters["status"]) || undefined)}
-        className="rounded border border-border bg-bg-subtle px-2 py-1 text-xs text-text-main focus:outline-none focus:ring-1 focus:ring-blue-500"
+        className="rounded border border-border bg-bg-subtle px-2 py-1 text-xs text-text-main focus:outline-none focus:ring-1 focus:ring-gray-500"
       >
         <option value="">{t("anyStatus")}</option>
         <option value="2xx">2xx</option>
@@ -133,7 +133,7 @@ export function TopBarControls({
         className={cn(
           "inline-flex items-center gap-1 rounded border px-2 py-1 text-xs focus-ring",
           liveOnly
-            ? "border-green-500/50 bg-green-500/15 text-green-500"
+            ? "border-gray-500/50 bg-gray-500/15 text-gray-500"
             : "border-border text-text-muted hover:text-text-main"
         )}
       >
@@ -159,7 +159,7 @@ export function TopBarControls({
       <button
         type="button"
         onClick={onClear}
-        className="inline-flex items-center gap-1 rounded border border-border px-2 py-1 text-xs text-text-muted hover:text-red-400 focus-ring"
+        className="inline-flex items-center gap-1 rounded border border-border px-2 py-1 text-xs text-text-muted hover:text-gray-400 focus-ring"
         title={t("clearBtn")}
       >
         <span className="material-symbols-outlined text-[14px]" aria-hidden="true">
@@ -201,7 +201,7 @@ export function TopBarControls({
           <span
             className={cn(
               "inline-block h-2 w-2 rounded-full",
-              connected ? "bg-green-400 animate-pulse" : "bg-gray-500"
+              connected ? "bg-gray-400 animate-pulse" : "bg-gray-500"
             )}
           />
           {connected ? t("liveBadge") : t("offlineBadge")}
@@ -209,7 +209,7 @@ export function TopBarControls({
             {total}/{maxSize}
           </span>
           {paused && pendingCount > 0 && (
-            <span className="inline-flex items-center rounded bg-yellow-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-yellow-400 border border-yellow-500/40">
+            <span className="inline-flex items-center rounded bg-gray-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-gray-400 border border-gray-500/40">
               {t("pausedNewBadge", { count: pendingCount })}
             </span>
           )}

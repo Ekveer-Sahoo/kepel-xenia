@@ -81,7 +81,7 @@ function tokensMatch(provided: string, expected: string): boolean {
 
 function authenticate(req: NextRequest): boolean {
   // If no API key is configured, allow all requests
-  const configuredKey = process.env.OMNIROUTE_API_KEY;
+  const configuredKey = process.env.XENIA_API_KEY;
   if (!configuredKey) return true;
 
   const authHeader = req.headers.get("authorization") || "";

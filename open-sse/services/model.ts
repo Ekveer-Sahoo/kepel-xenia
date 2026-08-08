@@ -403,7 +403,7 @@ async function getPreferClaudeCodeForUnprefixedClaudeModels() {
     // Standalone open-sse usage may not have the app DB layer available.
   }
 
-  return isTruthyEnv(process.env.OMNIROUTE_PREFER_CLAUDE_CODE_FOR_UNPREFIXED_CLAUDE_MODELS);
+  return isTruthyEnv(process.env.XENIA_PREFER_CLAUDE_CODE_FOR_UNPREFIXED_CLAUDE_MODELS);
 }
 
 function shouldPreferClaudeCodeForUnprefixedClaudeModel(
@@ -662,7 +662,7 @@ async function resolveModelByProviderInference(modelId: string, extendedContext:
   }
   const nonOpenAIProviders = providers.filter((p) => p !== "openai");
 
-  // Bare model IDs from Codex CLI do not preserve OmniRoute's `cx/` prefix.
+  // Bare model IDs from Codex CLI do not preserve Xenia's `cx/` prefix.
   // Route overlapping models through Codex only for Codex-only installations;
   // when OpenAI is also active, preserve the historical OpenAI default below.
   // Models advertised only by an active synced Codex catalog still reach the

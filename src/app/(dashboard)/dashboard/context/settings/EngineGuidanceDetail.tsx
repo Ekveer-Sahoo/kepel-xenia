@@ -11,7 +11,10 @@
 // button, badge, "cache impact" label) is translated.
 
 import { useTranslations } from "next-intl";
-import type { CacheImpact, EngineGuidance } from "../../../../../../open-sse/services/compression/engineCatalog.ts";
+import type {
+  CacheImpact,
+  EngineGuidance,
+} from "../../../../../../open-sse/services/compression/engineCatalog.ts";
 
 const CACHE_IMPACT_LABEL: Record<CacheImpact, string> = {
   none: "None",
@@ -40,7 +43,7 @@ export default function EngineGuidanceDetail({
         {!guidance.lossy && (
           <span
             data-testid={`engine-safe-default-${id}`}
-            className="rounded border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-500"
+            className="rounded border border-gray-500/30 bg-gray-500/10 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-gray-500"
           >
             {t("compressionGuidanceSafeDefault")}
           </span>

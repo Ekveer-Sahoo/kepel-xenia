@@ -10,7 +10,7 @@ import path from "node:path";
 // SUCCEEDS and only new Database() throws "Could not locate the bindings file" when
 // there is no .node binding for the runtime ABI (e.g. CachyOS + Node v26 via AUR).
 // openSqliteDatabase() only fell back when the *import* failed; the construction-time
-// failure was translated into "Run: omniroute runtime repair" guidance and aborted.
+// failure was translated into "Run: xenia runtime repair" guidance and aborted.
 
 const FIXTURE_DIR = new URL("fixtures/", import.meta.url).pathname;
 const hookPath = path.join(FIXTURE_DIR, "8826-mock-better-sqlite3.mjs");
@@ -25,8 +25,7 @@ Module._load = function patchedLoad(request, parent, isMain) {
   if (request === "better-sqlite3") {
     function FakeBetterSqlite() {
       throw new Error(
-        "Could not locate the bindings file. Tried:\n" +
-        " -> /fake/path/better_sqlite3.node"
+        "Could not locate the bindings file. Tried:\n" + " -> /fake/path/better_sqlite3.node"
       );
     }
     return FakeBetterSqlite;
@@ -35,12 +34,14 @@ Module._load = function patchedLoad(request, parent, isMain) {
   return originalLoad.call(this, request, parent, isMain);
 };
 
-const { openOmniRouteDb } = await import("../../bin/cli/sqlite.mjs");
+const { openXeniaDb } = await import("../../bin/cli/sqlite.mjs");
 
-test("#8826: openOmniRouteDb() falls back to node:sqlite when better-sqlite3 native binding is missing (construction-time failure)", async (t) => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-8826-"));
+test("#8826: openXeniaDb() falls back to node:sqlite when better-sqlite3 native binding is missing (construction-time failure)", async (t) => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-8826-"));
   t.after(() => {
-    try { fs.rmSync(tmpDir, { recursive: true, force: true }); } catch {}
+    try {
+      fs.rmSync(tmpDir, { recursive: true, force: true });
+    } catch {}
     Module._load = originalLoad;
   });
 
@@ -54,9 +55,9 @@ test("#8826: openOmniRouteDb() falls back to node:sqlite when better-sqlite3 nat
     }
   });
 
-  const result = await openOmniRouteDb();
+  const result = await openXeniaDb();
 
-  assert.ok(result.db, "openOmniRouteDb() should return a working db adapter");
+  assert.ok(result.db, "openXeniaDb() should return a working db adapter");
   assert.equal(
     result.db.driver,
     "node:sqlite",

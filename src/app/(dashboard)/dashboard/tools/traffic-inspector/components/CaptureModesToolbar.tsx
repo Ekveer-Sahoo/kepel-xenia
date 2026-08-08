@@ -48,7 +48,11 @@ export function CaptureModesToolbar({ customHostCount }: CaptureModesToolbarProp
     fetchTproxyStatus()
       .then((s) => {
         if (alive) {
-          setTproxy({ running: s.running, available: s.available, interceptCount: s.interceptCount });
+          setTproxy({
+            running: s.running,
+            available: s.available,
+            interceptCount: s.interceptCount,
+          });
         }
       })
       .catch(() => {
@@ -122,19 +126,19 @@ export function CaptureModesToolbar({ customHostCount }: CaptureModesToolbarProp
                 "focus-ring disabled:cursor-default",
                 active
                   ? warn
-                    ? "border-amber-500/50 bg-amber-900/30 text-amber-300"
-                    : "border-green-500/50 bg-green-900/30 text-green-300"
+                    ? "border-gray-500/50 bg-gray-900/30 text-gray-300"
+                    : "border-gray-500/50 bg-gray-900/30 text-gray-300"
                   : "border-border text-text-muted hover:text-text-main hover:bg-surface"
               )}
             >
               <span
                 className={cn(
                   "inline-block h-1.5 w-1.5 rounded-full",
-                  active ? (warn ? "bg-amber-400" : "bg-green-400") : "bg-gray-600"
+                  active ? (warn ? "bg-gray-400" : "bg-gray-400") : "bg-gray-600"
                 )}
               />
               {label}
-              {warn && <span className="text-amber-400">⚠</span>}
+              {warn && <span className="text-gray-400">⚠</span>}
             </button>
           );
         })}
@@ -148,21 +152,21 @@ export function CaptureModesToolbar({ customHostCount }: CaptureModesToolbarProp
             "inline-flex items-center gap-1.5 rounded border px-2.5 py-1 text-xs font-medium transition-colors",
             "focus-ring disabled:cursor-not-allowed disabled:opacity-50",
             tproxy.running
-              ? "border-amber-500/50 bg-amber-900/30 text-amber-300"
+              ? "border-gray-500/50 bg-gray-900/30 text-gray-300"
               : "border-border text-text-muted hover:text-text-main hover:bg-surface"
           )}
         >
           <span
             className={cn(
               "inline-block h-1.5 w-1.5 rounded-full",
-              tproxy.running ? "bg-amber-400" : "bg-gray-600"
+              tproxy.running ? "bg-gray-400" : "bg-gray-600"
             )}
           />
           {t("tproxyMode")}
           {tproxy.running && typeof tproxy.interceptCount === "number" && (
-            <span className="text-amber-400">· {tproxy.interceptCount}</span>
+            <span className="text-gray-400">· {tproxy.interceptCount}</span>
           )}
-          <span className="text-amber-400">⚠</span>
+          <span className="text-gray-400">⚠</span>
         </button>
 
         <div className="ml-auto flex items-center gap-2">

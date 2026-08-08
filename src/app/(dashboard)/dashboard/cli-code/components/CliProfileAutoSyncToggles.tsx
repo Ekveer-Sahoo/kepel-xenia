@@ -6,8 +6,8 @@ import { Toggle } from "@/shared/components";
 
 type FlagEntry = { key: string; effectiveValue: string };
 
-const CODEX_KEY = "OMNIROUTE_AUTO_SYNC_CODEX_PROFILES";
-const CLAUDE_KEY = "OMNIROUTE_AUTO_SYNC_CLAUDE_PROFILES";
+const CODEX_KEY = "XENIA_AUTO_SYNC_CODEX_PROFILES";
+const CLAUDE_KEY = "XENIA_AUTO_SYNC_CLAUDE_PROFILES";
 
 function isOn(value: string | undefined): boolean {
   return value === "true" || value === "1" || value === "yes" || value === "on";
@@ -15,7 +15,7 @@ function isOn(value: string | undefined): boolean {
 
 /**
  * Toggle card for the opt-in "auto-sync CLI profiles after model discovery" feature.
- * Reads/writes the OMNIROUTE_AUTO_SYNC_{CODEX,CLAUDE}_PROFILES feature flags via
+ * Reads/writes the XENIA_AUTO_SYNC_{CODEX,CLAUDE}_PROFILES feature flags via
  * /api/settings/feature-flags. Both default off; enabling one makes a provider model
  * sync regenerate that tool's profile files from the live catalog.
  */
@@ -92,7 +92,7 @@ export default function CliProfileAutoSyncToggles() {
           description={t("claudeProfilesDescription")}
         />
       </div>
-      {error ? <p className="mt-2 text-xs text-red-500">{error}</p> : null}
+      {error ? <p className="mt-2 text-xs text-gray-500">{error}</p> : null}
     </div>
   );
 }

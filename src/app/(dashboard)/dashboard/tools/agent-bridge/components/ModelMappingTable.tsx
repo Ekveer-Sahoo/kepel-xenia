@@ -16,7 +16,7 @@ interface ModelMappingTableProps {
 }
 
 /**
- * Editable table: source model → target OmniRoute model.
+ * Editable table: source model → target Xenia model.
  */
 export function ModelMappingTable({ agentId, mappings, onSave }: ModelMappingTableProps) {
   const t = useTranslations("agentBridge");
@@ -56,7 +56,7 @@ export function ModelMappingTable({ agentId, mappings, onSave }: ModelMappingTab
         <div className="rounded-lg border border-border/40 bg-surface/30 px-4 py-6 text-center">
           <p className="text-xs text-text-muted mb-3">
             {t("noMappingsDesc") ||
-              "No model mappings configured yet. Add mappings to route agent requests through OmniRoute."}
+              "No model mappings configured yet. Add mappings to route agent requests through Xenia."}
           </p>
           <button
             type="button"
@@ -77,7 +77,7 @@ export function ModelMappingTable({ agentId, mappings, onSave }: ModelMappingTab
                     {t("sourceModel") || "Source model (agent native)"}
                   </th>
                   <th className="px-3 py-2 text-left text-xs font-medium text-text-muted">
-                    {t("targetModel") || "Target model (OmniRoute)"}
+                    {t("targetModel") || "Target model (Xenia)"}
                   </th>
                   <th className="px-3 py-2 w-12"></th>
                 </tr>
@@ -114,7 +114,7 @@ export function ModelMappingTable({ agentId, mappings, onSave }: ModelMappingTab
                       <button
                         type="button"
                         onClick={() => removeMapping(i)}
-                        className="text-text-muted hover:text-red-500 transition-colors"
+                        className="text-text-muted hover:text-gray-500 transition-colors"
                         aria-label="Remove mapping"
                       >
                         <span className="material-symbols-outlined text-[16px]">delete</span>

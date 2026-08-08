@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-vscode-responses-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-vscode-responses-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = process.env.API_KEY_SECRET || "vscode-responses-models-secret";
 
@@ -86,9 +86,7 @@ test("vscode model metadata routes keep Responses text-generation models", async
   ]);
   const rawBody = (await rawResponse.json()) as { data?: MetadataModel[] };
   const groupedBody = (await groupedResponse.json()) as { data?: MetadataModel[] };
-  const rawModel = (rawBody.data || []).find(
-    (entry) => entry.id === "cx/future-codex-responses"
-  );
+  const rawModel = (rawBody.data || []).find((entry) => entry.id === "cx/future-codex-responses");
   const groupedModel = (groupedBody.data || []).find(
     (entry) => entry.root === "future-codex-responses"
   );

@@ -22,10 +22,10 @@ function req(method: string, url: string, body?: unknown): Request {
 }
 
 before(async () => {
-  tmpDataDir = mkdtempSync(join(tmpdir(), "omniroute-discovery-routes-"));
+  tmpDataDir = mkdtempSync(join(tmpdir(), "xenia-discovery-routes-"));
   process.env.DATA_DIR = tmpDataDir;
   delete process.env.REQUIRE_API_KEY;
-  process.env.OMNIROUTE_DISABLE_AUTH = "1";
+  process.env.XENIA_DISABLE_AUTH = "1";
   core = await import("@/lib/db/core");
   core.resetDbInstance();
   core.getDbInstance();
@@ -135,13 +135,19 @@ describe("discovery API routes", () => {
       riskLevel: "none",
       status: "pending",
     });
-    const first = await resultByIdRoute.DELETE(req("DELETE", `/api/discovery/results/${created.id}`), {
-      params: Promise.resolve({ id: String(created.id) }),
-    });
+    const first = await resultByIdRoute.DELETE(
+      req("DELETE", `/api/discovery/results/${created.id}`),
+      {
+        params: Promise.resolve({ id: String(created.id) }),
+      }
+    );
     assert.equal(first.status, 200);
-    const second = await resultByIdRoute.DELETE(req("DELETE", `/api/discovery/results/${created.id}`), {
-      params: Promise.resolve({ id: String(created.id) }),
-    });
+    const second = await resultByIdRoute.DELETE(
+      req("DELETE", `/api/discovery/results/${created.id}`),
+      {
+        params: Promise.resolve({ id: String(created.id) }),
+      }
+    );
     assert.equal(second.status, 404);
   });
 

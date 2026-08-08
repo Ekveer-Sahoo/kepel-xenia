@@ -16,9 +16,7 @@ import { useEffect, useState } from "react";
  */
 export default function CallbackPage() {
   const [status, setStatus] = useState<"processing" | "success" | "done" | "manual">("processing");
-  const [currentUrl] = useState(() =>
-    typeof window === "undefined" ? "" : window.location.href
-  );
+  const [currentUrl] = useState(() => (typeof window === "undefined" ? "" : window.location.href));
   const t = useTranslations("auth");
 
   useEffect(() => {
@@ -69,10 +67,7 @@ export default function CallbackPage() {
     if (window.opener) {
       for (const origin of trustedTargetOrigins) {
         try {
-          window.opener.postMessage(
-            { type: "oauth_callback", data: callbackData },
-            origin
-          );
+          window.opener.postMessage({ type: "oauth_callback", data: callbackData }, origin);
           sent = true;
         } catch (e) {
           console.log("postMessage failed:", e);
@@ -140,10 +135,8 @@ export default function CallbackPage() {
 
         {(status === "success" || status === "done") && (
           <>
-            <div className="size-16 mx-auto mb-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-              <span className="material-symbols-outlined text-3xl text-green-600">
-                check_circle
-              </span>
+            <div className="size-16 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-900/30 flex items-center justify-center">
+              <span className="material-symbols-outlined text-3xl text-gray-600">check_circle</span>
             </div>
             <h1 className="text-xl font-semibold mb-2">{t("authSuccess")}</h1>
             <p className="text-text-muted">
@@ -154,8 +147,8 @@ export default function CallbackPage() {
 
         {status === "manual" && (
           <>
-            <div className="size-16 mx-auto mb-4 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
-              <span className="material-symbols-outlined text-3xl text-yellow-600">info</span>
+            <div className="size-16 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-900/30 flex items-center justify-center">
+              <span className="material-symbols-outlined text-3xl text-gray-600">info</span>
             </div>
             <h1 className="text-xl font-semibold mb-2">{t("copyUrl")}</h1>
             <p className="text-text-muted mb-4">{t("copyUrlManual")}</p>

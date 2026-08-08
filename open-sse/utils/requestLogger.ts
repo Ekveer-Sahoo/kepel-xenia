@@ -102,8 +102,8 @@ function createEmptyStreamChunks() {
   };
 }
 
-const TRUNCATED_ARRAY_MARKER = "_omniroute_truncated_array";
-const TRUNCATED_KEYS_MARKER = "_omniroute_truncated_keys";
+const TRUNCATED_ARRAY_MARKER = "_xenia_truncated_array";
+const TRUNCATED_KEYS_MARKER = "_xenia_truncated_keys";
 
 function isTruncatedArrayMarker(value: unknown): boolean {
   return (

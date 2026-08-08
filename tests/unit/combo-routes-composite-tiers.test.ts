@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-combo-composite-tiers-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-combo-composite-tiers-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -270,7 +270,6 @@ test("PUT /api/combos preserves legacy string combo refs during normalization", 
   assert.equal(stored.models[0].kind, "combo-ref");
   assert.equal(stored.models[0].comboName, "child-ref");
 });
-
 
 test("POST /api/combos returns a structured 400 for invariant violations", async () => {
   const response = await createRoute.POST(

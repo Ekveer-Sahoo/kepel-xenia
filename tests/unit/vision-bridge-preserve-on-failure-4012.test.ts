@@ -1,6 +1,6 @@
 /**
  * Regression test for #4012 / #8430 — Nvidia NIM (and any vision-capable model
- * whose capability OmniRoute can't prove) via OmniRoute fails to process image
+ * whose capability Xenia can't prove) via Xenia fails to process image
  * inputs.
  *
  * SEMANTIC CHANGE (#8430): In the combo describe path, when ALL describe calls
@@ -71,7 +71,11 @@ test("#4012/#8430 describe failure replaces image with error text stub (combo de
   // (#8430) In the combo describe path, total describe failure stubs the image
   // instead of preserving it, because the upstream cannot handle raw images.
   const imagePart = content.find((p) => p.type === "image_url");
-  assert.equal(imagePart, undefined, "raw image_url must be replaced when no vision provider is reachable");
+  assert.equal(
+    imagePart,
+    undefined,
+    "raw image_url must be replaced when no vision provider is reachable"
+  );
 
   // The describe stub should contain the unavailable message
   const stub = content.find((p) => p.type === "text" && p.text?.includes("unavailable"));
@@ -87,7 +91,11 @@ test("#4012 successful describe still replaces the image with its text descripti
   const content = (result.modifiedPayload as { messages: { content: Part[] }[] }).messages[0]
     .content;
 
-  assert.equal(content.find((p) => p.type === "image_url"), undefined, "image replaced on success");
+  assert.equal(
+    content.find((p) => p.type === "image_url"),
+    undefined,
+    "image replaced on success"
+  );
   const desc = content.find((p) => p.type === "text" && p.text?.includes("a sea turtle swimming"));
   assert.ok(desc, "the vision description should be injected as text");
 });

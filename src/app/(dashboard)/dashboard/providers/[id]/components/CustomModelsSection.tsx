@@ -491,13 +491,13 @@ export default function CustomModelsSection({
                       </span>
                     </button>
                     {model.apiFormat === "responses" && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-blue-500/15 text-blue-400 font-medium">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium">
                         {t("responses")}
                       </span>
                     )}
                     {model.targetFormat && (
                       <span
-                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-medium"
+                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium"
                         title={t("targetFormatHint")}
                       >
                         {`→ ${targetFormatLabel(model.targetFormat, t)}`}
@@ -505,7 +505,7 @@ export default function CustomModelsSection({
                     )}
                     {typeof model.contextWindowOverride === "number" && (
                       <span
-                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-orange-500/15 text-orange-400 font-medium"
+                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium"
                         title={t("contextWindowOverrideHint")}
                       >
                         {`🪟 ${model.contextWindowOverride.toLocaleString()}`}
@@ -513,24 +513,24 @@ export default function CustomModelsSection({
                     )}
                     {model.supportsVision === true && (
                       <span
-                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-pink-500/15 text-pink-400 font-medium"
+                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium"
                         title={t("visionCapableHint")}
                       >
                         {`👁️ ${t("visionCapableLabel")}`}
                       </span>
                     )}
                     {model.supportedEndpoints?.includes("embeddings") && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-purple-500/15 text-purple-400 font-medium">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium">
                         {`📐 ${t("supportedEndpointEmbeddings")}`}
                       </span>
                     )}
                     {model.supportedEndpoints?.includes("images") && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 font-medium">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium">
                         {`🖼️ ${t("imagesShortLabel")}`}
                       </span>
                     )}
                     {model.supportedEndpoints?.includes("audio") && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-green-500/15 text-green-400 font-medium">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium">
                         {`🔊 ${t("audioShortLabel")}`}
                       </span>
                     )}
@@ -544,7 +544,7 @@ export default function CustomModelsSection({
                     )}
                     {anyNoPreserveCompatBadge(model.id!, customMap, overrideMap) && (
                       <span
-                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 font-medium"
+                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium"
                         title={t("compatDoNotPreserveDeveloper")}
                       >
                         {t("compatBadgeNoPreserve")}
@@ -552,7 +552,7 @@ export default function CustomModelsSection({
                     )}
                     {anyUpstreamHeadersBadge(model.id!, customMap, overrideMap) && (
                       <span
-                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-violet-500/15 text-violet-400 font-medium"
+                        className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/15 text-gray-400 font-medium"
                         title={t("compatUpstreamHeadersLabel")}
                       >
                         {t("compatBadgeUpstreamHeaders")}
@@ -724,7 +724,7 @@ export default function CustomModelsSection({
                   </button>
                   <button
                     onClick={() => handleRemove(model.id!)}
-                    className="rounded p-1 text-red-500 hover:bg-red-50"
+                    className="rounded p-1 text-gray-500 hover:bg-gray-50"
                     title={t("removeCustomModel")}
                   >
                     <span className="material-symbols-outlined text-sm">delete</span>

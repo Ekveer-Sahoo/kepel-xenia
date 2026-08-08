@@ -138,7 +138,7 @@ export default function IntelligentComboPanel({
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/15 px-3 py-1.5 text-xs font-medium text-blue-600 dark:text-blue-300">
+          <div className="inline-flex items-center gap-2 rounded-full bg-gray-500/15 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-300">
             <span className="material-symbols-outlined text-[14px]">tune</span>
             {getI18nOrFallback(t, "configOnlyStatus", "Configuration View")}
           </div>
@@ -258,7 +258,7 @@ export default function IntelligentComboPanel({
 
                       <div className="mt-2 h-2 rounded-full bg-black/8 dark:bg-white/8 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-blue-500 transition-all"
+                          className="h-full rounded-full bg-gray-500 transition-all"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>

@@ -109,7 +109,10 @@ function AccountRoundRobinSection({ t, busy, settings, setSettings, run }: Secti
             run(async () => {
               const next = accountRoundRobin ? "fill-first" : "round-robin";
               const updated = await patchSettings({ fallbackStrategy: next });
-              setSettings((prev) => ({ ...prev, fallbackStrategy: updated.fallbackStrategy || next }));
+              setSettings((prev) => ({
+                ...prev,
+                fallbackStrategy: updated.fallbackStrategy || next,
+              }));
             })
           }
         />
@@ -128,7 +131,9 @@ function AccountRoundRobinSection({ t, busy, settings, setSettings, run }: Secti
             disabled={busy}
             className="w-16 sm:w-20 text-center shrink-0"
             value={settings.stickyRoundRobinLimit ?? 3}
-            onChange={(e) => setSettings((prev) => ({ ...prev, stickyRoundRobinLimit: e.target.value }))}
+            onChange={(e) =>
+              setSettings((prev) => ({ ...prev, stickyRoundRobinLimit: e.target.value }))
+            }
             onBlur={() =>
               run(async () => {
                 const limit = Math.min(
@@ -251,7 +256,7 @@ export default function RoutingStrategyCard() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500 shrink-0">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500 shrink-0">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             route
           </span>
@@ -266,8 +271,20 @@ export default function RoutingStrategyCard() {
         <p className="text-sm text-text-muted">{tc("loading")}</p>
       ) : (
         <div className="flex flex-col gap-4">
-          <AccountRoundRobinSection t={t} busy={busy} settings={settings} setSettings={setSettings} run={run} />
-          <ComboRoundRobinSection t={t} busy={busy} settings={settings} setSettings={setSettings} run={run} />
+          <AccountRoundRobinSection
+            t={t}
+            busy={busy}
+            settings={settings}
+            setSettings={setSettings}
+            run={run}
+          />
+          <ComboRoundRobinSection
+            t={t}
+            busy={busy}
+            settings={settings}
+            setSettings={setSettings}
+            run={run}
+          />
           <RoutingSummaryFooter
             t={t}
             accountRoundRobin={accountRoundRobin}

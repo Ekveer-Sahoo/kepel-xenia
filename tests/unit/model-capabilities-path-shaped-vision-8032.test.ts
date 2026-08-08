@@ -11,7 +11,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-path-shaped-vision-8032-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-path-shaped-vision-8032-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -83,9 +83,7 @@ test("#8032 leaf fallback is vision-only: aihorde/deepseek/deepseek-v4-flash kee
   // Regression guard from PR review (#8495 / #8212): shared getStaticSpec leaf
   // lookup previously promoted this live-discovered AI Horde id to the real
   // DeepSeek V4 Flash supportsTools:true spec. Leaf lookup must stay vision-only.
-  const caps = modelCapabilities.getResolvedModelCapabilities(
-    "aihorde/deepseek/deepseek-v4-flash"
-  );
+  const caps = modelCapabilities.getResolvedModelCapabilities("aihorde/deepseek/deepseek-v4-flash");
   assert.equal(caps.toolCalling, false);
   assert.equal(caps.supportsTools, false);
   assert.equal(

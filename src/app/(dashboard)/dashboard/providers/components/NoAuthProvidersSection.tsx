@@ -136,8 +136,8 @@ export default function NoAuthProvidersSection({
                   <span className="truncate text-sm font-medium text-text-main">
                     {provider.name}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-red-600 dark:text-red-400">
-                    <span className="size-1.5 rounded-full bg-red-500" />
+                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-400">
+                    <span className="size-1.5 rounded-full bg-gray-500" />
                     {t("disabled")}
                   </span>
                 </div>

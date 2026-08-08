@@ -2,13 +2,13 @@
 
 import fs from "fs/promises";
 import { getCliPrimaryConfigPath } from "@/shared/services/cliRuntime";
-import { hasOmniRouteQwenCodeConfig } from "@/shared/services/qwenCodeConfig";
+import { hasXeniaQwenCodeConfig } from "@/shared/services/qwenCodeConfig";
 import { getRuntimePorts } from "@/lib/runtime/ports";
 
 const { apiPort } = getRuntimePorts();
 
 /**
- * Check if a tool has OmniRoute configured by reading its config file directly.
+ * Check if a tool has Xenia configured by reading its config file directly.
  * This replaces the expensive self-referential HTTP calls to /api/cli-tools/*-settings.
  *
  * @param toolId - CLI tool identifier (e.g. "claude", "codex", "cline")
@@ -29,11 +29,11 @@ export async function checkToolConfigStatus(
     // Codex uses TOML config — parse as raw text, not JSON
     if (toolId === "codex") {
       const lower = content.toLowerCase();
-      const hasOmniRoute =
-        lower.includes("omniroute") ||
+      const hasXenia =
+        lower.includes("xenia") ||
         lower.includes(`localhost:${apiPort}`) ||
         lower.includes(`127.0.0.1:${apiPort}`);
-      if (!hasOmniRoute) return "not_configured";
+      if (!hasXenia) return "not_configured";
 
       // Also verify auth.json has an API key (not masked/empty)
       try {
@@ -53,32 +53,32 @@ export async function checkToolConfigStatus(
 
     if (toolId === "hermes") {
       const lower = content.toLowerCase();
-      const hasOmniRoute =
-        lower.includes("omniroute") ||
+      const hasXenia =
+        lower.includes("xenia") ||
         lower.includes(`localhost:${apiPort}`) ||
         lower.includes(`127.0.0.1:${apiPort}`);
-      return hasOmniRoute ? "configured" : "not_configured";
+      return hasXenia ? "configured" : "not_configured";
     }
 
     const config = JSON.parse(content) as Record<string, unknown>;
 
-    // Each tool stores OmniRoute config differently
+    // Each tool stores Xenia config differently
     switch (toolId) {
       case "claude":
         return (config?.env as Record<string, unknown>)?.ANTHROPIC_BASE_URL
           ? "configured"
           : "not_configured";
       case "qwen":
-        return hasOmniRouteQwenCodeConfig(config) ? "configured" : "not_configured";
+        return hasXeniaQwenCodeConfig(config) ? "configured" : "not_configured";
       case "droid":
       case "openclaw":
       case "cline":
       case "kilo": {
-        // Generic check: look for OmniRoute-specific markers in the config
+        // Generic check: look for Xenia-specific markers in the config
         const configStr = JSON.stringify(config).toLowerCase();
         if (
-          configStr.includes("omniroute") ||
-          configStr.includes("sk_omniroute") ||
+          configStr.includes("xenia") ||
+          configStr.includes("sk_xenia") ||
           configStr.includes(`localhost:${apiPort}`) ||
           configStr.includes(`127.0.0.1:${apiPort}`)
         ) {
@@ -88,8 +88,8 @@ export async function checkToolConfigStatus(
         // (user may configure an external domain instead of localhost)
         if (
           toolId === "cline" &&
-          ((config.actModeApiProvider === "openai" || config.planModeApiProvider === "openai") &&
-            ((config.openAiBaseUrl as string) || "").trim().length > 0)
+          (config.actModeApiProvider === "openai" || config.planModeApiProvider === "openai") &&
+          ((config.openAiBaseUrl as string) || "").trim().length > 0
         ) {
           return "configured";
         }

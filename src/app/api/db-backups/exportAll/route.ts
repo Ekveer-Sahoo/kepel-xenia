@@ -7,7 +7,7 @@ import path from "path";
 import os from "os";
 import { execFileSync } from "node:child_process";
 import { isAuthenticated } from "@/shared/utils/apiAuth";
-import { sanitizeErrorMessage } from "@omniroute/open-sse/utils/error";
+import { sanitizeErrorMessage } from "@xenia/open-sse/utils/error";
 
 /**
  * GET /api/db-backups/exportAll
@@ -28,8 +28,8 @@ export async function GET(request: NextRequest) {
 
     const db = getDbInstance();
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
-    const tempDir = path.join(os.tmpdir(), `omniroute-export-${timestamp}`);
-    const zipPath = path.join(os.tmpdir(), `omniroute-full-backup-${timestamp}.zip`);
+    const tempDir = path.join(os.tmpdir(), `xenia-export-${timestamp}`);
+    const zipPath = path.join(os.tmpdir(), `xenia-full-backup-${timestamp}.zip`);
 
     try {
       // Create temp directory
@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
       const metadata = {
         exportedAt: new Date().toISOString(),
         version: process.env.npm_package_version || "unknown",
-        format: "omniroute-full-backup-v1",
+        format: "xenia-full-backup-v1",
         contents: [
           "storage.sqlite - Full database",
           "settings.json - Key-value settings",
@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
         status: 200,
         headers: {
           "Content-Type": "application/gzip",
-          "Content-Disposition": `attachment; filename="omniroute-full-backup-${timestamp}.tar.gz"`,
+          "Content-Disposition": `attachment; filename="xenia-full-backup-${timestamp}.tar.gz"`,
           "Content-Length": archiveBuffer.length.toString(),
         },
       });

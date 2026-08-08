@@ -120,7 +120,7 @@ export default function StructuredOutputEditor({ structuredOutput }: StructuredO
 
           {/* Status — show when schema is set and no errors */}
           {schema != null && !parseError && !error && (
-            <p className="text-xs text-green-600 dark:text-green-400">✓ {t("schemaValidated")}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">✓ {t("schemaValidated")}</p>
           )}
 
           {/* Validate button */}

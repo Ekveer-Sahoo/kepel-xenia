@@ -211,7 +211,7 @@ export default function SecurityTab() {
                 autoFocus
                 disabled={requireLoginLoading}
               />
-              {requireLoginError && <p className="text-sm text-red-500">{requireLoginError}</p>}
+              {requireLoginError && <p className="text-sm text-gray-500">{requireLoginError}</p>}
               <div className="flex justify-end gap-2 pt-2">
                 <Button
                   variant="ghost"
@@ -268,7 +268,7 @@ export default function SecurityTab() {
 
               {passStatus.message && (
                 <p
-                  className={`text-sm ${passStatus.type === "error" ? "text-red-500" : "text-green-500"}`}
+                  className={`text-sm ${passStatus.type === "error" ? "text-gray-500" : "text-gray-500"}`}
                 >
                   {passStatus.message}
                 </p>
@@ -289,7 +289,7 @@ export default function SecurityTab() {
       {/* API Endpoint Protection */}
       <Card>
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-600 dark:text-gray-400">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               api
             </span>
@@ -350,7 +350,7 @@ export default function SecurityTab() {
                     disabled={loading}
                     className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all border ${
                       isBlocked
-                        ? "bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400"
+                        ? "bg-gray-500/10 border-gray-500/30 text-gray-600 dark:text-gray-400"
                         : "bg-black/[0.02] dark:bg-white/[0.02] border-transparent text-text-muted hover:bg-black/[0.05] dark:hover:bg-white/[0.05]"
                     }`}
                     title={
@@ -371,7 +371,7 @@ export default function SecurityTab() {
                     )}
                     {provider.name}
                     {isBlocked && (
-                      <span className="material-symbols-outlined text-[12px] text-red-500">
+                      <span className="material-symbols-outlined text-[12px] text-gray-500">
                         close
                       </span>
                     )}
@@ -380,7 +380,7 @@ export default function SecurityTab() {
               })}
             </div>
             {blockedProviders.length > 0 && (
-              <p className="text-xs text-amber-600 dark:text-amber-400 mt-2 flex items-center gap-1">
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 flex items-center gap-1">
                 <span className="material-symbols-outlined text-[14px]">warning</span>
                 {t("providersBlocked", { count: blockedProviders.length })}
               </p>
@@ -392,7 +392,7 @@ export default function SecurityTab() {
       {/* Custom Banned Keywords */}
       <Card>
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 rounded-lg bg-red-500/10 text-red-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               report
             </span>
@@ -439,7 +439,7 @@ export default function SecurityTab() {
               {customBannedSignals.map((keyword, index) => (
                 <div
                   key={index}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border bg-gray-500/10 border-gray-500/30 text-gray-600 dark:text-gray-400"
                 >
                   {keyword}
                   <button

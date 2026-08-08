@@ -183,13 +183,13 @@ export default function HermesAgentToolCard({
     }
   };
 
-  const setRoleSelection = (roleId: string, model: string, provider = "OmniRoute") => {
+  const setRoleSelection = (roleId: string, model: string, provider = "Xenia") => {
     setSelections((prev) => ({ ...prev, [roleId]: { model, provider } }));
   };
 
   const applyToAll = (model: string) => {
     const newSel: Record<string, RoleSelection> = {};
-    HERMES_ROLES.forEach((r) => (newSel[r.id] = { model, provider: "OmniRoute" }));
+    HERMES_ROLES.forEach((r) => (newSel[r.id] = { model, provider: "Xenia" }));
     setSelections(newSel);
   };
 
@@ -288,12 +288,12 @@ export default function HermesAgentToolCard({
   // Effective per-role data for count + collapsed status.
   // Priority: pending selections > freshly loaded currentRoles > batchStatus from detector (phase 3)
   const effectiveRoles = React.useMemo(() => {
-    // If user has pending changes, treat selected roles as OmniRoute
+    // If user has pending changes, treat selected roles as Xenia
     if (Object.keys(selections).length > 0) {
       const map: Record<string, any> = {};
       HERMES_ROLES.forEach((r) => {
         if (selections[r.id]) {
-          map[r.id] = { usingOmniRoute: true };
+          map[r.id] = { usingXenia: true };
         } else if (currentRoles[r.id]) {
           map[r.id] = currentRoles[r.id];
         } else if (batchStatus?.hermesAgentRoles?.[r.id]) {
@@ -312,20 +312,20 @@ export default function HermesAgentToolCard({
     return batchStatus?.hermesAgentRoles || {};
   }, [selections, currentRoles, batchStatus]);
 
-  // Count of roles that are (or will be) routed via OmniRoute
+  // Count of roles that are (or will be) routed via Xenia
   const configuredRolesCount = HERMES_ROLES.filter((role) => {
-    // Pending selection always counts as OmniRoute intent
+    // Pending selection always counts as Xenia intent
     if (selections[role.id]) return true;
 
     const info = effectiveRoles[role.id];
     if (!info) return false;
 
-    // Support both shapes: detector shape (usingOmniRoute) and settings shape (provider + base_url)
-    if (typeof info.usingOmniRoute === "boolean") {
-      return info.usingOmniRoute;
+    // Support both shapes: detector shape (usingXenia) and settings shape (provider + base_url)
+    if (typeof info.usingXenia === "boolean") {
+      return info.usingXenia;
     }
     return (
-      info?.provider === "omniroute" ||
+      info?.provider === "xenia" ||
       (info?.base_url || "").includes("20128") ||
       (info?.base_url || "").includes("localhost")
     );
@@ -358,7 +358,7 @@ export default function HermesAgentToolCard({
               {(Object.keys(currentRoles).length > 0 ||
                 Object.keys(selections).length > 0 ||
                 Object.keys(batchStatus?.hermesAgentRoles || {}).length > 0) && (
-                <span className="text-[10px] px-1.5 py-px rounded bg-emerald-500/10 text-emerald-600">
+                <span className="text-[10px] px-1.5 py-px rounded bg-gray-500/10 text-gray-600">
                   {t("hermesConfiguredRoles", {
                     configured: configuredRolesCount,
                     total: HERMES_ROLES.length,
@@ -423,33 +423,32 @@ export default function HermesAgentToolCard({
               const displayedModel = sel?.model || current?.model;
 
               // Badge logic per user's spec:
-              // - If user has selected something in this session (pending): show as via OmniRoute
-              // - Else if current from disk: show real provider name + "(not OmniRoute)" or "OmniRoute"
-              let badge: { label: string; pending: boolean; outsideOmniRoute: boolean } | null =
-                null;
+              // - If user has selected something in this session (pending): show as via Xenia
+              // - Else if current from disk: show real provider name + "(not Xenia)" or "Xenia"
+              let badge: { label: string; pending: boolean; outsideXenia: boolean } | null = null;
 
               if (sel) {
-                // pending change made via the Select modal / quick apply → will be routed via OmniRoute
-                const prov = sel.provider || "OmniRoute";
+                // pending change made via the Select modal / quick apply → will be routed via Xenia
+                const prov = sel.provider || "Xenia";
                 badge = {
-                  label: t("hermesViaOmniRoute", { provider: prov }),
+                  label: t("hermesViaXenia", { provider: prov }),
                   pending: true,
-                  outsideOmniRoute: false,
+                  outsideXenia: false,
                 };
               } else if (current) {
                 const isOmni =
-                  current?.provider === "omniroute" ||
+                  current?.provider === "xenia" ||
                   (current?.base_url || "").includes("20128") ||
                   (current?.base_url || "").includes("localhost");
 
                 if (isOmni) {
-                  badge = { label: "OmniRoute", pending: false, outsideOmniRoute: false };
+                  badge = { label: "Xenia", pending: false, outsideXenia: false };
                 } else {
                   const realProvider = current.provider || t("other");
                   badge = {
-                    label: t("hermesNotOmniRoute", { provider: realProvider }),
+                    label: t("hermesNotXenia", { provider: realProvider }),
                     pending: false,
-                    outsideOmniRoute: true,
+                    outsideXenia: true,
                   };
                 }
               }
@@ -480,9 +479,9 @@ export default function HermesAgentToolCard({
                     {badge && (
                       <div
                         className={`text-[10px] px-1.5 py-px rounded shrink-0 ${
-                          badge.outsideOmniRoute
-                            ? "bg-amber-500/10 text-amber-600"
-                            : "bg-emerald-500/10 text-emerald-600"
+                          badge.outsideXenia
+                            ? "bg-gray-500/10 text-gray-600"
+                            : "bg-gray-500/10 text-gray-600"
                         }`}
                       >
                         {badge.label}
@@ -524,7 +523,7 @@ export default function HermesAgentToolCard({
 
           {/* Message (standard colored info bar like other cards) */}
           {message && (
-            <div className="flex items-center gap-2 px-2 py-1.5 rounded text-xs bg-green-500/10 text-green-600">
+            <div className="flex items-center gap-2 px-2 py-1.5 rounded text-xs bg-gray-500/10 text-gray-600">
               <span className="material-symbols-outlined text-[14px]">check_circle</span>
               <span>{message}</span>
             </div>
@@ -596,7 +595,7 @@ export default function HermesAgentToolCard({
             if (modelValue) {
               // Capture a useful provider label from the modal selection when available
               const prov =
-                (model && (model.provider || model.providerId || model.group)) || "OmniRoute";
+                (model && (model.provider || model.providerId || model.group)) || "Xenia";
               setRoleSelection(modalRole, modelValue, prov);
             }
           }

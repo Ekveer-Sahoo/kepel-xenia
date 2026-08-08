@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-vscode-token-routes-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-vscode-token-routes-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = process.env.API_KEY_SECRET || "vscode-token-routes-secret";
 
@@ -767,9 +767,7 @@ test("vscode tokenized tags route only exposes usable canonical chat models", as
     );
     assert.ok(
       !catalogModel.api_format ||
-        ["chat-completions", "responses", "openai-responses"].includes(
-          catalogModel.api_format
-        ),
+        ["chat-completions", "responses", "openai-responses"].includes(catalogModel.api_format),
       `tag ${tagModel.name} should use a text-generation API format`
     );
     assert.ok(

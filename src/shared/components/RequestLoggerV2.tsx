@@ -75,14 +75,13 @@ function getCacheSourceMeta(cacheSource: unknown) {
   if (cacheSource === "semantic") {
     return {
       key: "semantic",
-      className:
-        "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30",
+      className: "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30",
     };
   }
 
   return {
     key: "upstream",
-    className: "bg-sky-500/15 text-sky-700 dark:text-sky-300 border border-sky-500/30",
+    className: "bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30",
   };
 }
 
@@ -842,12 +841,12 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
             onClick={() => setRecording(!recording)}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
               recording
-                ? "bg-red-500/10 border-red-500/30 text-red-700 dark:text-red-400"
+                ? "bg-gray-500/10 border-gray-500/30 text-gray-700 dark:text-gray-400"
                 : "bg-bg-subtle border-border text-text-muted"
             }`}
           >
             <span
-              className={`w-2 h-2 rounded-full ${recording ? "bg-red-500 animate-pulse" : "bg-text-muted"}`}
+              className={`w-2 h-2 rounded-full ${recording ? "bg-gray-500 animate-pulse" : "bg-text-muted"}`}
             />
             {recording ? t("recording") : t("paused")}
           </button>
@@ -857,13 +856,13 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
             disabled={detailLoggingLoading}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium border transition-colors disabled:opacity-60 ${
               detailLoggingEnabled
-                ? "bg-amber-500/10 border-amber-500/30 text-amber-700 dark:text-amber-300"
+                ? "bg-gray-500/10 border-gray-500/30 text-gray-700 dark:text-gray-300"
                 : "bg-bg-subtle border-border text-text-muted"
             }`}
             title={t("capturePipeline")}
           >
             <span
-              className={`w-2 h-2 rounded-full ${detailLoggingEnabled ? "bg-amber-500" : "bg-text-muted"}`}
+              className={`w-2 h-2 rounded-full ${detailLoggingEnabled ? "bg-gray-500" : "bg-text-muted"}`}
             />
             {detailLoggingLoading
               ? t("updatingPipelineLogs")
@@ -905,7 +904,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
             onClick={() => setGroupedView((v) => !v)}
             className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
               groupedView
-                ? "bg-violet-500/15 border-violet-500/30 text-violet-700 dark:text-violet-300"
+                ? "bg-gray-500/15 border-gray-500/30 text-gray-700 dark:text-gray-300"
                 : "bg-bg-subtle border-border text-text-muted hover:text-text-primary"
             }`}
             title={groupedView ? "Show all rows" : "Show latest per correlation ID"}
@@ -986,20 +985,20 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
               {totalCount} {t("total")}
             </span>
             {runningCount > 0 && (
-              <span className="px-2 py-1 rounded bg-amber-500/10 text-amber-700 dark:text-amber-400 font-mono">
+              <span className="px-2 py-1 rounded bg-gray-500/10 text-gray-700 dark:text-gray-400 font-mono">
                 {runningCount} running
               </span>
             )}
-            <span className="px-2 py-1 rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-mono">
+            <span className="px-2 py-1 rounded bg-gray-500/10 text-gray-700 dark:text-gray-400 font-mono">
               {okCount} {t("ok")}
             </span>
             {errorCount > 0 && (
-              <span className="px-2 py-1 rounded bg-red-500/10 text-red-700 dark:text-red-400 font-mono">
+              <span className="px-2 py-1 rounded bg-gray-500/10 text-gray-700 dark:text-gray-400 font-mono">
                 {errorCount} {t("err")}
               </span>
             )}
             {comboCount > 0 && (
-              <span className="px-2 py-1 rounded bg-violet-500/10 text-violet-700 dark:text-violet-400 font-mono">
+              <span className="px-2 py-1 rounded bg-gray-500/10 text-gray-700 dark:text-gray-400 font-mono">
                 {comboCount} {t("combo")}
               </span>
             )}
@@ -1083,11 +1082,11 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border transition-all ${
                 activeFilter === f.key
                   ? f.key === "error"
-                    ? "bg-red-500/20 text-red-700 dark:text-red-400 border-red-500/40"
+                    ? "bg-gray-500/20 text-gray-700 dark:text-gray-400 border-gray-500/40"
                     : f.key === "ok"
-                      ? "bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border-emerald-500/40"
+                      ? "bg-gray-500/20 text-gray-700 dark:text-gray-400 border-gray-500/40"
                       : f.key === "combo"
-                        ? "bg-violet-500/20 text-violet-700 dark:text-violet-300 border-violet-500/40"
+                        ? "bg-gray-500/20 text-gray-700 dark:text-gray-300 border-gray-500/40"
                         : "bg-primary text-white border-primary"
                   : "bg-bg-subtle border-border text-text-muted hover:border-text-muted"
               }`}
@@ -1104,7 +1103,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
           {uniqueProviders.map((p) => {
             const compatLabel = getProviderDisplayLabel(p, providerNodes);
             const pc = PROVIDER_COLORS[p] || {
-              bg: "#374151",
+              bg: "#404040",
               text: "#fff",
               label: compatLabel || p.toUpperCase(),
             };
@@ -1252,7 +1251,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                       : null;
                     const compatLabel = getProviderDisplayLabel(log.provider, providerNodes);
                     const providerColor = PROVIDER_COLORS[log.provider] || {
-                      bg: "#374151",
+                      bg: "#404040",
                       text: "#fff",
                       label: compatLabel || (log.provider || "-").toUpperCase(),
                     };
@@ -1273,11 +1272,11 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                           `cursor-pointer transition-colors ` +
                           `${
                             isError
-                              ? "bg-red-500/5 hover:bg-red-500/15 dark:hover:bg-red-400/15"
-                              : "hover:bg-sky-500/10 dark:hover:bg-sky-400/10"
+                              ? "bg-gray-500/5 hover:bg-gray-500/15 dark:hover:bg-gray-400/15"
+                              : "hover:bg-gray-500/10 dark:hover:bg-gray-400/10"
                           } ` +
                           `${log.isRetry ? "border-l-2 border-l-amber-500/50" : ""} ` +
-                          `${hoveredCid && log.correlationId === hoveredCid ? "bg-violet-500/10 dark:bg-violet-400/10 ring-1 ring-violet-500/20" : ""}`
+                          `${hoveredCid && log.correlationId === hoveredCid ? "bg-gray-500/10 dark:bg-gray-400/10 ring-1 ring-gray-500/20" : ""}`
                         }
                         style={
                           log.isRetry
@@ -1294,10 +1293,10 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                           <td className="px-3 py-2">
                             {isActive ? (
                               <span
-                                className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-500/15 border border-amber-500/25"
+                                className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-500/15 border border-gray-500/25"
                                 title="In progress"
                               >
-                                <span className="inline-block h-3 w-3 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
+                                <span className="inline-block h-3 w-3 rounded-full border-2 border-gray-500 border-t-transparent animate-spin" />
                               </span>
                             ) : (
                               <span className="inline-flex items-center gap-1">
@@ -1314,7 +1313,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                                   !log.isRetry &&
                                   log.status >= 400 && (
                                     <span
-                                      className="text-emerald-500 text-[11px]"
+                                      className="text-gray-500 text-[11px]"
                                       title="Recovered by retry"
                                     >
                                       ✓
@@ -1322,7 +1321,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                                   )}
                                 {log.isRetry && (
                                   <button
-                                    className="inline-flex items-center text-amber-500 hover:text-amber-400 text-[11px] ml-0.5"
+                                    className="inline-flex items-center text-gray-500 hover:text-gray-400 text-[11px] ml-0.5"
                                     title="Go to parent request"
                                     onClick={(e) => {
                                       e.stopPropagation();
@@ -1361,7 +1360,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                               <span>{log.model}</span>
                               {log.groupStatus === "healed" && !log.isRetry && (
                                 <span
-                                  className="inline-flex items-center gap-0.5 px-1 py-0 rounded text-[8px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25"
+                                  className="inline-flex items-center gap-0.5 px-1 py-0 rounded text-[8px] font-bold bg-gray-500/15 text-gray-600 dark:text-gray-400 border border-gray-500/25"
                                   title={`Failed, recovered after ${log.groupSize - 1} retry`}
                                 >
                                   healed
@@ -1369,7 +1368,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                               )}
                               {log.groupStatus === "failed" && !log.isRetry && (
                                 <span
-                                  className="inline-flex items-center gap-0.5 px-1 py-0 rounded text-[8px] font-bold bg-red-500/15 text-red-600 dark:text-red-400 border border-red-500/25"
+                                  className="inline-flex items-center gap-0.5 px-1 py-0 rounded text-[8px] font-bold bg-gray-500/15 text-gray-600 dark:text-gray-400 border border-gray-500/25"
                                   title={`All ${log.groupSize} attempts failed`}
                                 >
                                   failed
@@ -1377,7 +1376,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                               )}
                               {log.modelPinned && (
                                 <span
-                                  className="inline-flex items-center gap-0.5 px-1 py-0 rounded text-[8px] font-bold bg-violet-500/15 text-violet-600 dark:text-violet-400 border border-violet-500/25"
+                                  className="inline-flex items-center gap-0.5 px-1 py-0 rounded text-[8px] font-bold bg-gray-500/15 text-gray-600 dark:text-gray-400 border border-gray-500/25"
                                   title="Model selected via context-cache session pinning"
                                 >
                                   pinned
@@ -1402,7 +1401,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                             )}
                             {log.correlationId && log.isRetry && (
                               <div
-                                className="text-[9px] text-amber-500/70 font-normal truncate max-w-[120px]"
+                                className="text-[9px] text-gray-500/70 font-normal truncate max-w-[120px]"
                                 title={log.correlationId}
                               >
                                 {log.correlationId.slice(0, 12)}…
@@ -1416,7 +1415,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                               <span
                                 className={
                                   log.requestedModel !== log.model
-                                    ? "text-amber-600 dark:text-amber-400"
+                                    ? "text-gray-600 dark:text-gray-400"
                                     : "text-text-muted"
                                 }
                                 title={
@@ -1491,7 +1490,7 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                             {isActive ? (
                               <span className="text-text-muted text-[10px]">—</span>
                             ) : log.comboName ? (
-                              <span className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold bg-violet-500/20 text-violet-800 dark:text-violet-300 border border-violet-500/40">
+                              <span className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold bg-gray-500/20 text-gray-800 dark:text-gray-300 border border-gray-500/40">
                                 {log.comboName}
                               </span>
                             ) : (
@@ -1511,14 +1510,14 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                                 </span>
                                 <span className="mx-1 text-border">|</span>
                                 <span className="text-text-muted">TO:</span>{" "}
-                                <span className="text-emerald-700 dark:text-emerald-400">
+                                <span className="text-gray-700 dark:text-gray-400">
                                   {log.tokens?.out?.toLocaleString() || 0}
                                 </span>
                                 {log.tokens?.compressed != null && log.tokens.compressed > 0 && (
                                   <>
                                     <span className="mx-1 text-border">|</span>
                                     <span
-                                      className="text-purple-500 dark:text-purple-400 font-semibold"
+                                      className="text-gray-500 dark:text-gray-400 font-semibold"
                                       title={`${log.tokens.compressed.toLocaleString()} tokens compressed`}
                                     >
                                       ↓{log.tokens.compressed.toLocaleString()}
@@ -1540,10 +1539,10 @@ const RequestLoggerV2 = forwardRef<RequestLoggerV2Handle, { initialSelectedId?: 
                                   tps <= 0
                                     ? "text-text-muted"
                                     : tps >= 80
-                                      ? "text-emerald-600 dark:text-emerald-400"
+                                      ? "text-gray-600 dark:text-gray-400"
                                       : tps >= 30
-                                        ? "text-sky-600 dark:text-sky-400"
-                                        : "text-amber-600 dark:text-amber-400";
+                                        ? "text-gray-600 dark:text-gray-400"
+                                        : "text-gray-600 dark:text-gray-400";
                                 return (
                                   <span className={color} title={`${tps.toFixed(2)} tokens/sec`}>
                                     {formatTps(tps)}

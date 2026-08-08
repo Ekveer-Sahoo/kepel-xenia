@@ -281,7 +281,7 @@ export default function ProviderQuotaWidget({ autoRefreshInterval = 0 }: Provide
                     <button
                       type="button"
                       onClick={refreshAll}
-                      className="text-left text-xs text-amber-600 dark:text-amber-500 hover:underline"
+                      className="text-left text-xs text-gray-600 dark:text-gray-500 hover:underline"
                     >
                       {tr("refreshAll", "Refresh All")}
                     </button>

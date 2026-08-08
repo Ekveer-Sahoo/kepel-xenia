@@ -1,5 +1,5 @@
 import { clearHealthCheckLogCache } from "@/lib/tokenHealthCheck";
-import { setCustomBannedSignals } from "@omniroute/open-sse/services/accountFallback.ts";
+import { setCustomBannedSignals } from "@xenia/open-sse/services/accountFallback.ts";
 import { isAutomatedTestProcess } from "@/shared/utils/testProcess";
 
 type JsonRecord = Record<string, unknown>;
@@ -86,7 +86,6 @@ function isTruthyEnvFlag(value: string | undefined): boolean {
   if (typeof value !== "string") return false;
   return new Set(["1", "true", "yes", "on"]).has(value.trim().toLowerCase());
 }
-
 
 function toRecord(value: unknown): JsonRecord {
   return value && typeof value === "object" && !Array.isArray(value) ? (value as JsonRecord) : {};
@@ -253,7 +252,7 @@ function getPreviousSnapshot(): RuntimeSettingsSnapshot {
 
 async function applyPayloadRulesSection(payloadRules: unknown) {
   const { clearPayloadRulesConfigOverride, setPayloadRulesConfig } =
-    await import("@omniroute/open-sse/services/payloadRules.ts");
+    await import("@xenia/open-sse/services/payloadRules.ts");
 
   if (payloadRules === null || payloadRules === undefined) {
     clearPayloadRulesConfigOverride();
@@ -264,13 +263,13 @@ async function applyPayloadRulesSection(payloadRules: unknown) {
 }
 
 async function applyModelAliasesSection(modelAliases: Record<string, string>) {
-  const { setCustomAliases } = await import("@omniroute/open-sse/services/modelDeprecation.ts");
+  const { setCustomAliases } = await import("@xenia/open-sse/services/modelDeprecation.ts");
   setCustomAliases(modelAliases);
 }
 
 async function applyBackgroundDegradationSection(backgroundDegradation: JsonRecord | null) {
   const { getDefaultDegradationMap, getDefaultDetectionPatterns, setBackgroundDegradationConfig } =
-    await import("@omniroute/open-sse/services/backgroundTaskDetector.ts");
+    await import("@xenia/open-sse/services/backgroundTaskDetector.ts");
 
   if (!backgroundDegradation) {
     setBackgroundDegradationConfig({
@@ -295,7 +294,7 @@ async function applyBackgroundDegradationSection(backgroundDegradation: JsonReco
 }
 
 async function applyCliCompatProvidersSection(cliCompatProviders: string[]) {
-  const { setCliCompatProviders } = await import("@omniroute/open-sse/config/cliFingerprints");
+  const { setCliCompatProviders } = await import("@xenia/open-sse/config/cliFingerprints");
   setCliCompatProviders(cliCompatProviders);
 }
 
@@ -306,7 +305,7 @@ async function applyCacheControlSection() {
 
 async function applyUsageTrackingSection(newBuffer: number | null) {
   const { invalidateBufferTokensCache, setBufferTokensCache } =
-    await import("@omniroute/open-sse/utils/usageTracking.ts");
+    await import("@xenia/open-sse/utils/usageTracking.ts");
   if (typeof newBuffer === "number" && newBuffer >= 0) {
     // Set the value directly so the first request after a settings save gets the
     // correct count synchronously — no race window back to DEFAULT (2000).
@@ -318,7 +317,7 @@ async function applyUsageTrackingSection(newBuffer: number | null) {
 
 async function applyThoughtSignatureSection(mode: string) {
   const { setGeminiThoughtSignatureMode } =
-    await import("@omniroute/open-sse/services/geminiThoughtSignatureStore.ts");
+    await import("@xenia/open-sse/services/geminiThoughtSignatureStore.ts");
   setGeminiThoughtSignatureMode(mode);
 }
 
@@ -339,7 +338,7 @@ async function applyCorsOriginsSection(corsOrigins: string) {
  */
 async function applyCcBridgeTransformsSection(ccBridgeTransforms: unknown) {
   const { setSystemTransformsConfig } =
-    await import("@omniroute/open-sse/services/systemTransforms.ts");
+    await import("@xenia/open-sse/services/systemTransforms.ts");
   if (ccBridgeTransforms && typeof ccBridgeTransforms === "object") {
     setSystemTransformsConfig(ccBridgeTransforms);
   }
@@ -355,7 +354,7 @@ function applyAuthzBypassSection(snapshot: AuthzBypassSnapshot) {
 
 async function applySystemTransformsSection(systemTransforms: unknown) {
   const { setSystemTransformsConfig, resetSystemTransformsConfig } =
-    await import("@omniroute/open-sse/services/systemTransforms.ts");
+    await import("@xenia/open-sse/services/systemTransforms.ts");
 
   if (
     systemTransforms === null ||
@@ -376,8 +375,8 @@ async function applyModelsDevSyncSection(
 ) {
   const { startPeriodicSync, stopPeriodicSync } = await import("@/lib/modelsDevSync");
   const skipBackgroundSyncInTests =
-    (isAutomatedTestProcess() && process.env.OMNIROUTE_ENABLE_RUNTIME_BACKGROUND_TASKS !== "1") ||
-    isTruthyEnvFlag(process.env.OMNIROUTE_DISABLE_BACKGROUND_SERVICES);
+    (isAutomatedTestProcess() && process.env.XENIA_ENABLE_RUNTIME_BACKGROUND_TASKS !== "1") ||
+    isTruthyEnvFlag(process.env.XENIA_DISABLE_BACKGROUND_SERVICES);
 
   if (skipBackgroundSyncInTests) {
     stopPeriodicSync();

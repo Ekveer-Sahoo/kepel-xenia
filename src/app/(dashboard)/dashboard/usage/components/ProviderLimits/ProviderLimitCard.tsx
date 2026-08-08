@@ -46,12 +46,12 @@ export default function ProviderLimitCard({
   const getProviderColor = () => {
     const colors = {
       github: "#000000",
-      antigravity: "#4285F4",
-      codex: "#10A37F",
-      kiro: "#FF9900",
-      claude: "#D97757",
+      antigravity: "#7e7e7e",
+      codex: "#737373",
+      kiro: "#a6a6a6",
+      claude: "#919191",
     };
-    return colors[provider?.toLowerCase()] || "#6B7280";
+    return colors[provider?.toLowerCase()] || "#727272";
   };
 
   const providerColor = getProviderColor();
@@ -122,20 +122,20 @@ export default function ProviderLimitCard({
 
       {/* Error State */}
       {!loading && error && (
-        <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+        <div className="p-4 rounded-lg bg-gray-500/10 border border-gray-500/20">
           <div className="flex items-start gap-2">
-            <span className="material-symbols-outlined text-red-500 text-[20px]">error</span>
-            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            <span className="material-symbols-outlined text-gray-500 text-[20px]">error</span>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{error}</p>
           </div>
         </div>
       )}
 
       {/* Info Message (for providers without API) */}
       {!loading && !error && message && (
-        <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
+        <div className="p-4 rounded-lg bg-gray-500/10 border border-gray-500/20">
           <div className="flex items-start gap-2">
-            <span className="material-symbols-outlined text-blue-500 text-[20px]">info</span>
-            <p className="text-sm text-blue-600 dark:text-blue-400">{message}</p>
+            <span className="material-symbols-outlined text-gray-500 text-[20px]">info</span>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{message}</p>
           </div>
         </div>
       )}

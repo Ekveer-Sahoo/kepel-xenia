@@ -215,7 +215,7 @@ if (!isCloud && !fs.existsSync(DATA_DIR)) {
     console.warn(
       `[DB] Cannot create data directory '${DATA_DIR}': ${msg}\n` +
         `[DB] Set the DATA_DIR environment variable to a writable path, e.g.:\n` +
-        `[DB]   DATA_DIR=/path/to/writable/dir omniroute`
+        `[DB]   DATA_DIR=/path/to/writable/dir xenia`
     );
   }
 }
@@ -501,11 +501,11 @@ const SCHEMA_SQL = `
 // Module-level `let` resets on every webpack recompile, causing connection leaks.
 
 declare global {
-  var __omnirouteDb: SqliteAdapter | undefined;
+  var __xeniaDb: SqliteAdapter | undefined;
   // Cycle-breaker counter for the probe-failed/restore cascade. Survives
   // Next.js HMR re-evaluations so concurrent subsystems all see the same
   // count and we abort with a clear error instead of looping forever.
-  var __omnirouteDbProbeRestoreCount: number | undefined;
+  var __xeniaDbProbeRestoreCount: number | undefined;
   // Cycle-breaker counter for the OOM-during-probe path (#6835). Unlike the
   // generic corruption path above, an OOM probe failure never renames the
   // file away (intentional — the DB may be perfectly fine, just too large
@@ -513,18 +513,18 @@ declare global {
   // unreachable here. Without an independent cap, every background poller
   // (BATCH, HealthCheck, ProviderLimitsSync, ModelSync) re-throws the same
   // OOM error forever with no terminal diagnostic.
-  var __omnirouteDbOomFailureCount: number | undefined;
+  var __xeniaDbOomFailureCount: number | undefined;
 }
 
 function getDb(): SqliteDatabase | null {
-  return globalThis.__omnirouteDb ?? null;
+  return globalThis.__xeniaDb ?? null;
 }
 
 function setDb(db: SqliteDatabase | null): void {
   if (db) {
-    globalThis.__omnirouteDb = db;
+    globalThis.__xeniaDb = db;
   } else {
-    delete globalThis.__omnirouteDb;
+    delete globalThis.__xeniaDb;
   }
 }
 
@@ -836,7 +836,7 @@ function offloadLegacyCallLogDetails(db: SqliteDatabase) {
 }
 
 function shouldRunStartupDbHealthCheck(): boolean {
-  if (process.env.OMNIROUTE_FORCE_DB_HEALTHCHECK === "1") return true;
+  if (process.env.XENIA_FORCE_DB_HEALTHCHECK === "1") return true;
   return !isAutomatedTestProcess();
 }
 
@@ -920,7 +920,7 @@ function autoMigrateLegacyEncryptedConnections(db: SqliteDatabase): number {
 let dbHealthCheckTimer: NodeJS.Timeout | null = null;
 
 function getDbHealthCheckIntervalMs(): number {
-  const rawValue = process.env.OMNIROUTE_DB_HEALTHCHECK_INTERVAL_MS;
+  const rawValue = process.env.XENIA_DB_HEALTHCHECK_INTERVAL_MS;
   if (typeof rawValue === "string" && rawValue.trim().length > 0) {
     const parsed = Number(rawValue);
     if (Number.isFinite(parsed) && parsed >= 0) {
@@ -949,7 +949,7 @@ function startDbHealthCheckScheduler(db: SqliteDatabase) {
       if (!db.open) return;
       runDbHealthCheck(db, {
         autoRepair: true,
-        skipIntegrityCheck: process.env.OMNIROUTE_SKIP_DB_HEALTHCHECK === "1",
+        skipIntegrityCheck: process.env.XENIA_SKIP_DB_HEALTHCHECK === "1",
         expectedSchemaVersion: "1",
         createBackupBeforeRepair: () => createHealthCheckBackup(db),
       });
@@ -1005,8 +1005,7 @@ export function getDbInstance(): SqliteDatabase {
     // globalThis; abort with a clear recovery message after 3 attempts so
     // the user gets a real error instead of a hung "Starting server...".
     if (
-      (globalThis.__omnirouteDbProbeRestoreCount =
-        (globalThis.__omnirouteDbProbeRestoreCount || 0) + 1) > 3
+      (globalThis.__xeniaDbProbeRestoreCount = (globalThis.__xeniaDbProbeRestoreCount || 0) + 1) > 3
     ) {
       throw new Error(
         `[DB] Aborting startup: probe-failed/restore loop detected after 3 attempts. ` +
@@ -1125,8 +1124,7 @@ export function getDbInstance(): SqliteDatabase {
         // as the generic path) so repeated polling doesn't hang forever with
         // no actionable terminal diagnostic.
         if (
-          (globalThis.__omnirouteDbOomFailureCount =
-            (globalThis.__omnirouteDbOomFailureCount || 0) + 1) > 3
+          (globalThis.__xeniaDbOomFailureCount = (globalThis.__xeniaDbOomFailureCount || 0) + 1) > 3
         ) {
           throw new Error(
             `[DB] Aborting startup: persistent out-of-memory probing ${sqliteFile} after 3 attempts. ` +
@@ -1196,12 +1194,12 @@ export function getDbInstance(): SqliteDatabase {
   // Auto-seed 001 as applied (the inline SCHEMA_SQL already created these tables)
   // then run any new migrations (002+)
   db.exec(`
-    CREATE TABLE IF NOT EXISTS _omniroute_migrations (
+    CREATE TABLE IF NOT EXISTS _xenia_migrations (
       version TEXT PRIMARY KEY,
       name TEXT NOT NULL,
       applied_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
-    INSERT OR IGNORE INTO _omniroute_migrations (version, name)
+    INSERT OR IGNORE INTO _xenia_migrations (version, name)
     VALUES ('001', 'initial_schema');
   `);
 
@@ -1262,9 +1260,9 @@ export function getDbInstance(): SqliteDatabase {
   );
   versionStmt.run();
   if (shouldRunStartupDbHealthCheck()) {
-    const skipIntegrityCheck = process.env.OMNIROUTE_SKIP_DB_HEALTHCHECK === "1";
+    const skipIntegrityCheck = process.env.XENIA_SKIP_DB_HEALTHCHECK === "1";
     if (skipIntegrityCheck) {
-      console.log("[DB] Health check skipped (OMNIROUTE_SKIP_DB_HEALTHCHECK=1)");
+      console.log("[DB] Health check skipped (XENIA_SKIP_DB_HEALTHCHECK=1)");
     }
     runDbHealthCheck(db, {
       autoRepair: true,
@@ -1375,7 +1373,7 @@ export function getDriverInfo(): DbDriverInfo | null {
  *
  * Call this at process startup (before any call to getDbInstance()) so that
  * if the bundled better-sqlite3 binary is unavailable, the runtime installer
- * can place it in ~/.omniroute/runtime/ without blocking a synchronous caller.
+ * can place it in ~/.xenia/runtime/ without blocking a synchronous caller.
  *
  * Idempotent — safe to call multiple times.
  */

@@ -90,8 +90,8 @@ export default function NotionSourceCard() {
           onClick={() => setExpanded(!expanded)}
           className="w-full flex items-center gap-3 text-left"
         >
-          <div className="flex items-center justify-center size-10 rounded-lg bg-blue-500/10 shrink-0">
-            <span className="material-symbols-outlined text-xl text-blue-400">description</span>
+          <div className="flex items-center justify-center size-10 rounded-lg bg-gray-500/10 shrink-0">
+            <span className="material-symbols-outlined text-xl text-gray-400">description</span>
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
@@ -117,8 +117,8 @@ export default function NotionSourceCard() {
               <div
                 className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
                   message.type === "success"
-                    ? "border-green-500/30 bg-green-500/10 text-green-400"
-                    : "border-red-500/30 bg-red-500/10 text-red-400"
+                    ? "border-gray-500/30 bg-gray-500/10 text-gray-400"
+                    : "border-gray-500/30 bg-gray-500/10 text-gray-400"
                 }`}
               >
                 <span className="material-symbols-outlined text-[18px]">
@@ -163,7 +163,7 @@ export default function NotionSourceCard() {
                   loading={busy}
                   variant="secondary"
                   size="sm"
-                  className="border-red-500/30! text-red-400! hover:bg-red-500/10!"
+                  className="border-gray-500/30! text-gray-400! hover:bg-gray-500/10!"
                 >
                   Disconnect
                 </Button>

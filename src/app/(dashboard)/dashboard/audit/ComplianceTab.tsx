@@ -143,7 +143,7 @@ export default function ComplianceTab() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `omniroute-compliance-audit-${new Date().toISOString().slice(0, 10)}.json`;
+    link.download = `xenia-compliance-audit-${new Date().toISOString().slice(0, 10)}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -151,9 +151,9 @@ export default function ComplianceTab() {
   };
 
   const severityClass = (value: Severity) => {
-    if (value === "critical") return "border-red-500/30 bg-red-500/10 text-red-600";
-    if (value === "warning") return "border-amber-500/30 bg-amber-500/10 text-amber-600";
-    return "border-blue-500/30 bg-blue-500/10 text-blue-600";
+    if (value === "critical") return "border-gray-500/30 bg-gray-500/10 text-gray-600";
+    if (value === "warning") return "border-gray-500/30 bg-gray-500/10 text-gray-600";
+    return "border-gray-500/30 bg-gray-500/10 text-gray-600";
   };
 
   return (
@@ -292,7 +292,7 @@ export default function ComplianceTab() {
       </Card>
 
       {error && (
-        <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-600">
+        <div className="rounded-lg border border-gray-500/30 bg-gray-500/10 px-4 py-3 text-sm text-gray-600">
           {error}
         </div>
       )}
@@ -330,7 +330,9 @@ export default function ComplianceTab() {
                       </td>
                       <td className="px-4 py-3">
                         <span className="rounded-md border border-border bg-surface px-2 py-1 font-mono text-xs text-text-main">
-                          {t.has(`eventTypes.${entry.action}`) ? t(`eventTypes.${entry.action}`) : entry.action}
+                          {t.has(`eventTypes.${entry.action}`)
+                            ? t(`eventTypes.${entry.action}`)
+                            : entry.action}
                         </span>
                       </td>
                       <td className="px-4 py-3">

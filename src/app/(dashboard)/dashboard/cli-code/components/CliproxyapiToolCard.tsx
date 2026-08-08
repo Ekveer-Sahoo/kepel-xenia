@@ -93,14 +93,14 @@ export default function CliproxyapiToolCard({ isExpanded = false, onToggle = () 
     if (!toolState) return null;
     const s = toolState.status;
     const map: Record<string, { label: string; color: string }> = {
-      running: { label: "Running", color: "bg-green-500/10 text-green-600 dark:text-green-400" },
+      running: { label: "Running", color: "bg-gray-500/10 text-gray-600 dark:text-gray-400" },
       stopped: { label: "Stopped", color: "bg-zinc-500/10 text-zinc-500 dark:text-zinc-400" },
       not_installed: {
         label: "Not Installed",
-        color: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400",
+        color: "bg-gray-500/10 text-gray-600 dark:text-gray-400",
       },
-      installed: { label: "Installed", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" },
-      error: { label: "Error", color: "bg-red-500/10 text-red-600 dark:text-red-400" },
+      installed: { label: "Installed", color: "bg-gray-500/10 text-gray-600 dark:text-gray-400" },
+      error: { label: "Error", color: "bg-gray-500/10 text-gray-600 dark:text-gray-400" },
     };
     const badge = map[s] || map.not_installed;
     return (
@@ -117,8 +117,8 @@ export default function CliproxyapiToolCard({ isExpanded = false, onToggle = () 
     <Card padding="sm" className="overflow-hidden">
       <div className="flex items-center justify-between hover:cursor-pointer" onClick={onToggle}>
         <div className="flex items-center gap-3">
-          <div className="size-8 rounded-lg flex items-center justify-center shrink-0 bg-indigo-500/10">
-            <span className="material-symbols-outlined text-indigo-500 text-xl">swap_horiz</span>
+          <div className="size-8 rounded-lg flex items-center justify-center shrink-0 bg-gray-500/10">
+            <span className="material-symbols-outlined text-gray-500 text-xl">swap_horiz</span>
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2">
@@ -143,8 +143,8 @@ export default function CliproxyapiToolCard({ isExpanded = false, onToggle = () 
             <div
               className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs ${
                 message.type === "success"
-                  ? "bg-green-500/10 text-green-600 dark:text-green-400"
-                  : "bg-red-500/10 text-red-600 dark:text-red-400"
+                  ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
+                  : "bg-gray-500/10 text-gray-600 dark:text-gray-400"
               }`}
             >
               <span className="material-symbols-outlined text-[14px]">
@@ -155,12 +155,12 @@ export default function CliproxyapiToolCard({ isExpanded = false, onToggle = () 
           )}
 
           {updateInfo?.updateAvailable && (
-            <div className="flex items-center justify-between p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
+            <div className="flex items-center justify-between p-3 rounded-lg bg-gray-500/10 border border-gray-500/30">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-yellow-500 text-lg">
+                <span className="material-symbols-outlined text-gray-500 text-lg">
                   system_update
                 </span>
-                <span className="text-sm text-yellow-700 dark:text-yellow-300">
+                <span className="text-sm text-gray-700 dark:text-gray-300">
                   Update available: v{updateInfo.current} → v{updateInfo.latest}
                 </span>
               </div>
@@ -185,7 +185,7 @@ export default function CliproxyapiToolCard({ isExpanded = false, onToggle = () 
             <div className="p-3 rounded-lg bg-bg-secondary">
               <p className="text-xs text-text-muted mb-1">Health</p>
               <p
-                className={`text-sm font-medium ${toolState?.healthStatus === "healthy" ? "text-green-600 dark:text-green-400" : toolState?.healthStatus === "unhealthy" ? "text-red-600 dark:text-red-400" : "text-text-muted"}`}
+                className={`text-sm font-medium ${toolState?.healthStatus === "healthy" ? "text-gray-600 dark:text-gray-400" : toolState?.healthStatus === "unhealthy" ? "text-gray-600 dark:text-gray-400" : "text-text-muted"}`}
               >
                 {toolState?.healthStatus === "healthy"
                   ? `Healthy`

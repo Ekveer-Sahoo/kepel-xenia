@@ -21,8 +21,7 @@ export default function StatsCharts({ requests }: StatsChartsProps) {
   const t = useTranslations("trafficInspector");
 
   const statusDist = requests.reduce<Record<string, number>>((acc, r) => {
-    const key =
-      typeof r.status === "number" ? `${Math.floor(r.status / 100)}xx` : String(r.status);
+    const key = typeof r.status === "number" ? `${Math.floor(r.status / 100)}xx` : String(r.status);
     acc[key] = (acc[key] ?? 0) + 1;
     return acc;
   }, {});
@@ -45,7 +44,7 @@ export default function StatsCharts({ requests }: StatsChartsProps) {
               <XAxis dataKey="name" tick={{ fontSize: 11 }} />
               <YAxis tick={{ fontSize: 11 }} />
               <Tooltip />
-              <Bar dataKey="count" fill="#6366f1" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="count" fill="#757575" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -62,13 +61,7 @@ export default function StatsCharts({ requests }: StatsChartsProps) {
                 <XAxis dataKey="i" hide />
                 <YAxis tick={{ fontSize: 11 }} unit="ms" />
                 <Tooltip formatter={(v: unknown) => [`${String(v)}ms`, "latency"]} />
-                <Line
-                  type="monotone"
-                  dataKey="ms"
-                  stroke="#10b981"
-                  dot={false}
-                  strokeWidth={2}
-                />
+                <Line type="monotone" dataKey="ms" stroke="#808080" dot={false} strokeWidth={2} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -81,17 +74,16 @@ export default function StatsCharts({ requests }: StatsChartsProps) {
           <div className="text-xs text-text-muted mt-1">{t("statsTotalRequests")}</div>
         </div>
         <div className="rounded border border-border bg-bg-subtle p-3">
-          <div className="text-2xl font-bold text-green-400">
+          <div className="text-2xl font-bold text-gray-400">
             {requests.filter((r) => typeof r.status === "number" && r.status < 400).length}
           </div>
           <div className="text-xs text-text-muted mt-1">{t("statsSuccessful")}</div>
         </div>
         <div className="rounded border border-border bg-bg-subtle p-3">
-          <div className="text-2xl font-bold text-red-400">
+          <div className="text-2xl font-bold text-gray-400">
             {
               requests.filter(
-                (r) =>
-                  r.status === "error" || (typeof r.status === "number" && r.status >= 400),
+                (r) => r.status === "error" || (typeof r.status === "number" && r.status >= 400)
               ).length
             }
           </div>

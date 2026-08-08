@@ -63,12 +63,12 @@ export default function EmbeddingSourceSelector({ settings, providers, onSave, s
             disabled={saving}
             className={`flex flex-col items-start p-3 rounded-lg border text-left transition-all ${
               currentSource === opt.value
-                ? "border-violet-500/50 bg-violet-500/5 ring-1 ring-violet-500/20"
+                ? "border-gray-500/50 bg-gray-500/5 ring-1 ring-gray-500/20"
                 : "border-border/50 hover:border-border hover:bg-surface/30"
             }`}
           >
             <span
-              className={`text-sm font-medium ${currentSource === opt.value ? "text-violet-400" : "text-text-main"}`}
+              className={`text-sm font-medium ${currentSource === opt.value ? "text-gray-400" : "text-text-main"}`}
             >
               {opt.label}
             </span>
@@ -83,7 +83,7 @@ export default function EmbeddingSourceSelector({ settings, providers, onSave, s
             {t("embedding.providerModelLabel")}
           </label>
           {remoteProviders.length === 0 ? (
-            <p className="text-xs text-amber-400 flex items-center gap-1">
+            <p className="text-xs text-gray-400 flex items-center gap-1">
               <span className="material-symbols-outlined text-[12px]">warning</span>
               {t("embedding.noRemoteProviders")}
             </p>
@@ -93,7 +93,7 @@ export default function EmbeddingSourceSelector({ settings, providers, onSave, s
               onChange={(e) => handleProviderModelChange(e.target.value)}
               disabled={saving}
               data-testid="embedding-provider-model-select"
-              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
             >
               <option value="">{t("embedding.selectProviderModel")}</option>
               {remoteProviders.map((p) =>
@@ -101,7 +101,7 @@ export default function EmbeddingSourceSelector({ settings, providers, onSave, s
                   <option key={m.id} value={m.id}>
                     {m.name} ({m.dimensions ? `${m.dimensions}d` : "?"})
                   </option>
-                )),
+                ))
               )}
             </select>
           )}
@@ -109,7 +109,7 @@ export default function EmbeddingSourceSelector({ settings, providers, onSave, s
       )}
 
       {currentSource === "transformers" && (
-        <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-400 flex items-start gap-2">
+        <div className="p-3 rounded-lg bg-gray-500/10 border border-gray-500/20 text-xs text-gray-400 flex items-start gap-2">
           <span className="material-symbols-outlined text-[14px] mt-0.5 shrink-0">info</span>
           <span>{t("embedding.transformersWarning")}</span>
         </div>
@@ -131,7 +131,7 @@ export default function EmbeddingSourceSelector({ settings, providers, onSave, s
             role="switch"
             aria-checked={settings.staticEnabled ?? false}
             className={`relative w-11 h-6 rounded-full transition-colors shrink-0 ${
-              settings.staticEnabled ? "bg-violet-500" : "bg-border"
+              settings.staticEnabled ? "bg-gray-500" : "bg-border"
             }`}
           >
             <span
@@ -159,7 +159,7 @@ export default function EmbeddingSourceSelector({ settings, providers, onSave, s
             role="switch"
             aria-checked={settings.transformersEnabled ?? false}
             className={`relative w-11 h-6 rounded-full transition-colors shrink-0 ${
-              settings.transformersEnabled ? "bg-violet-500" : "bg-border"
+              settings.transformersEnabled ? "bg-gray-500" : "bg-border"
             }`}
           >
             <span

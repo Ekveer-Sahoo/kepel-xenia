@@ -36,12 +36,12 @@ interface StatCardProps {
 }
 
 const COLOR_MAP: Record<StatCardProps["color"], { shell: string; icon: string }> = {
-  blue: { shell: "bg-blue-500/10", icon: "text-blue-500" },
-  green: { shell: "bg-green-500/10", icon: "text-green-500" },
-  red: { shell: "bg-red-500/10", icon: "text-red-500" },
-  purple: { shell: "bg-purple-500/10", icon: "text-purple-500" },
-  amber: { shell: "bg-amber-500/10", icon: "text-amber-500" },
-  cyan: { shell: "bg-cyan-500/10", icon: "text-cyan-500" },
+  blue: { shell: "bg-gray-500/10", icon: "text-gray-500" },
+  green: { shell: "bg-gray-500/10", icon: "text-gray-500" },
+  red: { shell: "bg-gray-500/10", icon: "text-gray-500" },
+  purple: { shell: "bg-gray-500/10", icon: "text-gray-500" },
+  amber: { shell: "bg-gray-500/10", icon: "text-gray-500" },
+  cyan: { shell: "bg-gray-500/10", icon: "text-gray-500" },
 };
 
 function StatCard({ icon, label, value, color }: StatCardProps) {
@@ -192,7 +192,7 @@ export default function MonitorTab({ onGoToTranslate }: MonitorTabProps) {
       </div>
 
       {/* Memory note */}
-      <div className="flex items-center gap-2 rounded-lg border border-amber-500/10 bg-amber-500/5 px-3 py-2 text-xs text-amber-600 dark:text-amber-400">
+      <div className="flex items-center gap-2 rounded-lg border border-gray-500/10 bg-gray-500/5 px-3 py-2 text-xs text-gray-600 dark:text-gray-400">
         <span className="material-symbols-outlined text-[14px]">memory</span>
         <p>
           {t("liveMonitorMemoryNote")}{" "}
@@ -205,7 +205,7 @@ export default function MonitorTab({ onGoToTranslate }: MonitorTabProps) {
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span
-              className={`material-symbols-outlined text-[18px] ${autoRefresh ? "text-green-500 animate-pulse" : "text-text-muted"}`}
+              className={`material-symbols-outlined text-[18px] ${autoRefresh ? "text-gray-500 animate-pulse" : "text-text-muted"}`}
               aria-hidden="true"
             >
               {autoRefresh ? "radio_button_checked" : "radio_button_unchecked"}

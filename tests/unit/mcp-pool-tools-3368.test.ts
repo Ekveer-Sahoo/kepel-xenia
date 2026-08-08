@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 
 // Regression guard for #3368: the web-session pool MCP tools
 // (open-sse/mcp-server/tools/poolTools.ts) existed in the repo but were never
-// imported or registered in open-sse/mcp-server/server.ts, so omniroute_pool_*
+// imported or registered in open-sse/mcp-server/server.ts, so xenia_pool_*
 // was defined-but-dead. This pins the wiring (import + registration loop +
 // reserved-name entry), the scope contract, and the live handler behavior so
 // the observability tools cannot silently fall out of the live MCP server again.
@@ -21,13 +21,13 @@ const mcpScopesModule = await import("../../src/shared/constants/mcpScopes.ts");
 const { MCP_TOOL_SCOPES, MCP_SCOPE_LIST } = mcpScopesModule;
 
 const POOL_TOOL_NAMES = [
-  "omniroute_pool_status",
-  "omniroute_pool_sessions",
-  "omniroute_pool_reset",
-  "omniroute_pool_warm",
-  "omniroute_pool_health",
+  "xenia_pool_status",
+  "xenia_pool_sessions",
+  "xenia_pool_reset",
+  "xenia_pool_warm",
+  "xenia_pool_health",
   // #3368 PR7 — stealth browser pool observability
-  "omniroute_browser_pool_status",
+  "xenia_browser_pool_status",
 ];
 
 const serverSource = readFileSync(
@@ -98,12 +98,12 @@ test("inline poolTools scopes match the canonical MCP_TOOL_SCOPES map", () => {
 
 test("read tools require read:health; lifecycle tools require write:resilience", () => {
   const tools = poolTools as Record<string, { scopes: string[] }>;
-  assert.deepEqual(tools.omniroute_pool_status.scopes, ["read:health"]);
-  assert.deepEqual(tools.omniroute_pool_sessions.scopes, ["read:health"]);
-  assert.deepEqual(tools.omniroute_pool_health.scopes, ["read:health"]);
-  assert.deepEqual(tools.omniroute_browser_pool_status.scopes, ["read:health"]);
-  assert.deepEqual(tools.omniroute_pool_reset.scopes, ["write:resilience"]);
-  assert.deepEqual(tools.omniroute_pool_warm.scopes, ["write:resilience"]);
+  assert.deepEqual(tools.xenia_pool_status.scopes, ["read:health"]);
+  assert.deepEqual(tools.xenia_pool_sessions.scopes, ["read:health"]);
+  assert.deepEqual(tools.xenia_pool_health.scopes, ["read:health"]);
+  assert.deepEqual(tools.xenia_browser_pool_status.scopes, ["read:health"]);
+  assert.deepEqual(tools.xenia_pool_reset.scopes, ["write:resilience"]);
+  assert.deepEqual(tools.xenia_pool_warm.scopes, ["write:resilience"]);
 });
 
 test("MCP scope constants public surface excludes unused helper bundles", () => {

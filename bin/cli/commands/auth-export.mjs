@@ -1,7 +1,7 @@
 import { chmodSync, existsSync, writeFileSync } from "node:fs";
 import { decryptCredential } from "../encryption.mjs";
 import { findProviderConnection, listProviderConnections } from "../provider-store.mjs";
-import { openOmniRouteDb } from "../sqlite.mjs";
+import { openXeniaDb } from "../sqlite.mjs";
 import { t } from "../i18n.mjs";
 
 /**
@@ -83,7 +83,7 @@ function printConfirmationGate() {
 }
 
 async function loadTargetConnections(id) {
-  const { db } = await openOmniRouteDb();
+  const { db } = await openXeniaDb();
   try {
     if (!id) return listProviderConnections(db);
     const connection = findProviderConnection(db, id);
@@ -146,7 +146,7 @@ function formatAsEnv(rows) {
     for (const { key, envSuffix } of CREDENTIAL_FIELDS) {
       const value = row[key];
       if (!value) continue;
-      lines.push(`OMNIROUTE_${providerSegment}_${envSuffix}=${value}`);
+      lines.push(`XENIA_${providerSegment}_${envSuffix}=${value}`);
     }
   }
   return lines.join("\n");

@@ -10,8 +10,8 @@
  * utilities (`text-success`, `bg-error/10`, …) which already read the same tokens.
  */
 export const STATUS_HEX = {
-  success: "#22c55e",
-  warning: "#f59e0b",
-  error: "#ef4444",
-  muted: "#6b7280",
+  success: "#404040",
+  warning: "#737373",
+  error: "#0a0a0a",
+  muted: "#a3a3a3",
 } as const;

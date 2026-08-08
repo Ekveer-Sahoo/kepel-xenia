@@ -26,7 +26,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { validateBody, isValidationFailure } from "@/shared/validation/helpers";
-import { buildErrorBody, sanitizeErrorMessage } from "@omniroute/open-sse/utils/error";
+import { buildErrorBody, sanitizeErrorMessage } from "@xenia/open-sse/utils/error";
 import { validateApiKey, getApiKeyMetadata } from "@/lib/localDb";
 import { getChaosConfig } from "@/lib/chaos/chaosConfig";
 import { executeChaosRun, type ChaosRunResult } from "@/lib/chaos/chaosExecutor";
@@ -122,7 +122,10 @@ export async function POST(request: Request) {
     const globalConfig = await getChaosConfig();
     if (!globalConfig.enabled) {
       return NextResponse.json(
-        buildErrorBody(400, "Chaos Mode is not enabled globally. Enable it in Dashboard → Chaos Mode."),
+        buildErrorBody(
+          400,
+          "Chaos Mode is not enabled globally. Enable it in Dashboard → Chaos Mode."
+        ),
         { status: 400 }
       );
     }

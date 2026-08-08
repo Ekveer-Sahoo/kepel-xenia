@@ -355,7 +355,7 @@ function ComboAutopilotPanel({ report }: { report: ComboAutopilotReport }) {
             ))}
           </div>
         ) : (
-          <div className="rounded-lg border border-green-500/20 bg-green-500/5 p-4 text-sm text-green-700 dark:text-green-300">
+          <div className="rounded-lg border border-gray-500/20 bg-gray-500/5 p-4 text-sm text-gray-700 dark:text-gray-300">
             {t("comboHealthNoActiveIssues")}
           </div>
         )}
@@ -396,7 +396,7 @@ function ComboScoringInspectorPanel({ inspector }: { inspector: ComboScoringInsp
       </div>
 
       {inspector.warnings.length > 0 ? (
-        <div className="mt-4 rounded-lg border border-yellow-500/20 bg-yellow-500/5 p-3 text-xs text-yellow-700 dark:text-yellow-300">
+        <div className="mt-4 rounded-lg border border-gray-500/20 bg-gray-500/5 p-3 text-xs text-gray-700 dark:text-gray-300">
           {inspector.warnings.slice(0, 2).join(" · ")}
         </div>
       ) : null}
@@ -903,8 +903,8 @@ export default function ComboHealthTab() {
       </div>
 
       {!loading && forecastError ? (
-        <Card className="border-yellow-500/20 bg-yellow-500/5 p-4">
-          <div className="flex items-center gap-2 text-sm text-yellow-700 dark:text-yellow-300">
+        <Card className="border-gray-500/20 bg-gray-500/5 p-4">
+          <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
             <span className="material-symbols-outlined text-[18px]">warning</span>
             {forecastError}
           </div>
@@ -912,8 +912,8 @@ export default function ComboHealthTab() {
       ) : null}
 
       {!loading && autopilotError ? (
-        <Card className="border-yellow-500/20 bg-yellow-500/5 p-4">
-          <div className="flex items-center gap-2 text-sm text-yellow-700 dark:text-yellow-300">
+        <Card className="border-gray-500/20 bg-gray-500/5 p-4">
+          <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
             <span className="material-symbols-outlined text-[18px]">warning</span>
             {autopilotError}
           </div>
@@ -921,8 +921,8 @@ export default function ComboHealthTab() {
       ) : null}
 
       {!loading && scoringError ? (
-        <Card className="border-yellow-500/20 bg-yellow-500/5 p-4">
-          <div className="flex items-center gap-2 text-sm text-yellow-700 dark:text-yellow-300">
+        <Card className="border-gray-500/20 bg-gray-500/5 p-4">
+          <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
             <span className="material-symbols-outlined text-[18px]">warning</span>
             {scoringError}
           </div>

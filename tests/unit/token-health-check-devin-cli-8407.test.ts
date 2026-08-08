@@ -8,7 +8,7 @@ import path from "node:path";
 
 process.env.NODE_ENV = "test";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-hc-devin-cli-8407-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-hc-devin-cli-8407-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -63,5 +63,9 @@ test("checkConnection leaves a devin-cli connection with no refresh token untouc
 
   const updated = await providersDb.getProviderConnectionById(getCreatedConnectionId(connection));
   assert.equal(updated?.testStatus, "active", "devin-cli testStatus must remain active");
-  assert.notEqual(updated?.errorCode, "no_refresh_token", "devin-cli must not be marked no_refresh_token");
+  assert.notEqual(
+    updated?.errorCode,
+    "no_refresh_token",
+    "devin-cli must not be marked no_refresh_token"
+  );
 });

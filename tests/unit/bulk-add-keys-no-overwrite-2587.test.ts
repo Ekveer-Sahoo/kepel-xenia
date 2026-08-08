@@ -25,7 +25,7 @@ type ConnectionRow = Record<string, unknown> & { id: string; name?: string | nul
 // resolveBulkNameCollisions -> createProviderConnection — against a real
 // SQLite-backed db module.
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-bulk-add-2587-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-bulk-add-2587-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -138,9 +138,7 @@ test("bulk-add appends N+M connections and preserves the existing connection's s
   assert.equal(survivor!.rateLimitedUntil, future, "existing cooldown must survive");
   assert.equal(survivor!.backoffLevel, 2, "existing backoffLevel must survive");
 
-  const newNames = after
-    .filter((c) => c.id !== (existing as ConnectionRow).id)
-    .map((c) => c.name);
+  const newNames = after.filter((c) => c.id !== (existing as ConnectionRow).id).map((c) => c.name);
   assert.equal(new Set(newNames).size, newNames.length, "no duplicate names among new entries");
   assert.ok(!newNames.includes("Key 1"));
 });

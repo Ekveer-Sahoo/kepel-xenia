@@ -24,7 +24,7 @@ export default function NoAuthProviderCard({
     <Card>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="inline-flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-green-500/10 text-green-500">
+          <div className="inline-flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]">lock_open</span>
           </div>
           <div className="flex-1 min-w-0">

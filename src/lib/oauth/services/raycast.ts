@@ -10,7 +10,7 @@ import {
   decodeAidFromRaycastJwt,
   fetchRaycastModels,
   type RaycastModelEntry,
-} from "@omniroute/open-sse/services/raycast.ts";
+} from "@xenia/open-sse/services/raycast.ts";
 
 export class RaycastService {
   validateCredentials(input: {

@@ -72,7 +72,7 @@ test("ensureAndroidCacheDir: no-op on darwin (does not mkdir, does not set env)"
 });
 
 test("ensureAndroidCacheDir: creates ~/.cache when missing on android", () => {
-  const home = mkdtempSync(join(tmpdir(), "omniroute-android-cache-home-"));
+  const home = mkdtempSync(join(tmpdir(), "xenia-android-cache-home-"));
   const cacheDir = join(home, ".cache");
   const env = {};
 
@@ -94,7 +94,7 @@ test("ensureAndroidCacheDir: creates ~/.cache when missing on android", () => {
 });
 
 test("ensureAndroidCacheDir: does not recreate when ~/.cache already exists", () => {
-  const home = mkdtempSync(join(tmpdir(), "omniroute-android-cache-existing-"));
+  const home = mkdtempSync(join(tmpdir(), "xenia-android-cache-existing-"));
   const cacheDir = join(home, ".cache");
   mkdirSync(cacheDir);
   const env = {};
@@ -119,7 +119,7 @@ test("ensureAndroidCacheDir: does not recreate when ~/.cache already exists", ()
 });
 
 test("ensureAndroidCacheDir: respects an existing XDG_CACHE_HOME and creates that path", () => {
-  const root = mkdtempSync(join(tmpdir(), "omniroute-android-cache-xdg-"));
+  const root = mkdtempSync(join(tmpdir(), "xenia-android-cache-xdg-"));
   const xdg = join(root, "xdg-cache");
   const env = { XDG_CACHE_HOME: xdg };
 
@@ -138,7 +138,7 @@ test("ensureAndroidCacheDir: respects an existing XDG_CACHE_HOME and creates tha
 });
 
 test("ensureAndroidCacheDir: Termux-on-linux still prepares ~/.cache", () => {
-  const home = mkdtempSync(join(tmpdir(), "omniroute-android-cache-termux-"));
+  const home = mkdtempSync(join(tmpdir(), "xenia-android-cache-termux-"));
   const env = { TERMUX_VERSION: "0.119" };
 
   try {
@@ -175,14 +175,14 @@ test("formatAndroidInstrumentationFailureHint: names the cache dir and TERMUX_GU
 });
 
 test("CLI entrypoint calls ensureAndroidCacheDir before Commander/Next load", () => {
-  const src = readFileSync(join(ROOT, "bin/omniroute.mjs"), "utf8");
+  const src = readFileSync(join(ROOT, "bin/xenia.mjs"), "utf8");
   assert.match(src, /ensureAndroidCacheDir\(\)/);
   // Real import is join(ROOT, "bin", "cli", "program.mjs") — not a contiguous path.
   // Header comments also mention program.mjs; compare call site vs last occurrence.
   const callIdx = src.indexOf("ensureAndroidCacheDir();");
   const programImportIdx = src.lastIndexOf("program.mjs");
-  assert.ok(callIdx > 0, "omniroute.mjs must call ensureAndroidCacheDir()");
-  assert.ok(programImportIdx > 0, "omniroute.mjs must still load program.mjs");
+  assert.ok(callIdx > 0, "xenia.mjs must call ensureAndroidCacheDir()");
+  assert.ok(programImportIdx > 0, "xenia.mjs must still load program.mjs");
   assert.ok(
     callIdx < programImportIdx,
     "ensureAndroidCacheDir() must run before program.mjs is imported"

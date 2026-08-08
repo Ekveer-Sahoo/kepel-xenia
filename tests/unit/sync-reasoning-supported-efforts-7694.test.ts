@@ -15,7 +15,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-7694-effort-sync-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-7694-effort-sync-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = process.env.API_KEY_SECRET || "catalog-test-secret-7694";
 
@@ -24,18 +24,16 @@ const providersDb = await import("../../src/lib/db/providers.ts");
 const modelsDb = await import("../../src/lib/db/models.ts");
 const v1ModelsCatalog = await import("../../src/app/api/v1/models/catalog.ts");
 const { getModelInfo } = await import("../../src/sse/services/model.ts");
-const { normalizeDiscoveredModels, detectSupportedThinkingEfforts } = await import(
-  "../../src/lib/providerModels/modelDiscovery.ts"
-);
+const { normalizeDiscoveredModels, detectSupportedThinkingEfforts } =
+  await import("../../src/lib/providerModels/modelDiscovery.ts");
 const { splitSyncedEffortSuffix } = await import("../../open-sse/services/model.ts");
 const {
   appendSyncedEffortVariants,
   shouldExposeSyncedEffortVariants,
   SYNCED_EFFORT_SKIP_PROVIDERS,
 } = await import("../../open-sse/utils/syncedEffortVariants.ts");
-const { applyDefaultReasoningEffort } = await import(
-  "../../open-sse/services/defaultReasoningEffort.ts"
-);
+const { applyDefaultReasoningEffort } =
+  await import("../../open-sse/services/defaultReasoningEffort.ts");
 
 async function resetStorage() {
   core.resetDbInstance();

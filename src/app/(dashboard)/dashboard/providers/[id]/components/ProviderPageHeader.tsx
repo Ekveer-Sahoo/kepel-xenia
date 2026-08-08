@@ -6,7 +6,6 @@ import ProviderIcon from "@/shared/components/ProviderIcon";
 import { getHeaderIconProviderId, providerText } from "../providerPageHelpers";
 import type { ProviderMessageTranslator } from "../providerPageHelpers";
 import type { ProviderNotice } from "@/lib/providers/catalog";
-import { isKimiPartnerProviderId } from "../../featuredProviders";
 
 interface ProviderInfo {
   id: string;
@@ -33,9 +32,7 @@ interface ProviderPageHeaderProps {
   /**
    * True when `providerInfo.website` was overridden with a Radar default
    * referral link (D28 — referral links / free credits), rather than the
-   * static catalog `website`. Reuses the same discreet "Partner link" note
-   * as the pre-existing Kimi partnership link — both are the same kind of
-   * "this link supports OmniRoute" disclosure.
+   * static catalog `website`. Shows a discreet "Partner link" disclosure note.
    */
   isReferralLink?: boolean;
 }
@@ -50,20 +47,12 @@ export default function ProviderPageHeader({
   t,
   isReferralLink = false,
 }: ProviderPageHeaderProps) {
-  // Kimi (Moonshot AI) official-partnership aff links (2026-07): the header
-  // website link doubles as the CTA for kimi-coding/kimi-web/moonshot's
-  // tracking links (see website field in oauth.ts / web-cookie.ts /
-  // apikey/regional.ts) — flag it with a discreet "Partner link" note so it
-  // reads as a monetized link, not just "visit provider website" like every
-  // other card. UI-only — never affects routing/fallback (featuredProviders.ts).
-  const isKimiPartnerLink = isKimiPartnerProviderId(providerInfo.id);
-  // D28: any Radar-driven default referral gets the exact same discreet
-  // disclosure treatment as the Kimi partner link.
-  const showPartnerNote = isKimiPartnerLink || isReferralLink;
-  const kimiPartnerLinkNote = providerText(
+  // D28: a Radar-driven default referral link gets a discreet disclosure note.
+  const showPartnerNote = isReferralLink;
+  const partnerLinkNote = providerText(
     t,
     "kimiPartnerLinkNote",
-    "Partner link — supports OmniRoute at no extra cost to you"
+    "Partner link — supports Xenia at no extra cost to you"
   );
 
   // Resolve the API-key registration link: prefer apiKeyUrl, fall back to
@@ -119,10 +108,8 @@ export default function ProviderPageHeader({
               rel="noopener noreferrer"
               className="text-3xl font-semibold tracking-tight hover:underline inline-flex items-center gap-2"
               style={{ color: providerInfo.color }}
-              title={showPartnerNote ? kimiPartnerLinkNote : undefined}
-              aria-label={
-                showPartnerNote ? `${providerInfo.name} — ${kimiPartnerLinkNote}` : undefined
-              }
+              title={showPartnerNote ? partnerLinkNote : undefined}
+              aria-label={showPartnerNote ? `${providerInfo.name} — ${partnerLinkNote}` : undefined}
             >
               {providerInfo.name}
               <span className="material-symbols-outlined text-lg opacity-60">open_in_new</span>
@@ -136,7 +123,7 @@ export default function ProviderPageHeader({
             </p>
             {showPartnerNote && providerInfo.website && (
               <span className="text-[10px] font-medium uppercase tracking-wide text-text-muted/70">
-                {kimiPartnerLinkNote}
+                {partnerLinkNote}
               </span>
             )}
             {apiKeyLink}

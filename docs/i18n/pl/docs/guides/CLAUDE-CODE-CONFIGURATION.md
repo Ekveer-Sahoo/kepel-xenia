@@ -1,12 +1,12 @@
 ---
-title: "Claude Code CLI — konfiguracja z OmniRoute"
+title: "Claude Code CLI — konfiguracja z Xenia"
 version: 3.8.40
 lastUpdated: 2026-07-24
 ---
 
-# Claude Code CLI — konfiguracja z OmniRoute
+# Claude Code CLI — konfiguracja z Xenia
 
-Skieruj CLI **Claude Code** (`claude`) na OmniRoute — lokalnie lub na zdalny VPS —
+Skieruj CLI **Claude Code** (`claude`) na Xenia — lokalnie lub na zdalny VPS —
 z profilami per model, na wzór konfiguracji Codex.
 
 ---
@@ -14,15 +14,15 @@ z profilami per model, na wzór konfiguracji Codex.
 ## Szybki start
 
 ```bash
-# Launch Claude Code against a local OmniRoute (auto-detects the active context)
-omniroute launch
+# Launch Claude Code against a local Xenia (auto-detects the active context)
+xenia launch
 
-# Against a remote OmniRoute (after `omniroute connect <host>`, this is automatic)
-omniroute launch --remote http://192.168.0.15:20128 --api-key oma_live_xxx
+# Against a remote Xenia (after `xenia connect <host>`, this is automatic)
+xenia launch --remote http://192.168.0.15:20128 --api-key oma_live_xxx
 
 # Generate per-model profiles, then launch one
-omniroute setup-claude            # writes ~/.claude/profiles/<name>/settings.json
-omniroute launch --profile glm52  # Claude Code using glm/glm-5.2 via OmniRoute
+xenia setup-claude            # writes ~/.claude/profiles/<name>/settings.json
+xenia launch --profile glm52  # Claude Code using glm/glm-5.2 via Xenia
 ```
 
 ---
@@ -35,7 +35,7 @@ endpoint przez zmienne środowiskowe (nie ma flagi `--base-url`):
 | Zmienna                                      | Przeznaczenie                                                                              |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | `ANTHROPIC_BASE_URL`                         | Główny URL bramki (Claude Code dopina `/v1/messages`). **Bez sufiksu `/v1`.**              |
-| `ANTHROPIC_AUTH_TOKEN`                       | Wysyłany jako `Authorization: Bearer …` — użyj tokenu dostępu / klucza API OmniRoute       |
+| `ANTHROPIC_AUTH_TOKEN`                       | Wysyłany jako `Authorization: Bearer …` — użyj tokenu dostępu / klucza API Xenia           |
 | `ANTHROPIC_API_KEY`                          | Alternatywa: wysyłany jako `x-api-key`. Gdy ustawione obie, wygrywa `ANTHROPIC_AUTH_TOKEN` |
 | `ANTHROPIC_MODEL`                            | Wymusza konkretny model (nadpisuje domyślny wybór z pickera `/model`)                      |
 | `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY` | `1` → natywny picker `/model` listuje modele `claude*`/`anthropic*` z `/v1/models`         |
@@ -44,8 +44,8 @@ endpoint przez zmienne środowiskowe (nie ma flagi `--base-url`):
 
 > Zmienne środowiskowe są odczytywane **raz przy starcie** — po zmianie zrestartuj Claude Code.
 
-`omniroute launch` ustawia to wszystko za Ciebie: rozwiązuje bazowy URL + token
-z aktywnego kontekstu (więc `omniroute connect <vps>`, a potem `omniroute launch`
+`xenia launch` ustawia to wszystko za Ciebie: rozwiązuje bazowy URL + token
+z aktywnego kontekstu (więc `xenia connect <vps>`, a potem `xenia launch`
 po prostu działa), sprawdza zdrowie serwera i execuje `claude`.
 
 ---
@@ -54,24 +54,24 @@ po prostu działa), sprawdza zdrowie serwera i execuje `claude`.
 
 Discovery modeli bramki w Claude Code listuje tylko identyfikatory zaczynające się od `claude`
 lub `anthropic`, więc przy `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1` natywny
-picker `/model` zwykle pokazuje **tylko** modele Claude/Anthropic z OmniRoute — `kimi/kimi-k2.6`
+picker `/model` zwykle pokazuje **tylko** modele Claude/Anthropic z Xenia — `kimi/kimi-k2.6`
 lub `glm/glm-5.2` się nie pojawią, mimo że routują poprawnie.
 
-OmniRoute może odzwierciedlić dowolny włączony model (i combo) pod identyfikatorem `claude/…`,
+Xenia może odzwierciedlić dowolny włączony model (i combo) pod identyfikatorem `claude/…`,
 aby przeszedł ten filtr i pojawił się w pickerze:
 
 ```
-kimi/kimi-k2.6            →  claude/kimi/kimi-k2.6      "Kimi K2.6 (OmniRoute)"
-glm/glm-5.2              →  claude/glm/glm-5.2         "GLM 5.2 (OmniRoute)"
+kimi/kimi-k2.6            →  claude/kimi/kimi-k2.6      "Kimi K2.6 (Xenia)"
+glm/glm-5.2              →  claude/glm/glm-5.2         "GLM 5.2 (Xenia)"
 <combo "custo-otimizado"> →  claude/combo/custo-otimizado
 ```
 
-Gdy wybierzesz jeden z nich w Claude Code, OmniRoute zdejmuje opakowanie `claude/`
+Gdy wybierzesz jeden z nich w Claude Code, Xenia zdejmuje opakowanie `claude/`
 z powrotem do prawdziwego id przed routingiem — autentyczny id `claude/<real-claude-model>`
 (właściwy provider Claude OAuth) zawsze pozostaje nietknięty.
 
 **Domyślnie wyłączone** i sterowane trójpoziomową bramką (najbardziej szczegółowy
-wygrywa), więc zwykły OmniRoute nie podwaja katalogu dla klientów, które nie używają
+wygrywa), więc zwykły Xenia nie podwaja katalogu dla klientów, które nie używają
 Claude Code:
 
 | Poziom   | Gdzie                                                                                            |
@@ -103,8 +103,8 @@ dla tej instancji, obok przycisku info o aliasach discovery, z przyciskiem kopio
 ```jsonc
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://<your OmniRoute>:20128",
-    "ANTHROPIC_AUTH_TOKEN": "<your OmniRoute API key>",
+    "ANTHROPIC_BASE_URL": "http://<your Xenia>:20128",
+    "ANTHROPIC_AUTH_TOKEN": "<your Xenia API key>",
     "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
   },
 }
@@ -131,7 +131,7 @@ Claude Code **nie ma natywnych plików profili** (w przeciwieństwie do `~/.code
 Idiomatyczny mechanizm to `CLAUDE_CONFIG_DIR` — osobny katalog konfiguracji na
 profil, każdy z własnym `settings.json`, poświadczeniami, historią i cache.
 
-`omniroute setup-claude` pobiera żywy katalog `/v1/models` i zapisuje jeden
+`xenia setup-claude` pobiera żywy katalog `/v1/models` i zapisuje jeden
 profil na model w `~/.claude/profiles/<name>/settings.json`, używając
 **tych samych nazw co `setup-codex`** (`glm52`, `kimi-k27`, `deepseek-pro`, …):
 
@@ -151,42 +151,42 @@ profil na model w `~/.claude/profiles/<name>/settings.json`, używając
 ```
 
 > **Token autoryzacji nigdy nie jest zapisywany w profilu.** Uruchom z
-> `omniroute launch --profile <name>` (wstrzykuje `ANTHROPIC_AUTH_TOKEN` z
+> `xenia launch --profile <name>` (wstrzykuje `ANTHROPIC_AUTH_TOKEN` z
 > aktywnego kontekstu) albo sam wyeksportuj `ANTHROPIC_AUTH_TOKEN` i uruchom
 > `CLAUDE_CONFIG_DIR=~/.claude/profiles/<name> claude`.
 
-**Auto-sync po discovery modeli (opt-in).** OmniRoute może regenerować te same
+**Auto-sync po discovery modeli (opt-in).** Xenia może regenerować te same
 pliki `~/.claude/profiles/<name>/settings.json` automatycznie, gdy synchronizacja modeli
 providera zmienia żywy katalog — więc nowe/przemianowane modele dostają profile bez ponownego
 uruchamiania komendy. Jest **domyślnie wyłączone**: włącz z **dashboardu CLI Code** („CLI profile
-auto-sync” → Claude Code) albo ustaw `OMNIROUTE_AUTO_SYNC_CLAUDE_PROFILES=true` (honoruje też
+auto-sync” → Claude Code) albo ustaw `XENIA_AUTO_SYNC_CLAUDE_PROFILES=true` (honoruje też
 `CLI_ALLOW_CONFIG_WRITES`, domyślnie włączone). Po włączeniu zapisuje tylko pliki profili; nigdy
 nie zmienia aktywnej/domyślnej konfiguracji Claude, auth ani `~/.claude/settings.json`.
 
 ### Generowanie i używanie profili
 
 ```bash
-# Local OmniRoute
-omniroute setup-claude
+# Local Xenia
+xenia setup-claude
 
 # Remote VPS (bakes the VPS URL into every profile)
-omniroute setup-claude --remote http://192.168.0.15:20128 --api-key oma_live_xxx
+xenia setup-claude --remote http://192.168.0.15:20128 --api-key oma_live_xxx
 
 # Only some providers
-omniroute setup-claude --only glm,kimi
+xenia setup-claude --only glm,kimi
 
 # Preview without writing
-omniroute setup-claude --dry-run
+xenia setup-claude --dry-run
 
 # Launch a profile
-omniroute launch --profile kimi-k27
+xenia launch --profile kimi-k27
 ```
 
 ---
 
 ## Poziomy modeli (opcjonalne)
 
-Claude Code routuje do poziomów możliwości. Zmapuj każdy na model OmniRoute przez env /
+Claude Code routuje do poziomów możliwości. Zmapuj każdy na model Xenia przez env /
 ustawienia, jeśli chcesz innych providerów per poziom:
 
 ```bash
@@ -201,8 +201,8 @@ W przeciwnym razie pojedynczy `ANTHROPIC_MODEL` (to, co ustawiają profile) jest
 
 ## Tryb zdalny
 
-Po uruchomieniu `omniroute connect <host>` (zobacz
-[Tryb zdalny](./REMOTE-MODE.md)), `omniroute launch` i `omniroute setup-claude`
+Po uruchomieniu `xenia connect <host>` (zobacz
+[Tryb zdalny](./REMOTE-MODE.md)), `xenia launch` i `xenia setup-claude`
 automatycznie celują w ten zdalny serwer i używają jego scoped access token —
 bez dodatkowych flag. Nadpisz per wywołanie przez `--remote` / `--api-key`.
 
@@ -211,7 +211,7 @@ bez dodatkowych flag. Nadpisz per wywołanie przez `--remote` / `--api-key`.
 ## Rozwiązywanie problemów
 
 **Claude Code ignoruje bramkę** — potwierdź, że `ANTHROPIC_BASE_URL` **nie ma
-`/v1`**, i zrestartuj `claude` (env jest odczytywane raz przy starcie). `omniroute launch`
+`/v1`**, i zrestartuj `claude` (env jest odczytywane raz przy starcie). `xenia launch`
 robi to za Ciebie.
 
 **Picker `/model` jest pusty / brakuje modeli bramki** — wymaga Claude Code
@@ -222,14 +222,14 @@ v2.1.219+ oraz `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1`. W pickerze pojawi
 **`400 Ambiguous model 'claude-…'`** — Claude Code zawsze wysyła **nieprefiksowane**
 ID modeli (np. `claude-opus-4-8`), więc gdy podłączeni są zarówno provider Claude Code (`cc/…`), jak i
 Claude (`claude/…`), gołe id pasuje do dwóch tras i
-OmniRoute odmawia zgadywania. Napraw na jeden z dwóch sposobów: przypnij prefiksowane id przez
+Xenia odmawia zgadywania. Napraw na jeden z dwóch sposobów: przypnij prefiksowane id przez
 `ANTHROPIC_MODEL=cc/claude-opus-4-8` albo włącz **Prefer Claude Code for
 unprefixed Claude models** — przełącznik na stronie providera Claude albo
-`OMNIROUTE_PREFER_CLAUDE_CODE_FOR_UNPREFIXED_CLAUDE_MODELS=true` (domyślnie wyłączone;
+`XENIA_PREFER_CLAUDE_CODE_FOR_UNPREFIXED_CLAUDE_MODELS=true` (domyślnie wyłączone;
 zobacz [Environment](../reference/ENVIRONMENT.md)) — wtedy gołe ID `claude-*`
 idą do Claude Code. Jawne prefiksy providerów zawsze wygrywają.
 
-**Błędy auth** — profil nie przechowuje tokenu. Użyj `omniroute launch --profile`
+**Błędy auth** — profil nie przechowuje tokenu. Użyj `xenia launch --profile`
 (wstrzykuje go) albo wyeksportuj `ANTHROPIC_AUTH_TOKEN`.
 
 **Profile nie izolują** — każdy profil to osobny `CLAUDE_CONFIG_DIR`;

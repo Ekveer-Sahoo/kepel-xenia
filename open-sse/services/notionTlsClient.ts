@@ -26,7 +26,7 @@ let exitHookInstalled = false;
 
 const NOTION_PROFILE = "chrome_146"; // matches the Chrome UA we send
 const DEFAULT_TIMEOUT_MS =
-  Number.parseInt(process.env.OMNIROUTE_NOTION_TLS_TIMEOUT_MS || "", 10) || 30_000;
+  Number.parseInt(process.env.XENIA_NOTION_TLS_TIMEOUT_MS || "", 10) || 30_000;
 // Grace period added to the binding's wire-level timeout before our JS-level
 // hard timeout fires. Under healthy operation `tls-client-node` honors
 // `timeoutMilliseconds` and rejects on its own; the JS-level race only wins
@@ -34,7 +34,7 @@ const DEFAULT_TIMEOUT_MS =
 // timer can't escape). Keep the grace small so users don't wait noticeably
 // longer than the configured timeout when the binding is dead.
 const HARD_TIMEOUT_GRACE_MS =
-  Number.parseInt(process.env.OMNIROUTE_NOTION_TLS_GRACE_MS || "", 10) || 10_000;
+  Number.parseInt(process.env.XENIA_NOTION_TLS_GRACE_MS || "", 10) || 10_000;
 
 function installExitHook(): void {
   if (exitHookInstalled) return;
@@ -130,7 +130,7 @@ async function getClient(): Promise<{
         const TLSClient = (mod as { TLSClient: new (opts?: Record<string, unknown>) => unknown })
           .TLSClient;
         // Native mode loads the shared library directly via koffi, avoiding the
-        // managed sidecar's localhost HTTP calls that OmniRoute's global fetch
+        // managed sidecar's localhost HTTP calls that Xenia's global fetch
         // proxy patch interferes with.
         const client = new TLSClient(buildNativeTlsClientOptions()) as {
           start: () => Promise<void>;
@@ -193,7 +193,7 @@ export interface TlsFetchOptions {
    *
    * Resolution order:
    *   1. `options.proxyUrl` (per-call override from caller)
-   *   2. `process.env.OMNIROUTE_TLS_PROXY_URL` (single-flag opt-in)
+   *   2. `process.env.XENIA_TLS_PROXY_URL` (single-flag opt-in)
    *   3. `process.env.HTTPS_PROXY` / `HTTP_PROXY` / `ALL_PROXY` (POSIX-standard fallback)
    *
    * The native `tls-client-node` binding does **not** consult Go's

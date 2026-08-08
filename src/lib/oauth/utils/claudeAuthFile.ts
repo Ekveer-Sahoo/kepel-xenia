@@ -8,7 +8,7 @@ import {
   getAccessToken,
   updateProviderCredentials,
 } from "@/sse/services/tokenRefresh";
-import { isUnrecoverableRefreshError } from "@omniroute/open-sse/services/tokenRefresh.ts";
+import { isUnrecoverableRefreshError } from "@xenia/open-sse/services/tokenRefresh.ts";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -172,7 +172,9 @@ export function buildClaudeAuthPayload(connection: ClaudeConnectionLike): Claude
 }
 
 async function resolveFreshClaudeConnection(connectionId: string): Promise<ClaudeConnectionLike> {
-  const connection = (await getCachedProviderConnectionById(connectionId)) as ClaudeConnectionLike | null;
+  const connection = (await getCachedProviderConnectionById(
+    connectionId
+  )) as ClaudeConnectionLike | null;
   if (!connection) {
     throw new ClaudeAuthFileError("Connection not found", 404, "not_found");
   }

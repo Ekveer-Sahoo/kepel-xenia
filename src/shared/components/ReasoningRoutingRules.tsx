@@ -523,7 +523,7 @@ export default function ReasoningRoutingRules({ apiKeyId }: { apiKeyId?: string 
           />
         </div>
         {capabilityWarning && (
-          <p className="text-sm text-amber-600 dark:text-amber-400">{capabilityWarning}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{capabilityWarning}</p>
         )}
         <div className="flex gap-2">
           <Button onClick={save} loading={saving}>

@@ -8,7 +8,7 @@ import { useIsElectron } from "@/shared/hooks/useElectron";
  * Forgot Password Page — Phase 8.2
  *
  * Provides recovery methods:
- * - Web/CLI: CLI reset via omniroute-reset-password command + manual database reset
+ * - Web/CLI: CLI reset via xenia-reset-password command + manual database reset
  * - Electron: Data directory reset instructions
  */
 
@@ -53,15 +53,15 @@ export default function ForgotPasswordPage() {
                     Delete the settings file from the app data directory to reset your password:
                   </p>
                   <ol className="text-sm text-text-muted space-y-2 list-decimal list-inside mb-3">
-                    <li>Quit the OmniRoute desktop app completely</li>
+                    <li>Quit the Xenia desktop app completely</li>
                     <li>
                       Navigate to the app data directory:
                       {dataDir ? (
-                        <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-green-400 border border-white/5 break-all">
+                        <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-gray-400 border border-white/5 break-all">
                           {dataDir}
                         </div>
                       ) : (
-                        <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-green-400 border border-white/5">
+                        <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-gray-400 border border-white/5">
                           <span className="text-text-muted/60">
                             (Check your system app data folder)
                           </span>
@@ -73,7 +73,7 @@ export default function ForgotPasswordPage() {
                       <code className="bg-black/30 px-1 rounded text-text-main">settings.json</code>{" "}
                       ({t("orRemovePasswordHashField")})
                     </li>
-                    <li>Relaunch the OmniRoute desktop app — it will start fresh setup</li>
+                    <li>Relaunch the Xenia desktop app — it will start fresh setup</li>
                   </ol>
                 </div>
               </div>
@@ -82,7 +82,7 @@ export default function ForgotPasswordPage() {
             {/* Electron: Env File Method */}
             <Card className="mb-6">
               <div className="flex items-start gap-4 p-2">
-                <div className="flex items-center justify-center size-10 rounded-lg bg-amber-500/10 text-amber-500 shrink-0 mt-0.5">
+                <div className="flex items-center justify-center size-10 rounded-lg bg-gray-500/10 text-gray-500 shrink-0 mt-0.5">
                   <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
                     settings
                   </span>
@@ -93,20 +93,20 @@ export default function ForgotPasswordPage() {
                     Set a new initial password via the server environment file:
                   </p>
                   <ol className="text-sm text-text-muted space-y-2 list-decimal list-inside mb-3">
-                    <li>Quit the OmniRoute desktop app completely</li>
+                    <li>Quit the Xenia desktop app completely</li>
                     <li>
                       Open{" "}
                       <code className="bg-black/30 px-1 rounded text-text-main">server.env</code> in
                       the data directory
                       {dataDir && (
-                        <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-green-400 border border-white/5 break-all">
+                        <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-gray-400 border border-white/5 break-all">
                           {dataDir}/server.env
                         </div>
                       )}
                     </li>
                     <li>
                       Add or update:
-                      <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-green-400 border border-white/5">
+                      <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-gray-400 border border-white/5">
                         INITIAL_PASSWORD={t("newPasswordPlaceholder")}
                       </div>
                     </li>
@@ -115,7 +115,7 @@ export default function ForgotPasswordPage() {
                       <code className="bg-black/30 px-1 rounded text-text-main">settings.json</code>{" "}
                       from the data directory
                     </li>
-                    <li>Relaunch the OmniRoute desktop app</li>
+                    <li>Relaunch the Xenia desktop app</li>
                   </ol>
                 </div>
               </div>
@@ -134,8 +134,8 @@ export default function ForgotPasswordPage() {
                 <div className="flex-1">
                   <h2 className="text-lg font-semibold mb-1">{t("methodCliTitle")}</h2>
                   <p className="text-sm text-text-muted mb-3">{t("methodCliDescription")}</p>
-                  <div className="bg-black/30 rounded-lg p-3 mb-3 font-mono text-sm text-green-400 border border-white/5">
-                    <code>npx omniroute reset-password</code>
+                  <div className="bg-black/30 rounded-lg p-3 mb-3 font-mono text-sm text-gray-400 border border-white/5">
+                    <code>npx xenia reset-password</code>
                   </div>
                   <p className="text-xs text-text-muted">{t("methodCliHint")}</p>
                 </div>
@@ -145,7 +145,7 @@ export default function ForgotPasswordPage() {
             {/* Method 2: Database Reset */}
             <Card className="mb-6">
               <div className="flex items-start gap-4 p-2">
-                <div className="flex items-center justify-center size-10 rounded-lg bg-amber-500/10 text-amber-500 shrink-0 mt-0.5">
+                <div className="flex items-center justify-center size-10 rounded-lg bg-gray-500/10 text-gray-500 shrink-0 mt-0.5">
                   <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
                     database
                   </span>
@@ -159,7 +159,7 @@ export default function ForgotPasswordPage() {
                       {t("setPasswordInYour")}{" "}
                       <code className="bg-black/30 px-1 rounded text-text-main">.env</code>{" "}
                       {t("fileLabelSuffix")}
-                      <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-green-400 border border-white/5">
+                      <div className="bg-black/30 rounded-lg p-2 mt-1 font-mono text-xs text-gray-400 border border-white/5">
                         INITIAL_PASSWORD={t("newPasswordPlaceholder")}
                       </div>
                     </li>

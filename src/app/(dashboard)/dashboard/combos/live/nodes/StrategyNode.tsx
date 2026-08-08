@@ -5,25 +5,25 @@ import { Handle, Position, type NodeProps } from "@xyflow/react";
 // ── Strategy color map ────────────────────────────────────────────────────
 
 const STRATEGY_COLORS: Record<string, string> = {
-  priority: "#3b82f6",
-  weighted: "#8b5cf6",
-  "round-robin": "#06b6d4",
-  "fill-first": "#f59e0b",
-  p2c: "#10b981",
-  random: "#6b7280",
-  "least-used": "#84cc16",
-  "cost-optimized": "#22c55e",
-  "reset-aware": "#f97316",
-  "reset-window": "#f97316",
-  "strict-random": "#a855f7",
-  auto: "#6366f1",
-  lkgp: "#ec4899",
-  "context-optimized": "#14b8a6",
-  "context-relay": "#0ea5e9",
+  priority: "#7a7a7a",
+  weighted: "#7c7c7c",
+  "round-robin": "#858585",
+  "fill-first": "#a7a7a7",
+  p2c: "#808080",
+  random: "#727272",
+  "least-used": "#a2a2a2",
+  "cost-optimized": "#898989",
+  "reset-aware": "#909090",
+  "reset-window": "#909090",
+  "strict-random": "#808080",
+  auto: "#757575",
+  lkgp: "#828282",
+  "context-optimized": "#858585",
+  "context-relay": "#808080",
 };
 
 function getStrategyColor(strategy: string): string {
-  return STRATEGY_COLORS[strategy] ?? "#6b7280";
+  return STRATEGY_COLORS[strategy] ?? "#727272";
 }
 
 // ── Node data shape ───────────────────────────────────────────────────────

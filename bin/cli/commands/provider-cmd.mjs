@@ -6,13 +6,13 @@ export function registerProvider(program) {
     .allowExcessArguments()
     .action(() => {
       console.log(`
-  Use \`omniroute providers\` for the full provider management interface:
+  Use \`xenia providers\` for the full provider management interface:
 
-    omniroute providers available   — show provider catalog
-    omniroute providers list        — list configured connections
-    omniroute providers test <name> — test a provider connection
-    omniroute providers test-all    — test all active connections
-    omniroute providers validate    — validate local configuration
+    xenia providers available   — show provider catalog
+    xenia providers list        — list configured connections
+    xenia providers test <name> — test a provider connection
+    xenia providers test-all    — test all active connections
+    xenia providers validate    — validate local configuration
 `);
     });
 }

@@ -146,7 +146,7 @@ test("Responses -> Chat passes through web_search_preview tool (web_search famil
 });
 
 test("Responses -> Chat strips background flag and degrades to synchronous execution", () => {
-  // Previously this threw 400 unsupported_feature. OmniRoute is a forward proxy
+  // Previously this threw 400 unsupported_feature. Xenia is a forward proxy
   // and cannot host the deferred run + poll contract, so background=true is
   // silently dropped and the request runs synchronously. Clients that set the
   // flag opportunistically (Capy Captain Pro, Codex agents) work unchanged.
@@ -536,7 +536,7 @@ test("Chat -> Responses preserves prompt_cache_key and session affinity fields",
     {
       messages: [{ role: "user", content: "Hello" }],
       prompt_cache_key: "cache-key-1",
-      session_id: "omniroute-session-abc",
+      session_id: "xenia-session-abc",
       conversation_id: "conv-123",
     },
     false,
@@ -544,7 +544,7 @@ test("Chat -> Responses preserves prompt_cache_key and session affinity fields",
   );
 
   (assert as any).equal((result as any).prompt_cache_key, "cache-key-1");
-  (assert as any).equal((result as any).session_id, "omniroute-session-abc");
+  (assert as any).equal((result as any).session_id, "xenia-session-abc");
   assert.equal((result as any).conversation_id, "conv-123");
   assert.equal((result as any).store, undefined);
 });
@@ -901,7 +901,7 @@ test("Responses -> Chat: unknown tool type still throws unsupported_feature (no 
 
 test("Responses -> Chat: tool_search does not throw (issue #2766)", () => {
   // Codex newer clients send tool_search as a Responses API built-in.
-  // OmniRoute must not return 400 — it should silently drop the tool_search entry.
+  // Xenia must not return 400 — it should silently drop the tool_search entry.
   assert.doesNotThrow(() =>
     openaiResponsesToOpenAIRequest(
       "gpt-4o",
@@ -925,7 +925,12 @@ test("Responses -> Chat: tool_search is mapped to a Chat function tool, not drop
       input: [{ role: "user", content: [{ type: "input_text", text: "hello" }] }],
       tools: [
         { type: "tool_search", name: "search" },
-        { type: "function", name: "foo", description: "A function", parameters: { type: "object" } },
+        {
+          type: "function",
+          name: "foo",
+          description: "A function",
+          parameters: { type: "object" },
+        },
       ],
     },
     false,
@@ -934,7 +939,11 @@ test("Responses -> Chat: tool_search is mapped to a Chat function tool, not drop
 
   const tools = result.tools as any[];
   assert.ok(Array.isArray(tools), "tools array must be present");
-  assert.equal(tools.some((t) => t.type === "tool_search"), false, "raw tool_search type must not survive");
+  assert.equal(
+    tools.some((t) => t.type === "tool_search"),
+    false,
+    "raw tool_search type must not survive"
+  );
   assert.equal(tools.length, 2, "mapped tool_search function + the function tool must remain");
   const toolSearch = tools.find((t) => t.function?.name === "search");
   assert.ok(toolSearch, "tool_search must be mapped to a Chat function tool named after it");

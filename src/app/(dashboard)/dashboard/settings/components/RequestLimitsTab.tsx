@@ -149,13 +149,13 @@ export default function RequestLimitsTab() {
             </span>
           )}
         </div>
-        {validationError && <p className="text-xs text-red-500">{validationError}</p>}
+        {validationError && <p className="text-xs text-gray-500">{validationError}</p>}
         {message && (
           <p
             className={`text-xs ${
               message.type === "success"
-                ? "text-green-600 dark:text-green-400"
-                : "text-red-600 dark:text-red-400"
+                ? "text-gray-600 dark:text-gray-400"
+                : "text-gray-600 dark:text-gray-400"
             }`}
           >
             {message.text}

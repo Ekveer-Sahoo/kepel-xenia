@@ -49,15 +49,15 @@ export function HomeProviderTopologySection({
         </div>
         <div className="flex items-center gap-3 text-[11px] text-text-muted">
           <span className="flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-green-500" />
+            <span className="size-2 rounded-full bg-gray-500" />
             {tCommon("active")}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-amber-500" />
+            <span className="size-2 rounded-full bg-gray-500" />
             {tSettings("recent")}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-red-500" />
+            <span className="size-2 rounded-full bg-gray-500" />
             {tAnalytics("modelStatusError")}
           </span>
         </div>

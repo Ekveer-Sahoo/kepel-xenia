@@ -1,9 +1,9 @@
 openapi: 3.1.0
 info:
-  title: OmniRoute API
+  title: Xenia API
   version: 3.8.50
   description: |
-    OmniRoute is a local-first AI API proxy router. It provides an OpenAI-compatible
+    Xenia is a local-first AI API proxy router. It provides an OpenAI-compatible
     endpoint that routes requests to multiple AI providers with load balancing,
     failover, and usage tracking.
 
@@ -14,7 +14,7 @@ info:
     All proxy endpoints require a Bearer token (API key managed via the dashboard).
     Management endpoints are protected when `requireLogin` is enabled.
   contact:
-    name: OmniRoute
+    name: Xenia
   license:
     name: MIT
 
@@ -87,7 +87,7 @@ tags:
   - name: Agent Skills
     description: >-
       Agent Skills catalog — 42 SKILL.md files (22 REST API + 20 CLI) for external agents,
-      MCP clients, and A2A orchestrators to discover OmniRoute capabilities.
+      MCP clients, and A2A orchestrators to discover Xenia capabilities.
   - name: AgentBridge
     description: >-
       MITM proxy manager for 9 IDE agents (Antigravity, Kiro, Copilot, Codex, Cursor, Zed,
@@ -1098,61 +1098,61 @@ paths:
         "200":
           description: Chat completion response (or SSE stream)
           headers:
-            X-OmniRoute-Response-Cost:
+            X-Xenia-Response-Cost:
               schema:
                 type: string
               description: Request cost in USD, fixed 10 decimals (e.g. `0.0001234500`; `0.0000000000` for free/unpriced).
-            X-OmniRoute-Tokens-In:
+            X-Xenia-Tokens-In:
               schema:
                 type: string
               description: Input (prompt) token count.
-            X-OmniRoute-Tokens-Out:
+            X-Xenia-Tokens-Out:
               schema:
                 type: string
               description: Output (completion) token count.
-            X-OmniRoute-Model:
+            X-Xenia-Model:
               schema:
                 type: string
               description: Resolved model.
-            X-OmniRoute-Provider:
+            X-Xenia-Provider:
               schema:
                 type: string
               description: Resolved provider alias.
-            X-OmniRoute-Latency-Ms:
+            X-Xenia-Latency-Ms:
               schema:
                 type: string
               description: Handler latency in milliseconds.
-            X-OmniRoute-Cache-Hit:
+            X-Xenia-Cache-Hit:
               schema:
                 type: string
                 enum: ["true", "false"]
               description: Whether the response was served from cache.
-            X-OmniRoute-Fallback-Attempts:
+            X-Xenia-Fallback-Attempts:
               schema:
                 type: string
               description: Number of fallback attempts (only present when > 0).
-            X-OmniRoute-Decision:
+            X-Xenia-Decision:
               schema:
                 type: string
               description: >-
                 Routing decision trace: `strategy=<name>; provider=<alias>; latency_ms=<n>`.
                 `<name>` is the combo strategy (e.g. `priority`, `weighted`, `fusion`) or
                 `single` for a non-combo request. Emitted on every completion response.
-            X-OmniRoute-Request-Id:
+            X-Xenia-Request-Id:
               schema:
                 type: string
               description: Request correlation id (present when known).
-            X-OmniRoute-Version:
+            X-Xenia-Version:
               schema:
                 type: string
-              description: OmniRoute build version (always present).
-            X-OmniRoute-Cost-Saved:
+              description: Xenia build version (always present).
+            X-Xenia-Cost-Saved:
               schema:
                 type: string
               description: >-
                 On a semantic-cache HIT, the original (would-have-been) cost in USD that
                 the cache avoided (fixed 10 decimals). Present only on cache hits;
-                X-OmniRoute-Response-Cost is 0 for the same response (incremental cost).
+                X-Xenia-Response-Cost is 0 for the same response (incremental cost).
           content:
             application/json:
               schema:
@@ -1260,9 +1260,9 @@ paths:
         "200":
           description: >-
             Message response (or SSE stream). Non-streaming success responses
-            carry the `X-OmniRoute-*` cost-telemetry headers (see
-            `POST /api/v1/chat/completions`), including `X-OmniRoute-Request-Id`
-            and `X-OmniRoute-Version`.
+            carry the `X-Xenia-*` cost-telemetry headers (see
+            `POST /api/v1/chat/completions`), including `X-Xenia-Request-Id`
+            and `X-Xenia-Version`.
         "401":
           $ref: "#/components/responses/Unauthorized"
 
@@ -1299,9 +1299,9 @@ paths:
         "200":
           description: >-
             Response object or SSE stream. Non-streaming success responses carry
-            the `X-OmniRoute-*` cost-telemetry headers (see
-            `POST /api/v1/chat/completions`), including `X-OmniRoute-Request-Id`
-            and `X-OmniRoute-Version`.
+            the `X-Xenia-*` cost-telemetry headers (see
+            `POST /api/v1/chat/completions`), including `X-Xenia-Request-Id`
+            and `X-Xenia-Version`.
         "401":
           $ref: "#/components/responses/Unauthorized"
 
@@ -1366,7 +1366,7 @@ paths:
       responses:
         "200":
           description: >-
-            Embedding vectors. Success responses carry the `X-OmniRoute-*`
+            Embedding vectors. Success responses carry the `X-Xenia-*`
             cost-telemetry headers (see `POST /api/v1/chat/completions`); media
             cost is computed per modality when pricing is available, otherwise
             `0` (fail-open).
@@ -1420,7 +1420,7 @@ paths:
       responses:
         "200":
           description: >-
-            Generated images. Success responses carry the `X-OmniRoute-*`
+            Generated images. Success responses carry the `X-Xenia-*`
             cost-telemetry headers (see `POST /api/v1/chat/completions`); image
             cost is computed per image when pricing is available, otherwise `0`
             (fail-open).
@@ -1471,7 +1471,7 @@ paths:
       responses:
         "200":
           description: >-
-            Audio data. Success responses carry the `X-OmniRoute-*`
+            Audio data. Success responses carry the `X-Xenia-*`
             cost-telemetry headers (see `POST /api/v1/chat/completions`); speech
             cost is computed per character when pricing is available, otherwise
             `0` (fail-open).
@@ -1499,7 +1499,7 @@ paths:
       responses:
         "200":
           description: >-
-            Transcription result. Success responses carry the `X-OmniRoute-*`
+            Transcription result. Success responses carry the `X-Xenia-*`
             cost-telemetry headers (see `POST /api/v1/chat/completions`);
             transcription cost is computed per second when pricing is available,
             otherwise `0` (fail-open).
@@ -1528,7 +1528,7 @@ paths:
       responses:
         "200":
           description: >-
-            Moderation result. Success responses carry the `X-OmniRoute-*`
+            Moderation result. Success responses carry the `X-Xenia-*`
             cost-telemetry headers (see `POST /api/v1/chat/completions`);
             moderations are always cost `0` (free).
 
@@ -1558,7 +1558,7 @@ paths:
       responses:
         "200":
           description: >-
-            Reranked documents. Success responses carry the `X-OmniRoute-*`
+            Reranked documents. Success responses carry the `X-Xenia-*`
             cost-telemetry headers (see `POST /api/v1/chat/completions`); rerank
             cost is computed per search-unit when pricing is available,
             otherwise `0` (fail-open).
@@ -3798,7 +3798,7 @@ paths:
       tags: [Embedded Services]
       summary: Toggle 9Router auto-start
       description: >-
-        When enabled, 9Router starts automatically on the next OmniRoute boot.
+        When enabled, 9Router starts automatically on the next Xenia boot.
         **LOCAL_ONLY** — loopback only.
       requestBody:
         required: true
@@ -3828,8 +3828,8 @@ paths:
       tags: [Embedded Services]
       summary: Toggle 9Router auto-restart-when-adopted
       description: >-
-        When enabled, an externally-adopted (not OmniRoute-spawned) 9Router
-        process is restarted under OmniRoute's own supervisor on the next
+        When enabled, an externally-adopted (not Xenia-spawned) 9Router
+        process is restarted under Xenia's own supervisor on the next
         health-check cycle instead of being left as adopted-only.
         **LOCAL_ONLY** — loopback only.
       requestBody:
@@ -3986,7 +3986,7 @@ paths:
       tags: [Embedded Services]
       summary: Toggle CLIProxyAPI auto-start
       description: >-
-        When enabled, CLIProxyAPI starts automatically on the next OmniRoute boot.
+        When enabled, CLIProxyAPI starts automatically on the next Xenia boot.
         **LOCAL_ONLY** — loopback only.
       requestBody:
         required: true
@@ -4016,8 +4016,8 @@ paths:
       tags: [Embedded Services]
       summary: Toggle CLIProxyAPI auto-restart-when-adopted
       description: >-
-        When enabled, an externally-adopted (not OmniRoute-spawned) CLIProxyAPI
-        process is restarted under OmniRoute's own supervisor on the next
+        When enabled, an externally-adopted (not Xenia-spawned) CLIProxyAPI
+        process is restarted under Xenia's own supervisor on the next
         health-check cycle instead of being left as adopted-only.
         **LOCAL_ONLY** — loopback only.
       requestBody:
@@ -4173,7 +4173,7 @@ paths:
       tags: [Embedded Services]
       summary: Toggle Mux auto-start
       description: >-
-        When enabled, Mux starts automatically on the next OmniRoute boot.
+        When enabled, Mux starts automatically on the next Xenia boot.
         **LOCAL_ONLY** — loopback only.
       requestBody:
         required: true
@@ -4203,8 +4203,8 @@ paths:
       tags: [Embedded Services]
       summary: Toggle Mux auto-restart-when-adopted
       description: >-
-        When enabled, an externally-adopted (not OmniRoute-spawned) Mux
-        process is restarted under OmniRoute's own supervisor on the next
+        When enabled, an externally-adopted (not Xenia-spawned) Mux
+        process is restarted under Xenia's own supervisor on the next
         health-check cycle instead of being left as adopted-only.
         **LOCAL_ONLY** — loopback only.
       requestBody:
@@ -4317,7 +4317,7 @@ paths:
       tags: [Embedded Services]
       summary: Toggle Bifrost auto-start
       description: >-
-        When enabled, Bifrost starts automatically on the next OmniRoute boot.
+        When enabled, Bifrost starts automatically on the next Xenia boot.
         **LOCAL_ONLY** — loopback only.
       requestBody:
         required: true
@@ -4340,8 +4340,8 @@ paths:
       tags: [Embedded Services]
       summary: Toggle Bifrost auto-restart-when-adopted
       description: >-
-        When enabled, an externally-adopted (not OmniRoute-spawned) Bifrost
-        process is restarted under OmniRoute's own supervisor on the next
+        When enabled, an externally-adopted (not Xenia-spawned) Bifrost
+        process is restarted under Xenia's own supervisor on the next
         health-check cycle instead of being left as adopted-only.
         **LOCAL_ONLY** — loopback only.
       requestBody:
@@ -4509,7 +4509,7 @@ paths:
       tags: [Embedded Services]
       summary: Toggle Dario auto-start
       description: >-
-        When enabled, Dario starts automatically on the next OmniRoute boot.
+        When enabled, Dario starts automatically on the next Xenia boot.
         **LOCAL_ONLY** — loopback only.
       requestBody:
         required: true
@@ -4534,8 +4534,8 @@ paths:
       tags: [Embedded Services]
       summary: Toggle Dario auto-restart-when-adopted
       description: >-
-        When enabled, an externally-adopted (not OmniRoute-spawned) Dario process
-        is restarted under OmniRoute's own supervisor on the next health-check
+        When enabled, an externally-adopted (not Xenia-spawned) Dario process
+        is restarted under Xenia's own supervisor on the next health-check
         cycle instead of being left as adopted-only.
         **LOCAL_ONLY** — loopback only.
       requestBody:
@@ -4705,12 +4705,12 @@ paths:
         "502":
           description: Dario did not respond or Dario is not running
 
-  /api/services/dario/admin/import-from-omniroute:
+  /api/services/dario/admin/import-from-xenia:
     get:
       tags: [Embedded Services]
-      summary: List OmniRoute claude connections eligible for Dario import
+      summary: List Xenia claude connections eligible for Dario import
       description: >-
-        Returns eligible OmniRoute `claude` OAuth provider connections (metadata
+        Returns eligible Xenia `claude` OAuth provider connections (metadata
         only — id/name/email/org tier, never tokens) so the UI can offer a picker
         when more than one exists. **LOCAL_ONLY** — loopback only.
       responses:
@@ -4743,7 +4743,7 @@ paths:
           description: Missing or invalid admin auth
     post:
       tags: [Embedded Services]
-      summary: Import an OmniRoute claude connection's OAuth tokens into Dario
+      summary: Import an Xenia claude connection's OAuth tokens into Dario
       description: >-
         Writes the source connection's access/refresh token pair directly into
         Dario's own account-file store (`~/.dario/accounts/<alias>.json`), reusing
@@ -4946,7 +4946,7 @@ paths:
     post:
       tags: [Cloud]
       summary: Authenticate with cloud worker
-      description: Authenticates with the OmniRoute cloud worker for remote access.
+      description: Authenticates with the Xenia cloud worker for remote access.
       requestBody:
         required: true
         content:
@@ -6039,7 +6039,7 @@ paths:
   /api/tools/traffic-inspector/requests/{id}/replay:
     post:
       tags: [Traffic Inspector]
-      summary: Replay a captured request through OmniRoute router
+      summary: Replay a captured request through Xenia router
       description: Re-executes the original request body against /v1/chat/completions. Consumes quota.
       parameters:
         - name: id
@@ -6434,7 +6434,7 @@ paths:
       summary: List agent skills catalog
       description: |
         Returns the full 42-entry Agent Skills catalog with optional filtering.
-        Skills describe how to use OmniRoute's REST API and CLI — they are structured
+        Skills describe how to use Xenia's REST API and CLI — they are structured
         SKILL.md documentation files discoverable by external agents, MCP clients, and
         A2A orchestrators. No authentication required.
       parameters:
@@ -6659,7 +6659,7 @@ paths:
       description: >-
         Mistral OCR–compatible document OCR endpoint. Accepts a JSON body
         referencing a document/image and returns extracted text. Success
-        responses carry the `X-OmniRoute-*` cost-telemetry headers.
+        responses carry the `X-Xenia-*` cost-telemetry headers.
       security:
         - BearerAuth: []
       requestBody:
@@ -6691,7 +6691,7 @@ paths:
         OpenAI Whisper–compatible audio translation (multipart/form-data).
         Unlike `/api/v1/audio/transcriptions`, output is always English
         regardless of the source language. Success responses carry the
-        `X-OmniRoute-*` cost-telemetry headers.
+        `X-Xenia-*` cost-telemetry headers.
       security:
         - BearerAuth: []
       requestBody:
@@ -6804,8 +6804,8 @@ paths:
     get:
       tags:
         - CLI Tools
-      summary: Read Crush CLI OmniRoute config
-      description: Local-only. Reads the OmniRoute provider block in Crush's config.
+      summary: Read Crush CLI Xenia config
+      description: Local-only. Reads the Xenia provider block in Crush's config.
       x-internal: true
       responses:
         "200":
@@ -6813,8 +6813,8 @@ paths:
     post:
       tags:
         - CLI Tools
-      summary: Write Crush CLI OmniRoute config
-      description: Local-only. Registers OmniRoute as an `openai-compat` provider in Crush's config.
+      summary: Write Crush CLI Xenia config
+      description: Local-only. Registers Xenia as an `openai-compat` provider in Crush's config.
       x-internal: true
       responses:
         "200":
@@ -6822,8 +6822,8 @@ paths:
     delete:
       tags:
         - CLI Tools
-      summary: Remove OmniRoute from Crush CLI config
-      description: Local-only. Removes the OmniRoute provider block from Crush's config.
+      summary: Remove Xenia from Crush CLI config
+      description: Local-only. Removes the Xenia provider block from Crush's config.
       x-internal: true
       responses:
         "200":
@@ -6832,9 +6832,9 @@ paths:
     get:
       tags:
         - CLI Tools
-      summary: Read CodeWhale CLI OmniRoute config
+      summary: Read CodeWhale CLI Xenia config
       description: >-
-        Local-only. Reads the OmniRoute config block from
+        Local-only. Reads the Xenia config block from
         `~/.codewhale/config.toml` (with `~/.deepseek/config.toml` legacy
         fallback).
       x-internal: true
@@ -6844,8 +6844,8 @@ paths:
     post:
       tags:
         - CLI Tools
-      summary: Write CodeWhale CLI OmniRoute config
-      description: Local-only. Writes the OmniRoute config block in CodeWhale TOML format.
+      summary: Write CodeWhale CLI Xenia config
+      description: Local-only. Writes the Xenia config block in CodeWhale TOML format.
       x-internal: true
       responses:
         "200":
@@ -6853,8 +6853,8 @@ paths:
     delete:
       tags:
         - CLI Tools
-      summary: Remove OmniRoute from CodeWhale CLI config
-      description: Local-only. Removes the OmniRoute config block from CodeWhale's config.
+      summary: Remove Xenia from CodeWhale CLI config
+      description: Local-only. Removes the Xenia config block from CodeWhale's config.
       x-internal: true
       responses:
         "200":
@@ -6865,7 +6865,7 @@ components:
     BearerAuth:
       type: http
       scheme: bearer
-      description: API key obtained from the OmniRoute dashboard
+      description: API key obtained from the Xenia dashboard
     ManagementSessionAuth:
       type: apiKey
       in: cookie
@@ -7182,7 +7182,7 @@ components:
     AgentSkill:
       type: object
       description: >-
-        Single entry in the Agent Skills catalog. Describes one OmniRoute REST API surface
+        Single entry in the Agent Skills catalog. Describes one Xenia REST API surface
         (category: api) or CLI subcommand group (category: cli) with a canonical ID and a
         link to its SKILL.md documentation file.
       required: [id, name, description, category, area, rawUrl, githubUrl]
@@ -7238,12 +7238,12 @@ components:
           type: string
           format: uri
           description: GitHub raw URL of the SKILL.md file
-          example: "https://raw.githubusercontent.com/diegosouzapw/OmniRoute/refs/heads/main/skills/omni-providers/SKILL.md"
+          example: "https://raw.githubusercontent.com/diegosouzapw/Xenia/refs/heads/main/skills/omni-providers/SKILL.md"
         githubUrl:
           type: string
           format: uri
           description: GitHub blob URL for viewing the SKILL.md in the browser
-          example: "https://github.com/diegosouzapw/OmniRoute/blob/main/skills/omni-providers/SKILL.md"
+          example: "https://github.com/diegosouzapw/Xenia/blob/main/skills/omni-providers/SKILL.md"
 
     SkillCoverage:
       type: object

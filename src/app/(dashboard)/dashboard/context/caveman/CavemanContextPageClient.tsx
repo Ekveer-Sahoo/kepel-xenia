@@ -123,7 +123,7 @@ export default function CavemanContextPageClient() {
     [t("savingsPercent"), `${cavemanStats?.avgSavingsPct ?? analytics?.avgSavingsPct ?? 0}%`],
     [t("avgLatency"), `${analytics?.avgDurationMs ?? 0}ms`],
   ];
-  const previewPrompt = `[OmniRoute Caveman Output Mode]\n${t(`preview.${outputMode.intensity}`)}`;
+  const previewPrompt = `[Xenia Caveman Output Mode]\n${t(`preview.${outputMode.intensity}`)}`;
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
@@ -214,7 +214,7 @@ export default function CavemanContextPageClient() {
       </section>
 
       {!masterEnabled && (
-        <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-700 dark:text-amber-300 flex items-start gap-2">
+        <div className="rounded-lg border border-gray-500/30 bg-gray-500/10 px-4 py-3 text-sm text-gray-700 dark:text-gray-300 flex items-start gap-2">
           <span className="material-symbols-outlined text-[18px]">info</span>
           <p>{t("masterDisabledWarning")}</p>
         </div>

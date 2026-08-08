@@ -1,5 +1,5 @@
-import { providerUsesAuthoritativeLiveCatalog } from "@omniroute/open-sse/config/providerRegistry";
-import { PROVIDER_ID_TO_ALIAS } from "@omniroute/open-sse/config/providerModels.ts";
+import { providerUsesAuthoritativeLiveCatalog } from "@xenia/open-sse/config/providerRegistry";
+import { PROVIDER_ID_TO_ALIAS } from "@xenia/open-sse/config/providerModels.ts";
 import {
   getSyncedAvailableModels,
   getSyncedAvailableModelsByConnection,

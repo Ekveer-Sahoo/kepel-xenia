@@ -1,7 +1,7 @@
 /**
  * Integration tests for /api/cli-tools/letta-settings
  *
- * Letta configures OmniRoute as its "lmstudio" provider (localModelDiscovery:
+ * Letta configures Xenia as its "lmstudio" provider (localModelDiscovery:
  * openai-compatible auto-discovers models from /v1/models). The route shells
  * out to `which letta` to detect the CLI install, so it is classified
  * local-only in routeGuard.ts (Hard Rules #15 + #17) AND guarded by
@@ -14,7 +14,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-letta-settings-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-letta-settings-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = "test-api-key-secret-letta";
 process.env.JWT_SECRET = "test-jwt-secret-letta";
@@ -22,9 +22,7 @@ process.env.JWT_SECRET = "test-jwt-secret-letta";
 const core = await import("../../src/lib/db/core.ts");
 const localDb = await import("../../src/lib/localDb.ts");
 
-const { GET, POST, DELETE } = await import(
-  "../../src/app/api/cli-tools/letta-settings/route.ts"
-);
+const { GET, POST, DELETE } = await import("../../src/app/api/cli-tools/letta-settings/route.ts");
 
 let tmpHome: string;
 let origHome: string | undefined;
@@ -87,7 +85,7 @@ test("letta-settings GET: treats an existing ~/.letta directory as installed", a
   assert.equal(res.status, 200);
   const body = await res.json();
   assert.equal(body.installed, true);
-  assert.equal(body.hasOmniRoute, false);
+  assert.equal(body.hasXenia, false);
 });
 
 // ── Test 4: POST with invalid body → 400 ─────────────────────────────────────
@@ -126,7 +124,7 @@ test("letta-settings POST: writes the lmstudio provider entry for a fresh instal
   assert.equal(authFile.providers.lmstudio.auth.key, "sk-test-letta");
 });
 
-// ── Test 6: POST refuses to overwrite an existing non-OmniRoute lmstudio config ──
+// ── Test 6: POST refuses to overwrite an existing non-Xenia lmstudio config ──
 
 test("letta-settings POST: 409 when lmstudio is already configured for real LM Studio", async () => {
   const providersDir = path.join(tmpHome, ".letta", "lc-local-backend", "providers");
@@ -151,7 +149,7 @@ test("letta-settings POST: 409 when lmstudio is already configured for real LM S
   assert.equal(body.conflict, true);
 });
 
-// ── Test 7: DELETE → removes the OmniRoute lmstudio config ──────────────────
+// ── Test 7: DELETE → removes the Xenia lmstudio config ──────────────────
 
 test("letta-settings DELETE: removes the lmstudio provider written by POST", async () => {
   await POST(

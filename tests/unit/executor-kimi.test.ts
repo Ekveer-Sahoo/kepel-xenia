@@ -33,8 +33,8 @@ function credentials(
   return {
     ...auth,
     providerSpecificData: {
-      _omnirouteKimiTargetFormat: targetFormat,
-      _omnirouteKimiThinking: thinking,
+      _xeniaKimiTargetFormat: targetFormat,
+      _xeniaKimiThinking: thinking,
       deviceId: "123456781234123412341234567890ab",
       deviceName: "test-host",
       deviceModel: "test-model",

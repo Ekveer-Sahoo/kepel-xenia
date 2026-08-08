@@ -195,7 +195,7 @@ export default function PassthroughModelRow({
             <button
               onClick={() => onTestModel(modelId, fullModel)}
               disabled={testingModel}
-              className={`rounded p-0.5 hover:bg-sidebar transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${testStatus === "ok" ? "text-green-500" : testStatus === "quota" ? "text-amber-500" : testStatus === "error" ? "text-red-500" : "text-text-muted hover:text-primary"}`}
+              className={`rounded p-0.5 hover:bg-sidebar transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${testStatus === "ok" ? "text-gray-500" : testStatus === "quota" ? "text-gray-500" : testStatus === "error" ? "text-gray-500" : "text-text-muted hover:text-primary"}`}
               title={
                 testingModel
                   ? t("testingModel")
@@ -256,7 +256,7 @@ export default function PassthroughModelRow({
           {onDeleteAlias && (
             <button
               onClick={onDeleteAlias}
-              className="rounded p-1 text-red-500 hover:bg-red-50"
+              className="rounded p-1 text-gray-500 hover:bg-gray-50"
               title={t("removeModel")}
             >
               <span className="material-symbols-outlined text-sm">delete</span>

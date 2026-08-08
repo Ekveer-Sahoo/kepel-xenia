@@ -23,10 +23,10 @@
  * literal in the className string, so it cannot reference this constant
  * directly) — keep them in sync with this value if it ever changes.
  */
-export const KIMI_BRAND_COLOR = "#1783FF";
+export const KIMI_BRAND_COLOR = "#717171";
 
 /** Cheaper Inference brand green (the accent stroke in its logomark). */
-export const CHEAPERINFERENCE_BRAND_COLOR = "#31f889";
+export const CHEAPERINFERENCE_BRAND_COLOR = "#b0b0b0";
 
 /**
  * Every Kimi/Moonshot dashboard-catalog provider id (`src/shared/constants/providers/`),
@@ -41,13 +41,9 @@ export const CHEAPERINFERENCE_BRAND_COLOR = "#31f889";
  *  - "kimi-web"           Kimi Web — web-cookie category (visible card)
  *  - "moonshot"           Moonshot AI — apikey category (visible card)
  */
-const KIMI_PROVIDER_IDS: readonly string[] = [
-  "kimi",
-  "kimi-coding",
-  "kimi-coding-apikey",
-  "kimi-web",
-  "moonshot",
-];
+// Kimi/Moonshot sponsor treatment removed — no provider gets the special
+// pinning/brand-accent/"Partner link" disclosure for this family anymore.
+const KIMI_PROVIDER_IDS: readonly string[] = [];
 
 /** Cheaper Inference (api.cheaperinference.com) — apikey category, single id. */
 const CHEAPERINFERENCE_PROVIDER_IDS: readonly string[] = ["cheaperinference"];

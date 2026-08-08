@@ -2,20 +2,20 @@ import {
   ANTIGRAVITY_BOOTSTRAP_BASE_URLS,
   ANTIGRAVITY_RUNTIME_BASE_URLS,
   getAntigravityFetchAvailableModelsUrls,
-} from "@omniroute/open-sse/config/antigravityUpstream.ts";
+} from "@xenia/open-sse/config/antigravityUpstream.ts";
 import {
   GITHUB_COPILOT_API_VERSION,
   GITHUB_COPILOT_CHAT_PLUGIN_VERSION,
   GITHUB_COPILOT_CHAT_USER_AGENT,
   GITHUB_COPILOT_EDITOR_VERSION,
-} from "@omniroute/open-sse/config/providerHeaderProfiles.ts";
+} from "@xenia/open-sse/config/providerHeaderProfiles.ts";
 import {
   GROK_BUILD_DEVICE_CODE_URL,
   GROK_BUILD_OAUTH_ISSUER,
   GROK_BUILD_OAUTH_SCOPES,
   GROK_BUILD_TOKEN_URL,
-} from "@omniroute/open-sse/config/grokBuild.ts";
-import { resolvePublicCred } from "@omniroute/open-sse/utils/publicCreds.ts";
+} from "@xenia/open-sse/config/grokBuild.ts";
+import { resolvePublicCred } from "@xenia/open-sse/utils/publicCreds.ts";
 import { buildGitLabOAuthEndpoints, GITLAB_DUO_DEFAULT_BASE_URL } from "../gitlab";
 
 /**
@@ -496,7 +496,7 @@ export const ZED_CONFIG = {
 // attempt and sends the public key to zed.dev/native_app_signin; Zed
 // encrypts the resulting access token against that public key and redirects
 // the browser to a local "native app" callback
-// (http://127.0.0.1:<port>/?user_id=...&access_token=...). OmniRoute decrypts
+// (http://127.0.0.1:<port>/?user_id=...&access_token=...). Xenia decrypts
 // the token with the matching private key — see open-sse/shared/zedAuth.ts.
 // No client_id/secret/Firebase key is embedded here (Hard Rule #11 does not
 // apply — there is no upstream secret to embed).

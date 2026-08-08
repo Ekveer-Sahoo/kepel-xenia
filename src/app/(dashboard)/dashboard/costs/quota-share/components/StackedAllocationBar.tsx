@@ -14,14 +14,14 @@ export interface StackedAllocationBarProps {
 }
 
 const PALETTE = [
-  "#a78bfa",
-  "#60a5fa",
-  "#34d399",
-  "#fbbf24",
-  "#f87171",
-  "#22d3ee",
-  "#f472b6",
-  "#94a3b8",
+  "#a0a0a0",
+  "#9a9a9a",
+  "#9d9d9d",
+  "#bfbfbf",
+  "#999999",
+  "#a1a1a1",
+  "#a1a1a1",
+  "#a1a1a1",
 ];
 
 export default function StackedAllocationBar({

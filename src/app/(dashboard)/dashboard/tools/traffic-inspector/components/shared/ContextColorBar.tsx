@@ -5,17 +5,18 @@ interface ContextColorBarProps {
   className?: string;
 }
 
-function hashToHue(key: string): number {
+// Monochrome theme: distinguish context keys by lightness, not hue.
+function hashToLightness(key: string): number {
   let hash = 0;
   for (let i = 0; i < key.length; i++) {
     hash = (hash * 31 + key.charCodeAt(i)) & 0xffffff;
   }
-  return (hash * 137.5) % 360;
+  return 30 + (hash % 45); // 30%–75% lightness band, stays visible on both themes
 }
 
 export function ContextColorBar({ contextKey, className }: ContextColorBarProps) {
-  const hue = contextKey ? hashToHue(contextKey) : 0;
-  const color = contextKey ? `hsl(${hue}, 70%, 50%)` : "transparent";
+  const lightness = contextKey ? hashToLightness(contextKey) : 0;
+  const color = contextKey ? `hsl(0, 0%, ${lightness}%)` : "transparent";
   return (
     <div
       className={className}

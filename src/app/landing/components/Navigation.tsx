@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import OmniRouteLogo from "@/shared/components/OmniRouteLogo";
+import XeniaLogo from "@/shared/components/XeniaLogo";
 
 export default function Navigation() {
   const t = useTranslations("landing");
@@ -11,7 +11,7 @@ export default function Navigation() {
   const router = useRouter();
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-[#0B0E14]/80 backdrop-blur-md border-b border-[#2D333B]">
+    <nav className="fixed top-0 z-50 w-full bg-[#0e0e0e]/80 backdrop-blur-md border-b border-[#323232]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
         {/* Logo */}
         <button
@@ -20,8 +20,8 @@ export default function Navigation() {
           onClick={() => router.push("/")}
           aria-label={t("navigateHome")}
         >
-          <div className="size-8 rounded bg-linear-to-br from-[#E54D5E] to-[#C93D4E] flex items-center justify-center text-white">
-            <OmniRouteLogo size={20} className="text-white" />
+          <div className="size-8 flex items-center justify-center text-text-main">
+            <XeniaLogo size={28} />
           </div>
           <h2 className="text-white text-lg sm:text-xl font-bold tracking-tight truncate sm:max-w-none max-w-[160px]">
             {t("brandName")}
@@ -50,7 +50,7 @@ export default function Navigation() {
           </Link>
           <a
             className="text-gray-300 hover:text-white text-sm font-medium transition-colors flex items-center gap-1"
-            href="https://github.com/diegosouzapw/OmniRoute"
+            href="https://github.com/diegosouzapw/Xenia"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -65,7 +65,7 @@ export default function Navigation() {
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <button
             onClick={() => router.push("/dashboard")}
-            className="hidden sm:flex h-9 items-center justify-center rounded-lg px-4 bg-[#E54D5E] hover:bg-[#C93D4E] transition-all text-white text-sm font-bold shadow-[0_0_15px_rgba(229,77,94,0.4)] hover:shadow-[0_0_20px_rgba(229,77,94,0.6)]"
+            className="hidden sm:flex h-9 items-center justify-center rounded-lg px-4 bg-[#7c7c7c] hover:bg-[#696969] transition-all text-white text-sm font-bold shadow-[0_0_15px_rgba(229,77,94,0.4)] hover:shadow-[0_0_20px_rgba(229,77,94,0.6)]"
           >
             {t("getStarted")}
           </button>
@@ -83,7 +83,7 @@ export default function Navigation() {
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#2D333B] bg-[#0B0E14]/95 backdrop-blur-md">
+        <div className="md:hidden border-t border-[#323232] bg-[#0e0e0e]/95 backdrop-blur-md">
           <div className="flex flex-col gap-4 p-6">
             <a
               className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
@@ -108,7 +108,7 @@ export default function Navigation() {
             </Link>
             <a
               className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
-              href="https://github.com/diegosouzapw/OmniRoute"
+              href="https://github.com/diegosouzapw/Xenia"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -116,7 +116,7 @@ export default function Navigation() {
             </a>
             <button
               onClick={() => router.push("/dashboard")}
-              className="h-9 rounded-lg bg-[#E54D5E] hover:bg-[#C93D4E] text-white text-sm font-bold"
+              className="h-9 rounded-lg bg-[#7c7c7c] hover:bg-[#696969] text-white text-sm font-bold"
             >
               {t("getStarted")}
             </button>

@@ -11,7 +11,7 @@ import type { MitmTargetView } from "@/mitm/types";
 import type { AgentStateEntry, AgentBridgeServerState } from "../AgentBridgePageClient";
 import type { MappingRow } from "./ModelMappingTable";
 
-const RISK_STORAGE_KEY_PREFIX = "omniroute-agentbridge-risk-dismissed-";
+const RISK_STORAGE_KEY_PREFIX = "xenia-agentbridge-risk-dismissed-";
 
 function hasAcceptedRisk(agentId: string): boolean {
   try {
@@ -67,8 +67,8 @@ export function AgentCard({
     }
     if (setupCompleted && dnsEnabled) {
       return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400 text-xs font-medium">
+          <span className="h-1.5 w-1.5 rounded-full bg-gray-500" />
           {t("statusActive") || "Active"}
         </span>
       );
@@ -82,7 +82,7 @@ export function AgentCard({
       );
     }
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium">
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400 text-xs font-medium">
         <span className="material-symbols-outlined text-[12px]">warning</span>
         {t("statusDnsOff") || "DNS off"}
       </span>
@@ -168,7 +168,7 @@ export function AgentCard({
             {/* Cert status */}
             <div className="flex items-center gap-2 text-xs text-text-muted">
               <span
-                className={`material-symbols-outlined text-[14px] ${certTrusted ? "text-emerald-500" : "text-zinc-400"}`}
+                className={`material-symbols-outlined text-[14px] ${certTrusted ? "text-gray-500" : "text-zinc-400"}`}
               >
                 {certTrusted ? "verified_user" : "lock_open"}
               </span>
@@ -221,8 +221,8 @@ export function AgentCard({
                   disabled={dnsLoading}
                   className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-50 ${
                     dnsEnabled
-                      ? "bg-red-500/10 text-red-600 hover:bg-red-500/20"
-                      : "bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20"
+                      ? "bg-gray-500/10 text-gray-600 hover:bg-gray-500/20"
+                      : "bg-gray-500/10 text-gray-600 hover:bg-gray-500/20"
                   }`}
                 >
                   <span className="material-symbols-outlined text-[14px]">

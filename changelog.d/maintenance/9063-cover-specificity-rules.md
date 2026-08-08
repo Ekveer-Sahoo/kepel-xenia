@@ -4,4 +4,4 @@
   min/max clamps), taking the file to ~100% line coverage. The suite also documents two quirks
   left unchanged: `detectReasoningDepth` scores above 0 on marker-free input via its
   always-applied message-depth bonus, and `detectErrorContext` returns non-integer scores because
-  it never rounds ([#9063](https://github.com/diegosouzapw/OmniRoute/pull/9063))
+  it never rounds ([#9063](https://github.com/diegosouzapw/Xenia/pull/9063))

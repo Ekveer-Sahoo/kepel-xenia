@@ -17,9 +17,9 @@
 import {
   stripCcDiscoveryAlias,
   type CcDiscoveryStripResult,
-} from "@omniroute/open-sse/handlers/chatCore/ccDiscoveryAliasStrip.ts";
-import { getModelsByProviderId } from "@omniroute/open-sse/config/providerModels.ts";
-import { getRegistryEntry } from "@omniroute/open-sse/config/providerRegistry.ts";
+} from "@xenia/open-sse/handlers/chatCore/ccDiscoveryAliasStrip.ts";
+import { getModelsByProviderId } from "@xenia/open-sse/config/providerModels.ts";
+import { getRegistryEntry } from "@xenia/open-sse/config/providerRegistry.ts";
 import { getCachedProviderNodes } from "@/lib/db/readCache";
 import { getComboByName } from "@/lib/db/combos";
 import {

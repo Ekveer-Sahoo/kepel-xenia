@@ -139,7 +139,7 @@ function CompressionPreviewContent({ inputContent = "" }: { inputContent?: strin
 
       {/* Error */}
       {compressionError && (
-        <div className="text-sm text-red-500" role="alert">
+        <div className="text-sm text-gray-500" role="alert">
           {compressionError}
         </div>
       )}
@@ -163,9 +163,7 @@ function CompressionPreviewContent({ inputContent = "" }: { inputContent?: strin
             </div>
             <div className="card p-3 text-center bg-black/5 dark:bg-white/5 rounded-lg border border-border">
               <div className="text-xs text-text-muted">{t("compressionSaved")}</div>
-              <div className="text-lg font-bold text-green-500">
-                {compressionResult.tokensSaved}
-              </div>
+              <div className="text-lg font-bold text-gray-500">{compressionResult.tokensSaved}</div>
               <div className="text-xs text-text-muted">{compressionResult.savingsPct}%</div>
             </div>
             <div className="card p-3 text-center bg-black/5 dark:bg-white/5 rounded-lg border border-border">

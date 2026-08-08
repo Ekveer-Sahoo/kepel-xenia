@@ -76,7 +76,7 @@ function ProviderTestSlideOverPanel({
     };
   }, []);
 
-  const color = provider.color || "#64748b";
+  const color = provider.color || "#727272";
   const modelOptions = models.length > 0 ? models : [];
 
   return (
@@ -175,7 +175,7 @@ function SlideOverHeader({
           {provider.subscriptionRisk && (
             <>
               <span>·</span>
-              <span className="flex items-center gap-0.5 text-amber-500">
+              <span className="flex items-center gap-0.5 text-gray-500">
                 <span className="material-symbols-outlined text-[12px]">info</span>
                 risk
               </span>
@@ -424,10 +424,10 @@ function LogsTab({ providerId }: { providerId: string }) {
         <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-wider text-text-muted font-medium">
           <span className="inline-flex items-center gap-1.5">
             <span className="relative inline-flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75 animate-ping" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-75 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-gray-500" />
             </span>
-            <span className="text-emerald-500">Live</span>
+            <span className="text-gray-500">Live</span>
           </span>
           <span aria-hidden>·</span>
           <span>tailing last {state.logs.length}</span>
@@ -448,9 +448,9 @@ function LogsTab({ providerId }: { providerId: string }) {
           const isExpanded = expanded === key;
           const statusOk = typeof log.status === "number" && log.status >= 200 && log.status < 400;
           const statusColor = statusOk
-            ? "text-emerald-600 dark:text-emerald-400"
+            ? "text-gray-600 dark:text-gray-400"
             : typeof log.status === "number"
-              ? "text-red-500"
+              ? "text-gray-500"
               : "text-text-muted";
           const requester = formatRequester(log);
           return (

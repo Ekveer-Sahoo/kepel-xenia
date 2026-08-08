@@ -10,7 +10,7 @@ import { mergeOpenCodeConfigText } from "@/shared/services/opencodeConfig";
 import { guideSettingsSaveSchema } from "@/shared/validation/schemas";
 import { isValidationFailure, validateBody } from "@/shared/validation/helpers";
 import { resolveApiKey, getOrCreateApiKey } from "@/shared/services/apiKeyResolver";
-import { sanitizeErrorMessage } from "@omniroute/open-sse/utils/error";
+import { sanitizeErrorMessage } from "@xenia/open-sse/utils/error";
 
 /**
  * POST /api/cli-tools/guide-settings/:toolId
@@ -64,7 +64,7 @@ export async function POST(request, { params }) {
         return await saveContinueConfig({ baseUrl, apiKey, model });
       case "opencode":
         // (#524) OpenCode config was never saved because only 'continue' was handled here.
-        // OpenCode reads ~/.config/opencode/opencode.json — write the OmniRoute settings there.
+        // OpenCode reads ~/.config/opencode/opencode.json — write the Xenia settings there.
         return await saveOpenCodeConfig({ baseUrl, apiKey, model, models, modelLabels });
       case "hermes":
         return await saveHermesConfig({ baseUrl, apiKey, model });
@@ -104,7 +104,7 @@ async function saveContinueConfig({ baseUrl, apiKey, model }) {
     // No existing config or invalid JSON — start fresh
   }
 
-  // Build the OmniRoute model entry
+  // Build the Xenia model entry
   const normalizedBaseUrl = String(baseUrl || "")
     .trim()
     .replace(/\/+$/, "");
@@ -113,8 +113,8 @@ async function saveContinueConfig({ baseUrl, apiKey, model }) {
     title: model,
     model: model,
     provider: "openai",
-    apiKey: apiKey || "sk_omniroute",
-    omnirouteManaged: true,
+    apiKey: apiKey || "sk_xenia",
+    xeniaManaged: true,
   };
 
   // Merge into existing models array
@@ -127,19 +127,19 @@ async function saveContinueConfig({ baseUrl, apiKey, model }) {
       .toLowerCase();
   }
 
-  // Check if OmniRoute entry already exists and update it, or add new
+  // Check if Xenia entry already exists and update it, or add new
   const existingIdx = models.findIndex(
     (m) =>
       m &&
-      (m.omnirouteManaged === true ||
+      (m.xeniaManaged === true ||
         normalizeApiBase(m.apiBase) === normalizedBaseUrl.toLowerCase() ||
-        normalizeApiBase(m.apiBase).includes("omniroute") ||
+        normalizeApiBase(m.apiBase).includes("xenia") ||
         normalizeApiBase(m.apiBase).includes(`localhost:${apiPort}`) ||
         normalizeApiBase(m.apiBase).includes(`127.0.0.1:${apiPort}`) ||
         // eslint-disable-next-line no-restricted-syntax -- teknik string kontrolü, kullanıcı metni araması değil
         String(m.apiKey || "")
           .toLowerCase()
-          .includes("sk_omniroute"))
+          .includes("sk_xenia"))
   );
 
   if (existingIdx >= 0) {
@@ -207,7 +207,7 @@ async function saveOpenCodeConfig({ baseUrl, apiKey, model, models, modelLabels 
  * Save Hermes config to ~/.hermes/config.yaml
  *
  * Hermes stores its primary routing settings in YAML. Preserve any existing
- * keys, but make sure the OmniRoute provider entry is present and selected.
+ * keys, but make sure the Xenia provider entry is present and selected.
  */
 async function saveHermesConfig({ baseUrl, apiKey, model }) {
   const configPath =
@@ -244,19 +244,19 @@ async function saveHermesConfig({ baseUrl, apiKey, model }) {
     model: {
       ...(existingConfig.model || {}),
       default: selectedModel,
-      provider: "omniroute",
+      provider: "xenia",
       base_url: providerBaseUrl,
     },
     providers: {
       ...(existingConfig.providers || {}),
-      omniroute: {
-        ...((existingConfig.providers && existingConfig.providers.omniroute) || {}),
+      xenia: {
+        ...((existingConfig.providers && existingConfig.providers.xenia) || {}),
         base_url: providerBaseUrl,
         api_key:
           apiKey ||
           (existingConfig.providers &&
-            existingConfig.providers.omniroute &&
-            existingConfig.providers.omniroute.api_key) ||
+            existingConfig.providers.xenia &&
+            existingConfig.providers.xenia.api_key) ||
           "",
       },
     },

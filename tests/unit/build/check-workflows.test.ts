@@ -340,7 +340,7 @@ test("#7307 quality.yml adds an advisory production build for release PR code ch
   assert.match(buildJob[0], /uses: \.\/\.github\/actions\/npm-ci-retry/);
   assert.match(buildJob[0], /npm run check:node-runtime/);
   assert.match(buildJob[0], /npm run build/);
-  assert.match(buildJob[0], /OMNIROUTE_USE_TURBOPACK: "1"/);
+  assert.match(buildJob[0], /XENIA_USE_TURBOPACK: "1"/);
   assert.doesNotMatch(buildJob[0], /actions\/upload-artifact/);
   assert.match(
     buildJob[0],

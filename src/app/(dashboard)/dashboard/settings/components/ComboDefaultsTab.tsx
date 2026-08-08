@@ -324,7 +324,7 @@ export default function ComboDefaultsTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             tune
           </span>
@@ -336,15 +336,15 @@ export default function ComboDefaultsTab() {
         {status.message && (
           <span
             className={`text-xs font-medium ml-2 ${
-              status.type === "success" ? "text-emerald-500" : "text-red-500"
+              status.type === "success" ? "text-gray-500" : "text-gray-500"
             }`}
           >
             {status.message}
           </span>
         )}
       </div>
-      <div className="mb-4 rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
-        <p className="text-xs font-medium text-blue-700 dark:text-blue-300">
+      <div className="mb-4 rounded-lg border border-gray-500/20 bg-gray-500/5 p-3">
+        <p className="text-xs font-medium text-gray-700 dark:text-gray-300">
           {translateOrFallback(t, "routingAdvancedGuideTitle", "Advanced routing guidance")}
         </p>
         <p className="text-xs text-text-muted mt-1">
@@ -362,8 +362,8 @@ export default function ComboDefaultsTab() {
           )}
         </p>
       </div>
-      <div className="mb-4 rounded-lg border border-amber-500/20 bg-amber-500/5 p-3">
-        <p className="text-xs font-medium text-amber-700 dark:text-amber-300">
+      <div className="mb-4 rounded-lg border border-gray-500/20 bg-gray-500/5 p-3">
+        <p className="text-xs font-medium text-gray-700 dark:text-gray-300">
           {t("comboDefaultsGuideTitle")}
         </p>
         <p className="text-xs text-text-muted mt-1">{t("comboDefaultsGuideHint1")}</p>
@@ -647,8 +647,8 @@ export default function ComboDefaultsTab() {
               }
               className="text-sm"
             />
-            <div className="md:col-span-3 rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
-              <p className="text-xs text-blue-700 dark:text-blue-300">
+            <div className="md:col-span-3 rounded-lg border border-gray-500/20 bg-gray-500/5 p-3">
+              <p className="text-xs text-gray-700 dark:text-gray-300">
                 {translateOrFallback(
                   t,
                   "contextRelayProviderNote",
@@ -814,7 +814,7 @@ export default function ComboDefaultsTab() {
                 <span className="text-[10px] text-text-muted">{t("retries")}</span>
                 <button
                   onClick={() => removeProviderOverride(provider)}
-                  className="ml-auto text-red-400 hover:text-red-500 transition-colors"
+                  className="ml-auto text-gray-400 hover:text-gray-500 transition-colors"
                   aria-label={t("removeProviderOverrideAria", { provider })}
                 >
                   <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
@@ -852,7 +852,7 @@ export default function ComboDefaultsTab() {
                       setSearchQuery(e.target.value);
                       setHighlightedIdx(0);
                     }}
-                    className="w-full px-2 py-1.5 text-xs rounded-md border border-border/50 bg-transparent outline-none focus:border-amber-500 transition-colors"
+                    className="w-full px-2 py-1.5 text-xs rounded-md border border-border/50 bg-transparent outline-none focus:border-gray-500 transition-colors"
                     placeholder={t("searchProviderPlaceholder") || "Search providers..."}
                     aria-label={t("searchProviderAria") || "Search providers"}
                     onKeyDown={handleDropdownKeyDown}

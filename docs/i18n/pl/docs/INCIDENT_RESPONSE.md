@@ -1,4 +1,4 @@
-# Runbook reagowania na incydenty — OmniRoute (2026-06-18)
+# Runbook reagowania na incydenty — Xenia (2026-06-18)
 
 **Status**: Dokument autorytatywny. Audyt 71 filarów (L61) odwołuje się do tego
 dokumentu w bramce `Obs > 2.00`.
@@ -17,12 +17,12 @@ tych spraw przez ten runbook.
 
 ## 1. Skala ważności
 
-| Sev       | Definicja                                                                                                    | Przykłady                                                                       | Powiadomienie                             | Rozwiązanie do               |
-| --------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------- | ---------------------------- |
-| **SEV-1** | Awaria widoczna dla użytkownika; > 50 % żądań kończy się niepowodzeniem lub naruszenie SLO > 2x przez 5 min. | Klaster niedostępny; warstwa auth uszkodzona; powódź 5xx.                       | On-call P0 (natychmiast)                  | 4 h                          |
-| **SEV-2** | Znacząca degradacja; naruszenie SLO 1,5–2x przez 15 min lub wpływ na jednego najemcę.                        | Jeden dostawca niedostępny; p95 > 1,5x budżetu; niekontrolowane rate-limity.    | On-call P1 (15 min)                       | 24 h                         |
-| **SEV-3** | Uśpiony błąd lub near-miss; brak bieżącego wpływu na użytkownika, ale budżet błędów zagrożony.               | Wyciek pamięci w trendzie wzrostowym; circuit breaker wyłącza jednego dostawcę. | Slack `#omniroute-ops` (następny standup) | 7 d                          |
-| **SEV-4** | Kosmetyczny / informacyjny.                                                                                  | Szum w logach; nieblokujący glitch UI.                                          | Następny przegląd tygodniowy              | Następny cykl refaktoryzacji |
+| Sev       | Definicja                                                                                                    | Przykłady                                                                       | Powiadomienie                         | Rozwiązanie do               |
+| --------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ------------------------------------- | ---------------------------- |
+| **SEV-1** | Awaria widoczna dla użytkownika; > 50 % żądań kończy się niepowodzeniem lub naruszenie SLO > 2x przez 5 min. | Klaster niedostępny; warstwa auth uszkodzona; powódź 5xx.                       | On-call P0 (natychmiast)              | 4 h                          |
+| **SEV-2** | Znacząca degradacja; naruszenie SLO 1,5–2x przez 15 min lub wpływ na jednego najemcę.                        | Jeden dostawca niedostępny; p95 > 1,5x budżetu; niekontrolowane rate-limity.    | On-call P1 (15 min)                   | 24 h                         |
+| **SEV-3** | Uśpiony błąd lub near-miss; brak bieżącego wpływu na użytkownika, ale budżet błędów zagrożony.               | Wyciek pamięci w trendzie wzrostowym; circuit breaker wyłącza jednego dostawcę. | Slack `#xenia-ops` (następny standup) | 7 d                          |
+| **SEV-4** | Kosmetyczny / informacyjny.                                                                                  | Szum w logach; nieblokujący glitch UI.                                          | Następny przegląd tygodniowy          | Następny cykl refaktoryzacji |
 
 **Eskalacja burn-rate** (zgodnie z `docs/PERF_BUDGETS.md` § 1): 6x przez 5 min
 to SEV-1; 2x przez 1 h to SEV-2; utrzymanie < 1x przez 7 d obniża do SEV-3.
@@ -34,13 +34,13 @@ to SEV-1; 2x przez 1 h to SEV-2; utrzymanie < 1x przez 7 d obniża do SEV-3.
 | Źródło                            | Sygnał                               | Routing                               |
 | --------------------------------- | ------------------------------------ | ------------------------------------- |
 | Prometheus (`/metrics`)           | Delty liczników (5xx, latency)       | Alertmanager → PagerDuty              |
-| Panele SLO w Grafana              | Panele burn-rate SLO                 | Slack `#omniroute-ops`                |
+| Panele SLO w Grafana              | Panele burn-rate SLO                 | Slack `#xenia-ops`                    |
 | Sonda uptime (`/api/health/ping`) | 3 kolejne niepowodzenia z 3 regionów | Alertmanager → PagerDuty              |
 | Dependabot                        | Nowe CVE w zależności (CVSS ≥ 7)     | GitHub Security → security-circle     |
 | Ręczny raport użytkownika         | Zgłoszenie w Discord / GitHub issue  | Triage przez dyżurnego (on-call)      |
 | Chaos-drill (kwartalny)           | Wstrzyknięte awarie                  | Planowany drill; wyniki w `docs/ops/` |
 
-Alerty **nie** idą na prywatne DM. Domyślny kanał to `#omniroute-ops`; PagerDuty
+Alerty **nie** idą na prywatne DM. Domyślny kanał to `#xenia-ops`; PagerDuty
 stronicuje rotację on-call. Pełna matryca alertów: `ops/alertmanager/rules.yml`
 (gdy jest wdrożona; do tego czasu reguły są w konfiguracji Prometheus w
 `deploy/observability/`).
@@ -51,7 +51,7 @@ stronicuje rotację on-call. Pełna matryca alertów: `ops/alertmanager/rules.ym
 
 1. **Potwierdź**. Otwórz panel SLO i sprawdź, czy alert jest prawdziwy, a nie
    flapping. Jeśli flapping — wycisz na 15 min i zbadaj.
-2. **Zadeklaruj**. Opublikuj w `#omniroute-ops`:
+2. **Zadeklaruj**. Opublikuj w `#xenia-ops`:
    ```
    INCIDENT <sev> — <jedna linia objawu>
    IC: @you
@@ -59,12 +59,12 @@ stronicuje rotację on-call. Pełna matryca alertów: `ops/alertmanager/rules.ym
    Następna aktualizacja: <teraz + 15 min>
    ```
 3. **Stabilizuj** przed diagnozą główną przyczyny. Preferowana kolejność:
-   - Odetnij zły deploy: `kubectl rollout undo deploy/omniroute` (lub
+   - Odetnij zły deploy: `kubectl rollout undo deploy/xenia` (lub
      równoważne dla Twojego środowiska; zob. `docs/ops/DEPLOYMENT.md`).
    - Przełącz combo / dostawcę: `POST /api/combos/:id/switch` lub MCP
      `switch_combo`.
    - Włącz tryb degradacji: ustaw
-     `OMNIROUTE_DEGRADATION_MODE=lite` (pomija niekrytyczne middleware).
+     `XENIA_DEGRADATION_MODE=lite` (pomija niekrytyczne middleware).
    - Rate-limit ruch wejściowy na edge, jeśli to flood.
 4. **Aktualizuj** co 15 min do złagodzenia lub rozwiązania.
 
@@ -107,10 +107,10 @@ Jedna osoba = jedna rola, gdy to możliwe. IC **nie** debuguje.
 
 ## 6. Komunikacja
 
-- **Wewnętrzna**: `#omniroute-ops` jest źródłem prawdy. Wątek na incydent na
+- **Wewnętrzna**: `#xenia-ops` jest źródłem prawdy. Wątek na incydent na
   deklarację; wszystkie aktualizacje w wątku.
 - **Zewnętrzna** (gdy dotyczy użytkowników zewnętrznych): status page
-  (status.omniroute.example — zastąp prawdziwym URL, gdy będzie live). SEV-1
+  (status.xenia.example — zastąp prawdziwym URL, gdy będzie live). SEV-1
   dostaje publiczny post w ≤ 30 min; SEV-2 w ≤ 2 h, jeśli wpływ jest
   zewnętrzny.
 - **Nie** spekuluj o root cause publicznie. Podawaj objawy i ETA mitigacji.

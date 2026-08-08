@@ -50,7 +50,7 @@ export default function CompressionLogTab() {
     return (
       <Card className="p-6">
         <div className="flex items-center gap-3 mb-4">
-          <span className="material-symbols-outlined text-blue-500 text-[20px]">compress</span>
+          <span className="material-symbols-outlined text-gray-500 text-[20px]">compress</span>
           <h3 className="text-lg font-semibold">{t("compressionLogTitle")}</h3>
         </div>
         <p className="text-sm text-text-muted">{t("compressionLogEmpty")}</p>
@@ -61,7 +61,7 @@ export default function CompressionLogTab() {
   return (
     <Card className="p-6">
       <div className="flex items-center gap-3 mb-5">
-        <span className="material-symbols-outlined text-blue-500 text-[20px]">compress</span>
+        <span className="material-symbols-outlined text-gray-500 text-[20px]">compress</span>
         <h3 className="text-lg font-semibold">{t("compressionLogTitle")}</h3>
       </div>
 
@@ -80,7 +80,7 @@ export default function CompressionLogTab() {
                   <span className="font-mono text-text-main">
                     {entry.provider}/{entry.model}
                   </span>
-                  <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                  <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-gray-500/10 text-gray-400 border border-gray-500/20">
                     {stats.mode}
                   </span>
                 </div>
@@ -91,9 +91,9 @@ export default function CompressionLogTab() {
                   <span
                     className={`font-medium ${
                       stats.savingsPercent >= 25
-                        ? "text-emerald-400"
+                        ? "text-gray-400"
                         : stats.savingsPercent >= 10
-                          ? "text-yellow-400"
+                          ? "text-gray-400"
                           : "text-text-muted"
                     }`}
                   >
@@ -121,7 +121,7 @@ export default function CompressionLogTab() {
                   {stats.rulesApplied.map((rule) => (
                     <span
                       key={rule}
-                      className="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                      className="px-1.5 py-0.5 rounded text-[10px] bg-gray-500/10 text-gray-400 border border-gray-500/20"
                     >
                       {rule.replace(/_/g, " ")}
                     </span>

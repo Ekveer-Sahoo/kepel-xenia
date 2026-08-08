@@ -4,7 +4,7 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "omniroute-ccr-mcp-"));
+process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "xenia-ccr-mcp-"));
 
 const ccr = await import("../../../open-sse/services/compression/engines/ccr/index.ts");
 const tools = await import("../../../open-sse/mcp-server/tools/compressionTools.ts");
@@ -134,12 +134,12 @@ describe("CCR MCP contracts and handlers", () => {
 
   it("registers all six tools canonically with least-privilege scopes", () => {
     const expected = {
-      omniroute_ccr_store: ["write:compression"],
-      omniroute_ccr_retrieve: ["read:compression"],
-      omniroute_ccr_inspect: ["read:compression"],
-      omniroute_ccr_list: ["read:compression"],
-      omniroute_ccr_delete: ["write:compression"],
-      omniroute_ccr_stats: ["read:compression"],
+      xenia_ccr_store: ["write:compression"],
+      xenia_ccr_retrieve: ["read:compression"],
+      xenia_ccr_inspect: ["read:compression"],
+      xenia_ccr_list: ["read:compression"],
+      xenia_ccr_delete: ["write:compression"],
+      xenia_ccr_stats: ["read:compression"],
     } as const;
     for (const [name, scopes] of Object.entries(expected)) {
       assert.ok(schemas.MCP_TOOL_MAP[name], `${name} must exist in MCP_TOOL_MAP`);

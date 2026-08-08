@@ -99,7 +99,7 @@ export default function EmptyState({
             borderRadius: "8px",
             border: "1px solid rgba(99, 102, 241, 0.4)",
             background: "rgba(99, 102, 241, 0.15)",
-            color: "#818cf8",
+            color: "#959595",
             fontSize: "14px",
             fontWeight: 500,
             cursor: "pointer",

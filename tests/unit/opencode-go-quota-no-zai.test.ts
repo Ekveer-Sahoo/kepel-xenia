@@ -5,8 +5,8 @@ import { getOpenCodeGoUsage } from "../../open-sse/services/opencodeOllamaUsage.
 
 test("getOpenCodeGoUsage does not send the user's OpenCode Go API key to api.z.ai by default", async () => {
   const originalFetch = globalThis.fetch;
-  const originalEnv = process.env.OMNIROUTE_OPENCODE_GO_QUOTA_URL;
-  delete process.env.OMNIROUTE_OPENCODE_GO_QUOTA_URL;
+  const originalEnv = process.env.XENIA_OPENCODE_GO_QUOTA_URL;
+  delete process.env.XENIA_OPENCODE_GO_QUOTA_URL;
 
   let calledHost: string | null = null;
   globalThis.fetch = (async (input: RequestInfo | URL) => {
@@ -25,7 +25,7 @@ test("getOpenCodeGoUsage does not send the user's OpenCode Go API key to api.z.a
     );
   } finally {
     globalThis.fetch = originalFetch;
-    if (originalEnv === undefined) delete process.env.OMNIROUTE_OPENCODE_GO_QUOTA_URL;
-    else process.env.OMNIROUTE_OPENCODE_GO_QUOTA_URL = originalEnv;
+    if (originalEnv === undefined) delete process.env.XENIA_OPENCODE_GO_QUOTA_URL;
+    else process.env.XENIA_OPENCODE_GO_QUOTA_URL = originalEnv;
   }
 });

@@ -42,11 +42,11 @@ interface TryItResult {
 }
 
 const METHOD_COLORS: Record<string, string> = {
-  GET: "bg-emerald-500/15 text-emerald-500 border-emerald-500/30",
-  POST: "bg-blue-500/15 text-blue-500 border-blue-500/30",
-  PUT: "bg-amber-500/15 text-amber-500 border-amber-500/30",
-  PATCH: "bg-orange-500/15 text-orange-500 border-orange-500/30",
-  DELETE: "bg-red-500/15 text-red-500 border-red-500/30",
+  GET: "bg-gray-500/15 text-gray-500 border-gray-500/30",
+  POST: "bg-gray-500/15 text-gray-500 border-gray-500/30",
+  PUT: "bg-gray-500/15 text-gray-500 border-gray-500/30",
+  PATCH: "bg-gray-500/15 text-gray-500 border-gray-500/30",
+  DELETE: "bg-gray-500/15 text-gray-500 border-gray-500/30",
 };
 
 /* ─── Main Component ─────────────────────────────────── */
@@ -59,7 +59,7 @@ export default function ApiEndpointsTab() {
       <div className="flex items-center gap-1 shrink-0">
         {ep.loopbackOnly && (
           <span
-            className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-blue-500/15 text-blue-500 border border-blue-500/30"
+            className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-gray-500/15 text-gray-500 border border-gray-500/30"
             title={t("badgeLoopbackTooltip")}
           >
             {t("badgeLocal")}
@@ -67,7 +67,7 @@ export default function ApiEndpointsTab() {
         )}
         {ep.alwaysProtected && (
           <span
-            className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-red-500/15 text-red-500 border border-red-500/30"
+            className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-gray-500/15 text-gray-500 border border-gray-500/30"
             title={t("badgeAlwaysProtectedTooltip")}
           >
             {t("badgeProtected")}
@@ -372,8 +372,8 @@ export default function ApiEndpointsTab() {
         <>
           <Card className="p-6">
             <div className="flex items-start gap-3">
-              <div className="flex size-10 items-center justify-center rounded-lg bg-red-500/10">
-                <span className="material-symbols-outlined text-[20px] text-red-500">error</span>
+              <div className="flex size-10 items-center justify-center rounded-lg bg-gray-500/10">
+                <span className="material-symbols-outlined text-[20px] text-gray-500">error</span>
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-text-main">
@@ -477,7 +477,7 @@ export default function ApiEndpointsTab() {
                 className={`px-2 py-1 text-[10px] font-medium rounded-md transition-colors ml-1
                   ${
                     showInternal
-                      ? "bg-amber-500/10 text-amber-500"
+                      ? "bg-gray-500/10 text-gray-500"
                       : "bg-black/5 dark:bg-white/5 text-text-muted hover:text-text-main"
                   }`}
                 title={t("showInternalTooltip")}
@@ -530,7 +530,7 @@ export default function ApiEndpointsTab() {
                         <EndpointBadges ep={ep} />
                         {ep.security && (
                           <span
-                            className="material-symbols-outlined text-[12px] text-amber-500"
+                            className="material-symbols-outlined text-[12px] text-gray-500"
                             title={t("apiEndpointsRequiresAuth")}
                           >
                             lock
@@ -555,7 +555,7 @@ export default function ApiEndpointsTab() {
                               <div className="flex items-center gap-3 mt-2 text-[10px] text-text-muted">
                                 {ep.security && (
                                   <span className="flex items-center gap-1">
-                                    <span className="material-symbols-outlined text-[12px] text-amber-500">
+                                    <span className="material-symbols-outlined text-[12px] text-gray-500">
                                       lock
                                     </span>
                                     {t("bearerAuth")}
@@ -652,7 +652,7 @@ export default function ApiEndpointsTab() {
                                       ))}
                                     </select>
                                   ) : (
-                                    <p className="text-[11px] text-amber-500">
+                                    <p className="text-[11px] text-gray-500">
                                       {apiKeyLoadError || t("noActiveApiKeys")}
                                     </p>
                                   )}
@@ -692,10 +692,10 @@ export default function ApiEndpointsTab() {
                                     <span
                                       className={`px-2 py-0.5 rounded font-bold ${
                                         tryResult.status >= 200 && tryResult.status < 300
-                                          ? "bg-emerald-500/15 text-emerald-500"
+                                          ? "bg-gray-500/15 text-gray-500"
                                           : tryResult.status >= 400
-                                            ? "bg-red-500/15 text-red-500"
-                                            : "bg-amber-500/15 text-amber-500"
+                                            ? "bg-gray-500/15 text-gray-500"
+                                            : "bg-gray-500/15 text-gray-500"
                                       }`}
                                     >
                                       {tryResult.status} {tryResult.statusText}
@@ -747,7 +747,7 @@ export default function ApiEndpointsTab() {
                 {catalog.schemas.map((schema) => (
                   <span
                     key={schema}
-                    className="text-[10px] px-2 py-1 rounded-md bg-purple-500/10 text-purple-500 dark:text-purple-300 font-mono"
+                    className="text-[10px] px-2 py-1 rounded-md bg-gray-500/10 text-gray-500 dark:text-gray-300 font-mono"
                   >
                     {schema}
                   </span>

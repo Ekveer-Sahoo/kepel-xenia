@@ -6,7 +6,7 @@ lastUpdated: 2026-06-28
 
 # Resilience Guide
 
-OmniRoute has three distinct but related resilience mechanisms. Each has a different scope and purpose. Keep them separate when debugging routing behavior.
+Xenia has three distinct but related resilience mechanisms. Each has a different scope and purpose. Keep them separate when debugging routing behavior.
 
 ![3-layer resilience model](../diagrams/exported/resilience-3layers.svg)
 
@@ -91,7 +91,7 @@ These persist until credentials change or an operator resets them. Do not overwr
 
 ### Session affinity (#7274)
 
-**Scope:** one client session (`X-Session-Id` / `x-codex-session-id` / `x-omniroute-session` header) pinned to one connection, for **any** provider.
+**Scope:** one client session (`X-Session-Id` / `x-codex-session-id` / `x-xenia-session` header) pinned to one connection, for **any** provider.
 
 **Purpose:** keep a multi-turn agent (Claude Code, aider, custom agents) on the same account across requests, reducing cross-account context loss and repeated cold-start 429s on providers with per-account session state.
 
@@ -252,7 +252,7 @@ it is unit-testable without a real Bottleneck limiter.
 > around the `resolveCompressionSettings`/`selectCompressionStrategy` block),
 > not HTTP response compression on synthesized 429 bodies — there is no
 > matching code path for a literal bypass flag. That prompt-compression step
-> also currently runs *before* `withRateLimit()` in the request pipeline, so
+> also currently runs _before_ `withRateLimit()` in the request pipeline, so
 > reordering to skip it on a queue-full rejection is a separate, larger
 > change than this issue's scope; it was intentionally **not** implemented
 > here and is left as a follow-up if the CPU-saving win is worth the
@@ -266,7 +266,7 @@ it is unit-testable without a real Bottleneck limiter.
 - **Reset-aware routing** (v3.8.0) — prioritizes connections by quota reset time.
 - **Background mode degradation** — Responses API `background: true` degraded to sync with warning.
 - **Dynamic tool limit detection** — backs off providers when tool count limits hit.
-- **Emergency fallback** — controlled by `OMNIROUTE_EMERGENCY_FALLBACK`; operators can override it from the Feature Flags page without a restart.
+- **Emergency fallback** — controlled by `XENIA_EMERGENCY_FALLBACK`; operators can override it from the Feature Flags page without a restart.
 
 ---
 

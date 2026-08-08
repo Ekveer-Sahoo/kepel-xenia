@@ -77,7 +77,11 @@ export function ProxyBulkImportModal({ isOpen, onClose, onImported }: ProxyBulkI
   const [bulkImportSkipped, setBulkImportSkipped] = useState(0);
   const [bulkImportParsedOnce, setBulkImportParsedOnce] = useState(false);
   const [bulkImporting, setBulkImporting] = useState(false);
-  const [bulkImportResult, setBulkImportResult] = useState<{ created: number; updated: number; failed: number } | null>(null);
+  const [bulkImportResult, setBulkImportResult] = useState<{
+    created: number;
+    updated: number;
+    failed: number;
+  } | null>(null);
 
   const handleParse = () => {
     const result = parseBulkImportText(bulkImportText);
@@ -140,20 +144,29 @@ export function ProxyBulkImportModal({ isOpen, onClose, onImported }: ProxyBulkI
 
           {bulkImportParsedOnce && (
             <div className="flex items-center gap-3 text-xs">
-              <span className="text-emerald-400">{t("bulkImportParsed", { count: bulkImportParsed.length })}</span>
-              <span className="text-text-muted">{t("bulkImportSkipped", { count: bulkImportSkipped })}</span>
+              <span className="text-gray-400">
+                {t("bulkImportParsed", { count: bulkImportParsed.length })}
+              </span>
+              <span className="text-text-muted">
+                {t("bulkImportSkipped", { count: bulkImportSkipped })}
+              </span>
               {bulkImportErrors.length > 0 && (
-                <span className="text-red-400">{t("bulkImportParseErrors", { count: bulkImportErrors.length })}</span>
+                <span className="text-gray-400">
+                  {t("bulkImportParseErrors", { count: bulkImportErrors.length })}
+                </span>
               )}
             </div>
           )}
         </div>
 
         {bulkImportErrors.length > 0 && (
-          <div className="max-h-28 overflow-y-auto rounded border border-red-500/30 bg-red-500/10 p-2">
+          <div className="max-h-28 overflow-y-auto rounded border border-gray-500/30 bg-gray-500/10 p-2">
             {bulkImportErrors.map((err, idx) => (
-              <div key={idx} className="text-xs text-red-400">
-                {t("bulkImportErrorLine", { line: err.line, reason: t(err.reason as "bulkImportMinFields" | "bulkImportInvalidPort") })}
+              <div key={idx} className="text-xs text-gray-400">
+                {t("bulkImportErrorLine", {
+                  line: err.line,
+                  reason: t(err.reason as "bulkImportMinFields" | "bulkImportInvalidPort"),
+                })}
               </div>
             ))}
           </div>
@@ -178,14 +191,18 @@ export function ProxyBulkImportModal({ isOpen, onClose, onImported }: ProxyBulkI
                   <tr key={idx} className="border-b border-border/40">
                     <td className="py-1 px-2 font-medium text-text-main">{entry.name}</td>
                     <td className="py-1 px-2">
-                      <span className="px-1.5 py-0.5 rounded bg-bg-subtle border border-border text-[10px]">{entry.type}</span>
+                      <span className="px-1.5 py-0.5 rounded bg-bg-subtle border border-border text-[10px]">
+                        {entry.type}
+                      </span>
                     </td>
                     <td className="py-1 px-2 font-mono text-text-muted">{entry.host}</td>
                     <td className="py-1 px-2 font-mono text-text-muted">{entry.port}</td>
                     <td className="py-1 px-2 text-text-muted">{entry.username || "—"}</td>
                     <td className="py-1 px-2 text-text-muted">{entry.region || "—"}</td>
                     <td className="py-1 px-2">
-                      <span className={entry.status === "active" ? "text-emerald-400" : "text-text-muted"}>
+                      <span
+                        className={entry.status === "active" ? "text-gray-400" : "text-text-muted"}
+                      >
                         {entry.status === "active" ? t("statusActive") : t("statusInactive")}
                       </span>
                     </td>
@@ -197,12 +214,16 @@ export function ProxyBulkImportModal({ isOpen, onClose, onImported }: ProxyBulkI
         )}
 
         {bulkImportParsedOnce && bulkImportParsed.length === 0 && bulkImportErrors.length === 0 && (
-          <div className="text-sm text-amber-400">{t("bulkImportNoValidEntries")}</div>
+          <div className="text-sm text-gray-400">{t("bulkImportNoValidEntries")}</div>
         )}
 
         {bulkImportResult && (
-          <div className="px-3 py-2 rounded border border-emerald-500/30 bg-emerald-500/10 text-sm text-emerald-400">
-            {t("bulkImportSuccess", { created: bulkImportResult.created, updated: bulkImportResult.updated, failed: bulkImportResult.failed })}
+          <div className="px-3 py-2 rounded border border-gray-500/30 bg-gray-500/10 text-sm text-gray-400">
+            {t("bulkImportSuccess", {
+              created: bulkImportResult.created,
+              updated: bulkImportResult.updated,
+              failed: bulkImportResult.failed,
+            })}
           </div>
         )}
 
@@ -217,7 +238,11 @@ export function ProxyBulkImportModal({ isOpen, onClose, onImported }: ProxyBulkI
             loading={bulkImporting}
             disabled={!bulkImportParsedOnce || bulkImportParsed.length === 0}
           >
-            {bulkImporting ? t("bulkImportImporting") : bulkImportParsed.length > 0 ? t("bulkImportImport", { count: bulkImportParsed.length }) : t("bulkImport")}
+            {bulkImporting
+              ? t("bulkImportImporting")
+              : bulkImportParsed.length > 0
+                ? t("bulkImportImport", { count: bulkImportParsed.length })
+                : t("bulkImport")}
           </Button>
         </div>
       </div>

@@ -87,7 +87,7 @@ export default function MarkdownMessage({ content, className }: MarkdownMessageP
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 dark:text-blue-400 underline hover:no-underline"
+          className="text-gray-600 dark:text-gray-400 underline hover:no-underline"
         >
           {children}
         </a>

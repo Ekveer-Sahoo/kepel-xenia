@@ -21,7 +21,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-proxy-pool-6365-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-proxy-pool-6365-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = "test-secret";
 
@@ -176,7 +176,10 @@ test("random strategy always returns a member of the alive set", async () => {
   // The random strategy uses crypto.randomInt (not Math.random — CodeQL js/insecure-randomness).
   // Over 30 picks from a 3-member alive pool it must vary, not stick on one member
   // (P(all 30 identical) ≈ (1/3)^29 ≈ 0). Guards that randomInt selection is uniform-ish.
-  assert.ok(seen.size >= 2, `random strategy must vary its pick (saw only: ${[...seen].join(", ")})`);
+  assert.ok(
+    seen.size >= 2,
+    `random strategy must vary its pick (saw only: ${[...seen].join(", ")})`
+  );
 });
 
 test("setScopeRotationStrategy round-trips via getScopeRotationStrategy", async () => {

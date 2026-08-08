@@ -181,7 +181,7 @@ export default function UsageAnalytics() {
   if (loading && !analytics) return <CardSkeleton />;
   if (error)
     return (
-      <Card className="p-6 text-center text-red-500">
+      <Card className="p-6 text-center text-gray-500">
         {tCommon("errorShort")}: {error}
       </Card>
     );
@@ -284,13 +284,13 @@ export default function UsageAnalytics() {
           icon="output"
           label={t("outputTokens")}
           value={fmt(s.completionTokens)}
-          color="text-emerald-500"
+          color="text-gray-500"
         />
         <StatCard
           icon="payments"
           label={t("estCost")}
           value={fmtCost(s.totalCost)}
-          color="text-amber-500"
+          color="text-gray-500"
         />
       </div>
 
@@ -305,7 +305,7 @@ export default function UsageAnalytics() {
                 icon: "dns",
                 label: t("infraProviders"),
                 value: providerCount,
-                color: "text-indigo-500",
+                color: "text-gray-500",
               },
               { icon: "vpn_key", label: t("infraApiKeys"), value: s.uniqueApiKeys || 0 },
               { icon: "model_training", label: t("infraModels"), value: s.uniqueModels || 0 },
@@ -318,25 +318,25 @@ export default function UsageAnalytics() {
                 icon: "speed",
                 label: t("perfAvgTokens"),
                 value: fmt(avgTokensPerReq),
-                color: "text-cyan-500",
+                color: "text-gray-500",
               },
               {
                 icon: "request_quote",
                 label: t("perfCostReq"),
                 value: fmtCost(costPerReq),
-                color: "text-orange-500",
+                color: "text-gray-500",
               },
               {
                 icon: "compare_arrows",
                 label: t("perfIoRatio"),
                 value: `${ioRatio}x`,
-                color: "text-violet-500",
+                color: "text-gray-500",
               },
               {
                 icon: "bolt",
                 label: t("perfFastReq"),
                 value: fmt(s.fastRequests || 0),
-                color: "text-sky-500",
+                color: "text-gray-500",
               },
             ],
           },
@@ -348,31 +348,31 @@ export default function UsageAnalytics() {
                 icon: "star",
                 label: t("highlightsTopModel"),
                 value: topModel,
-                color: "text-pink-500",
+                color: "text-gray-500",
               },
               {
                 icon: "cloud",
                 label: t("highlightsTopProvider"),
                 value: topProvider,
-                color: "text-teal-500",
+                color: "text-gray-500",
               },
               {
                 icon: "today",
                 label: t("highlightsBusiestDay"),
                 value: busiestDay,
-                color: "text-rose-500",
+                color: "text-gray-500",
               },
               {
                 icon: "network_node",
                 label: t("highlightsDiversity"),
                 value: `${providerDiversity.toFixed(1)}%`,
-                color: "text-sky-500",
+                color: "text-gray-500",
               },
               {
                 icon: "swap_horiz",
                 label: t("highlightsFallbackRate"),
                 value: `${Number(s.fallbackRatePct || 0).toFixed(1)}%`,
-                color: "text-amber-500",
+                color: "text-gray-500",
               },
             ],
           },

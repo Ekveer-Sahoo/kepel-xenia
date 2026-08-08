@@ -832,7 +832,7 @@ export default function EditConnectionModal({
           />
         </div>
         {saveError && (
-          <div className="text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
+          <div className="text-sm text-gray-500 bg-gray-500/10 border border-gray-500/20 rounded-lg px-3 py-2">
             {saveError}
           </div>
         )}
@@ -1125,9 +1125,9 @@ export default function EditConnectionModal({
                 const health = apiKeyHealth[keyId];
                 const statusColor =
                   health?.status === "invalid"
-                    ? "text-red-400"
+                    ? "text-gray-400"
                     : health?.status === "warning"
-                      ? "text-yellow-400"
+                      ? "text-gray-400"
                       : "text-text-muted";
                 const statusIcon =
                   health?.status === "invalid" ? "🔴" : health?.status === "warning" ? "🟡" : "🟢";
@@ -1177,7 +1177,7 @@ export default function EditConnectionModal({
                 <button
                   type="button"
                   onClick={() => setExtraApiKeys([])}
-                  className="px-2.5 py-1.5 rounded-md bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 text-xs font-medium transition-colors"
+                  className="px-2.5 py-1.5 rounded-md bg-gray-500/10 text-gray-400 hover:bg-gray-500/20 hover:text-gray-300 text-xs font-medium transition-colors"
                 >
                   {t("deleteAllExtraApiKeys")}
                 </button>
@@ -1190,9 +1190,9 @@ export default function EditConnectionModal({
                   const health = apiKeyHealth[keyId];
                   const statusColor =
                     health?.status === "invalid"
-                      ? "text-red-400"
+                      ? "text-gray-400"
                       : health?.status === "warning"
-                        ? "text-yellow-400"
+                        ? "text-gray-400"
                         : "text-text-muted";
                   const statusIcon =
                     health?.status === "invalid"
@@ -1234,7 +1234,7 @@ export default function EditConnectionModal({
                         )}
                         <button
                           onClick={() => setExtraApiKeys(extraApiKeys.filter((_, i) => i !== idx))}
-                          className="p-1.5 rounded hover:bg-red-500/10 text-red-400 hover:text-red-500"
+                          className="p-1.5 rounded hover:bg-gray-500/10 text-gray-400 hover:text-gray-500"
                           title={t("removeThisKey")}
                         >
                           <span className="material-symbols-outlined text-[16px]">close</span>

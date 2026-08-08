@@ -53,7 +53,7 @@ export default function DefaultToolCard({
   const selectedKeyObj = apiKeys?.find((k) => k.id === selectedApiKeyId);
 
   const resolveApiKeyValue = useCallback(
-    () => selectedKeyObj?.rawKey || (!cloudEnabled ? "sk_omniroute" : t("yourApiKeyPlaceholder")),
+    () => selectedKeyObj?.rawKey || (!cloudEnabled ? "sk_xenia" : t("yourApiKeyPlaceholder")),
     [cloudEnabled, selectedKeyObj?.rawKey, t]
   );
 
@@ -102,7 +102,7 @@ export default function DefaultToolCard({
   // Persist and restore model selection per tool via localStorage
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => {
-      const savedModel = localStorage.getItem(`omniroute-cli-model-${toolId}`);
+      const savedModel = localStorage.getItem(`xenia-cli-model-${toolId}`);
       if (savedModel) {
         if (isMultiModelTool) {
           try {
@@ -123,7 +123,7 @@ export default function DefaultToolCard({
           setModelValue(savedModel);
         }
       }
-      const savedKey = localStorage.getItem(`omniroute-cli-key-${toolId}`);
+      const savedKey = localStorage.getItem(`xenia-cli-key-${toolId}`);
       // (#523) localStorage may contain a masked key string from before the fix —
       // match by prefix/suffix against known keys to find the id.
       if (savedKey && apiKeys?.length > 0) {
@@ -145,9 +145,9 @@ export default function DefaultToolCard({
     (value) => {
       setModelValue(value);
       if (value) {
-        localStorage.setItem(`omniroute-cli-model-${toolId}`, value);
+        localStorage.setItem(`xenia-cli-model-${toolId}`, value);
       } else {
-        localStorage.removeItem(`omniroute-cli-model-${toolId}`);
+        localStorage.removeItem(`xenia-cli-model-${toolId}`);
       }
     },
     [toolId]
@@ -163,9 +163,9 @@ export default function DefaultToolCard({
       setModelValue(normalized[0] || "");
 
       if (normalized.length > 0) {
-        localStorage.setItem(`omniroute-cli-model-${toolId}`, JSON.stringify(normalized));
+        localStorage.setItem(`xenia-cli-model-${toolId}`, JSON.stringify(normalized));
       } else {
-        localStorage.removeItem(`omniroute-cli-model-${toolId}`);
+        localStorage.removeItem(`xenia-cli-model-${toolId}`);
       }
     },
     [toolId]
@@ -176,7 +176,7 @@ export default function DefaultToolCard({
       setSelectedApiKeyId(value);
       if (value) {
         // (#523) Store the key id in localStorage for persistence
-        localStorage.setItem(`omniroute-cli-key-${toolId}`, value);
+        localStorage.setItem(`xenia-cli-key-${toolId}`, value);
       }
     },
     [toolId]
@@ -287,7 +287,7 @@ export default function DefaultToolCard({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           baseUrl: baseUrlWithV1,
-          apiKey: !cloudEnabled ? "sk_omniroute" : null,
+          apiKey: !cloudEnabled ? "sk_xenia" : null,
           keyId: selectedKeyId,
           model: modelValue,
           models: isMultiModelTool ? getSelectedModels() : undefined,
@@ -344,7 +344,7 @@ export default function DefaultToolCard({
           </>
         ) : (
           <span className="text-sm text-text-muted">
-            {cloudEnabled ? t("noApiKeysCreateOne") : "sk_omniroute"}
+            {cloudEnabled ? t("noApiKeysCreateOne") : "sk_xenia"}
           </span>
         )}
       </div>
@@ -399,7 +399,7 @@ export default function DefaultToolCard({
               onClick={() =>
                 isMultiModelTool ? handleModelValuesChange([]) : handleModelChange("")
               }
-              className="p-2 text-text-muted hover:text-red-500 rounded transition-colors"
+              className="p-2 text-text-muted hover:text-gray-500 rounded transition-colors"
               title={t("clear")}
             >
               <span className="material-symbols-outlined text-lg">close</span>
@@ -421,20 +421,20 @@ export default function DefaultToolCard({
           const isWarning = note.type === "warning";
           const isError = note.type === "cloudCheck" && !cloudEnabled;
 
-          let bgClass = "bg-blue-500/10 border-blue-500/30";
-          let textClass = "text-blue-600 dark:text-blue-400";
-          let iconClass = "text-blue-500";
+          let bgClass = "bg-gray-500/10 border-gray-500/30";
+          let textClass = "text-gray-600 dark:text-gray-400";
+          let iconClass = "text-gray-500";
           let icon = "info";
 
           if (isWarning) {
-            bgClass = "bg-yellow-500/10 border-yellow-500/30";
-            textClass = "text-yellow-600 dark:text-yellow-400";
-            iconClass = "text-yellow-500";
+            bgClass = "bg-gray-500/10 border-gray-500/30";
+            textClass = "text-gray-600 dark:text-gray-400";
+            iconClass = "text-gray-500";
             icon = "warning";
           } else if (isError) {
-            bgClass = "bg-red-500/10 border-red-500/30";
-            textClass = "text-red-600 dark:text-red-400";
-            iconClass = "text-red-500";
+            bgClass = "bg-gray-500/10 border-gray-500/30";
+            textClass = "text-gray-600 dark:text-gray-400";
+            iconClass = "text-gray-500";
             icon = "error";
           }
 
@@ -470,8 +470,8 @@ export default function DefaultToolCard({
           </div>
         )}
         {!checkingRuntime && runtimeStatus && !runtimeStatus.error && (
-          <div className="flex items-start gap-3 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-            <span className="material-symbols-outlined text-blue-500 text-lg">
+          <div className="flex items-start gap-3 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+            <span className="material-symbols-outlined text-gray-500 text-lg">
               {runtimeStatus.reason === "not_required"
                 ? "info"
                 : runtimeStatus.installed && runtimeStatus.runnable
@@ -479,7 +479,7 @@ export default function DefaultToolCard({
                   : "warning"}
             </span>
             <div className="flex flex-col gap-1">
-              <p className="text-sm text-blue-700 dark:text-blue-300">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
                 {runtimeStatus.reason === "not_required"
                   ? t("guideOnlyIntegration")
                   : runtimeStatus.installed && runtimeStatus.runnable
@@ -510,9 +510,9 @@ export default function DefaultToolCard({
           </div>
         )}
         {!checkingRuntime && runtimeStatus?.error && (
-          <div className="flex items-start gap-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
-            <span className="material-symbols-outlined text-red-500 text-lg">error</span>
-            <p className="text-sm text-red-600 dark:text-red-400">
+          <div className="flex items-start gap-3 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+            <span className="material-symbols-outlined text-gray-500 text-lg">error</span>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               {t("failedCheckRuntimeStatus")}
             </p>
           </div>
@@ -588,7 +588,7 @@ export default function DefaultToolCard({
           <div className="mt-2">
             {message && (
               <div
-                className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs mb-2 ${message.type === "success" ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-600"}`}
+                className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs mb-2 ${message.type === "success" ? "bg-gray-500/10 text-gray-600" : "bg-gray-500/10 text-gray-600"}`}
               >
                 <span className="material-symbols-outlined text-[14px]">
                   {message.type === "success" ? "check_circle" : "error"}
@@ -623,7 +623,7 @@ export default function DefaultToolCard({
               )}
               {(isMultiModelTool ? getSelectedModels().length > 0 : !!modelValue) && (
                 <span className="text-xs text-text-muted flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px] text-green-500">
+                  <span className="material-symbols-outlined text-[14px] text-gray-500">
                     check_circle
                   </span>
                   {t("selectionSaved")}
@@ -700,16 +700,16 @@ export default function DefaultToolCard({
 
                 if (isGuide) {
                   return (
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                      <span className="size-1.5 rounded-full bg-blue-500" />
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400">
+                      <span className="size-1.5 rounded-full bg-gray-500" />
                       {t("guide")}
                     </span>
                   );
                 }
                 if (isDetected) {
                   return (
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-green-500/10 text-green-600 dark:text-green-400">
-                      <span className="size-1.5 rounded-full bg-green-500" />
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400">
+                      <span className="size-1.5 rounded-full bg-gray-500" />
                       {t("detected")}
                     </span>
                   );
@@ -724,8 +724,8 @@ export default function DefaultToolCard({
                 }
                 if (isInstalled && !isDetected && (rs || bs)) {
                   return (
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-yellow-500/10 text-yellow-600 dark:text-yellow-400">
-                      <span className="size-1.5 rounded-full bg-yellow-500" />
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400">
+                      <span className="size-1.5 rounded-full bg-gray-500" />
                       {t("notReady")}
                     </span>
                   );

@@ -11,8 +11,8 @@ Manage provider connections from the CLI: list available/configured providers, a
 ## Quick install
 
 ```bash
-npm install -g omniroute   # or: npx omniroute
-omniroute --version
+npm install -g xenia   # or: npx xenia
+xenia --version
 ```
 
 ## Subcommands
@@ -24,7 +24,7 @@ Manage provider connections (use
 **Example:**
 
 ```bash
-omniroute provider-cmd provider [subcommand]
+xenia provider-cmd provider [subcommand]
 ```
 
 ### `providers`
@@ -32,12 +32,12 @@ omniroute provider-cmd provider [subcommand]
 **Example:**
 
 ```bash
-omniroute providers
+xenia providers
 ```
 
 ### `providers available`
 
-Show available providers in the OmniRoute catalog
+Show available providers in the Xenia catalog
 
 **Flags:**
 
@@ -49,7 +49,7 @@ Show available providers in the OmniRoute catalog
 **Example:**
 
 ```bash
-omniroute providers available
+xenia providers available
 ```
 
 ### `providers list`
@@ -63,7 +63,7 @@ List configured provider connections
 **Example:**
 
 ```bash
-omniroute providers list
+xenia providers list
 ```
 
 ### `providers test <idOrName>`
@@ -77,7 +77,7 @@ Test a configured provider connection
 **Example:**
 
 ```bash
-omniroute providers test <idOrName>
+xenia providers test <idOrName>
 ```
 
 ### `providers test-all`
@@ -91,7 +91,7 @@ Test all active provider connections
 **Example:**
 
 ```bash
-omniroute providers test-all
+xenia providers test-all
 ```
 
 ### `providers validate`
@@ -105,7 +105,7 @@ Validate local provider configuration without calling upstream
 **Example:**
 
 ```bash
-omniroute providers validate
+xenia providers validate
 ```
 
 ### `providers rotate <idOrName>`
@@ -122,7 +122,7 @@ omniroute providers validate
 **Example:**
 
 ```bash
-omniroute providers rotate <idOrName>
+xenia providers rotate <idOrName>
 ```
 
 ### `providers status`
@@ -135,7 +135,7 @@ omniroute providers rotate <idOrName>
 **Example:**
 
 ```bash
-omniroute providers status
+xenia providers status
 ```
 
 ### `providers metrics`
@@ -154,7 +154,7 @@ omniroute providers status
 **Example:**
 
 ```bash
-omniroute providers metrics
+xenia providers metrics
 ```
 
 ### `providers metric <connectionId> <metric>`
@@ -166,7 +166,7 @@ omniroute providers metrics
 **Example:**
 
 ```bash
-omniroute providers metric <connectionId> <metric>
+xenia providers metric <connectionId> <metric>
 ```
 
 ### `test-provider test [provider] [model]`
@@ -183,23 +183,23 @@ omniroute providers metric <connectionId> <metric>
 **Example:**
 
 ```bash
-omniroute test-provider test [provider] [model]
+xenia test-provider test [provider] [model]
 ```
 
 <!-- skill:custom-start -->
-<!-- Migrated from skills/omniroute-cli-providers/SKILL.md (preserved curated content) -->
+<!-- Migrated from skills/xenia-cli-providers/SKILL.md (preserved curated content) -->
 
-# OmniRoute — CLI Providers & Keys
+# Xenia — CLI Providers & Keys
 
-Requires the `omniroute` CLI. See [CLI entry-point skill](https://raw.githubusercontent.com/diegosouzapw/OmniRoute/main/skills/omniroute-cli/SKILL.md) for install + global flags.
+Requires the `xenia` CLI. See [CLI entry-point skill](https://raw.githubusercontent.com/diegosouzapw/Xenia/main/skills/xenia-cli/SKILL.md) for install + global flags.
 
 ## Provider catalog (available providers)
 
 ```bash
-omniroute providers available                        # Full OmniRoute provider catalog
-omniroute providers available --search openai        # Filter by id, name, alias
-omniroute providers available --category api-key     # Filter by category
-omniroute providers available --json                 # Machine-readable JSON
+xenia providers available                        # Full Xenia provider catalog
+xenia providers available --search openai        # Filter by id, name, alias
+xenia providers available --category api-key     # Filter by category
+xenia providers available --json                 # Machine-readable JSON
 ```
 
 Categories: `api-key`, `oauth`, `free`, `local`, `combo`.
@@ -207,46 +207,46 @@ Categories: `api-key`, `oauth`, `free`, `local`, `combo`.
 ## Configured provider connections
 
 ```bash
-omniroute providers list                             # Connections in your DB
-omniroute providers list --json
+xenia providers list                             # Connections in your DB
+xenia providers list --json
 ```
 
 ## Testing connections
 
 ```bash
-omniroute providers test <id|name>                   # Test one configured connection
-omniroute providers test-all                         # Test every active connection (TUI progress)
-omniroute providers validate                         # Local-only structural validation (no HTTP)
+xenia providers test <id|name>                   # Test one configured connection
+xenia providers test-all                         # Test every active connection (TUI progress)
+xenia providers validate                         # Local-only structural validation (no HTTP)
 ```
 
 `test-all` opens an interactive TUI that shows live pass/fail per connection. Use `--json` to get a machine-readable result:
 
 ```bash
-omniroute providers test-all --json
+xenia providers test-all --json
 ```
 
-## API key management (OmniRoute keys)
+## API key management (Xenia keys)
 
-These manage the OmniRoute API keys issued under **API Manager** — not provider credentials.
+These manage the Xenia API keys issued under **API Manager** — not provider credentials.
 
 ```bash
-omniroute keys list                                  # List all OmniRoute API keys
-omniroute keys add <provider> [apiKey]               # Add an API key for a provider
-omniroute keys remove <provider>                     # Remove an API key
-omniroute keys regenerate <id>                       # Regenerate (rotate) a key
-omniroute keys revoke <id>                           # Revoke a key (disables it)
-omniroute keys reveal <id>                           # Show the full key value
-omniroute keys usage <id>                            # Show usage stats for a key
+xenia keys list                                  # List all Xenia API keys
+xenia keys add <provider> [apiKey]               # Add an API key for a provider
+xenia keys remove <provider>                     # Remove an API key
+xenia keys regenerate <id>                       # Regenerate (rotate) a key
+xenia keys revoke <id>                           # Revoke a key (disables it)
+xenia keys reveal <id>                           # Show the full key value
+xenia keys usage <id>                            # Show usage stats for a key
 
-omniroute keys rotate <id>                           # Rotate + revoke old key atomically
-omniroute keys expiration list                       # List key expiration times
+xenia keys rotate <id>                           # Rotate + revoke old key atomically
+xenia keys expiration list                       # List key expiration times
 ```
 
 ### Key policies
 
 ```bash
-omniroute keys policy show <id>                      # Show rate-limit / permission policy
-omniroute keys policy set <id> \
+xenia keys policy show <id>                      # Show rate-limit / permission policy
+xenia keys policy set <id> \
   --rate-limit 100 \
   --rate-window minute \
   --permissions chat,models                          # Set policy on a key
@@ -255,33 +255,33 @@ omniroute keys policy set <id> \
 ## Models
 
 ```bash
-omniroute models                                     # List all models (all providers)
-omniroute models openai                              # Filter by provider
-omniroute models --search gpt                        # Search by name
-omniroute models --json                              # JSON output
+xenia models                                     # List all models (all providers)
+xenia models openai                              # Filter by provider
+xenia models --search gpt                        # Search by name
+xenia models --json                              # JSON output
 ```
 
 ## OAuth providers
 
 ```bash
-omniroute oauth list                                 # List OAuth-configured providers
-omniroute oauth login <provider>                     # Start browser-based OAuth flow
-omniroute oauth logout <provider>                    # Revoke OAuth token
-omniroute oauth status <provider>                    # Show token state + expiry
-omniroute oauth refresh <provider>                   # Force token refresh
+xenia oauth list                                 # List OAuth-configured providers
+xenia oauth login <provider>                     # Start browser-based OAuth flow
+xenia oauth logout <provider>                    # Revoke OAuth token
+xenia oauth status <provider>                    # Show token state + expiry
+xenia oauth refresh <provider>                   # Force token refresh
 ```
 
-For OAuth providers (Gemini, Windsurf, Antigravity, etc.) the `login` command opens the OmniRoute dashboard OAuth flow in your browser.
+For OAuth providers (Gemini, Windsurf, Antigravity, etc.) the `login` command opens the Xenia dashboard OAuth flow in your browser.
 
 ## Provider nodes (multi-account routing)
 
 Provider nodes let you attach multiple API keys / accounts to one logical provider for round-robin or failover.
 
 ```bash
-omniroute nodes list <provider>                      # List nodes for a provider
-omniroute nodes add <provider> --api-key <key>       # Add a node
-omniroute nodes remove <provider> <nodeId>           # Remove a node
-omniroute nodes test <provider> <nodeId>             # Test one node
+xenia nodes list <provider>                      # List nodes for a provider
+xenia nodes add <provider> --api-key <key>       # Add a node
+xenia nodes remove <provider> <nodeId>           # Remove a node
+xenia nodes test <provider> <nodeId>             # Test one node
 ```
 
 ## Routing combos (CLI)
@@ -289,39 +289,39 @@ omniroute nodes test <provider> <nodeId>             # Test one node
 Create and manage routing combos from the terminal:
 
 ```bash
-omniroute combo list                                 # List all combos
-omniroute combo create <name> \
+xenia combo list                                 # List all combos
+xenia combo create <name> \
   --strategy priority \
   --targets anthropic/claude-opus-4-7,openai/gpt-4o  # Create combo
-omniroute combo switch <name>                        # Activate a combo as default
-omniroute combo delete <name>                        # Delete a combo
-omniroute combo suggest --task "code review"         # Ask OmniRoute to recommend a combo
+xenia combo switch <name>                        # Activate a combo as default
+xenia combo delete <name>                        # Delete a combo
+xenia combo suggest --task "code review"         # Ask Xenia to recommend a combo
 ```
 
-For the full REST API for combos see [omniroute-routing skill](https://raw.githubusercontent.com/diegosouzapw/OmniRoute/main/skills/omniroute-routing/SKILL.md).
+For the full REST API for combos see [xenia-routing skill](https://raw.githubusercontent.com/diegosouzapw/Xenia/main/skills/xenia-routing/SKILL.md).
 
 ## Quota & usage
 
 ```bash
-omniroute quota                                      # Provider quota usage + reset times
-omniroute usage                                      # Request + token usage summary
-omniroute cost                                       # Cost breakdown (by provider/model)
+xenia quota                                      # Provider quota usage + reset times
+xenia usage                                      # Request + token usage summary
+xenia cost                                       # Cost breakdown (by provider/model)
 ```
 
 ## Compression (CLI)
 
 ```bash
-omniroute compression status                         # Current compression mode + savings stats
-omniroute compression set --mode rtk                 # Enable RTK compression
-omniroute compression set --mode stacked             # Enable stacked (RTK + Caveman)
-omniroute compression set --mode off                 # Disable compression
-omniroute compression preview --mode rtk --text "..."  # Preview savings for sample text
+xenia compression status                         # Current compression mode + savings stats
+xenia compression set --mode rtk                 # Enable RTK compression
+xenia compression set --mode stacked             # Enable stacked (RTK + Caveman)
+xenia compression set --mode off                 # Disable compression
+xenia compression preview --mode rtk --text "..."  # Preview savings for sample text
 ```
 
 ## Health
 
 ```bash
-omniroute health                                     # Detailed health: circuit breakers, cache, memory
+xenia health                                     # Detailed health: circuit breakers, cache, memory
 ```
 
 ## Errors

@@ -30,7 +30,7 @@ import { isFeatureFlagEnabled } from "@/shared/utils/featureFlags";
 import { isAuthenticated } from "@/shared/utils/apiAuth";
 import { setRadarOptIn, setRadarKey, getRadarSettings } from "@/lib/db/radar";
 import { getContributorClaimUrl, getSupporterPlansUrl } from "@/lib/radar/links";
-import { buildErrorBody } from "@omniroute/open-sse/utils/error";
+import { buildErrorBody } from "@xenia/open-sse/utils/error";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -63,17 +63,17 @@ export async function OPTIONS() {
 export async function GET(request: Request) {
   // Flag gate — MUST run before auth (byte-identical flag-off inertia).
   if (!isFeatureFlagEnabled("RADAR_ENABLED")) {
-    return NextResponse.json(
-      buildErrorBody(404, "Not found"),
-      { status: 404, headers: CORS_HEADERS },
-    );
+    return NextResponse.json(buildErrorBody(404, "Not found"), {
+      status: 404,
+      headers: CORS_HEADERS,
+    });
   }
 
   if (!(await isAuthenticated(request))) {
-    return NextResponse.json(
-      buildErrorBody(401, "Unauthorized"),
-      { status: 401, headers: CORS_HEADERS },
-    );
+    return NextResponse.json(buildErrorBody(401, "Unauthorized"), {
+      status: 401,
+      headers: CORS_HEADERS,
+    });
   }
 
   try {
@@ -86,13 +86,13 @@ export async function GET(request: Request) {
         contributorClaimUrl: getContributorClaimUrl(),
         supporterPlansUrl: getSupporterPlansUrl(),
       },
-      { headers: { ...CORS_HEADERS, "Cache-Control": "no-store" } },
+      { headers: { ...CORS_HEADERS, "Cache-Control": "no-store" } }
     );
   } catch (err: unknown) {
-    const { sanitizeErrorMessage } = await import("@omniroute/open-sse/utils/error");
+    const { sanitizeErrorMessage } = await import("@xenia/open-sse/utils/error");
     return NextResponse.json(
       buildErrorBody(500, sanitizeErrorMessage(err) || "Failed to load Radar settings"),
-      { status: 500, headers: CORS_HEADERS },
+      { status: 500, headers: CORS_HEADERS }
     );
   }
 }
@@ -100,34 +100,34 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   // Flag gate — MUST run before auth (byte-identical flag-off inertia).
   if (!isFeatureFlagEnabled("RADAR_ENABLED")) {
-    return NextResponse.json(
-      buildErrorBody(404, "Not found"),
-      { status: 404, headers: CORS_HEADERS },
-    );
+    return NextResponse.json(buildErrorBody(404, "Not found"), {
+      status: 404,
+      headers: CORS_HEADERS,
+    });
   }
 
   if (!(await isAuthenticated(request))) {
-    return NextResponse.json(
-      buildErrorBody(401, "Unauthorized"),
-      { status: 401, headers: CORS_HEADERS },
-    );
+    return NextResponse.json(buildErrorBody(401, "Unauthorized"), {
+      status: 401,
+      headers: CORS_HEADERS,
+    });
   }
 
   let body: unknown;
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
-      buildErrorBody(400, "Invalid JSON body"),
-      { status: 400, headers: CORS_HEADERS },
-    );
+    return NextResponse.json(buildErrorBody(400, "Invalid JSON body"), {
+      status: 400,
+      headers: CORS_HEADERS,
+    });
   }
 
   const parsed = SettingsBodySchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
       buildErrorBody(400, "Invalid request body", parsed.error.flatten().fieldErrors),
-      { status: 400, headers: CORS_HEADERS },
+      { status: 400, headers: CORS_HEADERS }
     );
   }
 
@@ -137,7 +137,7 @@ export async function POST(request: Request) {
   if (optIn === undefined && supporterKey === undefined) {
     return NextResponse.json(
       buildErrorBody(400, "At least one of optIn or supporterKey is required"),
-      { status: 400, headers: CORS_HEADERS },
+      { status: 400, headers: CORS_HEADERS }
     );
   }
 
@@ -166,13 +166,13 @@ export async function POST(request: Request) {
         optIn: optIn ?? undefined,
         supporterKey: supporterKey !== undefined ? maskKey(supporterKey) : undefined,
       },
-      { headers: CORS_HEADERS },
+      { headers: CORS_HEADERS }
     );
   } catch (err: unknown) {
-    const { sanitizeErrorMessage } = await import("@omniroute/open-sse/utils/error");
+    const { sanitizeErrorMessage } = await import("@xenia/open-sse/utils/error");
     return NextResponse.json(
       buildErrorBody(500, sanitizeErrorMessage(err) || "Failed to update Radar settings"),
-      { status: 500, headers: CORS_HEADERS },
+      { status: 500, headers: CORS_HEADERS }
     );
   }
 }

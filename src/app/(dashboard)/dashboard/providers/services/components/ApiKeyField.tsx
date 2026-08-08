@@ -80,8 +80,8 @@ export function ApiKeyField({ name, serviceLabel, showReveal = false }: ApiKeyFi
     <>
       <Card padding="md">
         <div className="flex items-center gap-3 mb-3">
-          <div className="size-8 rounded-lg flex items-center justify-center bg-amber-500/10">
-            <span className="material-symbols-outlined text-amber-500 text-xl">key</span>
+          <div className="size-8 rounded-lg flex items-center justify-center bg-gray-500/10">
+            <span className="material-symbols-outlined text-gray-500 text-xl">key</span>
           </div>
           <div>
             <h3 className="font-medium text-sm">{t("apiKey")}</h3>
@@ -93,8 +93,8 @@ export function ApiKeyField({ name, serviceLabel, showReveal = false }: ApiKeyFi
           <div
             className={`flex items-center gap-1.5 mb-3 px-2 py-1.5 rounded text-xs ${
               msg.ok
-                ? "bg-green-500/10 text-green-600 dark:text-green-400"
-                : "bg-red-500/10 text-red-600 dark:text-red-400"
+                ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
+                : "bg-gray-500/10 text-gray-600 dark:text-gray-400"
             }`}
           >
             <span className="material-symbols-outlined text-[12px]">

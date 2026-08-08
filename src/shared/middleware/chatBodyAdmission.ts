@@ -16,30 +16,24 @@ function parsePositiveInt(value: string | undefined, fallback: number): number {
 }
 
 export const CHAT_LARGE_BODY_BYTES = parsePositiveInt(
-  process.env.OMNIROUTE_CHAT_LARGE_BODY_BYTES,
+  process.env.XENIA_CHAT_LARGE_BODY_BYTES,
   256 * 1024
 );
 
 export const CHAT_HARD_MAX_BODY_BYTES = parsePositiveInt(
-  process.env.OMNIROUTE_CHAT_HARD_MAX_BODY_BYTES,
+  process.env.XENIA_CHAT_HARD_MAX_BODY_BYTES,
   50 * 1024 * 1024
 );
 
-const CHAT_MAX_HEAVY_IN_FLIGHT = parsePositiveInt(
-  process.env.OMNIROUTE_CHAT_MAX_HEAVY_IN_FLIGHT,
-  1
-);
+const CHAT_MAX_HEAVY_IN_FLIGHT = parsePositiveInt(process.env.XENIA_CHAT_MAX_HEAVY_IN_FLIGHT, 1);
 
 export const CHAT_HEAVY_MESSAGE_COUNT = parsePositiveInt(
-  process.env.OMNIROUTE_CHAT_HEAVY_MESSAGE_COUNT,
+  process.env.XENIA_CHAT_HEAVY_MESSAGE_COUNT,
   200
 );
-export const CHAT_HEAVY_TOOL_COUNT = parsePositiveInt(
-  process.env.OMNIROUTE_CHAT_HEAVY_TOOL_COUNT,
-  64
-);
+export const CHAT_HEAVY_TOOL_COUNT = parsePositiveInt(process.env.XENIA_CHAT_HEAVY_TOOL_COUNT, 64);
 export const CHAT_HEAVY_ESTIMATED_TOKENS = parsePositiveInt(
-  process.env.OMNIROUTE_CHAT_HEAVY_ESTIMATED_TOKENS,
+  process.env.XENIA_CHAT_HEAVY_ESTIMATED_TOKENS,
   32_000
 );
 /**
@@ -47,21 +41,18 @@ export const CHAT_HEAVY_ESTIMATED_TOKENS = parsePositiveInt(
  *
  * A fixed message count is a *deployment policy*, not a universal property of a chat request:
  * the same 900-message conversation is trivial on a 16 GB host and fatal in a 1 GB container.
- * Enforcing one here rejected conversations before OmniRoute's own compression pipeline — the
+ * Enforcing one here rejected conversations before Xenia's own compression pipeline — the
  * component that exists precisely to make them servable — ever ran, and returned a terminal 413
  * that no client can retry its way out of. Message count is also not an input the caller fully
  * controls: translation from other protocols expands a single turn into several `messages[]`
- * entries, so the metric an operator caps is partly manufactured by OmniRoute itself.
+ * entries, so the metric an operator caps is partly manufactured by Xenia itself.
  *
  * What actually bounds heap growth is the heavyweight lease below (bounded concurrency through
  * the allocation-heavy path) plus the heap-pressure shed in the chat handler. Both remain in
  * force for every request, including large ones. Constrained deployments that still want a hard
- * ceiling opt in with `OMNIROUTE_CHAT_HARD_MAX_MESSAGES`.
+ * ceiling opt in with `XENIA_CHAT_HARD_MAX_MESSAGES`.
  */
-export const CHAT_HARD_MAX_MESSAGES = parsePositiveInt(
-  process.env.OMNIROUTE_CHAT_HARD_MAX_MESSAGES,
-  0
-);
+export const CHAT_HARD_MAX_MESSAGES = parsePositiveInt(process.env.XENIA_CHAT_HARD_MAX_MESSAGES, 0);
 
 export interface ChatAdmissionLease {
   readonly released: boolean;
@@ -70,7 +61,7 @@ export interface ChatAdmissionLease {
 
 /**
  * Process-local heavyweight reservation. The capacity check and increment execute in one
- * synchronous JavaScript turn, making acquisition atomic within an OmniRoute process.
+ * synchronous JavaScript turn, making acquisition atomic within an Xenia process.
  * Queueing is intentionally separate: unavailable capacity is a retryable 503.
  */
 export class ChatAdmissionController {
@@ -278,29 +269,27 @@ function rebuildRequest(request: Request, body: Uint8Array): Request {
  * Internal self-loop bypass marker for the vision-bridge describe call (and any
  * other trusted in-process sub-request). An external client cannot spoof it:
  * it is honored ONLY when combined with a trusted self-loop credential — the
- * local-mode `sk_omniroute` sentinel or the operator-configured env key
- * (`OMNIROUTE_API_KEY` / `ROUTER_API_KEY`, #1350) so REQUIRE_API_KEY=true
+ * local-mode `sk_xenia` sentinel or the operator-configured env key
+ * (`XENIA_API_KEY` / `ROUTER_API_KEY`, #1350) so REQUIRE_API_KEY=true
  * deployments can run the describe sub-request.
  */
-export const ADMISSION_BYPASS_HEADER = "x-omniroute-admission-bypass";
+export const ADMISSION_BYPASS_HEADER = "x-xenia-admission-bypass";
 const ADMISSION_BYPASS_VALUE = "internal";
-const SELF_LOOP_KEY = "sk_omniroute";
+const SELF_LOOP_KEY = "sk_xenia";
 
 /**
  * Resolve the bearer credential used by trusted in-process self-loop
  * sub-requests (the vision-bridge describe call).
  *
- * Local mode uses the `sk_omniroute` sentinel. Deployments that force API key
+ * Local mode uses the `sk_xenia` sentinel. Deployments that force API key
  * auth (`REQUIRE_API_KEY=true`) reject that sentinel with 401, so they must use
- * a real key — the persistent env-var key (#1350, `OMNIROUTE_API_KEY` /
+ * a real key — the persistent env-var key (#1350, `XENIA_API_KEY` /
  * `ROUTER_API_KEY`) is the natural choice because it always validates and
  * survives restarts. Falls back to the sentinel when no env key is configured
  * so local-mode behavior is unchanged.
  */
 export function resolveSelfLoopBearer(): string {
-  return (
-    process.env.OMNIROUTE_API_KEY?.trim() || process.env.ROUTER_API_KEY?.trim() || SELF_LOOP_KEY
-  );
+  return process.env.XENIA_API_KEY?.trim() || process.env.ROUTER_API_KEY?.trim() || SELF_LOOP_KEY;
 }
 
 /**
@@ -336,8 +325,8 @@ function isInternalAdmissionBypass(request: Request): boolean {
   if (!bypass) return false;
 
   // Credential gate: the bypass only applies to trusted self-loop credentials —
-  // the local `sk_omniroute` sentinel OR the operator-configured env key
-  // (`OMNIROUTE_API_KEY` / `ROUTER_API_KEY`, #1350) so REQUIRE_API_KEY=true
+  // the local `sk_xenia` sentinel OR the operator-configured env key
+  // (`XENIA_API_KEY` / `ROUTER_API_KEY`, #1350) so REQUIRE_API_KEY=true
   // deployments can still run the vision-bridge describe sub-request. The env
   // key is a secret like any other API key, so honoring it here does not widen
   // the attack surface: a third-party that holds it can already call every API.

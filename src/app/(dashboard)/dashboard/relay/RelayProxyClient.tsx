@@ -165,7 +165,7 @@ export default function RelayProxyClient() {
       {newTokenData && (
         <Card>
           <div className="p-4 space-y-3">
-            <h2 className="text-sm font-semibold text-green-600 dark:text-green-400">
+            <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-400">
               {t("createdTitle")}
             </h2>
             <div className="bg-surface/50 border border-border rounded-lg p-3">
@@ -218,7 +218,7 @@ export default function RelayProxyClient() {
                 >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-2 h-2 rounded-full ${token.enabled ? "bg-green-500" : "bg-red-500"}`}
+                      className={`w-2 h-2 rounded-full ${token.enabled ? "bg-gray-500" : "bg-gray-500"}`}
                     />
                     <div>
                       <div className="font-medium text-sm">{token.name}</div>
@@ -245,7 +245,7 @@ export default function RelayProxyClient() {
                     </button>
                     <button
                       onClick={() => deleteToken(token.id)}
-                      className="text-xs text-red-500 hover:underline"
+                      className="text-xs text-gray-500 hover:underline"
                     >
                       {t("delete")}
                     </button>

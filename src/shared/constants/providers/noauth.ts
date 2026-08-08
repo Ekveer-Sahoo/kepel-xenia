@@ -8,7 +8,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "dva",
     name: "Devin CLI Agentic Bridge",
     icon: "terminal",
-    color: "#635BFF",
+    color: "#707070",
     textIcon: "DV",
     website: "https://docs.devin.ai/work-with-devin/devin-cli",
     noAuth: true,
@@ -26,7 +26,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "oc",
     name: "OpenCode Free",
     icon: "terminal",
-    color: "#E87040",
+    color: "#8e8e8e",
     textIcon: "OC",
     website: "https://opencode.ai",
     noAuth: true,
@@ -44,7 +44,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "ddgw",
     name: "DuckDuckGo AI Chat",
     icon: "auto_awesome",
-    color: "#DE5833",
+    color: "#7c7c7c",
     textIcon: "DDG",
     website: "https://duckduckgo.com/duckchat",
     noAuth: true,
@@ -60,7 +60,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "felo",
     name: "Felo",
     icon: "travel_explore",
-    color: "#5B7FFF",
+    color: "#838383",
     textIcon: "FL",
     website: "https://felo.ai",
     noAuth: true,
@@ -77,7 +77,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "tllm",
     name: "The Old LLM (Free)",
     icon: "auto_awesome",
-    color: "#8B5CF6",
+    color: "#7c7c7c",
     textIcon: "TL",
     website: "https://theoldllm.vercel.app",
     noAuth: true,
@@ -93,7 +93,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "pepper",
     name: "Chipotle Pepper AI (Free)",
     icon: "restaurant",
-    color: "#C41230",
+    color: "#4b4b4b",
     textIcon: "🌯",
     website: "https://amelia.chipotle.com",
     noAuth: true,
@@ -109,7 +109,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "veo-free",
     name: "Veo AI Free",
     icon: "videocam",
-    color: "#8B5CF6",
+    color: "#7c7c7c",
     textIcon: "VF",
     website: "https://veoaifree.com",
     noAuth: true,
@@ -123,7 +123,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "mcode",
     name: "MiMoCode (Free)",
     icon: "devices",
-    color: "#FF6B35",
+    color: "#919191",
     textIcon: "MC",
     website: "https://mimo.mi.com",
     noAuth: true,
@@ -142,7 +142,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "aug",
     name: "Augment (Auggie CLI)",
     icon: "terminal",
-    color: "#7C3AED",
+    color: "#626262",
     textIcon: "AU",
     website: "https://augmentcode.com",
     noAuth: true,
@@ -150,11 +150,11 @@ export const NOAUTH_PROVIDERS = {
     serviceKinds: ["llm"],
     isLocalCli: true,
     freeNote:
-      "Local passthrough — runs the Augment CLI (`auggie`) on this machine. Auth is handled by `auggie login`, not OmniRoute.",
+      "Local passthrough — runs the Augment CLI (`auggie`) on this machine. Auth is handled by `auggie login`, not Xenia.",
     authHint:
-      "No API key stored by OmniRoute. Install the Auggie CLI and run `auggie login` on this machine, then OmniRoute spawns it locally for each request.",
+      "No API key stored by Xenia. Install the Auggie CLI and run `auggie login` on this machine, then Xenia spawns it locally for each request.",
     notice: {
-      text: "Augment (Auggie CLI) requires the `auggie` binary installed and authenticated locally (`auggie login`). OmniRoute spawns it as a subprocess and never sees or stores your Augment credentials.",
+      text: "Augment (Auggie CLI) requires the `auggie` binary installed and authenticated locally (`auggie login`). Xenia spawns it as a subprocess and never sees or stores your Augment credentials.",
     },
   },
   aihorde: {
@@ -162,7 +162,7 @@ export const NOAUTH_PROVIDERS = {
     alias: "horde",
     name: "AI Horde",
     icon: "diversity_3",
-    color: "#8B5CF6",
+    color: "#7c7c7c",
     textIcon: "AH",
     website: "https://aihorde.net",
     noAuth: true,
@@ -180,7 +180,7 @@ export const NOAUTH_PROVIDERS = {
 };
 
 // Provider-level proxy controls are exposed only for transports whose complete
-// upstream path runs through OmniRoute's proxy-aware global fetch. Providers
+// upstream path runs through Xenia's proxy-aware global fetch. Providers
 // with browser, WebSocket, direct dispatcher, media, or local CLI paths stay
 // hidden until those paths can guarantee the configured provider proxy.
 export const NOAUTH_PROVIDER_PROXY_SUPPORTED = new Set(["opencode", "theoldllm"]);

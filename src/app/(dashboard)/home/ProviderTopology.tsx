@@ -153,7 +153,7 @@ function RouterNode({ data }: { data: RouterNodeData }) {
       <div className="flex items-center justify-center size-7 rounded-md bg-primary/15 shrink-0">
         <span className="material-symbols-outlined text-primary text-[16px]">route</span>
       </div>
-      <span className="text-sm font-bold text-primary">OmniRoute</span>
+      <span className="text-sm font-bold text-primary">Xenia</span>
       {data.activeCount > 0 && (
         <span className="ml-1 px-1.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-bold leading-none">
           {data.activeCount}
@@ -256,7 +256,7 @@ function buildLayout(
         position: { x: cx - nodeW / 2, y: cy - nodeH / 2 },
         data: {
           label: resolveTopologyNodeLabel(p.name, config.name, p.provider),
-          color: config.color || "#6b7280",
+          color: config.color || "#727272",
           providerId: p.provider,
           active,
           error,

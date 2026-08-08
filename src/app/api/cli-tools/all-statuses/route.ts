@@ -4,14 +4,14 @@ import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import pino from "pino";
 
-import { buildErrorBody } from "@omniroute/open-sse/utils/error.ts";
+import { buildErrorBody } from "@xenia/open-sse/utils/error.ts";
 
 import { requireCliToolsAuth } from "@/lib/api/requireCliToolsAuth";
 import { CLI_TOOLS } from "@/shared/constants/cliTools";
 import { getCliRuntimeStatus, getCliPrimaryConfigPath } from "@/shared/services/cliRuntime";
 import { getAllCliToolLastConfigured } from "@/lib/db/cliToolState";
 import { checkToolConfigStatus } from "@/lib/cliTools/checkToolConfigStatus";
-import { findOmniRouteQwenCodeModel } from "@/shared/services/qwenCodeConfig";
+import { findXeniaQwenCodeModel } from "@/shared/services/qwenCodeConfig";
 import { getCached, setCached } from "@/lib/cliTools/batchStatusCache";
 import type { ToolBatchStatus, ToolBatchStatusMap } from "@/shared/types/cliBatchStatus";
 
@@ -44,7 +44,7 @@ async function extractEndpointFromConfig(
         return (env?.ANTHROPIC_BASE_URL as string | undefined) ?? null;
       }
       case "qwen": {
-        const managed = findOmniRouteQwenCodeModel(config);
+        const managed = findXeniaQwenCodeModel(config);
         return typeof managed?.baseUrl === "string" ? managed.baseUrl : null;
       }
       case "cline":

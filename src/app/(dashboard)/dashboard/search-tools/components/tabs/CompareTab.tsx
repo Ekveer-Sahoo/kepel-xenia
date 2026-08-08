@@ -327,13 +327,13 @@ export default function CompareTab({ providers, onMetrics }: CompareTabProps) {
                         {cr.provider.replace("-search", "")}
                       </p>
                       {cr.error ? (
-                        <p className="text-[10px] text-red-400 truncate">{cr.error}</p>
+                        <p className="text-[10px] text-gray-400 truncate">{cr.error}</p>
                       ) : (
                         <div className="flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] text-text-muted">
-                          <span className={isBestLatency ? "text-emerald-400 font-medium" : ""}>
+                          <span className={isBestLatency ? "text-gray-400 font-medium" : ""}>
                             {cr.latency}ms
                           </span>
-                          <span className={isBestCost ? "text-emerald-400 font-medium" : ""}>
+                          <span className={isBestCost ? "text-gray-400 font-medium" : ""}>
                             ${cr.cost.toFixed(4)}
                           </span>
                           <span>{t("resultCount", { count: cr.resultCount })}</span>
@@ -346,7 +346,7 @@ export default function CompareTab({ providers, onMetrics }: CompareTabProps) {
                     <div className="flex flex-col divide-y divide-border overflow-y-auto max-h-[600px]">
                       {cr.error ? (
                         <div className="p-3">
-                          <p className="text-xs text-red-400">{cr.error}</p>
+                          <p className="text-xs text-gray-400">{cr.error}</p>
                         </div>
                       ) : cr.results.length === 0 ? (
                         <div className="p-3">
@@ -360,7 +360,7 @@ export default function CompareTab({ providers, onMetrics }: CompareTabProps) {
                               <div className="flex items-start gap-1">
                                 {isShared && (
                                   <span
-                                    className="text-emerald-400 text-[11px] mt-0.5 shrink-0"
+                                    className="text-gray-400 text-[11px] mt-0.5 shrink-0"
                                     title={t("sharedResultTitle")}
                                     aria-label={t("sharedResult")}
                                   >

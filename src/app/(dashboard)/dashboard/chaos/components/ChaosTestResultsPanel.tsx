@@ -39,15 +39,15 @@ export function ChaosTestResultsPanel({ result }: { result: ChaosTestResult }) {
           key={idx}
           className={`p-2 rounded-md text-xs ${
             model.status === "success"
-              ? "bg-green-500/5 border border-green-500/20"
-              : "bg-red-500/5 border border-red-500/20"
+              ? "bg-gray-500/5 border border-gray-500/20"
+              : "bg-gray-500/5 border border-gray-500/20"
           }`}
         >
           <div className="font-medium text-text-main">
             [{idx + 1}] {model.providerName} / {model.modelId}
             <span className="ml-2 text-text-muted">({model.durationMs}ms)</span>
             <span
-              className={`ml-2 ${model.status === "success" ? "text-green-500" : "text-red-500"}`}
+              className={`ml-2 ${model.status === "success" ? "text-gray-500" : "text-gray-500"}`}
             >
               {model.status}
             </span>
@@ -58,7 +58,7 @@ export function ChaosTestResultsPanel({ result }: { result: ChaosTestResult }) {
               {model.content.length > 300 ? "..." : ""}
             </div>
           )}
-          {model.error && <div className="mt-1 text-red-500">{model.error}</div>}
+          {model.error && <div className="mt-1 text-gray-500">{model.error}</div>}
         </div>
       ))}
     </div>

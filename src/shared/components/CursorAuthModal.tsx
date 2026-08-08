@@ -117,12 +117,12 @@ export default function CursorAuthModal({
           <>
             {/* Success message if auto-detected */}
             {autoDetected && (
-              <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
+              <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
                 <div className="flex gap-2">
-                  <span className="material-symbols-outlined text-green-600 dark:text-green-400">
+                  <span className="material-symbols-outlined text-gray-600 dark:text-gray-400">
                     check_circle
                   </span>
-                  <p className="text-sm text-green-800 dark:text-green-200">
+                  <p className="text-sm text-gray-800 dark:text-gray-200">
                     {t("tokensAutoDetected")}
                   </p>
                 </div>
@@ -131,12 +131,12 @@ export default function CursorAuthModal({
 
             {/* Info message if not auto-detected */}
             {!autoDetected && !error && (
-              <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800">
+              <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
                 <div className="flex gap-2">
-                  <span className="material-symbols-outlined text-blue-600 dark:text-blue-400">
+                  <span className="material-symbols-outlined text-gray-600 dark:text-gray-400">
                     info
                   </span>
-                  <p className="text-sm text-blue-800 dark:text-blue-200">
+                  <p className="text-sm text-gray-800 dark:text-gray-200">
                     {t("cursorNotDetected")}
                   </p>
                 </div>
@@ -146,7 +146,7 @@ export default function CursorAuthModal({
             {/* Access Token Input */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                {t("accessToken")} <span className="text-red-500">{t("required")}</span>
+                {t("accessToken")} <span className="text-gray-500">{t("required")}</span>
               </label>
               <textarea
                 value={accessToken}
@@ -172,8 +172,8 @@ export default function CursorAuthModal({
 
             {/* Error Display */}
             {error && (
-              <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800">
-                <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+              <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
+                <p className="text-sm text-gray-600 dark:text-gray-400">{error}</p>
               </div>
             )}
 

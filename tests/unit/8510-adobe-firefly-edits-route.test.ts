@@ -10,7 +10,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-adobe-firefly-edits-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-adobe-firefly-edits-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = process.env.API_KEY_SECRET || "adobe-firefly-edits-test-secret";
 
@@ -19,10 +19,8 @@ const providersDb = await import("../../src/lib/db/providers.ts");
 const apiKeysDb = await import("../../src/lib/db/apiKeys.ts");
 const imageEditRoute = await import("../../src/app/api/v1/images/edits/route.ts");
 const v1ModelsCatalog = await import("../../src/app/api/v1/models/catalog.ts");
-const {
-  ADOBE_FIREFLY_IMAGE_UPLOAD_URL,
-  ADOBE_FIREFLY_IMAGE_SUBMIT_URL,
-} = await import("../../open-sse/services/adobeFireflyClient.ts");
+const { ADOBE_FIREFLY_IMAGE_UPLOAD_URL, ADOBE_FIREFLY_IMAGE_SUBMIT_URL } =
+  await import("../../open-sse/services/adobeFireflyClient.ts");
 
 interface ErrorResponseBody {
   error: { message: string; code?: string };
@@ -148,10 +146,7 @@ test("#8510 v1 image edit POST uploads Adobe Firefly reference images and dispat
     id: string;
   }>;
   assert.ok(Array.isArray(referenceBlobs), "generate-async payload must carry referenceBlobs");
-  assert.deepEqual(
-    referenceBlobs.map((r) => r.id).sort(),
-    [...uploadedIds].sort()
-  );
+  assert.deepEqual(referenceBlobs.map((r) => r.id).sort(), [...uploadedIds].sort());
 });
 
 test("#8510 v1 image edit POST rejects more than 4 Adobe Firefly reference images", async () => {
@@ -206,7 +201,9 @@ test("#8510 v1 image edit POST surfaces missing Adobe Firefly credentials", asyn
 });
 
 test("#8510 v1 image edit POST surfaces Adobe Firefly rate-limit sentinel", async () => {
-  await seedAdobeFireflyConnection({ rateLimitedUntil: new Date(Date.now() + 60_000).toISOString() });
+  await seedAdobeFireflyConnection({
+    rateLimitedUntil: new Date(Date.now() + 60_000).toISOString(),
+  });
   globalThis.fetch = async () => {
     throw new Error("Rate-limited path must not reach upstream");
   };

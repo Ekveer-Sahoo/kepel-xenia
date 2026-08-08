@@ -1,8 +1,8 @@
 {
   "common": {
     "error": "Помилка: {message}",
-    "serverOffline": "Сервер OmniRoute відключено. Запустіть: omniroute serve",
-    "authRequired": "Потрібна автентифікація. Встановіть OMNIROUTE_API_KEY або виконайте: omniroute setup",
+    "serverOffline": "Сервер Xenia відключено. Запустіть: xenia serve",
+    "authRequired": "Потрібна автентифікація. Встановіть XENIA_API_KEY або виконайте: xenia setup",
     "rateLimited": "Перевищено ліміт запитів. Повторіть через {seconds}с.",
     "timeout": "Запит завершився через {ms}мс.",
     "success": "Готово.",
@@ -15,18 +15,18 @@
     "yesOpt": "Пропустити підтвердження"
   },
   "program": {
-    "description": "OmniRoute — Розумний AI-маршрутизатор з автоматичним перемиканням",
+    "description": "Xenia — Розумний AI-маршрутизатор з автоматичним перемиканням",
     "version": "Вивести версію та вийти",
     "output": "Формат виведення (table, json, jsonl, csv)",
     "quiet": "Приховати несуттєвий вивід",
     "no_color": "Вимкнути кольоровий вивід",
     "timeout": "Тайм-аут HTTP-запитів у мілісекундах",
-    "api_key": "API-ключ для сервера OmniRoute",
-    "base_url": "Базовий URL сервера OmniRoute",
+    "api_key": "API-ключ для сервера Xenia",
+    "base_url": "Базовий URL сервера Xenia",
     "context": "Контекст/профіль сервера для цієї команди",
-    "lang": "Встановити мову відображення CLI (замінює OMNIROUTE_LANG)"
+    "lang": "Встановити мову відображення CLI (замінює XENIA_LANG)"
   },
   "redis": {
-    "description": "Запустити локальний контейнер Redis одним натисканням (Podman або Docker) для кешування та відстеження квот OmniRoute"
+    "description": "Запустити локальний контейнер Redis одним натисканням (Podman або Docker) для кешування та відстеження квот Xenia"
   }
 }

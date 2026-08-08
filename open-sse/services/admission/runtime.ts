@@ -41,7 +41,7 @@ export const DEFAULT_ADAPTIVE_ADMISSION_CONFIG: Readonly<AdaptiveAdmissionConfig
   windowMs: 1_000,
 });
 
-const RUNTIME_STORE_KEY = Symbol.for("omniroute.adaptiveAdmission.runtime");
+const RUNTIME_STORE_KEY = Symbol.for("xenia.adaptiveAdmission.runtime");
 
 type RuntimeStore = {
   runtime: AdaptiveAdmissionRuntime | null;

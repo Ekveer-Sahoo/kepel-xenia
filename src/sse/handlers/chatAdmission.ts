@@ -11,7 +11,7 @@ import {
   type AdaptiveAdmissionAdmitted,
   type AdaptiveAdmissionFailureOutcome,
   type AdaptiveAdmissionRuntime,
-} from "@omniroute/open-sse/services/admission/runtime.ts";
+} from "@xenia/open-sse/services/admission/runtime.ts";
 
 /** Single fairness bucket for unauthenticated / keyless traffic. Opaque; never a raw key. */
 export const ANONYMOUS_ADMISSION_TENANT_KEY = "anonymous";

@@ -16,8 +16,8 @@ function readCache() {
     const raw = JSON.parse(readFileSync(cachePath(), "utf8"));
     if (raw && typeof raw.ts === "number" && Date.now() - raw.ts < CACHE_TTL_MS) return raw;
   } catch (err) {
-    if (process.env.OMNIROUTE_DEBUG_COMPLETION) {
-      console.error("[omniroute completion] readCache failed:", err?.message ?? err);
+    if (process.env.XENIA_DEBUG_COMPLETION) {
+      console.error("[xenia completion] readCache failed:", err?.message ?? err);
     }
   }
   return null;
@@ -46,8 +46,8 @@ async function refreshCache(opts = {}) {
       models = (Array.isArray(j) ? j : j.data || []).map((m) => m.id).filter(Boolean);
     }
   } catch (err) {
-    if (process.env.OMNIROUTE_DEBUG_COMPLETION) {
-      console.error("[omniroute completion] refreshCache failed:", err?.message ?? err);
+    if (process.env.XENIA_DEBUG_COMPLETION) {
+      console.error("[xenia completion] refreshCache failed:", err?.message ?? err);
     }
   }
   const data = { combos, providers, models, ts: Date.now() };
@@ -55,8 +55,8 @@ async function refreshCache(opts = {}) {
     mkdirSync(dirname(cachePath()), { recursive: true });
     writeFileSync(cachePath(), JSON.stringify(data));
   } catch (err) {
-    if (process.env.OMNIROUTE_DEBUG_COMPLETION) {
-      console.error("[omniroute completion] writeCache failed:", err?.message ?? err);
+    if (process.env.XENIA_DEBUG_COMPLETION) {
+      console.error("[xenia completion] writeCache failed:", err?.message ?? err);
     }
   }
   return data;
@@ -71,38 +71,38 @@ function detectShell() {
 
 function installPath(shell) {
   const home = homedir();
-  if (shell === "zsh") return join(home, ".zsh", "completions", "_omniroute");
-  if (shell === "fish") return join(home, ".config", "fish", "completions", "omniroute.fish");
-  return join(home, ".bash_completion.d", "omniroute");
+  if (shell === "zsh") return join(home, ".zsh", "completions", "_xenia");
+  if (shell === "fish") return join(home, ".config", "fish", "completions", "xenia.fish");
+  return join(home, ".bash_completion.d", "xenia");
 }
 
 function generateZshScript() {
-  return `#compdef omniroute
+  return `#compdef xenia
 
-# OmniRoute zsh completion (dynamic)
-_omniroute_get_cache() {
+# Xenia zsh completion (dynamic)
+_xenia_get_cache() {
   local key="$1"
-  local cache="$HOME/.omniroute/completion-cache.json"
+  local cache="$HOME/.xenia/completion-cache.json"
   local now=$(date +%s 2>/dev/null || echo 0)
   local mtime=0
   if [[ -f "$cache" ]]; then
     mtime=$(stat -c %Y "$cache" 2>/dev/null || stat -f %m "$cache" 2>/dev/null || echo 0)
   fi
   if [[ $((now - mtime)) -gt 3600 ]]; then
-    omniroute completion refresh --quiet >/dev/null 2>&1
+    xenia completion refresh --quiet >/dev/null 2>&1
   fi
   if command -v python3 &>/dev/null && [[ -f "$cache" ]]; then
     python3 -c "import json,sys;d=json.load(open('$cache'));print(' '.join(d.get('$key',[])))" 2>/dev/null
   fi
 }
 
-_omniroute() {
+_xenia() {
   local -a commands
   commands=(
-    'serve:Start the OmniRoute server'
+    'serve:Start the Xenia server'
     'stop:Stop the server'
     'restart:Restart the server'
-    'setup:Configure OmniRoute'
+    'setup:Configure Xenia'
     'doctor:Run health diagnostics'
     'status:Show server status'
     'logs:View application logs'
@@ -143,7 +143,7 @@ _omniroute() {
           case $words[2] in
             switch|delete|show)
               local -a combos
-              combos=($(_omniroute_get_cache combos))
+              combos=($(_xenia_get_cache combos))
               _describe 'combo' combos ;;
             *) _arguments '1:subcommand:(list switch create delete show suggest)' ;;
           esac ;;
@@ -151,7 +151,7 @@ _omniroute() {
           case $words[2] in
             add|remove|test)
               local -a providers
-              providers=($(_omniroute_get_cache providers))
+              providers=($(_xenia_get_cache providers))
               _describe 'provider' providers ;;
             *) _arguments '1:subcommand:(list add remove test)' ;;
           esac ;;
@@ -170,40 +170,40 @@ _omniroute() {
       case $state in
         models)
           local -a models
-          models=($(_omniroute_get_cache models))
+          models=($(_xenia_get_cache models))
           _describe 'model' models ;;
         combos)
           local -a combos
-          combos=($(_omniroute_get_cache combos))
+          combos=($(_xenia_get_cache combos))
           _describe 'combo' combos ;;
       esac ;;
   esac
 }
 
-compdef _omniroute omniroute
+compdef _xenia xenia
 `;
 }
 
 function generateBashScript() {
   return `#!/bin/bash
-# OmniRoute CLI bash completion (dynamic)
+# Xenia CLI bash completion (dynamic)
 
-_omniroute_get_cache() {
+_xenia_get_cache() {
   local key="$1"
-  local cache="$HOME/.omniroute/completion-cache.json"
+  local cache="$HOME/.xenia/completion-cache.json"
   local now
   now=$(date +%s 2>/dev/null || echo 0)
   local mtime=0
   [[ -f "$cache" ]] && mtime=$(stat -c %Y "$cache" 2>/dev/null || stat -f %m "$cache" 2>/dev/null || echo 0)
   if (( now - mtime > 3600 )); then
-    omniroute completion refresh --quiet >/dev/null 2>&1
+    xenia completion refresh --quiet >/dev/null 2>&1
   fi
   if command -v python3 &>/dev/null && [[ -f "$cache" ]]; then
     python3 -c "import json,sys;d=json.load(open('$cache'));print(' '.join(d.get('$key',[])))" 2>/dev/null
   fi
 }
 
-_omniroute() {
+_xenia() {
   local cur prev cmds
   COMPREPLY=()
   cur="\${COMP_WORDS[COMP_CWORD]}"
@@ -219,61 +219,61 @@ _omniroute() {
     open)        COMPREPLY=($(compgen -W "combos providers api-manager cli-tools agents settings logs memory skills evals audit cost resilience" -- "\${cur}")); return 0 ;;
     --model)
       local models
-      models=$(_omniroute_get_cache models)
+      models=$(_xenia_get_cache models)
       COMPREPLY=($(compgen -W "\${models}" -- "\${cur}")); return 0 ;;
     --combo)
       local combos
-      combos=$(_omniroute_get_cache combos)
+      combos=$(_xenia_get_cache combos)
       COMPREPLY=($(compgen -W "\${combos}" -- "\${cur}")); return 0 ;;
     switch|delete)
       local combos
-      combos=$(_omniroute_get_cache combos)
+      combos=$(_xenia_get_cache combos)
       COMPREPLY=($(compgen -W "\${combos}" -- "\${cur}")); return 0 ;;
     *)
       COMPREPLY=($(compgen -W "\${cmds} --help --version --output --quiet" -- "\${cur}")); return 0 ;;
   esac
 }
 
-complete -F _omniroute omniroute
+complete -F _xenia xenia
 `;
 }
 
 function generateFishScript() {
-  return `# OmniRoute CLI fish completion (dynamic)
-complete -c omniroute -f
+  return `# Xenia CLI fish completion (dynamic)
+complete -c xenia -f
 
 set -l commands serve stop restart setup doctor status logs providers config keys models combo chat stream completion dashboard open backup restore health quota cache mcp a2a tunnel env memory skills update test
 
 for cmd in $commands
-  complete -c omniroute -n '__fish_is_nth_token 1' -a $cmd
+  complete -c xenia -n '__fish_is_nth_token 1' -a $cmd
 end
 
 # Subcommands
-complete -c omniroute -n '__fish_seen_subcommand_from combo' -a 'list switch create delete show suggest'
-complete -c omniroute -n '__fish_seen_subcommand_from keys' -a 'add list remove regenerate revoke reveal usage'
-complete -c omniroute -n '__fish_seen_subcommand_from providers' -a 'available list test test-all'
-complete -c omniroute -n '__fish_seen_subcommand_from config' -a 'list get set validate contexts'
-complete -c omniroute -n '__fish_seen_subcommand_from completion' -a 'zsh bash fish install refresh'
-complete -c omniroute -n '__fish_seen_subcommand_from open' -a 'combos providers api-manager cli-tools agents settings logs memory skills evals audit cost resilience'
+complete -c xenia -n '__fish_seen_subcommand_from combo' -a 'list switch create delete show suggest'
+complete -c xenia -n '__fish_seen_subcommand_from keys' -a 'add list remove regenerate revoke reveal usage'
+complete -c xenia -n '__fish_seen_subcommand_from providers' -a 'available list test test-all'
+complete -c xenia -n '__fish_seen_subcommand_from config' -a 'list get set validate contexts'
+complete -c xenia -n '__fish_seen_subcommand_from completion' -a 'zsh bash fish install refresh'
+complete -c xenia -n '__fish_seen_subcommand_from open' -a 'combos providers api-manager cli-tools agents settings logs memory skills evals audit cost resilience'
 
 # Dynamic completions from cache (requires python3)
-function __omniroute_cache_get
+function __xenia_cache_get
   set -l key $argv[1]
-  set -l cache "$HOME/.omniroute/completion-cache.json"
+  set -l cache "$HOME/.xenia/completion-cache.json"
   set -l now (date +%s 2>/dev/null; or echo 0)
   set -l mtime 0
   test -f $cache; and set mtime (stat -c %Y $cache 2>/dev/null; or stat -f %m $cache 2>/dev/null; or echo 0)
   if test (math $now - $mtime) -gt 3600
-    omniroute completion refresh --quiet >/dev/null 2>&1
+    xenia completion refresh --quiet >/dev/null 2>&1
   end
   if command -q python3; and test -f $cache
     python3 -c "import json,sys;d=json.load(open('$cache'));print('\\n'.join(d.get('$key',[])))" 2>/dev/null
   end
 end
 
-complete -c omniroute -n '__fish_seen_subcommand_from combo; and __fish_seen_subcommand_from switch delete' -a '(__omniroute_cache_get combos)'
-complete -c omniroute -l model -a '(__omniroute_cache_get models)'
-complete -c omniroute -l combo -a '(__omniroute_cache_get combos)'
+complete -c xenia -n '__fish_seen_subcommand_from combo; and __fish_seen_subcommand_from switch delete' -a '(__xenia_cache_get combos)'
+complete -c xenia -l model -a '(__xenia_cache_get models)'
+complete -c xenia -l combo -a '(__xenia_cache_get combos)'
 `;
 }
 
@@ -331,7 +331,7 @@ export function registerCompletion(program) {
       }
     });
 
-  // Backward-compat: `omniroute completion <shell>` (positional arg form)
+  // Backward-compat: `xenia completion <shell>` (positional arg form)
   comp
     .command("<shell>")
     .description("Print completion script for shell (bash, zsh, fish)")

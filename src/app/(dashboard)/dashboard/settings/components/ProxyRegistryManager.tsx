@@ -800,7 +800,7 @@ export default function ProxyRegistryManager({
         </div>
 
         {error && (
-          <div className="mb-3 px-3 py-2 rounded border border-red-500/30 bg-red-500/10 text-sm text-red-400">
+          <div className="mb-3 px-3 py-2 rounded border border-gray-500/30 bg-gray-500/10 text-sm text-gray-400">
             {error}
           </div>
         )}
@@ -822,7 +822,7 @@ export default function ProxyRegistryManager({
                   <th className="py-2 pr-2 w-8">
                     <input
                       type="checkbox"
-                      className="accent-blue-500 w-4 h-4 cursor-pointer"
+                      className="accent-gray-500 w-4 h-4 cursor-pointer"
                       checked={allSelected}
                       ref={(el) => {
                         if (el)
@@ -900,13 +900,13 @@ export default function ProxyRegistryManager({
                               </Button>
                             )}
                           {item.relayInfo?.isRelay && item.relayInfo.authMissing && (
-                            <span className="ml-1 rounded bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-medium text-amber-400">
+                            <span className="ml-1 rounded bg-gray-500/15 px-1.5 py-0.5 text-[10px] font-medium text-gray-400">
                               {t("relayAuthMissing")}
                             </span>
                           )}
                           {repairErrorById[item.id] && (
                             <span
-                              className="ml-1 text-[10px] text-red-400"
+                              className="ml-1 text-[10px] text-gray-400"
                               title={repairErrorById[item.id]}
                             >
                               {t("relayRepairError")}
@@ -925,7 +925,7 @@ export default function ProxyRegistryManager({
                             variant="ghost"
                             icon="delete"
                             onClick={() => void handleDelete(item.id)}
-                            className="!text-red-400"
+                            className="!text-gray-400"
                           >
                             {t("delete")}
                           </Button>
@@ -1354,14 +1354,14 @@ export default function ProxyRegistryManager({
 
             {bulkImportParsedOnce && (
               <div className="flex items-center gap-3 text-xs">
-                <span className="text-emerald-400">
+                <span className="text-gray-400">
                   {t("bulkImportParsed", { count: bulkImportParsed.length })}
                 </span>
                 <span className="text-text-muted">
                   {t("bulkImportSkipped", { count: bulkImportSkipped })}
                 </span>
                 {bulkImportErrors.length > 0 && (
-                  <span className="text-red-400">
+                  <span className="text-gray-400">
                     {t("bulkImportParseErrors", { count: bulkImportErrors.length })}
                   </span>
                 )}
@@ -1371,9 +1371,9 @@ export default function ProxyRegistryManager({
 
           {/* Parse errors */}
           {bulkImportErrors.length > 0 && (
-            <div className="max-h-28 overflow-y-auto rounded border border-red-500/30 bg-red-500/10 p-2">
+            <div className="max-h-28 overflow-y-auto rounded border border-gray-500/30 bg-gray-500/10 p-2">
               {bulkImportErrors.map((err, idx) => (
-                <div key={idx} className="text-xs text-red-400">
+                <div key={idx} className="text-xs text-gray-400">
                   {t("bulkImportErrorLine", { line: err.line, reason: t(err.reason as any) })}
                 </div>
               ))}
@@ -1411,7 +1411,7 @@ export default function ProxyRegistryManager({
                       <td className="py-1 px-2">
                         <span
                           className={
-                            entry.status === "active" ? "text-emerald-400" : "text-text-muted"
+                            entry.status === "active" ? "text-gray-400" : "text-text-muted"
                           }
                         >
                           {entry.status === "active" ? t("statusActive") : t("statusInactive")}
@@ -1428,12 +1428,12 @@ export default function ProxyRegistryManager({
           {bulkImportParsedOnce &&
             bulkImportParsed.length === 0 &&
             bulkImportErrors.length === 0 && (
-              <div className="text-sm text-amber-400">{t("bulkImportNoValidEntries")}</div>
+              <div className="text-sm text-gray-400">{t("bulkImportNoValidEntries")}</div>
             )}
 
           {/* Import result */}
           {bulkImportResult && (
-            <div className="px-3 py-2 rounded border border-emerald-500/30 bg-emerald-500/10 text-sm text-emerald-400">
+            <div className="px-3 py-2 rounded border border-gray-500/30 bg-gray-500/10 text-sm text-gray-400">
               {t("bulkImportSuccess", {
                 created: bulkImportResult.created,
                 updated: bulkImportResult.updated,

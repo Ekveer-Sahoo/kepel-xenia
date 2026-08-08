@@ -394,7 +394,7 @@
     "showConfiguredOnly": "Show Configured Only",
     "showFreeOnly": "Free only",
     "addFirstProvider": "Add your first provider",
-    "addFirstProviderDesc": "Csatlakozzon egy AI-szolgáltatóhoz, hogy elindítsa a kérések OmniRoute-on keresztüli irányítását. Használhat ingyenes szolgáltatókat, API-kulcsokat vagy OAuth-fiókokat.",
+    "addFirstProviderDesc": "Csatlakozzon egy AI-szolgáltatóhoz, hogy elindítsa a kérések Xenia-on keresztüli irányítását. Használhat ingyenes szolgáltatókat, API-kulcsokat vagy OAuth-fiókokat.",
     "learnMore": "További információ",
     "includeDomains": "Include Domains",
     "promptCache": "Prompt Cache",
@@ -935,7 +935,7 @@
     "batchConceptRetentionNote": "Results and error files are retained for 30 days (Anthropic: 29 days)"
   },
   "disabled": "Letiltva",
-  "featureFlagOmnirouteEmergencyFallbackDescription": "A keretet kimerítő kérések átirányítása a vészhelyzeti ingyenes tartalék szolgáltatóhoz/modellhez.",
+  "featureFlagXeniaEmergencyFallbackDescription": "A keretet kimerítő kérések átirányítása a vészhelyzeti ingyenes tartalék szolgáltatóhoz/modellhez.",
   "featureFlagArenaEloSyncEnabledDescription": "Rendszeres Arena AI ranglista ELO szinkronizáció engedélyezése a modellintelligencia rangsorokhoz.",
   "featureFlagExposeCcDiscoveryAliasesDescription": "__MISSING__:Advertise claude/&lt;provider&gt;/&lt;model&gt; mirror ids on /v1/models so Claude Code gateway model discovery lists non-Claude models. Warning: doubles catalog entries for all clients when enabled globally.",
   "sidebar": {
@@ -980,8 +980,8 @@
     "auditLog": "Ellenőrzési napló",
     "shutdown": "Leállítás",
     "restart": "Indítsa újra",
-    "shutdownConfirm": "Leállítja az OmniRoute-ot?",
-    "restartConfirm": "Újraindítja az OmniRoute-ot?",
+    "shutdownConfirm": "Leállítja az Xenia-ot?",
+    "restartConfirm": "Újraindítja az Xenia-ot?",
     "version": "v{version}",
     "debug": "Hibakeresés",
     "system": "Rendszer",
@@ -1214,11 +1214,11 @@
     "trafficInspector": "Forgalomvizsgáló",
     "trafficInspectorSubtitle": "LLM-hívások monitorozása + bármilyen HTTPS-forgalom hibakeresése",
     "cliCode": "CLI kód",
-    "cliCodeSubtitle": "Az OmniRoute-ra mutató kódeszközök",
+    "cliCodeSubtitle": "Az Xenia-ra mutató kódeszközök",
     "cliAgents": "CLI ügynökök",
     "cliAgentsSubtitle": "Autonóm CLI ügynökök",
     "acpAgents": "ACP ügynökök",
-    "acpAgentsSubtitle": "Az OmniRoute által indított CLI-k",
+    "acpAgentsSubtitle": "Az Xenia által indított CLI-k",
     "skipToContent": "Ugrás a tartalomra",
     "mainNavigation": "Fő navigáció",
     "unpinSection": "Szekció rögzítésének feloldása",
@@ -1503,7 +1503,7 @@
     "cliTools": "CLI eszközök",
     "cliToolsDescription": "A CLI eszközök konfigurálása",
     "home": "Otthon",
-    "homeDescription": "Üdvözöljük az OmniRoute oldalán",
+    "homeDescription": "Üdvözöljük az Xenia oldalán",
     "endpoint": "Endpoints",
     "endpointDescription": "Manage proxy endpoints, MCP, A2A, and API endpoints",
     "mcp": "MCP",
@@ -1522,7 +1522,7 @@
     "cacheDescription": "Monitor provider prompt cache efficiency and local semantic response reuse.",
     "limitsDescription": "Configure rate limits and quotas per API key and provider",
     "runtimeDescription": "Live runtime observability — circuit breakers, cooldowns, model lockouts, sessions and quota alerts",
-    "apiManagerDescription": "Manage API keys and access control for your OmniRoute instance",
+    "apiManagerDescription": "Manage API keys and access control for your Xenia instance",
     "batchDescription": "Process large volumes of requests asynchronously with batched API calls",
     "contextCavemanDescription": "Rule-based message compression, language packs, analytics and output mode controls.",
     "contextRtkDescription": "Command-aware compression for tool output, terminal logs and build results.",
@@ -2031,7 +2031,7 @@
     "direct": "közvetlen",
     "routeUnableToLoad": "Nem sikerült betölteni az útvonal magyarázatát",
     "routeNoRequestLogs": "Nem állnak rendelkezésre kérelemnaplók",
-    "routeNoRequestLogsDescription": "Először küldjön forgalmat az OmniRoute-on keresztül. Az útvonal-magyarázatok a mentett strukturált hívásnaplókból jönnek létre.",
+    "routeNoRequestLogsDescription": "Először küldjön forgalmat az Xenia-on keresztül. Az útvonal-magyarázatok a mentett strukturált hívásnaplókból jönnek létre.",
     "routeDecisionSummary": "Döntési összefoglaló",
     "routeConfidence": "{confidence} megbízhatóság",
     "routeScore": "Útvonal pontszáma",
@@ -2103,7 +2103,7 @@
     "keyName": "Kulcs neve",
     "keyNamePlaceholder": "pl. Gyártási kulcs, Fejlesztési Kulcs",
     "keyNameDesc": "Válasszon egy leíró nevet a kulcs céljának azonosításához",
-    "managementAccessDesc": "Engedélyezi ennek az API-kulcsnak az OmniRoute konfiguráció kezelését.",
+    "managementAccessDesc": "Engedélyezi ennek az API-kulcsnak az Xenia konfiguráció kezelését.",
     "selfServiceVisibility": "Önkiszolgáló láthatóság",
     "selfServiceVisibilityDesc": "Szabályozza, hogy ez a kulcs mit láthat a saját használatáról és a megosztott upstream kvótáról.",
     "ownUsageVisibility": "Saját költség és tokenhasználat",
@@ -2302,7 +2302,7 @@
     "imagePromptPlaceholder": "Egy békés táj hegyekkel naplementekor...",
     "videoPromptPlaceholder": "Egy virág kinyílásának timelapse felvétele...",
     "musicPromptPlaceholder": "Pörgős elektronikus zene szintetizátoros szőnyegekkel...",
-    "speechTextPlaceholder": "Üdvözöljük! Ez az OmniRoute, az Ön intelligens AI átjárója...",
+    "speechTextPlaceholder": "Üdvözöljük! Ez az Xenia, az Ön intelligens AI átjárója...",
     "transcriptionPlaceholder": "Töltsön fel egy hangfájlt az átíráshoz...",
     "noImagesReturned": "Nem érkezett vissza kép. Lehetséges, hogy a szolgáltató elfogadta a kérést, de üres adatot küldött vissza.",
     "generatedImageAlt": "Generált kép {index}",
@@ -2484,7 +2484,7 @@
     "video": "Videó",
     "videoSample": "Egy hegyvonulat feletti felhők time-lapse felvétele",
     "webFetch": "Webes lekérés",
-    "webSearchSample": "Mi az az OmniRoute AI gateway?",
+    "webSearchSample": "Mi az az Xenia AI gateway?",
     "noActiveProviderDescription": "Nincs aktív keresőszolgáltató. Konfiguráljon egyet a Szolgáltatók menüpontban.",
     "configureProviders": "Szolgáltatók konfigurálása",
     "compareQuery": "Összehasonlítandó lekérdezés",
@@ -2562,7 +2562,7 @@
     "configurationSaved": "A konfiguráció sikeresen mentve.",
     "failedToSave": "Nem sikerült menteni a konfigurációt.",
     "noApiKeysCreateOne": "Nincsenek API-kulcsok – Hozzon létre egyet a Kulcsok oldalon",
-    "defaultOmnirouteKey": "sk_omniroute (alapértelmezett)",
+    "defaultXeniaKey": "sk_xenia (alapértelmezett)",
     "selectModel": "Válassza a Model lehetőséget",
     "selectModelForAlias": "Válassza ki a {alias} modelljét",
     "selectModelForTool": "Válassza ki a {tool} modelljét",
@@ -2607,13 +2607,13 @@
       "xhigh": "XMagas"
     },
     "howItWorks": "Hogyan működik:",
-    "antigravityHowWorksDesc": "Az Antigravitáció kéréseket küld a Google végpontjának. A MITM elfogja és átirányítja őket az OmniRoute-ra.",
-    "antigravityStep1": "1. Indítsa el a MITM-et, hogy a kéréseket az OmniRoute-on keresztül irányítsa.",
+    "antigravityHowWorksDesc": "Az Antigravitáció kéréseket küld a Google végpontjának. A MITM elfogja és átirányítja őket az Xenia-ra.",
+    "antigravityStep1": "1. Indítsa el a MITM-et, hogy a kéréseket az Xenia-on keresztül irányítsa.",
     "antigravityStep2Prefix": "2. Hozzáadás",
     "antigravityStep2Suffix": "a hosts fájlba 127.0.0.1 néven.",
     "antigravityStep3": "3. Nyissa meg az Antigravitációt, és a kérések proxyval lesznek ellátva.",
-    "mitmHowWorksDesc": "{toolName} sends requests to its provider endpoint. MITM intercepts and redirects them to OmniRoute.",
-    "mitmStep1": "1. Start MITM to route requests through OmniRoute.",
+    "mitmHowWorksDesc": "{toolName} sends requests to its provider endpoint. MITM intercepts and redirects them to Xenia.",
+    "mitmStep1": "1. Start MITM to route requests through Xenia.",
     "mitmStep2Prefix": "2. Add",
     "mitmStep2Suffix": "to your hosts file as 127.0.0.1.",
     "mitmStep3": "3. Open {toolName} and requests will be proxied.",
@@ -2659,13 +2659,13 @@
     "applied": "Alkalmazva!",
     "failed": "Sikertelen",
     "resetDone": "Reset!",
-    "omnirouteConfiguredOpenAiCompatible": "Az OmniRoute OpenAI-kompatibilis szolgáltatóként van konfigurálva",
+    "xeniaConfiguredOpenAiCompatible": "Az Xenia OpenAI-kompatibilis szolgáltatóként van konfigurálva",
     "provider": "Szolgáltató",
     "model": "Modell",
     "providers": "Szolgáltatók",
     "auth": "Auth",
     "noApiKeysAvailable": "Nem állnak rendelkezésre API-kulcsok",
-    "usingDefaultOmniroute": "Az alapértelmezett: sk_omniroute használata",
+    "usingDefaultXenia": "Az alapértelmezett: sk_xenia használata",
     "updateConfig": "Frissítse a konfigurációt",
     "applyConfig": "Alkalmazza a Config-ot",
     "noBackupsAvailable": "Nincsenek biztonsági mentések.",
@@ -2695,19 +2695,19 @@
       "claude": "Használja, ha erős tervezési munkafolyamatokat és hosszú, több fájlból álló refaktorokat szeretne a Claude Code segítségével.",
       "codex": "Akkor használja, ha csapata szabványosítva van az OpenAI Codex CLI-folyamatokon és a profilalapú hitelesítésen.",
       "droid": "Használja, ha egy könnyű terminálügynökre van szüksége, amely a gyors kódolásra és parancsvégrehajtási ciklusokra összpontosít.",
-      "openclaw": "Akkor használja, ha Open Claw stílusú kódoló ügynököt szeretne, de az OmniRoute házirendeken keresztül irányítja.",
-      "cline": "Akkor használja, ha kódoló ügynököket konfigurál a szerkesztőkön belül, és irányított beállítást szeretne az OmniRoute modellekkel.",
+      "openclaw": "Akkor használja, ha Open Claw stílusú kódoló ügynököt szeretne, de az Xenia házirendeken keresztül irányítja.",
+      "cline": "Akkor használja, ha kódoló ügynököket konfigurál a szerkesztőkön belül, és irányított beállítást szeretne az Xenia modellekkel.",
       "kilo": "Akkor használja, ha a munkafolyamat a Kilo Code parancsoktól és a gyors iteratív szerkesztésektől függ.",
-      "cursor": "Használja a Kurzorban való kódoláshoz, és egyéni OpenAI-kompatibilis modellekre van szüksége az OmniRoute-on keresztül.",
+      "cursor": "Használja a Kurzorban való kódoláshoz, és egyéni OpenAI-kompatibilis modellekre van szüksége az Xenia-on keresztül.",
       "continue": "Használja a Continue futtatásakor az IDE-ben, és hordozható JSON-alapú szolgáltatói konfigurációra van szüksége.",
       "opencode": "Akkor használja, ha a terminál-natív ügynökfuttatásokat és az OpenCode-on keresztüli parancsfájl-automatizálást részesíti előnyben.",
-      "kiro": "Használja a Kiro integrálásához és a modell-útválasztás központi vezérléséhez az OmniRoute-ból.",
-      "windsurf": "Use when you want an AI-first IDE with Codeium/Windsurf models routed through OmniRoute.",
-      "antigravity": "Akkor használja, ha az Antigravity/Kiro forgalmat MITM-en keresztül kell elfogni, és az OmniRoute-hoz kell irányítani.",
-      "copilot": "Használja, ha másodpilóta csevegési stílusú UX-et szeretne, miközben betartja az OmniRoute kulcsokat és útválasztási szabályokat.",
-      "amp": "Use when you want Amp CLI routed through OmniRoute with stable shorthand aliases and OpenAI-compatible setup.",
+      "kiro": "Használja a Kiro integrálásához és a modell-útválasztás központi vezérléséhez az Xenia-ból.",
+      "windsurf": "Use when you want an AI-first IDE with Codeium/Windsurf models routed through Xenia.",
+      "antigravity": "Akkor használja, ha az Antigravity/Kiro forgalmat MITM-en keresztül kell elfogni, és az Xenia-hoz kell irányítani.",
+      "copilot": "Használja, ha másodpilóta csevegési stílusú UX-et szeretne, miközben betartja az Xenia kulcsokat és útválasztási szabályokat.",
+      "amp": "Use when you want Amp CLI routed through Xenia with stable shorthand aliases and OpenAI-compatible setup.",
       "hermes": "Használja, ha könnyű, terminál-natív AI-asszisztensre van szüksége a gyors feladatokhoz.",
-      "hermes-agent": "Akkor használja, ha a Hermes Agentre (a Nousresearch-től) van szüksége alapértelmezett, delegálási, látási (vision) és segédmodellekkel az OmniRoute-on keresztül irányítva.",
+      "hermes-agent": "Akkor használja, ha a Hermes Agentre (a Nousresearch-től) van szüksége alapértelmezett, delegálási, látási (vision) és segédmodellekkel az Xenia-on keresztül irányítva.",
       "custom": "Egyéni eszközmegvalósításokhoz vagy általános OpenAI-kompatibilis konfigurációkhoz használható."
     },
     "toolDescriptions": {
@@ -2821,7 +2821,7 @@
         },
         "notes": {
           "0": "Az OpenCode API-kulcs-konfigurációt igényel.",
-          "1": "Állítsa be az alap URL-t az OmniRoute végpontra."
+          "1": "Állítsa be az alap URL-t az Xenia végpontra."
         }
       },
       "kiro": {
@@ -2832,7 +2832,7 @@
           },
           "2": {
             "title": "Base URL",
-            "desc": "Paste your OmniRoute endpoint URL"
+            "desc": "Paste your Xenia endpoint URL"
           },
           "3": {
             "title": "API Key"
@@ -2861,7 +2861,7 @@
           },
           "4": {
             "title": "API Key",
-            "desc": "Select your OmniRoute API key"
+            "desc": "Select your Xenia API key"
           },
           "5": {
             "title": "Select Model",
@@ -2884,8 +2884,8 @@
     "customCliNameLabel": "CLI név",
     "customCliNamePlaceholder": "pl. Csapatom CLI",
     "customCliDefaultModelLabel": "Alapértelmezett modell",
-    "customCliDefaultModelHelp": "Használjon bármilyen OmniRoute modellazonosítót vagy kombinációt. A legtöbb OpenAI-kompatibilis CLI-nek csak a /v1 alap URL-re és egy modellkarakterláncra van szüksége.",
-    "customCliKeyHelper": "Helyi telepítésekhez az OmniRoute használhatja az sk_omniroute parancsot. Felhő módban válassza ki az egyik felügyeleti API-kulcsot.",
+    "customCliDefaultModelHelp": "Használjon bármilyen Xenia modellazonosítót vagy kombinációt. A legtöbb OpenAI-kompatibilis CLI-nek csak a /v1 alap URL-re és egy modellkarakterláncra van szüksége.",
+    "customCliKeyHelper": "Helyi telepítésekhez az Xenia használhatja az sk_xenia parancsot. Felhő módban válassza ki az egyik felügyeleti API-kulcsot.",
     "customCliAliasMappingsLabel": "Alias-leképezések",
     "customCliAliasMappingsHelp": "Opcionális segítő álnevek a wrapper szkriptekhez vagy konfigurációs fájlokhoz, amelyek stabil rövidítésű neveket igényelnek.",
     "customCliAddAlias": "Adjon hozzá aliast",
@@ -2893,7 +2893,7 @@
     "customCliAliasPlaceholder": "pl. felülvizsgálatát",
     "customCliTargetModelLabel": "Célmodell",
     "customCliEndpointHintLabel": "A végpont huzalozása",
-    "customCliEndpointHint": "Mutasson bármely OpenAI-kompatibilis klienst az OmniRoute /v1 alap URL-címére. A nyers csevegési befejezések végpontja a {endpoint}. Használja a JSON blokkot, ha az eszköz szolgáltató objektumot szeretne, vagy az env parancsfájlt, amikor OPENAI_* változókat olvas.",
+    "customCliEndpointHint": "Mutasson bármely OpenAI-kompatibilis klienst az Xenia /v1 alap URL-címére. A nyers csevegési befejezések végpontja a {endpoint}. Használja a JSON blokkot, ha az eszköz szolgáltató objektumot szeretne, vagy az env parancsfájlt, amikor OPENAI_* változókat olvas.",
     "customCliEnvBlockTitle": "Env / shell részlet",
     "customCliJsonBlockTitle": "Szolgáltatói JSON-blokk",
     "networkError": "Hálózati hiba",
@@ -2917,13 +2917,13 @@
     "hermesSelectBeforePreview": "Válasszon modelleket a szerepkörökhöz, vagy győződjön meg róla, hogy a szerepkörök be vannak töltve az előnézet megtekintése előtt.",
     "hermesPreviewFailed": "Nem sikerült előállítani az előnézetet",
     "hermesSavedTo": "Mentve ide: {path}",
-    "hermesFirstSetupTitle": "Első beállítás az OmniRoute-on keresztül ekkor: {date}",
+    "hermesFirstSetupTitle": "Első beállítás az Xenia-on keresztül ekkor: {date}",
     "hermesSinceSetup": "{time} a beállítás óta",
     "hermesConfiguredRoles": "{configured}/{total} szerepkör",
     "hermesQuickApply": "Ugyanazon modell gyors alkalmazása az összes szerepkörre:",
     "hermesApplyModelToAll": "{model} alkalmazása minden szerepkörre",
-    "hermesViaOmniRoute": "{provider} (OmniRoute-on keresztül)",
-    "hermesNotOmniRoute": "{provider} (nem OmniRoute)",
+    "hermesViaXenia": "{provider} (Xenia-on keresztül)",
+    "hermesNotXenia": "{provider} (nem Xenia)",
     "hermesRemovePendingRole": "Szerepkör eltávolítása a függőben lévő módosítások közül",
     "hermesApply": "Alkalmazás a Hermes Agentre",
     "hermesRolesWillUpdate": "{count, plural, one {# szerepkör fog frissülni} other {# szerepkör fog frissülni}}",
@@ -2954,7 +2954,7 @@
     "ccOnboardingTitle": "__MISSING__:settings.json for gateway model discovery",
     "ccOnboardingCopy": "__MISSING__:Copy",
     "ccOnboardingCopied": "__MISSING__:Copied",
-    "ccOnboardingKeyPlaceholder": "__MISSING__:<your OmniRoute API key>",
+    "ccOnboardingKeyPlaceholder": "__MISSING__:<your Xenia API key>",
     "ccOnboardingWindowNote": "__MISSING__:Claude Code assumes a 200K context window for any model id it does not recognize. For a model with a different real window, add CLAUDE_CODE_AUTO_COMPACT_WINDOW just under it so auto-compaction does not fire too early."
   },
   "combos": {
@@ -3042,7 +3042,7 @@
     "concurrencyPerModel": "Egyidejűség / Modell",
     "queueTimeout": "Sor időtúllépése (ms)",
     "contextRelayHandoffThreshold": "Handoff Threshold",
-    "contextRelayHandoffThresholdHelp": "When quota usage reaches this threshold, OmniRoute generates a structured handoff summary before the active account is exhausted.",
+    "contextRelayHandoffThresholdHelp": "When quota usage reaches this threshold, Xenia generates a structured handoff summary before the active account is exhausted.",
     "contextRelayMaxMessages": "Max Messages For Summary",
     "contextRelayMaxMessagesHelp": "Limits how much recent history is condensed into the relay summary.",
     "contextRelaySummaryModel": "Summary Model",
@@ -3636,7 +3636,7 @@
     "moderationsDesc": "A tartalom moderálása és biztonsági osztályozása",
     "responsesDesc": "OpenAI Responses API for Codex and advanced agentic workflows",
     "listModelsDesc": "List all available models across all connected providers",
-    "settingsApiDesc": "Read and modify OmniRoute configuration via API",
+    "settingsApiDesc": "Read and modify Xenia configuration via API",
     "settingsApi": "Settings API",
     "categoryCore": "Alap API-k",
     "categoryMedia": "Média és Multi-Modális",
@@ -3723,9 +3723,9 @@
     "openMcpDashboard": "Open MCP management",
     "openA2aDashboard": "Open A2A management",
     "mcpQuickStartTitle": "MCP Quick Start",
-    "mcpQuickStartStep1": "Run the MCP server via `omniroute --mcp`.",
+    "mcpQuickStartStep1": "Run the MCP server via `xenia --mcp`.",
     "mcpQuickStartStep2": "Configure your MCP client to connect over stdio transport.",
-    "mcpQuickStartStep3": "Invoke tools such as `omniroute_get_health` and `omniroute_list_combos`.",
+    "mcpQuickStartStep3": "Invoke tools such as `xenia_get_health` and `xenia_list_combos`.",
     "a2aQuickStartTitle": "A2A Quick Start",
     "a2aQuickStartStep1": "Discover the agent card at `/.well-known/agent.json`.",
     "a2aQuickStartStep2": "Send JSON-RPC requests to `POST /a2a` using `message/send` or `message/stream`.",
@@ -3744,9 +3744,9 @@
     "videoDesc": "Generate videos using AI models like ComfyUI and Stable Video Diffusion.",
     "tailscaleRequestFailed": "Failed to load Tailscale status",
     "tailscaleEnableFailed": "Failed to enable Tailscale Funnel",
-    "tailscaleWaitingForLogin": "Complete the Tailscale login in the opened browser tab. OmniRoute will retry automatically.",
+    "tailscaleWaitingForLogin": "Complete the Tailscale login in the opened browser tab. Xenia will retry automatically.",
     "tailscaleLoginTimedOut": "Timed out waiting for Tailscale login",
-    "tailscaleWaitingForFunnel": "Enable Funnel for this device in the opened browser tab. OmniRoute will keep polling.",
+    "tailscaleWaitingForFunnel": "Enable Funnel for this device in the opened browser tab. Xenia will keep polling.",
     "tailscaleFunnelTimedOut": "Timed out waiting for Tailscale Funnel to be enabled",
     "tailscaleStarted": "Tailscale Funnel enabled",
     "tailscaleDisableFailed": "Failed to disable Tailscale Funnel",
@@ -3770,7 +3770,7 @@
     "tailscaleBinaryPath": "Binary: {path}",
     "tailscaleLastError": "Last error: {error}",
     "tailscaleInstallTitle": "Install Tailscale",
-    "tailscaleInstallIntro": "Installs Tailscale on this machine and prepares OmniRoute to enable Funnel.",
+    "tailscaleInstallIntro": "Installs Tailscale on this machine and prepares Xenia to enable Funnel.",
     "tailscaleInstallPasswordHint": "On macOS and Linux, sudo may be required for the package install and daemon start.",
     "tailscaleSudoPlaceholder": "Optional sudo password",
     "tailscaleInstalling": "Installing",
@@ -3850,7 +3850,7 @@
     "vscodeAliasModelsLabel": "VS Code modellek",
     "vscodeAliasChatLabel": "VS Code csevegés",
     "localServer": "Helyi szerver",
-    "cloudOmniroute": "Cloud OmniRoute",
+    "cloudXenia": "Cloud Xenia",
     "copyUrl": "URL másolása",
     "badgeLoopbackTooltip": "Ez a végpont csak helyileg érhető el (csak loopback)",
     "badgeAlwaysProtectedTooltip": "Ez a végpont mindig védett, és hitelesítést igényel",
@@ -3930,7 +3930,7 @@
     "disableLabel": "{label} letiltása",
     "enableLabel": "{label} engedélyezése",
     "transportMode": "Átviteli mód",
-    "transportStdioDesc": "Helyi — Az IDE folyamatot indít az omniroute --mcp paranccsal",
+    "transportStdioDesc": "Helyi — Az IDE folyamatot indít az xenia --mcp paranccsal",
     "transportSseDesc": "Távoli — Server-Sent Events HTTP-n keresztül",
     "transportStreamableHttpDesc": "Távoli — Modern kétirányú HTTP",
     "copy": "Másolás",
@@ -4083,7 +4083,7 @@
     "compactOld": "Régiek tömörítése",
     "concept": {
       "title": "Beszélgetési memória",
-      "description": "Az OmniRoute minden beszélgetésből tanul, megjegyezve a tényeket, epizódokat, eljárásokat és szemantikai fogalmakat, amelyek pontosabbá és kontextustudatosabbá teszik a válaszokat.",
+      "description": "Az Xenia minden beszélgetésből tanul, megjegyezve a tényeket, epizódokat, eljárásokat és szemantikai fogalmakat, amelyek pontosabbá és kontextustudatosabbá teszik a válaszokat.",
       "howWorksToggle": "Hogyan működik",
       "howWorksContent": "1. Automatikus kinyerés: minden válasz végén a tények és epizódok automatikusan észlelésre és mentésre kerülnek.\n2. Lekérés: minden válasz előtt a legrelevánsabb emlékek keresése történik FTS5 (pontos), vektoros (szemantikai) vagy hibrid RRF segítségével.\n3. Beillesztés: a releváns emlékek beillesztésre kerülnek az asszisztens kontextusába a válaszminőség javítása érdekében.\n4. Kezelés: ezen az oldalon megtekintheti, szerkesztheti, exportálhatja és tömörítheti a régi emlékeket."
     },
@@ -4192,7 +4192,7 @@
       "enableDesc": "Ha engedélyezve van, a Qdrant lesz az elsődleges vektortár",
       "banner": "2. szintű vektortár — egy külső, skálázható alternatíva a beépített sqlite-vec (1. szint) helyett. Csak akkor engedélyezze, ha nagyon nagy memóriakészlettel rendelkezik, vagy megosztott memóriát szeretne a példányok között; a legtöbb felhasználónak megfelel az sqlite-vec is. Ha engedélyezve van, ez lesz az elsődleges tároló, és automatikusan visszavált az sqlite-vec-re, ha nem érhető el.",
       "hostHelp": "Helyi Docker: http://localhost:6333 · Qdrant Cloud: a fürt URL-címe",
-      "collectionHelp": "Bármilyen név — az OmniRoute létrehozza az első használatkor",
+      "collectionHelp": "Bármilyen név — az Xenia létrehozza az első használatkor",
       "embeddingModelHelp": "Automatikusan beállítja a vektordimenziót az első használatkor. A meglévő emlékek nem töltődnek fel utólag, és a modell módosítása meglévő adatok esetén új gyűjteményt igényel.",
       "testConnection": "Kapcsolat tesztelése",
       "testing": "Tesztelés...",
@@ -4340,7 +4340,7 @@
   },
   "health": {
     "title": "Rendszer egészsége",
-    "description": "Az OmniRoute példány valós idejű megfigyelése",
+    "description": "Az Xenia példány valós idejű megfigyelése",
     "healthy": "Egészséges",
     "degraded": "Leépült",
     "down": "Le",
@@ -4476,7 +4476,7 @@
   },
   "telemetry": {
     "title": "Rendszer telemetria",
-    "description": "Gördülő kérés, futásidejű, munkamenet és memóriajelek ebből az OmniRoute folyamatból.",
+    "description": "Gördülő kérés, futásidejű, munkamenet és memóriajelek ebből az Xenia folyamatból.",
     "uptime": "Üzemidő",
     "totalRequests": "Összes kérés",
     "avgLatency": "Átl. késleltetés",
@@ -4673,7 +4673,7 @@
     "passwordsMismatch": "A jelszavak nem egyeznek",
     "setupComplete": "A beállítás kész!",
     "goToDashboard": "Nyissa meg az Irányítópult → lehetőséget",
-    "welcomeDesc": "Az OmniRoute az Ön helyi AI API-proxyja. A kéréseket több mesterségesintelligencia-szolgáltatóhoz irányítja terheléselosztással, feladatátvétellel és a használat nyomon követésével.",
+    "welcomeDesc": "Az Xenia az Ön helyi AI API-proxyja. A kéréseket több mesterségesintelligencia-szolgáltatóhoz irányítja terheléselosztással, feladatátvétellel és a használat nyomon követésével.",
     "multiProvider": "Több szolgáltató",
     "usageTracking": "Használat követése",
     "securityDesc": "Állítson be jelszót az irányítópult védelméhez, vagy most hagyja ki.",
@@ -4687,7 +4687,7 @@
     "noProviderFound": "Nem található szolgáltató. Később hozzáadhat egyet az irányítópultról.",
     "testFailed": "A teszt sikertelen volt, de ezt később beállíthatja.",
     "couldNotTest": "Jelenleg nem lehetett tesztelni. A műszerfalról tesztelheti.",
-    "doneDesc": "Minden készen áll! Az OmniRoute-példány konfigurálva van, és készen áll az AI-kérések proxyjára.",
+    "doneDesc": "Minden készen áll! Az Xenia-példány konfigurálva van, és készen áll az AI-kérések proxyjára.",
     "yourEndpoint": "Az Ön végpontja:",
     "continue": "Folytatás",
     "retry": "Próbálja újra",
@@ -4697,7 +4697,7 @@
     "provider": "Szolgáltató",
     "apiKeyHelp": "Az API-kulcs az AI-szolgáltatások jelszava. Szerezzen be egyet szolgáltatója webhelyéről (pl. platform.openai.com, console.anthropic.com).",
     "tier": {
-      "subtitle": "Az OmniRoute három szintbe szervezi a szolgáltatókat, így az útválasztás először a legmegbízhatóbb, legalacsonyabb költségű útvonalat részesíti előnyben.",
+      "subtitle": "Az Xenia három szintbe szervezi a szolgáltatókat, így az útválasztás először a legmegbízhatóbb, legalacsonyabb költségű útvonalat részesíti előnyben.",
       "flowCaption": "A kérések először az előfizetési kvótákon haladnak át, majd a tokenalapú olcsó szolgáltatókon, végül az ingyenes szolgáltatókon – automatikusan, konfiguráció nélkül.",
       "afterSetup": "a beállítás után.",
       "tier1": {
@@ -4714,7 +4714,7 @@
       },
       "configure": "Konfigurálja a szolgáltatókat"
     },
-    "tierFlowDiagramAlt": "OmniRoute 3-szintű tartalék diagram",
+    "tierFlowDiagramAlt": "Xenia 3-szintű tartalék diagram",
     "apiKeyMgmt": "API Key Mgmt"
   },
   "providers": {
@@ -4725,7 +4725,7 @@
     "showFreeOnly": "Csak ingyenes",
     "addProvider": "Szolgáltató hozzáadása",
     "addFirstProvider": "Adja hozzá első szolgáltatóját",
-    "addFirstProviderDesc": "Csatlakozzon egy AI-szolgáltatóhoz, hogy elindítsa a kérések OmniRoute-on keresztüli irányítását. Használhat ingyenes szolgáltatókat, API-kulcsokat vagy OAuth-fiókokat.",
+    "addFirstProviderDesc": "Csatlakozzon egy AI-szolgáltatóhoz, hogy elindítsa a kérések Xenia-on keresztüli irányítását. Használhat ingyenes szolgáltatókat, API-kulcsokat vagy OAuth-fiókokat.",
     "learnMore": "További információ",
     "importFromFile": "Importálás fájlból",
     "importFromFileTitle": "Szolgáltatók importálása fájlból",
@@ -4748,7 +4748,7 @@
     "adaptaTutorial": {
       "title": "Az Adapta Web csatlakoztatása",
       "introPrefix": "Az Adapta a Clerk segítségével hitelesít. A token",
-      "introSuffix": "egy hosszú élettartamú JWT, amely lehetővé teszi az OmniRoute számára a munkamenetek automatikus frissítését.",
+      "introSuffix": "egy hosszú élettartamú JWT, amely lehetővé teszi az Xenia számára a munkamenetek automatikus frissítését.",
       "or": "vagy",
       "step1Title": "Nyissa meg az Adapta csevegést",
       "step1DescPrefix": "Megnyitás",
@@ -4767,7 +4767,7 @@
       "step5Title": "Illessze be ide és mentse el",
       "step5DescPrefix": "Kattintson a",
       "step5DescMiddle": "gombra, illessze be a",
-      "step5DescSuffix": "értéket az API Key mezőbe, majd mentse el. Az OmniRoute automatikusan frissíteni fogja a munkamenetet.",
+      "step5DescSuffix": "értéket az API Key mezőbe, majd mentse el. Az Xenia automatikusan frissíteni fogja a munkamenetet.",
       "tipLabel": "Tipp:",
       "tipPrefix": "A(z)",
       "tipSuffix": "süti hosszú élettartamú, általában hónapokig érvényes. Csak akkor kell megújítania, ha kijelentkezik, vagy ha az Adapta érvényteleníti a munkamenetet."
@@ -5137,7 +5137,7 @@
     "compatDoNotPreserveDeveloper": "Do not preserve developer role",
     "compatBadgeNoPreserve": "No preserve",
     "compatProtocolLabel": "Client request protocol",
-    "compatProtocolHint": "These options apply when OmniRoute detects this request shape (OpenAI Chat, Responses API, or Anthropic Messages).",
+    "compatProtocolHint": "These options apply when Xenia detects this request shape (OpenAI Chat, Responses API, or Anthropic Messages).",
     "compatProtocolOpenAI": "OpenAI Chat Completions",
     "compatProtocolOpenAIResponses": "OpenAI Responses API",
     "compatProtocolClaude": "Anthropic Messages",
@@ -5172,15 +5172,15 @@
     "paramFiltersResetSuccess": "Paraméterszűrő konfiguráció visszaállítva az alapértelmezésekre",
     "paramFiltersResetError": "Nem sikerült visszaállítani a paraméterszűrő konfigurációt: {error}",
     "interceptionSectionTitle": "Webes eszközök elfogása",
-    "interceptionSectionHint": "Irányítsa át a szolgáltató natív web_search / web_fetch eszközhívásait az OmniRoute saját keresési és lekérési végpontjain keresztül, ahelyett, hogy hagyná a szolgáltatót natívan futtatni azokat. Alapértelmezés szerint ki van kapcsolva — a meglévő viselkedés változatlan.",
+    "interceptionSectionHint": "Irányítsa át a szolgáltató natív web_search / web_fetch eszközhívásait az Xenia saját keresési és lekérési végpontjain keresztül, ahelyett, hogy hagyná a szolgáltatót natívan futtatni azokat. Alapértelmezés szerint ki van kapcsolva — a meglévő viselkedés változatlan.",
     "interceptSearchLabel": "web_search elfogása",
-    "interceptSearchHint": "A natív web_search eszközhívások átírása az OmniRoute /v1/search végpontjára.",
+    "interceptSearchHint": "A natív web_search eszközhívások átírása az Xenia /v1/search végpontjára.",
     "interceptFetchLabel": "web_fetch elfogása",
-    "interceptFetchHint": "A natív web_fetch eszközhívások átírása az OmniRoute /v1/web/fetch végpontjára.",
+    "interceptFetchHint": "A natív web_fetch eszközhívások átírása az Xenia /v1/web/fetch végpontjára.",
     "interceptionLoadError": "Nem sikerült betölteni az elfogási beállításokat: {error}",
     "interceptionSaveError": "Nem sikerült menteni az elfogási beállításokat: {error}",
     "compatUpstreamHeadersLabel": "Extra upstream headers",
-    "compatUpstreamHeadersHint": "High-privilege setting — same trust level as editing provider API credentials; only trusted admins should use it. Merged after OmniRoute adds auth from the provider API key. If a custom header uses the same name as an existing one (e.g. Authorization), your value fully replaces the auto-generated header (including the Bearer token) — the upstream only sees what you typed, not the key from settings. Misconfiguration can cause 401 or broken upstream auth. One row per header (e.g. extra Authentication for some gateways). Hover or focus the value to preview. Saves on blur, outside click, or closing this panel.",
+    "compatUpstreamHeadersHint": "High-privilege setting — same trust level as editing provider API credentials; only trusted admins should use it. Merged after Xenia adds auth from the provider API key. If a custom header uses the same name as an existing one (e.g. Authorization), your value fully replaces the auto-generated header (including the Bearer token) — the upstream only sees what you typed, not the key from settings. Misconfiguration can cause 401 or broken upstream auth. One row per header (e.g. extra Authentication for some gateways). Hover or focus the value to preview. Saves on blur, outside click, or closing this panel.",
     "compatUpstreamHeaderName": "Header name",
     "compatUpstreamHeaderValue": "Value",
     "compatUpstreamAddRow": "Add header",
@@ -5342,7 +5342,7 @@
     "codexImportTabUpload": "Fájl feltöltése",
     "codexImportTabPaste": "JSON beillesztése",
     "codexImportFileLabel": "Válassza az auth.json lehetőséget",
-    "codexImportFileHint": "Válassza ki a Codexből vagy az OmniRoute-ból exportált auth.json fájlt.",
+    "codexImportFileHint": "Válassza ki a Codexből vagy az Xenia-ból exportált auth.json fájlt.",
     "codexImportPasteLabel": "Illessze be a JSON-tartalmat",
     "codexImportEmailLabel": "Fiók e-mail címe",
     "codexImportEmailHint": "Automatikusan felismerve a fájlból; szükség esetén szerkessze.",
@@ -5413,7 +5413,7 @@
     "t3ChatWebCookieHint": "Nyissa meg a t3.chat → DevTools → Alkalmazás → Helyi tárhely → https://t3.chat menüpontot, másolja ki a 'convex-session-id'-t. Ezután nyissa meg a DevTools → Network lehetőséget, és másolja ki a teljes Cookie fejlécet bármely csevegési kérelemből. Illessze be mindkét értéket az alábbi mezőkbe.",
     "t3ChatWebCookiePlaceholder": "convex-session-id=abc123...",
     "grokWebCookieHint": "Grok Web Cookie Hint",
-    "blockClaudeExtraUsageDescription": "__MISSING__:When enabled, OmniRoute marks this Claude connection unavailable as soon as the usage API reports queued extra usage, so fallback switches to another connection instead of continuing on pay-as-you-go extra billing.",
+    "blockClaudeExtraUsageDescription": "__MISSING__:When enabled, Xenia marks this Claude connection unavailable as soon as the usage API reports queued extra usage, so fallback switches to another connection instead of continuing on pay-as-you-go extra billing.",
     "blockClaudeExtraUsageLabel": "__MISSING__:Block extra Claude usage",
     "disableCoolingDescription": "Skip the transient cooldown so this connection stays eligible even after recoverable errors (terminal states like banned/expired still apply).",
     "disableCoolingLabel": "Lehűlési idő (cooldown) letiltása ehhez a kapcsolathoz",
@@ -5483,7 +5483,7 @@
     "googlePseInfo": "Google Pse Info",
     "antigravityProjectIdHint": "Opcionális felülírás az Antigravity Cloud Code kérésekhez. Hagyja üresen a Google OAuth során felfedezett projekt használatához.",
     "antigravityClientProfileLabel": "Kliensprofil",
-    "antigravityClientProfileHint": "Válassza ki, melyik Antigravity kliensidentitást mutassa az OmniRoute az API felé.",
+    "antigravityClientProfileHint": "Válassza ki, melyik Antigravity kliensidentitást mutassa az Xenia az API felé.",
     "antigravityClientProfileIde": "IDE",
     "antigravityClientProfileCli": "Harness / CLI",
     "codexFastTierActiveChip": "A Codex Fast szint aktív",
@@ -5512,7 +5512,7 @@
     "tierOverrideFree": "Ingyenes",
     "tierOverrideCheap": "Olcsó",
     "tierOverridePremium": "Prémium",
-    "tierOverrideHelpText": "Rögzítse ezt a szolgáltatót egy útvonalválasztási szinthez ahelyett, hogy az OmniRoute a modell árazása alapján következtetne rá.",
+    "tierOverrideHelpText": "Rögzítse ezt a szolgáltatót egy útvonalválasztási szinthez ahelyett, hogy az Xenia a modell árazása alapján következtetne rá.",
     "museSparkWebCookieHint": "Muse Spark Web Cookie Hint",
     "museSparkWebCookiePlaceholder": "Muse Spark Web Cookie Placeholder",
     "oauth": "Oauth",
@@ -5603,7 +5603,7 @@
     "zedNoCredentials": "Nem találhatók Zed hitelesítési adatok a kulcstartóban",
     "zedUnsupportedCredentials": "{count} kulcstartó-hitelesítési adat található, de egyik sem felelt meg a támogatott szolgáltatóknak",
     "zedManualTitle": "Kézi tokenimportálás",
-    "zedManualDescription": "Használd ezt, ha az OmniRoute Dockerben fut, vagy a kulcstartó nem érhető el. Illeszd be az API-kulcsot, amelyet a Zed a(z) <path>~/.config/zed/settings.json</path> alatt tárolt, vagy másold ki a Zed AI beállítási paneljéről.",
+    "zedManualDescription": "Használd ezt, ha az Xenia Dockerben fut, vagy a kulcstartó nem érhető el. Illeszd be az API-kulcsot, amelyet a Zed a(z) <path>~/.config/zed/settings.json</path> alatt tárolt, vagy másold ki a Zed AI beállítási paneljéről.",
     "zedPasteApiKey": "API-kulcs beillesztése…",
     "zedSaving": "Mentés…",
     "zedImportAction": "Importálás",
@@ -5653,9 +5653,9 @@
     "webFetchTooltip": "Szolgáltatók, amelyek tartalmat nyernek ki webes URL-ekből (HTML → Markdown, scrape, képernyőkép)",
     "webFetchProvidersHeading": "Web Fetch szolgáltatók",
     "compatibleProvidersDesc": "OpenAI-kompatibilis és Anthropic-kompatibilis végpontok, amelyeket te üzemeltetsz vagy konfigurálsz. Irányíts bármilyen OpenAI SDK-t a saját URL-edre, és irányítsd ide a kéréseket.",
-    "oauthProvidersDesc": "OAuth-on keresztül hitelesített szolgáltatók — jelentkezz be egyszer, és az OmniRoute automatikusan kezeli a tokenrotációt.",
+    "oauthProvidersDesc": "OAuth-on keresztül hitelesített szolgáltatók — jelentkezz be egyszer, és az Xenia automatikusan kezeli a tokenrotációt.",
     "webCookieProvidersDesc": "Ezek a szolgáltatók böngésző internetes munkameneteket, cookie-kat vagy webes tokeneket használnak API-kulcsok helyett. Nyisson meg egy szolgáltatót a szükséges munkamenet-hitelesítési adatok hozzáadásához.",
-    "apiKeyProvidersDesc": "Szabványos API-kulcsos szolgáltatók. Add meg a kulcsodat egyszer, és az OmniRoute elvégzi az átirányítást, az újrapróbálkozást és a sebességkorlátozást a nevedben.",
+    "apiKeyProvidersDesc": "Szabványos API-kulcsos szolgáltatók. Add meg a kulcsodat egyszer, és az Xenia elvégzi az átirányítást, az újrapróbálkozást és a sebességkorlátozást a nevedben.",
     "noAuthProvidersDesc": "Nyílt végpontok, amelyek nem igényelnek hitelesítő adatokat — regisztráció nélkül azonnal használhatók.",
     "upstreamProxyProvidersDesc": "A kimenő forgalom átirányítása egy upstream proxyn keresztül, mielőtt elérné a szolgáltatót. Hasznos vállalati hálózatokhoz vagy forgalomelemzéshez.",
     "webFetchProvidersDesc": "Szolgáltatók, amelyek tartalmat kérnek le és nyernek ki webes URL-ekből. Használja őket a promptok élő webes adatokkal való megalapozásához.",
@@ -5732,7 +5732,7 @@
     "onboardingModelsPath": "Modellek útvonala",
     "onboardingCreateSaveTest": "Létrehozása, mentése és tesztelése",
     "onboardingConnectProvider": "Csatlakozás {provider}",
-    "onboardingOAuthFlowDescription": "Az OmniRoute megnyitja a meglévő OAuth-folyamatot ehhez a szolgáltatóhoz. A bejelentkezés után a varázsló újratölti a mentett kapcsolatot, és ugyanazt a kapcsolattesztet futtatja, mint a szolgáltatói oldalon.",
+    "onboardingOAuthFlowDescription": "Az Xenia megnyitja a meglévő OAuth-folyamatot ehhez a szolgáltatóhoz. A bejelentkezés után a varázsló újratölti a mentett kapcsolatot, és ugyanazt a kapcsolattesztet futtatja, mint a szolgáltatói oldalon.",
     "onboardingStartOAuthFlow": "Indítsa el az OAuth folyamatot",
     "onboardingProviderDescriptions": {
       "360ai": "Szerezzen API-kulcsot az ai.360.cn oldalon",
@@ -5745,10 +5745,10 @@
       "bailian-coding-plan": "Csatlakoztassa az Alibaba Coding Plan szolgáltatást egy API-kulccsal.",
       "bedrock": "Natív Bedrock-integráció: a modellfelderítés a Bedrock alapmodelleket és következtetési profilokat használja, míg a csevegés a regionális Bedrock Runtime Converse/ConverseStream API-kat.",
       "anthropic": "Csatlakoztassa az Anthropic szolgáltatást egy API-kulccsal.",
-      "ant-ling": "__MISSING__:Register and create an API key at the Ant Ling API console (https://chat.ant-ling.com/open), then paste it here. OmniRoute routes chat traffic to https://api.ant-ling.com/v1/chat/completions; the provider is OpenAI-compatible and also exposes an Anthropic-compatible surface.",
+      "ant-ling": "__MISSING__:Register and create an API key at the Ant Ling API console (https://chat.ant-ling.com/open), then paste it here. Xenia routes chat traffic to https://api.ant-ling.com/v1/chat/completions; the provider is OpenAI-compatible and also exposes an Anthropic-compatible surface.",
       "api-airforce": "Szerezze be API-kulcsát a https://panel.api.airforce oldalról — OpenAI-kompatibilis végpont a https://api.airforce/v1 címen",
       "arcee-ai": "Szerezzen API-kulcsot az arcee.ai oldalon",
-      "azure-ai": "A Foundry az OpenAI v1 felületet használja a telepítési nevekkel mint modellekkel. Az OmniRoute normalizálja a gyökér erőforrás-URL-eket a v1 chat és /models végpontokra.",
+      "azure-ai": "A Foundry az OpenAI v1 felületet használja a telepítési nevekkel mint modellekkel. Az Xenia normalizálja a gyökér erőforrás-URL-eket a v1 chat és /models végpontokra.",
       "azure-openai": "Használja az Azure OpenAI API-kulcsát. Az alap URL-nek az erőforrás végpontjának kell lennie, például https://my-resource.openai.azure.com.",
       "bai": "Bearer API-kulcs a b.ai OpenAI-kompatibilis LLM-átjáróhoz (nem azonos a TheB.AI-val). Hozzon létre egy kulcsot a https://docs.b.ai oldalon, majd használja a https://api.b.ai/v1 címet OpenAI-kompatibilis alap URL-ként.",
       "baichuan": "Szerezzen API-kulcsot a platform.baichuan-ai.com oldalon",
@@ -5766,7 +5766,7 @@
       "chutes": "Bearer API-kulcs a Chutes OpenAI-kompatibilis átjáróhoz.",
       "clarifai": "A Clarifai OpenAI-kompatibilis csevegést, válaszokat és /models végpontot tesz elérhetővé a /v2/ext/openai/v1 címen. A nyilvános/közösségi modellekhez általában PAT szükséges; az alkalmazás hatókörű kulcsok csak az adott alkalmazáson belüli erőforrásokhoz működnek.",
       "cloudflare-ai": "API-token ÉS fiókazonosító szükséges (megtalálható a dash.cloudflare.com oldalon)",
-      "clova-studio": "__MISSING__:CLOVA Studio (HyperCLOVA X) is OpenAI-compatible on /v1/openai. OmniRoute probes /v1/openai/models and routes chat traffic to /v1/openai/chat/completions. Uses the current clovastudio.stream.ntruss.com host — the legacy clovastudio.apigw.ntruss.com endpoint is being deprecated.",
+      "clova-studio": "__MISSING__:CLOVA Studio (HyperCLOVA X) is OpenAI-compatible on /v1/openai. Xenia probes /v1/openai/models and routes chat traffic to /v1/openai/chat/completions. Uses the current clovastudio.stream.ntruss.com host — the legacy clovastudio.apigw.ntruss.com endpoint is being deprecated.",
       "codestral": "Csatlakoztassa a Codestralt egy API-kulccsal.",
       "cohere": "Ingyenes próbaverzió: 1000 API-hívás/hó teszteléshez, bankkártya nem szükséges",
       "command-code": "Hozzon létre vagy másoljon ki egy API-kulcsot a Command Code-ból, majd illessze be ide Bearer tokenként.",
@@ -5779,7 +5779,7 @@
       "dgrid": "Hozzon létre egy DGrid API-kulcsot a https://dgrid.ai oldalon, majd használja a https://api.dgrid.ai/v1 címet OpenAI-kompatibilis alap URL-ként.",
       "dify": "Szerezze be az API-kulcsot a Dify-példányából.",
       "digitalocean": "Csatlakoztassa a DigitalOceant egy API-kulccsal.",
-      "dit": "A dit.ai (Distributed Intelligence Trade) egy OpenAI-kompatibilis útválasztó/átjáró dinamikus kérésenkénti díjszabással, amely a /v1/chat/completions végpontot teszi elérhetővé a https://api.dit.ai/v1 címen. Az OmniRoute az OpenAI protokollt használja; a költési/megtakarítási analitika a dit.ai irányítópultján érhető el.",
+      "dit": "A dit.ai (Distributed Intelligence Trade) egy OpenAI-kompatibilis útválasztó/átjáró dinamikus kérésenkénti díjszabással, amely a /v1/chat/completions végpontot teszi elérhetővé a https://api.dit.ai/v1 címen. Az Xenia az OpenAI protokollt használja; a költési/megtakarítási analitika a dit.ai irányítópultján érhető el.",
       "doubao": "Szerezzen API-kulcsot a console.volcengine.com oldalon",
       "empower": "Az Empower OpenAI-kompatibilis csevegést tesz elérhetővé a https://app.empower.dev/api/v1 címen, eszközhívási támogatással az empower-functions funkcióban.",
       "factory": "Szerezze be Factory API-kulcsát a https://app.factory.ai/settings/api-keys oldalon, majd illessze be Bearer tokenként. OpenAI-kompatibilis végpont a https://api.factory.ai/v1 címen.",
@@ -5816,7 +5816,7 @@
       "internlm": "__MISSING__:Free monthly quota ~1M input / 3M output tokens (~10 RPM)",
       "jina-ai": "Bearer API-kulcs a Jina AI rerank API-hoz.",
       "jina-reader": "Csatlakoztassa a Jina Readert egy API-kulccsal.",
-      "kenari": "A Kenari egy OpenAI-kompatibilis chat completions végpontot tesz elérhetővé a https://kenari.id/v1/chat/completions címen, valamint egy élő /v1/models katalógust, amely lefedi a Claude, GPT, DeepSeek, GLM, Kimi és további modelleket. Az OmniRoute az OpenAI protokollt használja, és átmenő módban listázza a modelleket.",
+      "kenari": "A Kenari egy OpenAI-kompatibilis chat completions végpontot tesz elérhetővé a https://kenari.id/v1/chat/completions címen, valamint egy élő /v1/models katalógust, amely lefedi a Claude, GPT, DeepSeek, GLM, Kimi és további modelleket. Az Xenia az OpenAI protokollt használja, és átmenő módban listázza a modelleket.",
       "kie": "Csatlakoztassa a KIE.AI-t egy API-kulccsal.",
       "kilo-gateway": "Csatlakoztassa a Kilo Gatewayt egy API-kulccsal.",
       "kimi": "Csatlakoztassa a Kimit egy API-kulccsal.",
@@ -5833,23 +5833,23 @@
       "minimax-cn": "Csatlakoztassa a Minimaxot (Kína) egy API-kulccsal.",
       "minimax": "Csatlakoztassa a Minimax Codingot egy API-kulccsal.",
       "mistral": "Ingyenes Experiment csomag: sebességkorlátozott hozzáférés az összes modellhez, bankkártya nem szükséges",
-      "modal": "A Modal általában a felhasználó által üzemeltetett OpenAI-kompatibilis alkalmazásokat szolgálja ki a /v1 végponton. Az OmniRoute lekérdezi a /v1/models végpontot, és a csevegési forgalmat a /v1/chat/completions végpontra irányítja.",
+      "modal": "A Modal általában a felhasználó által üzemeltetett OpenAI-kompatibilis alkalmazásokat szolgálja ki a /v1 végponton. Az Xenia lekérdezi a /v1/models végpontot, és a csevegési forgalmat a /v1/chat/completions végpontra irányítja.",
       "modelscope": "Ingyenes csomag a ModelScope API-Inference-en keresztül — Alibaba-fiók szükséges.",
       "monsterapi": "Szerezzen API-kulcsot itt: monsterapi.ai",
       "moonshot": "Csatlakoztassa a Moonshot AI-t egy API-kulccsal.",
       "morph": "Ingyenes csomag: 250K kredit/hó, $0",
       "nanogpt": "Csatlakoztassa a NanoGPT-t egy API-kulccsal.",
       "nebius": "~$1 próbakredit regisztrációkor API-teszteléshez",
-      "nlpcloud": "Az NLP Cloud saját fejlesztésű chatbot API-t használ az OpenAI chat/completions helyett. Az OmniRoute átalakítja az OpenAI üzeneteket input/context/history formátumra, és elérhetővé teszi a támogatott chatbot modellek helyi katalógusát.",
+      "nlpcloud": "Az NLP Cloud saját fejlesztésű chatbot API-t használ az OpenAI chat/completions helyett. Az Xenia átalakítja az OpenAI üzeneteket input/context/history formátumra, és elérhetővé teszi a támogatott chatbot modellek helyi katalógusát.",
       "nomic": "Szerezzen API-kulcsot itt: atlas.nomic.ai",
       "nous-research": "A Nous egy OpenAI-kompatibilis /v1 felületet tesz elérhetővé egy nagy távoli /models katalógussal. A /chat/completions végponthoz érvényes API-kulcs szükséges a programozott inferenciához.",
       "novita": "$0.50 próbakredit regisztrációkor (kb. 1 évig érvényes)",
       "nscale": "$5 ingyenes kredit regisztrációkor inferenciateszteléshez",
       "nube": "Csatlakoztassa a Nube.sh-t egy API-kulccsal.",
       "nvidia": "Ingyenes fejlesztői hozzáférés: ~40 RPM, 70+ modell (Kimi K2.5, GLM 4.7, DeepSeek V3.2...)",
-      "oci": "Az OCI OpenAI-kompatibilis chat és responses végpontokat tesz elérhetővé. A Project ID opcionális az OmniRoute-ban, de a Responses és az ágensalapú munkafolyamatok esetén szükséges lehet.",
+      "oci": "Az OCI OpenAI-kompatibilis chat és responses végpontokat tesz elérhetővé. A Project ID opcionális az Xenia-ban, de a Responses és az ágensalapú munkafolyamatok esetén szükséges lehet.",
       "ollama-cloud": "Csatlakoztassa az Ollama Cloudot egy API-kulccsal.",
-      "openadapter": "Az OpenAdapter egy OpenAI-kompatibilis chat completions végpontot tesz elérhetővé a https://api.openadapter.in/v1/chat/completions címen, több mint 70 nyílt forráskódú modellt aggregálva (DeepSeek, Qwen, Kimi, MiniMax, GLM, Llama, Mistral, …). Az OmniRoute az OpenAI protokollt használja.",
+      "openadapter": "Az OpenAdapter egy OpenAI-kompatibilis chat completions végpontot tesz elérhetővé a https://api.openadapter.in/v1/chat/completions címen, több mint 70 nyílt forráskódú modellt aggregálva (DeepSeek, Qwen, Kimi, MiniMax, GLM, Llama, Mistral, …). Az Xenia az OpenAI protokollt használja.",
       "openai": "Csatlakoztassa az OpenAI-t egy API-kulccsal.",
       "opencode-go": "Csatlakoztassa az OpenCode Go-t egy API-kulccsal.",
       "opencode-zen": "Csatlakoztassa az OpenCode Zent egy API-kulccsal.",
@@ -5867,12 +5867,12 @@
       "puter": "Szerezze be a tokent a puter.com/dashboard oldalon → Copy Auth Token",
       "qiniu": "Hozzon létre egy Qiniu AI inference API-kulcsot a https://portal.qiniu.com/ai-inference/api-key oldalon, majd illessze be ide Bearer tokenként. OpenAI-kompatibilis végpont a https://api.qnaigc.com/v1 címen, amely a DeepSeek, Claude, Kimi és további modelleket proxyzza egyetlen kulcs mögött.",
       "recraft": "Csatlakoztassa a Recraftot egy API-kulccsal.",
-      "reka": "A Reka Chat OpenAI-kompatibilis a /v1 végponton. Az OmniRoute lekérdezi a /v1/models végpontot, és a csevegési forgalmat a /v1/chat/completions végpontra irányítja.",
+      "reka": "A Reka Chat OpenAI-kompatibilis a /v1 végponton. Az Xenia lekérdezi a /v1/models végpontot, és a csevegési forgalmat a /v1/chat/completions végpontra irányítja.",
       "requesty": "Hozzon létre egy API-kulcsot a https://app.requesty.ai oldalon, majd illessze be ide Bearer tokenként. OpenAI-kompatibilis végpont a https://router.requesty.ai/v1 címen, élő /v1/models katalógussal.",
-      "runwayml": "A Runway videógenerálás feladatalapú. Az OmniRoute elküldi a text-to-video vagy image-to-video feladatokat, lekérdezi a /v1/tasks/[id] állapotát, és a kész videókimeneteket visszaalakítja az OpenAI-szerű /v1/videos/generations válasszá.",
+      "runwayml": "A Runway videógenerálás feladatalapú. Az Xenia elküldi a text-to-video vagy image-to-video feladatokat, lekérdezi a /v1/tasks/[id] állapotát, és a kész videókimeneteket visszaalakítja az OpenAI-szerű /v1/videos/generations válasszá.",
       "sambanova": "$5 ingyenes kredit regisztrációkor (30 napos érvényesség), bankkártya nem szükséges",
       "sap": "A modellfelderítés a /v2/lm/scenarios/foundation-models/models végpontot használja az AI_API_URL címen. A chat kérések a deploymentUrl/chat/completions végpontot használják, és AI-Resource-Group szükséges hozzájuk.",
-      "sarvam": "__MISSING__:Sarvam AI is OpenAI-compatible on /v1. OmniRoute probes /v1/models and routes chat traffic to /v1/chat/completions. Models are tuned for Indic languages.",
+      "sarvam": "__MISSING__:Sarvam AI is OpenAI-compatible on /v1. Xenia probes /v1/models and routes chat traffic to /v1/chat/completions. Models are tuned for Indic languages.",
       "scaleway": "1M ingyenes token új fiókoknak — EU/GDPR-megfelelő (Párizs), Qwen3 235B és Llama 70B",
       "sensenova": "Szerezzen API-kulcsot a platform.sensenova.cn oldalon",
       "siliconflow": "$1 ingyenes kredit, valamint tartósan ingyenes modellek a személyazonosság ellenőrzése után",
@@ -5880,14 +5880,14 @@
       "sparkdesk": "Szerezzen API-kulcsot a console.xfyun.cn oldalon",
       "stability-ai": "Csatlakoztassa a Stability AI-t egy API-kulccsal.",
       "stepfun": "Szerezzen API-kulcsot a platform.stepfun.com oldalon",
-      "sumopod": "A SumoPod egy OpenAI-kompatibilis chat completions végpontot tesz elérhetővé a https://ai.sumopod.com/v1/chat/completions címen, valamint egy élő /v1/models katalógust. Az OmniRoute az OpenAI protokollt használja, és passthrough módon listázza a modelleket.",
+      "sumopod": "A SumoPod egy OpenAI-kompatibilis chat completions végpontot tesz elérhetővé a https://ai.sumopod.com/v1/chat/completions címen, valamint egy élő /v1/models katalógust. Az Xenia az OpenAI protokollt használja, és passthrough módon listázza a modelleket.",
       "suno": "Illessze be a session cookie-t a suno.ai oldalról (Clerk auth)",
       "synthetic": "Csatlakoztassa a Syntheticket egy API-kulccsal.",
       "tencent": "Szerezzen API-kulcsot a console.cloud.tencent.com oldalon",
       "thebai": "Bearer API-kulcs a TheB.AI OpenAI-kompatibilis átjáróhoz.",
       "tinyfish": "X-API-Key az agent.tinyfish.ai/api-keys oldalról",
       "together": "Csatlakoztassa a Together AI-t egy API-kulccsal.",
-      "tokenrouter": "A TokenRouter egy OpenAI-kompatibilis chat completions végpontot tesz elérhetővé a https://api.tokenrouter.com/v1/chat/completions címen, valamint egy működő /v1/models katalógust. Az OmniRoute az OpenAI protokollt használja.",
+      "tokenrouter": "A TokenRouter egy OpenAI-kompatibilis chat completions végpontot tesz elérhetővé a https://api.tokenrouter.com/v1/chat/completions címen, valamint egy működő /v1/models katalógust. Az Xenia az OpenAI protokollt használja.",
       "topaz": "Csatlakoztassa a Topazt egy API-kulccsal.",
       "typhoon": "__MISSING__:Typhoon is OpenAI-compatible on /v1. Built by SCB 10X (Thailand); typhoon-v2.5-30b-a3b-instruct is a thai-first, multilingual model.",
       "udio": "Munkamenet-süti beillesztése az udio.com-ról (Supabase auth)",
@@ -5903,12 +5903,12 @@
       "wafer": "API-kulcs a https://wafer.ai oldalról",
       "wandb": "A Weights & Biases Inference összekapcsolása egy API-kulccsal.",
       "writer": "__MISSING__:Writer Palmyra is OpenAI-compatible at https://api.writer.com/v1. palmyra-x5 offers a 1M-token context window.",
-      "x5lab": "Az X5Lab egy OpenAI-kompatibilis chat completions végpontot biztosít a https://api.x5lab.dev/v1/chat/completions címen, valamint egy élő /v1/models katalógust. Az OmniRoute az OpenAI protokollt használja, és a modelleket átjárón keresztül listázza.",
+      "x5lab": "Az X5Lab egy OpenAI-kompatibilis chat completions végpontot biztosít a https://api.x5lab.dev/v1/chat/completions címen, valamint egy élő /v1/models katalógust. Az Xenia az OpenAI protokollt használja, és a modelleket átjárón keresztül listázza.",
       "xai": "Az xAI (Grok) összekapcsolása egy API-kulccsal.",
       "xiaomi-mimo": "A Xiaomi MiMo összekapcsolása egy API-kulccsal.",
       "yi": "API-kulcs beszerzése a platform.lingyiwanwu.com oldalon",
       "zai": "API-kulcs a https://open.bigmodel.cn/usercenter/apikeys oldalról",
-      "zenmux": "A ZenMux egy OpenAI-kompatibilis chat completions végpontot biztosít az /api/v1/chat/completions címen, valamint Anthropic Messages (/api/anthropic/v1/messages) és Google Gemini (/api/vertex-ai) protokollfelületeket. Az OmniRoute az OpenAI protokollt használja.",
+      "zenmux": "A ZenMux egy OpenAI-kompatibilis chat completions végpontot biztosít az /api/v1/chat/completions címen, valamint Anthropic Messages (/api/anthropic/v1/messages) és Google Gemini (/api/vertex-ai) protokollfelületeket. Az Xenia az OpenAI protokollt használja.",
       "galadriel": "A Galadriel összekapcsolása egy API-kulccsal.",
       "predibase": "25 $ ingyenes próbaverziós kredit (30 napos érvényesség)",
       "chenzk": "OpenAI-kompatibilis átjáró élő modellkatalógussal a chenzk.top címen.",
@@ -5928,7 +5928,7 @@
       "cline": "A Cline összekapcsolása a meglévő OAuth-folyamattal.",
       "cursor": "A Cursor IDE összekapcsolása a meglévő OAuth-folyamattal.",
       "github": "A GitHub Copilot összekapcsolása a meglévő OAuth-folyamattal.",
-      "gitlab-duo": "OAuth alkalmazás ai_features + read_user hatókörökkel. Konfigurálja a GITLAB_DUO_OAUTH_CLIENT_ID és opcionálisan a GITLAB_DUO_OAUTH_CLIENT_SECRET változókat ezen az OmniRoute példányon.",
+      "gitlab-duo": "OAuth alkalmazás ai_features + read_user hatókörökkel. Konfigurálja a GITLAB_DUO_OAUTH_CLIENT_ID és opcionálisan a GITLAB_DUO_OAUTH_CLIENT_SECRET változókat ezen az Xenia példányon.",
       "kilocode": "A Kilo Code összekapcsolása a meglévő OAuth-folyamattal.",
       "kimi-coding": "A Kimi Coding összekapcsolása a meglévő OAuth-folyamattal.",
       "kiro": "Free tier: 50 credits/month (~25K–100K tokens). ⚠️ Kiro ToS prohibits third-party proxy/harness use.",
@@ -5979,10 +5979,10 @@
     "bulkAddFormatHintCloudflare": "One key per line. Format: name|accountId|apiKey (Cloudflare account ID + API token).",
     "lmarenaWebCookieHint": "Open arena.ai, sign in, then copy the full Cookie header from a Network request. Include arena-auth-prod-v1.0 and arena-auth-prod-v1.1 (and further chunks if present), preferably with cf_clearance. Do not paste only the empty arena-auth-prod-v1 cookie. Optional: providerSpecificData.recaptchaV3Token if create-evaluation still returns 403.",
     "kimiOfficialSupporterBadge": "Alapító barát",
-    "kimiOfficialSupporterTooltip": "A Kimi (Moonshot AI) az OmniRoute alapító nyílt forráskódú barátja",
+    "kimiOfficialSupporterTooltip": "A Kimi (Moonshot AI) az Xenia alapító nyílt forráskódú barátja",
     "cheaperInferenceSupporterBadge": "Nyílt forráskódú barát",
-    "cheaperInferenceSupporterTooltip": "A Cheaper Inference nyílt forráskódú barátként támogatja az OmniRoute-ot",
-    "kimiPartnerLinkNote": "Partnerhivatkozás — az Ön számára további költség nélkül támogatja az OmniRoute-ot",
+    "cheaperInferenceSupporterTooltip": "A Cheaper Inference nyílt forráskódú barátként támogatja az Xenia-ot",
+    "kimiPartnerLinkNote": "Partnerhivatkozás — az Ön számára további költség nélkül támogatja az Xenia-ot",
     "ccAliasSectionTitle": "__MISSING__:Expose in Claude Code (claude/…)",
     "ccAliasSectionHint": "__MISSING__:Advertise this provider's models under claude/&lt;provider&gt;/&lt;model&gt; mirror ids so Claude Code's gateway model discovery can list them. Off by default — enabling this doubles catalog entries for all clients.",
     "ccAliasProviderLevelLabel": "__MISSING__:Provider default",
@@ -6025,7 +6025,7 @@
     "routingOpDropBlockContainsDesc": "Removes ENTIRE system blocks (not just paragraphs) whose text contains any of the listed substrings. Use when a whole block is fingerprint-bearing and you want it gone — e.g. an injected MCP-server description.",
     "routingOpPrependSystemBlockDesc": "Inserts a new text block at the FRONT of the system array. Use to add the SDK identity 'You are a Claude agent, built on Anthropic's Claude Agent SDK.' that Anthropic's classifier expects.",
     "routingOpAppendSystemBlockDesc": "Inserts a new text block at the END of the system array. Use for cosmetic additions that don't need to be at position [0].",
-    "routingOpInjectBillingHeaderDesc": "Prepends the special 'x-anthropic-billing-header: cc_version=...; cc_entrypoint=...; cch=...;' text block that Anthropic's classifier validates. Required for CC bridge relay endpoints; for the native claude provider OmniRoute already injects its own billing line so this op is usually redundant there.",
+    "routingOpInjectBillingHeaderDesc": "Prepends the special 'x-anthropic-billing-header: cc_version=...; cc_entrypoint=...; cch=...;' text block that Anthropic's classifier validates. Required for CC bridge relay endpoints; for the native claude provider Xenia already injects its own billing line so this op is usually redundant there.",
     "routingOpObfuscateWordsDesc": "Egy Zero-Width-Joiner (nulla szélességű összekötő) karaktert szúr be minden felsorolt szó első betűje után, így az 'opencode' 'o‍pencode' lesz. Az emberek számára ugyanúgy olvasható, de megkerüli az osztályozó szóegyezéseit. Célba veszi a rendszerblokkokat, a felhasználói/asszisztens üzeneteket és az eszközleírásokat.",
     "routingNeedlesHint": "Részkarakterláncok listája. Egy bekezdés akkor egyezik, ha BÁRMELYIKET tartalmazza ezek közül. Soronként egyet adjon hozzá az 'Add entry' segítségével.",
     "routingPrefixesHint": "Karakterláncok listája. Egy bekezdés akkor egyezik, ha bármelyikkel kezdődik ezek közül (az egyezés vizsgálata előtt a kezdő szóközök le lesznek vágva).",
@@ -6038,7 +6038,7 @@
     "routingBlockTextHint": "Az új rendszerblokk teljes szövege. Használjon literális karakterláncot; a rendszerblokk csak szöveget tárol.",
     "routingIdempotencyKeyHint": "Opcionális. Ha be van állítva, a művelet kimarad, ha egy olyan blokk, amelynek szövege ezzel a kulccsal kezdődik, már jelen van. Megakadályozza a dupla eléillesztést újrapróbálkozásoknál.",
     "routingBillingEntrypointHint": "A 'cc_entrypoint=' értékként beillesztett érték. Az Anthropic elfogadja az 'sdk-cli' (Agent SDK), 'cli' (Claude Code CLI) vagy más dokumentált értékeket.",
-    "routingBillingVersionFormatHint": "Hogyan számítódik ki a cc_version= utáni 3 karakteres build hash. 'ex-machina' = a CCH_SALT+karakterek-az-első-felhasználói-üzenetből+verzió sha256-ja (üzenetenként). 'omniroute-daystamp' = az ÉÉÉÉ-HH-NN+verzió sha256-ja (napi szinten stabil).",
+    "routingBillingVersionFormatHint": "Hogyan számítódik ki a cc_version= utáni 3 karakteres build hash. 'ex-machina' = a CCH_SALT+karakterek-az-első-felhasználói-üzenetből+verzió sha256-ja (üzenetenként). 'xenia-daystamp' = az ÉÉÉÉ-HH-NN+verzió sha256-ja (napi szinten stabil).",
     "routingBillingCchAlgoHint": "Hogyan számítódik ki az 5 karakteres cch= token. 'sha256-first-user' = az első felhasználói üzenet szövegének sha256-ja. 'xxhash64-body' = a törzsszintű aláírás tölti ki később. 'static-zero' = literális '00000' helyőrző.",
     "routingObfuscateWordsHint": "Kisbetűs szavak az elhomályosításhoz. A ZWJ beillesztése kis- és nagybetűtől függetlenül történik, így az 'opencode' illeszkedik az 'OpenCode' és 'OPENCODE' szavakra is.",
     "routingObfuscateTargetsHint": "Mely törzsterületeket vizsgálja a szavak kereséséhez: rendszerblokkok, felhasználói/asszisztens üzenetek és/vagy eszközleírások.",
@@ -6115,8 +6115,8 @@
     "memoryTitle": "Memory",
     "memoryDesc": "Persistent cross-session conversational memory",
     "memoryEnabled": "Enable Memory",
-    "memoryEnabledDesc": "When enabled, OmniRoute will inject relevant past context.",
-    "memoryTokenCostWarning": "Figyelem: bekapcsolt memória mellett az OmniRoute legfeljebb {tokens} tokennyi lekérdezett kontextust szúr be minden csevegési kérésbe — ez növeli a tokenhasználatot és a költségeket. A beszúrás kihagyásához egy adott kérésnél küldje el az \"x-omniroute-no-memory: true\" fejlécet.",
+    "memoryEnabledDesc": "When enabled, Xenia will inject relevant past context.",
+    "memoryTokenCostWarning": "Figyelem: bekapcsolt memória mellett az Xenia legfeljebb {tokens} tokennyi lekérdezett kontextust szúr be minden csevegési kérésbe — ez növeli a tokenhasználatot és a költségeket. A beszúrás kihagyásához egy adott kérésnél küldje el az \"x-xenia-no-memory: true\" fejlécet.",
     "maxTokens": "Max Tokens",
     "retentionDays": "Retention",
     "recent": "Recent",
@@ -6300,7 +6300,7 @@
     "invalidFaviconFileType": "Érvénytelen fájltípus. Kérjük, töltsön fel PNG, ICO, SVG, GIF vagy WebP formátumot.",
     "failedToReadFile": "Nem sikerült a fájl olvasása",
     "startOnLogin": "Indítás bejelentkezéskor",
-    "startOnLoginDesc": "Az OmniRoute automatikus elindítása a rendszer indításakor, és csendes futtatás a háttérben, a tálcán.",
+    "startOnLoginDesc": "Az Xenia automatikus elindítása a rendszer indításakor, és csendes futtatás a háttérben, a tálcán.",
     "flushCache": "Öblítse ki a gyorsítótárat",
     "flushing": "Öblítés…",
     "size": "Méret",
@@ -6338,7 +6338,7 @@
     "healthcheckProxyUrl": "Proxy URL",
     "healthcheckLatency": "Latency",
     "proxyDocumentationScopeTitle": "Proxy hatókör feloldása",
-    "proxyDocumentationScopeDescBefore": "Az OmniRoute a kimenő proxyt prioritási sorrendben oldja fel:",
+    "proxyDocumentationScopeDescBefore": "Az Xenia a kimenő proxyt prioritási sorrendben oldja fel:",
     "proxyDocumentationScopeOrder": "combo → account → provider → global",
     "proxyDocumentationScopeDescAfter": ". A legspecifikusabb hatókör nyer.",
     "proxyDocumentationAddTitle": "Egyedi proxy hozzáadása",
@@ -6980,7 +6980,7 @@
     "qdrantEmbeddingModel": "Embedding model",
     "qdrantHelpTitle": "Quick setup help",
     "qdrantHelpQuickTitle": "Quick setup (Qdrant + OpenRouter)",
-    "qdrantHelpStep1": "1. Host: Qdrant IP/URL, Port: 6333, Collection: omniroute_memory.",
+    "qdrantHelpStep1": "1. Host: Qdrant IP/URL, Port: 6333, Collection: xenia_memory.",
     "qdrantHelpStep2": "2. If using nvidia/llama-nemotron-embed-vl-1b-v2:free, use collection dimension 2048.",
     "qdrantHelpStep3": "3. Model field: openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free.",
     "qdrantHelpStep4": "4. Save, test connection, then test search.",
@@ -7073,9 +7073,9 @@
     "oneproxySuccess": "Siker",
     "oneproxyFailed": "Sikertelen",
     "routingAntigravitySignatureTitle": "Antigravitációs aláírás gyorsítótár mód",
-    "routingAntigravitySignatureDesc": "Szabályozza, hogy az OmniRoute csak a tárolt Gemini gondolat-aláírásokat használja-e újra, vagy elfogadja a kliens által biztosított, ellenőrzött aláírásokat az Antigravity-kompatibilis eszközhívási folyamatokban.",
+    "routingAntigravitySignatureDesc": "Szabályozza, hogy az Xenia csak a tárolt Gemini gondolat-aláírásokat használja-e újra, vagy elfogadja a kliens által biztosított, ellenőrzött aláírásokat az Antigravity-kompatibilis eszközhívási folyamatokban.",
     "routingAntigravitySignatureEnabledLabel": "Engedélyezve",
-    "routingAntigravitySignatureEnabledDesc": "Jelenlegi viselkedés. Figyelmen kívül hagyja a kliens által biztosított aláírásokat, és továbbra is a tárolt OmniRoute folyamatot használja.",
+    "routingAntigravitySignatureEnabledDesc": "Jelenlegi viselkedés. Figyelmen kívül hagyja a kliens által biztosított aláírásokat, és továbbra is a tárolt Xenia folyamatot használja.",
     "routingAntigravitySignatureBypassLabel": "Bypass",
     "routingAntigravitySignatureBypassDesc": "Elfogadja a kliens által biztosított aláírásokat egy egyszerűsített ellenőrzés után, és érvénytelenség esetén visszatér a tárolt aláíráshoz.",
     "routingAntigravitySignatureBypassStrictLabel": "Szigorú bypass",
@@ -7084,12 +7084,12 @@
     "routingServerRejectedSave": "⚠ A szerver elutasította a mentést:",
     "routingAddTransformOp": "Adjon hozzá egy transzformációs műveletet",
     "routingClientCacheControlTitle": "Kliens gyorsítótár vezérlése",
-    "routingClientCacheControlDesc": "Annak beállítása, hogy az OmniRoute megőrizze-e a kliens által biztosított cache_control jelölőket",
-    "routingClientCacheControlAutoDesc": "A determinisztikus Claude-kompatibilis folyamatokhoz őrizze meg a kliens által biztosított cache_control-t változatlanul. Ha a kérés nem tartalmaz cache_control-t, az OmniRoute nem szúr be semmilyen bridge-tulajdonú jelölőt a CC-kompatibilis harmadik féltől származó proxyk kompatibilitása érdekében.",
+    "routingClientCacheControlDesc": "Annak beállítása, hogy az Xenia megőrizze-e a kliens által biztosított cache_control jelölőket",
+    "routingClientCacheControlAutoDesc": "A determinisztikus Claude-kompatibilis folyamatokhoz őrizze meg a kliens által biztosított cache_control-t változatlanul. Ha a kérés nem tartalmaz cache_control-t, az Xenia nem szúr be semmilyen bridge-tulajdonú jelölőt a CC-kompatibilis harmadik féltől származó proxyk kompatibilitása érdekében.",
     "routingClientCacheControlAlwaysLabel": "Mindig őrizze meg",
     "routingClientCacheControlAlwaysDesc": "Mindig továbbítsa a kliens által biztosított cache_control fejléceket a felsőbb szintű szolgáltatóknak változatlanul.",
     "routingClientCacheControlNeverLabel": "Soha ne őrizze meg",
-    "routingClientCacheControlNeverDesc": "Mindig távolítsa el a kliens cache_control fejléceit, és hagyja, hogy az OmniRoute kezelje a gyorsítótárazást ott, ahol a natív szolgáltatói folyamatok ezt támogatják.",
+    "routingClientCacheControlNeverDesc": "Mindig távolítsa el a kliens cache_control fejléceit, és hagyja, hogy az Xenia kezelje a gyorsítótárazást ott, ahol a natív szolgáltatói folyamatok ezt támogatják.",
     "routingZeroConfigTitle": "Zero-Config Auto-Routing",
     "routingZeroConfigDesc": "Engedélyezze az automatikus szolgáltató-választást az auto/ előtag használatával. Ha engedélyezve van, az auto, auto/coding, auto/fast stb. címekre érkező kérések dinamikusan lesznek irányítva az összes csatlakoztatott szolgáltató között.",
     "routingDefaultAutoVariant": "Alapértelmezett automatikus változat",
@@ -7099,7 +7099,7 @@
     "visionBridgeEnabledDesc": "A hívás előtti híd (bridge) ki-/bekapcsolása, amely a képrészeket a kinyert szöveggel helyettesíti.",
     "visionBridgeModel": "Hídmodell",
     "visionBridgeModelPlaceholder": "openai/gpt-4o-mini",
-    "visionBridgeModelHint": "Bármely látástámogató (vision) OmniRoute modellazonosító használható itt.",
+    "visionBridgeModelHint": "Bármely látástámogató (vision) Xenia modellazonosító használható itt.",
     "visionBridgePrompt": "Bridge Prompt",
     "visionBridgePromptPlaceholder": "Írd le tömören ezt a képet.",
     "visionBridgePromptHint": "Elküldve a látásmodellnek (vision model), mielőtt a kinyert leírás vissza lenne illesztve az eredeti kérésbe.",
@@ -7217,7 +7217,7 @@
     "redisLauncherRunning": "Fut",
     "redisLauncherReachable": "Elérhető",
     "redisLauncherError": "Hiba: {message}",
-    "redisLauncherHint": "Egyenértékű az `omniroute redis up` futtatásával. A konténer neve `omniroute-redis`, és a 127.0.0.1:6379 címen figyel.",
+    "redisLauncherHint": "Egyenértékű az `xenia redis up` futtatásával. A konténer neve `xenia-redis`, és a 127.0.0.1:6379 címen figyel.",
     "compressionSettingsAutoTriggerMode": "Auto trigger mód",
     "compressionSettingsMcpDescriptionCompression": "MCP leírás tömörítés",
     "mcpAccessibilityTitle": "MCP akadálymentességi kimenet",
@@ -7327,7 +7327,7 @@
     "cliproxyapiStatus": "CLIProxyAPI állapota",
     "cliproxyapiNotDetected": "Nem észlelhető",
     "cliproxyapiImportAuthTitle": "Fiókok importálása a CLIProxyAPI-ból",
-    "cliproxyapiImportAuthDesc": "Importálja a CLIProxyAPI által a ~/.cli-proxy-api/ helyre már elmentett OAuth-fiókokat OmniRoute-kapcsolatokként, így nem kell újra bejelentkeznie az egyes fiókokba. A támogatott fióktípusok (Gemini, Codex, Claude, Antigravity, Qwen, Kimi) importálásra kerülnek; a többi kimarad.",
+    "cliproxyapiImportAuthDesc": "Importálja a CLIProxyAPI által a ~/.cli-proxy-api/ helyre már elmentett OAuth-fiókokat Xenia-kapcsolatokként, így nem kell újra bejelentkeznie az egyes fiókokba. A támogatott fióktípusok (Gemini, Codex, Claude, Antigravity, Qwen, Kimi) importálásra kerülnek; a többi kimarad.",
     "cliproxyapiImportAuthButton": "Fiókok importálása",
     "payloadRulesTitle": "Rakodási szabályok",
     "payloadRulesDesc": "Konfigurálja a kérések payload-módosításait modell és protokoll szerint. A módosítások mentésre kerülnek a beállításokban, és mentés után azonnal újra betöltődnek a futtatókörnyezetbe.",
@@ -7371,7 +7371,7 @@
     "modelCooldownsReasonRemaining": "ok: {reason} • hátralévő: {remaining}",
     "modelCooldownsReactivate": "Újraaktiválás",
     "responsesStateTitle": "Responses állapota",
-    "responsesStateDesc": "Szabályozza, hogyan továbbítja az OmniRoute a previous_response_id azonosítót.",
+    "responsesStateDesc": "Szabályozza, hogyan továbbítja az Xenia a previous_response_id azonosítót.",
     "responsesStateModeLabel": "previous_response_id kezelése",
     "responsesStateModeAuto": "Automatikus",
     "responsesStateModeStrip": "Eltávolítás",
@@ -7380,7 +7380,7 @@
     "responsesStateSaveError": "Nem sikerült frissíteni a Responses állapotbeállítását",
     "codexFastTierTitle": "Codex Fast Tier",
     "codexFastTierDesc": "Globálisan adja meg a service_tier=prioritást az OpenAI Codex kérésekhez.",
-    "codexFastTierHint": "Ha engedélyezve van, az OmniRoute hozzáadja a service_tier=priority értéket a kimenő Codex-kérésekhez azokhoz a kapcsolatokhoz, amelyek még nem határoznak meg szintet. A prioritási szinthez OpenAI Enterprise API-kulcsra vagy ChatGPT-auth Codex-útvonalra van szükség; más kulcstípusok réteggel kapcsolatos hibát kapnak az OpenAI-tól. A Codex szolgáltató oldalán a kapcsolatonkénti beállítások élveznek elsőbbséget.",
+    "codexFastTierHint": "Ha engedélyezve van, az Xenia hozzáadja a service_tier=priority értéket a kimenő Codex-kérésekhez azokhoz a kapcsolatokhoz, amelyek még nem határoznak meg szintet. A prioritási szinthez OpenAI Enterprise API-kulcsra vagy ChatGPT-auth Codex-útvonalra van szükség; más kulcstípusok réteggel kapcsolatos hibát kapnak az OpenAI-tól. A Codex szolgáltató oldalán a kapcsolatonkénti beállítások élveznek elsőbbséget.",
     "codexFastTierSaveError": "Nem sikerült frissíteni a Codex Fast Tier beállítását",
     "codexAutoPingTitle": "Codex Quota Auto-Ping",
     "codexAutoPingDesc": "Opt-in per connection: sends a tiny request right after a Codex session window resets so it isn't cold when you need it.",
@@ -7396,7 +7396,7 @@
     "codexFastTierModelCheckbox": "Fast Tier engedélyezése a(z) {model} számára",
     "claudeFastModeTitle": "Claude gyors mód",
     "claudeFastModeDesc": "Válaszd ki a kiválasztott Claude-kéréseket antropikus gyors módba (sebesség: \"gyors\").",
-    "claudeFastModeHint": "Az Anthropic hivatalosan nem támogatja a gyors módot az SDK-stílusú ügyfelek számára. Ha engedélyezve van, az OmniRoute továbbít egy X-CPA-Force-Fast-Mode fejlécet, így a párosított CLIProxyAPI build engedélyezheti a belépési pont meghamisítását. Csak a felsorolt ​​Opus modellekre vonatkozik az Anthropic ügyféloldali ellenőrzése. Az előfizetési szint, a maximális előfizetési csomag és a gyors módú hitelegyenleg továbbra is kényszerítve van a szerver oldalon – az Anthropic akkor is visszatérhet, ha a kapcsoló be van kapcsolva.",
+    "claudeFastModeHint": "Az Anthropic hivatalosan nem támogatja a gyors módot az SDK-stílusú ügyfelek számára. Ha engedélyezve van, az Xenia továbbít egy X-CPA-Force-Fast-Mode fejlécet, így a párosított CLIProxyAPI build engedélyezheti a belépési pont meghamisítását. Csak a felsorolt ​​Opus modellekre vonatkozik az Anthropic ügyféloldali ellenőrzése. Az előfizetési szint, a maximális előfizetési csomag és a gyors módú hitelegyenleg továbbra is kényszerítve van a szerver oldalon – az Anthropic akkor is visszatérhet, ha a kapcsoló be van kapcsolva.",
     "claudeFastModeModelsLabel": "Modellekre alkalmazva ({count})",
     "claudeFastModeModelCheckbox": "Gyors mód engedélyezése a következőhöz: {model}",
     "claudeFastModeSaveError": "Nem sikerült frissíteni a Claude Fast Mode beállítást",
@@ -7492,7 +7492,7 @@
     "resilienceWaitForCooldownEffect": "Vár a szerveren, és újra próbálkozik, amikor az első lehűlés lejár",
     "resilienceWaitForCooldownDesc": "Ez csak az aktuális kérést érinti. Nem tárolja a kapcsolatot vagy a szolgáltató állapotát.",
     "resilienceEnableServerWait": "Szerveroldali várakozás engedélyezése",
-    "resilienceEnableServerWaitDesc": "Ha engedélyezve van, az OmniRoute megvárja az első lehűlés lejártát, és automatikusan újra próbálkozik.",
+    "resilienceEnableServerWaitDesc": "Ha engedélyezve van, az Xenia megvárja az első lehűlés lejártát, és automatikusan újra próbálkozik.",
     "resilienceMaxAttempts": "Maximális próbálkozások",
     "resilienceMaxWaitPerAttempt": "Maximális várakozási idő kísérletenként",
     "resilienceComboCooldownWaitTitle": "Kvótamegosztó kombináció lehűlési várakozása",
@@ -7527,7 +7527,7 @@
     "vercelRelaySuccess": "A Vercel Relay sikeresen telepítve",
     "vercelRelayButton": "Vercel Relay telepítése",
     "vercelRelayModalTitle": "Vercel Relay telepítése",
-    "vercelRelayWarning": "Figyelmeztetés: Vercel telepítési token szükséges. Ez a token kizárólag a kiszolgáló nélküli relay létrehozására szolgál, és az OmniRoute soha nem tárolja.",
+    "vercelRelayWarning": "Figyelmeztetés: Vercel telepítési token szükséges. Ez a token kizárólag a kiszolgáló nélküli relay létrehozására szolgál, és az Xenia soha nem tárolja.",
     "vercelRelayTokenLabel": "Vercel hozzáférési token",
     "vercelRelayProjectNameLabel": "Vercel projekt neve",
     "vercelRelayFreeTierNote": "A relay-k olyan pehelysúlyú proxy végpontok, amelyek a Vercel ingyenes csomagjában futnak a helyi hálózati/régiós korlátozások megkerülésére.",
@@ -7536,7 +7536,7 @@
     "deployRelayButton": "Relay telepítése",
     "denoRelayButton": "Deno Relay telepítése",
     "denoRelayModalTitle": "Deno Relay telepítése",
-    "denoRelayWarning": "Figyelmeztetés: Deno Deploy szervezeti token szükséges. Ez a token kizárólag a relay alkalmazás létrehozására szolgál, és az OmniRoute soha nem tárolja.",
+    "denoRelayWarning": "Figyelmeztetés: Deno Deploy szervezeti token szükséges. Ez a token kizárólag a relay alkalmazás létrehozására szolgál, és az Xenia soha nem tárolja.",
     "denoRelayTokenLabel": "Deno Deploy szervezeti token",
     "denoRelayOrgDomainLabel": "Szervezeti domain",
     "denoRelayProjectNameLabel": "Deno alkalmazásnév",
@@ -8001,7 +8001,7 @@
     "port": "{port} port",
     "externalBadge": "Kívülről felügyelt",
     "externalTitle": "Külső 9Router észlelve",
-    "externalDescription": "Az OmniRoute megtalálta a 9Routert a(z) {host}:{port} címen. Az életciklusa, naplói, frissítései és szolgáltatáskulcsa továbbra is a külső telepítés által maradnak felügyelve.",
+    "externalDescription": "Az Xenia megtalálta a 9Routert a(z) {host}:{port} címen. Az életciklusa, naplói, frissítései és szolgáltatáskulcsa továbbra is a külső telepítés által maradnak felügyelve.",
     "start": "Indítás",
     "starting": "Indítás…",
     "stop": "Leállítás",
@@ -8013,9 +8013,9 @@
     "install": "Telepítés",
     "installing": "Telepítés…",
     "autoStart": "Automatikus indítás",
-    "autoStartDescription": "A(z) {name} automatikus indítása az OmniRoute indulásakor",
+    "autoStartDescription": "A(z) {name} automatikus indítása az Xenia indulásakor",
     "apiKey": "API-kulcs",
-    "apiKeyDescription": "Az OmniRoute által a(z) {name} szolgáltatással való hitelesítéshez használt kulcs",
+    "apiKeyDescription": "Az Xenia által a(z) {name} szolgáltatással való hitelesítéshez használt kulcs",
     "keyRotated": "Kulcs lecserélve — a(z) {name} újraindult az új kulcs alkalmazásához",
     "keyRotateFailed": "Nem sikerült a kulcs cseréje",
     "keyRevealFailed": "Nem sikerült a kulcs megjelenítése",
@@ -8034,7 +8034,7 @@
     "version": "Verzió",
     "versionHint": "Adja meg a “latest” értéket vagy egy konkrét verziót (például: 1.2.3).",
     "servicePort": "Port",
-    "servicePortHint": "Az OmniRoute és a 9Router portjainak különbözniük kell. A 9Router alapértelmezett portja a 20130.",
+    "servicePortHint": "Az Xenia és a 9Router portjainak különbözniük kell. A 9Router alapértelmezett portja a 20130.",
     "installationFailed": "A telepítés sikertelen (HTTP {status})",
     "installationSucceeded": "A 9Router sikeresen telepítve. Indítás…",
     "networkInstallFailed": "Hálózati hiba — a telepítési végpont nem érhető el",
@@ -8052,7 +8052,7 @@
     "providerExposure": "Szolgáltató közzététele",
     "providerExposureDescription": "A 9Router modellek közzététele útválasztási célpontként a <prefix>9router/</prefix> előtag alatt.",
     "providerExposureLabel": "Közzététel mint <prefix>9router/…</prefix>",
-    "providerExposureHint": "Ha engedélyezve van, a felfedezett modellek megjelennek a szolgáltatóválasztókban az OmniRoute-ban.",
+    "providerExposureHint": "Ha engedélyezve van, a felfedezett modellek megjelennek a szolgáltatóválasztókban az Xenia-ban.",
     "providerExposureUpdateFailed": "A frissítés sikertelen (HTTP {status})",
     "providerExposureNetworkFailed": "Hálózati hiba — nem sikerült frissíteni a szolgáltató közzétételi beállítását",
     "webUi": "9Router webes felület",
@@ -8073,7 +8073,7 @@
     "saved": "Mentve",
     "saveFailed": "Nem sikerült menteni a beállítást",
     "modelMapping": "Modell-hozzárendelés",
-    "modelMappingDescription": "OmniRoute modellazonosítók hozzárendelése CLIProxyAPI modellazonosítókhoz (például <example>\"gpt-4o\": \"openai-gpt-4o\"</example>)",
+    "modelMappingDescription": "Xenia modellazonosítók hozzárendelése CLIProxyAPI modellazonosítókhoz (például <example>\"gpt-4o\": \"openai-gpt-4o\"</example>)",
     "modelMappingEditor": "Modell-hozzárendelés JSON-szerkesztő",
     "mappingSaved": "Hozzárendelés mentve",
     "mappingSaveFailed": "Nem sikerült menteni a hozzárendelést",
@@ -8133,7 +8133,7 @@
   },
   "translator": {
     "title": "Fordító",
-    "metaTitle": "Fordító játszótér | OmniRoute",
+    "metaTitle": "Fordító játszótér | Xenia",
     "metaDescription": "Hibakeresés, tesztelés és API-formátumú fordítások megjelenítése a szolgáltatók között",
     "playgroundTitle": "Fordító játszótér",
     "playground": "Játszótér",
@@ -8141,11 +8141,11 @@
     "chatTester": "Chat tesztelő",
     "testBench": "Tesztpad",
     "liveMonitor": "Élő monitor",
-    "modeDescriptionPlayground": "Illessze be az API kérés törzsét, és nézze meg, hogyan fordítja le az OmniRoute azt a szolgáltatói formátumok között (OpenAI ↔ Claude ↔ Gemini ↔ Responses API)",
-    "modeDescriptionChatTester": "Küldjön valódi csevegési kérelmeket az OmniRoute-on keresztül, és ellenőrizze a teljes körutat: bemenet, lefordított kérés, szolgáltató válasza és lefordított kimenet.",
+    "modeDescriptionPlayground": "Illessze be az API kérés törzsét, és nézze meg, hogyan fordítja le az Xenia azt a szolgáltatói formátumok között (OpenAI ↔ Claude ↔ Gemini ↔ Responses API)",
+    "modeDescriptionChatTester": "Küldjön valódi csevegési kérelmeket az Xenia-on keresztül, és ellenőrizze a teljes körutat: bemenet, lefordított kérés, szolgáltató válasza és lefordított kimenet.",
     "modeDescriptionTestBench": "Futtasson előre meghatározott forgatókönyveket, és hasonlítsa össze a szolgáltatók és modellek kompatibilitását.",
-    "modeDescriptionLiveMonitor": "Nézze meg valós időben a fordítási eseményeket, ahogy a kérések az OmniRoute-on keresztül áramlanak.",
-    "modeDescriptionFallback": "Hibakeresés, tesztelés és vizualizálás, hogy az OmniRoute hogyan fordítja le az API-kéréseket a szolgáltatók között.",
+    "modeDescriptionLiveMonitor": "Nézze meg valós időben a fordítási eseményeket, ahogy a kérések az Xenia-on keresztül áramlanak.",
+    "modeDescriptionFallback": "Hibakeresés, tesztelés és vizualizálás, hogy az Xenia hogyan fordítja le az API-kéréseket a szolgáltatók között.",
     "recentTranslations": "Friss fordítások",
     "noTranslations": "Még nincsenek fordítások",
     "source": "Forrás",
@@ -8162,7 +8162,7 @@
     "notAvailableSymbol": "—",
     "liveAutoRefreshing": "Élő — Automatikus frissítés",
     "paused": "Szüneteltetve",
-    "eventsAppearHint": "A fordítási események itt jelennek meg, amikor a kérések az OmniRoute-on keresztül áramlanak. Használja az alábbi módszerek bármelyikét események generálásához:",
+    "eventsAppearHint": "A fordítási események itt jelennek meg, amikor a kérések az Xenia-on keresztül áramlanak. Használja az alábbi módszerek bármelyikét események generálásához:",
     "chatTesterTab": "Chat Tester lapon",
     "testBenchTab": "Tesztpad fül",
     "externalApiCalls": "Külső API-hívások",
@@ -8171,12 +8171,12 @@
     "ok": "OK",
     "errorShort": "ERR",
     "formatConverter": "Formátum konverter",
-    "formatConverterDescription": "Illessze be vagy írja be a JSON-kérelem törzsét. A fordító automatikusan felismeri a forrásformátumot, és konvertálja a célformátumra. Használja ezt a hibakereséshez, hogy az OmniRoute hogyan fordítja le a kéréseket a formátumok között (OpenAI ↔ Claude ↔ Gemini ↔ Responses API).",
+    "formatConverterDescription": "Illessze be vagy írja be a JSON-kérelem törzsét. A fordító automatikusan felismeri a forrásformátumot, és konvertálja a célformátumra. Használja ezt a hibakereséshez, hogy az Xenia hogyan fordítja le a kéréseket a formátumok között (OpenAI ↔ Claude ↔ Gemini ↔ Responses API).",
     "translationPathHubSpoke": "{source} → OpenAI (középfok) → {target}",
     "translationPathDirect": "{source} → {target} (közvetlen fordító)",
     "translationPathPassthrough": "Ugyanaz a formátum – nincs szükség fordításra",
     "openaiIntermediatePanel": "OpenAI Intermediate",
-    "autoFeaturesTitle": "Mit csinál az OmniRoute automatikusan",
+    "autoFeaturesTitle": "Mit csinál az Xenia automatikusan",
     "autoFeaturesCount": "8 jellemző",
     "featureReasoningCache": "Érvelési gyorsítótár",
     "featureReasoningCacheDesc": "Újra beszúrja a gyorsítótárazott érvelési_tartalmat a gondolkodásmódú modellekbe (DeepSeek V4, Kimi K2, Qwen), ha az ügyfelek kihagyják a beszélgetési előzményekből.",
@@ -8311,7 +8311,7 @@
     "clientRequest": "Ügyfél kérése",
     "clientRequestDescription": "A kérés szerve, ahogyan az Ön ügyfele küldené",
     "formatDetected": "Formátum észlelve",
-    "formatDetectedDescription": "Az OmniRoute automatikusan észleli az API-formátumot a kérésstruktúrából",
+    "formatDetectedDescription": "Az Xenia automatikusan észleli az API-formátumot a kérésstruktúrából",
     "openaiIntermediate": "OpenAI Intermediate",
     "openaiIntermediateDescription": "Minden formátum először OpenAI formátumra (az univerzális hídra) normalizálódik.",
     "providerFormat": "Szolgáltatói formátum",
@@ -8329,12 +8329,12 @@
     "eventSourcesLabel": "Az esemény forrásai:",
     "eventSourceTranslatorPage": "• Fordító oldal (csevegéstesztelő, tesztpad)",
     "eventSourceMainPipeline": "• Fő kérés folyamat (CLI/IDE/API forgalom)",
-    "liveMonitorDescriptionPrefix": "Megjeleníti a fordítási eseményeket, ahogy az API-hívások az OmniRoute-on keresztül áramlanak. Az események a memóriában lévő pufferből származnak (újraindításkor visszaáll). Használja",
+    "liveMonitorDescriptionPrefix": "Megjeleníti a fordítási eseményeket, ahogy az API-hívások az Xenia-on keresztül áramlanak. Az események a memóriában lévő pufferből származnak (újraindításkor visszaáll). Használja",
     "liveMonitorDescriptionSuffix": ", vagy külső API-hívások események generálásához.",
     "streamTransformer": "Stream Transformer",
     "modeDescriptionStreamTransformer": "Futtassa a csevegés befejezési SSE-folyamait a Választranszformátoron keresztül.",
     "streamTransformerTitle": "Válaszok Stream Transformer",
-    "streamTransformerDescription": "Illesszen be egy csevegés befejezési SSE adatfolyamot, futtassa át az OmniRoute választranszformátorán, és ellenőrizze a kibocsátott válasz.* eseményeket, mielőtt egy klienst csatlakoztatna.",
+    "streamTransformerDescription": "Illesszen be egy csevegés befejezési SSE adatfolyamot, futtassa át az Xenia választranszformátorán, és ellenőrizze a kibocsátott válasz.* eseményeket, mielőtt egy klienst csatlakoztatna.",
     "loadTextSample": "Szövegminta betöltése",
     "loadToolSample": "Szerszámhívási minta betöltése",
     "transformToResponses": "Alakítsa át válaszokká",
@@ -8377,7 +8377,7 @@
     "simpleAppUsesLabel": "Az alkalmazásom ezt használja",
     "simpleAppUsesHint": "Az API-formátum, amelyet az alkalmazásod használ (pl. Anthropic SDK = claude).",
     "simpleSendToLabel": "Küldés ide",
-    "simpleSendToHint": "Ahová a kérést ténylegesen küldeni kell (egy OmniRoute-hoz csatlakoztatott szolgáltató).",
+    "simpleSendToHint": "Ahová a kérést ténylegesen küldeni kell (egy Xenia-hoz csatlakoztatott szolgáltató).",
     "simpleStartWithLabel": "Kezdés ezzel",
     "simpleStartWithExamplePlaceholder": "Válassz egy kész példát",
     "simpleStartWithCustomOption": "Illeszd be a kérésedet (haladó)",
@@ -8486,7 +8486,7 @@
     "define": "Határozza meg",
     "defineStepDescription": "Hozzon létre teszteseteket bemeneti promptokkal és várható kimeneti feltételekkel olyan stratégiák használatával, mint a tartalmaz, a reguláris kifejezés vagy a pontos egyezés.",
     "run": "Fuss",
-    "runStepDescription": "Végezzen teszteseteket LLM-végpontjaival szemben az OmniRoute segítségével. Minden eset valódi API-kérésként kerül elküldésre.",
+    "runStepDescription": "Végezzen teszteseteket LLM-végpontjaival szemben az Xenia segítségével. Minden eset valódi API-kérésként kerül elküldésre.",
     "evaluate": "Értékelje",
     "evaluateStepDescription": "A válaszokat a várt kritériumokhoz hasonlítják. Tekintse meg az egyes esetek sikerességét/sikertelenségét a késleltetési mutatók és a részletes visszajelzések segítségével.",
     "evalsStrategyContainsLabel": "Tartalmazza",
@@ -8547,14 +8547,14 @@
     "noResultsYet": "Még nincs eredmény",
     "testCasesCount": "Tesztesetek ({count})",
     "noTestCasesDefined": "Nincsenek meghatározva tesztesetek",
-    "runEvalHint": "Kattintson a \"Run Eval\" gombra az összes eset végrehajtásához az LLM-végponton. Minden teszt valódi kérést küld az OmniRoute-on keresztül.",
+    "runEvalHint": "Kattintson a \"Run Eval\" gombra az összes eset végrehajtásához az LLM-végponton. Minden teszt valódi kérést küld az Xenia-on keresztül.",
     "notifyNoTestCases": "Nincsenek meghatározva tesztesetek ehhez a csomaghoz",
     "notifyAllCasesPassed": "Minden {total} eset sikeres ✅",
     "notifySomeCasesFailed": "{passed}/{total} sikeres, {failed} sikertelen",
     "notifyEvalRunFailed": "Eval run nem sikerült",
     "notifyEvalTitle": "Értékelés: {name}",
     "modelEvals": "Modellértékelések",
-    "evalsHeroDescription": "Tesztelje és érvényesítse LLM-végpontjait előre meghatározott kiértékelő csomagok futtatásával. Minden csomag teszteseteket tartalmaz, amelyek valódi felszólításokat küldenek az OmniRoute-on keresztül, és összehasonlítják a válaszokat a várt kritériumokkal – segítik a regressziók észlelését, a modellek összehasonlítását, és biztosítják a válaszadás minőségét a szolgáltatók között.",
+    "evalsHeroDescription": "Tesztelje és érvényesítse LLM-végpontjait előre meghatározott kiértékelő csomagok futtatásával. Minden csomag teszteseteket tartalmaz, amelyek valódi felszólításokat küldenek az Xenia-on keresztül, és összehasonlítják a válaszokat a várt kritériumokkal – segítik a regressziók észlelését, a modellek összehasonlítását, és biztosítják a válaszadás minőségét a szolgáltatók között.",
     "qualityValidation": "Minőségellenőrzés",
     "modelComparison": "Modell-összehasonlítás",
     "regressionDetection": "Regresszió észlelése",
@@ -8936,7 +8936,7 @@
     "loading": "Betöltés...",
     "invalidPassword": "Érvénytelen jelszó",
     "errorOccurredRetry": "Hiba történt. Kérjük, próbálja újra.",
-    "configureInstance": "Állítsuk be az OmniRoute-példányt",
+    "configureInstance": "Állítsuk be az Xenia-példányt",
     "runOnboardingWizard": "Futtassa a bevezető varázslót a jelszó beállításához, és csatlakoztassa első mesterségesintelligencia-szolgáltatóját.",
     "startOnboarding": "Kezdje el a Belépést",
     "secureYourInstance": "Biztosítsa példányát",
@@ -8956,14 +8956,14 @@
     "featureUsageTrackingDesc": "Kövesse nyomon a költségeket és a tokeneket",
     "resetPassword": "Jelszó visszaállítása",
     "resetDescription": "Válasszon módszert az irányítópulthoz való hozzáférés helyreállításához",
-    "stopServer": "Állítsa le az OmniRoute szervert",
+    "stopServer": "Állítsa le az Xenia szervert",
     "processing": "Feldolgozás...",
     "pleaseWait": "Kérjük, várjon, amíg befejezzük az engedélyezést.",
     "authSuccess": "Az engedélyezés sikeres!",
     "copyUrl": "Másolja ezt az URL-t",
     "accessDenied": "Hozzáférés megtagadva",
     "methodCliTitle": "1. módszer: CLI visszaállítás",
-    "methodCliDescription": "Futtassa a következő parancsot azon a szerveren, ahol az OmniRoute fut:",
+    "methodCliDescription": "Futtassa a következő parancsot azon a szerveren, ahol az Xenia fut:",
     "methodCliHint": "Ez új jelszó beállítására kéri. Először le kell állítani a szervert.",
     "methodManualTitle": "2. módszer: Kézi visszaállítás",
     "methodManualDescription": "Törölje a jelszót az adatbázisból, és indításkor állítson be újat:",
@@ -8986,12 +8986,12 @@
     "waitingForQoderAuthorization": "Várakozás az Qoder engedélyezésére...",
     "exchangingCodeForTokens": "Kód cseréje tokenre...",
     "nodeIncompatibleTitle": "Incompatible Node.js Version",
-    "nodeIncompatibleDesc": "You are running Node.js {version}, which is outside OmniRoute's supported secure runtime policy. Use a patched Node.js 20.x or 22.x LTS release.",
+    "nodeIncompatibleDesc": "You are running Node.js {version}, which is outside Xenia's supported secure runtime policy. Use a patched Node.js 20.x or 22.x LTS release.",
     "nodeIncompatibleFixLabel": "Fix: install a patched Node.js 22 LTS release",
-    "nodeIncompatibleHint": "OmniRoute requires Node.js 22.22.2+ (22.x LTS) or 24.0.0+ (24.x LTS). Node 24 LTS is recommended."
+    "nodeIncompatibleHint": "Xenia requires Node.js 22.22.2+ (22.x LTS) or 24.0.0+ (24.x LTS). Node 24 LTS is recommended."
   },
   "landing": {
-    "brandName": "OmniRoute",
+    "brandName": "Xenia",
     "navigateHome": "Navigáljon haza",
     "toggleMenu": "Váltó menü",
     "featuresLink": "Jellemzők",
@@ -9011,6 +9011,8 @@
     "featureEasySetupDesc": "Az npx paranccsal percek alatt üzembe helyezheti.",
     "featureModelFallbackTitle": "Modell tartalék",
     "featureModelFallbackDesc": "Automatikus szolgáltatóváltás hiba vagy magas késleltetés esetén.",
+    "featureAutoFailoverTitle": "Automatic Account Switching",
+    "featureAutoFailoverDesc": "Rotates to your next connected account the instant one hits a rate limit or quota.",
     "featureUsageTrackingTitle": "Használat követése",
     "featureUsageTrackingDesc": "Részletes elemzés és költségkövetés az összes modellben.",
     "featureOAuthApiKeysTitle": "OAuth és API kulcsok",
@@ -9021,17 +9023,17 @@
     "featureCliSupportDesc": "Működik a Claude Code, Codex, Cline, Cursor és még sok más funkcióval.",
     "featureDashboardTitle": "Irányítópult",
     "featureDashboardDesc": "Vizuális irányítópult a valós idejű forgalomelemzéshez.",
-    "howItWorks": "Hogyan működik az OmniRoute",
+    "howItWorks": "Hogyan működik az Xenia",
     "howItWorksDescription": "Az adatok zökkenőmentesen áramlanak az alkalmazásból az intelligens útválasztási rétegünkön keresztül a feladat legjobb szolgáltatójáig.",
     "howItWorksStep1Title": "1. CLI és SDK-k",
     "howItWorksStep1Description": "Kérései a kedvenc eszközeiből vagy az egységes SDK-nkból indulnak ki. Csak módosítsa az alap URL-t.",
-    "howItWorksStep2Title": "2. OmniRoute Hub",
+    "howItWorksStep2Title": "2. Xenia Hub",
     "howItWorksStep2Description": "Motorunk elemzi a felszólítást, ellenőrzi a szolgáltató állapotát, és a legalacsonyabb késleltetést vagy költséget keresi.",
     "howItWorksStep3Title": "3. AI szolgáltatók",
     "howItWorksStep3Description": "A kérést az OpenAI, az Anthropic, a Gemini vagy mások azonnal teljesítik.",
     "getStartedIn30Seconds": "Kezdje el 30 másodpercen belül",
-    "getStartedDescription": "Telepítse az OmniRoute-ot, konfigurálja szolgáltatóit a webes irányítópulton keresztül, és indítsa el az AI-kérések útválasztását.",
-    "installOmniRoute": "Telepítse az OmniRoute-ot",
+    "getStartedDescription": "Telepítse az Xenia-ot, konfigurálja szolgáltatóit a webes irányítópulton keresztül, és indítsa el az AI-kérések útválasztását.",
+    "installXenia": "Telepítse az Xenia-ot",
     "installStepDescription": "Futtassa az npx parancsot a kiszolgáló azonnali elindításához",
     "openDashboard": "Nyissa meg az Irányítópultot",
     "openDashboardStepDescription": "A szolgáltatók és az API-kulcsok konfigurálása webes felületen keresztül",
@@ -9040,7 +9042,7 @@
     "terminal": "terminál",
     "copy": "Másolás",
     "copied": "✓ Másolva",
-    "startingOmniRoute": "Az OmniRoute indítása...",
+    "startingXenia": "Az Xenia indítása...",
     "serverRunningOnLabel": "A szerver fut",
     "dashboardLabel": "Irányítópult",
     "readyToRoute": "Útvonalra készen! ✓",
@@ -9057,7 +9059,7 @@
     "legal": "Jogi",
     "mitLicense": "MIT licenc",
     "footerTagline": "Az AI generálás egységes végpontja. Könnyedén csatlakozhat, irányíthat és kezelhet AI-szolgáltatóit.",
-    "copyright": "© {year} OmniRoute. Minden jog fenntartva.",
+    "copyright": "© {year} Xenia. Minden jog fenntartva.",
     "flowToolClaudeCode": "Claude Code",
     "flowToolOpenAICodex": "OpenAI Codex",
     "flowToolCline": "Cline",
@@ -9068,7 +9070,7 @@
     "flowProviderGithubCopilot": "GitHub másodpilóta",
     "interactiveDiagram": "Az asztalon látható interaktív diagram",
     "ctaTitle": "Készen áll az AI-infrastruktúra egyszerűsítésére?",
-    "ctaDescription": "Csatlakozzon azokhoz a fejlesztőkhöz, akik az AI-integrációikat az OmniRoute segítségével egyszerűsítik. Nyílt forráskódú és ingyenesen indítható.",
+    "ctaDescription": "Csatlakozzon azokhoz a fejlesztőkhöz, akik az AI-integrációikat az Xenia segítségével egyszerűsítik. Nyílt forráskódú és ingyenesen indítható.",
     "startFree": "Kezdje ingyenesen",
     "readDocumentation": "Olvassa el a dokumentációt"
   },
@@ -9113,9 +9115,9 @@
     "quickStartStep4Prefix": "Irányítsa az IDE- vagy API-kliensét",
     "quickStartStep4Suffix": "Használjon például szolgáltatói előtagot",
     "deploySetupTitle": "Beállítási útmutató",
-    "deploySetupText": "Lépésről lépésre történő telepítés, környezetkonfiguráció és az OmniRoute első futtatása.",
+    "deploySetupText": "Lépésről lépésre történő telepítés, környezetkonfiguráció és az Xenia első futtatása.",
     "deployElectronTitle": "Electron Desktop",
-    "deployElectronText": "Futtassa az OmniRoute-ot natív asztali alkalmazásként Windows, macOS és Linux rendszeren.",
+    "deployElectronText": "Futtassa az Xenia-ot natív asztali alkalmazásként Windows, macOS és Linux rendszeren.",
     "deployDockerTitle": "Docker",
     "deployDockerText": "Konténeres telepítés a Docker Compose segítségével; készen áll a gyártásra és a Kubernetesre.",
     "deployVmTitle": "Virtuális gép",
@@ -9123,9 +9125,9 @@
     "deployFlyTitle": "Fly.io",
     "deployFlyText": "Telepítés a Fly.io szélén futó futtatókörnyezetbe egyetlen fly.toml és egyetlen telepítési paranccsal.",
     "deployPwaTitle": "PWA",
-    "deployPwaText": "Telepítse az OmniRoute-ot progresszív webalkalmazásként Android, iOS és asztali böngészőkre.",
+    "deployPwaText": "Telepítse az Xenia-ot progresszív webalkalmazásként Android, iOS és asztali böngészőkre.",
     "deployTermuxTitle": "Termux (Android)",
-    "deployTermuxText": "Run OmniRoute headless on Android via Termux. Access the dashboard from your mobile browser.",
+    "deployTermuxText": "Run Xenia headless on Android via Termux. Access the dashboard from your mobile browser.",
     "featureRoutingTitle": "Többszolgáltatós útválasztás",
     "featureRoutingText": "A kérések 30+ AI-szolgáltatóhoz irányíthatók egyetlen OpenAI-kompatibilis végponton keresztül. Támogatja a csevegést, a válaszokat, a hang- és kép API-kat.",
     "featureCombosTitle": "Kombók és egyensúlyozás",
@@ -9171,24 +9173,24 @@
     "clientClaudeBullet1Middle": "(Claude) ill",
     "clientClaudeBullet1Suffix": "(Antigravitációs) előtag.",
     "clientWindsurfTitle": "Szörf",
-    "clientWindsurfBullet1": "Használja az OmniRoute-ot OpenAI-kompatibilis alap URL-ként, és tartsa meg az explicit szolgáltatói előtagokat a determinisztikus útválasztáshoz.",
+    "clientWindsurfBullet1": "Használja az Xenia-ot OpenAI-kompatibilis alap URL-ként, és tartsa meg az explicit szolgáltatói előtagokat a determinisztikus útválasztáshoz.",
     "clientWindsurfBullet2": "Mutasson modelleket a `/v1/chat/completions' helyre az általános forgalomhoz, és őrizze meg a `/v1/responses' fájlt a Codex-stílusú folyamatokhoz.",
     "clientWindsurfBullet3": "A Dashboard -> CLI Tools segítségével kész Windsurf konfigurációs útmutatót készíthet.",
     "clientClineTitle": "Cline",
     "clientClineBullet1": "A Cline explicit szolgáltató/modell előtagokkal működik a legjobban, így az útválasztónak soha nem kell kitalálnia a háttérrendszert.",
-    "clientClineBullet2": "Használja a `/v1/chat/completions' címet az általános modellekhez, és használja újra ugyanazt az OmniRoute alap URL-t a különböző fiókokban.",
+    "clientClineBullet2": "Használja a `/v1/chat/completions' címet az általános modellekhez, és használja újra ugyanazt az Xenia alap URL-t a különböző fiókokban.",
     "clientClineBullet3": "Használja a Szolgáltatók irányítópultját az OAuth/API-kulcs érvényesítéséhez, mielőtt a Cline futásidejű problémáinak hibakeresését elvégezné.",
     "clientKimiTitle": "Kimi kódolás",
-    "clientKimiBullet1": "Használja az OmniRoute-ot stabil alap URL-ként, miközben alatta váltogatja a fiókokat vagy a szolgáltatói kombinációkat.",
+    "clientKimiBullet1": "Használja az Xenia-ot stabil alap URL-ként, miközben alatta váltogatja a fiókokat vagy a szolgáltatói kombinációkat.",
     "clientKimiBullet2": "Előnyben részesítse az előtaggal ellátott modelleket a kódolási folyamatokban, így a tartalék és az ellenőrzési nyomvonal egyértelmű marad.",
     "clientKimiBullet3": "Használja a `/v1/responses' függvényt, ha natív Responses-stílusú útválasztást szeretne eszközt használó ügyfelek számára.",
     "protocolsTitle": "Protocols: MCP & A2A",
-    "protocolsDescription": "OmniRoute exposes two operational protocols in addition to OpenAI-compatible APIs: MCP for tool execution and A2A for agent-to-agent workflows.",
+    "protocolsDescription": "Xenia exposes two operational protocols in addition to OpenAI-compatible APIs: MCP for tool execution and A2A for agent-to-agent workflows.",
     "protocolMcpTitle": "MCP (Model Context Protocol)",
-    "protocolMcpDesc": "Use MCP over stdio to let clients discover and call OmniRoute tools with audit visibility.",
-    "protocolMcpStep1": "Start MCP transport with `omniroute --mcp`.",
+    "protocolMcpDesc": "Use MCP over stdio to let clients discover and call Xenia tools with audit visibility.",
+    "protocolMcpStep1": "Start MCP transport with `xenia --mcp`.",
     "protocolMcpStep2": "Point your MCP client to stdio transport.",
-    "protocolMcpStep3": "Call `omniroute_get_health` and `omniroute_list_combos` to validate connectivity.",
+    "protocolMcpStep3": "Call `xenia_get_health` and `xenia_list_combos` to validate connectivity.",
     "protocolA2aTitle": "A2A (Agent2Agent)",
     "protocolA2aDesc": "Az A2A JSON-RPC használatával szinkronban vagy SSE adatfolyamon keresztül küldhet be feladatokat.",
     "protocolA2aStep1": "Olvassa el `/.well-known/agent.json` az ügynök felfedezéséhez.",
@@ -9248,7 +9250,7 @@
     "mgmtPayloadRulesGetNote": "Szerezze be a hasznos teher átalakítási szabályokat.",
     "mgmtPayloadRulesUpdateNote": "Frissítse a hasznos adatok átalakítási szabályait.",
     "mcpToolsTitle": "MCP eszközök",
-    "mcpToolsDescription": "Az OmniRoute {count} eszközöket tesz elérhetővé a Model Context Protocol segítségével az ügynökök összehangolásához.",
+    "mcpToolsDescription": "Az Xenia {count} eszközöket tesz elérhetővé a Model Context Protocol segítségével az ügynökök összehangolásához.",
     "mcpToolsCount": "{count} eszközöket",
     "mcpToolsToc": "MCP eszközök",
     "mcpToolsRoutingTitle": "Útválasztás és felfedezés",
@@ -9292,10 +9294,10 @@
     "clearHistory": "Bármikor törölje a használati előzményeket",
     "configureRetention": "Állítsa be a naplózási házirendeket",
     "backupRestore": "Készítsen biztonsági másolatot és állítsa vissza az adatbázist",
-    "privacyMetadataTitle": "Adatvédelmi szabályzat | OmniRoute",
-    "privacyMetadataDescription": "Az OmniRoute AI API proxy router adatvédelmi szabályzata.",
-    "termsMetadataTitle": "Szolgáltatási feltételek | OmniRoute",
-    "termsMetadataDescription": "Az OmniRoute AI API proxy router szolgáltatási feltételei.",
+    "privacyMetadataTitle": "Adatvédelmi szabályzat | Xenia",
+    "privacyMetadataDescription": "Az Xenia AI API proxy router adatvédelmi szabályzata.",
+    "termsMetadataTitle": "Szolgáltatási feltételek | Xenia",
+    "termsMetadataDescription": "Az Xenia AI API proxy router szolgáltatási feltételei.",
     "backToHome": "Vissza haza",
     "lastUpdated": "Utolsó frissítés: {date}",
     "policyLastUpdatedDate": "2026. február 13",
@@ -9303,7 +9305,7 @@
     "questionsVisit": "Kérdések? Látogass el hozzánk",
     "githubRepository": "GitHub adattár",
     "privacySection1Title": "1. Local-First Architecture",
-    "privacySection1Text": "Az OmniRoute helyi alkalmazásnak készült. Minden adatfeldolgozás és tárolás teljes egészében az Ön gépén történik. Nincs központi szerver, amely gyűjti az Ön adatait.",
+    "privacySection1Text": "Az Xenia helyi alkalmazásnak készült. Minden adatfeldolgozás és tárolás teljes egészében az Ön gépén történik. Nincs központi szerver, amely gyűjti az Ön adatait.",
     "privacySection2Title": "2. Az általunk tárolt adatok",
     "privacyDataStoredIn": "A következő adatok helyben kerülnek tárolásra",
     "privacyDataProviderConfigurationsDesc": "kapcsolati URL-ek, szolgáltatótípusok és prioritási beállítások",
@@ -9311,9 +9313,9 @@
     "privacyDataUsageLogsDesc": "kérések száma, tokenhasználat, modellnevek, időbélyegek és válaszidők",
     "privacyDataApplicationSettingsDesc": "témabeállítások, útválasztási stratégia és kombinált konfigurációk",
     "privacySection3Title": "3. Nincs telemetria",
-    "privacySection3Text": "Az OmniRoute nem gyűjt telemetriai, elemzési vagy összeomlási jelentéseket. Semmilyen adatot nem küldünk nekünk vagy harmadik félnek. A használati minták, az API-hívások és a konfigurációk teljesen privátak maradnak.",
+    "privacySection3Text": "Az Xenia nem gyűjt telemetriai, elemzési vagy összeomlási jelentéseket. Semmilyen adatot nem küldünk nekünk vagy harmadik félnek. A használati minták, az API-hívások és a konfigurációk teljesen privátak maradnak.",
     "privacySection4Title": "4. Harmadik fél AI-szolgáltatók",
-    "privacySection4Text": "Amikor API-hívásokat kezdeményez az OmniRoute-on keresztül, kéréseit a rendszer az Ön által konfigurált AI-szolgáltatókhoz továbbítja (például: OpenAI, Anthropic, Google). Ezek a szolgáltatók saját adatvédelmi szabályzattal rendelkeznek, amelyek szabályozzák az Ön adatainak kezelését. Kérjük, tekintse át:",
+    "privacySection4Text": "Amikor API-hívásokat kezdeményez az Xenia-on keresztül, kéréseit a rendszer az Ön által konfigurált AI-szolgáltatókhoz továbbítja (például: OpenAI, Anthropic, Google). Ezek a szolgáltatók saját adatvédelmi szabályzattal rendelkeznek, amelyek szabályozzák az Ön adatainak kezelését. Kérjük, tekintse át:",
     "privacyOpenAiPolicy": "OpenAI adatvédelmi szabályzat",
     "privacyAnthropicPolicy": "Antropikus adatvédelmi szabályzat",
     "privacyGooglePolicy": "Google adatvédelmi irányelvek",
@@ -9325,21 +9327,21 @@
     "privacySection7TextStart": "Mivel az összes adatot helyben tárolják, az Ön teljes ellenőrzése alatt áll. Adatait bármikor törölheti, ha eltávolítja a",
     "privacySection7TextEnd": "könyvtárat vagy az irányítópult adatbázis biztonsági mentési és visszaállítási funkcióit használja.",
     "termsSection1Title": "1. Áttekintés",
-    "termsSection1Text": "Az OmniRoute egy helyileg első AI API-proxy router, amely teljes egészében az Ön gépén működik. A kéréseket több mesterségesintelligencia-szolgáltatóhoz irányítja terheléselosztással, feladatátvétellel és a használat nyomon követésével.",
+    "termsSection1Text": "Az Xenia egy helyileg első AI API-proxy router, amely teljes egészében az Ön gépén működik. A kéréseket több mesterségesintelligencia-szolgáltatóhoz irányítja terheléselosztással, feladatátvétellel és a használat nyomon követésével.",
     "termsSection2Title": "2. Felhasználó kötelezettségei",
     "termsResponsibilityApiKeys": "Kizárólag Ön felelős saját API-kulcsainak és harmadik fél mesterségesintelligencia-szolgáltatók (OpenAI, Anthropic, Google stb.) hitelesítő adatainak kezeléséért.",
-    "termsResponsibilityCompliance": "Meg kell felelnie minden olyan mesterséges intelligencia-szolgáltató szolgáltatási feltételeinek, amelyek API-jához az OmniRoute-on keresztül hozzáfér.",
-    "termsResponsibilitySecurity": "Ön felelős a helyi OmniRoute telepítés biztonságáért, beleértve a jelszó beállítását és a hálózati hozzáférés korlátozását.",
+    "termsResponsibilityCompliance": "Meg kell felelnie minden olyan mesterséges intelligencia-szolgáltató szolgáltatási feltételeinek, amelyek API-jához az Xenia-on keresztül hozzáfér.",
+    "termsResponsibilitySecurity": "Ön felelős a helyi Xenia telepítés biztonságáért, beleértve a jelszó beállítását és a hálózati hozzáférés korlátozását.",
     "termsSection3Title": "3. Hogyan működik",
-    "termsSection3Text": "Az OmniRoute közvetítő proxyként működik. Az OmniRoute-nak küldött API-hívásokat lefordítják és továbbítják a beállított AI-szolgáltatóknak. Az OmniRoute a szükséges protokollfordításon túl nem módosítja kérései vagy válaszai tartalmát.",
+    "termsSection3Text": "Az Xenia közvetítő proxyként működik. Az Xenia-nak küldött API-hívásokat lefordítják és továbbítják a beállított AI-szolgáltatóknak. Az Xenia a szükséges protokollfordításon túl nem módosítja kérései vagy válaszai tartalmát.",
     "termsSection4Title": "4. Adatkezelés",
     "termsDataStoredLocally": "Minden adatot helyileg tárolunk a gépen egy SQLite adatbázisban.",
-    "termsNoTransmission": "Az OmniRoute nem továbbít semmilyen adatot külső szerverekre, kivéve, ha kifejezetten engedélyezi a felhőalapú szinkronizálási funkciókat.",
+    "termsNoTransmission": "Az Xenia nem továbbít semmilyen adatot külső szerverekre, kivéve, ha kifejezetten engedélyezi a felhőalapú szinkronizálási funkciókat.",
     "termsDataLocationText": "A használati naplókat, az API-kulcsokat és a konfigurációt a rendszer tárolja",
     "termsSection5Title": "5. Jogi nyilatkozat",
-    "termsSection5Text": "Az OmniRoute \"ahogy van\" mindenféle garancia nélkül biztosított. Nem vállalunk felelősséget az API használatából, a szolgáltatás megszakadásából vagy az adatvesztésből eredő költségekért. Mindig készítsen biztonsági másolatot a konfigurációjáról.",
+    "termsSection5Text": "Az Xenia \"ahogy van\" mindenféle garancia nélkül biztosított. Nem vállalunk felelősséget az API használatából, a szolgáltatás megszakadásából vagy az adatvesztésből eredő költségekért. Mindig készítsen biztonsági másolatot a konfigurációjáról.",
     "termsSection6Title": "6. Nyílt forráskód",
-    "termsSection6Text": "Az OmniRoute egy nyílt forráskódú szoftver. Ön szabadon megvizsgálhatja, módosíthatja és terjesztheti a licenc feltételei szerint."
+    "termsSection6Text": "Az Xenia egy nyílt forráskódú szoftver. Ön szabadon megvizsgálhatja, módosíthatja és terjesztheti a licenc feltételei szerint."
   },
   "agents": {
     "title": "CLI Agents",
@@ -9360,13 +9362,13 @@
     "scanning": "Scanning system for CLI agents...",
     "opencodeIntegration": "OpenCode Integration",
     "opencodeDetected": "opencode {version} detected",
-    "opencodeDesc": "Generate a ready-to-use {configFile} with your OmniRoute base URL and all available models — drop it in your project root and run {command}.",
+    "opencodeDesc": "Generate a ready-to-use {configFile} with your Xenia base URL and all available models — drop it in your project root and run {command}.",
     "downloadConfig": "Download {file}",
     "downloaded": "Downloaded!",
     "setupGuideTitle": "Setup guide",
     "openCliTools": "Open CLI Tools",
     "setupGuideDetectCliTitle": "Detect installed CLIs",
-    "setupGuideDetectCliDesc": "Click Refresh after installing or updating a CLI so OmniRoute can rescan binaries and versions.",
+    "setupGuideDetectCliDesc": "Click Refresh after installing or updating a CLI so Xenia can rescan binaries and versions.",
     "setupGuideCustomAgentTitle": "Register custom binary",
     "setupGuideCustomAgentDesc": "Use Add Custom Agent when your CLI is not in the built-in list. Provide binary name and version command.",
     "setupGuideCommandMissingTitle": "Fix 'command not found'",
@@ -9378,7 +9380,7 @@
     "versionCommandPlaceholder": "Version Command Placeholder",
     "architectureTitle": "Architecture Title",
     "flowLocalBinary": "Flow Local Binary",
-    "flowOmniRoute": "Flow Omni Route",
+    "flowXenia": "Flow Omni Route",
     "agentNamePlaceholder": "Agent Name Placeholder",
     "architectureDescription": "Architecture Description",
     "flowExecute": "Flow Execute",
@@ -9386,17 +9388,17 @@
     "cliToolsRedirectCta": "Cli Tools Redirect Cta",
     "comparisonTitle": "CLI eszközök és ügynökcélok – mi a különbség?",
     "comparisonCliToolsLabel": "CLI Tools oldal",
-    "comparisonCliToolsTitle": "Az IDE kéréseket küld az OmniRoute-on keresztül",
-    "comparisonCliToolsDesc": "Konfigurálja a Claude Code-ot, Codex-et, Cursort és más IDE-ket, hogy az OmniRoute-ot használják API-alap URL-ként. Az OmniRoute proxyként működik, és útválasztási kéréseket küld a konfigurált szolgáltatókhoz.",
+    "comparisonCliToolsTitle": "Az IDE kéréseket küld az Xenia-on keresztül",
+    "comparisonCliToolsDesc": "Konfigurálja a Claude Code-ot, Codex-et, Cursort és más IDE-ket, hogy az Xenia-ot használják API-alap URL-ként. Az Xenia proxyként működik, és útválasztási kéréseket küld a konfigurált szolgáltatókhoz.",
     "comparisonAgentsLabel": "Ez az oldal (ügynökcélok)",
-    "comparisonAgentsTitle": "Az OmniRoute kéréseket küld a helyi CLI-eszközökbe",
-    "comparisonAgentsDesc": "Az OmniRoute helyi CLI binárisokat (claude, codex, goose) hozhat létre végrehajtási háttérként. A CLI eszköz saját hitelesítésével dolgozza fel a kérést, és visszaadja az eredményt.",
-    "comparisonSummary": "Röviden: CLI Tools = az eszközöket úgy konfigurálja, hogy az OmniRoute-ra mutassanak. Agent Targets = Az OmniRoute eszközöket használ végpontként.",
+    "comparisonAgentsTitle": "Az Xenia kéréseket küld a helyi CLI-eszközökbe",
+    "comparisonAgentsDesc": "Az Xenia helyi CLI binárisokat (claude, codex, goose) hozhat létre végrehajtási háttérként. A CLI eszköz saját hitelesítésével dolgozza fel a kérést, és visszaadja az eredményt.",
+    "comparisonSummary": "Röviden: CLI Tools = az eszközöket úgy konfigurálja, hogy az Xenia-ra mutassanak. Agent Targets = Az Xenia eszközöket használ végpontként.",
     "agentUseCaseHint": "Használható végrehajtási célként ACP protokollon keresztül",
     "flowDiagramClient": "Ügyfélalkalmazás",
     "flowDiagramClientDesc": "SDK, API vagy upstream szolgáltatás",
-    "flowDiagramOmniRoute": "OmniRoute",
-    "flowDiagramOmniRouteDesc": "Fogadja a kérést és kiválasztja a célt",
+    "flowDiagramXenia": "Xenia",
+    "flowDiagramXeniaDesc": "Fogadja a kérést és kiválasztja a célt",
     "flowDiagramSpawn": "Spawn folyamat",
     "flowDiagramSpawnDesc": "Elindítja a CLI bináris fájlt az stdio-n keresztül",
     "flowDiagramCli": "CLI ügynök",
@@ -9414,19 +9416,19 @@
     "browseAllSkillsOnGithub": "Böngésszen az összes készség között a GitHubon",
     "apiSkills": "API-készségek",
     "cliSkills": "CLI készségek",
-    "apiSkillsSubtitle": "{count} készség — az OmniRoute vezérlése REST / HTTP-n keresztül",
-    "cliSkillsSubtitle": "{count} készség — az OmniRoute vezérlése az omniroute terminál binárison keresztül",
+    "apiSkillsSubtitle": "{count} készség — az Xenia vezérlése REST / HTTP-n keresztül",
+    "cliSkillsSubtitle": "{count} készség — az Xenia vezérlése az xenia terminál binárison keresztül",
     "howToUseStep1": "Kattints a <bold>{copyUrl}</bold> lehetőségre azon a készségen, amelyet meg szeretnél ismertetni az ágenseddel.",
     "howToUseStep2": "Az AI ágensedben (Claude, Cursor, Cline…) mondd ezt:",
     "howToUseStep2Code": "Használd a készséget a [pasted-url] címen",
-    "howToUseStep3": "Az ágens lekéri a SKILL.md fájlt, és megtanulja az OmniRoute API-ját vagy CLI-jét — nincs szükség kézi dokumentációra."
+    "howToUseStep3": "Az ágens lekéri a SKILL.md fájlt, és megtanulja az Xenia API-ját vagy CLI-jét — nincs szükség kézi dokumentációra."
   },
   "cloudAgents": {
     "title": "Felhőügynökök",
     "description": "Önálló kódoló ügynökök kezelése (Jules, Devin, Codex Cloud)",
     "loading": "Feladatok betöltése...",
     "aboutTitle": "A Cloud Agentsről",
-    "aboutDescription": "A felhőügynökök távoli mesterséges intelligencia kódolási asszisztensek, amelyek önállóan hajthatnak végre feladatokat. Másként működnek, mint a helyi CLI-ügynökök – Ön az OmniRoute API-ján keresztül lép kapcsolatba velük.",
+    "aboutDescription": "A felhőügynökök távoli mesterséges intelligencia kódolási asszisztensek, amelyek önállóan hajthatnak végre feladatokat. Másként működnek, mint a helyi CLI-ügynökök – Ön az Xenia API-ján keresztül lép kapcsolatba velük.",
     "howItWorksTitle": "Hogyan működik:",
     "howItWorksDesc": "Feladat létrehozása → Az ügynök elemzi és tervet javasol → Ön jóváhagyja → Az ügynök végrehajtja → Eredmények",
     "newTaskTitle": "Új feladat létrehozása",
@@ -9455,7 +9457,7 @@
     "settingsTitle": "Felhőalapú ágens beállítások",
     "settingsDesc": "Helyi beállítások konfigurálása a felhőalapú ágensekhez.",
     "settingEnableAgents": "Felhőalapú ágensek engedélyezése",
-    "settingEnableAgentsDesc": "Engedélyezi az OmniRoute számára az autonóm kódoló ágensek koordinálását.",
+    "settingEnableAgentsDesc": "Engedélyezi az Xenia számára az autonóm kódoló ágensek koordinálását.",
     "settingAutoPR": "PR automatikus létrehozása",
     "settingAutoPRDesc": "Ha egy feladat befejeződött, automatikusan létrehoz egy Pull Requestet a változtatásokkal.",
     "settingRequireApproval": "Terv jóváhagyásának megkövetelése",
@@ -9619,8 +9621,8 @@
     "tableProvider": "Szolgáltató",
     "tableModel": "Modell",
     "performanceTitle": "Teljesítmény",
-    "semanticCacheSectionDesc": "OmniRoute's own deterministic response cache. When enabled, repeated non-streaming temperature=0 requests can be served locally without hitting the upstream provider.",
-    "semanticCacheDisabledDesc": "Semantic cache is disabled. OmniRoute will skip local response reuse until you turn it back on in Settings.",
+    "semanticCacheSectionDesc": "Xenia's own deterministic response cache. When enabled, repeated non-streaming temperature=0 requests can be served locally without hitting the upstream provider.",
+    "semanticCacheDisabledDesc": "Semantic cache is disabled. Xenia will skip local response reuse until you turn it back on in Settings.",
     "semanticEntriesDesc": "Persisted semantic cache records currently stored in SQLite. Provider-side prompt cache activity is not listed here.",
     "searchEntries": "Search entries...",
     "search": "Search",
@@ -9726,20 +9728,20 @@
     "deviceCodeYourCode": "A kódod",
     "deviceCodeWaiting": "Várakozás az engedélyezésre...",
     "googleLoopbackTitle": "__MISSING__:Google sign-in can't complete from this address",
-    "googleLoopbackWhatHappens": "__MISSING__:Google only releases the authorization code once <code>{redirectUri}</code> is reachable from the browser that approves the sign-in. Here that address points at this computer, not at the OmniRoute server — so the consent screen hangs instead of redirecting, and there is no callback URL to copy.",
+    "googleLoopbackWhatHappens": "__MISSING__:Google only releases the authorization code once <code>{redirectUri}</code> is reachable from the browser that approves the sign-in. Here that address points at this computer, not at the Xenia server — so the consent screen hangs instead of redirecting, and there is no callback URL to copy.",
     "googleLoopbackRecommended": "__MISSING__:Recommended — run this on your own computer, then paste the result below:",
-    "googleLoopbackHelperNote": "__MISSING__:It opens the Google consent locally (where 127.0.0.1 works) and prints a one-line omniroute-cred-v1.… blob. Paste that blob into the Step 2 field below — it accepts a credential blob as well as a callback URL.",
-    "googleLoopbackTunnelLabel": "__MISSING__:Or forward the dashboard port over SSH and reload OmniRoute through the tunnel:",
+    "googleLoopbackHelperNote": "__MISSING__:It opens the Google consent locally (where 127.0.0.1 works) and prints a one-line xenia-cred-v1.… blob. Paste that blob into the Step 2 field below — it accepts a credential blob as well as a callback URL.",
+    "googleLoopbackTunnelLabel": "__MISSING__:Or forward the dashboard port over SSH and reload Xenia through the tunnel:",
     "googleLoopbackTunnelNote": "__MISSING__:Replace {userPlaceholder} with your SSH username, keep the terminal open, then open {localUrl} and connect again from there.",
     "googleLoopbackHeadlessAlt": "__MISSING__:For fully headless use with no local callback at all, <a>configure your own Google OAuth credentials</a> plus a public base URL.",
-    "remoteAccessInfo": "Távoli hozzáférés: Mivel távolról éri el az OmniRoute-ot, az engedélyezést követően hibaoldal jelenik meg (a helyi kiszolgáló nem található). Ez normális – csak másolja ki a teljes URL-t a böngésző címsorából, és illessze be alább.",
+    "remoteAccessInfo": "Távoli hozzáférés: Mivel távolról éri el az Xenia-ot, az engedélyezést követően hibaoldal jelenik meg (a helyi kiszolgáló nem található). Ez normális – csak másolja ki a teljes URL-t a böngésző címsorából, és illessze be alább.",
     "loopbackMismatchTitle": "__MISSING__:Sign-in can't complete from this address",
     "loopbackMismatchWhatHappened": "__MISSING__:What's happening",
-    "loopbackMismatchExplanation": "__MISSING__:After you approve the login, {providerName} always sends the browser back to <code>{redirectUri}</code>. That address points at the computer running this browser, not at the OmniRoute server — so the authorization code never reaches OmniRoute and the provider fails the sign-in without showing an error.",
+    "loopbackMismatchExplanation": "__MISSING__:After you approve the login, {providerName} always sends the browser back to <code>{redirectUri}</code>. That address points at the computer running this browser, not at the Xenia server — so the authorization code never reaches Xenia and the provider fails the sign-in without showing an error.",
     "loopbackMismatchHowToFix": "__MISSING__:How to fix it",
-    "loopbackMismatchStep1": "__MISSING__:On this computer, open a terminal and start an SSH tunnel to the OmniRoute server:",
+    "loopbackMismatchStep1": "__MISSING__:On this computer, open a terminal and start an SSH tunnel to the Xenia server:",
     "loopbackMismatchStep1Note": "__MISSING__:Replace {userPlaceholder} with your SSH username. Keep this terminal open until the connection shows as active — both ports are needed: one serves the dashboard, the other receives the callback.",
-    "loopbackMismatchStep2": "__MISSING__:In this browser, reopen OmniRoute through the tunnel:",
+    "loopbackMismatchStep2": "__MISSING__:In this browser, reopen Xenia through the tunnel:",
     "loopbackMismatchStep3": "__MISSING__:Then connect {providerName} again from the new tab. The callback now reaches the server and the login completes normally.",
     "loopbackMismatchAlternative": "__MISSING__:No SSH access? If this provider offers a token import tab, connect with a token instead — that path doesn't use a loopback callback.",
     "step1OpenUrl": "1. lépés: Nyissa meg ezt az URL-t a böngészőjében",
@@ -10171,16 +10173,16 @@
     "musicSample": "Egy nyugodt ambient szám meleg zongorával és lágy vonósokkal",
     "noAudioUrl": "A válasz nem tartalmazott hang URL-t: {response}",
     "music": "Zene",
-    "embeddingSample": "Az OmniRoute több szolgáltatón keresztül irányítja az AI-kéréseket.",
+    "embeddingSample": "Az Xenia több szolgáltatón keresztül irányítja az AI-kéréseket.",
     "embedding": "Beágyazás",
     "imageSample": "Egy futurisztikus város naplementekor, moziszerű megvilágítás",
     "image": "Kép",
-    "ttsSample": "Üdvözlet az OmniRoute-tól. Ez egy szövegfelolvasási teszt.",
+    "ttsSample": "Üdvözlet az Xenia-tól. Ez egy szövegfelolvasási teszt.",
     "textToSpeech": "Szövegfelolvasás",
     "videoSample": "Egy papírrepülő, amely egy futurisztikus város felett repül",
     "video": "Videó",
     "webFetch": "Webes lekérés",
-    "webSearchSample": "Mi az az OmniRoute?",
+    "webSearchSample": "Mi az az Xenia?",
     "webSearch": "Webes keresés",
     "documentUrl": "Dokumentum URL",
     "browserAudioUnsupported": "A böngészője nem támogatja a hangot.",
@@ -10236,7 +10238,7 @@
     "cacheUp": "UP",
     "semantic": "Semantic",
     "upstream": "Upstream",
-    "semanticCacheHit": "Semantic cache hit (served by OmniRoute)",
+    "semanticCacheHit": "Semantic cache hit (served by Xenia)",
     "upstreamResponse": "Upstream provider response",
     "noApiKey": "No API key",
     "requestedRoutedTitle": "Requested {requested}, routed as {routed}",
@@ -10534,12 +10536,12 @@
   },
   "plugins": {
     "title": "Plugins",
-    "description": "Install and manage plugins for extending OmniRoute functionality",
+    "description": "Install and manage plugins for extending Xenia functionality",
     "loading": "Loading plugins...",
     "scanning": "Scanning...",
     "scanForPlugins": "Scan for Plugins",
     "noPlugins": "No plugins installed",
-    "noPluginsDescription": "Place plugin directories in ~/.omniroute/plugins/ and click Scan.",
+    "noPluginsDescription": "Place plugin directories in ~/.xenia/plugins/ and click Scan.",
     "activate": "Activate",
     "deactivate": "Deactivate",
     "uninstall": "Uninstall",
@@ -10569,7 +10571,7 @@
     "installedTab": "Telepítve",
     "marketplaceTab": "Marketplace",
     "marketplaceUrlLabel": "Egyéni Marketplace URL",
-    "marketplaceUrlPlaceholder": "Hagyd üresen a hivatalos Omniroute registry használatához",
+    "marketplaceUrlPlaceholder": "Hagyd üresen a hivatalos Xenia registry használatához",
     "saveMarketplaceUrl": "Mentés és újratöltés",
     "marketplaceUrlSaved": "Marketplace URL frissítve",
     "marketplaceEmpty": "Nem találhatók bővítmények a Marketplace-en.",
@@ -10692,7 +10694,7 @@
   },
   "agentBridge": {
     "title": "AgentBridge",
-    "subtitle": "Használjon IDE-ügynököket OmniRoute modellekkel — nincs szükség konfigurációra",
+    "subtitle": "Használjon IDE-ügynököket Xenia modellekkel — nincs szükség konfigurációra",
     "riskBannerTitle": "Saját felelősségre használható",
     "riskBannerBody": "Az AgentBridge elfogja az IDE-ügynökök HTTPS-forgalmát. Az aktiválásával felelősséget vállal az egyes ügynökök szolgáltatási feltételeinek betartásáért. Soha ne használja olyan eszközökön vagy hálózatokon, ahol a TLS-vizsgálat tiltott.",
     "riskBannerDismiss": "Elvetés",
@@ -10742,7 +10744,7 @@
     "investigatingNotice": "Ez az ügynök vizsgálat alatt áll. A hostok és az API-felület megerősítése még folyamatban van. A beállítás elérhető lesz, amint az upstream API dokumentálva lesz.",
     "modelMappingsLabel": "Modell-hozzárendelések",
     "sourceModel": "Forrásmodell (ügynök natív)",
-    "targetModel": "Célmodell (OmniRoute)",
+    "targetModel": "Célmodell (Xenia)",
     "noMappings": "Nincsenek modell-hozzárendelések konfigurálva. Futtassa a beállítási varázslót a modellek automatikus észleléséhez.",
     "selectModel": "Kiválasztás…",
     "saveMappings": "Hozzárendelések mentése",
@@ -10849,7 +10851,7 @@
   },
   "relay": {
     "title": "Szerver nélküli közvetítő proxyk",
-    "description": "Hozzon létre nyilvános API-végpontokat, amelyek korlátozással és hozzáférés-vezérléssel közvetítenek az OmniRoute felé",
+    "description": "Hozzon létre nyilvános API-végpontokat, amelyek korlátozással és hozzáférés-vezérléssel közvetítenek az Xenia felé",
     "created": "Közvetítő token létrehozva",
     "createFailed": "Nem sikerült létrehozni a tokent",
     "toggleFailed": "Nem sikerült átkapcsolni a tokent",
@@ -11012,25 +11014,25 @@
     "concept": {
       "code": {
         "title": "CLI kód",
-        "phrase": "Kódeszközök, amelyeket az OmniRoute-ra irányít",
-        "flow": "Ön → CLI kód → OmniRoute → Szolgáltató",
+        "phrase": "Kódeszközök, amelyeket az Xenia-ra irányít",
+        "flow": "Ön → CLI kód → Xenia → Szolgáltató",
         "seeOther": "Megtekintés →"
       },
       "agent": {
         "title": "CLI ágensek",
-        "phrase": "Általános célú autonóm CLI ágensek, amelyeket az OmniRoute-ra irányít",
-        "flow": "Ön → CLI ágens → OmniRoute → Szolgáltató",
+        "phrase": "Általános célú autonóm CLI ágensek, amelyeket az Xenia-ra irányít",
+        "flow": "Ön → CLI ágens → Xenia → Szolgáltató",
         "seeOther": "Megtekintés →"
       },
       "acp": {
         "title": "ACP ágensek",
-        "phrase": "CLI-k, amelyeket az OmniRoute indít végrehajtási háttérprogramként (fordított folyamat)",
-        "flow": "Kliens → OmniRoute → CLI indítása (stdio/ACP) → válasz",
+        "phrase": "CLI-k, amelyeket az Xenia indít végrehajtási háttérprogramként (fordított folyamat)",
+        "flow": "Kliens → Xenia → CLI indítása (stdio/ACP) → válasz",
         "seeOther": "Megtekintés →"
       }
     },
     "comparison": {
-      "title": "Ismerje meg a 3 CLI típust az OmniRoute-ban",
+      "title": "Ismerje meg a 3 CLI típust az Xenia-ban",
       "thisPage": "Ez az oldal",
       "open": "Megnyitás →",
       "code": {
@@ -11088,7 +11090,7 @@
   },
   "cliCode": {
     "pageTitle": "CLI-kódok",
-    "pageSubtitle": "OmniRoute-ra mutató kódeszközök",
+    "pageSubtitle": "Xenia-ra mutató kódeszközök",
     "searchPlaceholder": "CLI keresése…",
     "filterDetectionLabel": "Észlelés",
     "filterBaseUrlLabel": "Alap URL",
@@ -11113,7 +11115,7 @@
   },
   "acpAgents": {
     "pageTitle": "ACP-ágensek",
-    "pageSubtitle": "CLI-k, amelyeket az OmniRoute indít végrehajtási backendként",
+    "pageSubtitle": "CLI-k, amelyeket az Xenia indít végrehajtási backendként",
     "scanning": "Ágensek észlelése…",
     "refresh": "Frissítés",
     "setupGuideTitle": "Beállítási útmutató",
@@ -11148,7 +11150,7 @@
     "catalog": {
       "omni-auth": {
         "name": "Hitelesítés",
-        "description": "Kezelje az API-kulcs alapú hitelesítést és a munkamenet-tokeneket. Kezdje itt a kérések Bearer tokennel történő hitelesítését, a munkamenet-cookie-k beszerzését, valamint az OmniRoute API bejelentkezési követelményeinek konfigurálását."
+        "description": "Kezelje az API-kulcs alapú hitelesítést és a munkamenet-tokeneket. Kezdje itt a kérések Bearer tokennel történő hitelesítését, a munkamenet-cookie-k beszerzését, valamint az Xenia API bejelentkezési követelményeinek konfigurálását."
       },
       "omni-providers": {
         "name": "Szolgáltatók",
@@ -11164,7 +11166,7 @@
       },
       "omni-api-keys": {
         "name": "API-kulcsok",
-        "description": "Hozzon létre, listázzon, rotáljon és vonjon vissza OmniRoute API-kulcsokat. Szabályozza a kulcsonkénti hatóköröket, a költési korlátokat és a lejárati időket. A kulcsok biztosítják a hozzáférést az összes proxy- és kezelési végponthoz."
+        "description": "Hozzon létre, listázzon, rotáljon és vonjon vissza Xenia API-kulcsokat. Szabályozza a kulcsonkénti hatóköröket, a költési korlátokat és a lejárati időket. A kulcsok biztosítják a hozzáférést az összes proxy- és kezelési végponthoz."
       },
       "omni-usage-logs": {
         "name": "Használat és naplók",
@@ -11200,15 +11202,15 @@
       },
       "omni-cli-tools": {
         "name": "CLI eszközök",
-        "description": "Manage CLI tool integrations exposed via the API. List, configure, and invoke CLI tool plugins that extend OmniRoute's automation surface."
+        "description": "Manage CLI tool integrations exposed via the API. List, configure, and invoke CLI tool plugins that extend Xenia's automation surface."
       },
       "omni-tunnels": {
         "name": "Alagutak",
-        "description": "Biztonságos alagutak (ngrok, Cloudflare Tunnel, egyedi) létrehozása és kezelése az OmniRoute internetes közzétételéhez, vagy a hozzáférés megosztásához távoli ágensekkel és CI-folyamatokkal."
+        "description": "Biztonságos alagutak (ngrok, Cloudflare Tunnel, egyedi) létrehozása és kezelése az Xenia internetes közzétételéhez, vagy a hozzáférés megosztásához távoli ágensekkel és CI-folyamatokkal."
       },
       "omni-sync-cloud": {
         "name": "Felhőszinkronizálás",
-        "description": "Az OmniRoute konfigurációjának, szolgáltatói kapcsolatainak és beállításainak szinkronizálása felhőtárhelyre/-ről. Felhőalapú worker-hitelesítés és távoli biztonsági mentési célpontok kezelése."
+        "description": "Az Xenia konfigurációjának, szolgáltatói kapcsolatainak és beállításainak szinkronizálása felhőtárhelyre/-ről. Felhőalapú worker-hitelesítés és távoli biztonsági mentési célpontok kezelése."
       },
       "omni-db-backups": {
         "name": "Adatbázis és biztonsági mentések",
@@ -11220,11 +11222,11 @@
       },
       "omni-mcp": {
         "name": "MCP-szerver",
-        "description": "Csatlakozás az OmniRoute MCP-szerverhez (37 eszköz, 3 transzport: SSE/stdio/HTTP). Lefedi az útvonalválasztást, a gyorsítótárat, a tömörítést, a memóriát, a képességeket, a szolgáltatókat és az audit eszközöket 16 jogosultsági körben."
+        "description": "Csatlakozás az Xenia MCP-szerverhez (37 eszköz, 3 transzport: SSE/stdio/HTTP). Lefedi az útvonalválasztást, a gyorsítótárat, a tömörítést, a memóriát, a képességeket, a szolgáltatókat és az audit eszközöket 16 jogosultsági körben."
       },
       "omni-agents-a2a": {
         "name": "Ágensek és A2A protokoll",
-        "description": "Interakció az OmniRoute-tal a JSON-RPC 2.0 ágens-ágens protokollon keresztül. 6 beépített A2A képesség: smart-routing, quota-management, provider-discovery, cost-analysis, health-report, list-capabilities."
+        "description": "Interakció az Xenia-tal a JSON-RPC 2.0 ágens-ágens protokollon keresztül. 6 beépített A2A képesség: smart-routing, quota-management, provider-discovery, cost-analysis, health-report, list-capabilities."
       },
       "omni-version-manager": {
         "name": "Verziókezelő",
@@ -11236,7 +11238,7 @@
       },
       "cli-serve": {
         "name": "CLI: Serve",
-        "description": "Az OmniRoute szerver indítása, leállítása és újraindítása a CLI-ből. Háttérfolyamat (daemon) mód, portkonfiguráció, automatikus helyreállítás, rendszertálca-integráció és a műszerfal megnyitásának gyorsbillentyűjének kezelése."
+        "description": "Az Xenia szerver indítása, leállítása és újraindítása a CLI-ből. Háttérfolyamat (daemon) mód, portkonfiguráció, automatikus helyreállítás, rendszertálca-integráció és a műszerfal megnyitásának gyorsbillentyűjének kezelése."
       },
       "cli-health": {
         "name": "CLI: Health",
@@ -11248,7 +11250,7 @@
       },
       "cli-keys": {
         "name": "CLI: API-kulcsok",
-        "description": "OmniRoute API-kulcsok létrehozása, listázása, rotálása és visszavonása a CLI-ből. OAuth-folyamatok kezelése a szolgáltatói hitelesítéshez, valamint a kulcsok hatókörének és lejáratának vizsgálata."
+        "description": "Xenia API-kulcsok létrehozása, listázása, rotálása és visszavonása a CLI-ből. OAuth-folyamatok kezelése a szolgáltatói hitelesítéshez, valamint a kulcsok hatókörének és lejáratának vizsgálata."
       },
       "cli-models": {
         "name": "CLI: Modellek",
@@ -11256,7 +11258,7 @@
       },
       "cli-chat": {
         "name": "CLI: Csevegés",
-        "description": "Csevegés-kiegészítések küldése, válaszok streamelése és interaktív REPL-munkamenet indítása a CLI-ből. Támogatja az összes OmniRoute-szolgáltatót, a kombinált útvonalválasztást (combo routing) és a rendszerszintű promptok konfigurálását."
+        "description": "Csevegés-kiegészítések küldése, válaszok streamelése és interaktív REPL-munkamenet indítása a CLI-ből. Támogatja az összes Xenia-szolgáltatót, a kombinált útvonalválasztást (combo routing) és a rendszerszintű promptok konfigurálását."
       },
       "cli-routing": {
         "name": "CLI: Útvonalválasztás és kombók",
@@ -11284,7 +11286,7 @@
       },
       "cli-a2a": {
         "name": "CLI: A2A protokoll",
-        "description": "Lépjen interakcióba az OmniRoute A2A-szerverrel a CLI-ből. Küldjön feladatokat, vizsgálja meg a skill-végrehajtási előzményeket, és tesztelje interaktívan a JSON-RPC 2.0 agent-to-agent protokollt."
+        "description": "Lépjen interakcióba az Xenia A2A-szerverrel a CLI-ből. Küldjön feladatokat, vizsgálja meg a skill-végrehajtási előzményeket, és tesztelje interaktívan a JSON-RPC 2.0 agent-to-agent protokollt."
       },
       "cli-tunnel": {
         "name": "CLI: Alagutak",
@@ -11292,7 +11294,7 @@
       },
       "cli-backup-sync": {
         "name": "CLI: Biztonsági mentés és szinkronizálás",
-        "description": "Készítsen biztonsági mentést és állítsa vissza az OmniRoute adatait a CLI-ből. Indítson növekményes pillanatképeket, szinkronizáljon felhőtárhelyre, kezelje a mentési ütemezéseket, és állítsa vissza az adatokat archív fájlokból."
+        "description": "Készítsen biztonsági mentést és állítsa vissza az Xenia adatait a CLI-ből. Indítson növekményes pillanatképeket, szinkronizáljon felhőtárhelyre, kezelje a mentési ütemezéseket, és állítsa vissza az adatokat archív fájlokból."
       },
       "cli-policy-audit": {
         "name": "CLI: Szabályzat és audit",
@@ -11316,11 +11318,11 @@
       },
       "cli-skill-collector": {
         "name": "CLI: Agent Skill Collector",
-        "description": "Észlelje a telepített CLI kódolóeszközöket (Claude Code, Codex, Cursor, Copilot, Cline és továbbiak), keressen a GitHubon hozzájuk illő agent skilleket, és telepítse őket az észlelt eszközökbe az OmniRoute beépített API-jain keresztül."
+        "description": "Észlelje a telepített CLI kódolóeszközöket (Claude Code, Codex, Cursor, Copilot, Cline és továbbiak), keressen a GitHubon hozzájuk illő agent skilleket, és telepítse őket az észlelt eszközökbe az Xenia beépített API-jain keresztül."
       },
       "config-codex-cli": {
         "name": "Konfiguráció: Codex CLI",
-        "description": "Lépésről lépésre követhető ágens-munkafolyamat az OpenAI Codex CLI konfigurálásához bármely gépen (Linux, macOS, Windows), hogy az OmniRoute-ot OpenAI-kompatibilis háttérrendszerként használja. Észleli az operációs rendszert és a shellt, megírja a config.toml fájlt és a 7 elnevezett profilt, beállítja a környezeti változókat, és ellenőrzi a beállítást."
+        "description": "Lépésről lépésre követhető ágens-munkafolyamat az OpenAI Codex CLI konfigurálásához bármely gépen (Linux, macOS, Windows), hogy az Xenia-ot OpenAI-kompatibilis háttérrendszerként használja. Észleli az operációs rendszert és a shellt, megírja a config.toml fájlt és a 7 elnevezett profilt, beállítja a környezeti változókat, és ellenőrzi a beállítást."
       },
       "omni-github-skills": {
         "name": "GitHub Skill-felfedezés",
@@ -11328,16 +11330,16 @@
       }
     },
     "pageTitle": "Agent Skillek",
-    "pageSubtitle": "Tanítsa meg ágensét az OmniRoute kezelésére — 23 API-terület + 21 CLI-család",
+    "pageSubtitle": "Tanítsa meg ágensét az Xenia kezelésére — 23 API-terület + 21 CLI-család",
     "conceptCard": {
       "agent": {
         "title": "Agent Skillek — Kimenő",
-        "description": "Az Agent Skillek olyan géppel olvasható SKILL.md dokumentumok, amelyeket a külső MI-ágensek (Claude Code, Cursor, Copilot…) kérnek le a GitHubról, hogy megtanulják az OmniRoute kezelését REST-en vagy CLI-n keresztül. Ezeket az ágens olvassa, nem az OmniRoute hajtja végre.",
+        "description": "Az Agent Skillek olyan géppel olvasható SKILL.md dokumentumok, amelyeket a külső MI-ágensek (Claude Code, Cursor, Copilot…) kérnek le a GitHubról, hogy megtanulják az Xenia kezelését REST-en vagy CLI-n keresztül. Ezeket az ágens olvassa, nem az Xenia hajtja végre.",
         "crossLinkLabel": "Ismerje meg a különbséget →"
       },
       "omni": {
         "title": "Omni Skillek — Bejövő",
-        "description": "Az Omni Skillek olyan sandbox-eszközök, amelyeket az OmniRoute minden kérésnél beilleszt a modell kontextusába. Ezeket az OmniRoute hajtja végre, nem az ágens olvassa.",
+        "description": "Az Omni Skillek olyan sandbox-eszközök, amelyeket az Xenia minden kérésnél beilleszt a modell kontextusába. Ezeket az Xenia hajtja végre, nem az ágens olvassa.",
         "crossLinkLabel": "Ismerje meg a különbséget →"
       },
       "comparison": {
@@ -11345,18 +11347,18 @@
         "colOmni": "Omni Skillek",
         "whatIs": {
           "label": "Mi ez",
-          "agent": "Géppel olvasható SKILL.md, amely megtanítja a külső ágenst az OmniRoute kezelésére",
-          "omni": "Végrehajtható eszközök, amelyeket az OmniRoute eszközként illeszt be az LLM-kérésekbe"
+          "agent": "Géppel olvasható SKILL.md, amely megtanítja a külső ágenst az Xenia kezelésére",
+          "omni": "Végrehajtható eszközök, amelyeket az Xenia eszközként illeszt be az LLM-kérésekbe"
         },
         "direction": {
           "label": "Irány",
-          "agent": "Kimenő — a külső ágens megtanulja vezérelni az OmniRoute-ot",
-          "omni": "Bejövő — az OmniRoute eszközöket biztosít a rajta áthaladó modelleknek"
+          "agent": "Kimenő — a külső ágens megtanulja vezérelni az Xenia-ot",
+          "omni": "Bejövő — az Xenia eszközöket biztosít a rajta áthaladó modelleknek"
         },
         "executor": {
           "label": "Végrehajtó",
           "agent": "Külső ágens (markdown-t olvas → API-n/CLI-n keresztül cselekszik)",
-          "omni": "Maga az OmniRoute (elfogja a tool_calls hívásokat, Docker sandbox)"
+          "omni": "Maga az Xenia (elfogja a tool_calls hívásokat, Docker sandbox)"
         },
         "storage": {
           "label": "Tárolás",
@@ -11365,8 +11367,8 @@
         },
         "tagline": {
           "label": "Szlogen",
-          "agent": "Tanítsd meg az ágensedet az OmniRoute használatára",
-          "omni": "Adj futtatható eszközöket az OmniRoute modelleknek"
+          "agent": "Tanítsd meg az ágensedet az Xenia használatára",
+          "omni": "Adj futtatható eszközöket az Xenia modelleknek"
         }
       }
     },
@@ -11382,7 +11384,7 @@
     "coverageLabel": "Lefedettség",
     "mcpUrl": "MCP URL",
     "a2aLink": "A2A",
-    "mcpPrompt": "Add hozzá ezt az MCP végpontot az ágensedhez, hogy 37 OmniRoute eszközt biztosíts számára.",
+    "mcpPrompt": "Add hozzá ezt az MCP végpontot az ágensedhez, hogy 37 Xenia eszközt biztosíts számára.",
     "a2aPrompt": "Regisztráld ezt az Agent Cardot az orchestratorodban az A2A feladatdelegálás engedélyezéséhez.",
     "refresh": "Frissítés",
     "copyUrl": "URL másolása",
@@ -11507,7 +11509,7 @@
     "rank": "Helyezés",
     "name": "Név",
     "score": "Pontszám",
-    "leaderboardEmpty": "Ebben a hatókörben még nincsenek bejegyzések. Kezdd el használni az OmniRoute-ot, hogy megjelenj a ranglistán!",
+    "leaderboardEmpty": "Ebben a hatókörben még nincsenek bejegyzések. Kezdd el használni az Xenia-ot, hogy megjelenj a ranglistán!",
     "profileLoadFailed": "Nem sikerült betölteni a profiladatokat",
     "levelTitles": {
       "beginner": "Kezdő",
@@ -11527,7 +11529,7 @@
     "dayStreak": "{count} napos sorozat",
     "levelProgress": "Szint {current} → {next}",
     "totalXpEarned": "{count} összesen megszerzett XP",
-    "maintainStreak": "Használd az OmniRoute-ot minden nap a sorozatod megtartásához!",
+    "maintainStreak": "Használd az Xenia-ot minden nap a sorozatod megtartásához!",
     "badgesTitle": "Jelvények ({earned}/{total})",
     "noBadges": "Még nem érhetők el jelvények.",
     "hiddenBadge": "Rejtett teljesítmény",
@@ -11552,22 +11554,22 @@
       "first-token": {
         "name": "Első token",
         "description": "Elküldted az első API-kérésedet",
-        "criteria": "Hajtsd végre az első API-kérésedet az OmniRoute-on keresztül."
+        "criteria": "Hajtsd végre az első API-kérésedet az Xenia-on keresztül."
       },
       "token-consumer": {
         "name": "Tokenfogyasztó",
         "description": "Elküldtél 1 000 API-kérést",
-        "criteria": "Hajts végre 1 000 API-kérést az OmniRoute-on keresztül."
+        "criteria": "Hajts végre 1 000 API-kérést az Xenia-on keresztül."
       },
       "token-machine": {
         "name": "Tokengép",
         "description": "Elküldtél 10 000 API-kérést",
-        "criteria": "Hajts végre 10 000 API-kérést az OmniRoute-on keresztül."
+        "criteria": "Hajts végre 10 000 API-kérést az Xenia-on keresztül."
       },
       "token-whale": {
         "name": "Tokenbálna",
         "description": "Elküldtél 100 000 API-kérést",
-        "criteria": "Hajts végre 100 000 API-kérést az OmniRoute-on keresztül."
+        "criteria": "Hajts végre 100 000 API-kérést az Xenia-on keresztül."
       },
       "generous": {
         "name": "Nagylelkű",
@@ -11617,22 +11619,22 @@
       "daily-user": {
         "name": "Napi felhasználó",
         "description": "Aktív 3 egymást követő napon át",
-        "criteria": "Használja az OmniRoute-ot 3 egymást követő napon át."
+        "criteria": "Használja az Xenia-ot 3 egymást követő napon át."
       },
       "weekly-warrior": {
         "name": "Heti harcos",
         "description": "Aktív 7 egymást követő napon át",
-        "criteria": "Use OmniRoute for 7 consecutive days."
+        "criteria": "Use Xenia for 7 consecutive days."
       },
       "monthly-master": {
         "name": "Havi mester",
         "description": "Aktív 30 egymást követő napon át",
-        "criteria": "Használja az OmniRoute-ot 30 egymást követő napon át."
+        "criteria": "Használja az Xenia-ot 30 egymást követő napon át."
       },
       "unstoppable": {
         "name": "Megállíthatatlan",
         "description": "Aktív 365 egymást követő napon át",
-        "criteria": "Használja az OmniRoute-ot 365 egymást követő napon át."
+        "criteria": "Használja az Xenia-ot 365 egymást követő napon át."
       },
       "early-adopter": {
         "name": "Korai elfogadó",
@@ -11647,7 +11649,7 @@
       "contributor": {
         "name": "Közreműködő",
         "description": "Összefésült 1 pull requestet",
-        "criteria": "Legyen 1 pull requestje összefésülve az OmniRoute-ba."
+        "criteria": "Legyen 1 pull requestje összefésülve az Xenia-ba."
       },
       "community-leader": {
         "name": "Közösségi vezető",
@@ -11748,16 +11750,16 @@
       "PROXY_AUTO_SELECT_ENABLED": {
         "description": "Ha nincs proxy rendelve egy kapcsolathoz, automatikusan az első működő regisztrációs proxyt választja ki. Alapértelmezés szerint ki van kapcsolva, mert különben egy regisztrációs proxy globális tartalékká válna az összes forgalom számára (#3332)."
       },
-      "OMNIROUTE_CONTROL_PLANE_PROXY_DIRECT_FALLBACK": {
+      "XENIA_CONTROL_PLANE_PROXY_DIRECT_FALLBACK": {
         "description": "Az OAuth és a szolgáltató-ellenőrzési folyamatok számára a rögzített proxy megkerülésének engedélyezése, ha a proxy elérhetőségi ellenőrzése meghiúsul. Alapértelmezés szerint ki van kapcsolva, mert ez megváltoztathatja a fiók kimenő IP-címét."
       },
       "MITM_DISABLE_TLS_VERIFY": {
         "description": "A TLS-tanúsítvány ellenőrzésének letiltása a MITM proxy esetében."
       },
-      "OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS": {
+      "XENIA_ALLOW_PRIVATE_PROVIDER_URLS": {
         "description": "Privát vagy belső hálózatokra mutató szolgáltatói URL-ek engedélyezése."
       },
-      "OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS": {
+      "XENIA_ALLOW_LOCAL_PROVIDER_URLS": {
         "description": "Szolgáltatók engedélyezése a localhost, LAN és privát IP-tartományokban. Ez szükséges a helyi OpenAI-kompatibilis modellekhez, és alapértelmezés szerint engedélyezett. A felhő-metaadat végpontok, mint például a 169.254.169.254, továbbra is blokkolva maradnak."
       },
       "ENABLE_CC_COMPATIBLE_PROVIDER": {
@@ -11775,28 +11777,28 @@
       "RESPONSES_PASSTHROUGH_DROP_COMMENTARY": {
         "description": "A belső kommentár-fázis kimeneti elemeinek eltávolítása a Responses API átmenő adatfolyamaiból, mielőtt továbbítaná azokat az ügyfeleknek. Tiltsa le ezt a jelzőt a nyers upstream kommentárok fogadásához."
       },
-      "OMNIROUTE_MCP_ENFORCE_SCOPES": {
+      "XENIA_MCP_ENFORCE_SCOPES": {
         "description": "Hatókör-korlátozások érvényesítése az MCP-eszközök eléréséhez."
       },
-      "OMNIROUTE_MCP_COMPRESS_DESCRIPTIONS": {
+      "XENIA_MCP_COMPRESS_DESCRIPTIONS": {
         "description": "Az MCP-eszközök leírásainak tömörítése a tokenhasználat csökkentése érdekében."
       },
-      "OMNIROUTE_ENABLE_RUNTIME_BACKGROUND_TASKS": {
+      "XENIA_ENABLE_RUNTIME_BACKGROUND_TASKS": {
         "description": "Háttérfeladatok feldolgozásának engedélyezése futásidőben."
       },
-      "OMNIROUTE_DISABLE_BACKGROUND_SERVICES": {
+      "XENIA_DISABLE_BACKGROUND_SERVICES": {
         "description": "Minden háttérszolgáltatás letiltása, beleértve a kvótafrissítést és a szinkronizálást is."
       },
-      "OMNIROUTE_RTK_TRUST_PROJECT_FILTERS": {
+      "XENIA_RTK_TRUST_PROJECT_FILTERS": {
         "description": "Projekt szintű RTK szűrők elfogadása ellenőrzés nélkül."
       },
-      "OMNIROUTE_ENABLE_LIVE_WS": {
+      "XENIA_ENABLE_LIVE_WS": {
         "description": "A valós idejű irányítópult WebSocket szerverének elindítása importáláskor a 20132-es loopback porton. Állítsa a jelzőt 0-ra vagy false értékre a letiltásához. A LAN-on való közzétételhez a LIVE_WS_HOST=0.0.0.0 és a LIVE_WS_ALLOWED_ORIGINS beállítása is szükséges."
       },
-      "OMNIROUTE_CODEX_WS_ENABLED": {
+      "XENIA_CODEX_WS_ENABLED": {
         "description": "Annak engedélyezése, hogy a Codex a Responses szolgáltatást WebSocketen keresztül használja. Ha le van tiltva, a Codex visszatér a HTTP Responses használatára."
       },
-      "OMNIROUTE_EMERGENCY_FALLBACK": {
+      "XENIA_EMERGENCY_FALLBACK": {
         "description": "A költségkeretet túllépő kérések átirányítása a vészhelyzeti ingyenes tartalék szolgáltatóhoz és modellhez."
       },
       "STREAM_RECOVERY_ENABLED": {
@@ -11823,16 +11825,16 @@
       "PRICING_SYNC_ENABLED": {
         "description": "Árazási adatok automatikus szinkronizálása. A PRICING_SYNC_ENABLED környezeti változónak is true értékűnek kell lennie."
       },
-      "OMNIROUTE_AUTO_SYNC_CODEX_PROFILES": {
+      "XENIA_AUTO_SYNC_CODEX_PROFILES": {
         "description": "A szolgáltató-modell szinkronizálás után a ~/.codex/*.config.toml profilok újragenerálása az élő katalógusból. Ez soha nem változtatja meg az aktív vagy alapértelmezett Codex konfigurációt, és alapértelmezés szerint ki van kapcsolva."
       },
-      "OMNIROUTE_AUTO_SYNC_CLAUDE_PROFILES": {
+      "XENIA_AUTO_SYNC_CLAUDE_PROFILES": {
         "description": "A szolgáltató-modell szinkronizálás után a ~/.claude/profiles/<name>/settings.json profilok újragenerálása az élő katalógusból. Ez soha nem változtatja meg az aktív vagy alapértelmezett Claude konfigurációt, és alapértelmezés szerint ki van kapcsolva."
       },
-      "OMNIROUTE_DISABLE_LOCAL_HEALTHCHECK": {
+      "XENIA_DISABLE_LOCAL_HEALTHCHECK": {
         "description": "A helyi példány állapotellenőrző végpontjának letiltása."
       },
-      "OMNIROUTE_DISABLE_TOKEN_HEALTHCHECK": {
+      "XENIA_DISABLE_TOKEN_HEALTHCHECK": {
         "description": "A token-érvényesítési állapotellenőrzés letiltása."
       },
       "SKILLS_SANDBOX_NETWORK_ENABLED": {
@@ -12181,8 +12183,8 @@
     "noProviderOverrides": "Nincsenek felülbírálások — minden aktív szolgáltató az alapértelmezett modelljével vesz részt"
   },
   "kimiSponsorBanner": {
-    "title": "A Kimi (Moonshot AI) az OmniRoute alapító nyílt forráskódú barátja",
-    "description": "A Kimi K3 1M-tokenes kontextusablakot és élvonalbeli kódolási teljesítményt hoz az OmniRoute-ba, a költségek töredékéért.",
+    "title": "A Kimi (Moonshot AI) az Xenia alapító nyílt forráskódú barátja",
+    "description": "A Kimi K3 1M-tokenes kontextusablakot és élvonalbeli kódolási teljesítményt hoz az Xenia-ba, a költségek töredékéért.",
     "cta": "Kimi Code beszerzése",
     "partnerLinkNote": "Partnerhivatkozás",
     "dismissAriaLabel": "Elvetés"
@@ -12209,14 +12211,14 @@
     "activateDescription": "A Radar gazdagítja az ingyenes modell katalógust a közösségi forrásból származó intelligenciával — frissített modell elérhetőség, kvóták és beállítási útmutatók.",
     "privacyNoUpload": "Nincs feltöltve semmi — az adataid helyben maradnak",
     "privacyOnlySigned": "Csak kriptográfiailag aláírt metaadatok kerülnek letöltésre",
-    "privacyLocalOnly": "Minden feldolgozás a te OmniRoute példányodon történik",
+    "privacyLocalOnly": "Minden feldolgozás a te Xenia példányodon történik",
     "activateButton": "Aktiválás",
     "activating": "Aktiválás...",
     "claimSectionTitle": "Don't have a supporter key yet?",
     "contributorButton": "I'm a contributor",
     "contributorHint": "Verify your GitHub account — 5+ merged pull requests or a top-100 contributor spot unlocks a free supporter key.",
     "supporterButton": "Support the project",
-    "supporterHint": "Support OmniRoute to get a supporter key with the live catalog and extra perks.",
+    "supporterHint": "Support Xenia to get a supporter key with the live catalog and extra perks.",
     "colProvider": "Szolgáltató",
     "colModel": "Modell",
     "colQuota": "Kvóta",
@@ -12231,7 +12233,7 @@
     "capThinking": "Gondolkodás",
     "catalogTab": "Catalog",
     "freeCreditsTab": "Free credits",
-    "freeCreditsSubtitle": "Referral links from Radar-tracked providers — using them costs you nothing extra and helps support OmniRoute.",
+    "freeCreditsSubtitle": "Referral links from Radar-tracked providers — using them costs you nothing extra and helps support Xenia.",
     "fixedLinksEmpty": "No referral links available yet. Sync Radar to check for updates.",
     "requiredActionLabel": "What to do:",
     "claimButton": "Claim credits",

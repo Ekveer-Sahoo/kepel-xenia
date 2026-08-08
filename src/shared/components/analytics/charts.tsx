@@ -424,13 +424,13 @@ export function ApiKeyTable({ byApiKey }) {
                 <td className="px-4 py-2.5 text-right font-mono text-primary">
                   {fmt(row.promptTokens)}
                 </td>
-                <td className="px-4 py-2.5 text-right font-mono text-emerald-500">
+                <td className="px-4 py-2.5 text-right font-mono text-gray-500">
                   {fmt(row.completionTokens)}
                 </td>
                 <td className="px-4 py-2.5 text-right font-mono font-semibold">
                   {fmt(row.totalTokens)}
                 </td>
-                <td className="px-4 py-2.5 text-right font-mono text-amber-500">
+                <td className="px-4 py-2.5 text-right font-mono text-gray-500">
                   {fmtCost(row.cost)}
                 </td>
               </tr>
@@ -606,19 +606,19 @@ function getServiceTierIcon(serviceTier) {
 }
 
 function getServiceTierIconClass(serviceTier) {
-  if (serviceTier === "priority") return "text-sky-500";
-  if (serviceTier === "flex") return "text-emerald-500";
+  if (serviceTier === "priority") return "text-gray-500";
+  if (serviceTier === "flex") return "text-gray-500";
   return "text-text-muted";
 }
 
 function getServiceTierBarClass(serviceTier) {
-  if (serviceTier === "priority") return "bg-sky-500";
-  if (serviceTier === "flex") return "bg-emerald-500";
+  if (serviceTier === "priority") return "bg-gray-500";
+  if (serviceTier === "flex") return "bg-gray-500";
   return "bg-text-muted/50";
 }
 
 function getServiceTierCostClass(serviceTier) {
-  return serviceTier === "flex" ? "text-emerald-500" : "text-amber-500";
+  return serviceTier === "flex" ? "text-gray-500" : "text-gray-500";
 }
 
 export function ServiceTierBreakdown({ byServiceTier, summary }) {
@@ -721,7 +721,7 @@ export function UsageDetail({ summary }) {
   const items = [
     { label: t("chartInput"), value: summary?.promptTokens, color: "text-primary" },
     { label: t("chartCacheRead"), value: 0, color: "text-text-muted" },
-    { label: t("chartOutput"), value: summary?.completionTokens, color: "text-emerald-500" },
+    { label: t("chartOutput"), value: summary?.completionTokens, color: "text-gray-500" },
   ];
 
   return (
@@ -864,13 +864,13 @@ export function ProviderTable({ byProvider }) {
                   <td className="px-4 py-2.5 text-right font-mono text-primary">
                     {fmt(p.promptTokens)}
                   </td>
-                  <td className="px-4 py-2.5 text-right font-mono text-emerald-500">
+                  <td className="px-4 py-2.5 text-right font-mono text-gray-500">
                     {fmt(p.completionTokens)}
                   </td>
                   <td className="px-4 py-2.5 text-right font-mono font-semibold">
                     {fmt(p.totalTokens)}
                   </td>
-                  <td className="px-4 py-2.5 text-right font-mono text-amber-500">
+                  <td className="px-4 py-2.5 text-right font-mono text-gray-500">
                     {fmtCost(p.cost)}
                   </td>
                   <td className="px-4 py-2.5 text-right">

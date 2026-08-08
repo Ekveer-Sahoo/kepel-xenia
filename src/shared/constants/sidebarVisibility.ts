@@ -13,109 +13,88 @@ import type {
 } from "./sidebarVisibility/types";
 
 export const SIDEBAR_ICON_ACCENTS: Partial<Record<SidebarItemId, string>> = {
-  home: "#60A5FA",
-  "api-manager": "#F59E0B",
-  endpoints: "#38BDF8",
-  providers: "#818CF8",
-  combos: "#A855F7",
-  quota: "#F472B6",
-  "context-caveman": "#F97316",
-  "context-rtk": "#2DD4BF",
-  "context-combos": "#C084FC",
-  "cli-code": "#FACC15",
-  "cli-agents": "#93C5FD",
-  "cloud-agents": "#7DD3FC",
-  "api-endpoints": "#14B8A6",
-  webhooks: "#EC4899",
-  proxy: "#A3E635",
-  "mitm-proxy": "#FB7185",
-  "1proxy": "#22D3EE",
-  analytics: "#06B6D4",
-  "analytics-combo-health": "#34D399",
-  "analytics-utilization": "#FBBF24",
-  costs: "#FB923C",
-  cache: "#84CC16",
-  "analytics-compression": "#F97316",
-  "analytics-search": "#38BDF8",
-  "analytics-evals": "#A78BFA",
-  logs: "#CBD5E1",
-  "logs-proxy": "#A3E635",
-  "logs-console": "#FACC15",
-  "logs-timeline": "#F472B6",
-  "logs-activity": "#60A5FA",
-  health: "#EF4444",
-  runtime: "#F59E0B",
-  "costs-pricing": "#FB923C",
-  "costs-budget": "#22C55E",
-  "costs-quota-share": "#06B6D4",
-  audit: "#F43F5E",
-  "audit-mcp": "#818CF8",
-  "audit-a2a": "#A855F7",
-  translator: "#3B82F6",
-  playground: "#EAB308",
-  "search-tools": "#0891B2",
-  memory: "#10B981",
-  skills: "#F43F5E",
-  "agent-skills": "#D946EF",
-  mcp: "#8B5CF6",
-  a2a: "#06B6D4",
-  leaderboard: "#FACC15",
-  profile: "#60A5FA",
-  tokens: "#A3E635",
-  media: "#D946EF",
-  batch: "#14B8A6",
-  "batch-files": "#38BDF8",
-  "settings-general": "#64748B",
-  "settings-appearance": "#D946EF",
-  "settings-ai": "#A78BFA",
-  "settings-routing": "#06B6D4",
-  "settings-resilience": "#22C55E",
-  "settings-advanced": "#F97316",
-  "settings-security": "#EF4444",
-  "settings-feature-flags": "#FACC15",
-  "settings-cache": "#84CC16",
-  "settings-sidebar": "#38BDF8",
-  docs: "#2563EB",
-  issues: "#DC2626",
-  changelog: "#F59E0B",
+  home: "#9a9a9a",
+  "api-manager": "#a7a7a7",
+  endpoints: "#9c9c9c",
+  providers: "#959595",
+  combos: "#808080",
+  quota: "#a1a1a1",
+  "context-caveman": "#909090",
+  "context-rtk": "#a0a0a0",
+  "context-combos": "#a4a4a4",
+  "cli-code": "#c5c5c5",
+  "cli-agents": "#bcbcbc",
+  "cloud-agents": "#bebebe",
+  "api-endpoints": "#858585",
+  webhooks: "#828282",
+  proxy: "#bebebe",
+  "mitm-proxy": "#9d9d9d",
+  "1proxy": "#a1a1a1",
+  analytics: "#858585",
+  "analytics-combo-health": "#9d9d9d",
+  "analytics-utilization": "#bfbfbf",
+  costs: "#a8a8a8",
+  cache: "#a2a2a2",
+  "analytics-compression": "#909090",
+  "analytics-search": "#9c9c9c",
+  "analytics-evals": "#a0a0a0",
+  logs: "#d3d3d3",
+  "logs-proxy": "#bebebe",
+  "logs-console": "#c5c5c5",
+  "logs-timeline": "#a1a1a1",
+  "logs-activity": "#9a9a9a",
+  health: "#777777",
+  runtime: "#a7a7a7",
+  "costs-pricing": "#a8a8a8",
+  "costs-budget": "#898989",
+  "costs-quota-share": "#858585",
+  audit: "#797979",
+  "audit-mcp": "#959595",
+  "audit-a2a": "#808080",
+  translator: "#7a7a7a",
+  playground: "#b0b0b0",
+  "search-tools": "#6c6c6c",
+  memory: "#808080",
+  skills: "#797979",
+  "agent-skills": "#858585",
+  mcp: "#7c7c7c",
+  a2a: "#858585",
+  leaderboard: "#c5c5c5",
+  profile: "#9a9a9a",
+  tokens: "#bebebe",
+  media: "#858585",
+  batch: "#858585",
+  "batch-files": "#9c9c9c",
+  "settings-general": "#727272",
+  "settings-appearance": "#858585",
+  "settings-ai": "#a0a0a0",
+  "settings-routing": "#858585",
+  "settings-resilience": "#898989",
+  "settings-advanced": "#909090",
+  "settings-security": "#777777",
+  "settings-feature-flags": "#c5c5c5",
+  "settings-cache": "#a2a2a2",
+  "settings-sidebar": "#9c9c9c",
+  docs: "#606060",
+  issues: "#5c5c5c",
+  changelog: "#a7a7a7",
 };
 
 export const SIDEBAR_SUBITEM_ICON_ACCENTS: Record<string, string> = {};
 
+// Monochrome theme: any sidebar item without an explicit entry in
+// SIDEBAR_ICON_ACCENTS still needs a deterministic-but-stable accent so icons
+// don't all collapse to one flat gray — so we hash to a gray *lightness*
+// (no hue/saturation) instead of an HSL rainbow color.
 function getDeterministicIconAccent(id: string): string {
   let hash = 0;
   for (let index = 0; index < id.length; index += 1) {
     hash = (hash * 31 + id.charCodeAt(index)) >>> 0;
   }
-  const hue = hash % 360;
-  const saturation = 72;
-  const lightness = 56;
-  const chroma = (1 - Math.abs((2 * lightness) / 100 - 1)) * (saturation / 100);
-  const huePrime = hue / 60;
-  const x = chroma * (1 - Math.abs((huePrime % 2) - 1));
-  const match = lightness / 100 - chroma / 2;
-  const [red, green, blue] =
-    huePrime < 1
-      ? [chroma, x, 0]
-      : huePrime < 2
-        ? [x, chroma, 0]
-        : huePrime < 3
-          ? [0, chroma, x]
-          : huePrime < 4
-            ? [0, x, chroma]
-            : huePrime < 5
-              ? [x, 0, chroma]
-              : [chroma, 0, x];
-
-  return [red, green, blue]
-    .map((channel) =>
-      Math.round((channel + match) * 255)
-        .toString(16)
-        .padStart(2, "0")
-        .toUpperCase()
-    )
-    .join("")
-    .replace(/^/, "#");
+  // Keep it within the same readable gray band as SIDEBAR_ICON_ACCENTS (~0x5c–0xd3).
+  const lightness = 0x5c + (hash % (0xd3 - 0x5c));
+  const channel = lightness.toString(16).padStart(2, "0").toUpperCase();
+  return `#${channel}${channel}${channel}`;
 }
 
 export function getSidebarIconAccent(id: string): string {
@@ -155,7 +134,7 @@ export const HIDDEN_SIDEBAR_ITEMS_SETTING_KEY = "hiddenSidebarItems";
 export const SIDEBAR_SECTION_ORDER_KEY = "sidebarSectionOrder";
 export const SIDEBAR_ITEM_ORDER_KEY = "sidebarItemOrder";
 export const SIDEBAR_PRESET_KEY = "sidebarActivePreset";
-export const SIDEBAR_SETTINGS_UPDATED_EVENT = "omniroute:settings-updated";
+export const SIDEBAR_SETTINGS_UPDATED_EVENT = "xenia:settings-updated";
 
 const MINIMAL_SHOWN: ReadonlySet<HideableSidebarItemId> = new Set([
   "home",

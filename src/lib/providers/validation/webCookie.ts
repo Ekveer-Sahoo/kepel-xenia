@@ -2,7 +2,7 @@
 // (god-file decomposition) — top-level functions with no dispatcher-state captures; behavior is
 // byte-identical to the original inline defs.
 import { WEB_COOKIE_PROVIDERS, isLocalProvider } from "@/shared/constants/providers";
-import { getRegistryEntry } from "@omniroute/open-sse/config/providerRegistry.ts";
+import { getRegistryEntry } from "@xenia/open-sse/config/providerRegistry.ts";
 import { normalizeBaseUrl } from "./urlHelpers";
 import { STANDARD_USER_AGENT, buildBearerHeaders } from "./headers";
 import {

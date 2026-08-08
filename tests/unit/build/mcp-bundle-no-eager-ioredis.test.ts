@@ -5,7 +5,7 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-// #6559 — `omniroute --mcp` crashed at Node ESM link time with
+// #6559 — `xenia --mcp` crashed at Node ESM link time with
 // ERR_MODULE_NOT_FOUND for 'ioredis'.
 //
 // Root cause: src/shared/utils/rateLimiter.ts had a top-level static
@@ -51,7 +51,7 @@ test("MCP server bundle has no top-level static import of ioredis", () => {
       bundled,
       /^import\s+.*["']ioredis["'];?\s*$/m,
       "MCP bundle must not eagerly (statically) import 'ioredis' at the top level — " +
-        "it must stay a lazy `await import(\"ioredis\")` (see src/lib/quota/redisQuotaStore.ts)"
+        'it must stay a lazy `await import("ioredis")` (see src/lib/quota/redisQuotaStore.ts)'
     );
 
     // The lazy dynamic import from redisQuotaStore.ts must still be present —

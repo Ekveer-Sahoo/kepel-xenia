@@ -1,4 +1,4 @@
-import { handleImageGeneration } from "@omniroute/open-sse/handlers/imageGeneration.ts";
+import { handleImageGeneration } from "@xenia/open-sse/handlers/imageGeneration.ts";
 import { withInjectionGuard } from "@/middleware/promptInjectionGuard";
 import {
   getProviderCredentialsWithQuotaPreflight,
@@ -9,9 +9,9 @@ import {
   getImageProvider,
   getImageModelEntry,
   modalitiesRequireImageInput,
-} from "@omniroute/open-sse/config/imageRegistry.ts";
-import { errorResponse, unavailableResponse } from "@omniroute/open-sse/utils/error.ts";
-import { HTTP_STATUS } from "@omniroute/open-sse/config/constants.ts";
+} from "@xenia/open-sse/config/imageRegistry.ts";
+import { errorResponse, unavailableResponse } from "@xenia/open-sse/utils/error.ts";
+import { HTTP_STATUS } from "@xenia/open-sse/config/constants.ts";
 import { isAllRateLimitedCredentials } from "@/app/api/v1/_shared/rateLimit";
 import * as log from "@/sse/utils/logger";
 import { toJsonErrorPayload } from "@/shared/utils/upstreamError";
@@ -22,8 +22,8 @@ import { isValidationFailure, validateBody } from "@/shared/validation/helpers";
 import { getAllCustomModels } from "@/lib/db/models";
 import { resolveProxyForConnection } from "@/lib/db/settings";
 import { resolveImageRouteModel } from "@/lib/images/imageRouteModel";
-import { runWithProxyContext } from "@omniroute/open-sse/utils/proxyFetch.ts";
-import { attachOmniRouteMetaHeaders } from "@/domain/omnirouteResponseMeta";
+import { runWithProxyContext } from "@xenia/open-sse/utils/proxyFetch.ts";
+import { attachXeniaMetaHeaders } from "@/domain/xeniaResponseMeta";
 import { calculateModalCost } from "@/lib/usage/costCalculator";
 import { generateRequestId } from "@/shared/utils/requestId";
 import { getSpecialtyModelsResponse } from "@/app/api/v1/_shared/specialtyCatalog";
@@ -294,7 +294,7 @@ async function postHandler(request, context) {
     );
     const costUsd = await calculateModalCost("image", provider, body.model, { n });
     const headers = new Headers({ "Content-Type": "application/json" });
-    attachOmniRouteMetaHeaders(headers, {
+    attachXeniaMetaHeaders(headers, {
       provider,
       model: body.model,
       costUsd,

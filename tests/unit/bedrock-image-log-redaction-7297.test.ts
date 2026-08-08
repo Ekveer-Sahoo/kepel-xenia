@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-7297-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-7297-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -57,9 +57,8 @@ test("#7297 protectPayloadForLog stays fast on a 3-image Bedrock Converse body",
       `opaque buffer (see #7297)`
   );
 
-  const redactedBytes = (
-    result as { messages: Array<{ content: Array<Record<string, unknown>> }> }
-  ).messages[0].content[0] as { image?: { source?: { bytes?: unknown } } };
+  const redactedBytes = (result as { messages: Array<{ content: Array<Record<string, unknown>> }> })
+    .messages[0].content[0] as { image?: { source?: { bytes?: unknown } } };
   assert.ok(
     !(redactedBytes.image?.source?.bytes instanceof Uint8Array) &&
       !Array.isArray(redactedBytes.image?.source?.bytes),

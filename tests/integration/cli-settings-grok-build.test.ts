@@ -2,13 +2,13 @@
  * Integration tests for /api/cli-tools/grok-build-settings
  *
  * Ported from decolua/9router#2571 ("feat(cli-tools): add Grok Build setup"),
- * rebuilt on top of OmniRoute's existing "custom" configType settings pattern
+ * rebuilt on top of Xenia's existing "custom" configType settings pattern
  * (auth guard, Zod validation, write-guard, backups, sanitized errors — see
  * forge-settings for the sibling implementation this mirrors).
  *
  * Unlike Forge's full-file overwrite, Grok Build's config.toml can hold other
  * user-defined `[model.*]` sections, so the handler surgically upserts only
- * the `[model.omniroute]` section and preserves the rest of the file.
+ * the `[model.xenia]` section and preserves the rest of the file.
  */
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -16,7 +16,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-grok-build-settings-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-grok-build-settings-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = "test-api-key-secret-grok-build";
 process.env.JWT_SECRET = "test-jwt-secret-grok-build";
@@ -26,9 +26,8 @@ const core = await import("../../src/lib/db/core.ts");
 const localDb = await import("../../src/lib/localDb.ts");
 
 // Import route handlers
-const { GET, POST, DELETE } = await import(
-  "../../src/app/api/cli-tools/grok-build-settings/route.ts"
-);
+const { GET, POST, DELETE } =
+  await import("../../src/app/api/cli-tools/grok-build-settings/route.ts");
 
 async function resetStorage() {
   delete process.env.INITIAL_PASSWORD;
@@ -92,9 +91,9 @@ test("grok-build-settings POST: 400 when model is missing", async () => {
   assert.equal(res.status, 400, `Expected 400 for missing model, got ${res.status}`);
 });
 
-// ── Test 4: POST with valid body → surgically upserts [model.omniroute] ─────
+// ── Test 4: POST with valid body → surgically upserts [model.xenia] ─────
 
-test("grok-build-settings POST: writes [model.omniroute] section and preserves existing content", async () => {
+test("grok-build-settings POST: writes [model.xenia] section and preserves existing content", async () => {
   const tmpHome = fs.mkdtempSync(path.join(os.tmpdir(), "grok-build-home-"));
   const origHome = process.env.HOME;
   process.env.HOME = tmpHome;
@@ -137,9 +136,9 @@ test("grok-build-settings POST: writes [model.omniroute] section and preserves e
       const configPath = path.join(tmpHome, ".grok", "config.toml");
       const content = fs.readFileSync(configPath, "utf-8");
 
-      assert.ok(content.includes("[model.omniroute]"), "Config should have [model.omniroute]");
+      assert.ok(content.includes("[model.xenia]"), "Config should have [model.xenia]");
       assert.ok(content.includes("http://localhost:20128/v1"), "Config should contain base URL");
-      assert.ok(content.includes('default = "omniroute"'), "Default should point at our slot");
+      assert.ok(content.includes('default = "xenia"'), "Default should point at our slot");
       // The pre-existing unrelated model section must survive untouched.
       // Exact line membership (not URL substring) — stronger, and dodges CodeQL
       // js/incomplete-url-substring-sanitization false positives (#740/#741).
@@ -151,7 +150,7 @@ test("grok-build-settings POST: writes [model.omniroute] section and preserves e
       );
       // The previous default must be remembered for Reset to restore.
       assert.ok(
-        content.includes('omniroute-prev-default = "grok-build"'),
+        content.includes('xenia-prev-default = "grok-build"'),
         "Previous default should be remembered as a marker comment"
       );
     }
@@ -173,13 +172,13 @@ test("grok-build-settings DELETE: removes our section, preserves the rest, resto
     fs.mkdirSync(grokDir, { recursive: true });
     const preConfigured = [
       "[models]",
-      'default = "omniroute"',
+      'default = "xenia"',
       "",
-      "# omniroute-prev-default = \"grok-build\"",
-      "[model.omniroute]",
+      '# xenia-prev-default = "grok-build"',
+      "[model.xenia]",
       'model = "grok-4.5"',
       'base_url = "http://localhost:20128/v1"',
-      'name = "OmniRoute"',
+      'name = "Xenia"',
       'api_backend = "chat_completions"',
       'api_key = "sk-test"',
       "",
@@ -201,7 +200,7 @@ test("grok-build-settings DELETE: removes our section, preserves the rest, resto
 
       const configPath = path.join(tmpHome, ".grok", "config.toml");
       const content = fs.readFileSync(configPath, "utf-8");
-      assert.ok(!content.includes("[model.omniroute]"), "Our section should be removed");
+      assert.ok(!content.includes("[model.xenia]"), "Our section should be removed");
       // Exact line membership (not URL substring) — see the preserve block above (#740/#741).
       const survivingLines = content.split("\n").map((line) => line.trim());
       assert.ok(

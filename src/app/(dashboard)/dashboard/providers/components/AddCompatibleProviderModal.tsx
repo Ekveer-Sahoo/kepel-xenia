@@ -284,9 +284,9 @@ export default function AddCompatibleProviderModal({
     <Modal isOpen={isOpen} title={modalTitle} onClose={onClose}>
       <div className="flex flex-col gap-4">
         {defaults.hasWarning && (
-          <div className="rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-sm text-text-muted">
+          <div className="rounded-lg border border-gray-500/25 bg-gray-500/10 px-3 py-2 text-sm text-text-muted">
             <div className="flex items-start gap-2">
-              <span className="material-symbols-outlined mt-0.5 text-[18px] text-amber-500">
+              <span className="material-symbols-outlined mt-0.5 text-[18px] text-gray-500">
                 warning
               </span>
               <p>{t("ccCompatibleValidationHint")}</p>
@@ -425,7 +425,7 @@ export default function AddCompatibleProviderModal({
             </Badge>
             {validationResult.error && (
               <span
-                className={`text-sm ${validationResult.valid ? "text-text-muted" : "text-red-500"}`}
+                className={`text-sm ${validationResult.valid ? "text-text-muted" : "text-gray-500"}`}
               >
                 {validationResult.error}
               </span>

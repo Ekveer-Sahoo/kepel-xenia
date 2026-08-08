@@ -1,13 +1,13 @@
-import { handleVideoGeneration } from "@omniroute/open-sse/handlers/videoGeneration.ts";
-import { resolveVideoCredentialProvider } from "@omniroute/open-sse/handlers/videoGeneration/googleFlow.ts";
+import { handleVideoGeneration } from "@xenia/open-sse/handlers/videoGeneration.ts";
+import { resolveVideoCredentialProvider } from "@xenia/open-sse/handlers/videoGeneration/googleFlow.ts";
 import { withInjectionGuard } from "@/middleware/promptInjectionGuard";
 import {
   getProviderCredentialsWithQuotaPreflight,
   clearRecoveredProviderState,
 } from "@/sse/services/auth";
-import { parseVideoModel, getVideoProvider } from "@omniroute/open-sse/config/videoRegistry.ts";
-import { errorResponse } from "@omniroute/open-sse/utils/error.ts";
-import { HTTP_STATUS } from "@omniroute/open-sse/config/constants.ts";
+import { parseVideoModel, getVideoProvider } from "@xenia/open-sse/config/videoRegistry.ts";
+import { errorResponse } from "@xenia/open-sse/utils/error.ts";
+import { HTTP_STATUS } from "@xenia/open-sse/config/constants.ts";
 import * as log from "@/sse/utils/logger";
 import { enforceApiKeyPolicy } from "@/shared/utils/apiKeyPolicy";
 import {

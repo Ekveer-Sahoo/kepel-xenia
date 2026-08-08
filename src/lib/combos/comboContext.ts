@@ -10,12 +10,12 @@
  * catalog's `minKnownNumber` semantics that excludes unsourced models.
  */
 
-import { resolveNestedComboTargets } from "@omniroute/open-sse/services/combo";
+import { resolveNestedComboTargets } from "@xenia/open-sse/services/combo";
 import { getCanonicalModelMetadata } from "@/lib/modelMetadataRegistry";
 import { getSyncedCapability } from "@/lib/modelsDevSync";
 import { getModelSpec } from "@/shared/constants/modelSpecs";
 import { PROVIDER_MODELS, PROVIDER_ID_TO_ALIAS } from "@/shared/constants/models";
-import { getTokenLimit } from "@omniroute/open-sse/services/contextManager";
+import { getTokenLimit } from "@xenia/open-sse/services/contextManager";
 import { buildAliasMaps, getComboTargetModelId } from "@/app/api/v1/models/catalogProviderMaps";
 
 /* ─── helpers ───────────────────────────────────────────────── */

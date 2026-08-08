@@ -547,7 +547,7 @@ export default function AddApiKeyModal({
               </label>
             </div>
             {bulkWarnings.length > 0 && (
-              <div className="rounded border border-amber-500/25 bg-amber-500/10 p-2 text-xs text-amber-200 space-y-1">
+              <div className="rounded border border-gray-500/25 bg-gray-500/10 p-2 text-xs text-gray-200 space-y-1">
                 {bulkWarnings.map((w, i) => (
                   <div key={i}>{w}</div>
                 ))}
@@ -556,7 +556,7 @@ export default function AddApiKeyModal({
             {bulkResult && (
               <div
                 className={`text-sm font-medium ${
-                  bulkResult.failed > 0 ? "text-amber-300" : "text-emerald-400"
+                  bulkResult.failed > 0 ? "text-gray-300" : "text-gray-400"
                 }`}
               >
                 {t("bulkAddedCount", { count: bulkResult.success })}
@@ -577,7 +577,7 @@ export default function AddApiKeyModal({
                 )}
               </div>
             )}
-            {saveError && <div className="text-sm text-rose-400">{saveError}</div>}
+            {saveError && <div className="text-sm text-gray-400">{saveError}</div>}
             <div className="flex gap-2">
               <Button onClick={handleBulkSubmit} fullWidth disabled={saving || !bulkText.trim()}>
                 {saving ? t("adding") : t("bulkAddAllKeys")}
@@ -592,9 +592,9 @@ export default function AddApiKeyModal({
         {(!bulkSupported || mode === "single") && (
           <>
             {isCcCompatible && (
-              <div className="rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-sm text-text-muted">
+              <div className="rounded-lg border border-gray-500/25 bg-gray-500/10 px-3 py-2 text-sm text-text-muted">
                 <div className="flex items-start gap-2">
-                  <span className="material-symbols-outlined mt-0.5 text-[18px] text-amber-500">
+                  <span className="material-symbols-outlined mt-0.5 text-[18px] text-gray-500">
                     warning
                   </span>
                   <p>{t("ccCompatibleValidationHint")}</p>
@@ -602,9 +602,9 @@ export default function AddApiKeyModal({
               </div>
             )}
             {isCommandCode && onStartCommandCodeAuth && (
-              <div className="rounded-lg border border-sky-500/20 bg-sky-500/10 px-3 py-3 text-sm">
+              <div className="rounded-lg border border-gray-500/20 bg-gray-500/10 px-3 py-3 text-sm">
                 <div className="flex items-start gap-3">
-                  <span className="material-symbols-outlined mt-0.5 text-[18px] text-sky-500">
+                  <span className="material-symbols-outlined mt-0.5 text-[18px] text-gray-500">
                     open_in_new
                   </span>
                   <div className="min-w-0 flex-1">
@@ -770,7 +770,7 @@ export default function AddApiKeyModal({
               </Badge>
             )}
             {saveError && (
-              <div className="text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
+              <div className="text-sm text-gray-500 bg-gray-500/10 border border-gray-500/20 rounded-lg px-3 py-2">
                 {saveError}
               </div>
             )}

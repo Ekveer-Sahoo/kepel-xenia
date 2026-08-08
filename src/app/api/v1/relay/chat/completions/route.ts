@@ -3,14 +3,14 @@
  *
  * Serverless Relay Proxy endpoint.
  * Authenticates via relay token, applies rate limits, then proxies
- * to the internal OmniRoute chat completions pipeline.
+ * to the internal Xenia chat completions pipeline.
  */
 
 import { CORS_HEADERS, handleCorsOptions } from "@/shared/utils/cors";
 import { handleChat } from "@/sse/handlers/chat";
 import { createInjectionGuard } from "@/middleware/promptInjectionGuard";
 import { getRelayTokenByHash, checkRateLimit, recordRelayUsage } from "@/lib/db/relayProxies";
-import { buildErrorBody } from "@omniroute/open-sse/utils/error";
+import { buildErrorBody } from "@xenia/open-sse/utils/error";
 import {
   checkIpRateLimit,
   extractToken,
@@ -26,8 +26,8 @@ import {
   shouldTryBifrostForRequest,
   type BifrostRoutingConfig,
 } from "./routingBackend";
-import { getProviderPluginManifestEntryForModel } from "@omniroute/open-sse/config/providerPluginManifestRegistry.ts";
-import { getProviderPluginManifestHeader } from "@omniroute/open-sse/config/providerPluginManifestUrl.ts";
+import { getProviderPluginManifestEntryForModel } from "@xenia/open-sse/config/providerPluginManifestRegistry.ts";
+import { getProviderPluginManifestHeader } from "@xenia/open-sse/config/providerPluginManifestUrl.ts";
 import { finalizeReadableStream } from "./streamFinalizer";
 import {
   clearBifrostFailure,

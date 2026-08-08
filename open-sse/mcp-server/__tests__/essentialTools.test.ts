@@ -2,7 +2,7 @@
  * Unit tests for MCP Essential Tools (Phase 1)
  *
  * Tests all 10 essential tool handlers via the tool handler functions.
- * The omniroute_web_search tests use InMemoryTransport + Client to exercise
+ * The xenia_web_search tests use InMemoryTransport + Client to exercise
  * the actual registered handler (not mockFetch directly).
  */
 
@@ -23,15 +23,15 @@ describe("MCP Essential Tools", () => {
 
   describe("Tool schema validation", () => {
     it("should have exactly 12 essential tools (includes web_search + web_fetch + tool_search)", () => {
-      // 11 -> 12: #8925 shipped omniroute_create_combo as a phase-1 tool.
+      // 11 -> 12: #8925 shipped xenia_create_combo as a phase-1 tool.
       const schemas = MCP_ESSENTIAL_TOOLS;
       expect(schemas).toHaveLength(12);
     });
 
-    it("all tools should have omniroute_ prefix", () => {
+    it("all tools should have xenia_ prefix", () => {
       const schemas = MCP_ESSENTIAL_TOOLS;
       for (const schema of schemas) {
-        expect(schema.name).toMatch(/^omniroute_/);
+        expect(schema.name).toMatch(/^xenia_/);
       }
     });
   });
@@ -144,7 +144,7 @@ describe("MCP Essential Tools", () => {
   });
 });
 
-// ── omniroute_web_search: handler dispatch tests ──────────────────────────────
+// ── xenia_web_search: handler dispatch tests ──────────────────────────────
 // These tests use InMemoryTransport + Client to exercise the actual registered
 // handler (not mockFetch directly), ensuring real handler coverage.
 
@@ -152,7 +152,7 @@ vi.mock("../audit.ts", () => ({
   logToolCall: vi.fn().mockResolvedValue(undefined),
 }));
 
-describe("omniroute_web_search handler (via MCP dispatch)", () => {
+describe("xenia_web_search handler (via MCP dispatch)", () => {
   let client: Client;
 
   beforeEach(async () => {
@@ -171,7 +171,7 @@ describe("omniroute_web_search handler (via MCP dispatch)", () => {
 
   it("should appear in tools/list after registration", async () => {
     const { tools } = await client.listTools();
-    const webSearch = tools.find((t) => t.name === "omniroute_web_search");
+    const webSearch = tools.find((t) => t.name === "xenia_web_search");
     expect(webSearch).toBeDefined();
     expect(webSearch?.description).toContain("web search");
   });
@@ -198,7 +198,7 @@ describe("omniroute_web_search handler (via MCP dispatch)", () => {
     });
 
     const result = await client.callTool({
-      name: "omniroute_web_search",
+      name: "xenia_web_search",
       arguments: { query: "typescript best practices" },
     });
 
@@ -224,7 +224,7 @@ describe("omniroute_web_search handler (via MCP dispatch)", () => {
     });
 
     await client.callTool({
-      name: "omniroute_web_search",
+      name: "xenia_web_search",
       arguments: {
         query: "react hooks tutorial",
         max_results: 10,
@@ -259,7 +259,7 @@ describe("omniroute_web_search handler (via MCP dispatch)", () => {
     });
 
     await client.callTool({
-      name: "omniroute_web_search",
+      name: "xenia_web_search",
       arguments: { query: "test query" },
     });
 
@@ -276,7 +276,7 @@ describe("omniroute_web_search handler (via MCP dispatch)", () => {
     });
 
     const result = await client.callTool({
-      name: "omniroute_web_search",
+      name: "xenia_web_search",
       arguments: { query: "test" },
     });
 
@@ -289,7 +289,7 @@ describe("omniroute_web_search handler (via MCP dispatch)", () => {
     mockFetch.mockRejectedValueOnce(new DOMException("signal timed out", "TimeoutError"));
 
     const result = await client.callTool({
-      name: "omniroute_web_search",
+      name: "xenia_web_search",
       arguments: { query: "test" },
     });
 

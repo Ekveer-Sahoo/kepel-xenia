@@ -48,10 +48,10 @@ interface FilesListTabProps {
 }
 
 const PURPOSE_STYLES_MAP: Record<string, string> = {
-  batch: "bg-blue-500/15 text-blue-400 border-blue-500/25",
-  "batch-output": "bg-emerald-500/15 text-emerald-400 border-emerald-500/25",
-  "fine-tune": "bg-violet-500/15 text-violet-400 border-violet-500/25",
-  assistants: "bg-yellow-500/15 text-yellow-400 border-yellow-500/25",
+  batch: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  "batch-output": "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  "fine-tune": "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  assistants: "bg-gray-500/15 text-gray-400 border-gray-500/25",
 };
 
 const TERMINAL_STATUSES = new Set(["completed", "failed", "cancelled", "expired"]);
@@ -330,7 +330,7 @@ export default function FilesListTab({
                           title={
                             canDelete ? t("filesListDelete") : t("batchFileInUseByActiveBatch")
                           }
-                          className="p-1.5 rounded text-[var(--color-text-muted)] hover:text-red-400 hover:bg-[var(--color-bg-alt)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                          className="p-1.5 rounded text-[var(--color-text-muted)] hover:text-gray-400 hover:bg-[var(--color-bg-alt)] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                         >
                           <span className="material-symbols-outlined text-[16px]">
                             {deletingId === file.id ? "hourglass_empty" : "delete"}

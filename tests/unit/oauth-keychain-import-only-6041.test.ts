@@ -13,7 +13,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-oauth-6041-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-oauth-6041-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -42,7 +42,11 @@ test("#6041 GET /oauth/zed/authorize returns a graceful 400, not a 500 'Unknown 
   const body = await res.json();
   assert.ok(body.error, "error message present");
   assert.match(body.error, /Import/i, "must point the user at the Import flow");
-  assert.doesNotMatch(body.error, /Unknown provider/i, "must not leak the raw 'Unknown provider' error");
+  assert.doesNotMatch(
+    body.error,
+    /Unknown provider/i,
+    "must not leak the raw 'Unknown provider' error"
+  );
   // Never leak a stack trace (ERROR_SANITIZATION).
   assert.doesNotMatch(body.error, /at \//, "must not leak a stack trace");
 });

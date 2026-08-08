@@ -159,7 +159,7 @@ export default function PayloadRulesTab() {
     <Card>
       <div className="flex flex-col gap-5">
         <div className="flex items-start gap-3">
-          <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               data_object
             </span>
@@ -208,10 +208,10 @@ export default function PayloadRulesTab() {
           <div
             className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm ${
               message.type === "success"
-                ? "bg-green-500/10 text-green-600 dark:text-green-400"
+                ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
                 : message.type === "info"
-                  ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
-                  : "bg-red-500/10 text-red-600 dark:text-red-400"
+                  ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
+                  : "bg-gray-500/10 text-gray-600 dark:text-gray-400"
             }`}
           >
             <span className="material-symbols-outlined text-[16px]">
@@ -249,7 +249,7 @@ export default function PayloadRulesTab() {
         </div>
 
         {parsedEditor.error && (
-          <p className="text-sm text-red-500">
+          <p className="text-sm text-gray-500">
             {t("payloadJsonParseError", { error: parsedEditor.error })}
           </p>
         )}

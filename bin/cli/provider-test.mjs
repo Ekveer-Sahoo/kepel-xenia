@@ -41,16 +41,13 @@ function providerEnvName(provider, suffix) {
   const normalizedProvider = String(provider || "")
     .toUpperCase()
     .replace(/[^A-Z0-9]/g, "_");
-  return `OMNIROUTE_PROVIDER_TEST_${normalizedProvider}_${suffix}`;
+  return `XENIA_PROVIDER_TEST_${normalizedProvider}_${suffix}`;
 }
 
 function resolveTestModel(input, config) {
   const providerOverride = process.env[providerEnvName(input.provider, "MODEL")];
   return (
-    input.defaultModel ||
-    providerOverride ||
-    process.env.OMNIROUTE_PROVIDER_TEST_MODEL ||
-    config.model
+    input.defaultModel || providerOverride || process.env.XENIA_PROVIDER_TEST_MODEL || config.model
   );
 }
 

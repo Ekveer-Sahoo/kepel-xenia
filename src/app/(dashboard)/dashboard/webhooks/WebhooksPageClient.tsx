@@ -162,8 +162,8 @@ export function WebhooksPageClient() {
         <div
           className={`rounded-lg border px-4 py-3 text-sm ${
             feedback.type === "success"
-              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
-              : "border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-300"
+              ? "border-gray-500/30 bg-gray-500/10 text-gray-600 dark:text-gray-300"
+              : "border-gray-500/30 bg-gray-500/10 text-gray-600 dark:text-gray-300"
           }`}
         >
           {feedback.message}
@@ -179,7 +179,7 @@ export function WebhooksPageClient() {
                 label: t("active"),
                 value: stats.active,
                 icon: "check_circle",
-                tone: "text-emerald-500",
+                tone: "text-gray-500",
               },
               {
                 label: t("inactive"),
@@ -187,7 +187,7 @@ export function WebhooksPageClient() {
                 icon: "pause_circle",
                 tone: "text-text-muted",
               },
-              { label: t("errored"), value: stats.errored, icon: "error", tone: "text-red-500" },
+              { label: t("errored"), value: stats.errored, icon: "error", tone: "text-gray-500" },
             ].map((stat) => (
               <Card key={stat.label} className="p-4">
                 <div className="flex items-center justify-between gap-3">

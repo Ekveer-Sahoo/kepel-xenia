@@ -1,5 +1,5 @@
 /**
- * Regression test for #6911: OMNIROUTE_QUOTA_FETCH_MIN_INTERVAL_MS was only
+ * Regression test for #6911: XENIA_QUOTA_FETCH_MIN_INTERVAL_MS was only
  * wired into codexQuotaFetcher.ts even though quotaFetchThrottle.ts documents
  * itself as "used by the provider quota fetchers" (plural). This asserts the
  * shared throttle is now honored by fetchDeepseekQuota, fetchBailianQuota
@@ -9,26 +9,38 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { fetchDeepseekQuota, invalidateDeepseekQuotaCache } from "../../open-sse/services/deepseekQuotaFetcher.ts";
-import { fetchBailianQuota, invalidateBailianQuotaCache } from "../../open-sse/services/bailianQuotaFetcher.ts";
-import { fetchOpencodeQuota, invalidateOpencodeQuotaCache } from "../../open-sse/services/opencodeQuotaFetcher.ts";
-import { fetchCrofUsage, invalidateCrofUsageCache } from "../../open-sse/services/crofUsageFetcher.ts";
+import {
+  fetchDeepseekQuota,
+  invalidateDeepseekQuotaCache,
+} from "../../open-sse/services/deepseekQuotaFetcher.ts";
+import {
+  fetchBailianQuota,
+  invalidateBailianQuotaCache,
+} from "../../open-sse/services/bailianQuotaFetcher.ts";
+import {
+  fetchOpencodeQuota,
+  invalidateOpencodeQuotaCache,
+} from "../../open-sse/services/opencodeQuotaFetcher.ts";
+import {
+  fetchCrofUsage,
+  invalidateCrofUsageCache,
+} from "../../open-sse/services/crofUsageFetcher.ts";
 import { resetQuotaFetchThrottle } from "../../open-sse/services/quotaFetchThrottle.ts";
 
 const originalFetch = globalThis.fetch;
-const originalEnv = process.env.OMNIROUTE_QUOTA_FETCH_MIN_INTERVAL_MS;
+const originalEnv = process.env.XENIA_QUOTA_FETCH_MIN_INTERVAL_MS;
 
 test.beforeEach(() => {
-  process.env.OMNIROUTE_QUOTA_FETCH_MIN_INTERVAL_MS = "200";
+  process.env.XENIA_QUOTA_FETCH_MIN_INTERVAL_MS = "200";
   resetQuotaFetchThrottle();
 });
 
 test.afterEach(() => {
   globalThis.fetch = originalFetch;
   if (originalEnv === undefined) {
-    delete process.env.OMNIROUTE_QUOTA_FETCH_MIN_INTERVAL_MS;
+    delete process.env.XENIA_QUOTA_FETCH_MIN_INTERVAL_MS;
   } else {
-    process.env.OMNIROUTE_QUOTA_FETCH_MIN_INTERVAL_MS = originalEnv;
+    process.env.XENIA_QUOTA_FETCH_MIN_INTERVAL_MS = originalEnv;
   }
   resetQuotaFetchThrottle();
 });
@@ -122,10 +134,7 @@ test("#6911 fetchOpencodeQuota is spaced by the shared quota-fetch throttle", as
 
 test("#6911 fetchCrofUsage is spaced by the shared quota-fetch throttle", async () => {
   await assertSpacedByThrottle("crof", crofBody, (idA, idB) =>
-    Promise.all([
-      fetchCrofUsage(idA, { apiKey: "sk-a" }),
-      fetchCrofUsage(idB, { apiKey: "sk-b" }),
-    ])
+    Promise.all([fetchCrofUsage(idA, { apiKey: "sk-a" }), fetchCrofUsage(idB, { apiKey: "sk-b" })])
   );
 });
 

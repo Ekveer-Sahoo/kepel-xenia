@@ -65,7 +65,7 @@ export default function UsageTokenBufferTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-sky-500/10 text-sky-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             pin
           </span>

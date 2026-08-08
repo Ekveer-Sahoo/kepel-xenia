@@ -50,7 +50,7 @@ type Template = {
 
 type ProviderBreakdown = { provider: string; cost: number; pct: number };
 
-const LS_TEMPLATES = "omniroute:budget:templates";
+const LS_TEMPLATES = "xenia:budget:templates";
 
 const DEFAULT_TEMPLATES: Template[] = [
   {
@@ -124,24 +124,24 @@ function projectEndOfMonth(monthlyCost: number, now = new Date()): number {
 const STATUS_META: Record<StatusKey, { tone: string; bg: string; dot: string }> = {
   all: { tone: "text-text-main", bg: "bg-bg-subtle", dot: "var(--color-text-muted)" },
   blocked: {
-    tone: "text-red-400",
-    bg: "bg-red-500/10 border-red-500/30",
-    dot: "#ef4444",
+    tone: "text-gray-400",
+    bg: "bg-gray-500/10 border-gray-500/30",
+    dot: "#777777",
   },
   alerting: {
-    tone: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/30",
-    dot: "#f59e0b",
+    tone: "text-gray-400",
+    bg: "bg-gray-500/10 border-gray-500/30",
+    dot: "#a7a7a7",
   },
   warning: {
-    tone: "text-yellow-400",
-    bg: "bg-yellow-500/10 border-yellow-500/30",
-    dot: "#eab308",
+    tone: "text-gray-400",
+    bg: "bg-gray-500/10 border-gray-500/30",
+    dot: "#b0b0b0",
   },
   safe: {
-    tone: "text-emerald-400",
-    bg: "bg-emerald-500/10 border-emerald-500/30",
-    dot: "#22c55e",
+    tone: "text-gray-400",
+    bg: "bg-gray-500/10 border-gray-500/30",
+    dot: "#898989",
   },
   "no-limit": {
     tone: "text-text-muted",
@@ -667,7 +667,7 @@ function KpiBlock({
   tone?: "amber" | "red";
 }) {
   const color =
-    tone === "red" ? "text-red-400" : tone === "amber" ? "text-amber-400" : "text-text-main";
+    tone === "red" ? "text-gray-400" : tone === "amber" ? "text-gray-400" : "text-text-main";
   return (
     <div className="rounded-lg border border-border/40 bg-bg-subtle/30 px-3 py-2">
       <div className="text-[10px] uppercase tracking-wide text-text-muted font-semibold truncate">
@@ -681,7 +681,7 @@ function KpiBlock({
 
 function ProgressBarTinyColored({ value, max }: { value: number; max: number }) {
   const pct = max > 0 ? Math.min((value / max) * 100, 100) : 0;
-  const color = pct >= 100 ? "#ef4444" : pct >= 80 ? "#f59e0b" : pct >= 50 ? "#eab308" : "#22c55e";
+  const color = pct >= 100 ? "#777777" : pct >= 80 ? "#a7a7a7" : pct >= 50 ? "#b0b0b0" : "#898989";
   return (
     <div className="w-full h-1 rounded-sm bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden">
       <div className="h-full" style={{ width: `${pct}%`, background: color }} />
@@ -883,7 +883,7 @@ function BudgetRowExpanded({
               <div className="text-[10px] text-text-muted">{t("budgetProjectedEndOfMonth")}</div>
               <div
                 className={`text-lg font-bold tabular-nums ${
-                  projectionOver ? "text-amber-400" : "text-emerald-400"
+                  projectionOver ? "text-gray-400" : "text-gray-400"
                 }`}
               >
                 {formatCurrency(projection)}

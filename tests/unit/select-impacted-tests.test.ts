@@ -52,7 +52,10 @@ test("changed e2e test → NOT selected (not a node:test unit file)", () => {
 });
 
 test("changed vitest file in uncurated tests/unit/autoCombo → NOT selected", () => {
-  const sel = selectImpacted({ changed: ["tests/unit/autoCombo/tieredRotation.test.ts"], map: MAP });
+  const sel = selectImpacted({
+    changed: ["tests/unit/autoCombo/tieredRotation.test.ts"],
+    map: MAP,
+  });
   assert.deepEqual(sel, []);
 });
 
@@ -119,6 +122,6 @@ test("changed electron/ file alone → empty (not unit fail-safe)", () => {
 });
 
 test("changed bin/ file alone → empty (not unit fail-safe)", () => {
-  const sel = selectImpacted({ changed: ["bin/omniroute.js"], map: MAP });
+  const sel = selectImpacted({ changed: ["bin/xenia.js"], map: MAP });
   assert.deepEqual(sel, []);
 });

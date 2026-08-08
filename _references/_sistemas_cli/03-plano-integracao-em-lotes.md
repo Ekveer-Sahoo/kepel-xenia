@@ -3,7 +3,7 @@
 > **Status final (2026-08-03):** a fase de pesquisa foi concluída em lotes de até três worktrees/agentes, cobrindo `104/104` casos. Este documento continua válido como processo operacional para implementação/publicação. Consulte `06-relatorio-final-104-clis-e-estrategia-prs.md` para o resultado final.
 
 **Data:** 2026-08-01  
-**Objetivo:** pesquisar, integrar, validar e publicar suporte ao OmniRoute em todos os projetos tecnicamente possiveis, mantendo uma fila que permite ate tres subagentes simultaneos.
+**Objetivo:** pesquisar, integrar, validar e publicar suporte ao Xenia em todos os projetos tecnicamente possiveis, mantendo uma fila que permite ate tres subagentes simultaneos.
 
 O ciclo especifico de preparacao, revisao, envio e acompanhamento das contribuicoes upstream esta
 em `05-plano-publicacao-prs-upstream.md`.
@@ -23,7 +23,7 @@ em `05-plano-publicacao-prs-upstream.md`.
 
 ### Fase 0 - Preparacao da task
 
-Criar uma task com nome do projeto, URL canonica, prioridade, evidencia inicial, estado no catalogo OmniRoute e objetivo de integrar. Definir a worktree e o agente responsavel.
+Criar uma task com nome do projeto, URL canonica, prioridade, evidencia inicial, estado no catalogo Xenia e objetivo de integrar. Definir a worktree e o agente responsavel.
 
 ### Fase 1 - Pesquisa individual fresca
 
@@ -54,14 +54,14 @@ Nao implementar antes de haver uma conclusao de viabilidade e uma razao verifica
 
 - Executar a suite recomendada pelo upstream antes das mudancas.
 - Registrar falhas preexistentes, dependencias ausentes e comandos exatos.
-- Limpar `OMNIROUTE_API_KEY` e demais credenciais quando os testes pressupuserem ambiente sem chaves.
+- Limpar `XENIA_API_KEY` e demais credenciais quando os testes pressupuserem ambiente sem chaves.
 - Adicionar primeiro um teste de configuracao, endpoint e selecao de modelo que falhe sem a integracao.
 
 ### Fase 4 - Implementacao minima
 
 Implementar apenas o necessario para o caso pesquisado:
 
-- perfil/preset `omniroute` ou provider custom;
+- perfil/preset `xenia` ou provider custom;
 - base URL correta (raiz, `/v1` ou `/v1beta` conforme o cliente);
 - chave via ambiente ou mecanismo seguro do cliente;
 - modelo fixo ou descoberta de modelos;
@@ -76,13 +76,13 @@ Se o upstream nao aceitar mudanca, preparar wrapper/launcher ou documentacao loc
 Executar, conforme o protocolo:
 
 - build, lint, typecheck e testes do upstream;
-- smoke request com OmniRoute;
+- smoke request com Xenia;
 - streaming SSE e encerramento por abort;
 - tool calling e JSON de argumentos;
 - `/v1/models` ou equivalente;
 - Chat Completions, Responses, Anthropic Messages e Gemini `generateContent` quando aplicavel;
 - fallback/erro, timeout, retry e modelo inexistente;
-- teste com chave limpa e teste com `OMNIROUTE_API_KEY` real fora dos logs.
+- teste com chave limpa e teste com `XENIA_API_KEY` real fora dos logs.
 
 ### Fase 6 - Publicacao upstream
 
@@ -92,11 +92,11 @@ Executar, conforme o protocolo:
 - Se o projeto for fechado/EULA, registrar config manual ou issue de produto; nao criar PR ficticio.
 - Atualizar o tracker com URL, commit, estado e resposta do mantenedor.
 
-### Fase 7 - Catalogo e integracao OmniRoute
+### Fase 7 - Catalogo e integracao Xenia
 
-Quando houver valor para usuarios OmniRoute:
+Quando houver valor para usuarios Xenia:
 
-- criar worktree propria do OmniRoute;
+- criar worktree propria do Xenia;
 - atualizar `src/shared/constants/cliTools.ts` ou `src/shared/constants/cliToolsGrokBuild.ts`;
 - atualizar detector em `src/lib/cli-helper/tool-detector.ts` se necessario;
 - adicionar gerador/configurador e rota de settings somente se o caso exigir;
@@ -106,7 +106,7 @@ Quando houver valor para usuarios OmniRoute:
 
 ### Fase 8 - Fechamento
 
-Registrar commit, branch, PR/issue, testes, limitacoes, status do upstream, status do catalogo OmniRoute e proximo passo. O agente principal faz uma revisao final de seguranca, licenca e factualidade.
+Registrar commit, branch, PR/issue, testes, limitacoes, status do upstream, status do catalogo Xenia e proximo passo. O agente principal faz uma revisao final de seguranca, licenca e factualidade.
 
 ## 3. Lotes de ate tres subagentes
 
@@ -114,12 +114,12 @@ O lote e uma unidade operacional. A fila abaixo e ordenada pelo documento `02-pr
 
 ### Lote 0 - consolidacao do caso de referencia
 
-- `CLI-000` - jcode - manter a issue #704, validar resposta do mantenedor e concluir a secao do README OmniRoute.
+- `CLI-000` - jcode - manter a issue #704, validar resposta do mantenedor e concluir a secao do README Xenia.
 
 ### Lote P0.1
 
 - `CLI-001` - Gemini CLI - integrar provider/base URL Gemini.
-- `CLI-002` - Claw Code - integrar `OPENAI_BASE_URL`/provider OmniRoute.
+- `CLI-002` - Claw Code - integrar `OPENAI_BASE_URL`/provider Xenia.
 - `CLI-003` - Plandex - integrar provider custom com `baseUrl`.
 
 ### Lote P0.2
@@ -310,5 +310,5 @@ O lote seguinte pode iniciar quando os tres agentes do lote atual tiverem: pesqu
 3. Diff minimo ou conclusao documentada de que nao ha diff necessario.
 4. Testes e comandos executados, incluindo falhas preexistentes.
 5. PR/issue upstream ou justificativa de config-only/MITM.
-6. Entrada no catalogo OmniRoute quando aplicavel.
+6. Entrada no catalogo Xenia quando aplicavel.
 7. Atualizacao do tracker `04-tracker-integracoes-clis.md`.

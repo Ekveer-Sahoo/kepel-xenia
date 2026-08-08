@@ -4,7 +4,7 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "omniroute-video-xai-"));
+process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "xenia-video-xai-"));
 
 const { handleVideoGeneration } = await import("../../open-sse/handlers/videoGeneration.ts");
 const { VIDEO_PROVIDERS } = await import("../../open-sse/config/videoRegistry.ts");
@@ -116,8 +116,7 @@ test("handleVideoGeneration rejects xAI video requests without credentials", asy
 
 test("handleVideoGeneration surfaces a 502 when xAI returns no request_id", async () => {
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async () =>
-    jsonResponse({ error: { message: "Invalid API key" } }, 401);
+  globalThis.fetch = async () => jsonResponse({ error: { message: "Invalid API key" } }, 401);
 
   try {
     const result = await handleVideoGeneration({

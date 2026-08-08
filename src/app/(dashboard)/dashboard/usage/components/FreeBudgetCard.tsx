@@ -135,16 +135,16 @@ const DEFAULT_LABELS: FreeBudgetLabels = {
 
 // Distinct hues for stacked bar segments (cycling)
 const BAR_HUES = [
-  "#6366f1",
-  "#10b981",
-  "#f59e0b",
-  "#3b82f6",
-  "#ec4899",
-  "#14b8a6",
-  "#f97316",
-  "#8b5cf6",
-  "#06b6d4",
-  "#84cc16",
+  "#757575",
+  "#808080",
+  "#a7a7a7",
+  "#7a7a7a",
+  "#828282",
+  "#858585",
+  "#909090",
+  "#7c7c7c",
+  "#858585",
+  "#a2a2a2",
 ];
 
 const RECURRING_TYPES = new Set(["recurring-daily", "recurring-monthly", "keyless"]);
@@ -247,7 +247,10 @@ function filterRows(
   if (providerFilter !== "all") out = out.filter((m) => m.provider === providerFilter);
   if (search.trim()) {
     out = out.filter(
-      (m) => matchesSearch(m.displayName, search) || matchesSearch(m.modelId, search) || matchesSearch(m.provider, search)
+      (m) =>
+        matchesSearch(m.displayName, search) ||
+        matchesSearch(m.modelId, search) ||
+        matchesSearch(m.provider, search)
     );
   }
   return out;
@@ -258,13 +261,13 @@ function tosBadge(
   labels: FreeBudgetLabels
 ): { icon: string; cls: string; title: string } | null {
   if (tos === "avoid") {
-    return { icon: "warning", cls: "text-amber-400", title: labels.tosTitles.avoid };
+    return { icon: "warning", cls: "text-gray-400", title: labels.tosTitles.avoid };
   }
   if (tos === "caution") {
     return { icon: "bolt", cls: "text-text-muted", title: labels.tosTitles.caution };
   }
   if (tos === "ok") {
-    return { icon: "check_circle", cls: "text-emerald-500", title: labels.tosTitles.ok };
+    return { icon: "check_circle", cls: "text-gray-500", title: labels.tosTitles.ok };
   }
   return null;
 }
@@ -295,7 +298,7 @@ function FreeTypeBadge({ freeType, label }: { freeType: string; label: string })
       data-testid="free-type-badge"
       className={`inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-[10px] font-medium whitespace-nowrap ${
         isKeyless
-          ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-500"
+          ? "border-gray-500/40 bg-gray-500/10 text-gray-500"
           : "border-border bg-black/[0.02] dark:bg-white/[0.03] text-text-muted"
       }`}
     >
@@ -388,7 +391,7 @@ export function FreeBudgetView({
         <Kpi
           label={labels.firstMonth}
           value={`~${fmt(firstMonthRealisticTokens)}`}
-          valueClass="text-emerald-500"
+          valueClass="text-gray-500"
         />
         <Kpi label={labels.usedThisMonth} value={fmt(usedThisMonth)} valueClass="text-text-muted" />
       </div>
@@ -418,14 +421,14 @@ export function FreeBudgetView({
       {keylessProviders.length > 0 && (
         <div
           data-testid="keyless-section"
-          className="mx-3 mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2"
+          className="mx-3 mt-2 rounded-md border border-gray-500/30 bg-gray-500/5 px-3 py-2"
         >
           <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[14px] text-emerald-500">lock_open</span>
-            <span className="text-[11px] font-semibold text-emerald-500">No API key required</span>
+            <span className="material-symbols-outlined text-[14px] text-gray-500">lock_open</span>
+            <span className="text-[11px] font-semibold text-gray-500">No API key required</span>
             <span className="text-[10.5px] text-text-muted">
-              ({keylessModels.length} model{keylessModels.length !== 1 ? "s" : ""} · {keylessProviders.length}{" "}
-              provider{keylessProviders.length !== 1 ? "s" : ""})
+              ({keylessModels.length} model{keylessModels.length !== 1 ? "s" : ""} ·{" "}
+              {keylessProviders.length} provider{keylessProviders.length !== 1 ? "s" : ""})
             </span>
           </div>
           <div className="mt-1 flex flex-wrap gap-1">
@@ -444,11 +447,9 @@ export function FreeBudgetView({
 
       {/* Boost + uncapped callouts */}
       {boostMonthlyTokens > 0 && (
-        <div className="mx-3 mt-2 flex items-center gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5">
-          <span className="material-symbols-outlined text-[14px] text-emerald-500">bolt</span>
-          <span className="text-[11px] text-emerald-500">
-            {labels.boost(fmt(boostMonthlyTokens))}
-          </span>
+        <div className="mx-3 mt-2 flex items-center gap-2 rounded-md border border-gray-500/30 bg-gray-500/10 px-3 py-1.5">
+          <span className="material-symbols-outlined text-[14px] text-gray-500">bolt</span>
+          <span className="text-[11px] text-gray-500">{labels.boost(fmt(boostMonthlyTokens))}</span>
         </div>
       )}
       {uncappedProviders.length > 0 && (
@@ -470,9 +471,9 @@ export function FreeBudgetView({
 
       {/* ToS-restricted callout */}
       {avoidModels.length > 0 && (
-        <div className="mx-3 mt-2 flex items-center gap-2 rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-1.5">
+        <div className="mx-3 mt-2 flex items-center gap-2 rounded-md border border-gray-500/30 bg-gray-500/10 px-3 py-1.5">
           <span className="material-symbols-outlined text-[14px] text-text-muted">warning</span>
-          <span className="text-[11px] text-amber-400">
+          <span className="text-[11px] text-gray-400">
             {labels.tosRestricted(avoidModels.length)}
           </span>
         </div>
@@ -618,7 +619,7 @@ export default function FreeBudgetCard() {
             type="checkbox"
             checked={keylessOnly}
             onChange={(e) => setKeylessOnly(e.target.checked)}
-            className="accent-emerald-500"
+            className="accent-gray-500"
             data-testid="budget-keyless-toggle"
           />
           Keyless only
@@ -628,7 +629,7 @@ export default function FreeBudgetCard() {
             type="checkbox"
             checked={hideAvoid}
             onChange={(e) => setHideAvoid(e.target.checked)}
-            className="accent-indigo-500"
+            className="accent-gray-500"
           />
           {t("hideTosRestricted")}
         </label>

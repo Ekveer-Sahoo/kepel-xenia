@@ -63,9 +63,7 @@ export default function PlaygroundTab() {
       <Card>
         <div className="p-4 space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1.5">
-              {t("playground.queryLabel")}
-            </label>
+            <label className="block text-sm font-medium mb-1.5">{t("playground.queryLabel")}</label>
             <Input
               data-testid="playground-query-input"
               value={query}
@@ -88,9 +86,7 @@ export default function PlaygroundTab() {
               <Select
                 data-testid="playground-strategy-select"
                 value={strategy}
-                onChange={(e) =>
-                  setStrategy(e.target.value as "exact" | "semantic" | "hybrid")
-                }
+                onChange={(e) => setStrategy(e.target.value as "exact" | "semantic" | "hybrid")}
                 className="w-full"
               >
                 <option value="exact">{t("playground.strategyExact")}</option>
@@ -132,7 +128,7 @@ export default function PlaygroundTab() {
 
       {/* Error */}
       {error && (
-        <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+        <div className="p-3 rounded-lg bg-gray-500/10 border border-gray-500/20 text-xs text-gray-400">
           {error}
         </div>
       )}

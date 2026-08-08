@@ -17,18 +17,18 @@
  * now; the WS bridge previously had *zero* compression coverage, so this closes the primary gap.
  */
 
-import { logger } from "@omniroute/open-sse/utils/logger.ts";
-import { estimateTokens } from "@omniroute/open-sse/services/contextManager.ts";
-import { adaptBodyForCompression } from "@omniroute/open-sse/services/compression/bodyAdapter.ts";
+import { logger } from "@xenia/open-sse/utils/logger.ts";
+import { estimateTokens } from "@xenia/open-sse/services/contextManager.ts";
+import { adaptBodyForCompression } from "@xenia/open-sse/services/compression/bodyAdapter.ts";
 import type {
   CompressionConfig,
   CompressionResult,
-} from "@omniroute/open-sse/services/compression/types.ts";
-import { resolveCompressionSettings } from "@omniroute/open-sse/handlers/chatCore/compressionSettings.ts";
+} from "@xenia/open-sse/services/compression/types.ts";
+import { resolveCompressionSettings } from "@xenia/open-sse/handlers/chatCore/compressionSettings.ts";
 import {
   writeCompressionAnalytics,
   writeCompressionSkip,
-} from "@omniroute/open-sse/handlers/chatCore/compressionAnalyticsWrite.ts";
+} from "@xenia/open-sse/handlers/chatCore/compressionAnalyticsWrite.ts";
 
 const log = logger("RESPONSES_WS_COMPRESSION");
 
@@ -55,13 +55,16 @@ export async function applyResponsesWsCompression(
     if (!enabled || !settings) return responseBody;
 
     const adapter = adaptBodyForCompression(responseBody);
-    if (!adapter.adapted || !Array.isArray(adapter.body.messages) || adapter.body.messages.length === 0) {
+    if (
+      !adapter.adapted ||
+      !Array.isArray(adapter.body.messages) ||
+      adapter.body.messages.length === 0
+    ) {
       return responseBody;
     }
 
-    const { selectCompressionStrategy, applyCompressionAsync } = await import(
-      "@omniroute/open-sse/services/compression/strategySelector.ts"
-    );
+    const { selectCompressionStrategy, applyCompressionAsync } =
+      await import("@xenia/open-sse/services/compression/strategySelector.ts");
 
     const estimatedTokens = estimateTokens(adapter.body.messages);
     const cachingContext = {

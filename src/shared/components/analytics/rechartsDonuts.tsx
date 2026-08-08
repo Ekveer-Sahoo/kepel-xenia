@@ -186,7 +186,7 @@ export function ProviderCostDonut({ byProvider }) {
       pieData={pieData}
       title={t("chartCostByProvider")}
       formatter={fmtCost}
-      valueClassName="text-amber-500"
+      valueClassName="text-gray-500"
       labelClassName="capitalize"
     />
   );

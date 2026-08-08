@@ -21,7 +21,7 @@ import path from "node:path";
 const ORIGINAL_DATA_DIR = process.env.DATA_DIR;
 
 function createTempDataDir(): string {
-  return fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-cliproxy-6877-"));
+  return fs.mkdtempSync(path.join(os.tmpdir(), "xenia-cliproxy-6877-"));
 }
 
 // DATA_DIR is captured into a module-level const the *first* time
@@ -51,9 +51,8 @@ describe("resolveSpawnArgs (#6877 — real filesystem)", () => {
   });
 
   it("uses the --config long flag and never the -c short flag", async () => {
-    const { resolveSpawnArgs } = await import(
-      "../../../../src/lib/services/installers/cliproxy.ts"
-    );
+    const { resolveSpawnArgs } =
+      await import("../../../../src/lib/services/installers/cliproxy.ts");
 
     const port = 8317;
     const result = resolveSpawnArgs(port);
@@ -65,9 +64,8 @@ describe("resolveSpawnArgs (#6877 — real filesystem)", () => {
   });
 
   it("writes the default config.yaml template when none exists yet", async () => {
-    const { resolveSpawnArgs } = await import(
-      "../../../../src/lib/services/installers/cliproxy.ts"
-    );
+    const { resolveSpawnArgs } =
+      await import("../../../../src/lib/services/installers/cliproxy.ts");
 
     const port = 9123;
     const result = resolveSpawnArgs(port);
@@ -81,9 +79,8 @@ describe("resolveSpawnArgs (#6877 — real filesystem)", () => {
   });
 
   it("preserves a pre-existing config.yaml byte-for-byte instead of overwriting it", async () => {
-    const { resolveSpawnArgs } = await import(
-      "../../../../src/lib/services/installers/cliproxy.ts"
-    );
+    const { resolveSpawnArgs } =
+      await import("../../../../src/lib/services/installers/cliproxy.ts");
 
     const configDir = path.join(dataDir, "services", "cliproxy");
     fs.mkdirSync(configDir, { recursive: true });

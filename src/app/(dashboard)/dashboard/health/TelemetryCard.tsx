@@ -115,9 +115,9 @@ function Sparkline({
 function getIndicatorTone(value: number, warning: number, critical: number, inverse = false) {
   const healthy = inverse ? value >= warning : value <= warning;
   const criticalHit = inverse ? value < critical : value >= critical;
-  if (criticalHit) return "bg-red-500/10 text-red-500";
-  if (!healthy) return "bg-amber-500/10 text-amber-500";
-  return "bg-emerald-500/10 text-emerald-500";
+  if (criticalHit) return "bg-gray-500/10 text-gray-500";
+  if (!healthy) return "bg-gray-500/10 text-gray-500";
+  return "bg-gray-500/10 text-gray-500";
 }
 
 export default function TelemetryCard() {
@@ -213,7 +213,7 @@ export default function TelemetryCard() {
       label: t("uptime"),
       value: formatDuration(values.uptime),
       icon: "timer",
-      tone: "bg-blue-500/10 text-blue-500",
+      tone: "bg-gray-500/10 text-gray-500",
     },
     {
       label: t("totalRequests"),
@@ -237,13 +237,13 @@ export default function TelemetryCard() {
       label: t("activeConnections"),
       value: values.activeConnections.toLocaleString(),
       icon: "hub",
-      tone: "bg-cyan-500/10 text-cyan-500",
+      tone: "bg-gray-500/10 text-gray-500",
     },
     {
       label: t("memoryUsage"),
       value: formatBytes(values.memoryUsage.rss ?? values.memoryUsage.heapUsed ?? 0),
       icon: "memory",
-      tone: "bg-violet-500/10 text-violet-500",
+      tone: "bg-gray-500/10 text-gray-500",
     },
   ];
 
@@ -278,7 +278,7 @@ export default function TelemetryCard() {
       </div>
 
       {error && (
-        <div className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-600">
+        <div className="mb-4 rounded-lg border border-gray-500/30 bg-gray-500/10 px-3 py-2 text-sm text-gray-600">
           {t("partialData", { error })}
         </div>
       )}

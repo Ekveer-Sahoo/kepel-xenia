@@ -20,7 +20,7 @@ import {
   getComboByName,
   updateCombo,
 } from "@/lib/db/combos";
-import { REGISTRY } from "@omniroute/open-sse/config/providerRegistry";
+import { REGISTRY } from "@xenia/open-sse/config/providerRegistry";
 import {
   quotaModelName,
   parseQuotaModelName,
@@ -152,7 +152,10 @@ export async function syncQuotaCombos(poolId: string): Promise<void> {
   for (const connId of pool.connectionIds) {
     let connection: Record<string, unknown> | null = null;
     try {
-      connection = (await getCachedProviderConnectionById(connId)) as Record<string, unknown> | null;
+      connection = (await getCachedProviderConnectionById(connId)) as Record<
+        string,
+        unknown
+      > | null;
     } catch {
       // Connection lookup failure — skip this connection.
       continue;

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Docker healthcheck script for OmniRoute.
+ * Docker healthcheck script for Xenia.
  * Probes the /api/monitoring/health endpoint on the dashboard port.
  * Used by Dockerfile and docker-compose files.
  *
@@ -115,7 +115,7 @@ async function main() {
   }
 
   try {
-    const healthPath = resolveHealthPath(process.env.OMNIROUTE_BASE_PATH);
+    const healthPath = resolveHealthPath(process.env.XENIA_BASE_PATH);
     await probeHealth({ port, hosts, healthPath });
     process.exit(0);
   } catch (err) {

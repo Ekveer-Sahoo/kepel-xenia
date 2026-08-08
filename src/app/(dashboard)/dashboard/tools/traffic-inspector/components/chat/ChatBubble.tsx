@@ -11,9 +11,9 @@ interface ChatBubbleProps {
 }
 
 const ROLE_STYLES: Record<NormalizedTurn["role"], string> = {
-  system: "border border-red-500/40 bg-red-900/20 text-red-200",
-  user: "ml-auto bg-blue-600/30 border border-blue-500/30 text-blue-100",
-  assistant: "bg-purple-900/30 border border-purple-500/30 text-purple-100",
+  system: "border border-gray-500/40 bg-gray-900/20 text-gray-200",
+  user: "ml-auto bg-gray-600/30 border border-gray-500/30 text-gray-100",
+  assistant: "bg-gray-900/30 border border-gray-500/30 text-gray-100",
   tool: "bg-gray-800 border border-gray-600/30 text-gray-200",
 };
 

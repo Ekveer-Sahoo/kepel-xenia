@@ -179,7 +179,7 @@ export function SttExampleCard({ providerId }: Props) {
           className="hidden"
           onChange={handleFileChange}
         />
-        {fileError && <p className="text-xs text-red-400 mt-1">{fileError}</p>}
+        {fileError && <p className="text-xs text-gray-400 mt-1">{fileError}</p>}
         <p className="text-xs text-text-muted mt-1">{t("audioFormats25Mb")}</p>
       </div>
     </PlaygroundCard>

@@ -7,7 +7,7 @@
  * with "Auto mode could not evaluate this action and is blocking it for safety".
  *
  * When a combo/fallback route sends the classifier call to a cheap model that returns 200 with
- * empty content, the well-formed-but-empty Claude message OmniRoute produces still fails that
+ * empty content, the well-formed-but-empty Claude message Xenia produces still fails that
  * parser. With `claudeClassifierCompat` set to "auto" (or "always"), handleChatCore detects the
  * classifier request and short-circuits with a synthetic ALLOW response — WITHOUT ever calling
  * the upstream provider. Default is "off": nothing changes unless an operator explicitly opts in.
@@ -19,15 +19,14 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-claude-classifier-compat-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-claude-classifier-compat-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
 const { updateSettings } = await import("../../src/lib/db/settings.ts");
 const { handleChatCore } = await import("../../open-sse/handlers/chatCore.ts");
-const { shouldDefaultAllowClassifier, buildDefaultAllowClaudeMessage } = await import(
-  "../../open-sse/handlers/chatCore/claudeClassifierCompat.ts"
-);
+const { shouldDefaultAllowClassifier, buildDefaultAllowClaudeMessage } =
+  await import("../../open-sse/handlers/chatCore/claudeClassifierCompat.ts");
 const { FORMATS } = await import("../../open-sse/translator/formats.ts");
 
 const originalFetch = globalThis.fetch;
@@ -123,7 +122,12 @@ test("detector: always does NOT fire for normal chat without classifier marker (
 
 test("detector: always fires when classifier marker is present", () => {
   const classifier = {
-    system: [{ type: "text", text: "You are a security monitor for autonomous AI coding agents. Evaluate the following action." }],
+    system: [
+      {
+        type: "text",
+        text: "You are a security monitor for autonomous AI coding agents. Evaluate the following action.",
+      },
+    ],
     stop_sequences: ["</block>"],
   };
   assert.equal(

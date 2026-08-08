@@ -13,8 +13,8 @@ export function ChaosStatusMessage({ message }: { message: ChaosPageMessage }) {
     <div
       className={`p-3 rounded-lg text-sm font-medium ${
         message.type === "success"
-          ? "bg-green-500/10 text-green-700 dark:text-green-300 border border-green-500/20"
-          : "bg-red-500/10 text-red-700 dark:text-red-300 border border-red-500/20"
+          ? "bg-gray-500/10 text-gray-700 dark:text-gray-300 border border-gray-500/20"
+          : "bg-gray-500/10 text-gray-700 dark:text-gray-300 border border-gray-500/20"
       }`}
     >
       {message.text}

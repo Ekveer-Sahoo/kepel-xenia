@@ -87,7 +87,7 @@ export default function SystemMonitor({ compact = false }) {
     return (
       <Card className="p-4">
         <div className="flex items-center gap-2 text-text-muted text-sm">
-          <span className="material-symbols-outlined text-[18px] text-red-400">error</span>
+          <span className="material-symbols-outlined text-[18px] text-gray-400">error</span>
           <span>{t("unableToLoad")}</span>
         </div>
       </Card>
@@ -106,7 +106,7 @@ export default function SystemMonitor({ compact = false }) {
   const memTotal = metrics.memory?.heapTotal || metrics.memoryUsage?.heapTotal || 1;
   const memPercent = Math.round((memUsed / memTotal) * 100);
   const memColor =
-    memPercent > 80 ? "text-red-400" : memPercent > 60 ? "text-amber-400" : "text-green-400";
+    memPercent > 80 ? "text-gray-400" : memPercent > 60 ? "text-gray-400" : "text-gray-400";
 
   if (compact) {
     return (
@@ -153,7 +153,7 @@ export default function SystemMonitor({ compact = false }) {
             icon="health_and_safety"
             label="Circuit Breakers"
             value={`${metrics.circuitBreakers.open || 0} open`}
-            color={metrics.circuitBreakers.open > 0 ? "text-amber-400" : "text-green-400"}
+            color={metrics.circuitBreakers.open > 0 ? "text-gray-400" : "text-gray-400"}
           />
         )}
       </div>
@@ -163,7 +163,7 @@ export default function SystemMonitor({ compact = false }) {
         <div className="h-1.5 bg-surface rounded-full overflow-hidden">
           <div
             className={`h-full rounded-full transition-all duration-500 ${
-              memPercent > 80 ? "bg-red-400" : memPercent > 60 ? "bg-amber-400" : "bg-green-400"
+              memPercent > 80 ? "bg-gray-400" : memPercent > 60 ? "bg-gray-400" : "bg-gray-400"
             }`}
             style={{ width: `${memPercent}%` }}
             role="progressbar"

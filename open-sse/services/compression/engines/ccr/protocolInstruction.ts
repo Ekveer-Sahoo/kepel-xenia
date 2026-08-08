@@ -4,17 +4,17 @@
  * The CCR engine replaces large blocks of text with a bare
  * `[CCR retrieve hash=<24hex> chars=N]` marker (see `index.ts`). A caller that has
  * never been told what that marker means has no way to recover the original
- * content — it can only call `omniroute_ccr_retrieve` if it (a) knows the tool
+ * content — it can only call `xenia_ccr_retrieve` if it (a) knows the tool
  * exists and (b) copies the 24-hex hash verbatim.
  *
  * This module injects a single, idempotent `system` message the first time a
  * request carries a CCR marker, teaching the model the marker → tool contract —
  * but ONLY when the caller's advertised `tools[]` proves it can actually reach
- * `omniroute_ccr_retrieve` (an MCP-capable caller). Plain OpenAI-compatible
+ * `xenia_ccr_retrieve` (an MCP-capable caller). Plain OpenAI-compatible
  * callers that cannot reach the tool must never be told to call it.
  */
 
-const CCR_RETRIEVE_TOOL_NAME = "omniroute_ccr_retrieve";
+const CCR_RETRIEVE_TOOL_NAME = "xenia_ccr_retrieve";
 
 /** Leading marker that identifies the injected instruction (also the idempotency sentinel). */
 export const CCR_PROTOCOL_MARKER_SENTINEL = "[CCR protocol]";
@@ -59,9 +59,7 @@ function messageContainsSentinel(message: MessageWithContent): boolean {
         part &&
         typeof part === "object" &&
         typeof (part as Record<string, unknown>)["text"] === "string" &&
-        ((part as Record<string, unknown>)["text"] as string).includes(
-          CCR_PROTOCOL_MARKER_SENTINEL
-        )
+        ((part as Record<string, unknown>)["text"] as string).includes(CCR_PROTOCOL_MARKER_SENTINEL)
     );
   }
   return false;
@@ -70,7 +68,7 @@ function messageContainsSentinel(message: MessageWithContent): boolean {
 /**
  * Prepend the CCR protocol instruction as a single leading `system` message,
  * but only when:
- *  - the caller can actually reach `omniroute_ccr_retrieve` (see
+ *  - the caller can actually reach `xenia_ccr_retrieve` (see
  *    `callerSupportsCcrRetrieve`), and
  *  - the message history does not already carry the sentinel (idempotent —
  *    multi-turn requests replay prior messages, so without this check the

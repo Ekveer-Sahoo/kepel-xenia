@@ -7,11 +7,8 @@ import {
 import { __setGrokClearanceAcquireOverrideForTesting } from "../../open-sse/services/grokClearance.ts";
 import type { ExecuteInput } from "../../open-sse/executors/base.ts";
 
-const {
-  GrokWebExecutor,
-  classifyGrokNullBodyError,
-  resolveGrokNullBodyTlsResult,
-} = await import("../../open-sse/executors/grok-web.ts");
+const { GrokWebExecutor, classifyGrokNullBodyError, resolveGrokNullBodyTlsResult } =
+  await import("../../open-sse/executors/grok-web.ts");
 
 // ─── Fixtures ───────────────────────────────────────────────────────────────
 
@@ -58,7 +55,7 @@ function baseInput(overrides: Partial<ExecuteInput> = {}): ExecuteInput {
 test.afterEach(() => {
   __setTlsFetchOverrideForTesting(null);
   __setGrokClearanceAcquireOverrideForTesting(null);
-  delete process.env.OMNIROUTE_BROWSER_POOL;
+  delete process.env.XENIA_BROWSER_POOL;
   delete process.env.WEB_COOKIE_USE_BROWSER;
 });
 
@@ -152,7 +149,7 @@ test("executor: 429 still surfaces rate_limit_error (regression guard)", async (
 // ─── Step 2: gated browser-backed retry (mocked browser, no real launch) ──
 
 test("resolveGrokNullBodyTlsResult: gate OFF -> no acquisition attempted, CF result returned unchanged", async () => {
-  delete process.env.OMNIROUTE_BROWSER_POOL;
+  delete process.env.XENIA_BROWSER_POOL;
   delete process.env.WEB_COOKIE_USE_BROWSER;
 
   let acquireCalls = 0;
@@ -179,7 +176,7 @@ test("resolveGrokNullBodyTlsResult: gate OFF -> no acquisition attempted, CF res
 });
 
 test("resolveGrokNullBodyTlsResult: gate ON + CF challenge + mocked success -> retried once with injected cf_clearance", async () => {
-  process.env.OMNIROUTE_BROWSER_POOL = "on";
+  process.env.XENIA_BROWSER_POOL = "on";
 
   __setGrokClearanceAcquireOverrideForTesting(async () => "fresh-cf-token");
 
@@ -218,7 +215,7 @@ test("resolveGrokNullBodyTlsResult: gate ON + CF challenge + mocked success -> r
 });
 
 test("resolveGrokNullBodyTlsResult: gate ON + acquisition failure -> falls through to original CF result (no throw)", async () => {
-  process.env.OMNIROUTE_BROWSER_POOL = "on";
+  process.env.XENIA_BROWSER_POOL = "on";
   __setGrokClearanceAcquireOverrideForTesting(async () => null);
 
   let retryCount = 0;
@@ -245,7 +242,7 @@ test("resolveGrokNullBodyTlsResult: gate ON + acquisition failure -> falls throu
 });
 
 test("resolveGrokNullBodyTlsResult: gate ON + retry still challenged -> falls through to CF result (no throw)", async () => {
-  process.env.OMNIROUTE_BROWSER_POOL = "on";
+  process.env.XENIA_BROWSER_POOL = "on";
   __setGrokClearanceAcquireOverrideForTesting(async () => "fresh-cf-token");
 
   __setTlsFetchOverrideForTesting(async () => ({
@@ -272,7 +269,7 @@ test("resolveGrokNullBodyTlsResult: gate ON + retry still challenged -> falls th
 });
 
 test("resolveGrokNullBodyTlsResult: non-CF null body (auth/rate-limit) never attempts acquisition", async () => {
-  process.env.OMNIROUTE_BROWSER_POOL = "on";
+  process.env.XENIA_BROWSER_POOL = "on";
   let acquireCalls = 0;
   __setGrokClearanceAcquireOverrideForTesting(async () => {
     acquireCalls++;
@@ -299,7 +296,7 @@ test("resolveGrokNullBodyTlsResult: non-CF null body (auth/rate-limit) never att
 // ─── Step 2 wired end-to-end through the executor ──────────────────────────
 
 test("executor: gate ON + CF challenge + mocked browser success -> chat succeeds via retried request", async () => {
-  process.env.OMNIROUTE_BROWSER_POOL = "on";
+  process.env.XENIA_BROWSER_POOL = "on";
   __setGrokClearanceAcquireOverrideForTesting(async () => "fresh-cf-token");
 
   let callCount = 0;
@@ -332,7 +329,7 @@ test("executor: gate ON + CF challenge + mocked browser success -> chat succeeds
 });
 
 test("executor: gate ON + CF challenge + acquisition failure -> still surfaces cloudflare_challenge", async () => {
-  process.env.OMNIROUTE_BROWSER_POOL = "on";
+  process.env.XENIA_BROWSER_POOL = "on";
   __setGrokClearanceAcquireOverrideForTesting(async () => null);
 
   __setTlsFetchOverrideForTesting(async () => ({

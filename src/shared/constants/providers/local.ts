@@ -8,7 +8,7 @@ export const LOCAL_PROVIDERS = {
     alias: "ollama",
     name: "Ollama",
     icon: "pets",
-    color: "#58A6FF",
+    color: "#999999",
     textIcon: "OL",
     website: "https://ollama.com",
     authHint:
@@ -21,7 +21,7 @@ export const LOCAL_PROVIDERS = {
     alias: "lmstudio",
     name: "LM Studio",
     icon: "server",
-    color: "#4A148C",
+    color: "#323232",
     textIcon: "LM",
     website: "https://lmstudio.ai",
     authHint:
@@ -34,7 +34,7 @@ export const LOCAL_PROVIDERS = {
     alias: "vllm",
     name: "vLLM",
     icon: "memory",
-    color: "#0F766E",
+    color: "#565656",
     textIcon: "VL",
     website: "https://github.com/vllm-project/vllm",
     authHint:
@@ -47,7 +47,7 @@ export const LOCAL_PROVIDERS = {
     alias: "lemonade",
     name: "Lemonade Server",
     icon: "bolt",
-    color: "#F59E0B",
+    color: "#a7a7a7",
     textIcon: "LM",
     website: "https://lemonade-server.ai",
     authHint:
@@ -60,7 +60,7 @@ export const LOCAL_PROVIDERS = {
     alias: "llamafile",
     name: "Llamafile",
     icon: "article",
-    color: "#EA580C",
+    color: "#7b7b7b",
     textIcon: "LF",
     website: "https://github.com/Mozilla-Ocho/llamafile",
     authHint:
@@ -73,7 +73,7 @@ export const LOCAL_PROVIDERS = {
     alias: "llamacpp",
     name: "llama.cpp",
     icon: "memory",
-    color: "#795548",
+    color: "#5e5e5e",
     textIcon: "LC",
     website: "https://github.com/ggml-org/llama.cpp",
     authHint:
@@ -86,7 +86,7 @@ export const LOCAL_PROVIDERS = {
     alias: "triton",
     name: "NVIDIA Triton",
     icon: "developer_board",
-    color: "#76B900",
+    color: "#909090",
     textIcon: "TR",
     website: "https://developer.nvidia.com/triton-inference-server",
     authHint:
@@ -99,7 +99,7 @@ export const LOCAL_PROVIDERS = {
     alias: "dmr",
     name: "Docker Model Runner",
     icon: "inventory_2",
-    color: "#2496ED",
+    color: "#7e7e7e",
     textIcon: "DM",
     website: "https://docs.docker.com/ai/model-runner/",
     authHint:
@@ -112,7 +112,7 @@ export const LOCAL_PROVIDERS = {
     alias: "xinference",
     name: "XInference",
     icon: "hub",
-    color: "#DC2626",
+    color: "#5c5c5c",
     textIcon: "XI",
     website: "https://inference.readthedocs.io",
     authHint:
@@ -125,7 +125,7 @@ export const LOCAL_PROVIDERS = {
     alias: "ooba",
     name: "oobabooga",
     icon: "dns",
-    color: "#8B5CF6",
+    color: "#7c7c7c",
     textIcon: "OO",
     website: "https://github.com/oobabooga/text-generation-webui",
     authHint:
@@ -138,7 +138,7 @@ export const LOCAL_PROVIDERS = {
     alias: "sdwebui",
     name: "SD WebUI",
     icon: "brush",
-    color: "#FF7043",
+    color: "#969696",
     textIcon: "SD",
     website: "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
     hasFree: true,
@@ -151,7 +151,7 @@ export const LOCAL_PROVIDERS = {
     alias: "comfyui",
     name: "ComfyUI",
     icon: "account_tree",
-    color: "#4CAF50",
+    color: "#878787",
     textIcon: "CF",
     website: "https://github.com/comfyanonymous/ComfyUI",
     hasFree: true,

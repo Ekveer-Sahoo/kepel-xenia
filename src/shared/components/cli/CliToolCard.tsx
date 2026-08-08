@@ -92,7 +92,7 @@ export default function CliToolCard({
         <span
           className={cn(
             "inline-flex items-center gap-1 text-[11px] font-medium px-1.5 py-0.5 rounded",
-            installed ? "text-green-600 dark:text-green-400" : "text-zinc-500 dark:text-zinc-400"
+            installed ? "text-gray-600 dark:text-gray-400" : "text-zinc-500 dark:text-zinc-400"
           )}
         >
           <span aria-hidden="true">{installed ? "✓" : "✗"}</span>
@@ -119,12 +119,12 @@ export default function CliToolCard({
       {/* Badges row */}
       <div className="flex items-center gap-1.5 flex-wrap">
         {tool.baseUrlSupport === "partial" && (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-medium rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-medium rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400">
             <span aria-hidden="true">⚠</span> {t("card.baseUrlPartial")}
           </span>
         )}
         {tool.acpSpawnable === true && (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-medium rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[11px] font-medium rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400">
             {t("card.alsoAcp")}
           </span>
         )}

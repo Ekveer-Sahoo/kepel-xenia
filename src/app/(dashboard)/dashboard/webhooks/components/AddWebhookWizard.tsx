@@ -261,7 +261,7 @@ export function AddWebhookWizard({
       <div className="flex gap-6">
         <div className="min-w-0 flex-1">
           {error && (
-            <div className="mb-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-300">
+            <div className="mb-4 rounded-lg border border-gray-500/30 bg-gray-500/10 px-4 py-3 text-sm text-gray-600 dark:text-gray-300">
               {error}
             </div>
           )}

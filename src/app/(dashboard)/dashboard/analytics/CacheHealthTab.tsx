@@ -179,8 +179,8 @@ export default function CacheHealthTab() {
                   {text(t, "cacheHealthConcentration", "Where the writes are concentrated")}
                 </h3>
                 <span className="text-xs text-text-muted">
-                  {text(t, "cacheHealthThreshold", "outlier above")} {compact(data.heavyWriteThreshold)}{" "}
-                  {text(t, "cacheHealthTokens", "tokens")}
+                  {text(t, "cacheHealthThreshold", "outlier above")}{" "}
+                  {compact(data.heavyWriteThreshold)} {text(t, "cacheHealthTokens", "tokens")}
                 </span>
               </div>
               <p className="text-sm text-text-main">
@@ -194,7 +194,7 @@ export default function CacheHealthTab() {
                 <div
                   className={cn(
                     "h-full rounded-full",
-                    data.heavyWriteTokenShare > 0.75 ? "bg-red-500" : "bg-amber-500"
+                    data.heavyWriteTokenShare > 0.75 ? "bg-gray-500" : "bg-gray-500"
                   )}
                   style={{ width: `${Math.min(100, data.heavyWriteTokenShare * 100)}%` }}
                 />
@@ -216,7 +216,9 @@ export default function CacheHealthTab() {
               <table className="w-full min-w-[560px] text-sm">
                 <thead>
                   <tr className="border-b border-border text-left text-xs uppercase text-text-muted">
-                    <th className="pb-2 pr-4 font-medium">{text(t, "cacheHealthModel", "Model")}</th>
+                    <th className="pb-2 pr-4 font-medium">
+                      {text(t, "cacheHealthModel", "Model")}
+                    </th>
                     <th className="pb-2 pr-4 text-right font-medium">
                       {text(t, "cacheHealthCalls", "Calls")}
                     </th>
@@ -247,9 +249,9 @@ export default function CacheHealthTab() {
                         className={cn(
                           "py-2 pr-4 text-right font-medium",
                           m.writeReadRatio > 1
-                            ? "text-red-500"
+                            ? "text-gray-500"
                             : m.writeReadRatio > 0.2
-                              ? "text-amber-500"
+                              ? "text-gray-500"
                               : "text-text-main"
                         )}
                       >

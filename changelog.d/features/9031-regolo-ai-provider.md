@@ -1,1 +1,1 @@
-- **feat(providers):** add Regolo AI OpenAI-compatible provider ([#9031](https://github.com/diegosouzapw/OmniRoute/issues/9031))
+- **feat(providers):** add Regolo AI OpenAI-compatible provider ([#9031](https://github.com/diegosouzapw/Xenia/issues/9031))

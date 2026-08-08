@@ -43,7 +43,7 @@ export default function CompareColumn({ column, onCancel, onRemove }: CompareCol
               status === "streaming"
                 ? "bg-primary animate-pulse"
                 : status === "done"
-                  ? "bg-green-500"
+                  ? "bg-gray-500"
                   : status === "error"
                     ? "bg-destructive"
                     : "bg-text-muted/30"

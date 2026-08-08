@@ -98,7 +98,7 @@ export default function FilterBar({
               background: activeFilters[filter.key]
                 ? "rgba(99,102,241,0.15)"
                 : "rgba(255,255,255,0.05)",
-              color: activeFilters[filter.key] ? "#818cf8" : "var(--text-secondary, #888)",
+              color: activeFilters[filter.key] ? "#959595" : "var(--text-secondary, #888)",
               fontSize: "12px",
               cursor: "pointer",
               whiteSpace: "nowrap",
@@ -159,7 +159,7 @@ export default function FilterBar({
                     border: "none",
                     color:
                       activeFilters[filter.key] === opt
-                        ? "#818cf8"
+                        ? "#959595"
                         : "var(--text-primary, #e0e0e0)",
                     fontSize: "12px",
                     cursor: "pointer",
@@ -183,7 +183,7 @@ export default function FilterBar({
             borderRadius: "6px",
             border: "1px solid rgba(239,68,68,0.3)",
             background: "rgba(239,68,68,0.1)",
-            color: "#ef4444",
+            color: "#777777",
             fontSize: "12px",
             cursor: "pointer",
           }}

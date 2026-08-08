@@ -59,7 +59,7 @@ export function ChaosConfigActionsBar({
           type="button"
           onClick={onTest}
           disabled={testing || testDisabled}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-sm font-semibold hover:bg-amber-500/25 disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-500/15 text-gray-700 dark:text-gray-300 border border-gray-500/30 text-sm font-semibold hover:bg-gray-500/25 disabled:opacity-50"
         >
           {testing ? (
             <span className="material-symbols-outlined text-[16px] animate-spin">sync</span>

@@ -35,7 +35,7 @@ export default function SessionsTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-5">
-        <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             fingerprint
           </span>
@@ -45,9 +45,9 @@ export default function SessionsTab() {
           <p className="text-sm text-text-muted">{t("sessionsTrackedHint")}</p>
         </div>
         <div className="flex items-center gap-2">
-          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20">
-            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
-            <span className="text-sm font-semibold tabular-nums text-cyan-400">{data.count}</span>
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-500/10 border border-gray-500/20">
+            <span className="w-2 h-2 rounded-full bg-gray-500 animate-pulse" />
+            <span className="text-sm font-semibold tabular-nums text-gray-400">{data.count}</span>
           </span>
         </div>
       </div>
@@ -99,7 +99,7 @@ export default function SessionsTab() {
                   </td>
                   <td className="py-2.5 px-3">
                     {s.connectionId ? (
-                      <span className="text-xs font-mono text-cyan-400">
+                      <span className="text-xs font-mono text-gray-400">
                         {s.connectionId.slice(0, 10)}
                       </span>
                     ) : (

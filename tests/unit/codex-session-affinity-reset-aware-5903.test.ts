@@ -17,7 +17,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-codex-affinity-5903-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-codex-affinity-5903-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.API_KEY_SECRET = process.env.API_KEY_SECRET || "codex-affinity-5903-test-secret";
 
@@ -73,7 +73,11 @@ test("codex session affinity wins over a per-request reset-aware forcedConnectio
     sessionKey: "session-S",
     forcedConnectionId: connectionA.id,
   });
-  assert.equal(request1?.connectionId, connectionA.id, "request 1 should pin to the scored winner A");
+  assert.equal(
+    request1?.connectionId,
+    connectionA.id,
+    "request 1 should pin to the scored winner A"
+  );
   assert.equal(
     affinityDb.getSessionAccountAffinity("session-S", "codex", 60_000)?.connectionId,
     connectionA.id,
@@ -105,7 +109,11 @@ test("codex session affinity wins over a per-request reset-aware forcedConnectio
     sessionKey: "session-S2",
     forcedConnectionId: connectionB.id,
   });
-  assert.equal(request3?.connectionId, connectionB.id, "a new session must honor the fresh re-scored pick");
+  assert.equal(
+    request3?.connectionId,
+    connectionB.id,
+    "a new session must honor the fresh re-scored pick"
+  );
   assert.equal(
     affinityDb.getSessionAccountAffinity("session-S2", "codex", 60_000)?.connectionId,
     connectionB.id,

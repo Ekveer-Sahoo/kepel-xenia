@@ -1,4 +1,4 @@
-import { getRegistryEntry } from "@omniroute/open-sse/config/providerRegistry.ts";
+import { getRegistryEntry } from "@xenia/open-sse/config/providerRegistry.ts";
 import type { ProviderModelsConfigEntry } from "./discovery/providerModelsConfig";
 
 const DISCOVERY_EXCLUDED_MODEL_IDS: Readonly<Record<string, ReadonlySet<string>>> = {

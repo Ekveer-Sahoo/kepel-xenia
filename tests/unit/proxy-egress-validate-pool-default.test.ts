@@ -13,16 +13,16 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-egress-default-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-egress-default-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
 const proxiesDb = await import("../../src/lib/db/proxies.ts");
 const egress = await import("../../src/lib/proxyEgress.ts");
 const { validateProxyPool, _setEgressProbeForTests, clearEgressCache } = egress as unknown as {
-  validateProxyPool: (deps?: unknown) => Promise<
-    Array<{ proxyId: string; alive: boolean; newStatus: string }>
-  >;
+  validateProxyPool: (
+    deps?: unknown
+  ) => Promise<Array<{ proxyId: string; alive: boolean; newStatus: string }>>;
   _setEgressProbeForTests: (fn: unknown) => void;
   clearEgressCache: () => void;
 };

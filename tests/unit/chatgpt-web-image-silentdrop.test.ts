@@ -1,6 +1,6 @@
 // Regression guard for the escalated mesh-bot report: a user generated an
 // image via the ChatGPT Web provider; the image WAS produced upstream but
-// OmniRoute returned `502 "ChatGPT Web completed without returning image
+// Xenia returned `502 "ChatGPT Web completed without returning image
 // markdown"` — i.e. the silent-drop path where an image_asset_pointer existed
 // but resolution failed, and the handler reported it as "no image made".
 //
@@ -13,12 +13,11 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "omniroute-cgptweb-silentdrop-"));
+process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "xenia-cgptweb-silentdrop-"));
 
 const { detectImageResolutionFailure } = await import("../../open-sse/executors/chatgpt-web.ts");
-const { handleChatGptWebImageGeneration } = await import(
-  "../../open-sse/handlers/imageGeneration/providers/chatgptWeb.ts"
-);
+const { handleChatGptWebImageGeneration } =
+  await import("../../open-sse/handlers/imageGeneration/providers/chatgptWeb.ts");
 
 function fakeExecutor(jsonBody: object, status = 200) {
   return {

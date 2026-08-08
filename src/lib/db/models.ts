@@ -4,7 +4,7 @@
  * models/; this file re-exports their public APIs for backward compatibility.
  */
 
-import { isRetiredGitHubCopilotModelId } from "@omniroute/open-sse/config/providers/registry/github/retiredModels.ts";
+import { isRetiredGitHubCopilotModelId } from "@xenia/open-sse/config/providers/registry/github/retiredModels.ts";
 
 import { getDbInstance } from "./core";
 import { backupDbFile } from "./backup";

@@ -162,9 +162,9 @@ export default function ProviderStatsPage() {
   if (error && !data) {
     return (
       <div>
-        <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6 text-center">
-          <span className="material-symbols-outlined text-red-500 text-[32px] mb-2">error</span>
-          <p className="text-red-400">{t("loadFailed", { error })}</p>
+        <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-6 text-center">
+          <span className="material-symbols-outlined text-gray-500 text-[32px] mb-2">error</span>
+          <p className="text-gray-400">{t("loadFailed", { error })}</p>
           <button
             onClick={fetchData}
             className="mt-4 px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm hover:bg-primary/20 transition-colors"
@@ -208,7 +208,7 @@ export default function ProviderStatsPage() {
 
         <Card className="p-4">
           <div className="flex items-center gap-3 mb-2">
-            <div className="flex items-center justify-center size-8 rounded-lg bg-blue-500/10 text-blue-500">
+            <div className="flex items-center justify-center size-8 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[18px]">timer</span>
             </div>
             <span className="text-sm text-text-muted">{t("avgLatency")}</span>
@@ -218,7 +218,7 @@ export default function ProviderStatsPage() {
 
         <Card className="p-4">
           <div className="flex items-center gap-3 mb-2">
-            <div className="flex items-center justify-center size-8 rounded-lg bg-green-500/10 text-green-500">
+            <div className="flex items-center justify-center size-8 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[18px]">check_circle</span>
             </div>
             <span className="text-sm text-text-muted">{t("successRate")}</span>
@@ -230,7 +230,7 @@ export default function ProviderStatsPage() {
 
         <Card className="p-4">
           <div className="flex items-center gap-3 mb-2">
-            <div className="flex items-center justify-center size-8 rounded-lg bg-purple-500/10 text-purple-500">
+            <div className="flex items-center justify-center size-8 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[18px]">dns</span>
             </div>
             <span className="text-sm text-text-muted">{t("activeProviders")}</span>
@@ -331,10 +331,10 @@ export default function ProviderStatsPage() {
                         <span
                           className={
                             rate >= 99
-                              ? "text-green-500"
+                              ? "text-gray-500"
                               : rate >= 95
-                                ? "text-amber-500"
-                                : "text-red-500"
+                                ? "text-gray-500"
+                                : "text-gray-500"
                           }
                         >
                           {rate.toFixed(1)}%
@@ -411,10 +411,10 @@ export default function ProviderStatsPage() {
                                         <span
                                           className={
                                             mRate >= 99
-                                              ? "text-green-500"
+                                              ? "text-gray-500"
                                               : mRate >= 95
-                                                ? "text-amber-500"
-                                                : "text-red-500"
+                                                ? "text-gray-500"
+                                                : "text-gray-500"
                                           }
                                         >
                                           {mRate.toFixed(1)}%

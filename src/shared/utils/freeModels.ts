@@ -1,4 +1,4 @@
-import { FREE_MODEL_BUDGETS } from "@omniroute/open-sse/config/freeModelCatalog";
+import { FREE_MODEL_BUDGETS } from "@xenia/open-sse/config/freeModelCatalog";
 import { resolveProviderId } from "@/shared/constants/providers";
 import { globToRegex } from "@/shared/utils/globPattern";
 import { AI_MODELS } from "@/shared/constants/models";

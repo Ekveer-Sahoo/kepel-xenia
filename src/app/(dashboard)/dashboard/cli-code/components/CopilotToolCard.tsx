@@ -12,7 +12,7 @@ import { matchesSearch } from "@/shared/utils/turkishText";
  * Generates the chatLanguageModels.json block for VS Code GitHub Copilot
  * using the Azure vendor pattern as required by Copilot's architecture.
  *
- * Feature request: https://github.com/diegosouzapw/OmniRoute/issues/142
+ * Feature request: https://github.com/diegosouzapw/Xenia/issues/142
  */
 export default function CopilotToolCard({
   tool,
@@ -30,7 +30,7 @@ export default function CopilotToolCard({
   const [selectedModels, setSelectedModels] = useState<Set<string>>(() => {
     if (typeof window === "undefined") return new Set<string>();
     try {
-      const saved = localStorage.getItem("omniroute-copilot-selected-models");
+      const saved = localStorage.getItem("xenia-copilot-selected-models");
       return saved ? new Set<string>(JSON.parse(saved)) : new Set<string>();
     } catch {
       return new Set<string>();
@@ -38,7 +38,7 @@ export default function CopilotToolCard({
   });
   const [selectedApiKeyId, setSelectedApiKeyId] = useState(() => {
     if (typeof window !== "undefined") {
-      const savedKey = localStorage.getItem("omniroute-cli-key-copilot");
+      const savedKey = localStorage.getItem("xenia-cli-key-copilot");
       if (savedKey && apiKeys?.some((k: any) => k.id === savedKey)) return savedKey;
     }
     return apiKeys?.length > 0 ? apiKeys[0].id : "";
@@ -85,10 +85,7 @@ export default function CopilotToolCard({
   // Persist selection
   useEffect(() => {
     if (selectedModels.size > 0) {
-      localStorage.setItem(
-        "omniroute-copilot-selected-models",
-        JSON.stringify([...selectedModels])
-      );
+      localStorage.setItem("xenia-copilot-selected-models", JSON.stringify([...selectedModels]));
     }
   }, [selectedModels]);
 
@@ -142,16 +139,16 @@ export default function CopilotToolCard({
     }));
 
     const config = {
-      name: "OmniRoute",
+      name: "Xenia",
       vendor: "azure",
-      apiKey: `\${input:chat.lm.secret.omniroute}`,
+      apiKey: `\${input:chat.lm.secret.xenia}`,
       models,
     };
 
     const responsesConfig = {
-      name: "OmniRoute-responses",
+      name: "Xenia-responses",
       vendor: "azure",
-      apiKey: `\${input:chat.lm.secret.omniroute}`,
+      apiKey: `\${input:chat.lm.secret.xenia}`,
       models: responseModels,
     };
 
@@ -166,7 +163,7 @@ export default function CopilotToolCard({
 
   const handleApiKeyChange = (value: string) => {
     setSelectedApiKeyId(value);
-    if (value) localStorage.setItem("omniroute-cli-key-copilot", value);
+    if (value) localStorage.setItem("xenia-cli-key-copilot", value);
   };
 
   return (
@@ -190,8 +187,8 @@ export default function CopilotToolCard({
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <h3 className="font-medium text-sm">{tool.name}</h3>
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                <span className="size-1.5 rounded-full bg-blue-500" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-medium rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400">
+                <span className="size-1.5 rounded-full bg-gray-500" />
                 {t("guide")}
               </span>
             </div>
@@ -210,9 +207,9 @@ export default function CopilotToolCard({
         <div className="mt-6 pt-6 border-t border-border">
           <div className="flex flex-col gap-5">
             {/* Info box */}
-            <div className="flex items-start gap-3 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-              <span className="material-symbols-outlined text-blue-500 text-lg">info</span>
-              <div className="text-sm text-blue-700 dark:text-blue-300">
+            <div className="flex items-start gap-3 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+              <span className="material-symbols-outlined text-gray-500 text-lg">info</span>
+              <div className="text-sm text-gray-700 dark:text-gray-300">
                 <p className="font-medium">{t("copilotConfigGenerator")}</p>
                 <p className="mt-1 text-xs opacity-80">
                   {t("copilotGeneratorDescriptionPrefix")}{" "}
@@ -225,9 +222,9 @@ export default function CopilotToolCard({
             </div>
 
             {/* Version compatibility warning */}
-            <div className="flex items-start gap-3 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-              <span className="material-symbols-outlined text-yellow-500 text-lg">warning</span>
-              <p className="text-xs text-yellow-600 dark:text-yellow-400">
+            <div className="flex items-start gap-3 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+              <span className="material-symbols-outlined text-gray-500 text-lg">warning</span>
+              <p className="text-xs text-gray-600 dark:text-gray-400">
                 {t.rich("copilotCompatibilityWarning", {
                   vscode: (chunks) => <strong>{chunks}</strong>,
                   copilot: (chunks) => <strong>{chunks}</strong>,
@@ -313,9 +310,9 @@ export default function CopilotToolCard({
                   <span>{t("loadingModels")}</span>
                 </div>
               ) : availableModels.length === 0 && allModels.length === 0 ? (
-                <div className="flex items-center gap-2 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-                  <span className="material-symbols-outlined text-yellow-500 text-lg">warning</span>
-                  <p className="text-sm text-yellow-600 dark:text-yellow-400">
+                <div className="flex items-center gap-2 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+                  <span className="material-symbols-outlined text-gray-500 text-lg">warning</span>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
                     {t("noActiveProviders")}
                   </p>
                 </div>
@@ -330,7 +327,7 @@ export default function CopilotToolCard({
                         type="checkbox"
                         checked={selectedModels.has(model.value)}
                         onChange={() => toggleModel(model.value)}
-                        className="rounded border-border text-primary accent-[#1F6FEB]"
+                        className="rounded border-border text-primary accent-[#656565]"
                       />
                       <span className="text-sm font-mono truncate">{model.label}</span>
                     </label>
@@ -375,7 +372,7 @@ export default function CopilotToolCard({
                     type="checkbox"
                     checked={toolCalling}
                     onChange={(e) => setToolCalling(e.target.checked)}
-                    className="rounded border-border accent-[#1F6FEB]"
+                    className="rounded border-border accent-[#656565]"
                   />
                   <span className="text-sm">{t("copilotToolCalling")}</span>
                 </label>
@@ -384,7 +381,7 @@ export default function CopilotToolCard({
                     type="checkbox"
                     checked={vision}
                     onChange={(e) => setVision(e.target.checked)}
-                    className="rounded border-border accent-[#1F6FEB]"
+                    className="rounded border-border accent-[#656565]"
                   />
                   <span className="text-sm">{t("vision")}</span>
                 </label>

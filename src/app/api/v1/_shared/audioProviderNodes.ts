@@ -26,7 +26,7 @@ import {
   buildDynamicAudioProvider,
   type AudioProvider,
   type ProviderNodeRow,
-} from "@omniroute/open-sse/config/audioRegistry.ts";
+} from "@xenia/open-sse/config/audioRegistry.ts";
 
 /** Feature flag gating remote (non-loopback) audio provider nodes. Default OFF. */
 export const AUDIO_REMOTE_NODES_FLAG = "AUDIO_REMOTE_PROVIDER_NODES";

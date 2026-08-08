@@ -1,7 +1,7 @@
 /**
  * Provider Exposure toggle for CLIProxyAPI.
  * Persists the `providerExpose` field via POST /api/services/cliproxy/provider-expose.
- * When enabled, CLIProxyAPI models appear as `cliproxyapi/...` in OmniRoute's model selection.
+ * When enabled, CLIProxyAPI models appear as `cliproxyapi/...` in Xenia's model selection.
  */
 "use client";
 
@@ -44,8 +44,8 @@ export function CliproxyProviderExposureCard() {
   return (
     <Card padding="md">
       <div className="flex items-center gap-3 mb-3">
-        <div className="size-8 rounded-lg flex items-center justify-center bg-sky-500/10">
-          <span className="material-symbols-outlined text-sky-500 text-xl">hub</span>
+        <div className="size-8 rounded-lg flex items-center justify-center bg-gray-500/10">
+          <span className="material-symbols-outlined text-gray-500 text-xl">hub</span>
         </div>
         <div>
           <h3 className="font-medium text-sm">Provider Exposure</h3>
@@ -60,8 +60,8 @@ export function CliproxyProviderExposureCard() {
         <div
           className={`flex items-center gap-1.5 mb-3 px-2 py-1.5 rounded text-xs ${
             msg.ok
-              ? "bg-green-500/10 text-green-600 dark:text-green-400"
-              : "bg-red-500/10 text-red-600 dark:text-red-400"
+              ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
+              : "bg-gray-500/10 text-gray-600 dark:text-gray-400"
           }`}
         >
           <span className="material-symbols-outlined text-[12px]">
@@ -78,12 +78,15 @@ export function CliproxyProviderExposureCard() {
             <code className="font-mono bg-bg-subtle px-1 rounded text-xs">cliproxyapi/...</code>
           </p>
           <p className="text-xs text-text-muted mt-0.5">
-            When enabled, discovered models appear in provider selects across OmniRoute.
+            When enabled, discovered models appear in provider selects across Xenia.
           </p>
         </div>
-        <Toggle checked={data?.providerExpose ?? false} onChange={handleToggle} disabled={pending || !data} />
+        <Toggle
+          checked={data?.providerExpose ?? false}
+          onChange={handleToggle}
+          disabled={pending || !data}
+        />
       </div>
     </Card>
   );
 }
-

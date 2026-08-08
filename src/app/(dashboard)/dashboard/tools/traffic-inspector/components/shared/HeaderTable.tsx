@@ -19,7 +19,7 @@ export function HeaderTable({ headers }: HeaderTableProps) {
         <button
           type="button"
           onClick={() => setMasked((m) => !m)}
-          className="text-xs text-blue-400 hover:text-blue-300 focus-ring rounded"
+          className="text-xs text-gray-400 hover:text-gray-300 focus-ring rounded"
         >
           {masked ? t("show") : t("hide")}
         </button>
@@ -39,7 +39,7 @@ export function HeaderTable({ headers }: HeaderTableProps) {
               <tr key={name} className="border-b border-border/50 hover:bg-bg-subtle">
                 <td className="px-2 py-1 text-text-muted select-text">{name}</td>
                 <td
-                  className={`px-2 py-1 break-all select-text ${isSensitive ? "text-amber-400" : "text-text-main"}`}
+                  className={`px-2 py-1 break-all select-text ${isSensitive ? "text-gray-400" : "text-text-main"}`}
                 >
                   {display}
                 </td>

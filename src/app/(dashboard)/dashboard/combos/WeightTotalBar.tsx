@@ -12,14 +12,14 @@ type WeightTotalBarProps = {
 };
 
 const WEIGHT_COLORS = [
-  "bg-blue-500",
-  "bg-emerald-500",
-  "bg-amber-500",
-  "bg-purple-500",
-  "bg-rose-500",
-  "bg-cyan-500",
-  "bg-orange-500",
-  "bg-indigo-500",
+  "bg-gray-500",
+  "bg-gray-500",
+  "bg-gray-500",
+  "bg-gray-500",
+  "bg-gray-500",
+  "bg-gray-500",
+  "bg-gray-500",
+  "bg-gray-500",
 ];
 
 /**
@@ -79,7 +79,7 @@ export default function WeightTotalBar({ models }: WeightTotalBarProps) {
         </div>
         <span
           className={`text-[10px] font-medium ${
-            isValid ? "text-emerald-500" : total > 100 ? "text-red-500" : "text-amber-500"
+            isValid ? "text-gray-500" : total > 100 ? "text-gray-500" : "text-gray-500"
           }`}
         >
           {total}%{!isValid && total > 0 && " ≠ 100%"}

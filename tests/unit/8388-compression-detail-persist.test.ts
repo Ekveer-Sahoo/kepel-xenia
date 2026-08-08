@@ -15,16 +15,14 @@ import path from "node:path";
 
 // Isolate DATA_DIR so this test never touches a real installed DB (see MEMORY: "teste sem
 // isolateDataDir → DB REAL"). Must be set BEFORE importing anything that resolves getDbInstance().
-const tmpDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-8388-"));
+const tmpDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-8388-"));
 process.env.DATA_DIR = tmpDataDir;
 
-const { compressionSettingsUpdateSchema } = await import(
-  "../../src/shared/validation/compressionConfigSchemas.ts"
-);
+const { compressionSettingsUpdateSchema } =
+  await import("../../src/shared/validation/compressionConfigSchemas.ts");
 const { resetDbInstance } = await import("../../src/lib/db/core.ts");
-const { getCompressionSettings, updateCompressionSettings } = await import(
-  "../../src/lib/db/compression.ts"
-);
+const { getCompressionSettings, updateCompressionSettings } =
+  await import("../../src/lib/db/compression.ts");
 
 test.after(() => {
   resetDbInstance();

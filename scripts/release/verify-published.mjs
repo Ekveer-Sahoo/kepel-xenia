@@ -47,11 +47,11 @@ export function buildDockerArgs(version) {
 // (slim has no curl). Kept as a single quoted constant — no runtime interpolation.
 export const CONTAINER_SCRIPT = `
 set -euo pipefail
-echo "[verify-published] npm i -g omniroute@\${VERIFY_VERSION} (public registry)"
-npm install -g "omniroute@\${VERIFY_VERSION}"
-export DATA_DIR=/tmp/omniroute-data JWT_SECRET=verify-published-secret-with-sufficient-length API_KEY_SECRET=verify-published-api-key-secret DISABLE_SQLITE_AUTO_BACKUP=true OMNIROUTE_SKIP_SYSTEM_TRUST=1
+echo "[verify-published] npm i -g xenia@\${VERIFY_VERSION} (public registry)"
+npm install -g "xenia@\${VERIFY_VERSION}"
+export DATA_DIR=/tmp/xenia-data JWT_SECRET=verify-published-secret-with-sufficient-length API_KEY_SECRET=verify-published-api-key-secret DISABLE_SQLITE_AUTO_BACKUP=true XENIA_SKIP_SYSTEM_TRUST=1
 mkdir -p "\$DATA_DIR"
-omniroute serve --port "\$VERIFY_PORT" &
+xenia serve --port "\$VERIFY_PORT" &
 node -e '
 const port = process.env.VERIFY_PORT;
 const want = process.env.VERIFY_VERSION;
@@ -87,20 +87,25 @@ function main() {
   try {
     execFileSync("docker", ["--version"], { stdio: "ignore" });
   } catch {
-    console.error("[verify-published] docker unavailable — this verifier requires a clean container");
+    console.error(
+      "[verify-published] docker unavailable — this verifier requires a clean container"
+    );
     process.exit(2);
   }
-  console.log(`[verify-published] clean-container verify of omniroute@${version}…`);
+  console.log(`[verify-published] clean-container verify of xenia@${version}…`);
   const r = spawnSync("docker", buildDockerArgs(version), { stdio: "inherit" });
   if (r.status === 0) {
     console.log("[verify-published] ✅ the published package installs and boots");
     process.exit(0);
   }
-  console.error(`[verify-published] ❌ FAILED (exit ${r.status}) — consider: npm deprecate omniroute@${version} "<reason>"`);
+  console.error(
+    `[verify-published] ❌ FAILED (exit ${r.status}) — consider: npm deprecate xenia@${version} "<reason>"`
+  );
   process.exit(1);
 }
 
 import path from "node:path";
 const isDirectRun =
-  process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname);
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname);
 if (isDirectRun) main();

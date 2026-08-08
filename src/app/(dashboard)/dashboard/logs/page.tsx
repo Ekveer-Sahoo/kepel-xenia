@@ -65,7 +65,7 @@ function LogsPageContent() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `omniroute-${logType}-${hours}h-${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = `xenia-${logType}-${hours}h-${new Date().toISOString().slice(0, 10)}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -132,8 +132,8 @@ function LogsPageContent() {
             onClick={() => setShowCleanHistory(true)}
             disabled={cleaningHistory}
             className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg
-              border border-red-500/30 bg-red-500/10 text-red-700 hover:bg-red-500/15
-              hover:border-red-500/50 dark:text-red-300 dark:hover:bg-red-500/20 transition-all duration-200
+              border border-gray-500/30 bg-gray-500/10 text-gray-700 hover:bg-gray-500/15
+              hover:border-gray-500/50 dark:text-gray-300 dark:hover:bg-gray-500/20 transition-all duration-200
               disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <svg

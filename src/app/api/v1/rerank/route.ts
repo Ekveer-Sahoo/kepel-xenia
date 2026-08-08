@@ -1,12 +1,12 @@
-import { handleRerank } from "@omniroute/open-sse/handlers/rerank.ts";
+import { handleRerank } from "@xenia/open-sse/handlers/rerank.ts";
 import {
   getProviderCredentialsWithQuotaPreflight,
   clearRecoveredProviderState,
 } from "@/sse/services/auth";
 import { withInjectionGuard } from "@/middleware/promptInjectionGuard";
-import { parseRerankModel, getRerankProvider } from "@omniroute/open-sse/config/rerankRegistry.ts";
-import { errorResponse } from "@omniroute/open-sse/utils/error.ts";
-import { HTTP_STATUS } from "@omniroute/open-sse/config/constants.ts";
+import { parseRerankModel, getRerankProvider } from "@xenia/open-sse/config/rerankRegistry.ts";
+import { errorResponse } from "@xenia/open-sse/utils/error.ts";
+import { HTTP_STATUS } from "@xenia/open-sse/config/constants.ts";
 import { enforceApiKeyPolicy } from "@/shared/utils/apiKeyPolicy";
 import { v1RerankSchema } from "@/shared/validation/schemas";
 import { isValidationFailure, validateBody } from "@/shared/validation/helpers";

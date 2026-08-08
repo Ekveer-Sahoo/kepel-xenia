@@ -6,22 +6,21 @@ import { execSync } from "child_process";
 const args = process.argv.slice(2);
 const fullUninstall = args.includes("--full");
 const uninstallAlreadyInProgress =
-  process.env.OMNIROUTE_SKIP_UNINSTALL_HOOK === "1" ||
-  process.env.npm_lifecycle_event === "uninstall";
+  process.env.XENIA_SKIP_UNINSTALL_HOOK === "1" || process.env.npm_lifecycle_event === "uninstall";
 
-console.log("🛑 OmniRoute Uninstaller");
+console.log("🛑 Xenia Uninstaller");
 console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
 // 1. Stop PM2 process if it exists
 try {
   console.log("Stopping and removing background PM2 processes...");
-  execSync("pm2 delete omniroute 2>/dev/null", { stdio: "ignore" });
+  execSync("pm2 delete xenia 2>/dev/null", { stdio: "ignore" });
 } catch {
   // It's perfectly fine if pm2 is not installed or the process doesn't exist.
 }
 
 // 2. Local AppData / Config Folder cleanup (Only on Full Uninstall)
-const dataDir = process.env.DATA_DIR || path.join(os.homedir(), ".omniroute");
+const dataDir = process.env.DATA_DIR || path.join(os.homedir(), ".xenia");
 
 if (fullUninstall) {
   console.log(`🧹 Full Uninstall selected. Erasing database and files at: ${dataDir}`);
@@ -45,14 +44,14 @@ if (uninstallAlreadyInProgress) {
 } else {
   console.log("🗑️ Removing npm package...");
   try {
-    execSync("npm uninstall -g omniroute", {
+    execSync("npm uninstall -g xenia", {
       stdio: "inherit",
       env: {
         ...process.env,
-        OMNIROUTE_SKIP_UNINSTALL_HOOK: "1",
+        XENIA_SKIP_UNINSTALL_HOOK: "1",
       },
     });
-    console.log("\n✅ OmniRoute has been successfully uninstalled from your system.");
+    console.log("\n✅ Xenia has been successfully uninstalled from your system.");
     if (!fullUninstall) {
       console.log(`ℹ️ Your configurations and databases were preserved in ${dataDir}.`);
     }

@@ -76,7 +76,7 @@ export default function ModelAliasesTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-5">
-        <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             swap_horiz
           </span>
@@ -88,7 +88,7 @@ export default function ModelAliasesTab() {
           </p>
         </div>
         {status === "saved" && (
-          <span className="ml-auto text-xs font-medium text-emerald-500 flex items-center gap-1">
+          <span className="ml-auto text-xs font-medium text-gray-500 flex items-center gap-1">
             <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
             {t("saved") || "Saved"}
           </span>
@@ -104,7 +104,7 @@ export default function ModelAliasesTab() {
             placeholder={t("deprecatedModelId") || "Deprecated model ID"}
             value={newFrom}
             onChange={(e) => setNewFrom(e.target.value)}
-            className="flex-1 px-3 py-2 rounded-lg text-sm bg-surface border border-border/50 focus:border-amber-500/50 focus:outline-none"
+            className="flex-1 px-3 py-2 rounded-lg text-sm bg-surface border border-border/50 focus:border-gray-500/50 focus:outline-none"
           />
           <span className="text-text-muted text-lg">→</span>
           <input
@@ -112,12 +112,12 @@ export default function ModelAliasesTab() {
             placeholder={t("newModelId") || "New model ID"}
             value={newTo}
             onChange={(e) => setNewTo(e.target.value)}
-            className="flex-1 px-3 py-2 rounded-lg text-sm bg-surface border border-border/50 focus:border-amber-500/50 focus:outline-none"
+            className="flex-1 px-3 py-2 rounded-lg text-sm bg-surface border border-border/50 focus:border-gray-500/50 focus:outline-none"
           />
           <button
             onClick={addAlias}
             disabled={saving || !newFrom.trim() || !newTo.trim()}
-            className="px-4 py-2 rounded-lg text-sm font-medium bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 disabled:opacity-50 transition-all"
+            className="px-4 py-2 rounded-lg text-sm font-medium bg-gray-500/10 text-gray-500 hover:bg-gray-500/20 disabled:opacity-50 transition-all"
           >
             {t("add") || "Add"}
           </button>
@@ -133,15 +133,15 @@ export default function ModelAliasesTab() {
           <div className="rounded-lg border border-border/30 divide-y divide-border/20">
             {customEntries.map(([from, to]) => (
               <div key={from} className="flex items-center gap-3 px-4 py-2.5">
-                <code className="text-xs text-red-400/80 flex-1 truncate">{from}</code>
+                <code className="text-xs text-gray-400/80 flex-1 truncate">{from}</code>
                 <span className="material-symbols-outlined text-[14px] text-text-muted">
                   arrow_forward
                 </span>
-                <code className="text-xs text-emerald-400/80 flex-1 truncate">{to}</code>
+                <code className="text-xs text-gray-400/80 flex-1 truncate">{to}</code>
                 <button
                   onClick={() => removeAlias(from)}
                   disabled={saving}
-                  className="p-1 rounded hover:bg-red-500/10 text-text-muted hover:text-red-400 transition-all"
+                  className="p-1 rounded hover:bg-gray-500/10 text-text-muted hover:text-gray-400 transition-all"
                 >
                   <span className="material-symbols-outlined text-[16px]">close</span>
                 </button>
@@ -162,11 +162,11 @@ export default function ModelAliasesTab() {
         <div className="rounded-lg border border-border/30 divide-y divide-border/20 max-h-60 overflow-y-auto">
           {builtInEntries.map(([from, to]) => (
             <div key={from} className="flex items-center gap-3 px-4 py-2 opacity-60">
-              <code className="text-xs text-red-400/60 flex-1 truncate">{from}</code>
+              <code className="text-xs text-gray-400/60 flex-1 truncate">{from}</code>
               <span className="material-symbols-outlined text-[14px] text-text-muted">
                 arrow_forward
               </span>
-              <code className="text-xs text-emerald-400/60 flex-1 truncate">{to}</code>
+              <code className="text-xs text-gray-400/60 flex-1 truncate">{to}</code>
               <span className="material-symbols-outlined text-[14px] text-text-muted">lock</span>
             </div>
           ))}

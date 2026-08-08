@@ -1,9 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-const { getVisibleResponsesReasoningSummaryText } = await import(
-  "../../open-sse/translator/response/openai-responses/pureHelpers.ts"
-);
+const { getVisibleResponsesReasoningSummaryText } =
+  await import("../../open-sse/translator/response/openai-responses/pureHelpers.ts");
 
 test("#7243 getVisibleResponsesReasoningSummaryText returns upstream plaintext summary", () => {
   const item = {
@@ -24,7 +23,7 @@ test("#7243 getVisibleResponsesReasoningSummaryText suppresses synthetic text fo
   assert.equal(getVisibleResponsesReasoningSummaryText(item), "");
   assert.doesNotMatch(
     getVisibleResponsesReasoningSummaryText(item),
-    /OmniRoute cannot recover|encrypted private reasoning/i
+    /Xenia cannot recover|encrypted private reasoning/i
   );
 });
 

@@ -310,7 +310,7 @@ export default function FreePoolTab() {
 
       {syncErrors && (
         <div
-          className="text-xs text-red-500 flex flex-col gap-1"
+          className="text-xs text-gray-500 flex flex-col gap-1"
           role="alert"
           data-testid="free-pool-sync-errors"
         >

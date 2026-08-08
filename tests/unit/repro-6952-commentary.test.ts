@@ -25,7 +25,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-commentary-6952-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-commentary-6952-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 const core = await import("../../src/lib/db/core.ts");
 
@@ -236,10 +236,7 @@ test("TRANSLATE mode drops commentary-phase text before translateResponse (#6952
 
   // The real tool call must still be forwarded (arguments are JSON-escaped inside
   // an `input_json_delta` SSE frame, so match on the unescaped path fragment).
-  assert.ok(
-    output.includes("/tmp/real.txt"),
-    "the real function_call arguments must be forwarded"
-  );
+  assert.ok(output.includes("/tmp/real.txt"), "the real function_call arguments must be forwarded");
   assert.ok(output.includes(TOOL_NAME), "the real function_call name must be forwarded");
 });
 

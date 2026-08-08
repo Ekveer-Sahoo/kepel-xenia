@@ -20,11 +20,7 @@ type RaycastAuthModalProps = {
   onClose: () => void;
 };
 
-export default function RaycastAuthModal({
-  isOpen,
-  onSuccess,
-  onClose,
-}: RaycastAuthModalProps) {
+export default function RaycastAuthModal({ isOpen, onSuccess, onClose }: RaycastAuthModalProps) {
   const [accessToken, setAccessToken] = useState("");
   const [deviceId, setDeviceId] = useState("");
   const [signatureJwt, setSignatureJwt] = useState("");
@@ -103,8 +99,8 @@ export default function RaycastAuthModal({
   return (
     <Modal isOpen={isOpen} title="Connect Raycast Pro AI" onClose={onClose}>
       <div className="flex flex-col gap-4">
-        <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800">
-          <p className="text-sm text-emerald-900 dark:text-emerald-200 mb-3">
+        <div className="bg-gray-50 dark:bg-gray-900/20 p-4 rounded-lg border border-gray-200 dark:border-gray-800">
+          <p className="text-sm text-gray-900 dark:text-gray-200 mb-3">
             <strong>Auto-import (recommended on macOS):</strong> reads your local Raycast login from
             Keychain + analytics device ID. No proxy needed.
           </p>
@@ -116,20 +112,20 @@ export default function RaycastAuthModal({
                 : "Auto-Import unavailable (need macOS + sqlcipher)"}
           </Button>
           {!autoAvailable && (
-            <p className="text-xs text-emerald-800 dark:text-emerald-300 mt-2">
+            <p className="text-xs text-gray-800 dark:text-gray-300 mt-2">
               Install sqlcipher: <span className="font-mono">brew install sqlcipher</span>
             </p>
           )}
         </div>
 
-        <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
-          <p className="text-sm text-amber-900 dark:text-amber-200">
-            <strong>Local dev only.</strong> Uses your Raycast Pro subscription via reverse-engineered
-            API. Not official — may break on Raycast updates.
+        <div className="bg-gray-50 dark:bg-gray-900/20 p-4 rounded-lg border border-gray-200 dark:border-gray-800">
+          <p className="text-sm text-gray-900 dark:text-gray-200">
+            <strong>Local dev only.</strong> Uses your Raycast Pro subscription via
+            reverse-engineered API. Not official — may break on Raycast updates.
           </p>
           <button
             type="button"
-            className="text-xs text-amber-800 dark:text-amber-300 underline mt-2"
+            className="text-xs text-gray-800 dark:text-gray-300 underline mt-2"
             onClick={() => setShowManual((v) => !v)}
           >
             {showManual ? "Hide manual import" : "Manual import (proxy capture)"}
@@ -140,7 +136,7 @@ export default function RaycastAuthModal({
           <>
             <div>
               <label className="block text-sm font-medium mb-2">
-                Bearer Token <span className="text-red-500">*</span>
+                Bearer Token <span className="text-gray-500">*</span>
               </label>
               <textarea
                 value={accessToken}
@@ -153,7 +149,7 @@ export default function RaycastAuthModal({
 
             <div>
               <label className="block text-sm font-medium mb-2">
-                Device ID <span className="text-red-500">*</span>
+                Device ID <span className="text-gray-500">*</span>
               </label>
               <Input
                 value={deviceId}
@@ -199,8 +195,8 @@ export default function RaycastAuthModal({
         )}
 
         {error && (
-          <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800">
-            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+          <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
+            <p className="text-sm text-gray-600 dark:text-gray-400">{error}</p>
           </div>
         )}
 

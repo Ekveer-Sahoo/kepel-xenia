@@ -5,7 +5,7 @@ import {
   isOpenAICompatibleProvider,
   NOAUTH_PROVIDERS,
 } from "@/shared/constants/providers";
-import { getRegistryEntry } from "@omniroute/open-sse/config/providerRegistry.ts";
+import { getRegistryEntry } from "@xenia/open-sse/config/providerRegistry.ts";
 import { getModelsByProviderId } from "@/shared/constants/models";
 import { resolveAlibabaProviderModelsUrl } from "@/shared/constants/alibabaProviderRegions";
 import { getStaticModelsForProvider } from "@/lib/providers/staticModels";
@@ -27,75 +27,66 @@ import {
   getProviderOutboundGuard,
   getProviderValidationGuard,
 } from "@/shared/network/outboundUrlGuardPolicy";
-import { sanitizeErrorMessage } from "@omniroute/open-sse/utils/error";
-import { getStaticQoderModels } from "@omniroute/open-sse/services/qoderCli.ts";
+import { sanitizeErrorMessage } from "@xenia/open-sse/utils/error";
+import { getStaticQoderModels } from "@xenia/open-sse/services/qoderCli.ts";
 import { deriveConfigFromRegistryModelsUrl } from "./discoveryConfig";
-import { resolveZedModels } from "@omniroute/open-sse/shared/zedAuth.ts";
+import { resolveZedModels } from "@xenia/open-sse/shared/zedAuth.ts";
 import {
   fetchGitHubCopilotModels,
   fetchGheCopilotModels,
-} from "@omniroute/open-sse/services/githubCopilotModels.ts";
-import { fetchKiroAvailableModels } from "@omniroute/open-sse/services/kiroModels.ts";
-import {
-  buildGlmCodingHeaders,
-  buildGlmModelsUrl,
-} from "@omniroute/open-sse/config/glmProvider.ts";
-import { getImageProvider } from "@omniroute/open-sse/config/imageRegistry.ts";
-import { getVideoProvider } from "@omniroute/open-sse/config/videoRegistry.ts";
+} from "@xenia/open-sse/services/githubCopilotModels.ts";
+import { fetchKiroAvailableModels } from "@xenia/open-sse/services/kiroModels.ts";
+import { buildGlmCodingHeaders, buildGlmModelsUrl } from "@xenia/open-sse/config/glmProvider.ts";
+import { getImageProvider } from "@xenia/open-sse/config/imageRegistry.ts";
+import { getVideoProvider } from "@xenia/open-sse/config/videoRegistry.ts";
 import {
   discoverBedrockNativeModels,
   isBedrockNativeApiError,
-} from "@omniroute/open-sse/services/bedrock.ts";
+} from "@xenia/open-sse/services/bedrock.ts";
 import {
   discoverPromptQlModels,
   PROMPTQL_FALLBACK_MODELS,
-} from "@omniroute/open-sse/services/promptqlModels.ts";
+} from "@xenia/open-sse/services/promptqlModels.ts";
 import {
   discoverNotionWebModels,
   NOTION_WEB_FALLBACK_MODELS,
-} from "@omniroute/open-sse/services/notionWebModels.ts";
+} from "@xenia/open-sse/services/notionWebModels.ts";
 import {
   AZURE_AI_DEFAULT_BASE_URL,
   buildAzureAiModelsUrl,
-} from "@omniroute/open-sse/config/azureAi.ts";
+} from "@xenia/open-sse/config/azureAi.ts";
 import {
   DATAROBOT_DEFAULT_BASE_URL,
   buildDataRobotCatalogUrl,
   isDataRobotDeploymentUrl,
-} from "@omniroute/open-sse/config/datarobot.ts";
-import { OCI_DEFAULT_BASE_URL, buildOciModelsUrl } from "@omniroute/open-sse/config/oci.ts";
+} from "@xenia/open-sse/config/datarobot.ts";
+import { OCI_DEFAULT_BASE_URL, buildOciModelsUrl } from "@xenia/open-sse/config/oci.ts";
 import {
   SAP_DEFAULT_BASE_URL,
   buildSapModelsUrl,
   getSapResourceGroup,
-} from "@omniroute/open-sse/config/sap.ts";
-import {
-  WATSONX_DEFAULT_BASE_URL,
-  buildWatsonxModelsUrl,
-} from "@omniroute/open-sse/config/watsonx.ts";
-import { getEmbeddingProvider } from "@omniroute/open-sse/config/embeddingRegistry.ts";
-import { getRerankProvider } from "@omniroute/open-sse/config/rerankRegistry.ts";
+} from "@xenia/open-sse/config/sap.ts";
+import { WATSONX_DEFAULT_BASE_URL, buildWatsonxModelsUrl } from "@xenia/open-sse/config/watsonx.ts";
+import { getEmbeddingProvider } from "@xenia/open-sse/config/embeddingRegistry.ts";
+import { getRerankProvider } from "@xenia/open-sse/config/rerankRegistry.ts";
 import {
   getSpeechProvider,
   getTranscriptionProvider,
-} from "@omniroute/open-sse/config/audioRegistry.ts";
+} from "@xenia/open-sse/config/audioRegistry.ts";
 import {
   getCachedDiscoveredModels,
   isAutoFetchModelsEnabled,
   persistDiscoveredModels,
 } from "@/lib/providerModels/modelDiscovery";
-import {
-  buildProviderModelsUrl,
-  getDiscoveryClientVersionOptions,
-} from "./discoveryClientVersion";
+import { buildProviderModelsUrl, getDiscoveryClientVersionOptions } from "./discoveryClientVersion";
 import {
   parseGeminiModelsList,
   type GeminiDiscoveryModel,
 } from "@/lib/providerModels/geminiModelsParser";
 import { getSyncedAvailableModels, getCustomModels } from "@/lib/db/models";
 import { fetchCursorAgentModels } from "@/lib/providerModels/cursorAgent";
-import { fetchRaycastModels } from "@omniroute/open-sse/services/raycast.ts";
-import { runWithProxyContext } from "@omniroute/open-sse/utils/proxyFetch.ts";
+import { fetchRaycastModels } from "@xenia/open-sse/services/raycast.ts";
+import { runWithProxyContext } from "@xenia/open-sse/utils/proxyFetch.ts";
 import {
   type JsonRecord,
   asRecord,
@@ -424,7 +415,7 @@ export async function GET(
       // getSafeOutboundFetchErrorStatus maps to 503, but unlike the other 503
       // cases (URL_GUARD_BLOCKED / INVALID_URL, which are genuinely
       // unrecoverable and stay hard errors) a blocked redirect should degrade to
-      // the local/cached catalog OmniRoute ships instead of surfacing a raw 503.
+      // the local/cached catalog Xenia ships instead of surfacing a raw 503.
       // General fix — covers any config-driven provider that 307s (e.g. qwen-web).
       if (error instanceof SafeOutboundFetchError && error.code === "REDIRECT_BLOCKED") {
         return buildDiscoveryFallbackResponse(warnings);
@@ -1826,7 +1817,7 @@ export async function GET(
       let bearerToken: string | null = null;
       try {
         const { parseSAFromApiKey, getAccessToken } =
-          await import("@omniroute/open-sse/executors/vertex.ts");
+          await import("@xenia/open-sse/executors/vertex.ts");
         if (accessToken) {
           bearerToken = accessToken;
         } else if (credential) {

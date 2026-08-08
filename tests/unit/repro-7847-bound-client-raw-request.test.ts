@@ -13,9 +13,8 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 const { buildClientRawRequest } = await import("../../src/sse/handlers/chat.ts");
-const { cloneBoundedForLog, MAX_LOG_ARRAY_ITEMS } = await import(
-  "../../open-sse/utils/requestLogger.ts"
-);
+const { cloneBoundedForLog, MAX_LOG_ARRAY_ITEMS } =
+  await import("../../open-sse/utils/requestLogger.ts");
 
 const MESSAGES = 800;
 
@@ -85,13 +84,17 @@ test("bounding at the entry does not change what the request logger ultimately s
   const body = longHistoryBody();
   const once = cloneBoundedForLog(body);
   const twice = cloneBoundedForLog(once);
-  assert.deepEqual(twice, once, "cloneBoundedForLog must be idempotent for the entry clone to be safe");
+  assert.deepEqual(
+    twice,
+    once,
+    "cloneBoundedForLog must be idempotent for the entry clone to be safe"
+  );
 });
 
 test("buildClientRawRequest still carries endpoint, headers and signal", () => {
   const req = new Request("http://localhost:20128/v1/chat/completions?x=1", {
     method: "POST",
-    headers: { "content-type": "application/json", "x-omniroute-session-id": "sess-1" },
+    headers: { "content-type": "application/json", "x-xenia-session-id": "sess-1" },
   });
   const out = buildClientRawRequest(req, { model: "m", messages: [] }) as {
     endpoint: string;
@@ -99,7 +102,7 @@ test("buildClientRawRequest still carries endpoint, headers and signal", () => {
     signal: unknown;
   };
   assert.equal(out.endpoint, "/v1/chat/completions");
-  assert.equal(out.headers["x-omniroute-session-id"], "sess-1");
+  assert.equal(out.headers["x-xenia-session-id"], "sess-1");
   assert.equal(out.headers["content-type"], "application/json");
   assert.ok("signal" in out);
 });

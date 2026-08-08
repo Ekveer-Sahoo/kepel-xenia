@@ -287,7 +287,7 @@ export default function CompressionSettingsTab() {
   return (
     <Card className="p-6">
       <div className="flex items-center gap-3 mb-5">
-        <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             compress
           </span>
@@ -297,12 +297,12 @@ export default function CompressionSettingsTab() {
           <p className="text-sm text-text-muted">{t("compressionDesc")}</p>
         </div>
         {status === "saved" && (
-          <span className="ml-auto text-xs font-medium text-emerald-500 flex items-center gap-1">
+          <span className="ml-auto text-xs font-medium text-gray-500 flex items-center gap-1">
             <span className="material-symbols-outlined text-[14px]">check_circle</span> {t("saved")}
           </span>
         )}
         {status === "error" && (
-          <span className="ml-auto text-xs font-medium text-red-500 flex items-center gap-1">
+          <span className="ml-auto text-xs font-medium text-gray-500 flex items-center gap-1">
             <span className="material-symbols-outlined text-[14px]">error</span> {t("saveFailed")}
           </span>
         )}
@@ -322,13 +322,13 @@ export default function CompressionSettingsTab() {
                   disabled={saving}
                   className={`flex items-start gap-3 p-3 rounded-lg border text-left transition-all ${
                     config.defaultMode === m.value
-                      ? "border-blue-500/50 bg-blue-500/5 ring-1 ring-blue-500/20"
+                      ? "border-gray-500/50 bg-gray-500/5 ring-1 ring-gray-500/20"
                       : "border-border/50 hover:border-border hover:bg-surface/30"
                   }`}
                 >
                   <span
                     className={`material-symbols-outlined text-[20px] mt-0.5 ${
-                      config.defaultMode === m.value ? "text-blue-500" : "text-text-muted"
+                      config.defaultMode === m.value ? "text-gray-500" : "text-text-muted"
                     }`}
                   >
                     {m.icon}
@@ -336,7 +336,7 @@ export default function CompressionSettingsTab() {
                   <div className="min-w-0">
                     <p
                       className={`text-sm font-medium ${
-                        config.defaultMode === m.value ? "text-blue-400" : ""
+                        config.defaultMode === m.value ? "text-gray-400" : ""
                       }`}
                     >
                       {t(m.labelKey)}
@@ -433,7 +433,7 @@ export default function CompressionSettingsTab() {
                   })
                 }
                 className={`relative w-10 h-5 rounded-full transition-colors ${
-                  config.mcpDescriptionCompressionEnabled !== false ? "bg-green-500" : "bg-border"
+                  config.mcpDescriptionCompressionEnabled !== false ? "bg-gray-500" : "bg-border"
                 }`}
               >
                 <span
@@ -474,7 +474,7 @@ export default function CompressionSettingsTab() {
                         onClick={() => toggleCavemanRole(opt.value)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
                           config.cavemanConfig!.compressRoles.includes(opt.value)
-                            ? "border-blue-500/50 bg-blue-500/10 text-blue-400"
+                            ? "border-gray-500/50 bg-gray-500/10 text-gray-400"
                             : "border-border/50 text-text-muted hover:border-border"
                         }`}
                       >
@@ -518,7 +518,7 @@ export default function CompressionSettingsTab() {
                         title={`${rule.category} · ${rule.context} · ${(rule.intensities ?? [rule.minIntensity]).join("/")}`}
                         className={`px-2 py-1 rounded text-xs border transition-all ${
                           config.cavemanConfig!.skipRules.includes(rule.name)
-                            ? "border-red-500/50 bg-red-500/10 text-red-400 line-through"
+                            ? "border-gray-500/50 bg-gray-500/10 text-gray-400 line-through"
                             : "border-border/50 text-text-muted hover:border-border"
                         }`}
                       >
@@ -579,7 +579,7 @@ export default function CompressionSettingsTab() {
                   })
                 }
                 className={`relative w-10 h-5 rounded-full transition-colors ${
-                  config.cavemanOutputMode.autoClarity ? "bg-green-500" : "bg-border"
+                  config.cavemanOutputMode.autoClarity ? "bg-gray-500" : "bg-border"
                 }`}
               >
                 <span
@@ -617,7 +617,7 @@ export default function CompressionSettingsTab() {
                   })
                 }
                 className={`relative w-10 h-5 rounded-full transition-colors ${
-                  config.aggressive.summarizerEnabled ? "bg-green-500" : "bg-border"
+                  config.aggressive.summarizerEnabled ? "bg-gray-500" : "bg-border"
                 }`}
               >
                 <span
@@ -732,7 +732,7 @@ export default function CompressionSettingsTab() {
                     }
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
                       config.aggressive!.toolStrategies[strategy]
-                        ? "border-blue-500/50 bg-blue-500/10 text-blue-400"
+                        ? "border-gray-500/50 bg-gray-500/10 text-gray-400"
                         : "border-border/50 text-text-muted hover:border-border"
                     }`}
                   >
@@ -763,7 +763,7 @@ export default function CompressionSettingsTab() {
                   })
                 }
                 className={`relative w-10 h-5 rounded-full transition-colors ${
-                  config.ultra.enabled ? "bg-green-500" : "bg-border"
+                  config.ultra.enabled ? "bg-gray-500" : "bg-border"
                 }`}
               >
                 <span
@@ -848,7 +848,7 @@ export default function CompressionSettingsTab() {
                   })
                 }
                 className={`relative w-10 h-5 rounded-full transition-colors ${
-                  config.ultra.slmFallbackToAggressive ? "bg-green-500" : "bg-border"
+                  config.ultra.slmFallbackToAggressive ? "bg-gray-500" : "bg-border"
                 }`}
               >
                 <span

@@ -80,19 +80,19 @@ interface BatchListTabProps {
 // ── Status helpers ────────────────────────────────────────────────────────────
 
 const STATUS_STYLES: Record<string, string> = {
-  completed: "bg-emerald-500/15 text-emerald-400 border-emerald-500/25",
-  completed_with_failures: "bg-red-500/15 text-red-400 border-red-500/25",
-  failed: "bg-red-500/15 text-red-400 border-red-500/25",
-  in_progress: "bg-blue-500/15 text-blue-400 border-blue-500/25",
-  in_progress_with_failures: "bg-orange-500/15 text-orange-400 border-orange-500/25",
-  finalizing: "bg-violet-500/15 text-violet-400 border-violet-500/25",
-  finalizing_with_failures: "bg-orange-500/15 text-orange-400 border-orange-500/25",
-  validating: "bg-yellow-500/15 text-yellow-400 border-yellow-500/25",
-  cancelling: "bg-orange-500/15 text-orange-400 border-orange-500/25",
+  completed: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  completed_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  failed: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  in_progress: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  in_progress_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  finalizing: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  finalizing_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  validating: "bg-gray-500/15 text-gray-400 border-gray-500/25",
+  cancelling: "bg-gray-500/15 text-gray-400 border-gray-500/25",
   cancelled: "bg-gray-500/15 text-gray-400 border-gray-500/25",
-  cancelled_with_failures: "bg-red-500/15 text-red-400 border-red-500/25",
+  cancelled_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
   expired: "bg-gray-500/15 text-gray-400 border-gray-500/25",
-  expired_with_failures: "bg-orange-500/15 text-orange-400 border-orange-500/25",
+  expired_with_failures: "bg-gray-500/15 text-gray-400 border-gray-500/25",
 };
 
 // A-1 / R2 — Derive Provider label from model id (no provider field on BatchRecord).
@@ -209,7 +209,7 @@ function BatchRowActions({
           }}
           disabled={actions.cancelling}
           title={t("batchActionCancel")}
-          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-orange-400 hover:bg-orange-500/10 transition-colors disabled:opacity-50"
+          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-gray-400 hover:bg-gray-500/10 transition-colors disabled:opacity-50"
         >
           <span className="material-symbols-outlined text-[13px]">
             {actions.cancelling ? "hourglass_empty" : "block"}
@@ -224,7 +224,7 @@ function BatchRowActions({
           download={`batch-${batch.id}-output.jsonl`}
           onClick={(e) => e.stopPropagation()}
           title={t("batchActionDownloadOutput")}
-          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"
+          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-gray-400 hover:bg-gray-500/10 transition-colors"
         >
           <span className="material-symbols-outlined text-[13px]">download</span>
         </a>
@@ -237,7 +237,7 @@ function BatchRowActions({
           download={`batch-${batch.id}-errors.jsonl`}
           onClick={(e) => e.stopPropagation()}
           title={t("batchActionDownloadErrors")}
-          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-yellow-400 hover:bg-yellow-500/10 transition-colors"
+          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-gray-400 hover:bg-gray-500/10 transition-colors"
         >
           <span className="material-symbols-outlined text-[13px]">file_download</span>
         </a>
@@ -258,7 +258,7 @@ function BatchRowActions({
           }}
           disabled={actions.retrying}
           title={t("batchActionRetry")}
-          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-blue-400 hover:bg-blue-500/10 transition-colors disabled:opacity-50"
+          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-gray-400 hover:bg-gray-500/10 transition-colors disabled:opacity-50"
         >
           <span className="material-symbols-outlined text-[13px]">
             {actions.retrying ? "hourglass_empty" : "replay"}
@@ -291,7 +291,7 @@ function BatchRowActions({
           }}
           disabled={deletingId === batch.id}
           title={t("batchListDeleteBatchTitle")}
-          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-red-400 hover:bg-red-500/10 transition-colors disabled:opacity-50"
+          className="flex items-center justify-center p-1 rounded text-[var(--color-text-muted)] hover:text-gray-400 hover:bg-gray-500/10 transition-colors disabled:opacity-50"
         >
           <span className="material-symbols-outlined text-[13px]">
             {deletingId === batch.id ? "hourglass_empty" : "delete"}
@@ -384,7 +384,7 @@ export default function BatchListTab({
         <button
           onClick={handleRemoveCompleted}
           disabled={removingCompleted}
-          className="flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg bg-red-500/10 border border-red-500/25 text-red-400 hover:text-red-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          className="flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg bg-gray-500/10 border border-gray-500/25 text-gray-400 hover:text-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
           title={t("batchListDeleteAllCompletedTitle")}
         >
           <span className="material-symbols-outlined text-[16px]">
@@ -457,9 +457,7 @@ export default function BatchListTab({
                   if (!batch.model || total === 0) return "—";
                   // Prefer real usage data when available (completed batches)
                   const usage = batch.usage as
-                    | { input_tokens?: number; output_tokens?: number }
-                    | null
-                    | undefined;
+                    { input_tokens?: number; output_tokens?: number } | null | undefined;
                   if (usage?.input_tokens != null && usage?.output_tokens != null) {
                     // batch rate ≈ $0.005/1K tokens (blended, already -50%)
                     const cost = ((usage.input_tokens + usage.output_tokens) * 0.005) / 1000;
@@ -501,7 +499,7 @@ export default function BatchListTab({
                     {/* Progress — ProgressBarBicolor from F3; spinner when validating (G2); (partial) suffix when expired with failures (G-AUD3) */}
                     <td className="px-4 py-3 min-w-[140px]">
                       {batch.status === "validating" ? (
-                        <div className="flex items-center gap-2 text-xs text-yellow-400">
+                        <div className="flex items-center gap-2 text-xs text-gray-400">
                           <span className="material-symbols-outlined text-[14px] animate-spin">
                             hourglass_top
                           </span>
@@ -516,7 +514,7 @@ export default function BatchListTab({
                             showLabels
                           />
                           {effectiveStatus(batch) === "expired_with_failures" && (
-                            <span className="text-[10px] text-orange-400 italic">
+                            <span className="text-[10px] text-gray-400 italic">
                               {t("batchListProgressPartial")}
                             </span>
                           )}
@@ -529,7 +527,7 @@ export default function BatchListTab({
                     <td className="px-4 py-3 text-xs whitespace-nowrap">
                       <span className="text-[var(--color-text-muted)]">{estimatedCost}</span>
                       {estimatedCost !== "—" && (
-                        <span className="ml-1 text-[10px] text-emerald-500/90 bg-emerald-500/10 rounded px-1 py-0.5 align-middle">
+                        <span className="ml-1 text-[10px] text-gray-500/90 bg-gray-500/10 rounded px-1 py-0.5 align-middle">
                           -50%
                         </span>
                       )}

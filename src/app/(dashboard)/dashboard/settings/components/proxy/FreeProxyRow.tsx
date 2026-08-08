@@ -32,10 +32,10 @@ export default function FreeProxyRow({
     proxy.qualityScore == null
       ? "text-text-muted"
       : proxy.qualityScore >= 80
-        ? "text-emerald-400"
+        ? "text-gray-400"
         : proxy.qualityScore >= 50
-          ? "text-yellow-400"
-          : "text-red-400";
+          ? "text-gray-400"
+          : "text-gray-400";
 
   return (
     <tr className="border-b border-border/50 hover:bg-surface-alt/30 text-sm">
@@ -63,7 +63,7 @@ export default function FreeProxyRow({
       </td>
       <td className="px-3 py-2">
         {proxy.inPool ? (
-          <span className="px-2 py-0.5 rounded text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+          <span className="px-2 py-0.5 rounded text-xs bg-gray-500/15 text-gray-400 border border-gray-500/30">
             in pool
           </span>
         ) : (

@@ -5,7 +5,7 @@ import { nvidiaProvider } from "../../open-sse/config/providers/registry/nvidia/
 
 // Port of decolua/9router#2373 ("fix(nvidia): expand NIM chat model catalog"). Upstream's
 // PR also added a per-model `thinkingFormat`/`kind` capability shape in a legacy
-// open-sse/providers/capabilities.js file that has no equivalent in OmniRoute — reasoning
+// open-sse/providers/capabilities.js file that has no equivalent in Xenia — reasoning
 // translation here is per-PROVIDER (open-sse/translator/paramSupport.ts,
 // executors/default.ts, both gated on `this.provider === "nvidia"`), not per-model, so
 // only the catalog (RegistryModel.supportsReasoning/supportsVision) needed porting.

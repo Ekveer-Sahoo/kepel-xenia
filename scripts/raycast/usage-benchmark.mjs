@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
  * @file usage-benchmark.mjs
- * @description Battle-test Raycast Pro usage via OmniRoute local endpoint.
+ * @description Battle-test Raycast Pro usage via Xenia local endpoint.
  *
  * Env (required):
- *   OMNIROUTE_URL          default http://127.0.0.1:20128/v1
- *   OMNIROUTE_API_KEY      OmniRoute API key (if REQUIRE_API_KEY)
+ *   XENIA_URL          default http://127.0.0.1:20128/v1
+ *   XENIA_API_KEY      Xenia API key (if REQUIRE_API_KEY)
  *
- * Env (optional — direct Raycast probe without OmniRoute):
+ * Env (optional — direct Raycast probe without Xenia):
  *   RAYCAST_BEARER_TOKEN
  *   RAYCAST_DEVICE_ID
  *   RAYCAST_AID
@@ -32,8 +32,8 @@ function arg(name, fallback) {
 const rounds = Number(arg("rounds", "3"));
 const model = arg("model", "");
 const modelCount = Number(arg("models", "5"));
-const omnirouteUrl = (process.env.OMNIROUTE_URL || "http://127.0.0.1:20128/v1").replace(/\/$/, "");
-const apiKey = process.env.OMNIROUTE_API_KEY || "";
+const xeniaUrl = (process.env.XENIA_URL || "http://127.0.0.1:20128/v1").replace(/\/$/, "");
+const apiKey = process.env.XENIA_API_KEY || "";
 
 const RAYCAST_CHAT_URL = "https://backend.raycast.com/api/v1/ai/chat_completions";
 const RAYCAST_MODELS_URL = "https://backend.raycast.com/api/v1/ai/models";
@@ -60,9 +60,7 @@ function raycastJwt(aid, secret) {
   const iat = Date.now() / 1000;
   const header = Buffer.from(JSON.stringify({ typ: "JWT", alg: "HS256" })).toString("base64url");
   const payload = Buffer.from(JSON.stringify({ aid, exp: iat + 60, iat })).toString("base64url");
-  const signature = createHmac("sha256", secret)
-    .update(`${header}.${payload}`)
-    .digest("base64url");
+  const signature = createHmac("sha256", secret).update(`${header}.${payload}`).digest("base64url");
   return `${header}.${payload}.${signature}`;
 }
 
@@ -96,11 +94,11 @@ async function fetchRaycastModels() {
   return (data.models || []).map((m) => m.id);
 }
 
-async function chatOmniroute(modelId, prompt) {
+async function chatXenia(modelId, prompt) {
   const headers = { "Content-Type": "application/json" };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
   const started = Date.now();
-  const res = await fetch(`${omnirouteUrl}/chat/completions`, {
+  const res = await fetch(`${xeniaUrl}/chat/completions`, {
     method: "POST",
     headers,
     body: JSON.stringify({
@@ -116,7 +114,7 @@ async function chatOmniroute(modelId, prompt) {
 }
 
 async function main() {
-  console.log(`OmniRoute: ${omnirouteUrl}`);
+  console.log(`Xenia: ${xeniaUrl}`);
   console.log(`Rounds per model: ${rounds}`);
 
   let models = [];
@@ -124,10 +122,10 @@ async function main() {
     models = [model];
   } else if (process.env.RAYCAST_BEARER_TOKEN) {
     models = (await fetchRaycastModels()).slice(0, modelCount);
-    console.log(`Direct Raycast model probe — testing ${models.length} models via OmniRoute`);
+    console.log(`Direct Raycast model probe — testing ${models.length} models via Xenia`);
   } else {
     models = ["openai-gpt-5-mini"];
-    console.log("No RAYCAST_* env — using default model openai-gpt-5-mini via OmniRoute combo id");
+    console.log("No RAYCAST_* env — using default model openai-gpt-5-mini via Xenia combo id");
   }
 
   const results = [];
@@ -138,7 +136,7 @@ async function main() {
     for (let i = 0; i < rounds; i++) {
       const prompt = `Raycast benchmark round ${i + 1} — reply with exactly: pong`;
       try {
-        const r = await chatOmniroute(modelId, prompt);
+        const r = await chatXenia(modelId, prompt);
         latencies.push(r.ms);
         if (r.ok) ok++;
         else {
@@ -150,7 +148,9 @@ async function main() {
         console.error(`  ERR ${modelId} #${i + 1}:`, err.message);
       }
     }
-    const avg = latencies.length ? Math.round(latencies.reduce((a, b) => a + b, 0) / latencies.length) : 0;
+    const avg = latencies.length
+      ? Math.round(latencies.reduce((a, b) => a + b, 0) / latencies.length)
+      : 0;
     results.push({ modelId, ok, fail, avgMs: avg });
     console.log(`${modelId}: ${ok}/${rounds} ok, avg ${avg}ms`);
   }

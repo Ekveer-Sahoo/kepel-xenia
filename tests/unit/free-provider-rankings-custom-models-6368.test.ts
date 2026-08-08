@@ -26,7 +26,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-rankings-6368-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-rankings-6368-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -49,10 +49,7 @@ test("mergeProviderModels: additively includes custom models, de-duping by id", 
     { id: "claude-fable-5-6368", name: "Claude Fable 5" },
   ];
   const merged = rankings.mergeProviderModels(registryModels, customModels);
-  assert.deepEqual(
-    merged.map((m) => m.id).sort(),
-    ["claude-fable-5-6368", "known-model"]
-  );
+  assert.deepEqual(merged.map((m) => m.id).sort(), ["claude-fable-5-6368", "known-model"]);
 });
 
 test("mergeProviderModels: no custom models returns the registry list unchanged", () => {

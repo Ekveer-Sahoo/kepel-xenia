@@ -1,4 +1,4 @@
-<svg viewBox="0 0 1200 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OmniRoute combo 'always-on' with priority strategy: requests go to 1. cc/claude-opus-4-7 (subscription, use it fully); on failure fall through to 2. cx/gpt-5.5 (second subscription), then 3. glm/glm-5.1 (cheap backup at $0.5/1M), then 4. kr/claude-sonnet-4.5 (free, unlimited, never fails). Result: 4 layers of fallback, zero downtime.">
+<svg viewBox="0 0 1200 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Xenia combo 'always-on' with priority strategy: requests go to 1. cc/claude-opus-4-7 (subscription, use it fully); on failure fall through to 2. cx/gpt-5.5 (second subscription), then 3. glm/glm-5.1 (cheap backup at $0.5/1M), then 4. kr/claude-sonnet-4.5 (free, unlimited, never fails). Result: 4 layers of fallback, zero downtime.">
   <defs>
     <radialGradient id="hubGlowC" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#e54d5e" stop-opacity="0.5"/>

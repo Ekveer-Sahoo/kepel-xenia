@@ -1,8 +1,5 @@
-import {
-  PROVIDER_ID_TO_ALIAS,
-  PROVIDER_MODELS,
-} from "@omniroute/open-sse/config/providerModels.ts";
-import { parseModel, resolveCanonicalProviderModel } from "@omniroute/open-sse/services/model.ts";
+import { PROVIDER_ID_TO_ALIAS, PROVIDER_MODELS } from "@xenia/open-sse/config/providerModels.ts";
+import { parseModel, resolveCanonicalProviderModel } from "@xenia/open-sse/services/model.ts";
 import {
   findModelSpecIdByExactOrAlias,
   getAuthoritativeContextWindow,
@@ -17,11 +14,11 @@ import { getModelCapabilityOverride } from "@/lib/db/modelCapabilityOverrides";
 import { getDbInstance } from "@/lib/db/core";
 import { getKeyValue } from "@/lib/db/models/shared";
 import { isVisionModelId } from "@/shared/constants/visionModels";
-import { getUnsupportedParams } from "@omniroute/open-sse/config/providerRegistry.ts";
+import { getUnsupportedParams } from "@xenia/open-sse/config/providerRegistry.ts";
 import {
   getLearnedThinkingCap,
   GEMINI_FALLBACK_THINKING_CAP,
-} from "@omniroute/open-sse/services/learnedThinkingCaps.ts";
+} from "@xenia/open-sse/services/learnedThinkingCaps.ts";
 
 const TOOL_CALLING_UNSUPPORTED_PATTERNS: string[] = [
   // Specialty / non-chat surfaces must never inherit optimistic tool defaults (#8016)
@@ -332,7 +329,7 @@ function stripLatestAlias(modelId: string | null): string | null {
 const reverseModelsDevProvidersCache = new Map<string, readonly string[]>();
 
 function reverseModelsDevProviders(provider: string): readonly string[] {
-  // models.dev may store capabilities under a different OmniRoute provider id
+  // models.dev may store capabilities under a different Xenia provider id
   // that also maps from the same upstream models.dev provider. Build reverse
   // candidates from MODELS_DEV_PROVIDER_MAP (e.g. openai ↔ cx).
   //

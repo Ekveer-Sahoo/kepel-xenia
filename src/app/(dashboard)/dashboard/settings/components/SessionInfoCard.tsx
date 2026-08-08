@@ -29,7 +29,7 @@ export default function SessionInfoCard() {
 
     async function loadSession() {
       // Build session info from client-side data
-      const loginTime = sessionStorage.getItem("omniroute_login_time");
+      const loginTime = sessionStorage.getItem("xenia_login_time");
       const now = Date.now();
 
       let sessionAge = t("unknown");
@@ -75,7 +75,7 @@ export default function SessionInfoCard() {
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
-      sessionStorage.removeItem("omniroute_login_time");
+      sessionStorage.removeItem("xenia_login_time");
       window.location.href = "/";
     } catch {
       window.location.href = "/";
@@ -101,7 +101,7 @@ export default function SessionInfoCard() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             person
           </span>
@@ -114,7 +114,7 @@ export default function SessionInfoCard() {
           <span className="text-text-muted">{t("status")}</span>
           <span className="flex items-center gap-1.5">
             <span
-              className={`w-2 h-2 rounded-full ${session?.authenticated ? "bg-green-500" : "bg-yellow-500"}`}
+              className={`w-2 h-2 rounded-full ${session?.authenticated ? "bg-gray-500" : "bg-gray-500"}`}
               aria-hidden="true"
             />
             {session?.authenticated ? t("authenticated") : t("guest")}

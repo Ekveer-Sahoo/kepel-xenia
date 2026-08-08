@@ -27,12 +27,12 @@ function restoreEnv() {
 
 function cleanupGlobalDb() {
   try {
-    if (globalThis.__omnirouteDb?.open) {
-      globalThis.__omnirouteDb.close();
+    if (globalThis.__xeniaDb?.open) {
+      globalThis.__xeniaDb.close();
     }
   } catch {}
 
-  delete globalThis.__omnirouteDb;
+  delete globalThis.__xeniaDb;
 }
 
 function makeTempDir(prefix) {
@@ -345,7 +345,7 @@ test.after(() => {
 });
 
 test("getDbInstance creates sqlite schema, metadata and applies migrations", serial, async () => {
-  const dataDir = makeTempDir("omniroute-db-core-");
+  const dataDir = makeTempDir("xenia-db-core-");
 
   try {
     await withEnv({ DATA_DIR: dataDir, NEXT_PHASE: undefined }, async () => {
@@ -363,7 +363,7 @@ test("getDbInstance creates sqlite schema, metadata and applies migrations", ser
       });
 
       const versions = db
-        .prepare("SELECT version FROM _omniroute_migrations ORDER BY version")
+        .prepare("SELECT version FROM _xenia_migrations ORDER BY version")
         .all()
         .map((row) => row.version);
 
@@ -383,7 +383,7 @@ test("getDbInstance creates sqlite schema, metadata and applies migrations", ser
 });
 
 test("getDbInstance reuses the singleton and closeDbInstance resets it", serial, async () => {
-  const dataDir = makeTempDir("omniroute-db-core-");
+  const dataDir = makeTempDir("xenia-db-core-");
 
   try {
     await withEnv({ DATA_DIR: dataDir, NEXT_PHASE: undefined }, async () => {
@@ -407,7 +407,7 @@ test("getDbInstance reuses the singleton and closeDbInstance resets it", serial,
 });
 
 test("local sqlite configuration enables WAL and sane pragmas", serial, async () => {
-  const dataDir = makeTempDir("omniroute-db-core-");
+  const dataDir = makeTempDir("xenia-db-core-");
 
   try {
     await withEnv({ DATA_DIR: dataDir, NEXT_PHASE: undefined }, async () => {
@@ -435,7 +435,7 @@ test("local sqlite configuration enables WAL and sane pragmas", serial, async ()
 });
 
 test("module exports honor DATA_DIR from the environment", serial, async () => {
-  const dataDir = makeTempDir("omniroute-db-core-env-");
+  const dataDir = makeTempDir("xenia-db-core-env-");
 
   try {
     await withEnv({ DATA_DIR: dataDir }, async () => {
@@ -454,7 +454,7 @@ test(
   "module falls back to the default home data directory when DATA_DIR is absent",
   serial,
   async () => {
-    const fakeHome = makeTempDir("omniroute-home-");
+    const fakeHome = makeTempDir("xenia-home-");
 
     try {
       await withEnv(
@@ -469,8 +469,8 @@ test(
           const core = await importFresh("src/lib/db/core.ts");
           const expectedDir =
             process.platform === "win32"
-              ? path.join(fakeHome, "AppData", "Roaming", "omniroute")
-              : path.join(fakeHome, ".omniroute");
+              ? path.join(fakeHome, "AppData", "Roaming", "xenia")
+              : path.join(fakeHome, ".xenia");
 
           assert.equal(core.DATA_DIR, expectedDir);
           assert.equal(core.SQLITE_FILE, path.join(expectedDir, "storage.sqlite"));
@@ -483,7 +483,7 @@ test(
 );
 
 test("build phase uses an in-memory database without creating sqlite files", serial, async () => {
-  const dataDir = makeTempDir("omniroute-db-build-");
+  const dataDir = makeTempDir("xenia-db-build-");
 
   try {
     await withEnv(
@@ -511,41 +511,45 @@ test("build phase uses an in-memory database without creating sqlite files", ser
   }
 });
 
-test("invalid DATA_DIR (a file where a dir is expected) surfaces as a startup failure", serial, async () => {
-  const sandboxDir = makeTempDir("omniroute-db-bad-path-");
-  const fileAsDir = path.join(sandboxDir, "not-a-directory");
-  fs.writeFileSync(fileAsDir, "blocked");
+test(
+  "invalid DATA_DIR (a file where a dir is expected) surfaces as a startup failure",
+  serial,
+  async () => {
+    const sandboxDir = makeTempDir("xenia-db-bad-path-");
+    const fileAsDir = path.join(sandboxDir, "not-a-directory");
+    fs.writeFileSync(fileAsDir, "blocked");
 
-  try {
-    // Since #4767, db/core.ts resolves a writable data dir at module load via
-    // resolveWritableDataDir() → mkdirSync(recursive). Pointing DATA_DIR at a
-    // regular file is a non-permission misconfiguration (EEXIST/ENOTDIR), which
-    // resolveWritableDataDir rethrows by design (only EACCES/EPERM fall back), so
-    // the failure now surfaces at import time, not lazily from getDbInstance().
-    let caught: unknown;
-    await withEnv({ DATA_DIR: fileAsDir }, () => importFresh("src/lib/db/core.ts")).then(
-      () => {
-        throw new Error("expected importing db/core with an invalid DATA_DIR to reject");
-      },
-      (err) => {
-        caught = err;
-      }
-    );
-    assert.ok(caught instanceof Error, "an invalid DATA_DIR must surface as a thrown Error");
-    assert.match(
-      String((caught as Error).message),
-      /unable to open database file|ENOTDIR|EEXIST|not a directory|file already exists/i
-    );
-  } finally {
-    removePath(sandboxDir);
+    try {
+      // Since #4767, db/core.ts resolves a writable data dir at module load via
+      // resolveWritableDataDir() → mkdirSync(recursive). Pointing DATA_DIR at a
+      // regular file is a non-permission misconfiguration (EEXIST/ENOTDIR), which
+      // resolveWritableDataDir rethrows by design (only EACCES/EPERM fall back), so
+      // the failure now surfaces at import time, not lazily from getDbInstance().
+      let caught: unknown;
+      await withEnv({ DATA_DIR: fileAsDir }, () => importFresh("src/lib/db/core.ts")).then(
+        () => {
+          throw new Error("expected importing db/core with an invalid DATA_DIR to reject");
+        },
+        (err) => {
+          caught = err;
+        }
+      );
+      assert.ok(caught instanceof Error, "an invalid DATA_DIR must surface as a thrown Error");
+      assert.match(
+        String((caught as Error).message),
+        /unable to open database file|ENOTDIR|EEXIST|not a directory|file already exists/i
+      );
+    } finally {
+      removePath(sandboxDir);
+    }
   }
-});
+);
 
 test(
   "legacy empty schema databases are renamed before a fresh sqlite database is created",
   serial,
   async () => {
-    const dataDir = makeTempDir("omniroute-db-legacy-empty-");
+    const dataDir = makeTempDir("xenia-db-legacy-empty-");
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     createLegacySchemaDb(sqliteFile);
 
@@ -558,7 +562,7 @@ test(
         assert.ok(
           db
             .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?")
-            .get("_omniroute_migrations")
+            .get("_xenia_migrations")
         );
         assert.equal(
           db
@@ -579,7 +583,7 @@ test(
   "legacy databases with data preserve rows while removing the old migration table",
   serial,
   async () => {
-    const dataDir = makeTempDir("omniroute-db-legacy-data-");
+    const dataDir = makeTempDir("xenia-db-legacy-data-");
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     createLegacySchemaDb(sqliteFile, { withData: true });
 
@@ -623,7 +627,7 @@ test(
   "provider connection max_concurrent column is healed even if migration 029 was already recorded",
   serial,
   async () => {
-    const dataDir = makeTempDir("omniroute-db-missing-max-concurrent-");
+    const dataDir = makeTempDir("xenia-db-missing-max-concurrent-");
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     const seedDb = new Database(sqliteFile);
     const now = new Date().toISOString();
@@ -640,14 +644,14 @@ test(
         updated_at TEXT NOT NULL
       );
 
-      CREATE TABLE _omniroute_migrations (
+      CREATE TABLE _xenia_migrations (
         version TEXT PRIMARY KEY,
         name TEXT NOT NULL,
         applied_at TEXT NOT NULL DEFAULT (datetime('now'))
       );
 
-      INSERT INTO _omniroute_migrations (version, name) VALUES ('001', 'initial_schema');
-      INSERT INTO _omniroute_migrations (version, name) VALUES ('029', 'webhooks_templates');
+      INSERT INTO _xenia_migrations (version, name) VALUES ('001', 'initial_schema');
+      INSERT INTO _xenia_migrations (version, name) VALUES ('029', 'webhooks_templates');
     `);
     seedDb
       .prepare(
@@ -697,7 +701,7 @@ test(
   "legacy call_logs schemas are upgraded before combo target indexes are created",
   serial,
   async () => {
-    const dataDir = makeTempDir("omniroute-db-legacy-call-logs-");
+    const dataDir = makeTempDir("xenia-db-legacy-call-logs-");
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     createLegacyCallLogsDb(sqliteFile);
 
@@ -754,7 +758,7 @@ test(
   "probe failures restore preserved critical state instead of booting with an empty database",
   serial,
   async () => {
-    const dataDir = makeTempDir("omniroute-db-probe-recover-");
+    const dataDir = makeTempDir("xenia-db-probe-recover-");
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     createRecoverableDb(sqliteFile);
 
@@ -811,7 +815,7 @@ test(
   "auto-restore picks latest probe-failed timestamp instead of latest mtime",
   serial,
   async () => {
-    const dataDir = makeTempDir("omniroute-db-probe-latest-");
+    const dataDir = makeTempDir("xenia-db-probe-latest-");
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     const olderBackup = `${sqliteFile}.probe-failed-1000`;
     const newerBackup = `${sqliteFile}.probe-failed-2000`;
@@ -856,7 +860,7 @@ test(
   "probe failures without a safe snapshot abort startup and keep manual recovery explicit",
   serial,
   async () => {
-    const dataDir = makeTempDir("omniroute-db-probe-abort-");
+    const dataDir = makeTempDir("xenia-db-probe-abort-");
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     fs.writeFileSync(sqliteFile, "not-a-valid-sqlite-database");
 

@@ -241,7 +241,7 @@ export async function testSingleProxy(
       signal: controller.signal,
       dispatcher,
       headers: {
-        "User-Agent": "OmniRoute/1.0",
+        "User-Agent": "Xenia/1.0",
       },
     });
 

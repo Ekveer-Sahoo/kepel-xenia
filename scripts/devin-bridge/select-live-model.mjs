@@ -55,9 +55,7 @@ export function selectLiveModel(
   }
   for (const [normalized, ids] of normalizedCatalog) {
     if (ids.length > 1) {
-      throw new Error(
-        `Ambiguous OmniRoute catalog normalization for ${normalized}: ${ids.join(", ")}`
-      );
+      throw new Error(`Ambiguous Xenia catalog normalization for ${normalized}: ${ids.join(", ")}`);
     }
   }
   const catalogIds = new Set(catalog.map((entry) => entry.id));
@@ -79,7 +77,7 @@ export function selectLiveModel(
     const prefix = "devin-cli-agentic/";
     const modelId = configured.startsWith(prefix) ? configured.slice(prefix.length) : "";
     if (!modelId || !catalogIds.has(modelId) || !available.includes(modelId)) {
-      throw new Error(`${name} is not a model returned by Devin and present in OmniRoute`);
+      throw new Error(`${name} is not a model returned by Devin and present in Xenia`);
     }
   }
 
@@ -90,7 +88,7 @@ export function selectLiveModel(
     available[0];
 
   if (!selected) {
-    throw new Error("Devin returned no model identifier present in OmniRoute's Devin catalog");
+    throw new Error("Devin returned no model identifier present in Xenia's Devin catalog");
   }
   return selected;
 }

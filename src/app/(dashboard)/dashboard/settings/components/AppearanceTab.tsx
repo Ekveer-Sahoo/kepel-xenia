@@ -34,7 +34,7 @@ export default function AppearanceTab() {
     target: "logo" | "favicon";
     message: string;
   } | null>(null);
-  const [customThemeColor, setCustomThemeColor] = useState(customColor || "#3b82f6");
+  const [customThemeColor, setCustomThemeColor] = useState(customColor || "#7a7a7a");
   const isValidHex = /^#([0-9a-fA-F]{6})$/.test(
     customThemeColor.startsWith("#") ? customThemeColor : `#${customThemeColor}`
   );
@@ -143,7 +143,7 @@ export default function AppearanceTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-purple-500/10 text-purple-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             palette
           </span>
@@ -515,9 +515,9 @@ export default function AppearanceTab() {
               type="text"
               value={customThemeColor}
               onChange={(e) => setCustomThemeColor(e.target.value)}
-              placeholder="#3b82f6"
+              placeholder="#7a7a7a"
               maxLength={7}
-              className={`flex-1 h-10 px-3 rounded-lg bg-surface border text-sm text-text-main focus:outline-none ${isValidHex ? "border-border focus:border-primary" : "border-red-400 focus:border-red-500"}`}
+              className={`flex-1 h-10 px-3 rounded-lg bg-surface border text-sm text-text-main focus:outline-none ${isValidHex ? "border-border focus:border-primary" : "border-gray-400 focus:border-gray-500"}`}
             />
             <Button onClick={() => setCustomColorTheme(customThemeColor)} disabled={!isValidHex}>
               {t("themeCreate")}
@@ -527,7 +527,7 @@ export default function AppearanceTab() {
 
         <div className="pt-4 border-t border-border">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
                 badge
               </span>
@@ -546,9 +546,9 @@ export default function AppearanceTab() {
               </div>
               <input
                 type="text"
-                value={settings.instanceName || "OmniRoute"}
+                value={settings.instanceName || "Xenia"}
                 onChange={(e) => updateSetting("instanceName", e.target.value)}
-                placeholder="OmniRoute"
+                placeholder="Xenia"
                 maxLength={100}
                 className="h-10 px-3 rounded-lg bg-surface border border-border text-sm text-text-main focus:outline-none focus:border-primary w-48"
               />
@@ -634,7 +634,7 @@ export default function AppearanceTab() {
                 </Button>
               </div>
               {uploadError?.target === "logo" && (
-                <p className="text-sm text-red-500">{uploadError.message}</p>
+                <p className="text-sm text-gray-500">{uploadError.message}</p>
               )}
               {(settings.customLogoBase64 || settings.customLogoUrl) && (
                 <div className="mt-2 p-3 bg-black/5 dark:bg-white/5 rounded-lg">
@@ -734,7 +734,7 @@ export default function AppearanceTab() {
                 </Button>
               </div>
               {uploadError?.target === "favicon" && (
-                <p className="text-sm text-red-500">{uploadError.message}</p>
+                <p className="text-sm text-gray-500">{uploadError.message}</p>
               )}
               {(settings.customFaviconBase64 || settings.customFaviconUrl) && (
                 <div className="mt-2 p-3 bg-black/5 dark:bg-white/5 rounded-lg">

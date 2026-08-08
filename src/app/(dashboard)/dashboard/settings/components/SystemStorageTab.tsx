@@ -62,7 +62,7 @@ export default function SystemStorageTab() {
   const tc = useTranslations("common");
   const [storageHealth, setStorageHealth] = useState({
     driver: "sqlite",
-    dbPath: "~/.omniroute/storage.sqlite",
+    dbPath: "~/.xenia/storage.sqlite",
     sizeBytes: 0,
     retentionDays: {
       app: 7,
@@ -518,7 +518,7 @@ export default function SystemStorageTab() {
     try {
       await fetchAndDownload(
         "/api/settings/export-json",
-        `omniroute-legacy-backup-${new Date().toISOString().replace(/[:.]/g, "-")}.json`,
+        `xenia-legacy-backup-${new Date().toISOString().replace(/[:.]/g, "-")}.json`,
         t("jsonExportFailed")
       );
     } catch (err) {
@@ -583,7 +583,7 @@ export default function SystemStorageTab() {
     try {
       await fetchAndDownload(
         "/api/db-backups/export",
-        `omniroute-backup-${new Date().toISOString().replace(/[:.]/g, "-")}.sqlite`,
+        `xenia-backup-${new Date().toISOString().replace(/[:.]/g, "-")}.sqlite`,
         t("exportFailed")
       );
     } catch (err) {
@@ -694,10 +694,10 @@ export default function SystemStorageTab() {
     const className =
       "p-3 rounded-lg text-sm " +
       (isSuccess
-        ? "bg-green-500/10 text-green-500 border border-green-500/20"
+        ? "bg-gray-500/10 text-gray-500 border border-gray-500/20"
         : isInfo
-          ? "bg-blue-500/10 text-blue-500 border border-blue-500/20"
-          : "bg-red-500/10 text-red-500 border border-red-500/20");
+          ? "bg-gray-500/10 text-gray-500 border border-gray-500/20"
+          : "bg-gray-500/10 text-gray-500 border border-gray-500/20");
 
     return (
       <div key={index} className={className} role="alert">
@@ -772,9 +772,9 @@ export default function SystemStorageTab() {
             <p className="text-xs text-text-muted mb-1">{t("storageIntegrityCheck")}</p>
             <p className="text-sm font-semibold">
               {dbSettings.stats.integrityCheck === "ok" ? (
-                <span className="text-green-500">{t("storageIntegrityOk")}</span>
+                <span className="text-gray-500">{t("storageIntegrityOk")}</span>
               ) : dbSettings.stats.integrityCheck === "error" ? (
-                <span className="text-red-500">{t("storageIntegrityError")}</span>
+                <span className="text-gray-500">{t("storageIntegrityError")}</span>
               ) : (
                 t("storageIntegrityNotChecked")
               )}
@@ -834,7 +834,7 @@ export default function SystemStorageTab() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span
-                      className="material-symbols-outlined text-[16px] text-amber-500"
+                      className="material-symbols-outlined text-[16px] text-gray-500"
                       aria-hidden="true"
                     >
                       description
@@ -864,13 +864,13 @@ export default function SystemStorageTab() {
                 <div className="flex items-center gap-2 ml-3">
                   {confirmRestoreId === backup.id ? (
                     <>
-                      <span className="text-xs text-amber-500 font-medium">{t("confirm")}</span>
+                      <span className="text-xs text-gray-500 font-medium">{t("confirm")}</span>
                       <Button
                         variant="primary"
                         size="sm"
                         onClick={() => handleRestore(backup.id)}
                         loading={restoringId === backup.id}
-                        className="!bg-amber-500 hover:!bg-amber-600"
+                        className="!bg-gray-500 hover:!bg-gray-600"
                       >
                         {t("yes")}
                       </Button>
@@ -1241,7 +1241,7 @@ export default function SystemStorageTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-green-500/10 text-green-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             database
           </span>
@@ -1261,7 +1261,7 @@ export default function SystemStorageTab() {
             {t("databasePath")}
           </p>
           <p className="text-sm font-mono text-text-main break-all">
-            {storageHealth.dbPath || "~/.omniroute/storage.sqlite"}
+            {storageHealth.dbPath || "~/.xenia/storage.sqlite"}
           </p>
         </div>
       </div>
@@ -1270,10 +1270,7 @@ export default function SystemStorageTab() {
 
       <div className="pt-3 border-t border-border/50 mb-4">
         <div className="flex items-center gap-2 mb-3">
-          <span
-            className="material-symbols-outlined text-[18px] text-emerald-500"
-            aria-hidden="true"
-          >
+          <span className="material-symbols-outlined text-[18px] text-gray-500" aria-hidden="true">
             file_export
           </span>
           <p className="font-medium">{t("export")}</p>
@@ -1293,7 +1290,7 @@ export default function SystemStorageTab() {
               try {
                 await fetchAndDownload(
                   "/api/db-backups/exportAll",
-                  "omniroute-full-backup.tar.gz",
+                  "xenia-full-backup.tar.gz",
                   t("exportFailed")
                 );
               } catch (err) {
@@ -1352,16 +1349,16 @@ export default function SystemStorageTab() {
         </div>
 
         {confirmImport && pendingImportFile && (
-          <div className="p-4 rounded-lg mt-3 bg-amber-500/10 border border-amber-500/30">
+          <div className="p-4 rounded-lg mt-3 bg-gray-500/10 border border-gray-500/30">
             <div className="flex items-start gap-3">
               <span
-                className="material-symbols-outlined text-[20px] text-amber-500 mt-0.5"
+                className="material-symbols-outlined text-[20px] text-gray-500 mt-0.5"
                 aria-hidden="true"
               >
                 warning
               </span>
               <div className="flex-1">
-                <p className="text-sm font-medium text-amber-500 mb-1">{t("confirmDbImport")}</p>
+                <p className="text-sm font-medium text-gray-500 mb-1">{t("confirmDbImport")}</p>
                 <p className="text-xs text-text-muted mb-2">
                   {t("confirmDbImportDesc", { file: pendingImportFile.name })}
                 </p>
@@ -1370,7 +1367,7 @@ export default function SystemStorageTab() {
                     variant="primary"
                     size="sm"
                     onClick={handleImportConfirm}
-                    className="!bg-amber-500 hover:!bg-amber-600"
+                    className="!bg-gray-500 hover:!bg-gray-600"
                   >
                     {t("yesImport")}
                   </Button>
@@ -1388,7 +1385,7 @@ export default function SystemStorageTab() {
 
       <div className="pt-3 border-t border-border/50 mb-4">
         <div className="flex items-center gap-2 mb-3">
-          <span className="material-symbols-outlined text-[18px] text-blue-500" aria-hidden="true">
+          <span className="material-symbols-outlined text-[18px] text-gray-500" aria-hidden="true">
             build
           </span>
           <p className="font-medium">{t("maintenance") || "Maintenance"}</p>
@@ -1489,7 +1486,7 @@ export default function SystemStorageTab() {
 
       <div className="flex items-center justify-between p-3 rounded-lg bg-bg border border-border mb-4">
         <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-[16px] text-amber-500" aria-hidden="true">
+          <span className="material-symbols-outlined text-[16px] text-gray-500" aria-hidden="true">
             schedule
           </span>
           <div>
@@ -1553,7 +1550,7 @@ export default function SystemStorageTab() {
             <select
               value={resetUsagePeriod}
               onChange={(e) => setResetUsagePeriod(e.target.value)}
-              className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text-main focus:outline-none focus:ring-2 focus:ring-red-500/40"
+              className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text-main focus:outline-none focus:ring-2 focus:ring-gray-500/40"
             >
               {RESET_USAGE_PERIOD_VALUES.map((value) => (
                 <option key={value} value={value}>

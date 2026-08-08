@@ -67,9 +67,9 @@ export default function ResultsPanel({
   };
 
   const getScoreBg = (score: number) => {
-    if (score >= 0.9) return "bg-green-500/10";
-    if (score >= 0.7) return "bg-yellow-500/10";
-    return "bg-red-500/10";
+    if (score >= 0.9) return "bg-gray-500/10";
+    if (score >= 0.7) return "bg-gray-500/10";
+    return "bg-gray-500/10";
   };
 
   const editorTheme =

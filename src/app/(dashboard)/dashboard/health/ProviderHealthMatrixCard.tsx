@@ -156,10 +156,10 @@ function ModelPill({ model }: { model: HealthMatrixModel }) {
     <div
       className={cn(
         "rounded-lg border px-3 py-2 text-xs",
-        model.status === "healthy" && "border-green-500/20 bg-green-500/5",
-        model.status === "degraded" && "border-yellow-500/20 bg-yellow-500/5",
-        model.status === "locked" && "border-amber-500/20 bg-amber-500/5",
-        model.status === "error" && "border-red-500/20 bg-red-500/5",
+        model.status === "healthy" && "border-gray-500/20 bg-gray-500/5",
+        model.status === "degraded" && "border-gray-500/20 bg-gray-500/5",
+        model.status === "locked" && "border-gray-500/20 bg-gray-500/5",
+        model.status === "error" && "border-gray-500/20 bg-gray-500/5",
         model.status === "idle" && "border-border bg-bg-subtle/60"
       )}
     >
@@ -181,7 +181,7 @@ function ModelPill({ model }: { model: HealthMatrixModel }) {
             )}
           </p>
           {model.isLockedOut ? (
-            <p className="mt-1 text-amber-500">
+            <p className="mt-1 text-gray-500">
               {healthText(t, "modelLockoutSummary", "{reason} · {duration} left", {
                 reason: model.lockoutReason || healthText(t, "locked", "locked"),
                 duration: formatDuration(model.lockoutRemainingMs, t),
@@ -232,7 +232,7 @@ function AccountRow({ account }: { account: HealthMatrixAccount }) {
             })}
           </p>
           {account.lastErrorType || account.errorCode || account.cooldownRemainingMs > 0 ? (
-            <p className="mt-1 text-xs text-amber-500">
+            <p className="mt-1 text-xs text-gray-500">
               {account.lastErrorType || account.errorCode || healthText(t, "cooldown", "cooldown")}
               {account.cooldownRemainingMs > 0
                 ? ` · ${healthText(t, "durationRemaining", "{duration} remaining", {
@@ -411,7 +411,7 @@ export default function ProviderHealthMatrixCard() {
       ) : null}
 
       {error ? (
-        <div className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400">
+        <div className="mt-4 rounded-xl border border-gray-500/30 bg-gray-500/10 p-4 text-sm text-gray-400">
           {healthText(
             t,
             "failedProviderHealthMatrix",

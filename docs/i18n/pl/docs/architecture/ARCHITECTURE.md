@@ -1,10 +1,10 @@
 ---
-title: "Architektura OmniRoute"
+title: "Architektura Xenia"
 version: 3.8.40
 lastUpdated: 2026-06-28
 ---
 
-# Architektura OmniRoute
+# Architektura Xenia
 
 🌐 **Languages:** 🇺🇸 [English](./ARCHITECTURE.md) | 🇧🇷 [Português (Brasil)](../i18n/pt-BR/docs/architecture/ARCHITECTURE.md) | 🇪🇸 [Español](../i18n/es/docs/architecture/ARCHITECTURE.md) | 🇫🇷 [Français](../i18n/fr/docs/architecture/ARCHITECTURE.md) | 🇮🇹 [Italiano](../i18n/it/docs/architecture/ARCHITECTURE.md) | 🇷🇺 [Русский](../i18n/ru/docs/architecture/ARCHITECTURE.md) | 🇨🇳 [中文 (简体)](../i18n/zh-CN/docs/architecture/ARCHITECTURE.md) | 🇩🇪 [Deutsch](../i18n/de/docs/architecture/ARCHITECTURE.md) | 🇮🇳 [हिन्दी](../i18n/in/docs/architecture/ARCHITECTURE.md) | 🇹🇭 [ไทย](../i18n/th/docs/architecture/ARCHITECTURE.md) | 🇺🇦 [Українська](../i18n/uk-UA/docs/architecture/ARCHITECTURE.md) | 🇸🇦 [العربية](../i18n/ar/docs/architecture/ARCHITECTURE.md) | 🇯🇵 [日本語](../i18n/ja/docs/architecture/ARCHITECTURE.md) | 🇻🇳 [Tiếng Việt](../i18n/vi/docs/architecture/ARCHITECTURE.md) | 🇧🇬 [Български](../i18n/bg/docs/architecture/ARCHITECTURE.md) | 🇩🇰 [Dansk](../i18n/da/docs/architecture/ARCHITECTURE.md) | 🇫🇮 [Suomi](../i18n/fi/docs/architecture/ARCHITECTURE.md) | 🇮🇱 [עברית](../i18n/he/docs/architecture/ARCHITECTURE.md) | 🇭🇺 [Magyar](../i18n/hu/docs/architecture/ARCHITECTURE.md) | 🇮🇩 [Bahasa Indonesia](../i18n/id/docs/architecture/ARCHITECTURE.md) | 🇰🇷 [한국어](../i18n/ko/docs/architecture/ARCHITECTURE.md) | 🇲🇾 [Bahasa Melayu](../i18n/ms/docs/architecture/ARCHITECTURE.md) | 🇳🇱 [Nederlands](../i18n/nl/docs/architecture/ARCHITECTURE.md) | 🇳🇴 [Norsk](../i18n/no/docs/architecture/ARCHITECTURE.md) | 🇵🇹 [Português (Portugal)](../i18n/pt/docs/architecture/ARCHITECTURE.md) | 🇷🇴 [Română](../i18n/ro/docs/architecture/ARCHITECTURE.md) | 🇵🇱 [Polski](../i18n/pl/docs/architecture/ARCHITECTURE.md) | 🇸🇰 [Slovenčina](../i18n/sk/docs/architecture/ARCHITECTURE.md) | 🇸🇪 [Svenska](../i18n/sv/docs/architecture/ARCHITECTURE.md) | 🇵🇭 [Filipino](../i18n/phi/docs/architecture/ARCHITECTURE.md) | 🇨🇿 [Čeština](../i18n/cs/docs/architecture/ARCHITECTURE.md)
 
@@ -12,7 +12,7 @@ _Ostatnia aktualizacja: 2026-06-28_
 
 ## Podsumowanie wykonawcze
 
-OmniRoute to lokalna brama routingu AI i panel (dashboard) zbudowane na Next.js.
+Xenia to lokalna brama routingu AI i panel (dashboard) zbudowane na Next.js.
 Udostępnia pojedynczy endpoint zgodny z OpenAI (`/v1/*`) i kieruje ruch przez wielu dostawców upstream z tłumaczeniem, fallbackiem, odświeżaniem tokenów oraz śledzeniem użycia.
 
 Główne możliwości:
@@ -166,7 +166,7 @@ flowchart LR
         BROWSER[Browser Dashboard]
     end
 
-    subgraph Router[OmniRoute Local Process]
+    subgraph Router[Xenia Local Process]
         API[V1 Compatibility API\n/v1/*]
         DASH[Dashboard + Management API\n/api/*]
         CORE[SSE + Translation Core\nopen-sse + src/sse]
@@ -329,7 +329,7 @@ Moduły dostawców OAuth (16 osobnych plików w `src/lib/oauth/providers/`):
 
 ## 5) Osadzone usługi (v3.8.4)
 
-OmniRoute może instalować, nadzorować i routować do lokalnie działających procesów narzędzi AI
+Xenia może instalować, nadzorować i routować do lokalnie działających procesów narzędzi AI
 nazywanych **embedded services**. W v3.8.4 dostarczone są dwa: 9Router i CLIProxyAPI.
 
 Warstwy architektury:
@@ -434,7 +434,7 @@ same składać logiki lockout/budget/fallback.
 - Cache quota: `src/domain/quotaCache.ts`
 - Stan degradacji: `src/domain/degradation.ts`
 - Audyt konfiguracji: `src/domain/configAudit.ts`
-- Builder metadanych odpowiedzi OmniRoute: `src/domain/omnirouteResponseMeta.ts`
+- Builder metadanych odpowiedzi Xenia: `src/domain/xeniaResponseMeta.ts`
 - Podsystem assessment: `src/domain/assessment/` — okresowe zadania ewaluacji
 
 ### E. Potok autoryzacji
@@ -518,7 +518,7 @@ Główna baza stanu (SQLite):
 
 - Infrastruktura rdzenia: `src/lib/db/core.ts` (better-sqlite3, migracje, WAL)
 - Fasada re-eksportu: `src/lib/localDb.ts` (cienka warstwa kompatybilności dla callerów)
-- plik: `${DATA_DIR}/storage.sqlite` (lub `$XDG_CONFIG_HOME/omniroute/storage.sqlite` gdy ustawione, w przeciwnym razie `~/.omniroute/storage.sqlite`)
+- plik: `${DATA_DIR}/storage.sqlite` (lub `$XDG_CONFIG_HOME/xenia/storage.sqlite` gdy ustawione, w przeciwnym razie `~/.xenia/storage.sqlite`)
 - encje (tabele + przestrzenie KV): providerConnections, providerNodes, modelAliases, combos, apiKeys, settings, pricing, **customModels**, **proxyConfig**, **ipFilter**, **thinkingBudget**, **systemPrompt**
 
 Persystencja użycia:
@@ -814,7 +814,7 @@ flowchart LR
         Browser[Dashboard Browser]
     end
 
-    subgraph ContainerOrProcess[OmniRoute Runtime]
+    subgraph ContainerOrProcess[Xenia Runtime]
         Next[Next.js Server\nPORT=20128]
         Core[SSE Core + Executors]
         MainDB[(storage.sqlite)]
@@ -934,7 +934,7 @@ Wszystkie pozostałe dostawcy (w tym niestandardowe węzły kompatybilne) używa
 ## Macierz kompatybilności dostawców
 
 > **Uwaga:** Poniższa macierz to reprezentatywna próbka spośród 237 zarejestrowanych dostawców w
-> OmniRoute v3.8.0. Kanoniczna i stale aktualizowana lista: zob.
+> Xenia v3.8.0. Kanoniczna i stale aktualizowana lista: zob.
 > [`docs/reference/PROVIDER_REFERENCE.md`](../reference/PROVIDER_REFERENCE.md) (auto-generowana) lub źródło
 > prawdy w `src/shared/constants/providers.ts` (walidowane Zod przy ładowaniu).
 
@@ -1117,7 +1117,7 @@ Szczegółowe przechwytywanie payloadów żądań przechowuje do czterech etapó
 - surowe żądanie otrzymane od klienta
 - przetłumaczone żądanie faktycznie wysłane upstream
 - odpowiedź dostawcy zrekonstruowana jako JSON; odpowiedzi streamowane są kompaktowane do końcowego podsumowania plus metadanych strumienia
-- końcowa odpowiedź klienta zwrócona przez OmniRoute; odpowiedzi streamowane są przechowywane w tej samej zwartej formie podsumowania
+- końcowa odpowiedź klienta zwrócona przez Xenia; odpowiedzi streamowane są przechowywane w tej samej zwartej formie podsumowania
 
 ## Granice wrażliwe na bezpieczeństwo
 
@@ -1144,11 +1144,11 @@ Zmienne środowiskowe aktywnie używane w kodzie:
 
 ## Znane uwagi architektoniczne
 
-1. `usageDb` i `localDb` współdzielą tę samą politykę katalogu bazowego (`DATA_DIR` -> `XDG_CONFIG_HOME/omniroute` -> `~/.omniroute`) z migracją plików legacy.
+1. `usageDb` i `localDb` współdzielą tę samą politykę katalogu bazowego (`DATA_DIR` -> `XDG_CONFIG_HOME/xenia` -> `~/.xenia`) z migracją plików legacy.
 2. `/api/v1/route.ts` deleguje do tego samego ujednoliconego buildera katalogu używanego przez `/api/v1/models` (`src/app/api/v1/models/catalog.ts`), aby uniknąć dryfu semantycznego.
 3. Logger żądań zapisuje pełne nagłówki/body, gdy jest włączony; traktuj katalog logów jako wrażliwy.
 4. Zachowanie chmury zależy od poprawnego `NEXT_PUBLIC_BASE_URL` i osiągalności endpointu chmury.
-5. Katalog `open-sse/` jest publikowany jako **pakiet npm workspace** `@omniroute/open-sse`. Kod źródłowy importuje go przez `@omniroute/open-sse/...` (rozwiązywane przez Next.js `transpilePackages`). Ścieżki plików w tym dokumencie nadal używają nazwy katalogu `open-sse/` dla spójności.
+5. Katalog `open-sse/` jest publikowany jako **pakiet npm workspace** `@xenia/open-sse`. Kod źródłowy importuje go przez `@xenia/open-sse/...` (rozwiązywane przez Next.js `transpilePackages`). Ścieżki plików w tym dokumencie nadal używają nazwy katalogu `open-sse/` dla spójności.
 6. Wykresy w dashboardzie używają **Recharts** (oparte na SVG) dla dostępnych, interaktywnych wizualizacji analitycznych (wykresy słupkowe użycia modeli, tabele breakdown dostawców ze wskaźnikami sukcesu).
 7. Testy E2E używają **Playwright** (`tests/e2e/`), uruchamiane przez `npm run test:e2e`. Testy jednostkowe używają **Node.js test runner** (`tests/unit/`), uruchamiane przez `npm run test:unit`. Kod źródłowy w `src/` to **TypeScript** (`.ts`/`.tsx`); workspace `open-sse/` pozostaje JavaScript (`.js`).
 8. Strona ustawień jest zorganizowana w 7 zakładek: General, Appearance, AI, Security, Routing, Resilience, Advanced. Strona Resilience konfiguruje tylko kolejkę żądań, cooldown połączenia, provider breaker i zachowanie wait-for-cooldown; żywy stan runtime breakerów jest pokazywany na stronie Health.
@@ -1159,7 +1159,7 @@ Zmienne środowiskowe aktywnie używane w kodzie:
 ## Lista weryfikacji operacyjnej
 
 - Build ze źródeł: `npm run build`
-- Build obrazu Docker: `docker build -t omniroute .`
+- Build obrazu Docker: `docker build -t xenia .`
 - Uruchom usługę i zweryfikuj:
 - `GET /api/settings`
 - `GET /api/v1/models`

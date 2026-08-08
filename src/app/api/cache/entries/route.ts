@@ -5,7 +5,7 @@ import {
   deleteSemanticCacheBySignature,
   deleteSemanticCacheByModel,
 } from "@/lib/db/semanticCache";
-import { sanitizeErrorMessage } from "@omniroute/open-sse/utils/error";
+import { sanitizeErrorMessage } from "@xenia/open-sse/utils/error";
 
 export async function GET(req: NextRequest) {
   if (!(await isAuthenticated(req))) {
@@ -21,7 +21,14 @@ export async function GET(req: NextRequest) {
     const sortBy = searchParams.get("sortBy") || "created_at";
     const sortOrder = searchParams.get("sortOrder") || "desc";
 
-    const { entries, total } = listSemanticCacheEntries({ page, limit, search, model, sortBy, sortOrder });
+    const { entries, total } = listSemanticCacheEntries({
+      page,
+      limit,
+      search,
+      model,
+      sortBy,
+      sortOrder,
+    });
 
     return NextResponse.json({
       entries,

@@ -1,0 +1,1 @@
+- feat(copilot): add approval gate for runXeniaCli commands (#8461)

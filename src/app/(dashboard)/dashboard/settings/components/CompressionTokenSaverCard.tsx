@@ -23,7 +23,7 @@ function StatusPill({ on }: { on: boolean }) {
   return (
     <span
       className={`rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
-        on ? "bg-emerald-500/15 text-emerald-500" : "bg-border/50 text-text-muted"
+        on ? "bg-gray-500/15 text-gray-500" : "bg-border/50 text-text-muted"
       }`}
     >
       {on ? "on" : "off"}
@@ -88,7 +88,7 @@ export default function CompressionTokenSaverCard({
       <div className="mb-1 flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <h4 className="flex items-center gap-2 text-base font-semibold text-text-main">
-            <span className="material-symbols-outlined text-[21px] text-amber-500">bolt</span>
+            <span className="material-symbols-outlined text-[21px] text-gray-500">bolt</span>
             {t("tokenSaverTitle")}
           </h4>
           <p className="mt-1 text-sm text-text-muted">{t("tokenSaverSubtitle")}</p>

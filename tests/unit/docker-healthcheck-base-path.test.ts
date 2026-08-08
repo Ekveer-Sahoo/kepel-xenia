@@ -7,7 +7,7 @@ test("resolveHealthPath keeps the default route at the domain root", () => {
   assert.equal(resolveHealthPath(undefined), "/api/monitoring/health");
 });
 
-test("resolveHealthPath prefixes the health route with OMNIROUTE_BASE_PATH", () => {
-  assert.equal(resolveHealthPath("/omniroute/"), "/omniroute/api/monitoring/health");
-  assert.equal(resolveHealthPath("/omniroute"), "/omniroute/api/monitoring/health");
+test("resolveHealthPath prefixes the health route with XENIA_BASE_PATH", () => {
+  assert.equal(resolveHealthPath("/xenia/"), "/xenia/api/monitoring/health");
+  assert.equal(resolveHealthPath("/xenia"), "/xenia/api/monitoring/health");
 });

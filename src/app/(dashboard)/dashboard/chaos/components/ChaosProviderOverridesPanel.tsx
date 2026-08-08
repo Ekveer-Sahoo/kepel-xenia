@@ -60,7 +60,7 @@ function ChaosProviderOverrideRow({
         type="button"
         onClick={() => onUpdate(index, "enabled", !override.enabled)}
         className={`px-2 py-1 rounded text-xs ${
-          override.enabled ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-600"
+          override.enabled ? "bg-gray-500/10 text-gray-600" : "bg-gray-500/10 text-gray-600"
         }`}
       >
         {override.enabled ? t("on") : t("off")}
@@ -68,7 +68,7 @@ function ChaosProviderOverrideRow({
       <button
         type="button"
         onClick={() => onRemove(index)}
-        className="px-2 py-1 rounded text-xs text-red-500 hover:bg-red-500/10"
+        className="px-2 py-1 rounded text-xs text-gray-500 hover:bg-gray-500/10"
       >
         <span className="material-symbols-outlined text-[14px]">close</span>
       </button>

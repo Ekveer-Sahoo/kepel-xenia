@@ -44,7 +44,7 @@ export function getBifrostRoutingConfig(
 
   return {
     baseUrl: resolvedBaseUrl,
-    apiKey: env.BIFROST_API_KEY || env.OMNIROUTE_BIFROST_KEY || undefined,
+    apiKey: env.BIFROST_API_KEY || env.XENIA_BIFROST_KEY || undefined,
     timeoutMs: Number.isFinite(timeoutMs) && timeoutMs > 0 ? timeoutMs : 30000,
     streamingEnabled: env.BIFROST_STREAMING_ENABLED !== "0",
     enabled: env.BIFROST_ENABLED !== "0",
@@ -54,7 +54,7 @@ export function getBifrostRoutingConfig(
 export function resolveRelayRoutingBackend(
   env: NodeJS.ProcessEnv = process.env
 ): RelayRoutingBackend {
-  const configured = env.OMNIROUTE_RELAY_BACKEND || env.RELAY_ROUTING_BACKEND;
+  const configured = env.XENIA_RELAY_BACKEND || env.RELAY_ROUTING_BACKEND;
   if (configured && VALID_BACKENDS.has(configured as RelayRoutingBackend)) {
     return configured as RelayRoutingBackend;
   }
@@ -82,9 +82,10 @@ export function shouldTryBifrostForRequest(
     return { tryBifrost: true };
   }
 
-  const model = typeof (body as { model?: unknown } | null)?.model === "string"
-    ? (body as { model: string }).model
-    : undefined;
+  const model =
+    typeof (body as { model?: unknown } | null)?.model === "string"
+      ? (body as { model: string }).model
+      : undefined;
   const provider = lookupProviderSidecar(model);
   if (provider?.eligible) {
     return { tryBifrost: true };
@@ -104,10 +105,7 @@ export function getRoutingFallbackHeader(
 }
 
 export type RoutingFallbackReasonCode =
-  | "bifrost-cooldown"
-  | "bifrost-error"
-  | "bifrost-ineligible"
-  | "bifrost-provider-unknown";
+  "bifrost-cooldown" | "bifrost-error" | "bifrost-ineligible" | "bifrost-provider-unknown";
 
 const ROUTING_FALLBACK_REASON_CODES = new Set<RoutingFallbackReasonCode>([
   "bifrost-cooldown",

@@ -9,27 +9,27 @@ import { translateUsageOrFallback } from "./i18nFallback";
 const getColorClasses = (remainingPercentage) => {
   if (remainingPercentage > 70) {
     return {
-      text: "text-green-500",
-      bg: "bg-green-500",
-      bgLight: "bg-green-500/10",
+      text: "text-gray-500",
+      bg: "bg-gray-500",
+      bgLight: "bg-gray-500/10",
       emoji: "🟢",
     };
   }
 
   if (remainingPercentage >= 30) {
     return {
-      text: "text-yellow-500",
-      bg: "bg-yellow-500",
-      bgLight: "bg-yellow-500/10",
+      text: "text-gray-500",
+      bg: "bg-gray-500",
+      bgLight: "bg-gray-500/10",
       emoji: "🟡",
     };
   }
 
   // 0-29% including 0% (out of quota) - show red
   return {
-    text: "text-red-500",
-    bg: "bg-red-500",
-    bgLight: "bg-red-500/10",
+    text: "text-gray-500",
+    bg: "bg-gray-500",
+    bgLight: "bg-gray-500/10",
     emoji: "🔴",
   };
 };

@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { IMAGE_PROVIDERS } from "@omniroute/open-sse/config/imageRegistry.ts";
-import { VIDEO_PROVIDERS } from "@omniroute/open-sse/config/videoRegistry.ts";
-import { MUSIC_PROVIDERS } from "@omniroute/open-sse/config/musicRegistry.ts";
+import { IMAGE_PROVIDERS } from "@xenia/open-sse/config/imageRegistry.ts";
+import { VIDEO_PROVIDERS } from "@xenia/open-sse/config/videoRegistry.ts";
+import { MUSIC_PROVIDERS } from "@xenia/open-sse/config/musicRegistry.ts";
 import {
   AUDIO_SPEECH_PROVIDERS,
   AUDIO_TRANSCRIPTION_PROVIDERS,
-} from "@omniroute/open-sse/config/audioRegistry.ts";
+} from "@xenia/open-sse/config/audioRegistry.ts";
 import { toProviderModels, type ProviderModelGroup } from "./mediaProviderModels";
 
 type Modality = "image" | "video" | "music" | "speech" | "transcription";
@@ -40,35 +40,35 @@ const MODALITY_CONFIG: Record<
     endpoint: "/api/v1/images/generations",
     labelKey: "imageGeneration",
     placeholderKey: "imagePromptPlaceholder",
-    color: "from-purple-500 to-pink-500",
+    color: "from-gray-500 to-gray-500",
   },
   video: {
     icon: "videocam",
     endpoint: "/api/v1/videos/generations",
     labelKey: "videoGeneration",
     placeholderKey: "videoPromptPlaceholder",
-    color: "from-blue-500 to-cyan-500",
+    color: "from-gray-500 to-gray-500",
   },
   music: {
     icon: "music_note",
     endpoint: "/api/v1/music/generations",
     labelKey: "musicGeneration",
     placeholderKey: "musicPromptPlaceholder",
-    color: "from-orange-500 to-yellow-500",
+    color: "from-gray-500 to-gray-500",
   },
   speech: {
     icon: "record_voice_over",
     endpoint: "/api/v1/audio/speech",
     labelKey: "textToSpeech",
     placeholderKey: "speechTextPlaceholder",
-    color: "from-green-500 to-teal-500",
+    color: "from-gray-500 to-gray-500",
   },
   transcription: {
     icon: "mic",
     endpoint: "/api/v1/audio/transcriptions",
     labelKey: "transcription",
     placeholderKey: "transcriptionPlaceholder",
-    color: "from-indigo-500 to-blue-500",
+    color: "from-gray-500 to-gray-500",
   },
 };
 
@@ -753,7 +753,7 @@ export default function MediaPageClient() {
         {/* Credential hint */}
         {selectedProvider && !["sdwebui", "comfyui", "qwen"].includes(selectedProvider) && (
           <p className="text-xs text-text-muted flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[14px] text-amber-500">info</span>
+            <span className="material-symbols-outlined text-[14px] text-gray-500">info</span>
             {t.rich("credentialsRequired", {
               provider: () => <strong className="capitalize">{selectedProvider}</strong>,
               providers: (chunks) => (
@@ -827,7 +827,7 @@ export default function MediaPageClient() {
               className="w-full px-3 py-2 rounded-lg bg-surface border border-black/10 dark:border-white/10 text-text-main text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:bg-primary/10 file:text-primary file:text-sm"
             />
             {fileSizeError && (
-              <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
+              <p className="text-xs text-gray-400 mt-1 flex items-center gap-1">
                 <span className="material-symbols-outlined text-[12px]">error</span>
                 {fileSizeError}
               </p>
@@ -949,16 +949,16 @@ export default function MediaPageClient() {
       {/* Error */}
       {error && (
         <div
-          className={`rounded-xl p-4 flex items-start gap-3 ${isCredentialsError ? "bg-amber-500/10 border border-amber-500/20" : "bg-red-500/10 border border-red-500/20"}`}
+          className={`rounded-xl p-4 flex items-start gap-3 ${isCredentialsError ? "bg-gray-500/10 border border-gray-500/20" : "bg-gray-500/10 border border-gray-500/20"}`}
         >
           <span
-            className={`material-symbols-outlined text-[20px] mt-0.5 ${isCredentialsError ? "text-amber-500" : "text-red-500"}`}
+            className={`material-symbols-outlined text-[20px] mt-0.5 ${isCredentialsError ? "text-gray-500" : "text-gray-500"}`}
           >
             {isCredentialsError ? "key" : "error"}
           </span>
           <div className="flex-1 min-w-0">
             <p
-              className={`text-sm font-medium ${isCredentialsError ? "text-amber-500" : "text-red-500"}`}
+              className={`text-sm font-medium ${isCredentialsError ? "text-gray-500" : "text-gray-500"}`}
             >
               {isCredentialsError ? t("apiKeyRequired") : t("error")}
             </p>

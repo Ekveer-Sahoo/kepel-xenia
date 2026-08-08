@@ -115,7 +115,7 @@ test(
     "the ordering-gap 'sql.js WASM ainda não foi pré-inicializado' error when both " +
     "sync drivers fail on an EXISTING db file (#7288 / #7494)",
   async () => {
-    dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-7288-"));
+    dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-7288-"));
     const sqliteFile = path.join(dataDir, "storage.sqlite");
     // A directory in place of the sqlite file makes BOTH better-sqlite3 and
     // node:sqlite fail to open it for real (no mocking needed), while
@@ -170,12 +170,11 @@ test(
   "the warm-up costs nothing on the happy path: sql.js stays un-initialized when a " +
     "sync driver can already open the file",
   async () => {
-    const dir2 = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-7288-happy-"));
+    const dir2 = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-7288-happy-"));
     const file2 = path.join(dir2, "storage.sqlite");
     try {
-      const { tryOpenSync, getSqlJsAdapter } = await import(
-        "../../src/lib/db/adapters/driverFactory"
-      );
+      const { tryOpenSync, getSqlJsAdapter } =
+        await import("../../src/lib/db/adapters/driverFactory");
       const { default: Database } = await import("better-sqlite3");
       const seed = new Database(file2);
       seed.exec("CREATE TABLE t (id INTEGER)");

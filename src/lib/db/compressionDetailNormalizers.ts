@@ -13,7 +13,7 @@ import {
   type CcrConfig,
   type CompressionConfig,
   type SessionDedupConfig,
-} from "@omniroute/open-sse/services/compression/types.ts";
+} from "@xenia/open-sse/services/compression/types.ts";
 
 function toRecord(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" ? (value as Record<string, unknown>) : {};
@@ -56,7 +56,10 @@ export function normalizeCcrConfig(value: unknown): CcrConfig {
 
 /** Default sub-objects spread into getCompressionSettings' seed config. */
 export function buildDetailConfigDefaults(): Pick<CompressionConfig, "sessionDedup" | "ccr"> {
-  return { sessionDedup: normalizeSessionDedupConfig(undefined), ccr: normalizeCcrConfig(undefined) };
+  return {
+    sessionDedup: normalizeSessionDedupConfig(undefined),
+    ccr: normalizeCcrConfig(undefined),
+  };
 }
 
 /** Applies a stored sessionDedup/ccr row onto config during getCompressionSettings' row scan. */

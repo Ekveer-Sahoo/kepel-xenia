@@ -43,7 +43,7 @@ export function SkillPreviewPane({
 
   const handleCopyRawUrl = useCallback(async () => {
     if (!skillId) return;
-    const rawUrl = `https://raw.githubusercontent.com/diegosouzapw/OmniRoute/refs/heads/main/skills/${skillId}/SKILL.md`;
+    const rawUrl = `https://raw.githubusercontent.com/diegosouzapw/Xenia/refs/heads/main/skills/${skillId}/SKILL.md`;
     try {
       await navigator.clipboard.writeText(rawUrl);
     } catch {
@@ -52,7 +52,7 @@ export function SkillPreviewPane({
   }, [skillId]);
 
   const githubUrl = skillId
-    ? `https://github.com/diegosouzapw/OmniRoute/blob/main/skills/${skillId}/SKILL.md`
+    ? `https://github.com/diegosouzapw/Xenia/blob/main/skills/${skillId}/SKILL.md`
     : null;
 
   // Empty state
@@ -130,7 +130,7 @@ export function SkillPreviewPane({
           </div>
         ) : (
           <div
-            className="flex items-center gap-2 rounded-lg border border-red-300 bg-red-50 dark:bg-red-950/30 p-3 text-xs text-red-700 dark:text-red-400"
+            className="flex items-center gap-2 rounded-lg border border-gray-300 bg-gray-50 dark:bg-gray-950/30 p-3 text-xs text-gray-700 dark:text-gray-400"
             data-testid="skill-preview-error"
           >
             <span className="material-symbols-outlined text-[16px]">error</span>

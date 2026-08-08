@@ -51,7 +51,7 @@ test("azure-ai + responses target forces apiType=responses and the upstream mark
   }) as Record<string, unknown>;
   const psd = out.providerSpecificData as Record<string, unknown>;
   assert.equal(psd.apiType, "responses");
-  assert.equal(psd._omnirouteForceResponsesUpstream, true);
+  assert.equal(psd._xeniaForceResponsesUpstream, true);
 });
 
 test("a non-responses apiType is forced to responses under the responses target", () => {
@@ -63,7 +63,7 @@ test("a non-responses apiType is forced to responses under the responses target"
   }) as Record<string, unknown>;
   const psd = out.providerSpecificData as Record<string, unknown>;
   assert.equal(psd.apiType, "responses");
-  assert.equal(psd._omnirouteForceResponsesUpstream, true);
+  assert.equal(psd._xeniaForceResponsesUpstream, true);
 });
 
 test("an explicit apiType=responses is preserved (guard short-circuits the reassignment)", () => {
@@ -75,7 +75,7 @@ test("an explicit apiType=responses is preserved (guard short-circuits the reass
   }) as Record<string, unknown>;
   const psd = out.providerSpecificData as Record<string, unknown>;
   assert.equal(psd.apiType, "responses");
-  assert.equal(psd._omnirouteForceResponsesUpstream, true);
+  assert.equal(psd._xeniaForceResponsesUpstream, true);
 });
 
 test("non azure/oci providers never get apiType forcing", () => {
@@ -86,7 +86,7 @@ test("non azure/oci providers never get apiType forcing", () => {
   }) as Record<string, unknown>;
   const psd = out.providerSpecificData as Record<string, unknown>;
   assert.equal(psd.apiType, undefined);
-  assert.equal(psd._omnirouteForceResponsesUpstream, undefined);
+  assert.equal(psd._xeniaForceResponsesUpstream, undefined);
 });
 
 test("AgentRouter threads the resolved Responses protocol only into execution credentials", () => {
@@ -113,7 +113,7 @@ test("#8969: poe + responses target sets the responses-upstream marker (no apiTy
   }) as Record<string, unknown>;
   const psd = out.providerSpecificData as Record<string, unknown>;
   assert.equal(psd.apiType, undefined);
-  assert.equal(psd._omnirouteForceResponsesUpstream, true);
+  assert.equal(psd._xeniaForceResponsesUpstream, true);
 });
 
 test("#8969: poe + claude target disables OpenAI stream_options injection", () => {
@@ -124,7 +124,7 @@ test("#8969: poe + claude target disables OpenAI stream_options injection", () =
   }) as Record<string, unknown>;
   const psd = out.providerSpecificData as Record<string, unknown>;
   assert.equal(psd.disableStreamOptions, true);
-  assert.equal(psd._omnirouteForceResponsesUpstream, undefined);
+  assert.equal(psd._xeniaForceResponsesUpstream, undefined);
 });
 
 test("ccSessionId is threaded into providerSpecificData when present", () => {
@@ -158,8 +158,8 @@ test("Kimi execution credentials carry the discovered protocol and thinking poli
     },
   }) as Record<string, unknown>;
   const psd = out.providerSpecificData as Record<string, unknown>;
-  assert.equal(psd._omnirouteKimiTargetFormat, "claude");
-  assert.deepEqual(psd._omnirouteKimiThinking, {
+  assert.equal(psd._xeniaKimiTargetFormat, "claude");
+  assert.deepEqual(psd._xeniaKimiThinking, {
     supportsThinking: true,
     alwaysThinking: true,
     supportedThinkingEfforts: ["low", "medium", "high"],
@@ -175,7 +175,7 @@ test("Kimi Code k3 exposes its documented efforts from the offline policy before
     modelInfo: { model: "k3" },
   }) as Record<string, unknown>;
   const psd = out.providerSpecificData as Record<string, unknown>;
-  assert.deepEqual(psd._omnirouteKimiThinking, {
+  assert.deepEqual(psd._xeniaKimiThinking, {
     supportsThinking: true,
     supportedThinkingEfforts: ["low", "high", "max"],
     defaultThinkingEffort: "max",

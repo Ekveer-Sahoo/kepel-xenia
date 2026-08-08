@@ -18,7 +18,7 @@ const logToFile = getAppLogToFile();
 const logFilePath = resolve(getAppLogFilePath());
 
 declare global {
-  var __omnirouteConsoleInterceptorInit: boolean | undefined;
+  var __xeniaConsoleInterceptorInit: boolean | undefined;
 }
 
 type ConsoleMethod = (...args: unknown[]) => void;
@@ -230,7 +230,7 @@ export function initConsoleInterceptor(): void {
   // in structuredLogger, which happen regardless of whether console interception is enabled.
   installStdioErrorGuard();
 
-  if (!logToFile || globalThis.__omnirouteConsoleInterceptorInit) return;
+  if (!logToFile || globalThis.__xeniaConsoleInterceptorInit) return;
 
   try {
     ensureDir();
@@ -239,7 +239,7 @@ export function initConsoleInterceptor(): void {
     return;
   }
 
-  globalThis.__omnirouteConsoleInterceptorInit = true;
+  globalThis.__xeniaConsoleInterceptorInit = true;
 
   // Capture the raw method references first, so reset() can restore the exact functions that
   // were installed before patching. The bound copies below are for calling, not restoring —
@@ -302,6 +302,6 @@ export const __consoleInterceptorInternals = {
     errorWriteCount = 0;
     errorWindowStart = Date.now();
     missingDirNoticeEmitted = false;
-    globalThis.__omnirouteConsoleInterceptorInit = undefined;
+    globalThis.__xeniaConsoleInterceptorInit = undefined;
   },
 };

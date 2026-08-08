@@ -24,13 +24,13 @@ export default function ProxyLogDetail({ log, onClose }) {
 
   const statusStyle = getStatusStyle(log.status);
   const typeColor = TYPE_COLORS[log.proxy?.type] || {
-    bg: "#6B7280",
+    bg: "#727272",
     text: "#fff",
     label: log.proxy?.type || "-",
   };
   const levelColor = LEVEL_COLORS[log.level] || LEVEL_COLORS.direct;
   const providerColor = PROVIDER_COLORS[log.provider] || {
-    bg: "#374151",
+    bg: "#404040",
     text: "#fff",
     label: (log.provider || "-").toUpperCase(),
   };
@@ -96,7 +96,7 @@ export default function ProxyLogDetail({ log, onClose }) {
               <div className="text-[10px] text-text-muted uppercase tracking-wider mb-1">
                 Client IP
               </div>
-              <div className="text-sm font-medium font-mono text-emerald-400">
+              <div className="text-sm font-medium font-mono text-gray-400">
                 {log.clientIp || "—"}
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function ProxyLogDetail({ log, onClose }) {
               {log.tlsFingerprint ? (
                 <span
                   className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-bold uppercase"
-                  style={{ backgroundColor: "rgba(6, 182, 212, 0.15)", color: "#22d3ee" }}
+                  style={{ backgroundColor: "rgba(6, 182, 212, 0.15)", color: "#a1a1a1" }}
                 >
                   <span style={{ fontSize: "12px" }}>🔒</span> Chrome 124
                 </span>
@@ -166,11 +166,11 @@ export default function ProxyLogDetail({ log, onClose }) {
 
           {/* Error */}
           {log.error && (
-            <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30">
-              <div className="text-[10px] text-red-400 uppercase tracking-wider mb-1 font-bold">
+            <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/30">
+              <div className="text-[10px] text-gray-400 uppercase tracking-wider mb-1 font-bold">
                 Error
               </div>
-              <div className="text-sm text-red-300 font-mono">{log.error}</div>
+              <div className="text-sm text-gray-300 font-mono">{log.error}</div>
             </div>
           )}
 

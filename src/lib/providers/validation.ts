@@ -1,6 +1,6 @@
-import { getEmbeddingProvider } from "@omniroute/open-sse/config/embeddingRegistry.ts";
-import { getRerankProvider } from "@omniroute/open-sse/config/rerankRegistry.ts";
-import { getRegistryEntry } from "@omniroute/open-sse/config/providerRegistry.ts";
+import { getEmbeddingProvider } from "@xenia/open-sse/config/embeddingRegistry.ts";
+import { getRerankProvider } from "@xenia/open-sse/config/rerankRegistry.ts";
+import { getRegistryEntry } from "@xenia/open-sse/config/providerRegistry.ts";
 import {
   isClaudeCodeCompatibleProvider,
   isAnthropicCompatibleProvider,
@@ -12,12 +12,12 @@ import {
 } from "@/shared/constants/providers";
 import { MODAL_DEFAULT_VALIDATION_MODEL_ID } from "@/shared/constants/modal";
 import { validateImageProviderApiKey } from "@/lib/providers/imageValidation";
-import { usesCcWireImage } from "@omniroute/open-sse/services/ccWireImageBuiltins.ts";
+import { usesCcWireImage } from "@xenia/open-sse/services/ccWireImageBuiltins.ts";
 import {
   isAlibabaRegionalProvider,
   resolveAlibabaProviderBaseUrl,
 } from "@/shared/constants/alibabaProviderRegions";
-import { buildProviderHeaders, buildProviderUrl } from "@omniroute/open-sse/services/provider.ts";
+import { buildProviderHeaders, buildProviderUrl } from "@xenia/open-sse/services/provider.ts";
 
 import {
   OPENAI_LIKE_FORMATS,
@@ -225,7 +225,7 @@ export async function validateProviderApiKey({ provider, apiKey, providerSpecifi
           error:
             "Modal requires a Base URL pointing to your OpenAI-compatible Modal app " +
             "(e.g. https://<workspace>--<app>.modal.run/v1). " +
-            "Fill in the \"Base URL override\" field.",
+            'Fill in the "Base URL override" field.',
         };
       }
       return validateOpenAILikeProvider({

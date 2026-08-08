@@ -1,11 +1,11 @@
 /**
  * Feature #6122 — root-less / no-sudo mode for the MITM cert-trust path.
  *
- * OmniRoute funnels every privileged MITM command through the single choke
+ * Xenia funnels every privileged MITM command through the single choke
  * point `execFileWithPassword("sudo", ["-S", ...], password)`, which strips the
  * leading `sudo -S` when running as root or when `sudo` is not on PATH. This
- * feature adds a third opt-out trigger — the `OMNIROUTE_NO_SUDO` env flag — so
- * OmniRoute starts cleanly in a root-less / user-namespace deployment where
+ * feature adds a third opt-out trigger — the `XENIA_NO_SUDO` env flag — so
+ * Xenia starts cleanly in a root-less / user-namespace deployment where
  * `/usr/bin/sudo` exists but must not be used.
  *
  * These tests assert the RESOLVED argv (via the pure `resolveSudoSpawn` seam)
@@ -21,84 +21,75 @@ import { isNoSudoEnv, resolveSudoSpawn } from "../../src/mitm/systemCommands.ts"
 // the exact environment the feature targets (sudo present, must be skipped).
 const NON_ROOT_WITH_SUDO = { root: false, sudoAvailable: true } as const;
 
-test(
-  "resolveSudoSpawn: with OMNIROUTE_NO_SUDO=1, strips `sudo -S` and needs no password",
-  () => {
-    const prev = process.env.OMNIROUTE_NO_SUDO;
-    process.env.OMNIROUTE_NO_SUDO = "1";
-    try {
-      const { finalCommand, finalArgs, stripSudo, needsPassword } = resolveSudoSpawn(
-        "sudo",
-        ["-S", "cp", "/tmp/ca.pem", "/usr/local/share/ca-certificates/ca.crt"],
-        NON_ROOT_WITH_SUDO
-      );
-      assert.equal(stripSudo, true);
-      assert.equal(finalCommand, "cp");
-      assert.deepEqual(finalArgs, [
-        "/tmp/ca.pem",
-        "/usr/local/share/ca-certificates/ca.crt",
-      ]);
-      // No `sudo` and no `-S` survive into the spawned argv.
-      assert.ok(!finalArgs.includes("sudo"));
-      assert.ok(!finalArgs.includes("-S"));
-      // Password is only piped when `sudo -S` is actually spawned.
-      assert.equal(needsPassword, false);
-    } finally {
-      if (prev === undefined) delete process.env.OMNIROUTE_NO_SUDO;
-      else process.env.OMNIROUTE_NO_SUDO = prev;
-    }
+test("resolveSudoSpawn: with XENIA_NO_SUDO=1, strips `sudo -S` and needs no password", () => {
+  const prev = process.env.XENIA_NO_SUDO;
+  process.env.XENIA_NO_SUDO = "1";
+  try {
+    const { finalCommand, finalArgs, stripSudo, needsPassword } = resolveSudoSpawn(
+      "sudo",
+      ["-S", "cp", "/tmp/ca.pem", "/usr/local/share/ca-certificates/ca.crt"],
+      NON_ROOT_WITH_SUDO
+    );
+    assert.equal(stripSudo, true);
+    assert.equal(finalCommand, "cp");
+    assert.deepEqual(finalArgs, ["/tmp/ca.pem", "/usr/local/share/ca-certificates/ca.crt"]);
+    // No `sudo` and no `-S` survive into the spawned argv.
+    assert.ok(!finalArgs.includes("sudo"));
+    assert.ok(!finalArgs.includes("-S"));
+    // Password is only piped when `sudo -S` is actually spawned.
+    assert.equal(needsPassword, false);
+  } finally {
+    if (prev === undefined) delete process.env.XENIA_NO_SUDO;
+    else process.env.XENIA_NO_SUDO = prev;
   }
-);
+});
 
-test(
-  "resolveSudoSpawn: with the flag OFF + non-root + sudo available, preserves `sudo -S`",
-  () => {
-    const prev = process.env.OMNIROUTE_NO_SUDO;
-    delete process.env.OMNIROUTE_NO_SUDO;
-    try {
-      const { finalCommand, finalArgs, stripSudo, needsPassword } = resolveSudoSpawn(
-        "sudo",
-        ["-S", "cp", "/tmp/ca.pem", "/usr/local/share/ca-certificates/ca.crt"],
-        NON_ROOT_WITH_SUDO
-      );
-      // Regression guard: do NOT strip when not asked to.
-      assert.equal(stripSudo, false);
-      assert.equal(finalCommand, "sudo");
-      assert.deepEqual(finalArgs, [
-        "-S",
-        "cp",
-        "/tmp/ca.pem",
-        "/usr/local/share/ca-certificates/ca.crt",
-      ]);
-      assert.equal(needsPassword, true);
-    } finally {
-      if (prev === undefined) delete process.env.OMNIROUTE_NO_SUDO;
-      else process.env.OMNIROUTE_NO_SUDO = prev;
-    }
+test("resolveSudoSpawn: with the flag OFF + non-root + sudo available, preserves `sudo -S`", () => {
+  const prev = process.env.XENIA_NO_SUDO;
+  delete process.env.XENIA_NO_SUDO;
+  try {
+    const { finalCommand, finalArgs, stripSudo, needsPassword } = resolveSudoSpawn(
+      "sudo",
+      ["-S", "cp", "/tmp/ca.pem", "/usr/local/share/ca-certificates/ca.crt"],
+      NON_ROOT_WITH_SUDO
+    );
+    // Regression guard: do NOT strip when not asked to.
+    assert.equal(stripSudo, false);
+    assert.equal(finalCommand, "sudo");
+    assert.deepEqual(finalArgs, [
+      "-S",
+      "cp",
+      "/tmp/ca.pem",
+      "/usr/local/share/ca-certificates/ca.crt",
+    ]);
+    assert.equal(needsPassword, true);
+  } finally {
+    if (prev === undefined) delete process.env.XENIA_NO_SUDO;
+    else process.env.XENIA_NO_SUDO = prev;
   }
-);
+});
 
 test("resolveSudoSpawn: a non-sudo command is never touched, regardless of the flag", () => {
-  const prev = process.env.OMNIROUTE_NO_SUDO;
-  process.env.OMNIROUTE_NO_SUDO = "1";
+  const prev = process.env.XENIA_NO_SUDO;
+  process.env.XENIA_NO_SUDO = "1";
   try {
     const { finalCommand, finalArgs, stripSudo, needsPassword } = resolveSudoSpawn(
       "certutil",
-      ["-A", "-n", "OmniRoute"],
+      ["-A", "-n", "Xenia"],
       NON_ROOT_WITH_SUDO
     );
     assert.equal(stripSudo, false);
     assert.equal(needsPassword, false);
     assert.equal(finalCommand, "certutil");
-    assert.deepEqual(finalArgs, ["-A", "-n", "OmniRoute"]);
+    assert.deepEqual(finalArgs, ["-A", "-n", "Xenia"]);
   } finally {
-    if (prev === undefined) delete process.env.OMNIROUTE_NO_SUDO;
-    else process.env.OMNIROUTE_NO_SUDO = prev;
+    if (prev === undefined) delete process.env.XENIA_NO_SUDO;
+    else process.env.XENIA_NO_SUDO = prev;
   }
 });
 
 test("isNoSudoEnv: truthiness matrix matches isTruthyEnvFlag semantics", () => {
-  const prev = process.env.OMNIROUTE_NO_SUDO;
+  const prev = process.env.XENIA_NO_SUDO;
   const cases: Array<[string | undefined, boolean]> = [
     ["1", true],
     ["true", true],
@@ -115,20 +106,20 @@ test("isNoSudoEnv: truthiness matrix matches isTruthyEnvFlag semantics", () => {
   ];
   try {
     for (const [value, expected] of cases) {
-      if (value === undefined) delete process.env.OMNIROUTE_NO_SUDO;
-      else process.env.OMNIROUTE_NO_SUDO = value;
-      assert.equal(isNoSudoEnv(), expected, `OMNIROUTE_NO_SUDO=${JSON.stringify(value)}`);
+      if (value === undefined) delete process.env.XENIA_NO_SUDO;
+      else process.env.XENIA_NO_SUDO = value;
+      assert.equal(isNoSudoEnv(), expected, `XENIA_NO_SUDO=${JSON.stringify(value)}`);
     }
   } finally {
-    if (prev === undefined) delete process.env.OMNIROUTE_NO_SUDO;
-    else process.env.OMNIROUTE_NO_SUDO = prev;
+    if (prev === undefined) delete process.env.XENIA_NO_SUDO;
+    else process.env.XENIA_NO_SUDO = prev;
   }
 });
 
 test("resolveSudoSpawn: env flag alone (no overrides) drives stripping on non-root sudo host", () => {
   // Exercises the real env-reading default path (noSudo defaults to isNoSudoEnv()).
-  const prev = process.env.OMNIROUTE_NO_SUDO;
-  process.env.OMNIROUTE_NO_SUDO = "yes";
+  const prev = process.env.XENIA_NO_SUDO;
+  process.env.XENIA_NO_SUDO = "yes";
   try {
     const { finalCommand, stripSudo } = resolveSudoSpawn(
       "sudo",
@@ -140,7 +131,7 @@ test("resolveSudoSpawn: env flag alone (no overrides) drives stripping on non-ro
     assert.equal(stripSudo, true);
     assert.equal(finalCommand, "true");
   } finally {
-    if (prev === undefined) delete process.env.OMNIROUTE_NO_SUDO;
-    else process.env.OMNIROUTE_NO_SUDO = prev;
+    if (prev === undefined) delete process.env.XENIA_NO_SUDO;
+    else process.env.XENIA_NO_SUDO = prev;
   }
 });

@@ -2,7 +2,7 @@
 
 ## Przegląd
 
-Redis to **opcjonalna, miękka zależność** w OmniRoute — aplikacja degraduje się łagodnie (fallbacki
+Redis to **opcjonalna, miękka zależność** w Xenia — aplikacja degraduje się łagodnie (fallbacki
 w pamięci), gdy Redis jest niedostępny. W produkcji strojenie Redis zmniejsza opóźnienia dla trzech
 odrębnych obciążeń:
 
@@ -68,7 +68,7 @@ const redis = new Redis(REDIS_URL, {
 maxmemory 80%                        # leave room for OS page cache
 maxmemory-policy allkeys-lru         # evict stale auth cache entries under pressure
 
-# Persistence (optional — OmniRoute is crash‑safe without it)
+# Persistence (optional — Xenia is crash‑safe without it)
 save 300 1                           # snapshot at least every 5 min if ≥1 key changed
 appendonly no                        # AOF not needed; data is regeneratable
 appendfsync no                       # no fsync overhead (RDB is sufficient)

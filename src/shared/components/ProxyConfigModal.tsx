@@ -23,7 +23,9 @@ const BUILD_TIME_SOCKS5 = !["false", "0", "no", "off"].includes(
   (process.env.NEXT_PUBLIC_ENABLE_SOCKS5_PROXY ?? "").trim().toLowerCase()
 );
 export function buildProxyTypes(socks5Enabled: boolean) {
-  return socks5Enabled ? ALL_PROXY_TYPES : ALL_PROXY_TYPES.filter((type) => type.value !== "socks5");
+  return socks5Enabled
+    ? ALL_PROXY_TYPES
+    : ALL_PROXY_TYPES.filter((type) => type.value !== "socks5");
 }
 
 type ProxyConfigLevel = "global" | "provider" | "combo" | "key";
@@ -196,7 +198,9 @@ export default function ProxyConfigModal({
             const assignedProxy = registryItems.find((item) => item.id === target.proxyId);
             if (assignedProxy?.source === DASHBOARD_CUSTOM_PROXY_SOURCE) {
               const normalizedType = String(assignedProxy.type || "http").toLowerCase();
-              const hasTypeOption = runtimeProxyTypes.some((entry) => entry.value === normalizedType);
+              const hasTypeOption = runtimeProxyTypes.some(
+                (entry) => entry.value === normalizedType
+              );
               setMode("custom");
               setProxyType(hasTypeOption ? normalizedType : runtimeProxyTypes[0]?.value || "http");
               setHost(assignedProxy.host || "");
@@ -542,11 +546,11 @@ export default function ProxyConfigModal({
         <div className="flex flex-col gap-5">
           {/* Inheritance indicator */}
           {level !== "global" && !hasOwnProxy && inheritedFrom && (
-            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-sm">
-              <span className="material-symbols-outlined text-blue-400 text-base">
+            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-500/10 border border-gray-500/20 text-sm">
+              <span className="material-symbols-outlined text-gray-400 text-base">
                 subdirectory_arrow_right
               </span>
-              <span className="text-blue-300">
+              <span className="text-gray-300">
                 {t("inheritingFrom")} <strong>{inheritedFrom.level}</strong>:{" "}
                 {inheritedFrom.proxy?.type}
                 ://{inheritedFrom.proxy?.host}:{inheritedFrom.proxy?.port}
@@ -699,7 +703,7 @@ export default function ProxyConfigModal({
 
           {/* Test Result */}
           {formError && (
-            <div className="px-4 py-3 rounded-lg border border-red-500/30 bg-red-500/10 text-sm text-red-400">
+            <div className="px-4 py-3 rounded-lg border border-gray-500/30 bg-gray-500/10 text-sm text-gray-400">
               {formError}
             </div>
           )}
@@ -708,13 +712,13 @@ export default function ProxyConfigModal({
             <div
               className={`flex items-center gap-3 px-4 py-3 rounded-lg border ${
                 testResult.success
-                  ? "bg-emerald-500/10 border-emerald-500/30"
-                  : "bg-red-500/10 border-red-500/30"
+                  ? "bg-gray-500/10 border-gray-500/30"
+                  : "bg-gray-500/10 border-gray-500/30"
               }`}
             >
               <span
                 className={`material-symbols-outlined text-xl ${
-                  testResult.success ? "text-emerald-400" : "text-red-400"
+                  testResult.success ? "text-gray-400" : "text-gray-400"
                 }`}
               >
                 {testResult.success ? "check_circle" : "error"}
@@ -722,15 +726,15 @@ export default function ProxyConfigModal({
               <div className="flex-1">
                 {testResult.success ? (
                   <div>
-                    <span className="text-sm font-medium text-emerald-400">{t("connected")}</span>
+                    <span className="text-sm font-medium text-gray-400">{t("connected")}</span>
                     <span className="text-text-muted text-xs ml-2">
                       {t("ip")}{" "}
-                      <span className="font-mono text-emerald-300">{testResult.publicIp}</span>
+                      <span className="font-mono text-gray-300">{testResult.publicIp}</span>
                       {testResult.latencyMs && ` · ${testResult.latencyMs}ms`}
                     </span>
                   </div>
                 ) : (
-                  <div className="text-sm text-red-400">
+                  <div className="text-sm text-gray-400">
                     {testResult.error || t("connectionFailed")}
                     {testResult.latencyMs && (
                       <span className="text-text-muted text-xs ml-2">
@@ -763,7 +767,7 @@ export default function ProxyConfigModal({
                   icon="delete"
                   onClick={handleClear}
                   disabled={saving}
-                  className="!text-red-400 hover:!bg-red-500/10"
+                  className="!text-gray-400 hover:!bg-gray-500/10"
                 >
                   {t("clear")}
                 </Button>

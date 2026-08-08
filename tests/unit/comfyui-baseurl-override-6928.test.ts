@@ -7,7 +7,7 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "omniroute-comfyui-baseurl-"));
+process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "xenia-comfyui-baseurl-"));
 
 import { resolveComfyUiBaseUrl } from "../../open-sse/utils/comfyuiClient.ts";
 const { handleImageGeneration } = await import("../../open-sse/handlers/imageGeneration.ts");
@@ -156,17 +156,11 @@ test("resolveComfyUiBaseUrl returns the fallback when providerSpecificData is ab
 });
 
 test("resolveComfyUiBaseUrl returns the fallback when providerSpecificData is null", () => {
-  assert.equal(
-    resolveComfyUiBaseUrl({ providerSpecificData: null }, FALLBACK),
-    FALLBACK
-  );
+  assert.equal(resolveComfyUiBaseUrl({ providerSpecificData: null }, FALLBACK), FALLBACK);
 });
 
 test("resolveComfyUiBaseUrl returns the fallback when baseUrl is absent", () => {
-  assert.equal(
-    resolveComfyUiBaseUrl({ providerSpecificData: {} }, FALLBACK),
-    FALLBACK
-  );
+  assert.equal(resolveComfyUiBaseUrl({ providerSpecificData: {} }, FALLBACK), FALLBACK);
 });
 
 test("resolveComfyUiBaseUrl returns the fallback when baseUrl is not a string", () => {

@@ -24,14 +24,13 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-8326-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-8326-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
 const routeModule = await import("../../src/app/api/v1/providers/[provider]/models/route.ts");
-const { isCompatibleProviderConnectionId } = await import(
-  "../../src/shared/utils/compatibleProviderId.ts"
-);
+const { isCompatibleProviderConnectionId } =
+  await import("../../src/shared/utils/compatibleProviderId.ts");
 const { getProviderDisplayName } = await import("../../src/lib/display/names.ts");
 
 function makeRequest(provider: string) {
@@ -105,10 +104,7 @@ test("GET /v1/providers/:provider/models still rejects unrelated look-alike pref
 });
 
 test("getProviderDisplayName simplifies all 4 generated compatible id shapes", () => {
-  assert.equal(
-    getProviderDisplayName("openai-compatible-chat-" + UUID),
-    "Compatible (openai)"
-  );
+  assert.equal(getProviderDisplayName("openai-compatible-chat-" + UUID), "Compatible (openai)");
   assert.equal(
     getProviderDisplayName("openai-compatible-responses-" + UUID),
     "Compatible (openai)"

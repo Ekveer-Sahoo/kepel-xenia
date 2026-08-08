@@ -19,7 +19,7 @@ const ENDPOINT = "/api/v1/chat/completions";
 /** Header used to test a specific API key's policy from the dashboard playground
  *  without exposing the key secret to the browser — the gateway resolves the key
  *  by id server-side (see enforceApiKeyPolicy). */
-const PLAYGROUND_KEY_ID_HEADER = "x-omniroute-playground-key-id";
+const PLAYGROUND_KEY_ID_HEADER = "x-xenia-playground-key-id";
 
 /**
  * Map the playground's masked key selection (sk-xxxx****yyyy, as returned by
@@ -37,7 +37,7 @@ function resolvePlaygroundKeyId(
 
 /**
  * Qualify a provider-scoped playground model with its routing prefix so
- * OmniRoute can resolve it unambiguously. The previous heuristic only prefixed
+ * Xenia can resolve it unambiguously. The previous heuristic only prefixed
  * models without a `/`, which skipped vendor-namespaced ids like
  * `moonshotai/kimi-k2.6` or `nvidia/zyphra/zamba2-7b-instruct` — those already
  * contain a slash, so they were sent bare and rejected with
@@ -166,7 +166,7 @@ export function LlmChatCard({
   const firstModel = models[0]?.id ?? "";
   const effectiveModel = model || firstModel || initialModel || "";
   const routingPrefix = getProviderAlias(providerId);
-  // Auto-prefix model with the provider's routing alias to avoid OmniRoute "Ambiguous model"
+  // Auto-prefix model with the provider's routing alias to avoid Xenia "Ambiguous model"
   // rejection when the same id is registered under multiple providers. This
   // also covers vendor-namespaced ids (e.g. `moonshotai/kimi-k2.6`) that already
   // contain a slash but still need the provider prefix (#3050).
@@ -475,7 +475,7 @@ export function LlmChatCard({
                       isUser
                         ? "bg-primary/15 text-primary"
                         : isError
-                          ? "bg-red-500/15 text-red-400"
+                          ? "bg-gray-500/15 text-gray-400"
                           : "bg-accent/15 text-accent"
                     )}
                     aria-hidden="true"
@@ -505,7 +505,7 @@ export function LlmChatCard({
                     <div
                       className={cn(
                         "text-sm whitespace-pre-wrap break-words leading-relaxed",
-                        isError ? "text-red-400" : "text-text-main"
+                        isError ? "text-gray-400" : "text-text-main"
                       )}
                     >
                       {msg.content}
@@ -537,7 +537,7 @@ export function LlmChatCard({
             type="button"
             onClick={handleStop}
             title={t("stop")}
-            className="size-8 flex items-center justify-center rounded-md border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors shrink-0"
+            className="size-8 flex items-center justify-center rounded-md border border-gray-500/30 bg-gray-500/10 text-gray-400 hover:bg-gray-500/20 transition-colors shrink-0"
           >
             <span className="material-symbols-outlined text-[18px]">stop</span>
           </button>

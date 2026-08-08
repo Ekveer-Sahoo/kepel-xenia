@@ -8,7 +8,7 @@ import {
   getAccessToken,
   updateProviderCredentials,
 } from "@/sse/services/tokenRefresh";
-import { isUnrecoverableRefreshError } from "@omniroute/open-sse/services/tokenRefresh.ts";
+import { isUnrecoverableRefreshError } from "@xenia/open-sse/services/tokenRefresh.ts";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -197,7 +197,9 @@ function buildCodexAuthPayload(connection: CodexConnectionLike): CodexAuthFilePa
 }
 
 async function resolveFreshCodexConnection(connectionId: string): Promise<CodexConnectionLike> {
-  const connection = (await getCachedProviderConnectionById(connectionId)) as CodexConnectionLike | null;
+  const connection = (await getCachedProviderConnectionById(
+    connectionId
+  )) as CodexConnectionLike | null;
   if (!connection) {
     throw new CodexAuthFileError("Connection not found", 404, "not_found");
   }

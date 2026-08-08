@@ -1,21 +1,21 @@
 /**
  * A2A Skill: Smart Routing
  *
- * Receives a prompt + metadata → routes via OmniRoute pipeline →
+ * Receives a prompt + metadata → routes via Xenia pipeline →
  * returns response with routing_explanation, cost_envelope, resilience_trace, policy_verdict.
  */
 
 import type { A2ATask, TaskArtifact } from "../taskManager";
-import { resolveOmniRouteBaseUrl } from "@/shared/utils/resolveOmniRouteBaseUrl";
+import { resolveXeniaBaseUrl } from "@/shared/utils/resolveXeniaBaseUrl";
 
-const OMNIROUTE_BASE_URL = resolveOmniRouteBaseUrl();
-const OMNIROUTE_API_KEY = process.env.OMNIROUTE_API_KEY || "";
+const XENIA_BASE_URL = resolveXeniaBaseUrl();
+const XENIA_API_KEY = process.env.XENIA_API_KEY || "";
 
 async function routeFetch(path: string, options: RequestInit = {}): Promise<any> {
-  const url = `${OMNIROUTE_BASE_URL}${path}`;
+  const url = `${XENIA_BASE_URL}${path}`;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    ...(OMNIROUTE_API_KEY ? { Authorization: `Bearer ${OMNIROUTE_API_KEY}` } : {}),
+    ...(XENIA_API_KEY ? { Authorization: `Bearer ${XENIA_API_KEY}` } : {}),
   };
   const res = await fetch(url, { ...options, headers, signal: AbortSignal.timeout(30000) });
   if (!res.ok) throw new Error(`API [${res.status}]: ${await res.text().catch(() => "error")}`);

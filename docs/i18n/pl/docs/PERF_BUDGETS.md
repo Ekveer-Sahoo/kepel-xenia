@@ -1,4 +1,4 @@
-# Budżety wydajności — OmniRoute (2026-06-18)
+# Budżety wydajności — Xenia (2026-06-18)
 
 **Status**: Miarodajny. Cele SLO, do których odwołuje się audyt 71 filarów (L13)
 przy bramce `Perf > 2.00`.

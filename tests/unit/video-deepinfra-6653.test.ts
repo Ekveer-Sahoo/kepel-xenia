@@ -4,16 +4,12 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "omniroute-video-deepinfra-"));
+process.env.DATA_DIR = mkdtempSync(join(tmpdir(), "xenia-video-deepinfra-"));
 
 const { handleVideoGeneration } = await import("../../open-sse/handlers/videoGeneration.ts");
-const { VIDEO_PROVIDERS, parseVideoModel } = await import(
-  "../../open-sse/config/videoRegistry.ts"
-);
-const {
-  buildDeepinfraVideoRequestBody,
-  extractDeepinfraErrorMessage,
-} = await import("../../open-sse/handlers/videoGeneration/deepinfraHandler.ts");
+const { VIDEO_PROVIDERS, parseVideoModel } = await import("../../open-sse/config/videoRegistry.ts");
+const { buildDeepinfraVideoRequestBody, extractDeepinfraErrorMessage } =
+  await import("../../open-sse/handlers/videoGeneration/deepinfraHandler.ts");
 
 const INFERENCE_URL = "https://api.deepinfra.com/v1/inference/Wan-AI/Wan2.2-T2V-A14B";
 
@@ -65,10 +61,7 @@ test("buildDeepinfraVideoRequestBody omits optional fields when absent", () => {
 test("extractDeepinfraErrorMessage reads string error/detail/message and inference_status.error", () => {
   assert.equal(extractDeepinfraErrorMessage({ error: "bad request" }), "bad request");
   assert.equal(extractDeepinfraErrorMessage({ detail: "invalid model" }), "invalid model");
-  assert.equal(
-    extractDeepinfraErrorMessage({ error: { message: "nested" } }),
-    "nested"
-  );
+  assert.equal(extractDeepinfraErrorMessage({ error: { message: "nested" } }), "nested");
   assert.equal(
     extractDeepinfraErrorMessage({ inference_status: { error: "queue timeout" } }),
     "queue timeout"
@@ -133,8 +126,7 @@ test("handleVideoGeneration rejects DeepInfra video requests without credentials
 
 test("handleVideoGeneration surfaces upstream HTTP errors without leaking a stack trace", async () => {
   const originalFetch = globalThis.fetch;
-  globalThis.fetch = async () =>
-    jsonResponse({ error: "Invalid API key" }, 401);
+  globalThis.fetch = async () => jsonResponse({ error: "Invalid API key" }, 401);
 
   try {
     const result = await handleVideoGeneration({
@@ -175,7 +167,7 @@ test("handleVideoGeneration sanitizes network-level failures via sanitizeErrorMe
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () => {
     throw new Error(
-      "fetch failed\n    at Object.fetch (/home/user/omniroute/node_modules/undici/lib/x.js:1:1)"
+      "fetch failed\n    at Object.fetch (/home/user/xenia/node_modules/undici/lib/x.js:1:1)"
     );
   };
 

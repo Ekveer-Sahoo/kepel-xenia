@@ -1,15 +1,15 @@
 ---
-title: "Katalog Agent Skills OmniRoute"
+title: "Katalog Agent Skills Xenia"
 version: 3.8.40
 lastUpdated: 2026-06-28
 ---
 
-# Katalog Agent Skills OmniRoute
+# Katalog Agent Skills Xenia
 
 > **Source of truth:** `src/lib/agentSkills/` (catalog, generator, parsers) + `skills/` directory (SKILL.md files)
 > **Last updated:** 2026-06-28 — v3.8.40
 
-Agent Skills to ustrukturyzowane pliki SKILL.md, które uczą zewnętrzne agenty, klientów MCP oraz orkiestratory A2A, jak korzystać z REST API i CLI OmniRoute. W przeciwieństwie do [Omni Skills](./SKILLS.md) (które są definicjami narzędzi LLM wykonywanymi wewnątrz OmniRoute), Agent Skills to _katalog dokumentacji_ — statyczny markdown, który można wstrzyknąć bezpośrednio do kontekstu agenta.
+Agent Skills to ustrukturyzowane pliki SKILL.md, które uczą zewnętrzne agenty, klientów MCP oraz orkiestratory A2A, jak korzystać z REST API i CLI Xenia. W przeciwieństwie do [Omni Skills](./SKILLS.md) (które są definicjami narzędzi LLM wykonywanymi wewnątrz Xenia), Agent Skills to _katalog dokumentacji_ — statyczny markdown, który można wstrzyknąć bezpośrednio do kontekstu agenta.
 
 ---
 
@@ -20,7 +20,7 @@ Katalog zawiera **42 kanoniczne Agent Skills** (22 REST API + 20 CLI). Każdy sk
 - **Kanoniczne ID** (`omni-auth`, `cli-serve` itd.)
 - Plik **SKILL.md** w `skills/{id}/SKILL.md` z frontmatterem YAML (`name`, `description`) + bogatą treścią markdown
 - **Endpointy REST** (skills API) lub **podkomendy CLI** (skills CLI) wyprowadzone ze specyfikacji OpenAPI i rejestru CLI
-- **Surowy URL GitHub** do pobrania na żywo: `https://raw.githubusercontent.com/diegosouzapw/OmniRoute/refs/heads/main/skills/{id}/SKILL.md`
+- **Surowy URL GitHub** do pobrania na żywo: `https://raw.githubusercontent.com/diegosouzapw/Xenia/refs/heads/main/skills/{id}/SKILL.md`
 
 ---
 
@@ -116,11 +116,11 @@ curl -H "Accept: text/markdown" "http://localhost:20128/api/agent-skills/omni-pr
 
 Trzy narzędzia MCP są zarejestrowane w scope `read:catalog`:
 
-| Tool                              | Description                                        |
-| :-------------------------------- | :------------------------------------------------- |
-| `omniroute_agent_skills_list`     | List skills (optional `category` / `area` filters) |
-| `omniroute_agent_skills_get`      | Get metadata + SKILL.md for one skill by `id`      |
-| `omniroute_agent_skills_coverage` | Coverage stats (API/CLI have/total)                |
+| Tool                          | Description                                        |
+| :---------------------------- | :------------------------------------------------- |
+| `xenia_agent_skills_list`     | List skills (optional `category` / `area` filters) |
+| `xenia_agent_skills_get`      | Get metadata + SKILL.md for one skill by `id`      |
+| `xenia_agent_skills_coverage` | Coverage stats (API/CLI have/total)                |
 
 Zobacz [MCP-SERVER.md](./MCP-SERVER.md) w sprawie podłączenia scope i uwierzytelniania.
 
@@ -177,28 +177,28 @@ Zobacz [A2A-SERVER.md](./A2A-SERVER.md) w sprawie szczegółów protokołu.
 
 ### CLI Skills (20)
 
-| ID                   | Area               | CLI Command Root        |
-| :------------------- | :----------------- | :---------------------- |
-| `cli-serve`          | cli-serve          | `omniroute serve`       |
-| `cli-health`         | cli-health         | `omniroute health`      |
-| `cli-providers`      | cli-providers      | `omniroute providers`   |
-| `cli-keys`           | cli-keys           | `omniroute keys`        |
-| `cli-models`         | cli-models         | `omniroute models`      |
-| `cli-chat`           | cli-chat           | `omniroute chat`        |
-| `cli-routing`        | cli-routing        | `omniroute routing`     |
-| `cli-resilience`     | cli-resilience     | `omniroute resilience`  |
-| `cli-compression`    | cli-compression    | `omniroute compression` |
-| `cli-contexts`       | cli-contexts       | `omniroute contexts`    |
-| `cli-cost-usage`     | cli-cost-usage     | `omniroute cost`        |
-| `cli-mcp`            | cli-mcp            | `omniroute mcp`         |
-| `cli-a2a`            | cli-a2a            | `omniroute a2a`         |
-| `cli-tunnel`         | cli-tunnel         | `omniroute tunnel`      |
-| `cli-backup-sync`    | cli-backup-sync    | `omniroute backup`      |
-| `cli-policy-audit`   | cli-policy-audit   | `omniroute policy`      |
-| `cli-batches`        | cli-batches        | `omniroute batch`       |
-| `cli-eval`           | cli-eval           | `omniroute eval`        |
-| `cli-plugins-skills` | cli-plugins-skills | `omniroute plugins`     |
-| `cli-setup`          | cli-setup          | `omniroute setup`       |
+| ID                   | Area               | CLI Command Root    |
+| :------------------- | :----------------- | :------------------ |
+| `cli-serve`          | cli-serve          | `xenia serve`       |
+| `cli-health`         | cli-health         | `xenia health`      |
+| `cli-providers`      | cli-providers      | `xenia providers`   |
+| `cli-keys`           | cli-keys           | `xenia keys`        |
+| `cli-models`         | cli-models         | `xenia models`      |
+| `cli-chat`           | cli-chat           | `xenia chat`        |
+| `cli-routing`        | cli-routing        | `xenia routing`     |
+| `cli-resilience`     | cli-resilience     | `xenia resilience`  |
+| `cli-compression`    | cli-compression    | `xenia compression` |
+| `cli-contexts`       | cli-contexts       | `xenia contexts`    |
+| `cli-cost-usage`     | cli-cost-usage     | `xenia cost`        |
+| `cli-mcp`            | cli-mcp            | `xenia mcp`         |
+| `cli-a2a`            | cli-a2a            | `xenia a2a`         |
+| `cli-tunnel`         | cli-tunnel         | `xenia tunnel`      |
+| `cli-backup-sync`    | cli-backup-sync    | `xenia backup`      |
+| `cli-policy-audit`   | cli-policy-audit   | `xenia policy`      |
+| `cli-batches`        | cli-batches        | `xenia batch`       |
+| `cli-eval`           | cli-eval           | `xenia eval`        |
+| `cli-plugins-skills` | cli-plugins-skills | `xenia plugins`     |
+| `cli-setup`          | cli-setup          | `xenia setup`       |
 
 ---
 
@@ -208,17 +208,17 @@ Zobacz [A2A-SERVER.md](./A2A-SERVER.md) w sprawie szczegółów protokołu.
 
 ```bash
 # Get the full catalog
-curl "http://your-omniroute/api/agent-skills" | jq '.skills[] | {id, name, category}'
+curl "http://your-xenia/api/agent-skills" | jq '.skills[] | {id, name, category}'
 
 # Get SKILL.md for context injection
-curl "http://your-omniroute/api/agent-skills/omni-providers/raw" > omni-providers.md
+curl "http://your-xenia/api/agent-skills/omni-providers/raw" > omni-providers.md
 ```
 
 ### 2. Odkrywanie przez MCP
 
 ```typescript
 // In a Claude Desktop / Cursor MCP client:
-const result = await client.callTool("omniroute_agent_skills_list", { category: "api" });
+const result = await client.callTool("xenia_agent_skills_list", { category: "api" });
 // result.skills → array of AgentSkill with rawUrl for each
 ```
 
@@ -227,7 +227,7 @@ const result = await client.callTool("omniroute_agent_skills_list", { category: 
 ```python
 import requests
 
-resp = requests.post("http://your-omniroute/a2a", json={
+resp = requests.post("http://your-xenia/a2a", json={
     "jsonrpc": "2.0", "id": "1",
     "method": "message/send",
     "params": {"skill": "list-capabilities", "messages": [{"role": "user", "content": "list"}]}
@@ -239,7 +239,7 @@ table = resp.json()["result"]["artifacts"][0]["content"]
 ### 4. Bezpośrednie pobranie raw z GitHuba (bez serwera)
 
 ```bash
-BASE="https://raw.githubusercontent.com/diegosouzapw/OmniRoute/refs/heads/main/skills"
+BASE="https://raw.githubusercontent.com/diegosouzapw/Xenia/refs/heads/main/skills"
 curl "${BASE}/omni-providers/SKILL.md"
 ```
 
@@ -303,7 +303,7 @@ curl "http://localhost:20128/api/agent-skills/coverage"
 ## Powiązane
 
 - [SKILLS.md](./SKILLS.md) — framework Omni Skills (wstrzykiwanie narzędzi LLM + marketplace)
-- [MCP-SERVER.md](./MCP-SERVER.md) — katalog narzędzi MCP (narzędzia `omniroute_agent_skills_*`)
+- [MCP-SERVER.md](./MCP-SERVER.md) — katalog narzędzi MCP (narzędzia `xenia_agent_skills_*`)
 - [A2A-SERVER.md](./A2A-SERVER.md) — protokół A2A (skill `list-capabilities`)
 - `src/lib/agentSkills/` — catalog, generator, parsers
 - `skills/` — wygenerowane pliki SKILL.md (42 wpisy)

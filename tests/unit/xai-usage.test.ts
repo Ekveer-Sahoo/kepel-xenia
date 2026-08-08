@@ -3,7 +3,7 @@
  *
  * xAI (Grok) has no public per-account quota API (the billing console at
  * console.x.ai requires a session cookie, not an API key), so — exactly like
- * the Xiaomi MiMo self-track pattern — OmniRoute self-tracks it: it sums the
+ * the Xiaomi MiMo self-track pattern — Xenia self-tracks it: it sums the
  * tokens it routed to the connection from `usage_history` and surfaces them
  * as a cumulative, uncapped ("unlimited") usage figure on the quota
  * dashboard. These tests cover the aggregation helper + the fetcher shape,
@@ -21,12 +21,9 @@ const TMP = fs.mkdtempSync(path.join(os.tmpdir(), "omni-xai-usage-"));
 process.env.DATA_DIR = TMP;
 
 const core = await import("../../src/lib/db/core.ts");
-const { getMonthlyProviderTokensForConnection } = await import(
-  "../../src/lib/usage/usageStats.ts"
-);
-const { __testing, USAGE_FETCHER_PROVIDERS, getUsageForProvider } = await import(
-  "../../open-sse/services/usage.ts"
-);
+const { getMonthlyProviderTokensForConnection } = await import("../../src/lib/usage/usageStats.ts");
+const { __testing, USAGE_FETCHER_PROVIDERS, getUsageForProvider } =
+  await import("../../open-sse/services/usage.ts");
 const { getXaiUsage } = __testing;
 
 function insertUsage(

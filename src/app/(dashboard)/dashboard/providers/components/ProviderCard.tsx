@@ -79,17 +79,17 @@ interface ProviderCardProps {
 }
 
 const DOT_COLORS: Record<string, string> = {
-  free: "bg-green-500",
+  free: "bg-gray-500",
   "no-auth": "bg-stone-500",
-  oauth: "bg-blue-500",
-  apikey: "bg-amber-500",
-  compatible: "bg-orange-500",
-  "web-cookie": "bg-purple-500",
-  search: "bg-teal-500",
-  audio: "bg-rose-500",
-  local: "bg-emerald-500",
-  "upstream-proxy": "bg-indigo-500",
-  "cloud-agent": "bg-violet-500",
+  oauth: "bg-gray-500",
+  apikey: "bg-gray-500",
+  compatible: "bg-gray-500",
+  "web-cookie": "bg-gray-500",
+  search: "bg-gray-500",
+  audio: "bg-gray-500",
+  local: "bg-gray-500",
+  "upstream-proxy": "bg-gray-500",
+  "cloud-agent": "bg-gray-500",
 };
 
 type ProviderMessageTranslator = ((key: string, values?: Record<string, unknown>) => string) & {
@@ -240,8 +240,8 @@ const ProviderCard = forwardRef<ProviderCardHandle, ProviderCardProps>(function 
         key="codex-service-tier"
         className={`inline-flex items-center gap-0.5 rounded-full px-1.5 py-0 text-[9px] font-semibold uppercase tracking-wide ${
           stats.codexServiceTier === "flex"
-            ? "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400"
-            : "bg-sky-500/10 text-sky-600 dark:text-sky-400"
+            ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
+            : "bg-gray-500/10 text-gray-600 dark:text-gray-400"
         }`}
         title={providerText(t, "codexServiceTierActive", "Codex {tier} service tier is active", {
           tier: codexServiceTierLabel,
@@ -259,11 +259,11 @@ const ProviderCard = forwardRef<ProviderCardHandle, ProviderCardProps>(function 
   const kimiOfficialSupporterChip = isKimiPartner ? (
     <span
       key="kimi-official-supporter"
-      className="inline-flex items-center gap-0.5 rounded-full border border-[#1783FF]/30 bg-[#1783FF]/10 px-1.5 py-0 text-[9px] font-semibold uppercase tracking-wide leading-none text-[#1067CC] dark:text-[#7CB8FF]"
+      className="inline-flex items-center gap-0.5 rounded-full border border-[#717171]/30 bg-[#717171]/10 px-1.5 py-0 text-[9px] font-semibold uppercase tracking-wide leading-none text-[#595959] dark:text-[#aeaeae]"
       title={providerText(
         t,
         "kimiOfficialSupporterTooltip",
-        "Kimi (Moonshot AI) is OmniRoute's founding Open Source Friend"
+        "Kimi (Moonshot AI) is Xenia's founding Open Source Friend"
       )}
     >
       <span className="material-symbols-outlined text-[10px] leading-none">verified</span>
@@ -277,11 +277,11 @@ const ProviderCard = forwardRef<ProviderCardHandle, ProviderCardProps>(function 
   const cheaperInferenceSupporterChip = isCheaperInferencePartner ? (
     <span
       key="cheaperinference-supporter"
-      className="inline-flex items-center gap-0.5 rounded-full border border-[#31f889]/40 bg-[#31f889]/15 px-1.5 py-0 text-[9px] font-semibold uppercase tracking-wide leading-none text-[#0b7a45] dark:text-[#5CF0A6]"
+      className="inline-flex items-center gap-0.5 rounded-full border border-[#b0b0b0]/40 bg-[#b0b0b0]/15 px-1.5 py-0 text-[9px] font-semibold uppercase tracking-wide leading-none text-[#535353] dark:text-[#bbbbbb]"
       title={providerText(
         t,
         "cheaperInferenceSupporterTooltip",
-        "Cheaper Inference backs OmniRoute as an Open Source Friend"
+        "Cheaper Inference backs Xenia as an Open Source Friend"
       )}
     >
       <span className="material-symbols-outlined text-[10px] leading-none">verified</span>
@@ -372,12 +372,12 @@ const ProviderCard = forwardRef<ProviderCardHandle, ProviderCardProps>(function 
                 // twMerge) + soft outer glow. Kept identical in light/dark since it
                 // is a raw (non-token) brand hex, not a theme color. Keep the hex in
                 // sync with KIMI_BRAND_COLOR (featuredProviders.ts).
-                "border-2 border-[#1783FF]/70 hover:border-[#1783FF]/90 shadow-[inset_0_0_0_100px_rgba(23,131,255,0.035),0_4px_16px_-4px_rgba(23,131,255,0.45)]"
+                "border-2 border-[#717171]/70 hover:border-[#717171]/90 shadow-[inset_0_0_0_100px_rgba(23,131,255,0.035),0_4px_16px_-4px_rgba(23,131,255,0.45)]"
               : isCheaperInferencePartner
                 ? // Cheaper Inference Open Source Friend accent — same construction in
                   // its brand green (#31f889 = rgb(49,248,137)). Keep in sync with
                   // CHEAPERINFERENCE_BRAND_COLOR (featuredProviders.ts).
-                  "border-2 border-[#31f889]/70 hover:border-[#31f889]/90 shadow-[inset_0_0_0_100px_rgba(49,248,137,0.035),0_4px_16px_-4px_rgba(49,248,137,0.45)]"
+                  "border-2 border-[#b0b0b0]/70 hover:border-[#b0b0b0]/90 shadow-[inset_0_0_0_100px_rgba(49,248,137,0.035),0_4px_16px_-4px_rgba(49,248,137,0.45)]"
                 : "hover:border-primary/40"
           } ${allDisabled ? "opacity-50" : ""} ${provider.deprecated ? "opacity-60" : ""}`}
         >
@@ -386,7 +386,7 @@ const ProviderCard = forwardRef<ProviderCardHandle, ProviderCardProps>(function 
             <div className="flex items-start gap-3 min-w-0">
               <div
                 className="size-9 rounded-lg flex items-center justify-center shrink-0"
-                style={{ backgroundColor: `${provider.color || "#64748b"}15` }}
+                style={{ backgroundColor: `${provider.color || "#727272"}15` }}
               >
                 {provider.iconUrl ? (
                   <ProviderIcon
@@ -431,7 +431,7 @@ const ProviderCard = forwardRef<ProviderCardHandle, ProviderCardProps>(function 
                 )}
                 {provider.subscriptionRisk === true && (
                   <span
-                    className="material-symbols-outlined text-[16px] leading-none text-amber-500"
+                    className="material-symbols-outlined text-[16px] leading-none text-gray-500"
                     title={t("riskNotice.tooltip")}
                     aria-label={t("riskNotice.tooltip")}
                   >

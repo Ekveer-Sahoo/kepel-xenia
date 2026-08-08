@@ -154,8 +154,8 @@ function RtkTomlResult({ result }: { result: ImportResult }) {
               <span
                 className={
                   outcome.passed
-                    ? "text-emerald-700 dark:text-emerald-300"
-                    : "text-red-600 dark:text-red-400"
+                    ? "text-gray-700 dark:text-gray-300"
+                    : "text-gray-600 dark:text-gray-400"
                 }
               >
                 {outcome.passed ? t("tomlTestPassed") : t("tomlTestFailed")}
@@ -166,7 +166,7 @@ function RtkTomlResult({ result }: { result: ImportResult }) {
         </ul>
       )}
       {result.warnings.length > 0 && (
-        <ul className="mt-2 space-y-1 text-[11px] text-amber-700 dark:text-amber-300">
+        <ul className="mt-2 space-y-1 text-[11px] text-gray-700 dark:text-gray-300">
           {result.warnings.map((warning) => (
             <li key={warning}>{warning}</li>
           ))}
@@ -244,7 +244,7 @@ export default function RtkTomlImportCard({ onInstalled }: RtkTomlImportCardProp
       />
 
       {error && (
-        <p className="mt-3 text-xs text-red-600 dark:text-red-400" data-testid="rtk-toml-error">
+        <p className="mt-3 text-xs text-gray-600 dark:text-gray-400" data-testid="rtk-toml-error">
           {error}
         </p>
       )}

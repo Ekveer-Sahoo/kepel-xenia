@@ -9,7 +9,7 @@
  * Why this exists: Fix A (per-account 429 cascade not persisting) writes the
  * cooldown to `provider_connections.rate_limited_until` so the cascade
  * survives the request boundary and process restart. Without a visible
- * indicator the user has no way to see "OmniRoute learned that this key is
+ * indicator the user has no way to see "Xenia learned that this key is
  * exhausted — and for how long". This panel makes the lesson visible.
  *
  * Acceptance criteria (Issue #1, fix scope D):
@@ -50,20 +50,17 @@ export default function CoolingConnectionsPanel(props: CoolingConnectionsPanelPr
   return (
     <div
       data-testid="cooling-connections-panel"
-      className="mb-4 rounded-card border border-amber-500/40 bg-amber-500/5 p-4 shadow-sm"
+      className="mb-4 rounded-card border border-gray-500/40 bg-gray-500/5 p-4 shadow-sm"
     >
       <div className="mb-2 flex items-center gap-2">
-        <span
-          aria-hidden
-          className="inline-block h-2 w-2 animate-pulse rounded-full bg-amber-500"
-        />
-        <h3 className="text-sm font-medium text-amber-700 dark:text-amber-300">
+        <span aria-hidden className="inline-block h-2 w-2 animate-pulse rounded-full bg-gray-500" />
+        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
           Currently cooling ({cooling.length})
         </h3>
       </div>
       <p className="mb-3 text-xs text-muted-foreground">
-        These connections returned a 429 (rate-limit) on their last request. OmniRoute will skip
-        them until the timer expires — no manual disable required.
+        These connections returned a 429 (rate-limit) on their last request. Xenia will skip them
+        until the timer expires — no manual disable required.
       </p>
       <ul className="space-y-1">
         {cooling.map((c) => {
@@ -76,11 +73,11 @@ export default function CoolingConnectionsPanel(props: CoolingConnectionsPanelPr
           return (
             <li
               key={c.id ?? label}
-              className="flex items-center justify-between rounded border border-amber-500/30 bg-background/40 px-3 py-2 text-sm"
+              className="flex items-center justify-between rounded border border-gray-500/30 bg-background/40 px-3 py-2 text-sm"
             >
               <span className="font-medium">{label}</span>
               <span
-                className="font-mono text-xs text-amber-700 dark:text-amber-300"
+                className="font-mono text-xs text-gray-700 dark:text-gray-300"
                 data-testid="cooling-countdown"
               >
                 {formatResetCountdown(until)}

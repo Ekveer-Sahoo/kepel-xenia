@@ -52,7 +52,7 @@ export default function MemorySkillsTab() {
     enabled: false,
     host: "",
     port: 6333,
-    collection: "omniroute_memory",
+    collection: "xenia_memory",
     embeddingModel: "openai/text-embedding-3-small",
     hasApiKey: false,
     apiKeyMasked: null,
@@ -301,7 +301,7 @@ export default function MemorySkillsTab() {
     return (
       <Card data-testid="memory-settings-card">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-violet-500/10 text-violet-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               psychology
             </span>
@@ -321,7 +321,7 @@ export default function MemorySkillsTab() {
       {/* Memory Settings */}
       <Card>
         <div className="flex items-center gap-3 mb-5">
-          <div className="p-2 rounded-lg bg-violet-500/10 text-violet-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               memory
             </span>
@@ -331,7 +331,7 @@ export default function MemorySkillsTab() {
             <p className="text-sm text-text-muted">{t("memoryDesc")}</p>
           </div>
           {status === "saved" && (
-            <span className="ml-auto text-xs font-medium text-emerald-500 flex items-center gap-1">
+            <span className="ml-auto text-xs font-medium text-gray-500 flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
               {t("saved")}
             </span>
@@ -349,7 +349,7 @@ export default function MemorySkillsTab() {
             onClick={() => save({ enabled: !config.enabled })}
             disabled={saving}
             className={`relative w-11 h-6 rounded-full transition-colors ${
-              config.enabled ? "bg-violet-500" : "bg-border"
+              config.enabled ? "bg-gray-500" : "bg-border"
             }`}
             role="switch"
             aria-checked={config.enabled}
@@ -365,11 +365,14 @@ export default function MemorySkillsTab() {
         {/* Token-cost warning — memory injection is billed (PRD-2026-06-19) */}
         {config.enabled && (
           <div
-            className="flex items-start gap-2 p-3 rounded-lg bg-amber-500/10 border border-amber-500/30 mb-4 text-amber-600 dark:text-amber-400"
+            className="flex items-start gap-2 p-3 rounded-lg bg-gray-500/10 border border-gray-500/30 mb-4 text-gray-600 dark:text-gray-400"
             role="note"
             data-testid="memory-token-cost-warning"
           >
-            <span className="material-symbols-outlined text-[18px] leading-none mt-0.5" aria-hidden="true">
+            <span
+              className="material-symbols-outlined text-[18px] leading-none mt-0.5"
+              aria-hidden="true"
+            >
               info
             </span>
             <p className="text-xs leading-relaxed">
@@ -385,7 +388,7 @@ export default function MemorySkillsTab() {
             <div className="p-4 rounded-lg bg-surface/30 border border-border/30 mb-4">
               <div className="flex items-center justify-between mb-3">
                 <p className="text-sm font-medium">{t("maxTokens")}</p>
-                <span className="text-sm font-mono tabular-nums text-violet-400">
+                <span className="text-sm font-mono tabular-nums text-gray-400">
                   {config.maxTokens.toLocaleString()} {t("tokens")}
                 </span>
               </div>
@@ -397,7 +400,7 @@ export default function MemorySkillsTab() {
                 step="500"
                 value={config.maxTokens}
                 onChange={(e) => save({ maxTokens: parseInt(e.target.value) })}
-                className="w-full accent-violet-500"
+                className="w-full accent-gray-500"
               />
               <div className="flex justify-between text-xs text-text-muted mt-1">
                 <span>{t("off")}</span>
@@ -411,7 +414,7 @@ export default function MemorySkillsTab() {
             <div className="p-4 rounded-lg bg-surface/30 border border-border/30 mb-4">
               <div className="flex items-center justify-between mb-3">
                 <p className="text-sm font-medium">{t("retentionDays")}</p>
-                <span className="text-sm font-mono tabular-nums text-violet-400">
+                <span className="text-sm font-mono tabular-nums text-gray-400">
                   {config.retentionDays} {t("days")}
                 </span>
               </div>
@@ -423,7 +426,7 @@ export default function MemorySkillsTab() {
                 step="1"
                 value={config.retentionDays}
                 onChange={(e) => save({ retentionDays: parseInt(e.target.value) })}
-                className="w-full accent-violet-500"
+                className="w-full accent-gray-500"
               />
               <div className="flex justify-between text-xs text-text-muted mt-1">
                 <span>1</span>
@@ -443,12 +446,12 @@ export default function MemorySkillsTab() {
                   disabled={loading || saving}
                   className={`flex flex-col items-start p-3 rounded-lg border text-left transition-all ${
                     config.strategy === s.value
-                      ? "border-violet-500/50 bg-violet-500/5 ring-1 ring-violet-500/20"
+                      ? "border-gray-500/50 bg-gray-500/5 ring-1 ring-gray-500/20"
                       : "border-border/50 hover:border-border hover:bg-surface/30"
                   }`}
                 >
                   <p
-                    className={`text-sm font-medium ${config.strategy === s.value ? "text-violet-400" : ""}`}
+                    className={`text-sm font-medium ${config.strategy === s.value ? "text-gray-400" : ""}`}
                   >
                     {t(s.labelKey)}
                   </p>
@@ -463,7 +466,7 @@ export default function MemorySkillsTab() {
       {/* Qdrant (optional semantic memory index) */}
       <Card data-testid="qdrant-settings-card">
         <div className="flex items-center gap-3 mb-5">
-          <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               database
             </span>
@@ -477,14 +480,14 @@ export default function MemorySkillsTab() {
             className={`ml-auto inline-flex items-center gap-2 text-xs font-medium ${
               qdrant.enabled
                 ? qdrantHealth?.ok
-                  ? "text-emerald-500"
-                  : "text-red-500"
+                  ? "text-gray-500"
+                  : "text-gray-500"
                 : "text-text-muted"
             }`}
           >
             <span
               className={`inline-block w-2.5 h-2.5 rounded-full ${
-                qdrant.enabled ? (qdrantHealth?.ok ? "bg-emerald-500" : "bg-red-500") : "bg-border"
+                qdrant.enabled ? (qdrantHealth?.ok ? "bg-gray-500" : "bg-gray-500") : "bg-border"
               }`}
               aria-hidden="true"
             />
@@ -514,7 +517,7 @@ export default function MemorySkillsTab() {
               onClick={() => saveQdrant({ enabled: !qdrant.enabled })}
               disabled={qdrantSaving}
               className={`relative w-11 h-6 rounded-full transition-colors ${
-                qdrant.enabled ? "bg-emerald-500" : "bg-border"
+                qdrant.enabled ? "bg-gray-500" : "bg-border"
               }`}
               role="switch"
               aria-checked={qdrant.enabled}
@@ -529,13 +532,13 @@ export default function MemorySkillsTab() {
         </div>
 
         {qdrantStatus === "saved" && (
-          <div className="mb-4 text-xs font-medium text-emerald-500 flex items-center gap-1">
+          <div className="mb-4 text-xs font-medium text-gray-500 flex items-center gap-1">
             <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
             {t("qdrantSaved")}
           </div>
         )}
         {qdrantStatus === "error" && (
-          <div className="mb-4 text-xs font-medium text-red-500">{t("qdrantSaveError")}</div>
+          <div className="mb-4 text-xs font-medium text-gray-500">{t("qdrantSaveError")}</div>
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -545,7 +548,7 @@ export default function MemorySkillsTab() {
               value={qdrant.host}
               onChange={(e) => setQdrant((s) => ({ ...s, host: e.target.value }))}
               placeholder="http://127.0.0.1"
-              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
             <p className="text-xs text-text-muted mt-2">{t("qdrantHostHint")}</p>
           </div>
@@ -561,7 +564,7 @@ export default function MemorySkillsTab() {
                 }))
               }
               placeholder="6333"
-              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
             <p className="text-xs text-text-muted mt-2">{t("qdrantPortHint")}</p>
           </div>
@@ -571,8 +574,8 @@ export default function MemorySkillsTab() {
             <input
               value={qdrant.collection}
               onChange={(e) => setQdrant((s) => ({ ...s, collection: e.target.value }))}
-              placeholder="omniroute_memory"
-              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              placeholder="xenia_memory"
+              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
             <p className="text-xs text-text-muted mt-2">{t("qdrantCollectionHint")}</p>
           </div>
@@ -605,7 +608,7 @@ export default function MemorySkillsTab() {
                 const value = e.target.value;
                 if (value) setQdrant((s) => ({ ...s, embeddingModel: value }));
               }}
-              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm mb-2 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm mb-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
             >
               <option value="">{t("qdrantEmbeddingQuickSelect")}</option>
               {embeddingOptions.map((opt) => (
@@ -618,7 +621,7 @@ export default function MemorySkillsTab() {
               value={qdrant.embeddingModel}
               onChange={(e) => setQdrant((s) => ({ ...s, embeddingModel: e.target.value }))}
               placeholder={t("qdrantEmbeddingInputPlaceholder")}
-              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
             <p className="text-xs text-text-muted mt-2">{t("qdrantEmbeddingHint")}</p>
           </div>
@@ -642,7 +645,7 @@ export default function MemorySkillsTab() {
                     ? t("qdrantApiKeyPlaceholderKeep")
                     : t("qdrantApiKeyPlaceholderOptional")
                 }
-                className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
               {qdrant.hasApiKey && (
                 <button
@@ -660,7 +663,7 @@ export default function MemorySkillsTab() {
                   )
                 }
                 disabled={qdrantSaving}
-                className="px-4 py-2 text-sm font-medium rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 disabled:opacity-50 transition-colors"
+                className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors"
               >
                 {qdrantSaving ? t("saving") : t("save")}
               </button>
@@ -688,7 +691,7 @@ export default function MemorySkillsTab() {
               value={qdrantQuery}
               onChange={(e) => setQdrantQuery(e.target.value)}
               placeholder={t("qdrantSearchPlaceholder")}
-              className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
           {qdrantResults.length > 0 && (
@@ -697,7 +700,7 @@ export default function MemorySkillsTab() {
                 <div key={r.id} className="p-3 rounded-lg bg-background/40 border border-border/40">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-mono text-text-muted">{r.id}</span>
-                    <span className="text-xs font-mono text-emerald-400">
+                    <span className="text-xs font-mono text-gray-400">
                       score {r.score.toFixed(4)}
                     </span>
                   </div>
@@ -736,7 +739,7 @@ export default function MemorySkillsTab() {
       {/* Skills Settings */}
       <Card data-testid="skills-settings-card">
         <div className="flex items-center gap-3 mb-5">
-          <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               handyman
             </span>
@@ -757,7 +760,7 @@ export default function MemorySkillsTab() {
             onClick={() => save({ skillsEnabled: !config.skillsEnabled })}
             disabled={saving}
             className={`relative w-11 h-6 rounded-full transition-colors ${
-              config.skillsEnabled ? "bg-amber-500" : "bg-border"
+              config.skillsEnabled ? "bg-gray-500" : "bg-border"
             }`}
             role="switch"
             aria-checked={config.skillsEnabled}
@@ -774,7 +777,7 @@ export default function MemorySkillsTab() {
       {/* SkillsMP Marketplace API Key */}
       <Card>
         <div className="flex items-center gap-3 mb-5">
-          <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               storefront
             </span>
@@ -786,13 +789,13 @@ export default function MemorySkillsTab() {
             </p>
           </div>
           {skillsmpStatus === "saved" && (
-            <span className="ml-auto text-xs font-medium text-emerald-500 flex items-center gap-1">
+            <span className="ml-auto text-xs font-medium text-gray-500 flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
               {t("saved")}
             </span>
           )}
           {skillsmpStatus === "error" && (
-            <span className="ml-auto text-xs font-medium text-red-500">
+            <span className="ml-auto text-xs font-medium text-gray-500">
               {t("memorySkillsFailedToSave")}
             </span>
           )}
@@ -806,18 +809,18 @@ export default function MemorySkillsTab() {
               value={skillsmpApiKey}
               onChange={(e) => setSkillsmpApiKey(e.target.value)}
               placeholder="sk_live_..."
-              className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-violet-500"
+              className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
             <button
               onClick={saveSkillsmpApiKey}
               disabled={skillsmpSaving}
-              className="px-4 py-2 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 transition-colors"
+              className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors"
             >
               {skillsmpSaving ? "Saving..." : "Save"}
             </button>
           </div>
           <p className="text-xs text-text-muted mt-2">
-            Get your API key from <span className="text-violet-400">skillsmp.com</span>. Rate limit:
+            Get your API key from <span className="text-gray-400">skillsmp.com</span>. Rate limit:
             500 requests/day.
           </p>
         </div>
@@ -826,7 +829,7 @@ export default function MemorySkillsTab() {
       {/* Active Skills Provider */}
       <Card>
         <div className="flex items-center gap-3 mb-5">
-          <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               hub
             </span>
@@ -838,13 +841,13 @@ export default function MemorySkillsTab() {
             </p>
           </div>
           {skillsProviderStatus === "saved" && (
-            <span className="ml-auto text-xs font-medium text-emerald-500 flex items-center gap-1">
+            <span className="ml-auto text-xs font-medium text-gray-500 flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
               {t("saved")}
             </span>
           )}
           {skillsProviderStatus === "error" && (
-            <span className="ml-auto text-xs font-medium text-red-500">
+            <span className="ml-auto text-xs font-medium text-gray-500">
               {t("memorySkillsFailedToSave")}
             </span>
           )}
@@ -857,12 +860,12 @@ export default function MemorySkillsTab() {
             onClick={() => saveSkillsProvider("skillsmp")}
             className={`flex flex-col items-start p-3 rounded-lg border text-left transition-all ${
               skillsProvider === "skillsmp"
-                ? "border-indigo-500/50 bg-indigo-500/5 ring-1 ring-indigo-500/20"
+                ? "border-gray-500/50 bg-gray-500/5 ring-1 ring-gray-500/20"
                 : "border-border/50 hover:border-border hover:bg-surface/30"
             }`}
           >
             <p
-              className={`text-sm font-medium ${skillsProvider === "skillsmp" ? "text-indigo-400" : ""}`}
+              className={`text-sm font-medium ${skillsProvider === "skillsmp" ? "text-gray-400" : ""}`}
             >
               SkillsMP Marketplace
             </p>
@@ -877,12 +880,12 @@ export default function MemorySkillsTab() {
             onClick={() => saveSkillsProvider("skillssh")}
             className={`flex flex-col items-start p-3 rounded-lg border text-left transition-all ${
               skillsProvider === "skillssh"
-                ? "border-indigo-500/50 bg-indigo-500/5 ring-1 ring-indigo-500/20"
+                ? "border-gray-500/50 bg-gray-500/5 ring-1 ring-gray-500/20"
                 : "border-border/50 hover:border-border hover:bg-surface/30"
             }`}
           >
             <p
-              className={`text-sm font-medium ${skillsProvider === "skillssh" ? "text-indigo-400" : ""}`}
+              className={`text-sm font-medium ${skillsProvider === "skillssh" ? "text-gray-400" : ""}`}
             >
               skills.sh Directory
             </p>

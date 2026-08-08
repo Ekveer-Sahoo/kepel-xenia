@@ -1,5 +1,5 @@
 /**
- * feedSchema.ts — Zod schema for the OmniRoute Radar feed payload.
+ * feedSchema.ts — Zod schema for the Xenia Radar feed payload.
  *
  * This is the CLIENT-SIDE mirror of the server's feed schema.  The server
  * is the source of truth; this schema validates whatever we downloaded
@@ -31,7 +31,7 @@ const SeverityEnum = z.enum(["info", "warn"]);
 const TierEnum = z.enum(["community", "live"]);
 
 /**
- * Exported so `sync.ts` can validate the `x-omniroute-feed-tier` response
+ * Exported so `sync.ts` can validate the `x-xenia-feed-tier` response
  * header against the same allowed values, without duplicating the enum.
  */
 export const RadarTierSchema = TierEnum;
@@ -171,7 +171,7 @@ const QuirkSchema = z.object({
 // ---------------------------------------------------------------------------
 
 export const RadarFeedSchema = z.object({
-  feed: z.literal("omniroute-radar"),
+  feed: z.literal("xenia-radar"),
   schemaVersion: z.literal(1),
   version: z.string(),
   generatedAt: z.string().datetime(),
@@ -180,7 +180,7 @@ export const RadarFeedSchema = z.object({
   // is only one signed artifact per version (rewriting this field
   // server-side per request would break the exact-bytes Ed25519 signature).
   // The tier ACTUALLY served is decided by the server per-request based on
-  // the Authorization key, and is surfaced via the `x-omniroute-feed-tier`
+  // the Authorization key, and is surfaced via the `x-xenia-feed-tier`
   // response header instead. NEVER read this field for UI/display — use the
   // served-tier value that `sync.ts` derives from the header (falling back
   // to this field only when the header is absent, e.g. an older server).

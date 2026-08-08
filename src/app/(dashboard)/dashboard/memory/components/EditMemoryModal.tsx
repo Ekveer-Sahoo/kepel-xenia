@@ -104,7 +104,7 @@ export default function EditMemoryModal({ memory, isOpen, onClose, onSaved }: Pr
     >
       <div className="space-y-4">
         {error && (
-          <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-400">
+          <div className="p-3 rounded-lg bg-gray-500/10 border border-gray-500/20 text-xs text-gray-400">
             {error}
           </div>
         )}
@@ -137,7 +137,7 @@ export default function EditMemoryModal({ memory, isOpen, onClose, onSaved }: Pr
             onChange={(e) => setContent(e.target.value)}
             placeholder={t("contentPlaceholder")}
             rows={4}
-            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500 resize-y"
+            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500 resize-y"
           />
         </div>
         <div>
@@ -147,13 +147,11 @@ export default function EditMemoryModal({ memory, isOpen, onClose, onSaved }: Pr
             onChange={(e) => handleMetadataChange(e.target.value)}
             rows={4}
             spellCheck={false}
-            className={`w-full px-3 py-2 rounded-lg bg-background border text-xs font-mono focus:outline-none focus:ring-1 focus:ring-violet-500 resize-y ${
-              metadataError ? "border-red-500" : "border-border"
+            className={`w-full px-3 py-2 rounded-lg bg-background border text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gray-500 resize-y ${
+              metadataError ? "border-gray-500" : "border-border"
             }`}
           />
-          {metadataError && (
-            <p className="text-xs text-red-400 mt-1">{metadataError}</p>
-          )}
+          {metadataError && <p className="text-xs text-gray-400 mt-1">{metadataError}</p>}
         </div>
       </div>
     </Modal>

@@ -363,7 +363,7 @@ export function buildCompatibleProviderGroups(
       openai.push({
         id: node.id,
         name: node.name || labels.openaiCompatibleName,
-        color: "#10A37F",
+        color: "#737373",
         textIcon: "OC",
         apiType: node.apiType,
         iconUrl: node.iconUrl || undefined,
@@ -377,7 +377,7 @@ export function buildCompatibleProviderGroups(
       claudeCode.push({
         id: node.id,
         name: node.name || labels.claudeCodeCompatibleName,
-        color: "#B45309",
+        color: "#686868",
         textIcon: "CC",
         iconUrl: node.iconUrl || undefined,
       });
@@ -387,7 +387,7 @@ export function buildCompatibleProviderGroups(
     anthropic.push({
       id: node.id,
       name: node.name || labels.anthropicCompatibleName,
-      color: "#D97757",
+      color: "#919191",
       textIcon: "AC",
       iconUrl: node.iconUrl || undefined,
     });

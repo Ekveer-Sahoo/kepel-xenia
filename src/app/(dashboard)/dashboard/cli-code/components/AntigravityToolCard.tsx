@@ -141,7 +141,7 @@ export default function AntigravityToolCard({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          apiKey: !cloudEnabled ? "sk_omniroute" : null,
+          apiKey: !cloudEnabled ? "sk_xenia" : null,
           keyId: selectedKeyId,
           sudoPassword: password,
         }),
@@ -309,7 +309,7 @@ export default function AntigravityToolCard({
               <button
                 onClick={handleStop}
                 disabled={loading}
-                className="px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-500 font-medium text-sm flex items-center gap-2 hover:bg-red-500/20 transition-colors disabled:opacity-50"
+                className="px-4 py-2 rounded-lg bg-gray-500/10 border border-gray-500/30 text-gray-500 font-medium text-sm flex items-center gap-2 hover:bg-gray-500/20 transition-colors disabled:opacity-50"
               >
                 <span className="material-symbols-outlined text-[18px]">stop_circle</span>
                 {t("stopMitm")}
@@ -327,7 +327,7 @@ export default function AntigravityToolCard({
           </div>
 
           {message?.type === "error" && (
-            <div className="flex items-center gap-2 px-2 py-1.5 rounded text-xs bg-red-500/10 text-red-600">
+            <div className="flex items-center gap-2 px-2 py-1.5 rounded text-xs bg-gray-500/10 text-gray-600">
               <span className="material-symbols-outlined text-[14px]">error</span>
               <span>{message.text}</span>
             </div>
@@ -357,7 +357,7 @@ export default function AntigravityToolCard({
                   </select>
                 ) : (
                   <span className="flex-1 text-xs text-text-muted px-2 py-1.5">
-                    {cloudEnabled ? t("noApiKeysCreateOne") : t("defaultOmnirouteKey")}
+                    {cloudEnabled ? t("noApiKeysCreateOne") : t("defaultXeniaKey")}
                   </span>
                 )}
               </div>
@@ -402,7 +402,7 @@ export default function AntigravityToolCard({
                     {(entry.model || entry.reasoningEffort) && (
                       <button
                         onClick={() => handleModelMappingChange(model.alias, "")}
-                        className="p-1 text-text-muted hover:text-red-500 rounded transition-colors"
+                        className="p-1 text-text-muted hover:text-gray-500 rounded transition-colors"
                         title={t("clear")}
                       >
                         <span className="material-symbols-outlined text-[14px]">close</span>
@@ -471,8 +471,8 @@ export default function AntigravityToolCard({
         size="sm"
       >
         <div className="flex flex-col gap-4">
-          <div className="flex items-start gap-3 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-            <span className="material-symbols-outlined text-yellow-500 text-[20px]">warning</span>
+          <div className="flex items-start gap-3 p-3 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+            <span className="material-symbols-outlined text-gray-500 text-[20px]">warning</span>
             <p className="text-xs text-text-muted">{t("sudoPasswordHint")}</p>
           </div>
 
@@ -488,7 +488,7 @@ export default function AntigravityToolCard({
 
           {message && (
             <div
-              className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs ${message.type === "success" ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-600"}`}
+              className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs ${message.type === "success" ? "bg-gray-500/10 text-gray-600" : "bg-gray-500/10 text-gray-600"}`}
             >
               <span className="material-symbols-outlined text-[14px]">
                 {message.type === "success" ? "check_circle" : "error"}

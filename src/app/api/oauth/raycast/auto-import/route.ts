@@ -16,7 +16,7 @@ import {
 } from "@/lib/oauth/services/raycastLocal";
 import { isAuthRequired, isAuthenticated } from "@/shared/utils/apiAuth";
 import { resolveProxyForProvider } from "@/models";
-import { runWithProxyContext } from "@omniroute/open-sse/utils/proxyFetch.ts";
+import { runWithProxyContext } from "@xenia/open-sse/utils/proxyFetch.ts";
 
 async function requireOAuthImportAuth(request: Request) {
   if (!(await isAuthRequired(request))) return null;
@@ -34,8 +34,7 @@ export async function GET(request: Request) {
     requires: ["macOS", "Raycast.app installed", "sqlcipher CLI (brew install sqlcipher)"],
     sources: {
       bearerToken: "Keychain → Raycast / raycast-store_credentials → oauth.access_token",
-      deviceId:
-        "Raycast encrypted DB user.analyticsId (same as posthog.distinctId on disk)",
+      deviceId: "Raycast encrypted DB user.analyticsId (same as posthog.distinctId on disk)",
     },
   });
 }

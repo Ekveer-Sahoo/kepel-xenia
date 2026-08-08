@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { createPrompt, printHeading, printInfo, printSuccess } from "../io.mjs";
-import { openOmniRouteDb } from "../sqlite.mjs";
+import { openXeniaDb } from "../sqlite.mjs";
 import { getSettings, hashManagementPassword, updateSettings } from "../settings-store.mjs";
 import { testProviderApiKey } from "../provider-test.mjs";
 import { updateProviderTestResult, upsertApiKeyProviderConnection } from "../provider-store.mjs";
@@ -85,7 +85,7 @@ async function resolveProviderInput(opts, prompt, nonInteractive) {
   }
 
   if (!apiKey) {
-    throw new Error("Provider API key is required. Pass --api-key or OMNIROUTE_API_KEY.");
+    throw new Error("Provider API key is required. Pass --api-key or XENIA_API_KEY.");
   }
 
   if (!name) {
@@ -153,7 +153,7 @@ export function registerSetup(program) {
       if (exitCode !== 0) process.exit(exitCode);
     });
 
-  // Wire up `omniroute setup opencode` subcommand. Kept inside registerSetup
+  // Wire up `xenia setup opencode` subcommand. Kept inside registerSetup
   // so it always travels with the parent command (avoids a separate register
   // call in the registry that would silently break if the parent renames).
   registerSetupOpenCode(program.commands.find((c) => c.name() === "setup"));
@@ -180,8 +180,8 @@ export async function runSetupCommand(opts = {}) {
   const prompt = createPrompt();
 
   try {
-    printHeading("OmniRoute Setup");
-    const { db, dbPath } = await openOmniRouteDb();
+    printHeading("Xenia Setup");
+    const { db, dbPath } = await openXeniaDb();
     printInfo(`Database: ${dbPath}`);
 
     const before = getSettings(db);

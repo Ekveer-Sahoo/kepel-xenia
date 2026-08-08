@@ -1,6 +1,6 @@
 /**
  * Security hardening for #3269: even when private webhook targets are opted in via
- * OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS, cloud-metadata / link-local endpoints
+ * XENIA_ALLOW_PRIVATE_PROVIDER_URLS, cloud-metadata / link-local endpoints
  * (169.254.169.254, metadata.google.internal, 100.100.100.200, 169.254.0.0/16) must be
  * blocked UNCONDITIONALLY — they are the classic SSRF→IAM-credential pivot and have no
  * legitimate webhook use case.
@@ -14,15 +14,13 @@ import path from "node:path";
 
 process.env.DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omni-wh-meta-3269-"));
 
-const { isCloudMetadataHost, OutboundUrlGuardError } = await import(
-  "../../src/shared/network/outboundUrlGuard.ts"
-);
-const { parseAndValidateWebhookUrl } = await import(
-  "../../src/shared/network/outboundUrlGuardPolicy.ts"
-);
+const { isCloudMetadataHost, OutboundUrlGuardError } =
+  await import("../../src/shared/network/outboundUrlGuard.ts");
+const { parseAndValidateWebhookUrl } =
+  await import("../../src/shared/network/outboundUrlGuardPolicy.ts");
 const { resetDbInstance } = await import("../../src/lib/db/core.ts");
 
-const FLAG = "OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS";
+const FLAG = "XENIA_ALLOW_PRIVATE_PROVIDER_URLS";
 const METADATA_TARGETS = [
   "http://169.254.169.254/latest/meta-data/iam/security-credentials/",
   "http://metadata.google.internal/computeMetadata/v1/",

@@ -1,21 +1,21 @@
-# Prioridade de integracoes de CLIs com OmniRoute
+# Prioridade de integracoes de CLIs com Xenia
 
 > **Status final (2026-08-03):** esta é a priorização inicial que orientou a execução. Todos os `104/104` casos já foram pesquisados. A classificação final está no tracker `04`; a estratégia revisada de contribuição está no relatório `06`.
 
 **Snapshot:** 2026-08-01  
-**Objetivo:** ordenar do melhor para o pior todos os projetos tecnicamente candidatos a consumir OmniRoute, sem remover projetos pequenos. A ordem e uma fila de pesquisa/execucao; ela nao e promessa de que todo upstream aceitara um PR.
+**Objetivo:** ordenar do melhor para o pior todos os projetos tecnicamente candidatos a consumir Xenia, sem remover projetos pequenos. A ordem e uma fila de pesquisa/execucao; ela nao e promessa de que todo upstream aceitara um PR.
 
 ## Como ler a prioridade
 
-- **P0:** ja esta no catalogo OmniRoute ou tem evidencia muito forte de endpoint customizavel; executar/consolidar primeiro.
+- **P0:** ja esta no catalogo Xenia ou tem evidencia muito forte de endpoint customizavel; executar/consolidar primeiro.
 - **P1:** forte candidato novo, com provider/base URL evidente e bom retorno para o ecossistema.
 - **P2:** tecnicamente promissor, mas requer confirmacao de protocolo, config, maturidade ou licenca.
 - **P3:** possivel via ACP/MCP/wrapper/launcher, ou com menor adocao; pesquisar depois dos P0-P2.
 - **P4:** cliente fechado, EULA, MITM ou pesquisa exploratoria; manter no inventario, mas nao bloquear os demais.
 
-Os fatores usados foram: evidencia de endpoint arbitrario, adocao/atividade, facilidade de teste, compatibilidade OpenAI/Anthropic/Gemini, maturidade, licenca, chance de PR upstream, valor para usuarios OmniRoute e risco de protocolo.
+Os fatores usados foram: evidencia de endpoint arbitrario, adocao/atividade, facilidade de teste, compatibilidade OpenAI/Anthropic/Gemini, maturidade, licenca, chance de PR upstream, valor para usuarios Xenia e risco de protocolo.
 
-## A. Catalogo OmniRoute ja existente
+## A. Catalogo Xenia ja existente
 
 Estas entradas ja aparecem no registro local. A prioridade aqui significa consolidar documentacao, smoke tests, detector/configurador e eventual upstream nominal; nao significa recriar uma integracao que ja existe.
 
@@ -40,10 +40,10 @@ Estas entradas ja aparecem no registro local. A prioridade aqui significa consol
 | A17 | Crush | `charmbracelet/crush` | catalogado; `base_url` | config TOML/JSON atual |
 | A18 | Smelt | `leonardcser/smelt` | catalogado; OpenAI-compatible | headless e subagents |
 | A19 | ForgeCode | `antinomyhq/forge` | catalogado; multi-provider | base URL e custom agents |
-| A20 | jcode | `1jehuang/jcode` | integrado e proposto upstream | aguardar issue #704; manter README OmniRoute |
+| A20 | jcode | `1jehuang/jcode` | integrado e proposto upstream | aguardar issue #704; manter README Xenia |
 | A21 | DeepSeek TUI | `hunterbown/deepseek-tui` | catalogado legado | confirmar sucessor CodeWhale |
 | A22 | CodeWhale | `Hmbown/CodeWhale` | catalogado | config primaria e legado |
-| A23 | Grok Build | `xai-org/grok-build` | catalogado; `~/.grok/config.toml` | provider OmniRoute e modelos |
+| A23 | Grok Build | `xai-org/grok-build` | catalogado; `~/.grok/config.toml` | provider Xenia e modelos |
 | A24 | Cursor Agent CLI | `cursor.com/cli` | catalogado parcial | confirmar limites de endpoint |
 | A25 | Factory Droid | `Factory-AI/factory` | catalogado parcial | BYOK e endpoint suportado |
 | A26 | GitHub Copilot CLI | `github/copilot-cli` | catalogado | provider base URL atual |
@@ -164,4 +164,4 @@ Estas entradas ja aparecem no registro local. A prioridade aqui significa consol
 
 ## C. Regra de promocao/rebaixamento
 
-Um projeto sobe de prioridade quando a pesquisa individual confirma: configuracao documentada, teste local com OmniRoute, licenca permissiva e contribuicao aceita. Desce quando: a URL e fixa, o endpoint e somente SaaS, o README nao corresponde ao codigo, a autenticacao e inseparavel do provedor, ou a licenca/EULA impede redistribuicao. Nenhum projeto e marcado como impossivel sem registrar a evidencia no tracker.
+Um projeto sobe de prioridade quando a pesquisa individual confirma: configuracao documentada, teste local com Xenia, licenca permissiva e contribuicao aceita. Desce quando: a URL e fixa, o endpoint e somente SaaS, o README nao corresponde ao codigo, a autenticacao e inseparavel do provedor, ou a licenca/EULA impede redistribuicao. Nenhum projeto e marcado como impossivel sem registrar a evidencia no tracker.

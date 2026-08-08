@@ -122,7 +122,7 @@ export default function GlobalConfigTab() {
           <p className="text-sm text-text-muted mb-4">{t("globalProxyDesc")}</p>
           <div className="flex items-center gap-3">
             {globalProxy ? (
-              <span className="px-2.5 py-1 rounded text-xs font-bold uppercase bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+              <span className="px-2.5 py-1 rounded text-xs font-bold uppercase bg-gray-500/15 text-gray-400 border border-gray-500/30">
                 {globalProxy.type}://{globalProxy.host}:{globalProxy.port}
               </span>
             ) : (
@@ -147,10 +147,7 @@ export default function GlobalConfigTab() {
         <div className="p-6">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span
-                className="material-symbols-outlined text-xl text-violet-500"
-                aria-hidden="true"
-              >
+              <span className="material-symbols-outlined text-xl text-gray-500" aria-hidden="true">
                 key
               </span>
               <div>
@@ -196,7 +193,7 @@ export default function GlobalConfigTab() {
           </div>
 
           {error && (
-            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-sm text-red-400">
+            <div className="p-3 rounded-lg bg-gray-500/10 border border-gray-500/30 text-sm text-gray-400">
               {error}
             </div>
           )}
@@ -213,10 +210,10 @@ export default function GlobalConfigTab() {
               <span className="text-text-muted">
                 {t("healthcheckTotal")}: <strong>{summary.total}</strong>
               </span>
-              <span className="text-emerald-400">
+              <span className="text-gray-400">
                 {t("healthcheckWorking")}: <strong>{summary.working}</strong>
               </span>
-              <span className="text-red-400">
+              <span className="text-gray-400">
                 {t("healthcheckFailedLabel")}: <strong>{summary.failed}</strong>
               </span>
             </div>
@@ -243,9 +240,9 @@ export default function GlobalConfigTab() {
                     <tr key={i} className="border-t border-black/5 dark:border-white/5">
                       <td className="px-3 py-1.5">
                         {r.ok ? (
-                          <span className="text-emerald-400 text-sm">✓</span>
+                          <span className="text-gray-400 text-sm">✓</span>
                         ) : (
-                          <span className="text-red-400 text-sm">✗</span>
+                          <span className="text-gray-400 text-sm">✗</span>
                         )}
                       </td>
                       <td className="px-3 py-1.5 font-mono truncate max-w-xs">{r.proxyUrl}</td>

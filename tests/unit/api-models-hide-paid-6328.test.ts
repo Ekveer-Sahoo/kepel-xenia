@@ -11,7 +11,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-api-models-hidepaid-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-api-models-hidepaid-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -47,7 +47,11 @@ test("#6328 /api/models removes paid models when hidePaidModels is on", async ()
     list.some((m) => m.provider === "openai" && /^gpt-/.test(m.model));
 
   await settingsDb.updateSettings({ hidePaidModels: false });
-  assert.equal(hasPaidOpenAi(await fetchModels()), true, "paid OpenAI models visible when toggle is off");
+  assert.equal(
+    hasPaidOpenAi(await fetchModels()),
+    true,
+    "paid OpenAI models visible when toggle is off"
+  );
 
   await settingsDb.updateSettings({ hidePaidModels: true });
   assert.equal(

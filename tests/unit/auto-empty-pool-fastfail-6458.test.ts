@@ -10,7 +10,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-auto-empty-pool-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-auto-empty-pool-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -24,7 +24,9 @@ test.after(() => {
 
 test("#6458 empty auto-combo pool returns a 503 instead of an empty combo", async () => {
   // No provider connections seeded → any auto category resolves to an empty pool.
-  const result = await resolveModelOrError("auto/coding:pro", { messages: [{ role: "user", content: "hi" }] });
+  const result = await resolveModelOrError("auto/coding:pro", {
+    messages: [{ role: "user", content: "hi" }],
+  });
   assert.ok(result.error, "expected an error result, not a combo");
   assert.equal(result.error.status, 503, "empty auto pool must fail fast with 503");
   assert.equal(result.combo, undefined, "must not return a combo for an empty pool");

@@ -6,7 +6,7 @@ import {
   getConnectionEffectiveStatus,
 } from "../../src/app/(dashboard)/dashboard/providers/[id]/components/connectionRowHelpers";
 
-// Reorder-by-availability — upstream 9router PR #2558 ported to OmniRoute's
+// Reorder-by-availability — upstream 9router PR #2558 ported to Xenia's
 // resilience model (rateLimitedUntil cooldown + testStatus), not the
 // upstream `modelLock_*` field convention. See CLAUDE.md "Resilience Runtime
 // State" → Connection Cooldown.
@@ -47,7 +47,10 @@ test("sortConnectionsByAvailability is a stable sort (preserves relative order w
 });
 
 test("sortConnectionsByAvailability does not mutate the input array", () => {
-  const connections = [{ id: "a", testStatus: "error" }, { id: "b", testStatus: "active" }];
+  const connections = [
+    { id: "a", testStatus: "error" },
+    { id: "b", testStatus: "active" },
+  ];
   const original = [...connections];
 
   sortConnectionsByAvailability(connections);

@@ -1,4 +1,4 @@
-import type { ProviderPluginManifestEntry } from "@omniroute/open-sse/config/providerPluginManifest.ts";
+import type { ProviderPluginManifestEntry } from "@xenia/open-sse/config/providerPluginManifest.ts";
 
 export const SERVICE_BACKEND_PLUGIN_IDS = ["9router", "cliproxyapi"] as const;
 
@@ -39,9 +39,7 @@ export const SERVICE_BACKEND_MANIFEST_TEMPLATE: Record<
   },
 };
 
-export function getServiceToolFromPluginId(
-  pluginId: string
-): "9router" | "cliproxy" | undefined {
+export function getServiceToolFromPluginId(pluginId: string): "9router" | "cliproxy" | undefined {
   return SERVICE_BACKEND_EXPOSURE_TOOL_BY_PLUGIN_ID[
     pluginId as keyof typeof SERVICE_BACKEND_EXPOSURE_TOOL_BY_PLUGIN_ID
   ];

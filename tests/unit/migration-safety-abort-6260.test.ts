@@ -8,7 +8,7 @@ import { resetDbInstance } from "../../src/lib/db/core.ts";
 
 // Regression guard for #6260:
 //   1. The mass-migration safety-abort message must tell the operator how to
-//      bypass the check (OMNIROUTE_MAX_PENDING_MIGRATIONS=0) — e.g. after
+//      bypass the check (XENIA_MAX_PENDING_MIGRATIONS=0) — e.g. after
 //      restoring a backup where the migration tracking table was wiped.
 //   2. Repeated runMigrations() calls on the same over-threshold DB must throw
 //      the SAME memoized MigrationSafetyAbortError instance, so downstream
@@ -97,13 +97,13 @@ function withNonTestEnvironment<T>(fn: () => T): T {
 // abort decision depends purely on the resolved threshold.
 function seedExistingDbWithoutPhysicalBaseline(db: InstanceType<typeof Database>) {
   db.exec(`
-    CREATE TABLE _omniroute_migrations (
+    CREATE TABLE _xenia_migrations (
       version TEXT PRIMARY KEY,
       name TEXT NOT NULL,
       applied_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
   `);
-  db.prepare("INSERT INTO _omniroute_migrations (version, name) VALUES (?, ?)").run(
+  db.prepare("INSERT INTO _xenia_migrations (version, name) VALUES (?, ?)").run(
     "001",
     "initial_schema"
   );
@@ -128,7 +128,7 @@ test.after(() => {
 });
 
 test(
-  "abort message tells the operator to set OMNIROUTE_MAX_PENDING_MIGRATIONS=0 to bypass (#6260)",
+  "abort message tells the operator to set XENIA_MAX_PENDING_MIGRATIONS=0 to bypass (#6260)",
   serial,
   async () => {
     const runner = await importFresh("src/lib/db/migrationRunner.ts");
@@ -149,7 +149,7 @@ test(
         }
       });
       const message = thrown instanceof Error ? thrown.message : String(thrown);
-      assert.match(message, /OMNIROUTE_MAX_PENDING_MIGRATIONS=0/);
+      assert.match(message, /XENIA_MAX_PENDING_MIGRATIONS=0/);
     } finally {
       db.close();
     }

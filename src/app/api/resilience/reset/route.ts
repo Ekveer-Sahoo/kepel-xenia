@@ -24,8 +24,7 @@ export async function POST(request: Request) {
     }
 
     // Also clear in-memory model lockouts (per-model quota cooldowns)
-    const { clearAllModelLockouts } =
-      await import("@omniroute/open-sse/services/accountFallback.ts");
+    const { clearAllModelLockouts } = await import("@xenia/open-sse/services/accountFallback.ts");
     clearAllModelLockouts();
 
     return NextResponse.json({

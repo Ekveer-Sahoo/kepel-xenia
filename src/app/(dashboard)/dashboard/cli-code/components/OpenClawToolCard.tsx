@@ -41,7 +41,7 @@ export default function OpenClawToolCard({
 
   const getConfigStatus = () => {
     if (!cliReady) return null;
-    const currentProvider = openclawStatus.settings?.models?.providers?.["omniroute"];
+    const currentProvider = openclawStatus.settings?.models?.providers?.["xenia"];
     if (!currentProvider) return "not_configured";
     const localMatch =
       currentProvider.baseUrl?.includes("localhost") ||
@@ -85,11 +85,11 @@ export default function OpenClawToolCard({
   useEffect(() => {
     if (openclawStatus?.installed && !hasInitializedModel.current) {
       hasInitializedModel.current = true;
-      const provider = openclawStatus.settings?.models?.providers?.["omniroute"];
+      const provider = openclawStatus.settings?.models?.providers?.["xenia"];
       if (provider) {
         const primaryModel = openclawStatus.settings?.agents?.defaults?.model?.primary;
         if (primaryModel) {
-          const modelId = primaryModel.replace("omniroute/", "");
+          const modelId = primaryModel.replace("xenia/", "");
           setSelectedModel(modelId);
         }
         // (#523) Keys from /api/keys are masked (first 8 + "****" + last 4).
@@ -142,7 +142,7 @@ export default function OpenClawToolCard({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           baseUrl: getEffectiveBaseUrl(),
-          apiKey: !cloudEnabled ? "sk_omniroute" : null,
+          apiKey: !cloudEnabled ? "sk_xenia" : null,
           keyId: selectedKeyId,
           model: selectedModel,
         }),
@@ -241,19 +241,19 @@ export default function OpenClawToolCard({
     // (#523) Look up the key object by id to get the masked display value.
     const selectedKeyObj = apiKeys?.find((k) => k.id === selectedApiKeyId);
     const keyToDisplay =
-      selectedKeyObj?.key || (!cloudEnabled ? "sk_omniroute" : "<API_KEY_FROM_DASHBOARD>");
+      selectedKeyObj?.key || (!cloudEnabled ? "sk_xenia" : "<API_KEY_FROM_DASHBOARD>");
 
     const settingsContent = {
       agents: {
         defaults: {
           model: {
-            primary: `omniroute/${selectedModel || "provider/model-id"}`,
+            primary: `xenia/${selectedModel || "provider/model-id"}`,
           },
         },
       },
       models: {
         providers: {
-          omniroute: {
+          xenia: {
             baseUrl: getEffectiveBaseUrl(),
             apiKey: keyToDisplay,
             api: "openai-completions",
@@ -322,10 +322,10 @@ export default function OpenClawToolCard({
           )}
 
           {!checkingOpenclaw && openclawStatus && !cliReady && (
-            <div className="flex items-center gap-3 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-              <span className="material-symbols-outlined text-yellow-500">warning</span>
+            <div className="flex items-center gap-3 p-4 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+              <span className="material-symbols-outlined text-gray-500">warning</span>
               <div className="flex-1">
-                <p className="font-medium text-yellow-600 dark:text-yellow-400">
+                <p className="font-medium text-gray-600 dark:text-gray-400">
                   {openclawStatus.installed
                     ? t("cliNotRunnable", { tool: "Open Claw" })
                     : t("cliNotInstalled", { tool: "Open Claw" })}
@@ -341,7 +341,7 @@ export default function OpenClawToolCard({
               </div>
               {/*
                 Always surface Manual Config even when the CLI is not
-                detected locally — typical of remote OmniRoute
+                detected locally — typical of remote Xenia
                 deployments where the CLI lives on the user's machine,
                 not on the server. Upstream report: #579.
               */}
@@ -356,7 +356,7 @@ export default function OpenClawToolCard({
             <>
               <div className="flex flex-col gap-2">
                 {/* Current Base URL */}
-                {openclawStatus?.settings?.models?.providers?.["omniroute"]?.baseUrl && (
+                {openclawStatus?.settings?.models?.providers?.["xenia"]?.baseUrl && (
                   <div className="flex items-center gap-2">
                     <span className="w-32 shrink-0 text-sm font-semibold text-text-main text-right">
                       {t("current")}
@@ -365,7 +365,7 @@ export default function OpenClawToolCard({
                       arrow_forward
                     </span>
                     <span className="flex-1 px-2 py-1.5 text-xs text-text-muted truncate">
-                      {openclawStatus.settings.models.providers["omniroute"].baseUrl}
+                      {openclawStatus.settings.models.providers["xenia"].baseUrl}
                     </span>
                   </div>
                 )}
@@ -418,7 +418,7 @@ export default function OpenClawToolCard({
                     </select>
                   ) : (
                     <span className="flex-1 text-xs text-text-muted px-2 py-1.5">
-                      {cloudEnabled ? t("noApiKeysCreateOne") : t("defaultOmnirouteKey")}
+                      {cloudEnabled ? t("noApiKeysCreateOne") : t("defaultXeniaKey")}
                     </span>
                   )}
                 </div>
@@ -448,7 +448,7 @@ export default function OpenClawToolCard({
                   {selectedModel && (
                     <button
                       onClick={() => setSelectedModel("")}
-                      className="p-1 text-text-muted hover:text-red-500 rounded transition-colors"
+                      className="p-1 text-text-muted hover:text-gray-500 rounded transition-colors"
                       title={t("clear")}
                     >
                       <span className="material-symbols-outlined text-[14px]">close</span>
@@ -459,7 +459,7 @@ export default function OpenClawToolCard({
 
               {message && (
                 <div
-                  className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs ${message.type === "success" ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-600"}`}
+                  className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs ${message.type === "success" ? "bg-gray-500/10 text-gray-600" : "bg-gray-500/10 text-gray-600"}`}
                 >
                   <span className="material-symbols-outlined text-[14px]">
                     {message.type === "success" ? "check_circle" : "error"}
@@ -483,7 +483,7 @@ export default function OpenClawToolCard({
                   variant="outline"
                   size="sm"
                   onClick={handleResetSettings}
-                  disabled={!openclawStatus?.hasOmniRoute}
+                  disabled={!openclawStatus?.hasXenia}
                   loading={restoring}
                 >
                   <span className="material-symbols-outlined text-[14px] mr-1">restore</span>

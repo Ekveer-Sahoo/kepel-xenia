@@ -218,7 +218,7 @@ export default function NoAuthAccountCard({
     }
   };
 
-   const handleAddManualApiKey = async () => {
+  const handleAddManualApiKey = async () => {
     if (!manualApiKey.trim()) return;
     setAddingManualKey(true);
     try {
@@ -363,7 +363,7 @@ export default function NoAuthAccountCard({
     <Card>
       <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="inline-flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-green-500/10 text-green-500">
+          <div className="inline-flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]">lock_open</span>
           </div>
           <div className="flex-1 min-w-0">
@@ -471,7 +471,7 @@ export default function NoAuthAccountCard({
                   <button
                     type="button"
                     onClick={() => openProxyConfig(id)}
-                    className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded transition-colors hover:bg-black/5 dark:hover:bg-white/5 ${proxy ? "text-blue-400" : "text-text-muted"}`}
+                    className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded transition-colors hover:bg-black/5 dark:hover:bg-white/5 ${proxy ? "text-gray-400" : "text-text-muted"}`}
                     title={
                       proxy
                         ? `Proxy: ${proxy.type}://${proxy.host}:${proxy.port}`
@@ -491,7 +491,7 @@ export default function NoAuthAccountCard({
                   <button
                     type="button"
                     onClick={() => handleRemoveAccount(id)}
-                    className="shrink-0 rounded p-1 text-text-muted opacity-0 transition-colors hover:bg-red-500/10 hover:text-red-500 group-hover:opacity-100"
+                    className="shrink-0 rounded p-1 text-text-muted opacity-0 transition-colors hover:bg-gray-500/10 hover:text-gray-500 group-hover:opacity-100"
                     aria-label={t("removeAccount")}
                   >
                     <span className="material-symbols-outlined text-[16px]">delete</span>

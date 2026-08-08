@@ -48,7 +48,7 @@ export default function NewsViewer() {
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-text-muted">
-        <span className="material-symbols-outlined text-[48px] text-red-500/50 mb-4">
+        <span className="material-symbols-outlined text-[48px] text-gray-500/50 mb-4">
           error_outline
         </span>
         <p>{t("announcementsLoadFailed")}</p>

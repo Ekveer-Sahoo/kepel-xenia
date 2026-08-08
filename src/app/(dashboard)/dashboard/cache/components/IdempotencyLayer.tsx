@@ -57,7 +57,7 @@ export default function IdempotencyLayer({
 
         {error && (
           <div className="flex flex-col gap-2">
-            <p className="text-sm text-red-500">{error}</p>
+            <p className="text-sm text-gray-500">{error}</p>
             {onRetry && (
               <button
                 onClick={onRetry}

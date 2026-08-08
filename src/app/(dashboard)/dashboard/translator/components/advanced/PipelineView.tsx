@@ -93,9 +93,9 @@ function statusNumberClass(status: PipelineStep["status"]): string {
     case "active":
       return "bg-primary/10 text-primary";
     case "done":
-      return "bg-emerald-500/10 text-emerald-500";
+      return "bg-gray-500/10 text-gray-500";
     case "error":
-      return "bg-red-500/10 text-red-500";
+      return "bg-gray-500/10 text-gray-500";
     default:
       return "bg-bg-subtle text-text-muted";
   }
@@ -225,7 +225,7 @@ export default function PipelineView({
                     <Card
                       className={
                         step.status === "error"
-                          ? "border-red-500/30"
+                          ? "border-gray-500/30"
                           : isExpanded
                             ? "border-primary/30"
                             : step.status === "pending"

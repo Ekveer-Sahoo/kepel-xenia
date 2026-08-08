@@ -286,7 +286,7 @@ export default function KiroAuthModal({
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-2">
-                IDC Start URL <span className="text-red-500">*</span>
+                IDC Start URL <span className="text-gray-500">*</span>
               </label>
               <Input
                 value={idcStartUrl}
@@ -312,7 +312,7 @@ export default function KiroAuthModal({
               </p>
             </div>
 
-            {error && <p className="text-sm text-red-600">{error}</p>}
+            {error && <p className="text-sm text-gray-600">{error}</p>}
 
             <div className="flex gap-2">
               <Button onClick={handleIdcContinue} fullWidth>
@@ -348,12 +348,12 @@ export default function KiroAuthModal({
               <>
                 {/* Info message if not auto-detected */}
                 {!error && (
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
                     <div className="flex gap-2">
-                      <span className="material-symbols-outlined text-blue-600 dark:text-blue-400">
+                      <span className="material-symbols-outlined text-gray-600 dark:text-gray-400">
                         info
                       </span>
-                      <p className="text-sm text-blue-800 dark:text-blue-200">
+                      <p className="text-sm text-gray-800 dark:text-gray-200">
                         {providerLabel} token was not auto-detected. Please paste your refresh token
                         manually.
                       </p>
@@ -363,7 +363,7 @@ export default function KiroAuthModal({
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Refresh Token <span className="text-red-500">*</span>
+                    Refresh Token <span className="text-gray-500">*</span>
                   </label>
                   <Input
                     type="password"
@@ -375,8 +375,8 @@ export default function KiroAuthModal({
                 </div>
 
                 {error && (
-                  <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800">
-                    <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+                  <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{error}</p>
                   </div>
                 )}
 
@@ -402,7 +402,7 @@ export default function KiroAuthModal({
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-2">
-                API Key <span className="text-red-500">*</span>
+                API Key <span className="text-gray-500">*</span>
               </label>
               <Input
                 type="password"
@@ -430,8 +430,8 @@ export default function KiroAuthModal({
             </div>
 
             {error && (
-              <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800">
-                <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+              <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
+                <p className="text-sm text-gray-600 dark:text-gray-400">{error}</p>
               </div>
             )}
 

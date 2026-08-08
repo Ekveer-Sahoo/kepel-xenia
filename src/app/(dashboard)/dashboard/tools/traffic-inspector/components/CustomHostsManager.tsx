@@ -106,17 +106,17 @@ export function CustomHostsManager({ onClose }: CustomHostsManagerProps) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && addHost()}
             placeholder={t("hostPlaceholder")}
-            className="flex-1 rounded border border-border bg-bg-subtle px-3 py-1.5 text-sm text-text-main focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="flex-1 rounded border border-border bg-bg-subtle px-3 py-1.5 text-sm text-text-main focus:outline-none focus:ring-1 focus:ring-gray-500"
           />
           <button
             type="button"
             onClick={addHost}
-            className="rounded border border-border bg-blue-600 px-3 py-1.5 text-sm text-white hover:bg-blue-700 focus-ring"
+            className="rounded border border-border bg-gray-600 px-3 py-1.5 text-sm text-white hover:bg-gray-700 focus-ring"
           >
             {t("addHost")}
           </button>
         </div>
-        {error && <p className="text-xs text-red-400 mb-2">{error}</p>}
+        {error && <p className="text-xs text-gray-400 mb-2">{error}</p>}
 
         <div className="space-y-1 max-h-60 overflow-y-auto">
           {loading && <p className="text-sm text-text-muted">{t("loading")}</p>}
@@ -132,7 +132,7 @@ export function CustomHostsManager({ onClose }: CustomHostsManagerProps) {
               <button
                 type="button"
                 onClick={() => deleteHost(h.host)}
-                className="text-text-muted hover:text-red-400 focus-ring rounded"
+                className="text-text-muted hover:text-gray-400 focus-ring rounded"
                 aria-label={t("removeHost", { host: h.host })}
               >
                 <span className="material-symbols-outlined text-[16px]" aria-hidden="true">

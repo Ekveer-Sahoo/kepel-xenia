@@ -290,7 +290,7 @@ export default function TokensPage() {
               onChange={(e) => setToApiKeyId(e.target.value)}
               placeholder={t("tokensRecipientApiKeyIdPlaceholder")}
               required
-              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -303,7 +303,7 @@ export default function TokensPage() {
                 placeholder="0"
                 min="1"
                 required
-                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
             </div>
             <div>
@@ -315,7 +315,7 @@ export default function TokensPage() {
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
                 placeholder={t("tokensReasonPlaceholder")}
-                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
             </div>
           </div>
@@ -323,8 +323,8 @@ export default function TokensPage() {
             <div
               className={`p-3 rounded-lg text-sm ${
                 transferMsg.type === "success"
-                  ? "bg-emerald-500/10 text-emerald-400"
-                  : "bg-red-500/10 text-red-400"
+                  ? "bg-gray-500/10 text-gray-400"
+                  : "bg-gray-500/10 text-gray-400"
               }`}
             >
               {transferMsg.text}
@@ -333,7 +333,7 @@ export default function TokensPage() {
           <button
             type="submit"
             disabled={transferLoading || !toApiKeyId || !amount}
-            className="px-4 py-2 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 transition-colors justify-self-start"
+            className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors justify-self-start"
           >
             {transferLoading ? t("tokensSending") : t("tokensSendTokens")}
           </button>
@@ -367,9 +367,7 @@ export default function TokensPage() {
                       <td className="py-3">
                         <span
                           className={`text-xs px-2 py-1 rounded ${
-                            isSent
-                              ? "bg-red-500/10 text-red-400"
-                              : "bg-emerald-500/10 text-emerald-400"
+                            isSent ? "bg-gray-500/10 text-gray-400" : "bg-gray-500/10 text-gray-400"
                           }`}
                         >
                           {isSent ? t("tokensSent") : t("tokensReceived")}
@@ -380,7 +378,7 @@ export default function TokensPage() {
                       </td>
                       <td className="py-3 text-sm font-mono">{entry.toApiKeyId.slice(0, 8)}...</td>
                       <td
-                        className={`py-3 text-right font-mono ${isSent ? "text-red-400" : "text-emerald-400"}`}
+                        className={`py-3 text-right font-mono ${isSent ? "text-gray-400" : "text-gray-400"}`}
                       >
                         {isSent ? "-" : "+"}
                         {entry.amount.toLocaleString(locale)}
@@ -409,27 +407,27 @@ export default function TokensPage() {
                 value={inviteMaxUses}
                 onChange={(e) => setInviteMaxUses(e.target.value)}
                 min="1"
-                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
             </div>
             <button
               onClick={handleCreateInvite}
               disabled={inviteLoading}
-              className="px-4 py-2 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 transition-colors"
+              className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors"
             >
               {inviteLoading ? t("tokensCreatingInvite") : t("tokensCreateInvite")}
             </button>
           </div>
 
           {newInviteCode && (
-            <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-400 text-sm">
+            <div className="p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm">
               {t("tokensInviteCreated")}:{" "}
               <span className="font-mono font-bold">{newInviteCode}</span>
             </div>
           )}
 
           {inviteError && (
-            <div className="p-3 rounded-lg bg-red-500/10 text-red-400 text-sm">{inviteError}</div>
+            <div className="p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm">{inviteError}</div>
           )}
 
           {/* Redeem */}
@@ -445,13 +443,13 @@ export default function TokensPage() {
                 onChange={(e) => setRedeemCode(e.target.value)}
                 placeholder={t("tokensRedeemCodePlaceholder")}
                 required
-                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
             </div>
             <button
               type="submit"
               disabled={redeemLoading || !redeemCode}
-              className="px-4 py-2 text-sm font-medium rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 disabled:opacity-50 transition-colors"
+              className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors"
             >
               {redeemLoading ? t("tokensRedeeming") : t("tokensRedeem")}
             </button>
@@ -461,8 +459,8 @@ export default function TokensPage() {
             <div
               className={`p-3 rounded-lg text-sm ${
                 redeemMsg.type === "success"
-                  ? "bg-emerald-500/10 text-emerald-400"
-                  : "bg-red-500/10 text-red-400"
+                  ? "bg-gray-500/10 text-gray-400"
+                  : "bg-gray-500/10 text-gray-400"
               }`}
             >
               {redeemMsg.text}
@@ -485,13 +483,13 @@ export default function TokensPage() {
                         {t("tokensInviteUses", { used: inv.useCount, max: inv.maxUses })}
                       </span>
                       {inv.revokedAt && (
-                        <span className="text-xs text-red-400 ml-2">{t("tokensRevoked")}</span>
+                        <span className="text-xs text-gray-400 ml-2">{t("tokensRevoked")}</span>
                       )}
                     </div>
                     {!inv.revokedAt && (
                       <button
                         onClick={() => handleRevokeInvite(inv.id)}
-                        className="text-xs px-2 py-1 rounded text-red-400 hover:bg-red-500/10 transition-colors"
+                        className="text-xs px-2 py-1 rounded text-gray-400 hover:bg-gray-500/10 transition-colors"
                       >
                         {t("tokensRevoke")}
                       </button>
@@ -515,7 +513,7 @@ export default function TokensPage() {
                 onChange={(e) => setServerName(e.target.value)}
                 placeholder={t("tokensServerNamePlaceholder")}
                 required
-                className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
               <input
                 type="url"
@@ -523,7 +521,7 @@ export default function TokensPage() {
                 onChange={(e) => setServerUrl(e.target.value)}
                 placeholder="https://server.example.com"
                 required
-                className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
               <input
                 type="password"
@@ -531,20 +529,20 @@ export default function TokensPage() {
                 onChange={(e) => setServerApiKey(e.target.value)}
                 placeholder={t("tokensApiKeyPlaceholder")}
                 required
-                className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+                className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
             </div>
             <button
               type="submit"
               disabled={serverLoading || !serverName || !serverUrl || !serverApiKey}
-              className="px-4 py-2 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 transition-colors justify-self-start"
+              className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors justify-self-start"
             >
               {serverLoading ? t("tokensConnecting") : t("tokensConnectServer")}
             </button>
           </form>
 
           {serverError && (
-            <div className="p-3 rounded-lg bg-red-500/10 text-red-400 text-sm">{serverError}</div>
+            <div className="p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm">{serverError}</div>
           )}
 
           {servers.length === 0 ? (
@@ -564,9 +562,9 @@ export default function TokensPage() {
                       <span
                         className={`text-xs px-2 py-0.5 rounded ${
                           server.status === "connected"
-                            ? "bg-emerald-500/10 text-emerald-400"
+                            ? "bg-gray-500/10 text-gray-400"
                             : server.status === "error"
-                              ? "bg-red-500/10 text-red-400"
+                              ? "bg-gray-500/10 text-gray-400"
                               : "bg-gray-500/10 text-gray-400"
                         }`}
                       >
@@ -577,7 +575,7 @@ export default function TokensPage() {
                     </div>
                     <p className="text-xs text-text-muted mt-1 truncate">{server.url}</p>
                     {server.errorMessage && (
-                      <p className="text-xs text-red-400 mt-1">{server.errorMessage}</p>
+                      <p className="text-xs text-gray-400 mt-1">{server.errorMessage}</p>
                     )}
                     {server.lastSyncAt && (
                       <p className="text-xs text-text-muted mt-1">
@@ -589,7 +587,7 @@ export default function TokensPage() {
                   </div>
                   <button
                     onClick={() => handleDisconnectServer(server.id)}
-                    className="text-xs px-3 py-1.5 rounded text-red-400 hover:bg-red-500/10 transition-colors ml-4"
+                    className="text-xs px-3 py-1.5 rounded text-gray-400 hover:bg-gray-500/10 transition-colors ml-4"
                   >
                     {t("tokensDisconnect")}
                   </button>

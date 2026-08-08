@@ -6,7 +6,7 @@ lastUpdated: 2026-06-28
 
 # Przewodnik monitorowania i obserwowalności
 
-> **TL;DR**: OmniRoute dostarcza wbudowane monitorowanie kondycji, autopilota providerów, śledzenie limitów (quota) oraz haki obserwowalności. Ten przewodnik obejmuje dashboard, alerty i rozwiązywanie problemów.
+> **TL;DR**: Xenia dostarcza wbudowane monitorowanie kondycji, autopilota providerów, śledzenie limitów (quota) oraz haki obserwowalności. Ten przewodnik obejmuje dashboard, alerty i rozwiązywanie problemów.
 
 **Źródła:**
 
@@ -22,7 +22,7 @@ lastUpdated: 2026-06-28
 
 ## Przegląd
 
-OmniRoute ma **3 warstwy monitorowania**:
+Xenia ma **3 warstwy monitorowania**:
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
@@ -39,7 +39,7 @@ OmniRoute ma **3 warstwy monitorowania**:
 │  Warstwa 3: Live obserwowalność (migawki runtime)             │
 │  ├─ observability.ts — circuit breakery, sesje, quota         │
 │  ├─ tokenHealthCheck.ts — kondycja odświeżania tokenów OAuth  │
-│  └─ Narzędzia MCP: omniroute_get_health, omniroute_get_session_snapshot │
+│  └─ Narzędzia MCP: xenia_get_health, xenia_get_session_snapshot │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -318,7 +318,7 @@ Konfiguracja health check tokenów jest obsługiwana wewnętrznie przez `tokenHe
 
 ### Wbudowane kanały
 
-OmniRoute obsługuje **3 kanały alertów**:
+Xenia obsługuje **3 kanały alertów**:
 
 | Kanał            | Konfiguracja    | Przypadek użycia               |
 | ---------------- | --------------- | ------------------------------ |
@@ -399,7 +399,7 @@ Na razie scrapuj `/api/monitoring/health` dowolnym systemem monitorowania oparty
 
 ### Dostosowanie dashboardu kondycji
 
-Utwórz `~/.omniroute/dashboard.json`:
+Utwórz `~/.xenia/dashboard.json`:
 
 ```json
 {
@@ -434,7 +434,7 @@ Utwórz `~/.omniroute/dashboard.json`:
 ### „Quota pokazuje healthy, a ja widzę 429”
 
 - 429 oznacza, że provider twierdzi, iż wyczerpałeś limit
-- Śledzenie quota w OmniRoute może być **nieaktualne** — prawda providera jest upstream
+- Śledzenie quota w Xenia może być **nieaktualne** — prawda providera jest upstream
 - Dane quota odświeżają się automatycznie przez wewnętrzny monitor quota
 
 ### „Combo pada, choć wszystkie targety wyglądają na healthy”
@@ -445,9 +445,9 @@ Utwórz `~/.omniroute/dashboard.json`:
 
 ### „Health check bazy danych nie przechodzi”
 
-- Uruchom `sqlite3 ~/.omniroute/storage.sqlite "PRAGMA integrity_check;"`
+- Uruchom `sqlite3 ~/.xenia/storage.sqlite "PRAGMA integrity_check;"`
 - Jeśli "ok" — fałszywy alarm, health check jest zbyt rygorystyczny
-- Jeśli cokolwiek innego — **zatrzymaj OmniRoute** i postępuj według [przewodnika disaster recovery](./DATABASE_GUIDE.md#disaster-recovery)
+- Jeśli cokolwiek innego — **zatrzymaj Xenia** i postępuj według [przewodnika disaster recovery](./DATABASE_GUIDE.md#disaster-recovery)
 
 ### „Ciśnienie heapa pamięci jest krytyczne”
 

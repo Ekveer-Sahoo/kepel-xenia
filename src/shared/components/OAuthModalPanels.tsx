@@ -138,8 +138,8 @@ export function OAuthLoopbackMismatchPanel({
     <>
       <div className="space-y-4">
         <div className="flex items-start gap-3">
-          <div className="size-10 shrink-0 rounded-full bg-amber-500/15 flex items-center justify-center">
-            <span className="material-symbols-outlined text-xl text-amber-500">lan</span>
+          <div className="size-10 shrink-0 rounded-full bg-gray-500/15 flex items-center justify-center">
+            <span className="material-symbols-outlined text-xl text-gray-500">lan</span>
           </div>
           <div>
             <h3 className="text-base font-semibold">{t("loopbackMismatchTitle")}</h3>
@@ -149,8 +149,8 @@ export function OAuthLoopbackMismatchPanel({
           </div>
         </div>
 
-        <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-amber-500 mb-1">
+        <div className="rounded-lg border border-gray-500/30 bg-gray-500/10 p-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-1">
             {t("loopbackMismatchWhatHappened")}
           </p>
           <p className="text-sm text-text-muted">
@@ -227,9 +227,9 @@ function OAuthGoogleLoopbackNotice({ hint }: { hint: GoogleLoopbackHint }) {
   );
 
   return (
-    <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 space-y-3">
+    <div className="rounded-lg border border-gray-500/30 bg-gray-500/10 p-3 space-y-3">
       <div>
-        <p className="text-sm font-semibold text-amber-500">
+        <p className="text-sm font-semibold text-gray-500">
           <span className="material-symbols-outlined text-sm align-middle mr-1">warning</span>
           {t("googleLoopbackTitle")}
         </p>
@@ -265,7 +265,7 @@ function OAuthGoogleLoopbackNotice({ hint }: { hint: GoogleLoopbackHint }) {
         {t.rich("googleLoopbackHeadlessAlt", {
           a: (chunks) => (
             <a
-              href="https://github.com/diegosouzapw/OmniRoute#oauth-on-a-remote-server"
+              href="https://github.com/diegosouzapw/Xenia#oauth-on-a-remote-server"
               target="_blank"
               rel="noreferrer"
               className="underline"
@@ -299,7 +299,7 @@ function OAuthRemoteAccessNotices({
   }
 
   return (
-    <div className="rounded-lg border border-blue-500/30 bg-blue-500/10 p-3 text-xs text-blue-200">
+    <div className="rounded-lg border border-gray-500/30 bg-gray-500/10 p-3 text-xs text-gray-200">
       <span className="material-symbols-outlined text-sm align-middle mr-1">info</span>
       {t("remoteAccessInfo")}
     </div>

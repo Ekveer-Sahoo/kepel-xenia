@@ -74,7 +74,7 @@ export default function RadarSetupPage() {
 
         // Find ALL entries for this provider and extract setup from the first one that has it
         const providerEntries = data.entries.filter(
-          (e: { provider: string }) => e.provider === provider,
+          (e: { provider: string }) => e.provider === provider
         );
 
         if (providerEntries.length === 0) {
@@ -85,7 +85,8 @@ export default function RadarSetupPage() {
 
         // Find setup info from feed entries (they carry the setup field)
         const entryWithSetup = providerEntries.find(
-          (e: { setup?: SetupInfo | null }) => e.setup && (e.setup.steps.length > 0 || e.setup.keyUrl),
+          (e: { setup?: SetupInfo | null }) =>
+            e.setup && (e.setup.steps.length > 0 || e.setup.keyUrl)
         );
 
         // Check if provider is configured (has connections)
@@ -165,9 +166,7 @@ export default function RadarSetupPage() {
         <p className="text-sm text-text-muted mt-1">{t("setupSubtitle")}</p>
       </div>
 
-      {error && (
-        <div className="p-3 rounded-lg bg-red-500/10 text-red-400 text-sm">{error}</div>
-      )}
+      {error && <div className="p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm">{error}</div>}
 
       {loading ? (
         <div className="flex items-center justify-center min-h-[200px]">
@@ -179,8 +178,8 @@ export default function RadarSetupPage() {
           {setupData.configured && (
             <Card>
               <div className="flex items-center gap-3 py-2">
-                <span className="text-green-400 text-xl">✓</span>
-                <span className="text-green-400 font-medium">{t("providerConfigured")}</span>
+                <span className="text-gray-400 text-xl">✓</span>
+                <span className="text-gray-400 font-medium">{t("providerConfigured")}</span>
               </div>
             </Card>
           )}
@@ -194,7 +193,7 @@ export default function RadarSetupPage() {
                   href={setupData.setup.keyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-violet-400 hover:underline break-all"
+                  className="text-gray-400 hover:underline break-all"
                 >
                   {setupData.setup.keyUrl}
                 </a>
@@ -210,7 +209,7 @@ export default function RadarSetupPage() {
                 <ol className="flex flex-col gap-3">
                   {setupData.setup.steps.map((step, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-violet-500/10 text-violet-400 flex items-center justify-center text-sm font-medium">
+                      <span className="flex-shrink-0 w-7 h-7 rounded-full bg-gray-500/10 text-gray-400 flex items-center justify-center text-sm font-medium">
                         {idx + 1}
                       </span>
                       <span className="text-sm text-text-muted pt-1">
@@ -232,7 +231,7 @@ export default function RadarSetupPage() {
                   href={`https://${provider}.com`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-violet-400 hover:underline mt-2 inline-block"
+                  className="text-gray-400 hover:underline mt-2 inline-block"
                 >
                   {t("visitDocs")}
                 </a>
@@ -249,14 +248,12 @@ export default function RadarSetupPage() {
                 <button
                   onClick={handleTestConnection}
                   disabled={testing}
-                  className="px-4 py-2 text-sm font-medium rounded-lg border border-violet-500 text-violet-400 hover:bg-violet-500/10 transition-colors disabled:opacity-50"
+                  className="px-4 py-2 text-sm font-medium rounded-lg border border-gray-500 text-gray-400 hover:bg-gray-500/10 transition-colors disabled:opacity-50"
                 >
                   {testing ? t("testing") : t("testButton")}
                 </button>
                 {testResult && (
-                  <span
-                    className={`text-sm ${testResult.ok ? "text-green-400" : "text-red-400"}`}
-                  >
+                  <span className={`text-sm ${testResult.ok ? "text-gray-400" : "text-gray-400"}`}>
                     {testResult.message}
                   </span>
                 )}
@@ -271,7 +268,7 @@ export default function RadarSetupPage() {
               <p className="text-sm text-text-muted">{t("addConnectionDescription")}</p>
               <Link
                 href={`/dashboard/providers?add=${encodeURIComponent(provider)}`}
-                className="text-violet-400 hover:underline text-sm"
+                className="text-gray-400 hover:underline text-sm"
               >
                 {t("addConnectionLink")}
               </Link>

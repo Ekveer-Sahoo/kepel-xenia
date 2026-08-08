@@ -31,7 +31,7 @@ export async function getCurrentVersion() {
 // they were already on the latest version (#4376). `execFn` is injectable for tests.
 export async function getLatestVersion(execFn = execFileAsync) {
   try {
-    const { stdout } = await execFn("npm", ["view", "omniroute", "version", "--prefer-online"], {
+    const { stdout } = await execFn("npm", ["view", "xenia", "version", "--prefer-online"], {
       timeout: 15000,
     });
     return stdout.trim();
@@ -52,14 +52,14 @@ function compareVersions(a, b) {
 
 export async function createBackup() {
   const binPath = BIN_DIR;
-  const backupDir = path.join(homedir(), ".omniroute", "backups", `omniroute-${Date.now()}`);
+  const backupDir = path.join(homedir(), ".xenia", "backups", `xenia-${Date.now()}`);
 
   try {
     const { mkdirSync, cpSync, existsSync } = await import("node:fs");
     if (!existsSync(binPath)) return null;
 
     mkdirSync(backupDir, { recursive: true });
-    const files = ["omniroute.mjs", "cli", "nodeRuntimeSupport.mjs", "mcp-server.mjs"];
+    const files = ["xenia.mjs", "cli", "nodeRuntimeSupport.mjs", "mcp-server.mjs"];
     for (const f of files) {
       const src = path.join(binPath, f);
       if (existsSync(src)) {
@@ -114,21 +114,21 @@ export async function runUpdateCommand(opts = {}) {
 
   if (showChangelog) {
     try {
-      const { stdout } = await execFileAsync("npm", ["view", "omniroute", "changelog"], {
+      const { stdout } = await execFileAsync("npm", ["view", "xenia", "changelog"], {
         timeout: 10000,
       });
       if (stdout.trim()) {
         console.log(stdout.trim());
       } else {
-        console.log(`Changelog: https://github.com/your-org/omniroute/releases/tag/v${latest}`);
+        console.log(`Changelog: https://github.com/your-org/xenia/releases/tag/v${latest}`);
       }
     } catch {
-      console.log(`Changelog: https://github.com/your-org/omniroute/releases/tag/v${latest}`);
+      console.log(`Changelog: https://github.com/your-org/xenia/releases/tag/v${latest}`);
     }
     return 0;
   }
 
-  printHeading("OmniRoute Update");
+  printHeading("Xenia Update");
   console.log(`  Current version: ${current}`);
   console.log(`  Latest version:  ${latest}`);
 
@@ -141,13 +141,13 @@ export async function runUpdateCommand(opts = {}) {
   console.log(`\n  Update available: ${current} → ${latest}`);
 
   if (checkOnly) {
-    console.log("\n  Run `omniroute update --apply` to install automatically.");
+    console.log("\n  Run `xenia update --apply` to install automatically.");
     return 1; // exit 1 = outdated (useful for scripts)
   }
 
   if (dryRun) {
-    console.log("\n  [DRY RUN] Would run: npm install -g omniroute@latest --include=optional");
-    if (!skipBackup) console.log("  [DRY RUN] Would create backup in ~/.omniroute/backups/");
+    console.log("\n  [DRY RUN] Would run: npm install -g xenia@latest --include=optional");
+    if (!skipBackup) console.log("  [DRY RUN] Would create backup in ~/.xenia/backups/");
     return 0;
   }
 
@@ -175,14 +175,14 @@ export async function runUpdateCommand(opts = {}) {
     }
   }
 
-  printInfo("Updating OmniRoute...");
+  printInfo("Updating Xenia...");
   try {
     const { execSync } = await import("child_process");
     // --include=optional keeps the optionalDependencies (better-sqlite3, keytar,
     // tls-client, llmlingua SLM stack) on update so an omit=optional config can't drop them.
-    execSync("npm install -g omniroute@latest --include=optional", { stdio: "inherit" });
+    execSync("npm install -g xenia@latest --include=optional", { stdio: "inherit" });
     // Trust-but-verify: `npm install -g` exits 0 even when a shadowing local install
-    // (e.g. ~/node_modules/omniroute ahead of the global prefix on PATH) means the
+    // (e.g. ~/node_modules/xenia ahead of the global prefix on PATH) means the
     // binary the user actually runs was not touched. Re-read the running binary's
     // version and warn instead of lying about success (#9475).
     const afterVersion = await getCurrentVersion();
@@ -190,26 +190,24 @@ export async function runUpdateCommand(opts = {}) {
       printError(
         `Global install updated to ${latest}, but the running binary still reports ${afterVersion}.`
       );
-      console.log(
-        "  A local `node_modules/omniroute` is likely shadowing the global install on PATH."
-      );
+      console.log("  A local `node_modules/xenia` is likely shadowing the global install on PATH.");
       console.log("  Diagnose with:");
-      console.log("    which -a omniroute");
-      console.log("    command -v omniroute");
+      console.log("    which -a xenia");
+      console.log("    command -v xenia");
       console.log("    npm prefix -g");
       console.log(
-        "  Then remove the shadowing local copy (e.g. `npm uninstall omniroute` from its directory)"
+        "  Then remove the shadowing local copy (e.g. `npm uninstall xenia` from its directory)"
       );
       console.log("  or reorder PATH so the global bin comes first.");
       return 1;
     }
     printSuccess(`Updated to version ${latest}`);
-    printInfo("Run `omniroute --version` to verify.");
+    printInfo("Run `xenia --version` to verify.");
     return 0;
   } catch (err) {
     printError(`Update failed: ${err.message}`);
     printInfo("Restore from backup:");
-    const backupDir = path.join(homedir(), ".omniroute", "backups");
+    const backupDir = path.join(homedir(), ".xenia", "backups");
     printInfo(`  ls ${backupDir}`);
     return 1;
   }

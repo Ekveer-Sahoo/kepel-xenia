@@ -58,10 +58,10 @@ export function OmniExecutionsTab({
                     <span
                       className={`text-xs px-2 py-1 rounded ${
                         exec.status === "success"
-                          ? "bg-emerald-500/10 text-emerald-400"
+                          ? "bg-gray-500/10 text-gray-400"
                           : exec.status === "error"
-                            ? "bg-red-500/10 text-red-400"
-                            : "bg-amber-500/10 text-amber-400"
+                            ? "bg-gray-500/10 text-gray-400"
+                            : "bg-gray-500/10 text-gray-400"
                       }`}
                     >
                       {exec.status}

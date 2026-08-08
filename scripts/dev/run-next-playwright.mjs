@@ -155,40 +155,39 @@ const bootstrapEnvVars = bootstrapEnv({
   dataDirOverride: playwrightDataDir,
 });
 const runtimePorts = resolveRuntimePorts(bootstrapEnvVars);
-const bootstrapMode = process.env.OMNIROUTE_E2E_BOOTSTRAP_MODE || "auth";
+const bootstrapMode = process.env.XENIA_E2E_BOOTSTRAP_MODE || "auth";
 const playwrightPassword =
-  process.env.OMNIROUTE_E2E_PASSWORD || process.env.INITIAL_PASSWORD || "omniroute-e2e-password";
+  process.env.XENIA_E2E_PASSWORD || process.env.INITIAL_PASSWORD || "xenia-e2e-password";
 const testServerEnv = {
   ...sanitizeColorEnv(bootstrapEnvVars),
   ...sanitizeColorEnv(process.env),
   NODE_ENV: mode === "start" ? "production" : "development",
   DATA_DIR: playwrightDataDir,
-  NEXT_PUBLIC_OMNIROUTE_E2E_MODE: process.env.NEXT_PUBLIC_OMNIROUTE_E2E_MODE || "1",
-  OMNIROUTE_DISABLE_BACKGROUND_SERVICES:
-    process.env.OMNIROUTE_DISABLE_BACKGROUND_SERVICES || "true",
-  OMNIROUTE_DISABLE_TOKEN_HEALTHCHECK: process.env.OMNIROUTE_DISABLE_TOKEN_HEALTHCHECK || "true",
-  OMNIROUTE_DISABLE_LOCAL_HEALTHCHECK: process.env.OMNIROUTE_DISABLE_LOCAL_HEALTHCHECK || "true",
-  OMNIROUTE_HIDE_HEALTHCHECK_LOGS: process.env.OMNIROUTE_HIDE_HEALTHCHECK_LOGS || "true",
+  NEXT_PUBLIC_XENIA_E2E_MODE: process.env.NEXT_PUBLIC_XENIA_E2E_MODE || "1",
+  XENIA_DISABLE_BACKGROUND_SERVICES: process.env.XENIA_DISABLE_BACKGROUND_SERVICES || "true",
+  XENIA_DISABLE_TOKEN_HEALTHCHECK: process.env.XENIA_DISABLE_TOKEN_HEALTHCHECK || "true",
+  XENIA_DISABLE_LOCAL_HEALTHCHECK: process.env.XENIA_DISABLE_LOCAL_HEALTHCHECK || "true",
+  XENIA_HIDE_HEALTHCHECK_LOGS: process.env.XENIA_HIDE_HEALTHCHECK_LOGS || "true",
   ...(bootstrapMode === "open"
     ? {
         INITIAL_PASSWORD: "",
-        OMNIROUTE_E2E_PASSWORD: "",
-        OMNIROUTE_API_KEY: "",
+        XENIA_E2E_PASSWORD: "",
+        XENIA_API_KEY: "",
       }
     : {
         INITIAL_PASSWORD: playwrightPassword,
-        OMNIROUTE_E2E_PASSWORD: playwrightPassword,
+        XENIA_E2E_PASSWORD: playwrightPassword,
       }),
-  ...(process.env.OMNIROUTE_USE_TURBOPACK
+  ...(process.env.XENIA_USE_TURBOPACK
     ? {
-        OMNIROUTE_USE_TURBOPACK: process.env.OMNIROUTE_USE_TURBOPACK,
+        XENIA_USE_TURBOPACK: process.env.XENIA_USE_TURBOPACK,
       }
     : {}),
 };
 
 export function shouldUseWebpackForPlaywrightDev({ mode, env }) {
   // Webpack only on the explicit escape hatch (=0) — turbopack is the default.
-  return mode === "dev" && env.OMNIROUTE_USE_TURBOPACK === "0";
+  return mode === "dev" && env.XENIA_USE_TURBOPACK === "0";
 }
 
 function runChild(command, args, env) {
@@ -215,7 +214,7 @@ function runChild(command, args, env) {
 
 async function runBuildForStart() {
   if (mode !== "start") return;
-  if (process.env.OMNIROUTE_PLAYWRIGHT_SKIP_BUILD === "1") return;
+  if (process.env.XENIA_PLAYWRIGHT_SKIP_BUILD === "1") return;
   console.log("[Playwright WebServer] Building fresh standalone app for this run...");
 
   const buildEnv = withRuntimePortEnv(testServerEnv, runtimePorts);

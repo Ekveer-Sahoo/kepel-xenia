@@ -4,13 +4,13 @@ title: ACP (Agent Client Protocol)
 
 # ACP (Agent Client Protocol)
 
-> **TL;DR**: ACP lets OmniRoute spawn CLI agents (like Claude Code, Codex) as child processes instead of using HTTP APIs. This gives you "CLI-as-backend" transport.
+> **TL;DR**: ACP lets Xenia spawn CLI agents (like Claude Code, Codex) as child processes instead of using HTTP APIs. This gives you "CLI-as-backend" transport.
 
 ---
 
 ## What Is ACP?
 
-ACP (Agent Client Protocol) is a **"CLI-as-backend" transport** for OmniRoute. Instead of intercepting HTTP API calls to AI providers, ACP **spawns CLI agents as child processes** and feeds prompts through their native interface.
+ACP (Agent Client Protocol) is a **"CLI-as-backend" transport** for Xenia. Instead of intercepting HTTP API calls to AI providers, ACP **spawns CLI agents as child processes** and feeds prompts through their native interface.
 
 ### Why Use ACP?
 
@@ -38,7 +38,7 @@ ACP supports **13 built-in CLI agents** out of the box:
 | `aider`       | Aider              | `aider`       | stdio    |
 | `opencode`    | OpenCode           | `opencode`    | stdio    |
 | `cline`       | Cline              | `cline`       | stdio    |
-| `qwen`        | Qwen Code          | `qwen --acp` | stdio    |
+| `qwen`        | Qwen Code          | `qwen --acp`  | stdio    |
 | `forge`       | ForgeCode          | `forge`       | stdio    |
 | `amazon-q`    | Amazon Q Developer | `q`           | stdio    |
 | `interpreter` | Open Interpreter   | `interpreter` | stdio    |
@@ -69,7 +69,7 @@ ACP automatically detects installed CLI agents on your system. No configuration 
 
 ### Step 3: Use ACP Transport
 
-Once detected, ACP can be used as a transport for any supported provider. OmniRoute will automatically use ACP when the CLI is available.
+Once detected, ACP can be used as a transport for any supported provider. Xenia will automatically use ACP when the CLI is available.
 
 ---
 
@@ -79,7 +79,7 @@ Once detected, ACP can be used as a transport for any supported provider. OmniRo
 
 ```
 ┌─────────────────┐
-│  OmniRoute      │
+│  Xenia      │
 │  (HTTP Proxy)   │
 └────────┬────────┘
          │
@@ -134,7 +134,7 @@ interface CliAgentInfo {
   versionCommand: string; // Version detection command
   version: string | null; // Detected version (null if not installed)
   installed: boolean; // Whether the agent is installed
-  providerAlias: string; // Provider ID in OmniRoute
+  providerAlias: string; // Provider ID in Xenia
   spawnArgs: string[]; // Arguments to pass when spawning
   protocol: "stdio" | "http"; // Communication protocol
   isCustom?: boolean; // Whether this is a user-defined custom agent
@@ -458,7 +458,7 @@ await acpManager.sendPrompt(sessionId, prompt, 300000); // 5 minutes
 **Solutions**:
 
 1. **Check file permissions**: `chmod +x /usr/local/bin/claude`
-2. **Check ownership**: Ensure OmniRoute has read/execute permissions
+2. **Check ownership**: Ensure Xenia has read/execute permissions
 3. **Check SELinux/AppArmor**: May block process spawning
 
 ---

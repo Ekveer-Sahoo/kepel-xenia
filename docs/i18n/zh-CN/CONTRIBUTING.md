@@ -1,10 +1,10 @@
-# Contributing to OmniRoute (中文 (简体))
+# Contributing to Xenia (中文 (简体))
 
 🌐 **Languages:** 🇺🇸 [English](../../../CONTRIBUTING.md) · 🇸🇦 [ar](../ar/CONTRIBUTING.md) · 🇧🇬 [bg](../bg/CONTRIBUTING.md) · 🇧🇩 [bn](../bn/CONTRIBUTING.md) · 🇨🇿 [cs](../cs/CONTRIBUTING.md) · 🇩🇰 [da](../da/CONTRIBUTING.md) · 🇩🇪 [de](../de/CONTRIBUTING.md) · 🇪🇸 [es](../es/CONTRIBUTING.md) · 🇮🇷 [fa](../fa/CONTRIBUTING.md) · 🇫🇮 [fi](../fi/CONTRIBUTING.md) · 🇫🇷 [fr](../fr/CONTRIBUTING.md) · 🇮🇳 [gu](../gu/CONTRIBUTING.md) · 🇮🇱 [he](../he/CONTRIBUTING.md) · 🇮🇳 [hi](../hi/CONTRIBUTING.md) · 🇭🇺 [hu](../hu/CONTRIBUTING.md) · 🇮🇩 [id](../id/CONTRIBUTING.md) · 🇮🇹 [it](../it/CONTRIBUTING.md) · 🇯🇵 [ja](../ja/CONTRIBUTING.md) · 🇰🇷 [ko](../ko/CONTRIBUTING.md) · 🇮🇳 [mr](../mr/CONTRIBUTING.md) · 🇲🇾 [ms](../ms/CONTRIBUTING.md) · 🇳🇱 [nl](../nl/CONTRIBUTING.md) · 🇳🇴 [no](../no/CONTRIBUTING.md) · 🇵🇭 [phi](../phi/CONTRIBUTING.md) · 🇵🇱 [pl](../pl/CONTRIBUTING.md) · 🇵🇹 [pt](../pt/CONTRIBUTING.md) · 🇧🇷 [pt-BR](../pt-BR/CONTRIBUTING.md) · 🇷🇴 [ro](../ro/CONTRIBUTING.md) · 🇷🇺 [ru](../ru/CONTRIBUTING.md) · 🇸🇰 [sk](../sk/CONTRIBUTING.md) · 🇸🇪 [sv](../sv/CONTRIBUTING.md) · 🇰🇪 [sw](../sw/CONTRIBUTING.md) · 🇮🇳 [ta](../ta/CONTRIBUTING.md) · 🇮🇳 [te](../te/CONTRIBUTING.md) · 🇹🇭 [th](../th/CONTRIBUTING.md) · 🇹🇷 [tr](../tr/CONTRIBUTING.md) · 🇺🇦 [uk-UA](../uk-UA/CONTRIBUTING.md) · 🇵🇰 [ur](../ur/CONTRIBUTING.md) · 🇻🇳 [vi](../vi/CONTRIBUTING.md) · 🇨🇳 [zh-CN](../zh-CN/CONTRIBUTING.md)
 
 ---
 
-感谢你对 OmniRoute 的关注！本文档将引导你从零开始参与项目贡献。
+感谢你对 Xenia 的关注！本文档将引导你从零开始参与项目贡献。
 
 ---
 
@@ -19,8 +19,8 @@
 ### 克隆与安装
 
 ```bash
-git clone https://github.com/diegosouzapw/OmniRoute.git
-cd OmniRoute
+git clone https://github.com/diegosouzapw/Xenia.git
+cd Xenia
 npm install
 ```
 
@@ -37,22 +37,22 @@ echo "API_KEY_SECRET=$(openssl rand -hex 32)" >> .env
 
 开发环境关键变量：
 
-| 变量                     | 开发环境默认值           | 说明               |
-| ------------------------ | ------------------------ | ------------------ |
-| `PORT`                   | `20128`                  | 服务器端口         |
-| `NEXT_PUBLIC_BASE_URL`   | `http://localhost:20128` | 前端 Base URL      |
-| `JWT_SECRET`             | （通过上方命令生成）     | JWT 签名密钥       |
-| `INITIAL_PASSWORD`       | `CHANGEME`               | 首次登录密码       |
-| `APP_LOG_LEVEL`          | `info`                   | 日志详细级别       |
+| 变量                   | 开发环境默认值           | 说明          |
+| ---------------------- | ------------------------ | ------------- |
+| `PORT`                 | `20128`                  | 服务器端口    |
+| `NEXT_PUBLIC_BASE_URL` | `http://localhost:20128` | 前端 Base URL |
+| `JWT_SECRET`           | （通过上方命令生成）     | JWT 签名密钥  |
+| `INITIAL_PASSWORD`     | `CHANGEME`               | 首次登录密码  |
+| `APP_LOG_LEVEL`        | `info`                   | 日志详细级别  |
 
 ### 控制台设置
 
 控制台为部分功能提供了界面开关，这些功能也可通过环境变量配置：
 
-| 设置位置       | 开关               | 说明                         |
-| -------------- | ------------------ | ---------------------------- |
-| 设置 → 高级    | 调试模式           | 启用调试请求日志（界面端）   |
-| 设置 → 常规    | 侧边栏可见性       | 显示/隐藏侧边栏分区          |
+| 设置位置    | 开关         | 说明                       |
+| ----------- | ------------ | -------------------------- |
+| 设置 → 高级 | 调试模式     | 启用调试请求日志（界面端） |
+| 设置 → 常规 | 侧边栏可见性 | 显示/隐藏侧边栏分区        |
 
 这些设置存储在数据库中，重启后仍然有效，设置后会覆盖环境变量的默认值。
 
@@ -75,11 +75,11 @@ PORT=20128 NEXT_PUBLIC_BASE_URL=http://localhost:20128 npm run dev
 
 ### 构建产物布局
 
-| 目录      | 内容                                                                         | 版本追踪 |
-| --------- | ---------------------------------------------------------------------------- | -------- |
-| `src/`    | 应用源码（TypeScript / TSX）                                                 | 是       |
-| `.build/` | 中间产物 — `next build` 输出（已 gitignore，`distDir = .build/next`）        | 否       |
-| `dist/`   | 可交付的打包产物 — 由 `assembleStandalone` 组装（已 gitignore）              | 否       |
+| 目录      | 内容                                                                  | 版本追踪 |
+| --------- | --------------------------------------------------------------------- | -------- |
+| `src/`    | 应用源码（TypeScript / TSX）                                          | 是       |
+| `.build/` | 中间产物 — `next build` 输出（已 gitignore，`distDir = .build/next`） | 否       |
+| `dist/`   | 可交付的打包产物 — 由 `assembleStandalone` 组装（已 gitignore）       | 否       |
 
 构建流水线为单次执行：
 
@@ -93,7 +93,7 @@ npm run build
 `npm run build:release` 会额外清理上述两个目录，并写入
 `dist/BUILD_SHA`（= `git rev-parse --short HEAD`）作为部署完整性哨兵。
 
-> **VPS 部署说明：** 远程镜像目录 `/usr/lib/node_modules/omniroute/app/`
+> **VPS 部署说明：** 远程镜像目录 `/usr/lib/node_modules/xenia/app/`
 > 保持不变。部署脚本会将 `dist/` 的内容 rsync 到该目录中。
 > 仅仓库内的构建输出路径发生了变动（`app/` → `dist/`）。
 
@@ -118,14 +118,14 @@ git push -u origin feat/your-feature-name
 
 ### 分支命名
 
-| 前缀        | 用途                   |
-| ----------- | ---------------------- |
-| `feat/`     | 新功能                 |
-| `fix/`      | Bug 修复               |
-| `refactor/` | 代码重构               |
-| `docs/`     | 文档修改               |
-| `test/`     | 测试新增/修复          |
-| `chore/`    | 工具链、CI、依赖项     |
+| 前缀        | 用途               |
+| ----------- | ------------------ |
+| `feat/`     | 新功能             |
+| `fix/`      | Bug 修复           |
+| `refactor/` | 代码重构           |
+| `docs/`     | 文档修改           |
+| `test/`     | 测试新增/修复      |
+| `chore/`    | 工具链、CI、依赖项 |
 
 ### 提交信息
 
@@ -256,7 +256,7 @@ src/                        # TypeScript（.ts / .tsx）
 │   └── validation/         # Zod v4 Schema
 └── sse/                    # SSE 代理流水线
 
-open-sse/                   # @omniroute/open-sse 工作区
+open-sse/                   # @xenia/open-sse 工作区
 ├── executors/              # 14 个服务商专用请求执行器
 ├── handlers/               # 11 个请求处理器（chat、responses、embeddings、images 等）
 ├── mcp-server/             # MCP Server（25 个工具、3 种传输、10 个权限域）
@@ -278,7 +278,7 @@ tests/
 docs/
 ├── adr/                     # 架构决策记录
 ├── architecture/            # 系统架构与容灾
-├── comparison/              # OmniRoute 与竞品对比
+├── comparison/              # Xenia 与竞品对比
 ├── compression/             # 压缩指南与规则
 ├── dev/                     # 开发指南
 ├── diagrams/                # 架构图
@@ -369,5 +369,5 @@ VPS 部署时，请使用 `npm run build:release`（而非 `npm run build`）—
 - **API 参考**：参见 [`docs/reference/API_REFERENCE.md`](docs/reference/API_REFERENCE.md)
 - **安全文档**：[`docs/security/CLI_TOKEN.md`](docs/security/CLI_TOKEN.md)、[`docs/security/ROUTE_GUARD_TIERS.md`](docs/security/ROUTE_GUARD_TIERS.md)、[`docs/security/ERROR_SANITIZATION.md`](docs/security/ERROR_SANITIZATION.md)、[`docs/security/PUBLIC_CREDS.md`](docs/security/PUBLIC_CREDS.md)
 - **运维文档**：[`docs/ops/SQLITE_RUNTIME.md`](docs/ops/SQLITE_RUNTIME.md)
-- **问题反馈**：[github.com/diegosouzapw/OmniRoute/issues](https://github.com/diegosouzapw/OmniRoute/issues)
+- **问题反馈**：[github.com/diegosouzapw/Xenia/issues](https://github.com/diegosouzapw/Xenia/issues)
 - **架构决策记录**：参见 `docs/adr/` 目录

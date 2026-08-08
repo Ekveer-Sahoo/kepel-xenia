@@ -737,7 +737,7 @@ export default function ModelSelectModal({
                         isSelected
                           ? "bg-primary text-white border-primary"
                           : isAdded
-                            ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-700 dark:text-emerald-400"
+                            ? "bg-gray-500/15 border-gray-500/30 text-gray-700 dark:text-gray-400"
                             : "bg-surface border-border text-text-main hover:border-primary/50 hover:bg-primary/5"
                       }
                     `}

@@ -62,7 +62,7 @@ function MemoryPageContent() {
             data-testid="memory-enabled-toggle"
             onClick={() => void save({ enabled: !memoryEnabled })}
             className={`relative w-11 h-6 rounded-full transition-colors ${
-              memoryEnabled ? "bg-violet-500" : "bg-border"
+              memoryEnabled ? "bg-gray-500" : "bg-border"
             }`}
           >
             <span

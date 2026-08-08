@@ -1,5 +1,5 @@
 // #6267 regression guard — a config-driven provider whose /models endpoint 307s
-// must degrade to the local catalog OmniRoute ships, not surface a raw 503.
+// must degrade to the local catalog Xenia ships, not surface a raw 503.
 //
 // Root cause: safeOutboundFetch throws REDIRECT_BLOCKED on the 307 →
 // getSafeOutboundFetchErrorStatus maps it to 503 → buildDiscoveryErrorFallbackResponse
@@ -16,7 +16,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-qwen-web-redirect-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-qwen-web-redirect-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");

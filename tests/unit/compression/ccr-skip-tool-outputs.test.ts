@@ -1,8 +1,8 @@
 /**
  * TDD tests for CCR skip-on-tool-outputs behavior (Fix 1).
  *
- * Background: when OmniRoute is used as a chat-completion PROVIDER (not as an
- * MCP server), the upstream LLM cannot call `omniroute_ccr_retrieve` to
+ * Background: when Xenia is used as a chat-completion PROVIDER (not as an
+ * MCP server), the upstream LLM cannot call `xenia_ccr_retrieve` to
  * expand CCR markers. Replacing tool outputs with `[CCR retrieve hash=X
  * chars=Y]` markers therefore breaks the agent loop — the LLM sees an
  * opaque placeholder where the actual tool result should be and stalls.

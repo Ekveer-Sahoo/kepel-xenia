@@ -3,17 +3,17 @@ import { CORS_HEADERS, handleCorsOptions } from "@/shared/utils/cors";
 import { callCloudWithMachineId } from "@/shared/utils/cloud";
 import { handleChat } from "@/sse/handlers/chat";
 import { generateRequestId } from "@/shared/utils/requestId";
-import { errorResponse } from "@omniroute/open-sse/utils/error.ts";
-import { initTranslators } from "@omniroute/open-sse/translator/index.ts";
+import { errorResponse } from "@xenia/open-sse/utils/error.ts";
+import { initTranslators } from "@xenia/open-sse/translator/index.ts";
 import { createInjectionGuard } from "@/middleware/promptInjectionGuard";
-import { acceptHeaderForcesStream } from "@omniroute/open-sse/utils/aiSdkCompat.ts";
+import { acceptHeaderForcesStream } from "@xenia/open-sse/utils/aiSdkCompat.ts";
 import {
   OPENAI_CHAT_ERROR_FRAME,
   OPENAI_KEEPALIVE_FRAME,
   OPENAI_STARTUP_FRAME,
   withEarlyStreamKeepalive,
-} from "@omniroute/open-sse/utils/earlyStreamKeepalive";
-import { resolveKeepaliveThreshold } from "@omniroute/open-sse/utils/keepaliveThreshold";
+} from "@xenia/open-sse/utils/earlyStreamKeepalive";
+import { resolveKeepaliveThreshold } from "@xenia/open-sse/utils/keepaliveThreshold";
 import {
   admitChatRequest,
   admitChatStructure,
@@ -109,8 +109,8 @@ export async function POST(request) {
   try {
     // One-line marker for diagnosing 413 / Server-Action interceptions.
     // Logs only when Content-Length is present so debug noise stays low for
-    // typical chat payloads. Toggle off via OMNIROUTE_LOG_REQUEST_SHAPE=0.
-    if (process.env.OMNIROUTE_LOG_REQUEST_SHAPE !== "0") {
+    // typical chat payloads. Toggle off via XENIA_LOG_REQUEST_SHAPE=0.
+    if (process.env.XENIA_LOG_REQUEST_SHAPE !== "0") {
       const ct = request.headers.get("content-type") ?? "";
       const cl = request.headers.get("content-length");
       if (cl && Number(cl) > 256 * 1024) {

@@ -32,7 +32,7 @@ import {
 } from "@/shared/constants/sidebarVisibility";
 import { useIsElectron } from "@/shared/hooks/useElectron";
 
-const isE2EMode = process.env.NEXT_PUBLIC_OMNIROUTE_E2E_MODE === "1";
+const isE2EMode = process.env.NEXT_PUBLIC_XENIA_E2E_MODE === "1";
 
 // Map sidebar item id → header description i18n key
 // "omni-skills" is an extended key for the /dashboard/omni-skills route (graceful fallback during deploy)
@@ -274,7 +274,7 @@ export default function Header({
         {!isE2EMode && <TokenHealthBadge />}
         <button
           onClick={handleLogout}
-          className="flex items-center justify-center p-2 rounded-lg text-text-muted hover:text-red-500 hover:bg-red-500/10 transition-all"
+          className="flex items-center justify-center p-2 rounded-lg text-text-muted hover:text-gray-500 hover:bg-gray-500/10 transition-all"
           title={t("logout")}
           aria-label={t("logout")}
         >

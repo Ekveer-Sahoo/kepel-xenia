@@ -4,7 +4,7 @@ import { extractCodexAccountInfo } from "@/lib/oauth/services/codexImport";
 import { parseCodexSessionJson } from "@/lib/oauth/utils/codexSessionImport";
 import { createProviderConnection } from "@/models";
 import { isAuthRequired, isAuthenticated } from "@/shared/utils/apiAuth";
-import { buildErrorBody, sanitizeErrorMessage } from "@omniroute/open-sse/utils/error.ts";
+import { buildErrorBody, sanitizeErrorMessage } from "@xenia/open-sse/utils/error.ts";
 
 /**
  * POST /api/oauth/codex/import-token

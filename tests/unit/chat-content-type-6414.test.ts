@@ -1,15 +1,14 @@
 // #6414: POST /v1/chat/completions (and /v1/messages) must return HTTP 415
 // `unsupported_media_type` when the Content-Type header is not application/json,
-// matching OpenAI's reference API and RFC 7231 §6.5.13. Previously OmniRoute
+// matching OpenAI's reference API and RFC 7231 §6.5.13. Previously Xenia
 // silently parsed such requests as JSON via `.clone().json().catch(() => null)`
 // and let them reach the provider-lookup layer, where they surfaced as misleading
 // `model_not_found` / generic errors instead of a boundary 415.
 import test from "node:test";
 import assert from "node:assert/strict";
 
-const { requireJsonContentType } = await import(
-  "../../src/shared/middleware/requireJsonContentType.ts"
-);
+const { requireJsonContentType } =
+  await import("../../src/shared/middleware/requireJsonContentType.ts");
 
 function makeRequest(method: string, contentType: string | null): Request {
   const headers = new Headers();

@@ -33,16 +33,15 @@ import os from "node:os";
 import path from "node:path";
 import { makeManagementSessionRequest } from "../helpers/managementSession.ts";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-codex-edit-6562-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-codex-edit-6562-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.APP_LOG_TO_FILE = "false";
 process.env.JWT_SECRET = "test-jwt-secret-codex-edit-6562";
 process.env.INITIAL_PASSWORD = "admin-secret";
 
 const core = await import("../../src/lib/db/core.ts");
-const { createProviderConnection, getProviderConnectionById } = await import(
-  "../../src/lib/db/providers.ts"
-);
+const { createProviderConnection, getProviderConnectionById } =
+  await import("../../src/lib/db/providers.ts");
 const providerByIdRoute = await import("../../src/app/api/providers/[id]/route.ts");
 
 function resetDb() {

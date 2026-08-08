@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { resolveProviderAlias } from "@omniroute/open-sse/services/model.ts";
+import { resolveProviderAlias } from "@xenia/open-sse/services/model.ts";
 import { requireManagementAuth } from "@/lib/api/requireManagementAuth";
 import {
   listModelCapabilityOverrides,

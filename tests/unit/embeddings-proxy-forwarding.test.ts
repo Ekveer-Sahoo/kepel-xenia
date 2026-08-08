@@ -6,7 +6,7 @@ import path from "node:path";
 import http from "node:http";
 
 // Isolate the DB to a temp dir BEFORE importing any module that opens it.
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-embed-proxy-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-embed-proxy-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -20,7 +20,10 @@ test.after(() => {
   fs.rmSync(TEST_DATA_DIR, { recursive: true, force: true });
 });
 
-async function withHttpServer(handler: http.RequestListener, fn: (baseUrl: string) => Promise<void>) {
+async function withHttpServer(
+  handler: http.RequestListener,
+  fn: (baseUrl: string) => Promise<void>
+) {
   const server = http.createServer(handler);
   await new Promise<void>((resolve, reject) => {
     server.once("error", reject);

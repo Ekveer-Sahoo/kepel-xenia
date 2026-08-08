@@ -137,7 +137,7 @@ export function PlaygroundInput({
       </ToggleOption>
       <button
         data-testid="play-run"
-        className="rounded bg-blue-500/30 py-2 font-semibold"
+        className="rounded bg-gray-500/30 py-2 font-semibold"
         onClick={onRun}
         disabled={loading}
       >

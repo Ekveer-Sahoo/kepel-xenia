@@ -1,5 +1,5 @@
 # ──────────────────────────────────────────────────────────────────────
-#  OmniRoute — Docker Compose
+#  Xenia — Docker Compose
 # ──────────────────────────────────────────────────────────────────────
 #
 #  Profiles:
@@ -33,7 +33,7 @@ x-common: &common
   env_file: .env
   environment:
     - DATA_DIR=/app/data # Must match the volume mount below
-    - OMNIROUTE_BASE_PATH=${OMNIROUTE_BASE_PATH:-}
+    - XENIA_BASE_PATH=${XENIA_BASE_PATH:-}
     - PORT=${PORT:-20128}
     - DASHBOARD_PORT=${DASHBOARD_PORT:-20128}
     - API_PORT=${API_PORT:-20129}
@@ -56,7 +56,7 @@ services:
   # ── Redis (Rate Limiter Backend) ──────────────────────────────────
   redis:
     image: docker.io/library/redis:8.6.5-alpine
-    container_name: omniroute-redis
+    container_name: xenia-redis
     restart: unless-stopped
     ports:
       # Loopback-only by default: this Redis has no `requirepass`, and the app
@@ -76,15 +76,15 @@ services:
       retries: 3
 
   # ── Profile: base (minimal, no CLI tools) ──────────────────────────
-  omniroute-base:
+  xenia-base:
     <<: *common
-    container_name: omniroute
+    container_name: xenia
     build:
       context: .
       target: runner-base
       args:
-        OMNIROUTE_BASE_PATH: ${OMNIROUTE_BASE_PATH:-}
-    image: omniroute:base
+        XENIA_BASE_PATH: ${XENIA_BASE_PATH:-}
+    image: xenia:base
     ports:
       - "${DASHBOARD_PORT:-20128}:${DASHBOARD_PORT:-20128}"
       - "${API_PORT:-20129}:${API_PORT:-20129}"
@@ -96,15 +96,15 @@ services:
   # Required for web-cookie providers (gemini-web, claude-web, claude-turnstile).
   # The default `base` image ships without Chromium, so those providers fail
   # with "Executable doesn't exist at .../ms-playwright/chromium..." (#2832).
-  omniroute-web:
+  xenia-web:
     <<: *common
-    container_name: omniroute
+    container_name: xenia
     build:
       context: .
       target: runner-web
       args:
-        OMNIROUTE_BASE_PATH: ${OMNIROUTE_BASE_PATH:-}
-    image: omniroute:web
+        XENIA_BASE_PATH: ${XENIA_BASE_PATH:-}
+    image: xenia:web
     ports:
       - "${DASHBOARD_PORT:-20128}:${DASHBOARD_PORT:-20128}"
       - "${API_PORT:-20129}:${API_PORT:-20129}"
@@ -113,15 +113,15 @@ services:
       - web
 
   # ── Profile: cli (CLIs installed inside container) ─────────────────
-  omniroute-cli:
+  xenia-cli:
     <<: *common
-    container_name: omniroute
+    container_name: xenia
     build:
       context: .
       target: runner-cli
       args:
-        OMNIROUTE_BASE_PATH: ${OMNIROUTE_BASE_PATH:-}
-    image: omniroute:cli
+        XENIA_BASE_PATH: ${XENIA_BASE_PATH:-}
+    image: xenia:cli
     ports:
       - "${DASHBOARD_PORT:-20128}:${DASHBOARD_PORT:-20128}"
       - "${API_PORT:-20129}:${API_PORT:-20129}"
@@ -130,20 +130,20 @@ services:
       - ./data:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/libexec/docker/cli-plugins:/usr/libexec/docker/cli-plugins:ro
-      - ${AUTO_UPDATE_HOST_REPO_DIR:-.}:/workspace/omniroute:rw
+      - ${AUTO_UPDATE_HOST_REPO_DIR:-.}:/workspace/xenia:rw
     profiles:
       - cli
 
   # ── Profile: host (host-mounted CLI binaries, Linux-first) ────────
-  omniroute-host:
+  xenia-host:
     <<: *common
-    container_name: omniroute
+    container_name: xenia
     build:
       context: .
       target: runner-base
       args:
-        OMNIROUTE_BASE_PATH: ${OMNIROUTE_BASE_PATH:-}
-    image: omniroute:base
+        XENIA_BASE_PATH: ${XENIA_BASE_PATH:-}
+    image: xenia:base
     ports:
       - "${DASHBOARD_PORT:-20128}:${DASHBOARD_PORT:-20128}"
       - "${API_PORT:-20129}:${API_PORT:-20129}"
@@ -191,7 +191,7 @@ services:
   # for the workload analysis behind this profile.
   qdrant:
     image: docker.io/qdrant/qdrant:v1.12.4
-    container_name: omniroute-qdrant
+    container_name: xenia-qdrant
     restart: unless-stopped
     ports:
       - "${QDRANT_PORT:-6333}:6333"
@@ -212,14 +212,14 @@ services:
   # ── Profile: bifrost (Bifrost Go LLM-router sidecar) ─────────────
   # Off by default. Bifrost is the Tier-1 LLM router (per ADR-031 and
   # open-sse/executors/bifrost.ts). When BIFROST_ENABLED=true is set in
-  # .env, OmniRoute delegates /v1/chat/completions, /v1/responses, and
+  # .env, Xenia delegates /v1/chat/completions, /v1/responses, and
   # /v1/embeddings to this sidecar instead of handling them in chatCore.
   # The kill switch is the BIFROST_ENABLED env var — flip to false to
   # fall back to the chatCore path with zero code changes. See
   # docs/architecture/cluster-decisions.md for the activation plan.
   bifrost:
     image: ghcr.io/maximhq/bifrost:1.5.21
-    container_name: omniroute-bifrost
+    container_name: xenia-bifrost
     restart: unless-stopped
     ports:
       - "${BIFROST_PORT:-8080}:8080"
@@ -262,8 +262,8 @@ volumes:
   cliproxyapi-data:
     name: cliproxyapi-data
   redis-data:
-    name: omniroute-redis-data
+    name: xenia-redis-data
   qdrant-data:
-    name: omniroute-qdrant-data
+    name: xenia-qdrant-data
   bifrost-data:
-    name: omniroute-bifrost-data
+    name: xenia-bifrost-data

@@ -235,7 +235,7 @@ export default function BuilderIntelligentStep({
                 )}
               </p>
             </div>
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-300">
+            <span className="inline-flex items-center gap-1 rounded-full bg-gray-500/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300">
               <span className="material-symbols-outlined text-[12px]">verified</span>
               SLA
             </span>

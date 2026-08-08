@@ -85,11 +85,11 @@ function SectionBadge({
 }) {
   const toneClass =
     tone === "green"
-      ? "border-green-500/20 bg-green-500/10 text-green-300"
+      ? "border-gray-500/20 bg-gray-500/10 text-gray-300"
       : tone === "amber"
-        ? "border-amber-400/20 bg-amber-400/10 text-amber-300"
+        ? "border-gray-400/20 bg-gray-400/10 text-gray-300"
         : tone === "blue"
-          ? "border-blue-400/20 bg-blue-400/10 text-blue-300"
+          ? "border-gray-400/20 bg-gray-400/10 text-gray-300"
           : "border-border/40 bg-surface/50 text-text-muted";
 
   return (
@@ -108,7 +108,7 @@ function InfoRow({ icon, children }: { icon: string; children: React.ReactNode }
   return (
     <div className="flex gap-2 text-sm text-text-muted">
       <span
-        className="material-symbols-outlined shrink-0 text-base leading-5 text-blue-400"
+        className="material-symbols-outlined shrink-0 text-base leading-5 text-gray-400"
         aria-hidden="true"
       >
         {icon}
@@ -241,35 +241,35 @@ export default function ReasoningCacheTab() {
           label={t("reasoningEntries")}
           value={stats.totalEntries}
           sub={`${stats.memoryEntries} memory / ${stats.dbEntries} DB`}
-          accent="text-blue-400"
+          accent="text-gray-400"
         />
         <StatCard
           icon="speed"
           label={t("reasoningReplayRate")}
           value={stats.replayRate}
           sub={`${totalLookups.toLocaleString()} lookups`}
-          accent="text-emerald-500"
+          accent="text-gray-500"
         />
         <StatCard
           icon="replay"
           label={t("reasoningReplays")}
           value={stats.replays.toLocaleString()}
           sub={t("reasoningBehaviorReplay")}
-          accent="text-cyan-400"
+          accent="text-gray-400"
         />
         <StatCard
           icon="text_fields"
           label={t("reasoningCharsCached")}
           value={formatChars(stats.totalChars)}
           sub={`${stats.totalChars.toLocaleString()} chars`}
-          accent="text-purple-400"
+          accent="text-gray-400"
         />
         <StatCard
           icon="error_outline"
           label={t("reasoningMisses")}
           value={stats.misses.toLocaleString()}
           sub={`${stats.hits.toLocaleString()} hits`}
-          accent="text-red-400"
+          accent="text-gray-400"
         />
       </div>
 
@@ -299,14 +299,14 @@ export default function ReasoningCacheTab() {
                       <td className="px-4 py-3 tabular-nums text-text-main">
                         {d.entries.toLocaleString()}
                       </td>
-                      <td className="px-4 py-3 tabular-nums text-purple-400">
+                      <td className="px-4 py-3 tabular-nums text-gray-400">
                         {formatChars(d.chars)}
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-2">
                           <div className="h-2 w-20 overflow-hidden rounded-full bg-surface/60">
                             <div
-                              className="h-full rounded-full bg-blue-400"
+                              className="h-full rounded-full bg-gray-400"
                               style={{
                                 width: `${Math.min(parseFloat(share), 100)}%`,
                               }}
@@ -349,10 +349,10 @@ export default function ReasoningCacheTab() {
                       <td className="px-4 py-3 tabular-nums text-text-main">
                         {d.entries.toLocaleString()}
                       </td>
-                      <td className="px-4 py-3 tabular-nums text-cyan-400">
+                      <td className="px-4 py-3 tabular-nums text-gray-400">
                         {avgChars.toLocaleString()}
                       </td>
-                      <td className="px-4 py-3 tabular-nums text-purple-400">
+                      <td className="px-4 py-3 tabular-nums text-gray-400">
                         {formatChars(d.chars)}
                       </td>
                     </tr>
@@ -399,7 +399,7 @@ export default function ReasoningCacheTab() {
                     <div className="truncate text-sm text-text-muted" title={entry.model}>
                       {entry.model}
                     </div>
-                    <div className="text-sm tabular-nums text-purple-400">
+                    <div className="text-sm tabular-nums text-gray-400">
                       {entry.charCount.toLocaleString()}
                     </div>
                     <div className="text-sm text-text-muted">{timeAgo(entry.createdAt)}</div>
@@ -421,7 +421,7 @@ export default function ReasoningCacheTab() {
                   {expandedId === entry.toolCallId && (
                     <div className="border-b border-border/15 bg-surface/15 px-4 py-4">
                       <div className="flex items-center gap-2 text-xs text-text-muted mb-2">
-                        <span className="material-symbols-outlined text-sm text-blue-400">
+                        <span className="material-symbols-outlined text-sm text-gray-400">
                           psychology
                         </span>
                         <span className="font-medium">
@@ -453,9 +453,7 @@ export default function ReasoningCacheTab() {
                         </span>
                         <span>
                           {t("reasoningChars")}:{" "}
-                          <span className="text-purple-400">
-                            {entry.charCount.toLocaleString()}
-                          </span>
+                          <span className="text-gray-400">{entry.charCount.toLocaleString()}</span>
                         </span>
                       </div>
                     </div>

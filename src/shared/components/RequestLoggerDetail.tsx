@@ -163,7 +163,7 @@ function getCodexAccountRotation(detail) {
   const sources = [detail?.requestBody, detail?.responseBody];
 
   for (const source of sources) {
-    const meta = source?._omniroute;
+    const meta = source?._xenia;
     const rotation = meta?.codexAccountRotation;
     if (
       rotation &&
@@ -209,7 +209,7 @@ export default function RequestLoggerDetail({
   const protocolKey = log.sourceFormat || log.provider;
   const protocol = getProtocolColor(protocolKey, log.provider);
   const providerColor = PROVIDER_COLORS[log.provider] || {
-    bg: "#374151",
+    bg: "#404040",
     text: "#fff",
     label: (log.provider || "-").toUpperCase(),
   };
@@ -338,12 +338,11 @@ export default function RequestLoggerDetail({
   const formatTokenValue = (value) => (value != null ? value.toLocaleString() : "N/A");
 
   const cacheSource = detail?.cacheSource || log.cacheSource || "upstream";
-  const cacheSourceLabel =
-    cacheSource === "semantic" ? "Semantic (OmniRoute)" : "Upstream (Provider)";
+  const cacheSourceLabel = cacheSource === "semantic" ? "Semantic (Xenia)" : "Upstream (Provider)";
   const cacheSourceClassName =
     cacheSource === "semantic"
-      ? "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
-      : "bg-sky-500/20 text-sky-700 dark:text-sky-300 border-sky-500/30";
+      ? "bg-gray-500/20 text-gray-700 dark:text-gray-300 border-gray-500/30"
+      : "bg-gray-500/20 text-gray-700 dark:text-gray-300 border-gray-500/30";
   const accountLabel = maskAccount(detail?.account || log.account, emailsVisible);
   const codexAccountRotation = getCodexAccountRotation(detail);
   return (
@@ -365,11 +364,11 @@ export default function RequestLoggerDetail({
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
                 {log.active ? (
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-bold bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-bold bg-gray-500/20 text-gray-600 dark:text-gray-400 border border-gray-500/30">
                     <span className="inline-block h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
                   </span>
                 ) : log.status === 0 ? (
-                  <span className="inline-block px-2.5 py-1 rounded text-xs font-bold bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                  <span className="inline-block px-2.5 py-1 rounded text-xs font-bold bg-gray-500/20 text-gray-700 dark:text-gray-300 border border-gray-500/30">
                     Completed
                   </span>
                 ) : (
@@ -388,8 +387,8 @@ export default function RequestLoggerDetail({
                 {log.method && <span className="font-bold text-lg">{log.method}</span>}
               </div>
               {hasStatusDiscrepancy && (
-                <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium mt-0.5">
-                  OmniRoute returned {log.status} even though provider returned {providerStatus}
+                <span className="text-[10px] text-gray-600 dark:text-gray-400 font-medium mt-0.5">
+                  Xenia returned {log.status} even though provider returned {providerStatus}
                 </span>
               )}
             </div>
@@ -519,10 +518,10 @@ export default function RequestLoggerDetail({
                   <span className="px-2 py-0.5 rounded bg-primary/20 text-primary text-xs font-bold">
                     Total In: {formatTokenValue(tokenStats.totalIn)}
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-sky-500/20 text-sky-700 dark:text-sky-400 text-xs font-bold">
+                  <span className="px-2 py-0.5 rounded bg-gray-500/20 text-gray-700 dark:text-gray-400 text-xs font-bold">
                     Cache Read: {formatTokenValue(tokenStats.cacheRead)}
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-bold">
+                  <span className="px-2 py-0.5 rounded bg-gray-500/20 text-gray-700 dark:text-gray-400 text-xs font-bold">
                     Cache Write: {formatTokenValue(tokenStats.cacheWrite)}
                   </span>
                   {tokenStats.compressed != null &&
@@ -535,7 +534,7 @@ export default function RequestLoggerDetail({
                           ? Math.max(0, Math.min(100, Math.round((saved / fromTokens) * 100)))
                           : 100;
                       return (
-                        <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-700 dark:text-purple-300 text-xs font-bold">
+                        <span className="px-2 py-0.5 rounded bg-gray-500/20 text-gray-700 dark:text-gray-300 text-xs font-bold">
                           Compressed: {fromTokens.toLocaleString()} →{" "}
                           {Math.max(0, tokenStats.totalIn).toLocaleString()} ({pct}% saved)
                         </span>
@@ -551,10 +550,10 @@ export default function RequestLoggerDetail({
                   className="flex flex-wrap items-center gap-1.5"
                   data-testid="token-group-output"
                 >
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+                  <span className="px-2 py-0.5 rounded bg-gray-500/20 text-gray-700 dark:text-gray-400 text-xs font-bold">
                     Total Out: {formatTokenValue(tokenStats.totalOut)}
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-violet-500/20 text-violet-700 dark:text-violet-400 text-xs font-bold">
+                  <span className="px-2 py-0.5 rounded bg-gray-500/20 text-gray-700 dark:text-gray-400 text-xs font-bold">
                     Reasoning: {formatTokenValue(tokenStats.reasoning)}
                   </span>
                 </div>
@@ -573,7 +572,7 @@ export default function RequestLoggerDetail({
                   className={`text-sm font-medium font-mono ${
                     (detail?.requestedModel || log.requestedModel) &&
                     (detail?.requestedModel || log.requestedModel) !== log.model
-                      ? "text-amber-600 dark:text-amber-400"
+                      ? "text-gray-600 dark:text-gray-400"
                       : "text-text-muted"
                   }`}
                 >
@@ -617,7 +616,7 @@ export default function RequestLoggerDetail({
                   <div className="text-[10px] text-text-muted uppercase tracking-wider mb-1">
                     Model Pinning
                   </div>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-bold bg-violet-500/15 text-violet-600 dark:text-violet-400 border border-violet-500/25">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-bold bg-gray-500/15 text-gray-600 dark:text-gray-400 border border-gray-500/25">
                     <svg className="w-3 h-3" viewBox="0 0 16 16" fill="currentColor">
                       <path d="M4.5 2A1.5 1.5 0 003 3.5v1.9l-1.4 2.8A.5.5 0 002 9h4v4.5a.5.5 0 00.5.5h3a.5.5 0 00.5-.5V9h4a.5.5 0 00.44-.73L13 5.4V3.5A1.5 1.5 0 0011.5 2h-7z" />
                     </svg>
@@ -632,7 +631,7 @@ export default function RequestLoggerDetail({
                 <div className="text-sm font-medium">{accountLabel}</div>
                 {codexAccountRotation && (
                   <div
-                    className="mt-1 text-[10px] text-amber-600 dark:text-amber-400 font-mono"
+                    className="mt-1 text-[10px] text-gray-600 dark:text-gray-400 font-mono"
                     title={`${codexAccountRotation.initialConnectionId} -> ${codexAccountRotation.finalConnectionId}`}
                   >
                     Rotated: {formatConnectionId(codexAccountRotation.initialConnectionId)} -&gt;{" "}
@@ -665,7 +664,7 @@ export default function RequestLoggerDetail({
                   Combo
                 </div>
                 {detail?.comboName || log.comboName ? (
-                  <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-500/30">
+                  <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold bg-gray-500/20 text-gray-700 dark:text-gray-300 border border-gray-500/30">
                     {detail?.comboName || log.comboName}
                   </span>
                 ) : (
@@ -677,9 +676,9 @@ export default function RequestLoggerDetail({
 
           {/* Error Message */}
           {(detail?.error || log.error) && (
-            <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30">
+            <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/30">
               <div className="flex items-center justify-between mb-1">
-                <div className="text-[10px] text-red-600 dark:text-red-400 uppercase tracking-wider font-bold">
+                <div className="text-[10px] text-gray-600 dark:text-gray-400 uppercase tracking-wider font-bold">
                   Error
                 </div>
                 {isCombo503 && !cleared && (
@@ -687,9 +686,9 @@ export default function RequestLoggerDetail({
                     onClick={handleUnblockAll}
                     disabled={unblockAllBusy}
                     className="flex items-center gap-1 px-2.5 py-1 text-[10px] font-medium rounded-lg
-                      bg-amber-500/10 border border-amber-500/30 text-amber-600
-                      hover:bg-amber-500/15 hover:border-amber-500/50
-                      dark:text-amber-400 transition-all duration-200
+                      bg-gray-500/10 border border-gray-500/30 text-gray-600
+                      hover:bg-gray-500/15 hover:border-gray-500/50
+                      dark:text-gray-400 transition-all duration-200
                       disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <svg
@@ -708,7 +707,7 @@ export default function RequestLoggerDetail({
                   </button>
                 )}
                 {isCombo503 && cleared && (
-                  <span className="flex items-center gap-1 px-2.5 py-1 text-[10px] font-medium rounded-lg bg-green-500/10 border border-green-500/30 text-green-600 dark:text-green-400">
+                  <span className="flex items-center gap-1 px-2.5 py-1 text-[10px] font-medium rounded-lg bg-gray-500/10 border border-gray-500/30 text-gray-600 dark:text-gray-400">
                     <svg
                       width="10"
                       height="10"
@@ -727,9 +726,9 @@ export default function RequestLoggerDetail({
                     onClick={handleUnblockModel}
                     disabled={unblocking}
                     className="flex items-center gap-1 px-2.5 py-1 text-[10px] font-medium rounded-lg
-                      bg-amber-500/10 border border-amber-500/30 text-amber-600
-                      hover:bg-amber-500/15 hover:border-amber-500/50
-                      dark:text-amber-400 transition-all duration-200
+                      bg-gray-500/10 border border-gray-500/30 text-gray-600
+                      hover:bg-gray-500/15 hover:border-gray-500/50
+                      dark:text-gray-400 transition-all duration-200
                       disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <svg
@@ -748,7 +747,7 @@ export default function RequestLoggerDetail({
                   </button>
                 )}
                 {isModelCooldown && cleared && (
-                  <span className="flex items-center gap-1 px-2.5 py-1 text-[10px] font-medium rounded-lg bg-green-500/10 border border-green-500/30 text-green-600 dark:text-green-400">
+                  <span className="flex items-center gap-1 px-2.5 py-1 text-[10px] font-medium rounded-lg bg-gray-500/10 border border-gray-500/30 text-gray-600 dark:text-gray-400">
                     <svg
                       width="10"
                       height="10"
@@ -763,7 +762,7 @@ export default function RequestLoggerDetail({
                   </span>
                 )}
               </div>
-              <div className="text-sm text-red-600 dark:text-red-300 font-mono whitespace-pre-wrap break-words">
+              <div className="text-sm text-gray-600 dark:text-gray-300 font-mono whitespace-pre-wrap break-words">
                 {formatErrorForDisplay(detail?.error || log.error)}
               </div>
             </div>
@@ -802,7 +801,7 @@ export default function RequestLoggerDetail({
                           style={
                             rStatusStyle
                               ? { backgroundColor: rStatusStyle.bg, color: rStatusStyle.text }
-                              : { backgroundColor: "#374151", color: "#fff" }
+                              : { backgroundColor: "#404040", color: "#fff" }
                           }
                         >
                           {r.status || "..."}
@@ -826,11 +825,11 @@ export default function RequestLoggerDetail({
           )}
 
           {detailIssue && (
-            <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30">
-              <div className="text-[10px] text-amber-700 dark:text-amber-400 uppercase tracking-wider mb-1 font-bold">
+            <div className="p-4 rounded-xl bg-gray-500/10 border border-gray-500/30">
+              <div className="text-[10px] text-gray-700 dark:text-gray-400 uppercase tracking-wider mb-1 font-bold">
                 Detail Status
               </div>
-              <div className="text-sm text-amber-700 dark:text-amber-200">{detailIssue}</div>
+              <div className="text-sm text-gray-700 dark:text-gray-200">{detailIssue}</div>
             </div>
           )}
 

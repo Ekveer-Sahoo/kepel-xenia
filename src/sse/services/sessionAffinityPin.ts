@@ -32,10 +32,7 @@ import {
 import { updateProviderConnection } from "@/lib/db/providers";
 import { isModelExcludedByConnection } from "@/domain/connectionModelRules";
 import { isAccountQuotaExhausted } from "@/domain/quotaCache";
-import {
-  isAccountUnavailable,
-  isModelLocked,
-} from "@omniroute/open-sse/services/accountFallback.ts";
+import { isAccountUnavailable, isModelLocked } from "@xenia/open-sse/services/accountFallback.ts";
 import * as log from "../utils/logger";
 
 /** Minimal structural view of a provider connection this module reads. */
@@ -163,9 +160,7 @@ export function resolveSessionAffinityTtlMs(
 ): number {
   const override = Number(options.sessionAffinityTtlMs);
   if (Number.isFinite(override) && override > 0) return override;
-  const configured = Number(
-    settings.sessionAffinityTtlMs ?? settings.codexSessionAffinityTtlMs
-  );
+  const configured = Number(settings.sessionAffinityTtlMs ?? settings.codexSessionAffinityTtlMs);
   if (Number.isFinite(configured) && configured > 0) return configured;
   return 0;
 }

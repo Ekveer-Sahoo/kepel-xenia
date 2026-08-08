@@ -5,7 +5,7 @@
 # discipline: orphaned tmpfs/work dirs filling the disk, and >4 concurrent
 # runners OOM-killing jobs (16 GB box; incidents on the v3.8.47 release day).
 # Install via cron on the box (see docs/ops/RUNNER_BOX.md):
-#   */30 * * * *  /opt/omniroute-ops/runner-janitor.sh >> /var/log/runner-janitor.log 2>&1
+#   */30 * * * *  /opt/xenia-ops/runner-janitor.sh >> /var/log/runner-janitor.log 2>&1
 #
 # Exit codes: 0 healthy · 1 attention needed (printed to stdout for the log).
 set -euo pipefail
@@ -25,7 +25,7 @@ echo "[janitor] $(date -u +%FT%TZ) start"
 for base in /tmp /home/*/actions-runner*/_work/_temp; do
   [ -d "$base" ] || continue
   [ -L "$base" ] && { echo "[janitor] skip symlinked base: $base"; continue; }
-  find -P "$base" -xdev -maxdepth 1 \( -name 'runner-*' -o -name 'omniroute-*' \) \
+  find -P "$base" -xdev -maxdepth 1 \( -name 'runner-*' -o -name 'xenia-*' \) \
     ! -type l -mmin +$((WORK_DIR_MAX_AGE_HOURS * 60)) -exec rm -rf {} + 2>/dev/null || true
 done
 echo "[janitor] stale temp sweep done"

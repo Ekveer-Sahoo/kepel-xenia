@@ -727,32 +727,6 @@ const CONFIGURATION_ITEMS: readonly SidebarItemDefinition[] = [
   },
 ];
 
-const HELP_ITEMS: readonly SidebarItemDefinition[] = [
-  {
-    id: "docs",
-    href: "/docs",
-    i18nKey: "docs",
-    subtitleKey: "docsSubtitle",
-    icon: "menu_book",
-    external: true,
-  },
-  {
-    id: "issues",
-    href: "https://github.com/diegosouzapw/OmniRoute/issues",
-    i18nKey: "issues",
-    subtitleKey: "issuesSubtitle",
-    icon: "bug_report",
-    external: true,
-  },
-  {
-    id: "changelog",
-    href: "/dashboard/changelog",
-    i18nKey: "changelog",
-    subtitleKey: "changelogSubtitle",
-    icon: "campaign",
-  },
-];
-
 // ─── Sections ────────────────────────────────────────────────────────────────
 
 export const SIDEBAR_SECTIONS: readonly SidebarSectionDefinition[] = [
@@ -766,7 +740,7 @@ export const SIDEBAR_SECTIONS: readonly SidebarSectionDefinition[] = [
   {
     id: "omni-proxy",
     titleKey: "omniProxySection",
-    titleFallback: "OmniProxy",
+    titleFallback: "Gateway",
     children: [
       ...OMNI_PROXY_ITEMS,
       COMPRESSION_CONTEXT_GROUP,
@@ -817,11 +791,5 @@ export const SIDEBAR_SECTIONS: readonly SidebarSectionDefinition[] = [
     titleKey: "configurationSection",
     titleFallback: "Configuration",
     children: CONFIGURATION_ITEMS,
-  },
-  {
-    id: "help",
-    titleKey: "helpSection",
-    titleFallback: "Help",
-    children: HELP_ITEMS,
   },
 ] as const;

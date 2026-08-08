@@ -15,7 +15,7 @@ function resolveChangelogHref(href: string | undefined): string | null {
   if (href.startsWith("#")) return href;
 
   try {
-    const url = new URL(href, "https://github.com/diegosouzapw/OmniRoute/blob/main/");
+    const url = new URL(href, "https://github.com/diegosouzapw/Xenia/blob/main/");
     return url.protocol === "https:" ? url.toString() : null;
   } catch {
     return null;
@@ -119,7 +119,7 @@ export default function ChangelogViewer() {
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-text-muted">
-        <span className="material-symbols-outlined mb-4 text-[48px] text-red-500/50">
+        <span className="material-symbols-outlined mb-4 text-[48px] text-gray-500/50">
           error_outline
         </span>
         <p>{t("changelogLoadFailed")}</p>

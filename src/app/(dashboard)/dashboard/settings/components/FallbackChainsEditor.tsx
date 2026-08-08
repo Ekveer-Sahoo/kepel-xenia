@@ -14,14 +14,14 @@ import { useNotificationStore } from "@/store/notificationStore";
 import { useTranslations } from "next-intl";
 
 const CHAIN_COLORS = [
-  "#6366f1",
-  "#22c55e",
-  "#f59e0b",
-  "#ef4444",
-  "#8b5cf6",
-  "#06b6d4",
-  "#ec4899",
-  "#14b8a6",
+  "#757575",
+  "#898989",
+  "#a7a7a7",
+  "#777777",
+  "#7c7c7c",
+  "#858585",
+  "#828282",
+  "#858585",
 ];
 
 export default function FallbackChainsEditor() {
@@ -128,7 +128,7 @@ export default function FallbackChainsEditor() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]">timeline</span>
         </div>
         <div className="flex-1">
@@ -203,7 +203,7 @@ export default function FallbackChainsEditor() {
                 </div>
                 <button
                   onClick={() => handleDelete(model)}
-                  className="text-text-muted hover:text-red-400 transition-colors ml-2"
+                  className="text-text-muted hover:text-gray-400 transition-colors ml-2"
                   title={t("deleteChain")}
                 >
                   <span className="material-symbols-outlined text-[16px]">close</span>

@@ -1,6 +1,6 @@
 // DeepSeek-web-specific tool-call translation.
 //
-// chat.deepseek.com has no native function calling, so OmniRoute serializes the OpenAI
+// chat.deepseek.com has no native function calling, so Xenia serializes the OpenAI
 // `tools[]` into a prompt contract and parses the model's text reply back into OpenAI
 // `tool_calls`. The canonical `webTools.ts` parser handles the well-behaved
 // `<tool>{json}</tool>` / bare-JSON shapes used by most web-cookie providers, and it MUST
@@ -479,7 +479,13 @@ export function parseDeepSeekToolCalls(
     // A missing _nonce is tolerated for backward compatibility.
     if (nonce) {
       const parsed = parseLooseJsonObject(inner);
-      if (parsed && typeof parsed.name === "string" && parsed._nonce !== undefined && parsed._nonce !== nonce) continue;
+      if (
+        parsed &&
+        typeof parsed.name === "string" &&
+        parsed._nonce !== undefined &&
+        parsed._nonce !== nonce
+      )
+        continue;
     }
 
     toolCalls.push({

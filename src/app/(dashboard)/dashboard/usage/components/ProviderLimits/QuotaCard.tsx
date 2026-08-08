@@ -20,9 +20,9 @@ import QuotaCardExpanded from "./parts/QuotaCardExpanded";
 import ProviderUsdCostModal from "./ProviderUsdCostModal";
 
 const STATUS_BORDER: Record<CardStatus, string> = {
-  critical: "#ef4444",
-  alert: "#eab308",
-  ok: "#22c55e",
+  critical: "#777777",
+  alert: "#b0b0b0",
+  ok: "#898989",
   empty: "transparent",
 };
 

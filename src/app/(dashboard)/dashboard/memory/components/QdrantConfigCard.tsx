@@ -25,7 +25,7 @@ export default function QdrantConfigCard() {
     enabled: false,
     host: "",
     port: 6333,
-    collection: "omniroute_memory",
+    collection: "xenia_memory",
     embeddingModel: "openai/text-embedding-3-small",
     hasApiKey: false,
     apiKeyMasked: null,
@@ -34,7 +34,7 @@ export default function QdrantConfigCard() {
   const [saving, setSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"" | "saved" | "error">("");
   const [health, setHealth] = useState<{ ok: boolean; latencyMs: number; error?: string } | null>(
-    null,
+    null
   );
   const [checking, setChecking] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -103,7 +103,7 @@ export default function QdrantConfigCard() {
         setSaving(false);
       }
     },
-    [qdrant],
+    [qdrant]
   );
 
   const checkHealth = useCallback(async () => {
@@ -174,7 +174,7 @@ export default function QdrantConfigCard() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-5">
-        <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500 shrink-0">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500 shrink-0">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             database
           </span>
@@ -185,16 +185,12 @@ export default function QdrantConfigCard() {
         </div>
         <span
           className={`inline-flex items-center gap-1.5 text-xs font-medium ${
-            qdrant.enabled
-              ? health?.ok
-                ? "text-emerald-500"
-                : "text-red-500"
-              : "text-text-muted"
+            qdrant.enabled ? (health?.ok ? "text-gray-500" : "text-gray-500") : "text-text-muted"
           }`}
         >
           <span
             className={`inline-block w-2.5 h-2.5 rounded-full ${
-              qdrant.enabled ? (health?.ok ? "bg-emerald-500" : "bg-red-500") : "bg-border"
+              qdrant.enabled ? (health?.ok ? "bg-gray-500" : "bg-gray-500") : "bg-border"
             }`}
           />
           {qdrant.enabled
@@ -206,7 +202,7 @@ export default function QdrantConfigCard() {
       </div>
 
       {/* Tier 1 vs Tier 2 guidance */}
-      <div className="mb-4 p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/20 text-xs text-text-muted leading-relaxed">
+      <div className="mb-4 p-3 rounded-lg bg-gray-500/5 border border-gray-500/20 text-xs text-text-muted leading-relaxed">
         {t("qdrant.banner")}
       </div>
 
@@ -232,7 +228,7 @@ export default function QdrantConfigCard() {
             role="switch"
             aria-checked={qdrant.enabled}
             className={`relative w-11 h-6 rounded-full transition-colors ${
-              qdrant.enabled ? "bg-emerald-500" : "bg-border"
+              qdrant.enabled ? "bg-gray-500" : "bg-border"
             }`}
           >
             <span
@@ -246,7 +242,7 @@ export default function QdrantConfigCard() {
 
       {health && (
         <div
-          className={`mb-4 text-xs font-medium flex items-center gap-1 ${health.ok ? "text-emerald-500" : "text-red-500"}`}
+          className={`mb-4 text-xs font-medium flex items-center gap-1 ${health.ok ? "text-gray-500" : "text-gray-500"}`}
         >
           <span className="material-symbols-outlined text-[14px]">
             {health.ok ? "check_circle" : "error"}
@@ -258,13 +254,13 @@ export default function QdrantConfigCard() {
       )}
 
       {saveStatus === "saved" && (
-        <div className="mb-4 text-xs font-medium text-emerald-500 flex items-center gap-1">
+        <div className="mb-4 text-xs font-medium text-gray-500 flex items-center gap-1">
           <span className="material-symbols-outlined text-[14px]">check_circle</span>
           {t("qdrant.saved")}
         </div>
       )}
       {saveStatus === "error" && (
-        <div className="mb-4 text-xs font-medium text-red-500">{t("qdrant.saveError")}</div>
+        <div className="mb-4 text-xs font-medium text-gray-500">{t("qdrant.saveError")}</div>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
@@ -274,7 +270,7 @@ export default function QdrantConfigCard() {
             value={qdrant.host}
             onChange={(e) => setQdrant((s) => ({ ...s, host: e.target.value }))}
             placeholder="http://127.0.0.1"
-            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
           />
           <p className="text-[11px] text-text-muted mt-1.5">{t("qdrant.hostHelp")}</p>
         </div>
@@ -284,10 +280,13 @@ export default function QdrantConfigCard() {
             value={qdrant.port}
             type="number"
             onChange={(e) =>
-              setQdrant((s) => ({ ...s, port: Math.max(1, Math.min(65535, Number(e.target.value) || 1)) }))
+              setQdrant((s) => ({
+                ...s,
+                port: Math.max(1, Math.min(65535, Number(e.target.value) || 1)),
+              }))
             }
             placeholder="6333"
-            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
           />
         </div>
         <div className="p-3 rounded-lg bg-surface/30 border border-border/30">
@@ -295,8 +294,8 @@ export default function QdrantConfigCard() {
           <input
             value={qdrant.collection}
             onChange={(e) => setQdrant((s) => ({ ...s, collection: e.target.value }))}
-            placeholder="omniroute_memory"
-            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            placeholder="xenia_memory"
+            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
           />
           <p className="text-[11px] text-text-muted mt-1.5">{t("qdrant.collectionHelp")}</p>
         </div>
@@ -310,7 +309,7 @@ export default function QdrantConfigCard() {
               onChange={(e) => {
                 if (e.target.value) setQdrant((s) => ({ ...s, embeddingModel: e.target.value }));
               }}
-              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm mb-2 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm mb-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
             >
               <option value="">{t("qdrant.quickSelectModel")}</option>
               {embeddingOptions.map((opt) => (
@@ -324,7 +323,7 @@ export default function QdrantConfigCard() {
             value={qdrant.embeddingModel}
             onChange={(e) => setQdrant((s) => ({ ...s, embeddingModel: e.target.value }))}
             placeholder="openai/text-embedding-3-small"
-            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            className="w-full px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
           />
           <p className="text-[11px] text-text-muted mt-1.5">{t("qdrant.embeddingModelHelp")}</p>
         </div>
@@ -343,7 +342,7 @@ export default function QdrantConfigCard() {
               placeholder={
                 qdrant.hasApiKey ? t("qdrant.apiKeyKeepPlaceholder") : t("qdrant.apiKeyOptional")
               }
-              className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm font-mono focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
             {qdrant.hasApiKey && (
               <button
@@ -355,11 +354,9 @@ export default function QdrantConfigCard() {
               </button>
             )}
             <button
-              onClick={() =>
-                save(apiKeyInput.trim() ? { apiKey: apiKeyInput } : {})
-              }
+              onClick={() => save(apiKeyInput.trim() ? { apiKey: apiKeyInput } : {})}
               disabled={saving}
-              className="px-4 py-2 text-sm font-medium rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 disabled:opacity-50"
+              className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50"
             >
               {saving ? t("saving") : t("save")}
             </button>
@@ -376,7 +373,7 @@ export default function QdrantConfigCard() {
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t("qdrant.searchPlaceholder")}
             onKeyDown={(e) => e.key === "Enter" && runSearch()}
-            className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
           />
           <button
             data-testid="qdrant-search-test"
@@ -395,7 +392,7 @@ export default function QdrantConfigCard() {
                 className="p-2 rounded bg-background/40 border border-border/40 flex items-center justify-between"
               >
                 <span className="text-xs font-mono text-text-muted truncate">{r.id}</span>
-                <span className="text-xs font-mono text-emerald-400 shrink-0">
+                <span className="text-xs font-mono text-gray-400 shrink-0">
                   {r.score.toFixed(4)}
                 </span>
               </div>

@@ -96,7 +96,7 @@ export default function CacheStatsCard() {
             <button
               onClick={handleReset}
               disabled={resetting}
-              className="px-3 py-1.5 text-xs rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors disabled:opacity-50"
+              className="px-3 py-1.5 text-xs rounded-lg bg-gray-500/10 text-gray-400 hover:bg-gray-500/20 transition-colors disabled:opacity-50"
             >
               {resetting ? t("resetting") : t("resetMetrics")}
             </button>
@@ -129,13 +129,13 @@ export default function CacheStatsCard() {
               </div>
               <div>
                 <p className="text-text-muted">{t("cachedTokensRead")}</p>
-                <p className="font-mono text-lg text-green-400">
+                <p className="font-mono text-lg text-gray-400">
                   {formatNumberCompact(metrics.totalCachedTokens)}
                 </p>
               </div>
               <div>
                 <p className="text-text-muted">{t("cacheCreationWrite")}</p>
-                <p className="font-mono text-lg text-blue-400">
+                <p className="font-mono text-lg text-gray-400">
                   {formatNumberCompact(metrics.totalCacheCreationTokens)}
                 </p>
               </div>
@@ -148,12 +148,12 @@ export default function CacheStatsCard() {
                   <p className="text-sm font-medium text-text-main">{t("cacheReuseRatio")}</p>
                   <p className="text-xs text-text-muted">{t("cacheReuseRatioDesc")}</p>
                 </div>
-                <p className="font-mono text-xl text-green-400">{cacheHitRate.toFixed(1)}%</p>
+                <p className="font-mono text-xl text-gray-400">{cacheHitRate.toFixed(1)}%</p>
               </div>
               {/* Progress bar */}
               <div className="mt-2 h-2 rounded-full bg-border/30 overflow-hidden">
                 <div
-                  className="h-full bg-green-500 transition-all duration-300"
+                  className="h-full bg-gray-500 transition-all duration-300"
                   style={{ width: `${Math.min(cacheHitRate, 100)}%` }}
                 />
               </div>
@@ -163,13 +163,13 @@ export default function CacheStatsCard() {
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <p className="text-text-muted">{t("tokensSaved")}</p>
-                <p className="font-mono text-lg text-green-400">
+                <p className="font-mono text-lg text-gray-400">
                   {formatNumberCompact(metrics.tokensSaved)}
                 </p>
               </div>
               <div>
                 <p className="text-text-muted">{t("estCostSaved")}</p>
-                <p className="font-mono text-lg text-green-400">
+                <p className="font-mono text-lg text-gray-400">
                   ${metrics.estimatedCostSaved.toFixed(4)}
                 </p>
               </div>
@@ -198,13 +198,13 @@ export default function CacheStatsCard() {
                           <span className="text-text-muted" title={t("inputTokens")}>
                             {t("inputShort")}: {formatNumberCompact(stats.inputTokens)}
                           </span>
-                          <span className="text-green-400" title={t("cachedTokensRead")}>
+                          <span className="text-gray-400" title={t("cachedTokensRead")}>
                             {t("cachedShort")}: {formatNumberCompact(stats.cachedTokens)}
                           </span>
-                          <span className="text-blue-400" title={t("cacheCreationWrite")}>
+                          <span className="text-gray-400" title={t("cacheCreationWrite")}>
                             {t("writeShort")}: {formatNumberCompact(stats.cacheCreationTokens)}
                           </span>
-                          <span className="text-green-400 w-12 text-right">
+                          <span className="text-gray-400 w-12 text-right">
                             {providerCacheRate.toFixed(0)}%
                           </span>
                         </div>

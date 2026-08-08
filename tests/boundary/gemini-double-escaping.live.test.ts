@@ -1,18 +1,18 @@
 /**
  * Direct Gemini tests: verify no double-escaping in tool call arguments.
  *
- * Calls Gemini through OmniRoute via both Chat Completions and Responses API,
+ * Calls Gemini through Xenia via both Chat Completions and Responses API,
  * comparing streaming vs non-streaming paths. The goal is to verify that
  * tool call arguments are valid JSON throughout the pipeline.
  */
 import test from "node:test";
 import assert from "node:assert/strict";
 
-const OMNIROUTE_URL = `${process.env.OMNIROUTE_URL}/v1`;
-const AUTH = `Bearer ${process.env.OMNIROUTE_API_KEY || ""}`;
+const XENIA_URL = `${process.env.XENIA_URL}/v1`;
+const AUTH = `Bearer ${process.env.XENIA_API_KEY || ""}`;
 
-const skip = !(process.env.OMNIROUTE_API_KEY && process.env.OMNIROUTE_URL)
-  ? "OMNIROUTE_API_KEY or OMNIROUTE_URL not set — skipping live boundary test"
+const skip = !(process.env.XENIA_API_KEY && process.env.XENIA_URL)
+  ? "XENIA_API_KEY or XENIA_URL not set — skipping live boundary test"
   : undefined;
 
 // Chat Completions format tool definition
@@ -214,7 +214,7 @@ test(
       stream: false,
     };
 
-    const response = await fetchJson(`${OMNIROUTE_URL}/chat/completions`, body);
+    const response = await fetchJson(`${XENIA_URL}/chat/completions`, body);
     assert.ok(
       Array.isArray((response as Record<string, unknown>).choices) &&
         (response as Record<string, unknown>).choices.length > 0,
@@ -260,7 +260,7 @@ test(
       stream: true,
     };
 
-    const events = await fetchStream(`${OMNIROUTE_URL}/chat/completions`, body);
+    const events = await fetchStream(`${XENIA_URL}/chat/completions`, body);
 
     // Collect tool call arguments from delta chunks
     let fullArgs = "";
@@ -300,7 +300,7 @@ test(
       stream: false,
     };
 
-    const response = await fetchJson(`${OMNIROUTE_URL}/responses`, body);
+    const response = await fetchJson(`${XENIA_URL}/responses`, body);
 
     assert.equal((response as Record<string, unknown>).status, "completed");
     const output = ((response as Record<string, unknown>).output ?? []) as Record<
@@ -333,7 +333,7 @@ test(
       stream: true,
     };
 
-    const events = await fetchStream(`${OMNIROUTE_URL}/responses`, body);
+    const events = await fetchStream(`${XENIA_URL}/responses`, body);
 
     // Accumulate function_call_arguments.delta then parse final from output_item.done
     let doneArgs: string | null = null;
@@ -373,7 +373,7 @@ test(
       temperature: 0.1,
       stream: false,
     };
-    const ccResp = await fetchJson(`${OMNIROUTE_URL}/chat/completions`, ccBody);
+    const ccResp = await fetchJson(`${XENIA_URL}/chat/completions`, ccBody);
     const ccChoices = (ccResp as Record<string, unknown>).choices as
       Record<string, unknown>[] | undefined;
     const ccToolCall = findChatToolCall(
@@ -392,7 +392,7 @@ test(
       max_output_tokens: 4096,
       stream: false,
     };
-    const respResp = await fetchJson(`${OMNIROUTE_URL}/responses`, respBody);
+    const respResp = await fetchJson(`${XENIA_URL}/responses`, respBody);
     const respOutput = ((respResp as Record<string, unknown>).output ?? []) as Record<
       string,
       unknown
@@ -436,7 +436,7 @@ test("Chat Completions args survive round-trip through Responses API", { skip },
     temperature: 0.1,
     stream: false,
   };
-  const ccResp = await fetchJson(`${OMNIROUTE_URL}/chat/completions`, ccBody);
+  const ccResp = await fetchJson(`${XENIA_URL}/chat/completions`, ccBody);
   const ccChoices = (ccResp as Record<string, unknown>).choices as
     Record<string, unknown>[] | undefined;
   const ccToolCall = findChatToolCall(

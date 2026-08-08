@@ -11,17 +11,17 @@ import { getConsistentMachineId } from "@/shared/utils/machineId";
 import { syncToCloud } from "@/lib/cloudSync";
 import { validateProviderApiKey } from "@/lib/providers/validation";
 import { getCliRuntimeStatus } from "@/shared/services/cliRuntime";
-import { buildQoderCliNotFoundHint } from "@omniroute/open-sse/services/qoderCliResolve.ts";
+import { buildQoderCliNotFoundHint } from "@xenia/open-sse/services/qoderCliResolve.ts";
 // Use the shared open-sse token refresh with built-in dedup/race-condition cache
-import { getAccessToken } from "@omniroute/open-sse/services/tokenRefresh.ts";
-import { rotationGroupFor } from "@omniroute/open-sse/services/refreshSerializer.ts";
+import { getAccessToken } from "@xenia/open-sse/services/tokenRefresh.ts";
+import { rotationGroupFor } from "@xenia/open-sse/services/refreshSerializer.ts";
 import { saveCallLog } from "@/lib/usageDb";
 import { shouldHideLogs } from "@/lib/tokenHealthCheck";
 import { logProxyEvent } from "@/lib/proxyLogger";
-import { runWithProxyContext } from "@omniroute/open-sse/utils/proxyFetch.ts";
+import { runWithProxyContext } from "@xenia/open-sse/utils/proxyFetch.ts";
 import { isGitLabDirectAccessDisabled } from "@/lib/oauth/gitlab";
 import { providerAllowsOptionalApiKey } from "@/shared/constants/providers";
-import { removeConnectionHealth } from "@omniroute/open-sse/services/apiKeyRotator.ts";
+import { removeConnectionHealth } from "@xenia/open-sse/services/apiKeyRotator.ts";
 import { classifyAmbiguousOrAuthError, type ClassifyFailureArgs } from "./mistralAmbiguousAuth";
 import { OAUTH_TEST_CONFIG } from "./oauthTestConfig";
 

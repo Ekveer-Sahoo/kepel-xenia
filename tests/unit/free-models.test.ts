@@ -7,7 +7,7 @@ import {
   selectModelsForImport,
   sortModelsFreeFirst,
 } from "@/shared/utils/freeModels";
-import { FREE_MODEL_BUDGETS } from "@omniroute/open-sse/config/freeModelCatalog";
+import { FREE_MODEL_BUDGETS } from "@xenia/open-sse/config/freeModelCatalog";
 
 test("providerHasFreeModels: true for a provider in the free catalog", () => {
   assert.equal(providerHasFreeModels("openrouter"), true);
@@ -62,10 +62,7 @@ test("isFreeModel: NVIDIA GLM 5.2 is included in the reviewed trial catalog", ()
 });
 
 test("selectModelsForImport: passthrough when importFreeOnly is false", () => {
-  const models = [
-    { id: "a:free" },
-    { id: "b", pricing: { prompt: "0.01", completion: "0.02" } },
-  ];
+  const models = [{ id: "a:free" }, { id: "b", pricing: { prompt: "0.01", completion: "0.02" } }];
   const result = selectModelsForImport("openrouter", models, false);
   assert.equal(result.models.length, 2);
   assert.equal(result.freeFilterEmpty, false);
@@ -130,8 +127,14 @@ test("sortModelsFreeFirst: deterministic (alphabetical) within each group, regar
     ],
     { isFree: (m) => m.isFree, key: (m) => m.id }
   );
-  assert.deepEqual(a.map((m) => m.id), ["a", "b", "c"]);
-  assert.deepEqual(b.map((m) => m.id), ["a", "b", "c"]);
+  assert.deepEqual(
+    a.map((m) => m.id),
+    ["a", "b", "c"]
+  );
+  assert.deepEqual(
+    b.map((m) => m.id),
+    ["a", "b", "c"]
+  );
 });
 
 test("sortModelsFreeFirst: does not mutate the input array", () => {
@@ -141,5 +144,8 @@ test("sortModelsFreeFirst: does not mutate the input array", () => {
   ];
   const before = items.map((m) => m.id);
   sortModelsFreeFirst(items, { isFree: (m) => m.isFree, key: (m) => m.id });
-  assert.deepEqual(items.map((m) => m.id), before);
+  assert.deepEqual(
+    items.map((m) => m.id),
+    before
+  );
 });

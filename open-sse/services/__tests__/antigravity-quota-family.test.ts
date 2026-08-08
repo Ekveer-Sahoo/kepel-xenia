@@ -2,7 +2,7 @@ import { describe, expect, it, beforeEach, vi } from "vitest";
 import {
   getAntigravityQuotaFamily,
   getQuotaScopedModelForProvider,
-} from "@omniroute/open-sse/services/antigravityQuotaFamily.ts";
+} from "@xenia/open-sse/services/antigravityQuotaFamily.ts";
 import {
   clearAllModelLockouts,
   getModelLockoutInfo,
@@ -11,7 +11,7 @@ import {
   lockExactModel,
   recordModelLockoutFailure,
   clearModelLock,
-} from "@omniroute/open-sse/services/accountFallback.ts";
+} from "@xenia/open-sse/services/accountFallback.ts";
 
 const provider = "antigravity";
 
@@ -78,13 +78,7 @@ describe("Antigravity account quota-family cooldown", () => {
   });
 
   it("can isolate a confirmed Antigravity quota exhaustion to one exact model", () => {
-    lockExactModel(
-      provider,
-      "account-a",
-      "claude-opus-4-6-thinking",
-      "quota_exhausted",
-      60_000
-    );
+    lockExactModel(provider, "account-a", "claude-opus-4-6-thinking", "quota_exhausted", 60_000);
 
     expect(isModelLocked(provider, "account-a", "claude-opus-4-6-thinking")).toBe(true);
     expect(isModelLocked(provider, "account-a", "claude-sonnet-4-6-thinking")).toBe(false);

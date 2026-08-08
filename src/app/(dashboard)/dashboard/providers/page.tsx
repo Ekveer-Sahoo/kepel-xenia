@@ -830,14 +830,14 @@ export default function ProvidersPage() {
               </h2>
               <p className="text-sm text-text-muted mt-2 max-w-md">
                 {t("addFirstProviderDesc") ||
-                  "Connect an AI provider to start routing requests through OmniRoute. You can use free providers, API keys, or OAuth accounts."}
+                  "Connect an AI provider to start routing requests through Xenia. You can use free providers, API keys, or OAuth accounts."}
               </p>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
                 <Button icon="add" onClick={() => router.push("/dashboard/providers/new")}>
                   {providerText(t, "onboardingWizard", "Provider Onboarding Wizard")}
                 </Button>
                 <a
-                  href="https://github.com/diegosouzapw/OmniRoute#-documentation"
+                  href="https://github.com/diegosouzapw/Xenia#-documentation"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-border text-text-muted hover:text-text-main hover:bg-bg-subtle transition-colors"
@@ -881,20 +881,20 @@ export default function ProvidersPage() {
             <div
               className={`p-4 rounded-xl flex items-start gap-3 border ${
                 expirations.summary.expired > 0
-                  ? "bg-red-500/10 border-red-500/20"
-                  : "bg-amber-500/10 border-amber-500/20"
+                  ? "bg-gray-500/10 border-gray-500/20"
+                  : "bg-gray-500/10 border-gray-500/20"
               }`}
             >
               <span
                 className={`material-symbols-outlined text-[24px] ${
-                  expirations.summary.expired > 0 ? "text-red-500" : "text-amber-500"
+                  expirations.summary.expired > 0 ? "text-gray-500" : "text-gray-500"
                 }`}
               >
                 {expirations.summary.expired > 0 ? "error" : "warning"}
               </span>
               <div className="flex-1">
                 <h3
-                  className={`font-semibold ${expirations.summary.expired > 0 ? "text-red-500" : "text-amber-500"}`}
+                  className={`font-semibold ${expirations.summary.expired > 0 ? "text-gray-500" : "text-gray-500"}`}
                 >
                   {expirations.summary.expired > 0
                     ? t("expirationBannerExpired", { count: expirations.summary.expired })
@@ -948,7 +948,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("compatibleProviders")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-orange-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("compatibleLabel")}
                     />
                     <ProviderCountBadge {...countConfigured(compatibleProviderEntriesAll)} />
@@ -1031,7 +1031,7 @@ export default function ProvidersPage() {
                 <div className="flex flex-wrap items-center gap-2">
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("oauthProviders")}{" "}
-                    <span className="size-2.5 rounded-full bg-blue-500" title={t("oauthLabel")} />
+                    <span className="size-2.5 rounded-full bg-gray-500" title={t("oauthLabel")} />
                     <ProviderCountBadge
                       {...countConfigured(
                         oauthProviderEntriesAll.filter((e) => !IDE_PROVIDER_IDS.has(e.providerId))
@@ -1104,7 +1104,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("ideProviders") || "IDE Providers"}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-cyan-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("ideProviders") || "IDE Providers"}
                     />
                     <ProviderCountBadge {...countConfigured(ideProviderEntriesAll)} />
@@ -1164,7 +1164,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("webCookieProviders")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-purple-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("webCookieProviders")}
                     />
                     <ProviderCountBadge {...countConfigured(webCookieProviderEntriesAll)} />
@@ -1214,7 +1214,7 @@ export default function ProvidersPage() {
                   <div className="flex-1 min-w-0">
                     <h2 className="text-xl font-semibold flex items-center gap-2">
                       {t("freeTierProviders")}
-                      <CategoryDot color="bg-green-500" label={t("freeTierLabel")} />
+                      <CategoryDot color="bg-gray-500" label={t("freeTierLabel")} />
                       <ProviderCountBadge {...countConfigured(freeSectionEntriesAll)} />
                     </h2>
                     <p className="text-sm text-text-muted mt-1">{t("freeAggregated")}</p>
@@ -1262,7 +1262,7 @@ export default function ProvidersPage() {
                 <div className="flex flex-wrap items-center gap-2">
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("apiKeyProviders")}{" "}
-                    <span className="size-2.5 rounded-full bg-amber-500" title={t("apiKeyLabel")} />
+                    <span className="size-2.5 rounded-full bg-gray-500" title={t("apiKeyLabel")} />
                     <ProviderCountBadge {...countConfigured(apiKeyProviderEntriesAll)} />
                   </h2>
                   <button
@@ -1335,7 +1335,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("upstreamProxyProviders")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-indigo-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("upstreamProxyProviders")}
                     />
                     <ProviderCountBadge {...countConfigured(upstreamProxyEntriesAll)} />
@@ -1383,7 +1383,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("webFetchProvidersHeading")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-orange-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("webFetchTooltip")}
                     />
                     <ProviderCountBadge {...countConfigured(webFetchEntriesAll)} />
@@ -1416,7 +1416,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("aggregatorsGateways")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-amber-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("aggregatorsGateways")}
                     />
                     <ProviderCountBadge {...countConfigured(aggregatorProviderEntriesAll)} />
@@ -1449,7 +1449,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("enterpriseCloud")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-amber-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("enterpriseCloud")}
                     />
                     <ProviderCountBadge {...countConfigured(enterpriseProviderEntriesAll)} />
@@ -1482,7 +1482,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("cloudAgentProviders")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-violet-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("cloudAgentProviders")}
                     />
                     <ProviderCountBadge {...countConfigured(cloudAgentProviderEntriesAll)} />
@@ -1532,7 +1532,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("localProviders")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-emerald-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("localProviders")}
                     />
                     <ProviderCountBadge {...countConfigured(localProviderEntriesAll)} />
@@ -1580,7 +1580,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("searchProvidersHeading")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-teal-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("searchProvidersHeading")}
                     />
                     <ProviderCountBadge {...countConfigured(searchProviderEntriesAll)} />
@@ -1628,7 +1628,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("embeddingRerankProviders")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-amber-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("embeddingRerankProviders")}
                     />
                     <ProviderCountBadge {...countConfigured(embeddingRerankProviderEntriesAll)} />
@@ -1661,7 +1661,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("imageProviders")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-amber-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("imageProviders")}
                     />
                     <ProviderCountBadge {...countConfigured(imageProviderEntriesAll)} />
@@ -1694,7 +1694,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("audioProvidersHeading")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-rose-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("audioProvidersHeading")}
                     />
                     <ProviderCountBadge {...countConfigured(audioProviderEntriesAll)} />
@@ -1742,7 +1742,7 @@ export default function ProvidersPage() {
                   <h2 className="text-xl font-semibold flex items-center gap-2 flex-1 min-w-0">
                     {t("videoProviders")}{" "}
                     <span
-                      className="size-2.5 rounded-full bg-amber-500"
+                      className="size-2.5 rounded-full bg-gray-500"
                       title={t("videoProviders")}
                     />
                     <ProviderCountBadge {...countConfigured(videoProviderEntriesAll)} />
@@ -1855,8 +1855,10 @@ function ProviderTestResultsView({ results }: { results: ProviderBatchTestResult
   if (results.error && (!results.results || results.results.length === 0)) {
     return (
       <div className="text-center py-6">
-        <span className="material-symbols-outlined text-red-500 text-[32px] mb-2 block">error</span>
-        <p className="text-sm text-red-400">
+        <span className="material-symbols-outlined text-gray-500 text-[32px] mb-2 block">
+          error
+        </span>
+        <p className="text-sm text-gray-400">
           {typeof results.error === "object"
             ? results.error?.message || JSON.stringify(results.error)
             : String(results.error)}
@@ -1885,11 +1887,11 @@ function ProviderTestResultsView({ results }: { results: ProviderBatchTestResult
       {summary && (
         <div className="flex items-center gap-3 text-xs mb-1">
           <span className="text-text-muted">{t("modeTest", { mode: modeLabel })}</span>
-          <span className="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-medium">
+          <span className="px-2 py-0.5 rounded bg-gray-500/15 text-gray-400 font-medium">
             {t("passedCount", { count: summary.passed })}
           </span>
           {summary.failed > 0 && (
-            <span className="px-2 py-0.5 rounded bg-red-500/15 text-red-400 font-medium">
+            <span className="px-2 py-0.5 rounded bg-gray-500/15 text-gray-400 font-medium">
               {t("failedCount", { count: summary.failed })}
             </span>
           )}
@@ -1907,7 +1909,7 @@ function ProviderTestResultsView({ results }: { results: ProviderBatchTestResult
         >
           <span
             className={`material-symbols-outlined text-[16px] ${
-              r.valid ? "text-emerald-500" : "text-red-500"
+              r.valid ? "text-gray-500" : "text-gray-500"
             }`}
           >
             {r.valid ? "check_circle" : "error"}
@@ -1925,7 +1927,7 @@ function ProviderTestResultsView({ results }: { results: ProviderBatchTestResult
           )}
           <span
             className={`text-[10px] uppercase font-bold px-1.5 py-0.5 rounded ${
-              r.valid ? "bg-emerald-500/15 text-emerald-400" : "bg-red-500/15 text-red-400"
+              r.valid ? "bg-gray-500/15 text-gray-400" : "bg-gray-500/15 text-gray-400"
             }`}
           >
             {r.valid ? t("okShort") : r.diagnosis?.type || t("errorShort")}

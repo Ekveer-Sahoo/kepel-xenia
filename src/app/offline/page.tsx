@@ -27,14 +27,14 @@ export default function OfflinePage() {
         </span>
         <h1 className="text-2xl font-semibold">Connectivity Issue</h1>
         <p className="mt-3 text-text-muted leading-relaxed">
-          OmniRoute cannot reach the network right now. Check your internet, VPN, or proxy settings.
+          Xenia cannot reach the network right now. Check your internet, VPN, or proxy settings.
         </p>
 
         <div
           className={`mt-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm border ${
             isOnline
-              ? "border-green-500/30 text-green-600 dark:text-green-400 bg-green-500/10"
-              : "border-amber-500/30 text-amber-600 dark:text-amber-400 bg-amber-500/10"
+              ? "border-gray-500/30 text-gray-600 dark:text-gray-400 bg-gray-500/10"
+              : "border-gray-500/30 text-gray-600 dark:text-gray-400 bg-gray-500/10"
           }`}
           aria-live="polite"
         >

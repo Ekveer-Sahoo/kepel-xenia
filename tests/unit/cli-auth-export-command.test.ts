@@ -13,7 +13,7 @@ const PLAINTEXT_API_KEY = "sk-secret-api-key-value-12345";
 const PLAINTEXT_ACCESS_TOKEN = "oauth-access-token-value-67890";
 
 function createTempDataDir() {
-  return fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-cli-auth-export-"));
+  return fs.mkdtempSync(path.join(os.tmpdir(), "xenia-cli-auth-export-"));
 }
 
 interface CapturedOutput {
@@ -218,7 +218,7 @@ test("auth export tolerates malformed ciphertext in one field via a boolean flag
   });
 });
 
-test("auth export --format env emits OMNIROUTE_<PROVIDER>_<FIELD>=<value> lines", async () => {
+test("auth export --format env emits XENIA_<PROVIDER>_<FIELD>=<value> lines", async () => {
   await withAuthExportEnv(async (_dataDir, dbPath) => {
     process.env.STORAGE_ENCRYPTION_KEY = TEST_KEY;
     const { encryptCredential } = await import("../../bin/cli/encryption.mjs");
@@ -231,7 +231,7 @@ test("auth export --format env emits OMNIROUTE_<PROVIDER>_<FIELD>=<value> lines"
 
     assert.equal(result, 0);
     const output = captured.logs.join("\n");
-    assert.match(output, new RegExp(`OMNIROUTE_OPENAI_API_KEY=${PLAINTEXT_API_KEY}`));
+    assert.match(output, new RegExp(`XENIA_OPENAI_API_KEY=${PLAINTEXT_API_KEY}`));
   });
 });
 

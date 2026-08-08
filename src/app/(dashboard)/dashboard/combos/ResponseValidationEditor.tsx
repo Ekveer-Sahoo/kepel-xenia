@@ -134,7 +134,11 @@ export function ResponseValidationEditor({
         </label>
         <div className="flex flex-col gap-1.5">
           {predicates.map((predicate, index) => (
-            <div key={index} className="flex flex-wrap items-center gap-1.5" data-testid="rv-predicate-row">
+            <div
+              key={index}
+              className="flex flex-wrap items-center gap-1.5"
+              data-testid="rv-predicate-row"
+            >
               <input
                 type="text"
                 value={predicate.path}
@@ -173,7 +177,7 @@ export function ResponseValidationEditor({
                   emit({ ...v, jsonPathPredicates: predicates.filter((_, i) => i !== index) })
                 }
                 data-testid="rv-predicate-remove"
-                className="text-[10px] px-1.5 py-1 rounded border border-black/10 dark:border-white/10 text-text-muted hover:text-red-500"
+                className="text-[10px] px-1.5 py-1 rounded border border-black/10 dark:border-white/10 text-text-muted hover:text-gray-500"
               >
                 ✕
               </button>

@@ -9,7 +9,7 @@
  * All heavy lifting (sync, verify, schema, merge) lives in sibling files.
  */
 
-import { FREE_MODEL_BUDGETS } from "@omniroute/open-sse/config/freeModelCatalog";
+import { FREE_MODEL_BUDGETS } from "@xenia/open-sse/config/freeModelCatalog";
 import { RadarFeedSchema, type RadarFeed, type RadarReferral } from "./feedSchema";
 import { applyFeed, type MergedEntry, type FeedModel } from "./applyFeed";
 import { findDefaultReferral } from "./referrals";
@@ -48,9 +48,7 @@ export interface GetRadarCatalogDeps {
  * Convert the static `FreeModelBudget[]` into `MergedEntry[]` so the
  * merge function has a uniform input shape.
  */
-export function baselineToMergedEntries(
-  budgets: typeof FREE_MODEL_BUDGETS,
-): MergedEntry[] {
+export function baselineToMergedEntries(budgets: typeof FREE_MODEL_BUDGETS): MergedEntry[] {
   return budgets.map((b) => ({
     provider: b.provider,
     modelId: b.modelId,
@@ -187,7 +185,7 @@ export function getRadarReferrals(deps: GetRadarReferralsDeps = {}): RadarReferr
  */
 export function getDefaultReferralFor(
   provider: string,
-  deps: GetRadarReferralsDeps = {},
+  deps: GetRadarReferralsDeps = {}
 ): RadarReferral | null {
   const { fixed } = getRadarReferrals(deps);
   return findDefaultReferral(fixed, provider);

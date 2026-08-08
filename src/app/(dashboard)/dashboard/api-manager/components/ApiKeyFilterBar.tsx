@@ -41,7 +41,7 @@ export default function ApiKeyFilterBar({
     {
       value: "active",
       label: t("filterStatusActive"),
-      dotColor: "bg-green-500",
+      dotColor: "bg-gray-500",
       count: counts.active,
     },
     {
@@ -53,13 +53,13 @@ export default function ApiKeyFilterBar({
     {
       value: "banned",
       label: t("filterStatusBanned"),
-      dotColor: "bg-red-500",
+      dotColor: "bg-gray-500",
       count: counts.banned,
     },
     {
       value: "expired",
       label: t("filterStatusExpired"),
-      dotColor: "bg-amber-500",
+      dotColor: "bg-gray-500",
       count: counts.expired,
     },
   ];
@@ -80,13 +80,13 @@ export default function ApiKeyFilterBar({
     {
       value: "manage",
       label: t("filterTypeManage"),
-      dotColor: "bg-rose-500",
+      dotColor: "bg-gray-500",
       count: counts.manage,
     },
     {
       value: "restricted",
       label: t("filterTypeRestricted"),
-      dotColor: "bg-amber-500",
+      dotColor: "bg-gray-500",
       count: counts.restricted,
     },
   ];

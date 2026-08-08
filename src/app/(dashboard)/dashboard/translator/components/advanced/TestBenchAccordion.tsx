@@ -311,17 +311,17 @@ function TestBenchContent() {
               </div>
               <div className="flex items-center gap-3 text-xs text-text-muted">
                 <span className="flex items-center gap-1">
-                  <span className="size-2 rounded-full bg-green-500" /> {passCount} {t("passed")}
+                  <span className="size-2 rounded-full bg-gray-500" /> {passCount} {t("passed")}
                 </span>
                 <span className="flex items-center gap-1">
-                  <span className="size-2 rounded-full bg-red-500" /> {failCount} {t("failed")}
+                  <span className="size-2 rounded-full bg-gray-500" /> {failCount} {t("failed")}
                 </span>
               </div>
             </div>
             {/* Progress bar */}
             <div className="w-full h-2 bg-bg-subtle rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-gray-500 to-gray-400 rounded-full transition-all duration-500"
                 style={{ width: `${compatibility}%` }}
               />
             </div>
@@ -340,9 +340,9 @@ function TestBenchContent() {
               key={scenario.id}
               className={`transition-all ${
                 result?.status === "pass"
-                  ? "border-green-500/30"
+                  ? "border-gray-500/30"
                   : result?.status === "error"
-                    ? "border-red-500/30"
+                    ? "border-gray-500/30"
                     : ""
               }`}
             >
@@ -352,9 +352,9 @@ function TestBenchContent() {
                     <div
                       className={`flex items-center justify-center w-9 h-9 rounded-lg ${
                         result?.status === "pass"
-                          ? "bg-green-500/10 text-green-500"
+                          ? "bg-gray-500/10 text-gray-500"
                           : result?.status === "error"
-                            ? "bg-red-500/10 text-red-500"
+                            ? "bg-gray-500/10 text-gray-500"
                             : "bg-bg-subtle text-text-muted"
                       }`}
                     >
@@ -385,8 +385,8 @@ function TestBenchContent() {
                   <div
                     className={`rounded-lg p-2 text-xs ${
                       result.status === "pass"
-                        ? "bg-green-500/5 text-green-600 dark:text-green-400"
-                        : "bg-red-500/5 text-red-600 dark:text-red-400"
+                        ? "bg-gray-500/5 text-gray-600 dark:text-gray-400"
+                        : "bg-gray-500/5 text-gray-600 dark:text-gray-400"
                     }`}
                   >
                     {result.status === "pass" ? (

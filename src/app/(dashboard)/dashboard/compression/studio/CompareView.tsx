@@ -119,7 +119,7 @@ function VerifyControls({
         onClick={onVerify}
         disabled={verifying || !judgeModel}
         title={!judgeModel ? t("enterJudgeModel") : undefined}
-        className="rounded bg-purple-500/30 px-3 py-1 text-sm disabled:opacity-40"
+        className="rounded bg-gray-500/30 px-3 py-1 text-sm disabled:opacity-40"
       >
         {verifying ? t("verifying") : `⚖ ${t("verifyAll")}`}
       </button>
@@ -223,7 +223,7 @@ export function CompareView({ text }: CompareViewProps) {
           data-testid="compare-load"
           onClick={load}
           disabled={loading}
-          className="rounded bg-blue-500/30 px-3 py-1 text-sm"
+          className="rounded bg-gray-500/30 px-3 py-1 text-sm"
         >
           {loading ? t("running") : t("loadAb")}
         </button>

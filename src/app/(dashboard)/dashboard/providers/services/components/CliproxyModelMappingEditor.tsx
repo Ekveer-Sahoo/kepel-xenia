@@ -146,8 +146,8 @@ export function CliproxyModelMappingEditor() {
   return (
     <Card padding="md">
       <div className="flex items-center gap-3 mb-4">
-        <div className="size-8 rounded-lg flex items-center justify-center bg-violet-500/10">
-          <span className="material-symbols-outlined text-violet-500 text-xl">account_tree</span>
+        <div className="size-8 rounded-lg flex items-center justify-center bg-gray-500/10">
+          <span className="material-symbols-outlined text-gray-500 text-xl">account_tree</span>
         </div>
         <div>
           <h3 className="font-medium text-sm">{t("modelMapping")}</h3>
@@ -167,8 +167,8 @@ export function CliproxyModelMappingEditor() {
         <div
           className={`flex items-center gap-1.5 mb-3 px-2 py-1.5 rounded text-xs ${
             msg.ok
-              ? "bg-green-500/10 text-green-600 dark:text-green-400"
-              : "bg-red-500/10 text-red-600 dark:text-red-400"
+              ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
+              : "bg-gray-500/10 text-gray-600 dark:text-gray-400"
           }`}
         >
           <span className="material-symbols-outlined text-[12px]">
@@ -181,7 +181,7 @@ export function CliproxyModelMappingEditor() {
       <textarea
         className={`w-full font-mono text-xs rounded border px-3 py-2 resize-y min-h-[120px] bg-bg-subtle focus:outline-none focus:ring-1 transition-colors ${
           !isValid && rawText !== EMPTY_MAPPING
-            ? "border-red-400 focus:ring-red-400"
+            ? "border-gray-400 focus:ring-gray-400"
             : "border-border focus:ring-primary"
         }`}
         value={rawText}
@@ -194,7 +194,7 @@ export function CliproxyModelMappingEditor() {
       />
 
       {validationMessage && rawText !== EMPTY_MAPPING && (
-        <p className="mt-1.5 text-xs text-red-600 dark:text-red-400 flex items-start gap-1">
+        <p className="mt-1.5 text-xs text-gray-600 dark:text-gray-400 flex items-start gap-1">
           <span className="material-symbols-outlined text-[12px] mt-0.5 shrink-0">error</span>
           {validationMessage}
         </p>

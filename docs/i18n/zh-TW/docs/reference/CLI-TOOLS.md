@@ -1,20 +1,20 @@
 ---
-title: "CLI 工具 — OmniRoute"
+title: "CLI 工具 — Xenia"
 version: 3.8.40
 lastUpdated: 2026-06-28
 ---
 
-# CLI 工具 — OmniRoute
+# CLI 工具 — Xenia
 
 最後更新：2026-06-28
 
-OmniRoute 整合了三類 CLI 工具，分別對應三個專屬儀表板頁面：
+Xenia 整合了三類 CLI 工具，分別對應三個專屬儀表板頁面：
 
-| 頁面               | 路由                    | 概念                                                             | 數量       |
-| ------------------ | ----------------------- | ---------------------------------------------------------------- | ---------- |
-| **CLI 程式碼工具** | `/dashboard/cli-code`   | 指向 OmniRoute 的程式碼工具（客戶端 → CLI → OmniRoute → 提供者） | 21         |
-| **CLI 代理工具**   | `/dashboard/cli-agents` | 指向 OmniRoute 的自動代理工具（相同流程，範圍更廣）              | 6          |
-| **ACP 代理**       | `/dashboard/acp-agents` | OmniRoute 透過 stdio/ACP 以反向流程衍生的 CLI                    | 參見註冊表 |
+| 頁面               | 路由                    | 概念                                                     | 數量       |
+| ------------------ | ----------------------- | -------------------------------------------------------- | ---------- |
+| **CLI 程式碼工具** | `/dashboard/cli-code`   | 指向 Xenia 的程式碼工具（客戶端 → CLI → Xenia → 提供者） | 21         |
+| **CLI 代理工具**   | `/dashboard/cli-agents` | 指向 Xenia 的自動代理工具（相同流程，範圍更廣）          | 6          |
+| **ACP 代理**       | `/dashboard/acp-agents` | Xenia 透過 stdio/ACP 以反向流程衍生的 CLI                | 參見註冊表 |
 
 舊版路由透過 308 重新導向：`/dashboard/cli-tools` → `/dashboard/cli-code`，`/dashboard/agents` → `/dashboard/acp-agents`。
 
@@ -26,14 +26,14 @@ OmniRoute 整合了三類 CLI 工具，分別對應三個專屬儀表板頁面�
 CLI 程式碼工具 / CLI 代理工具（消費流程）：
 Claude / Codex / OpenCode / Cline / KiloCode / Continue / Hermes Agent / Goose / ...
            │
-           ▼  （全部指向 OmniRoute）
+           ▼  （全部指向 Xenia）
     http://YOUR_SERVER:20128/v1
            │
-           ▼  （OmniRoute 路由至對應提供者）
+           ▼  （Xenia 路由至對應提供者）
     Anthropic / OpenAI / Gemini / DeepSeek / Groq / Mistral / ...
 
 ACP 代理（反向衍生流程）：
-    客戶端請求 → OmniRoute → 透過 stdio/ACP 衍生 CLI → 回應
+    客戶端請求 → Xenia → 透過 stdio/ACP 衍生 CLI → 回應
 ```
 
 **優勢：**
@@ -47,16 +47,16 @@ ACP 代理（反向衍生流程）：
 
 ## 使用 `setup-*` 自動設定
 
-您無需手動編寫每個工具的設定檔。OmniRoute 為每個受支援的 CLI 提供了 `setup-*` 指令，可讀取執行中 OmniRoute（本機或遠端）的**即時**模型目錄，並在您的機器上寫入該工具的設定檔：
+您無需手動編寫每個工具的設定檔。Xenia 為每個受支援的 CLI 提供了 `setup-*` 指令，可讀取執行中 Xenia（本機或遠端）的**即時**模型目錄，並在您的機器上寫入該工具的設定檔：
 
 ```bash
-omniroute setup-codex        omniroute setup-claude       omniroute setup-opencode
-omniroute setup-cline        omniroute setup-kilo         omniroute setup-continue
-omniroute setup-cursor       omniroute setup-roo          omniroute setup-crush
-omniroute setup-goose        omniroute setup-qwen         omniroute setup-aider
+xenia setup-codex        xenia setup-claude       xenia setup-opencode
+xenia setup-cline        xenia setup-kilo         xenia setup-continue
+xenia setup-cursor       xenia setup-roo          xenia setup-crush
+xenia setup-goose        xenia setup-qwen         xenia setup-aider
 ```
 
-每個指令都接受 `--remote <url> --api-key <key>`（針對遠端 OmniRoute 設定本機工具）、`--dry-run`（預覽不寫入）和 `--port`。不支援模型自動探索的工具（Cline、Kilo、Roo、Goose、Aider、Gemini）需要 `--model <id>`（以及用於非互動執行的 `--yes`）。啟動器 `omniroute launch`（Claude Code）和 `omniroute launch-codex`（Codex）會以正確的環境變數注入來衍生 CLI，完全不寫入設定檔。
+每個指令都接受 `--remote <url> --api-key <key>`（針對遠端 Xenia 設定本機工具）、`--dry-run`（預覽不寫入）和 `--port`。不支援模型自動探索的工具（Cline、Kilo、Roo、Goose、Aider、Gemini）需要 `--model <id>`（以及用於非互動執行的 `--yes`）。啟動器 `xenia launch`（Claude Code）和 `xenia launch-codex`（Codex）會以正確的環境變數注入來衍生 CLI，完全不寫入設定檔。
 
 > **完整參考：** 主要表格 — 每個指令寫入的內容、所有旗標、本機 vs 遠端，以及哪些工具需要加上 `/v1` 字尾 — 請參閱 **[CLI 整合指南](../guides/CLI-INTEGRATIONS.md)**。
 
@@ -136,7 +136,7 @@ omniroute setup-goose        omniroute setup-qwen         omniroute setup-aider
 
 ## 3. ACP 代理（/dashboard/acp-agents）
 
-此頁面（從 `/dashboard/agents` 重新命名而來）顯示 OmniRoute 可以**衍生**為後端執行引擎（透過 stdio/ACP 協定）的 CLI。目錄獨立維護於 `src/lib/acp/registry.ts`，**不同於** `CLI_TOOLS`。
+此頁面（從 `/dashboard/agents` 重新命名而來）顯示 Xenia 可以**衍生**為後端執行引擎（透過 stdio/ACP 協定）的 CLI。目錄獨立維護於 `src/lib/acp/registry.ts`，**不同於** `CLI_TOOLS`。
 
 ---
 
@@ -201,7 +201,7 @@ interface ToolBatchStatus {
 | `POST /api/cli-tools/codewhale-settings`    | CodeWhale（OPENAI_BASE_URL，主要 + 舊版 `~/.deepseek` 同步） |
 | `POST /api/cli-tools/smelt-settings`        | Smelt                                                        |
 | `POST /api/cli-tools/pi-settings`           | Pi 程式碼代理                                                |
-| `POST /api/cli-tools/grok-build-settings`   | Grok Build（~/.grok/config.toml，`[model.omniroute]`）       |
+| `POST /api/cli-tools/grok-build-settings`   | Grok Build（~/.grok/config.toml，`[model.xenia]`）           |
 | `POST /api/cli-tools/qwen-settings`         | Qwen Code（`~/.qwen/settings.json` + 專用 `.env` 金鑰）      |
 
 所有路由都使用 `sanitizeErrorMessage()` 處理錯誤回應（硬性規則 #12）。
@@ -263,7 +263,7 @@ plan 14 F9 中新增的命名空間：
 
 ## 9. 快速入門
 
-### 步驟 1 — 取得 OmniRoute API 金鑰
+### 步驟 1 — 取得 Xenia API 金鑰
 
 1. 開啟 `/dashboard/api-manager` → **建立 API 金鑰**
 2. 為金鑰命名（例如 `cli-tools`）並選取所有權限
@@ -324,7 +324,7 @@ cargo install smelt  # 基於 Rust
 ### 步驟 4 — 設定全域環境變數
 
 ```bash
-# OmniRoute 通用端點
+# Xenia 通用端點
 export OPENAI_BASE_URL="http://localhost:20128/v1"
 export OPENAI_API_KEY="«redacted:sk-…»"
 export ANTHROPIC_BASE_URL="http://localhost:20128"
@@ -381,9 +381,9 @@ mkdir -p ~/.config/opencode && cat > ~/.config/opencode/opencode.json << EOF
 {
   "\$schema": "https://opencode.ai/config.json",
   "provider": {
-    "omniroute": {
+    "xenia": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "OmniRoute",
+      "name": "Xenia",
       "options": {
         "baseURL": "http://localhost:20128/v1",
         "apiKey": "«redacted:sk-…»"
@@ -401,7 +401,7 @@ EOF
 
 **測試：** `opencode`
 
-> 使用 `opencode run "your prompt" --model omniroute/claude-sonnet-4-5-thinking --variant high`
+> 使用 `opencode run "your prompt" --model xenia/claude-sonnet-4-5-thinking --variant high`
 > 來發送思考變體。
 
 ---
@@ -423,7 +423,7 @@ EOF
 **VS Code 模式：**
 Cline 擴充功能設定 → API Provider：`OpenAI Compatible` → Base URL：`http://localhost:20128/v1`
 
-或使用 OmniRoute 儀表板 → **CLI 工具 → Cline → 套用設定**。
+或使用 Xenia 儀表板 → **CLI 工具 → Cline → 套用設定**。
 
 ---
 
@@ -444,7 +444,7 @@ kilocode --api-base http://localhost:20128/v1 --api-key «redacted:sk-…»
 }
 ```
 
-或使用 OmniRoute 儀表板 → **CLI 工具 → KiloCode → 套用設定**。
+或使用 Xenia 儀表板 → **CLI 工具 → KiloCode → 套用設定**。
 
 ---
 
@@ -454,7 +454,7 @@ kilocode --api-base http://localhost:20128/v1 --api-key «redacted:sk-…»
 
 ```yaml
 models:
-  - name: OmniRoute
+  - name: Xenia
     provider: openai
     model: auto
     apiBase: http://localhost:20128/v1
@@ -468,21 +468,21 @@ models:
 
 #### VS Code Insiders（`chatLanguageModels.json`）
 
-當 VS Code Insiders 設定為使用自訂端點模型，且您希望 OmniRoute 在無需自訂標頭欄位的情況下運作時使用。
+當 VS Code Insiders 設定為使用自訂端點模型，且您希望 Xenia 在無需自訂標頭欄位的情況下運作時使用。
 
 **建議位置：**
 
 - Linux：`~/.config/Code - Insiders/User/chatLanguageModels.json`
 - Windows：`%APPDATA%/Code - Insiders/User/chatLanguageModels.json`
 
-**使用 Token 化 OmniRoute 別名的範例：**
+**使用 Token 化 Xenia 別名的範例：**
 
 ```json
 [
   {
     "vendor": "customendpoint",
     "id": "auto",
-    "name": "OmniRoute Auto",
+    "name": "Xenia Auto",
     "family": "gpt-4",
     "version": "1.0.0",
     "url": "http://localhost:20128/api/v1/vscode/«redacted:sk-…»/chat/completions",
@@ -499,7 +499,7 @@ models:
 
 **注意事項：**
 
-- 將 `«redacted:sk-…»` 替換為在 OmniRoute 中建立的 API 金鑰。
+- 將 `«redacted:sk-…»` 替換為在 Xenia 中建立的 API 金鑰。
 - `url` 欄位應指向 `/api/v1/vscode/{token}/chat/completions`。
 - `modelsUrl` 欄位應指向 `/api/v1/vscode/{token}/models`。
 - 如果客戶端支援自訂標頭，建議使用標準的 `/v1` + Bearer 標頭流程。
@@ -513,39 +513,39 @@ models:
 # 登入您的 AWS/Kiro 帳戶：
 kiro-cli login
 
-# CLI 使用自己的認證機制 — Kiro CLI 本身不需要 OmniRoute 作為後端。
-# 請將 kiro-cli 與 OmniRoute 搭配使用於其他工具。
+# CLI 使用自己的認證機制 — Kiro CLI 本身不需要 Xenia 作為後端。
+# 請將 kiro-cli 與 Xenia 搭配使用於其他工具。
 kiro-cli status
 ```
 
-至於 **Kiro IDE** 桌面應用程式，請使用 OmniRoute 在 `/dashboard/cli-tools → Kiro` 提供的 MITM 端點。
+至於 **Kiro IDE** 桌面應用程式，請使用 Xenia 在 `/dashboard/cli-tools → Kiro` 提供的 MITM 端點。
 
 ---
 
-## 10. 內部 OmniRoute CLI
+## 10. 內部 Xenia CLI
 
-`omniroute` 二進位檔提供用於伺服器生命週期管理、設定、診斷和提供者管理的指令。進入點：`bin/omniroute.mjs`。
+`xenia` 二進位檔提供用於伺服器生命週期管理、設定、診斷和提供者管理的指令。進入點：`bin/xenia.mjs`。
 
 ```bash
-omniroute                              # 啟動伺服器（預設通訊埠 20128）
-omniroute setup                        # 互動式設定精靈
-omniroute doctor                       # 檢查設定、資料庫、通訊埠、執行環境
-omniroute providers list               # 已設定的提供者連線
-omniroute providers test-all           # 測試每個作用中連線
-omniroute reset-password               # 重設管理員密碼
-omniroute logs                         # 串流要求日誌
-omniroute health                       # 詳細健康狀態（斷路器、快取、記憶體）
-omniroute --version                    # 顯示版本
-omniroute --help                       # 顯示所有指令
+xenia                              # 啟動伺服器（預設通訊埠 20128）
+xenia setup                        # 互動式設定精靈
+xenia doctor                       # 檢查設定、資料庫、通訊埠、執行環境
+xenia providers list               # 已設定的提供者連線
+xenia providers test-all           # 測試每個作用中連線
+xenia reset-password               # 重設管理員密碼
+xenia logs                         # 串流要求日誌
+xenia health                       # 詳細健康狀態（斷路器、快取、記憶體）
+xenia --version                    # 顯示版本
+xenia --help                       # 顯示所有指令
 ```
 
 ### 設定與初始化
 
 ```bash
-omniroute setup                        # 互動式設定精靈
-omniroute setup --non-interactive      # CI/自動化模式（讀取環境變數 + 旗標）
-omniroute setup --password '<value>'   # 直接設定管理員密碼
-omniroute setup --add-provider \
+xenia setup                        # 互動式設定精靈
+xenia setup --non-interactive      # CI/自動化模式（讀取環境變數 + 旗標）
+xenia setup --password '<value>'   # 直接設定管理員密碼
+xenia setup --add-provider \
   --provider openai \
   --api-key '<value>' \
   --test-provider                      # 一氣呵成新增並測試提供者
@@ -553,23 +553,23 @@ omniroute setup --add-provider \
 
 非互動式設定可識別的環境變數：
 
-| 變數                | 用途                                                          |
-| ------------------- | ------------------------------------------------------------- |
-| `OMNIROUTE_API_KEY` | 提供者 API 金鑰（透過 Commander `.env()` 繫結至 `--api-key`） |
-| `DATA_DIR`          | 覆寫 OmniRoute 資料目錄                                       |
+| 變數            | 用途                                                          |
+| --------------- | ------------------------------------------------------------- |
+| `XENIA_API_KEY` | 提供者 API 金鑰（透過 Commander `.env()` 繫結至 `--api-key`） |
+| `DATA_DIR`      | 覆寫 Xenia 資料目錄                                           |
 
 所有其他非互動式輸入皆以旗標傳遞（非環境變數）：
 `--password`、`--provider`、`--provider-name`、`--provider-base-url`、`--default-model`
-（請參閱上方 `omniroute setup` 選項）。
+（請參閱上方 `xenia setup` 選項）。
 
 ### 診斷
 
 ```bash
-omniroute doctor                       # 檢查設定、資料庫、通訊埠、執行環境、記憶體、運作狀態
-omniroute doctor --json                # 機器可讀的 JSON
-omniroute doctor --no-liveness         # 跳過 HTTP 健康狀態探測
-omniroute doctor --host 0.0.0.0        # 覆寫運作狀態主機
-omniroute doctor --liveness-url <url>  # 完整健康端點 URL 覆寫
+xenia doctor                       # 檢查設定、資料庫、通訊埠、執行環境、記憶體、運作狀態
+xenia doctor --json                # 機器可讀的 JSON
+xenia doctor --no-liveness         # 跳過 HTTP 健康狀態探測
+xenia doctor --host 0.0.0.0        # 覆寫運作狀態主機
+xenia doctor --liveness-url <url>  # 完整健康端點 URL 覆寫
 ```
 
 doctor 會執行以下檢查：`Config`、`Database`、`Storage/encryption`、
@@ -579,38 +579,38 @@ doctor 會執行以下檢查：`Config`、`Database`、`Storage/encryption`、
 ### 提供者管理
 
 ```bash
-omniroute providers available                       # OmniRoute 提供者目錄
-omniroute providers available --search openai       # 依 ID/名稱/別名/類別過濾目錄
-omniroute providers available --category api-key    # 依類別過濾（api-key、oauth、free 等）
-omniroute providers available --json                # 機器可讀的 JSON
+xenia providers available                       # Xenia 提供者目錄
+xenia providers available --search openai       # 依 ID/名稱/別名/類別過濾目錄
+xenia providers available --category api-key    # 依類別過濾（api-key、oauth、free 等）
+xenia providers available --json                # 機器可讀的 JSON
 
-omniroute providers list                            # 已設定的提供者連線
-omniroute providers list --json
+xenia providers list                            # 已設定的提供者連線
+xenia providers list --json
 
-omniroute providers test <id|name>                  # 測試一個已設定的連線
-omniroute providers test-all                        # 測試每個作用中連線
-omniroute providers validate                        # 僅限本機的結構驗證
+xenia providers test <id|name>                  # 測試一個已設定的連線
+xenia providers test-all                        # 測試每個作用中連線
+xenia providers validate                        # 僅限本機的結構驗證
 ```
 
-> `providers available` 讀取 OmniRoute 目錄；`providers list/test/test-all/validate`
+> `providers available` 讀取 Xenia 目錄；`providers list/test/test-all/validate`
 > 直接讀取本機 SQLite 資料庫，無需伺服器執行中。
 
 ### 復原與重設
 
 ```bash
-omniroute reset-password                # 重設管理員密碼（亦可使用：omniroute-reset-password）
-omniroute reset-encrypted-columns       # 顯示警告 + 加密憑證重設的試執行
-omniroute reset-encrypted-columns --force  # 實際將 SQLite 中的加密憑證設為 null
+xenia reset-password                # 重設管理員密碼（亦可使用：xenia-reset-password）
+xenia reset-encrypted-columns       # 顯示警告 + 加密憑證重設的試執行
+xenia reset-encrypted-columns --force  # 實際將 SQLite 中的加密憑證設為 null
 ```
 
 ### 憑證匯出（⚠ 請謹慎處理）
 
 ```bash
-omniroute auth export                                 # 顯示警告 + 確認閘道 — 不會存取資料庫
-omniroute auth export --force                          # 將所有連線的**解密後**憑證匯出至 stdout 為 JSON
-omniroute auth export --force --id <id>                 # 僅匯出符合條件的連線
-omniroute auth export --force --format env               # 輸出為 OMNIROUTE_<PROVIDER>_<FIELD>=<value> 格式
-omniroute auth export --force --out creds.json           # 寫入檔案（以 0600 權限建立）
+xenia auth export                                 # 顯示警告 + 確認閘道 — 不會存取資料庫
+xenia auth export --force                          # 將所有連線的**解密後**憑證匯出至 stdout 為 JSON
+xenia auth export --force --id <id>                 # 僅匯出符合條件的連線
+xenia auth export --force --format env               # 輸出為 XENIA_<PROVIDER>_<FIELD>=<value> 格式
+xenia auth export --force --out creds.json           # 寫入檔案（以 0600 權限建立）
 ```
 
 `auth export` 是**僅限本機**（直接讀取 SQLite，無 HTTP 路由），且故意將
@@ -622,36 +622,36 @@ stderr 上一定會顯示警告橫幅。需要設定 `STORAGE_ENCRYPTION_KEY`。
 
 ### 其他子指令
 
-以下指令假設 OmniRoute 伺服器正在執行中，除非另有說明：
+以下指令假設 Xenia 伺服器正在執行中，除非另有說明：
 
 ```bash
-omniroute status                       # 完整的執行時期狀態
-omniroute logs                         # 串流要求日誌（--json、--search、--follow）
-omniroute config show                  # 顯示目前設定
+xenia status                       # 完整的執行時期狀態
+xenia logs                         # 串流要求日誌（--json、--search、--follow）
+xenia config show                  # 顯示目前設定
 
-omniroute provider list                # 列出可用提供者（providers list 的別名）
-omniroute provider add                 # 將 OmniRoute 註冊為工具上的提供者
-omniroute keys add | list | remove     # 管理 API 金鑰
-omniroute models [provider]            # 列出模型（--json、--search）
-omniroute combo list | switch | create | delete
+xenia provider list                # 列出可用提供者（providers list 的別名）
+xenia provider add                 # 將 Xenia 註冊為工具上的提供者
+xenia keys add | list | remove     # 管理 API 金鑰
+xenia models [provider]            # 列出模型（--json、--search）
+xenia combo list | switch | create | delete
 
-omniroute backup                       # 快照設定 + 資料庫
-omniroute restore                      # 從先前的快照還原
+xenia backup                       # 快照設定 + 資料庫
+xenia restore                      # 從先前的快照還原
 
-omniroute health                       # 詳細健康狀態（斷路器、快取、記憶體）
-omniroute quota                        # 提供者配額使用情況
-omniroute cache                        # 快取狀態
-omniroute cache clear                  # 清除語意 + 簽章快取
+xenia health                       # 詳細健康狀態（斷路器、快取、記憶體）
+xenia quota                        # 提供者配額使用情況
+xenia cache                        # 快取狀態
+xenia cache clear                  # 清除語意 + 簽章快取
 
-omniroute mcp status | restart         # MCP 伺服器狀態 / 重新啟動
-omniroute a2a status | card            # A2A 伺服器狀態 / 代理卡片
+xenia mcp status | restart         # MCP 伺服器狀態 / 重新啟動
+xenia a2a status | card            # A2A 伺服器狀態 / 代理卡片
 
-omniroute tunnel list | create | stop  # 管理通道（cloudflare/tailscale/ngrok）
-omniroute env show | get <k> | set <k> <v>  # 檢查 / 設定環境變數（暫時性）
+xenia tunnel list | create | stop  # 管理通道（cloudflare/tailscale/ngrok）
+xenia env show | get <k> | set <k> <v>  # 檢查 / 設定環境變數（暫時性）
 
-omniroute test                         # 提供者連線冒煙測試
-omniroute update                       # 檢查更新
-omniroute completion                   # 產生 Shell 補全
+xenia test                         # 提供者連線冒煙測試
+xenia update                       # 檢查更新
+xenia completion                   # 產生 Shell 補全
 ```
 
 ### 常用旗標
@@ -680,7 +680,7 @@ omniroute completion                   # 產生 Shell 補全
 | `/v1/audio/speech`         | 文字轉語音                   | ElevenLabs、OpenAI TTS    |
 | `/v1/audio/transcriptions` | 語音轉文字                   | Deepgram、AssemblyAI      |
 
-可直接貼上的 Token 化 OmniRoute URL 範例：
+可直接貼上的 Token 化 Xenia URL 範例：
 
 ```txt
 Token 範例：«redacted:sk-…»
@@ -699,7 +699,7 @@ Ollama 聊天：http://localhost:20128/api/v1/vscode/«redacted:sk-…»/api/cha
 
 | 錯誤                               | 原因                 | 解決方式                                      |
 | ---------------------------------- | -------------------- | --------------------------------------------- |
-| `Connection refused`               | OmniRoute 未執行     | `omniroute serve`                             |
+| `Connection refused`               | Xenia 未執行         | `xenia serve`                                 |
 | `401 Unauthorized`                 | API 金鑰錯誤         | 在 `/dashboard/api-manager` 中檢查            |
 | `No combo configured`              | 無作用中路由組合     | 在 `/dashboard/combos` 中設定                 |
 | CLI 顯示「not installed」          | 二進位檔不在 PATH 中 | 檢查 `which <command>`                        |

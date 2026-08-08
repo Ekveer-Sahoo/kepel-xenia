@@ -21,16 +21,16 @@ export default function MitmProxyMovedPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-8">
-      <div className="rounded-xl border border-amber-500/40 bg-amber-900/20 p-8 text-center max-w-md w-full space-y-4">
+      <div className="rounded-xl border border-gray-500/40 bg-gray-900/20 p-8 text-center max-w-md w-full space-y-4">
         <div className="flex items-center justify-center gap-2">
-          <span className="material-symbols-outlined text-amber-400 text-[28px]">info</span>
-          <h1 className="text-lg font-semibold text-amber-200">{t("title")}</h1>
+          <span className="material-symbols-outlined text-gray-400 text-[28px]">info</span>
+          <h1 className="text-lg font-semibold text-gray-200">{t("title")}</h1>
         </div>
-        <p className="text-sm text-amber-300/80">{t("message")}</p>
+        <p className="text-sm text-gray-300/80">{t("message")}</p>
         <button
           type="button"
           onClick={() => router.replace("/dashboard/tools/agent-bridge")}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500/20 text-amber-200 px-4 py-2 text-sm font-medium hover:bg-amber-500/30 transition-colors"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-gray-500/20 text-gray-200 px-4 py-2 text-sm font-medium hover:bg-gray-500/30 transition-colors"
         >
           {t("goNow")}
         </button>

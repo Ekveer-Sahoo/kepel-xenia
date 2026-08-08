@@ -55,7 +55,7 @@ export default function AutoRoutingAnalyticsTab() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-500">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[20px]">auto_awesome</span>
             </div>
             <div>
@@ -67,7 +67,7 @@ export default function AutoRoutingAnalyticsTab() {
 
         <Card className="p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-green-500/10 text-green-500">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[20px]">target</span>
             </div>
             <div>
@@ -79,7 +79,7 @@ export default function AutoRoutingAnalyticsTab() {
 
         <Card className="p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[20px]">explore</span>
             </div>
             <div>
@@ -91,7 +91,7 @@ export default function AutoRoutingAnalyticsTab() {
 
         <Card className="p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[20px]">history</span>
             </div>
             <div>
@@ -113,7 +113,7 @@ export default function AutoRoutingAnalyticsTab() {
                 <div className="w-32 text-sm font-medium capitalize">{variant || "default"}</div>
                 <div className="flex-1 h-3 bg-border rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-indigo-500 rounded-full transition-all"
+                    className="h-full bg-gray-500 rounded-full transition-all"
                     style={{ width: `${percentage}%` }}
                   />
                 </div>

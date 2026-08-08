@@ -11,13 +11,12 @@
 // the GEMINI→OPENAI request translator (translateRequest routes through it after
 // its normalize pipeline, which strips *orphaned* tool results; a real multi-turn
 // conversation carries the matching functionCall so the co-located parts reach this
-// function intact). This mirrors OmniRoute's translator-gemini-to-openai.test.ts.
+// function intact). This mirrors Xenia's translator-gemini-to-openai.test.ts.
 import test from "node:test";
 import assert from "node:assert/strict";
 
-const { geminiToOpenAIRequest } = await import(
-  "../../open-sse/translator/request/gemini-to-openai.ts"
-);
+const { geminiToOpenAIRequest } =
+  await import("../../open-sse/translator/request/gemini-to-openai.ts");
 
 test("preserves a functionCall co-located with a functionResponse in the same content", () => {
   const body = {
@@ -54,10 +53,7 @@ test("preserves multiple functionResponses in the same content", () => {
   const result = geminiToOpenAIRequest("gemini-pro", body, false);
   const toolMsgs = result.messages.filter((m) => m.role === "tool");
   assert.equal(toolMsgs.length, 2);
-  assert.deepEqual(
-    toolMsgs.map((m) => m.tool_call_id).sort(),
-    ["call_a", "call_b"]
-  );
+  assert.deepEqual(toolMsgs.map((m) => m.tool_call_id).sort(), ["call_a", "call_b"]);
 });
 
 test("preserves text co-located with a functionResponse, keeping the original turn role", () => {

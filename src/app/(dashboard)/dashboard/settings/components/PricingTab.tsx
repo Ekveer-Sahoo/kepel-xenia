@@ -53,11 +53,11 @@ interface PricingCatalogProvider {
 function getSourceTone(source: PricingSource): string {
   switch (source) {
     case "user":
-      return "bg-amber-500/15 text-amber-400 border border-amber-500/25";
+      return "bg-gray-500/15 text-gray-400 border border-gray-500/25";
     case "modelsDev":
-      return "bg-sky-500/15 text-sky-400 border border-sky-500/25";
+      return "bg-gray-500/15 text-gray-400 border border-gray-500/25";
     case "litellm":
-      return "bg-emerald-500/15 text-emerald-400 border border-emerald-500/25";
+      return "bg-gray-500/15 text-gray-400 border border-gray-500/25";
     default:
       return "bg-bg-subtle text-text-muted border border-border/40";
   }
@@ -473,11 +473,11 @@ export default function PricingTab() {
             <div className="grid grid-cols-4 gap-3 mb-3">
               <HeroStat label={t("providers")} value={stats.providers} />
               <HeroStat label={t("registry")} value={stats.totalModels} />
-              <HeroStat label={t("priced")} value={stats.pricedCount} accent="text-emerald-400" />
+              <HeroStat label={t("priced")} value={stats.pricedCount} accent="text-gray-400" />
               <HeroStat
                 label={t("pricingSourceUser")}
                 value={stats.overriddenCount}
-                accent="text-amber-400"
+                accent="text-gray-400"
               />
             </div>
             <div>
@@ -491,10 +491,10 @@ export default function PricingTab() {
                 <div
                   className={`h-full transition-[width] duration-300 ${
                     coveragePct >= 90
-                      ? "bg-emerald-500"
+                      ? "bg-gray-500"
                       : coveragePct >= 60
-                        ? "bg-amber-500"
-                        : "bg-red-500"
+                        ? "bg-gray-500"
+                        : "bg-gray-500"
                   }`}
                   style={{ width: `${Math.min(coveragePct, 100)}%` }}
                 />
@@ -512,7 +512,7 @@ export default function PricingTab() {
                 <div className="flex items-center gap-1.5 mt-1">
                   <span
                     className={`w-1.5 h-1.5 rounded-full ${
-                      syncStatus?.enabled ? "bg-emerald-500 animate-pulse" : "bg-text-muted"
+                      syncStatus?.enabled ? "bg-gray-500 animate-pulse" : "bg-text-muted"
                     }`}
                   />
                   <span className="text-xs text-text-main font-medium">
@@ -563,10 +563,10 @@ export default function PricingTab() {
         <div
           className={`px-3 py-2 rounded-lg border text-sm ${
             statusMessage.tone === "success"
-              ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"
+              ? "bg-gray-500/10 border-gray-500/20 text-gray-400"
               : statusMessage.tone === "error"
-                ? "bg-red-500/10 border-red-500/20 text-red-400"
-                : "bg-sky-500/10 border-sky-500/20 text-sky-400"
+                ? "bg-gray-500/10 border-gray-500/20 text-gray-400"
+                : "bg-gray-500/10 border-gray-500/20 text-gray-400"
           }`}
         >
           {statusMessage.message}
@@ -636,7 +636,7 @@ export default function PricingTab() {
             onClick={() => setCoverageFilter(coverageFilter === "lt50" ? "all" : "lt50")}
             className={`inline-flex items-center gap-1 px-2 py-1 rounded-md border text-xs transition-colors cursor-pointer ${
               coverageFilter === "lt50"
-                ? "bg-amber-500/15 border-amber-500/30 text-amber-400"
+                ? "bg-gray-500/15 border-gray-500/30 text-gray-400"
                 : "bg-bg-subtle border-border text-text-muted hover:text-text-main"
             }`}
           >
@@ -819,7 +819,7 @@ function ProviderSection({
   return (
     <div
       className={`border rounded-lg overflow-hidden transition-colors ${
-        isEdited ? "border-yellow-500/40 bg-yellow-500/5" : "border-border"
+        isEdited ? "border-gray-500/40 bg-gray-500/5" : "border-border"
       }`}
     >
       <button
@@ -848,9 +848,9 @@ function ProviderSection({
           <span
             className={`px-1.5 py-0.5 text-[9px] rounded uppercase font-semibold shrink-0 ${
               provider.authType === "oauth"
-                ? "bg-sky-500/15 text-sky-400 border border-sky-500/25"
+                ? "bg-gray-500/15 text-gray-400 border border-gray-500/25"
                 : provider.authType === "apikey"
-                  ? "bg-violet-500/15 text-violet-400 border border-violet-500/25"
+                  ? "bg-gray-500/15 text-gray-400 border border-gray-500/25"
                   : "bg-bg-subtle text-text-muted border border-border/40"
             }`}
           >
@@ -863,14 +863,14 @@ function ProviderSection({
         <div className="flex items-center gap-3 shrink-0">
           {sourceCounts.user > 0 && (
             <span
-              className="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-400"
+              className="inline-flex items-center gap-1 text-[10px] font-semibold text-gray-400"
               title={`${sourceCounts.user} ${getSourceLabel("user")}`}
             >
               💎 {sourceCounts.user}
             </span>
           )}
           {isEdited && (
-            <span className="text-yellow-500 text-[11px] font-semibold">{t("unsaved")}</span>
+            <span className="text-gray-500 text-[11px] font-semibold">{t("unsaved")}</span>
           )}
           <span className="text-text-muted text-[11px] tabular-nums hidden sm:inline">
             {pricedCount}/{provider.modelCount}
@@ -878,10 +878,9 @@ function ProviderSection({
           {(() => {
             const pct =
               provider.modelCount > 0 ? Math.round((pricedCount / provider.modelCount) * 100) : 0;
-            const barColor =
-              pct >= 100 ? "bg-emerald-500" : pct >= 50 ? "bg-amber-500" : "bg-red-500";
+            const barColor = pct >= 100 ? "bg-gray-500" : pct >= 50 ? "bg-gray-500" : "bg-gray-500";
             const textColor =
-              pct >= 100 ? "text-emerald-400" : pct >= 50 ? "text-amber-400" : "text-red-400";
+              pct >= 100 ? "text-gray-400" : pct >= 50 ? "text-gray-400" : "text-gray-400";
             const icon = pct >= 100 ? "✓" : pct >= 50 ? "◐" : "⚠";
             return (
               <>
@@ -915,7 +914,7 @@ function ProviderSection({
                   event.stopPropagation();
                   onReset();
                 }}
-                className="px-2.5 py-1 text-[11px] text-red-400 hover:bg-red-500/10 rounded border border-red-500/20 transition-colors"
+                className="px-2.5 py-1 text-[11px] text-gray-400 hover:bg-gray-500/10 rounded border border-gray-500/20 transition-colors"
               >
                 {t("resetDefaults")}
               </button>
@@ -989,7 +988,7 @@ function ModelRow({
           />
           <span className="font-medium text-xs">{model.name}</span>
           {model.custom && (
-            <span className="px-1 py-0.5 text-[8px] font-bold bg-blue-500/15 text-blue-400 border border-blue-500/20 rounded uppercase">
+            <span className="px-1 py-0.5 text-[8px] font-bold bg-gray-500/15 text-gray-400 border border-gray-500/20 rounded uppercase">
               {t("custom")}
             </span>
           )}

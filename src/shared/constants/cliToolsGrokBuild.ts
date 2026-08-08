@@ -7,7 +7,7 @@ export const GROK_BUILD_CLI_TOOL: CliCatalogEntry = {
   id: "grok-build",
   name: "Grok Build",
   icon: "terminal",
-  color: "#1DA1F2",
+  color: "#838383",
   description: "xAI Grok Build TUI coding agent — custom provider via ~/.grok/config.toml",
   docsUrl: "https://x.ai/cli",
   configType: "custom",

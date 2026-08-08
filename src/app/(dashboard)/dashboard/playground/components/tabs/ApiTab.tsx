@@ -143,7 +143,9 @@ async function fileToBase64(file: File): Promise<string> {
 
 function ImageResultsInline({ data }: { data: unknown }) {
   const t = useTranslations("playground");
-  const typed = data as { data?: Array<{ url?: string; b64_json?: string; revised_prompt?: string }> };
+  const typed = data as {
+    data?: Array<{ url?: string; b64_json?: string; revised_prompt?: string }>;
+  };
   const images = typed?.data || [];
   if (images.length === 0) return null;
   return (
@@ -360,7 +362,10 @@ export default function ApiTab(_props: ApiTabProps) {
     setUploadedImages((prev) => [...prev, ...base64s].slice(0, 4));
   };
 
-  const buildChatBodyWithImages = (parsed: Record<string, unknown>, imageBase64s: string[]): Record<string, unknown> => {
+  const buildChatBodyWithImages = (
+    parsed: Record<string, unknown>,
+    imageBase64s: string[]
+  ): Record<string, unknown> => {
     if (!imageBase64s.length) return parsed;
     const messages = [...((parsed.messages as Array<Record<string, unknown>>) || [])];
     if (messages.length === 0) return parsed;
@@ -407,7 +412,7 @@ export default function ApiTab(_props: ApiTabProps) {
         }
         const fetchHeaders: Record<string, string> = {};
         if (selectedConnection) {
-          fetchHeaders["X-OmniRoute-Connection"] = selectedConnection;
+          fetchHeaders["X-Xenia-Connection"] = selectedConnection;
         }
         res = await fetch(`/api${path}`, {
           method: "POST",
@@ -422,7 +427,7 @@ export default function ApiTab(_props: ApiTabProps) {
         }
         const fetchHeaders: Record<string, string> = { "Content-Type": "application/json" };
         if (selectedConnection) {
-          fetchHeaders["X-OmniRoute-Connection"] = selectedConnection;
+          fetchHeaders["X-Xenia-Connection"] = selectedConnection;
         }
         res = await fetch(`/api${path}`, {
           method: "POST",
@@ -454,13 +459,15 @@ export default function ApiTab(_props: ApiTabProps) {
           }
         }
       } else {
-        const data = await res.json() as Record<string, unknown>;
+        const data = (await res.json()) as Record<string, unknown>;
         setResponseBody(JSON.stringify(data, null, 2));
         if (isImageEndpoint && data?.data && Array.isArray(data.data) && res.ok) {
           setImageData(data);
         }
         if (isTranscriptionEndpoint && typeof (data as { text?: string })?.text === "string") {
-          setTranscriptionText((data as { text?: string }).text || "(empty result — check provider credentials)");
+          setTranscriptionText(
+            (data as { text?: string }).text || "(empty result — check provider credentials)"
+          );
         }
       }
     } catch (err: unknown) {
@@ -473,7 +480,17 @@ export default function ApiTab(_props: ApiTabProps) {
       setResponseDuration(Date.now() - startTime);
     }
     setLoading(false);
-  }, [requestBody, isTranscriptionEndpoint, selectedEndpoint, uploadedFile, selectedConnection, supportsVision, uploadedImages, isImageEndpoint, clearResults]);
+  }, [
+    requestBody,
+    isTranscriptionEndpoint,
+    selectedEndpoint,
+    uploadedFile,
+    selectedConnection,
+    supportsVision,
+    uploadedImages,
+    isImageEndpoint,
+    clearResults,
+  ]);
 
   const handleCancel = () => {
     if (abortRef.current) {
@@ -513,7 +530,9 @@ export default function ApiTab(_props: ApiTabProps) {
             </label>
             <Select
               value={selectedEndpoint}
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleEndpointChange(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                handleEndpointChange(e.target.value)
+              }
               options={endpointOptions}
               className="w-full"
             />
@@ -526,7 +545,9 @@ export default function ApiTab(_props: ApiTabProps) {
               </label>
               <Select
                 value={selectedProvider}
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleProviderChange(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  handleProviderChange(e.target.value)
+                }
                 options={providers}
                 className="w-full"
               />
@@ -540,7 +561,9 @@ export default function ApiTab(_props: ApiTabProps) {
               </label>
               <Select
                 value={selectedModel}
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleModelChange(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  handleModelChange(e.target.value)
+                }
                 options={filteredModels}
                 className="w-full"
               />
@@ -554,7 +577,9 @@ export default function ApiTab(_props: ApiTabProps) {
               </label>
               <Select
                 value={selectedConnection}
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedConnection(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                  setSelectedConnection(e.target.value)
+                }
                 options={[
                   {
                     value: "",
@@ -628,14 +653,14 @@ export default function ApiTab(_props: ApiTabProps) {
                 />
                 {uploadedFile && (
                   <p className="text-xs text-text-muted mt-1 flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[12px] text-green-500">
+                    <span className="material-symbols-outlined text-[12px] text-gray-500">
                       check_circle
                     </span>
                     {uploadedFile.name} ({(uploadedFile.size / 1024).toFixed(0)} KB)
                   </p>
                 )}
                 {!uploadedFile && (
-                  <p className="text-xs text-amber-500 mt-1 flex items-center gap-1">
+                  <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
                     <span className="material-symbols-outlined text-[12px]">info</span>
                     {t("selectAudioFile")}
                   </p>
@@ -676,7 +701,7 @@ export default function ApiTab(_props: ApiTabProps) {
                     ))}
                     <button
                       onClick={() => setUploadedImages([])}
-                      className="text-xs text-text-muted hover:text-red-500 self-center ml-1"
+                      className="text-xs text-text-muted hover:text-gray-500 self-center ml-1"
                     >
                       {t("clearAll")}
                     </button>
@@ -713,7 +738,8 @@ export default function ApiTab(_props: ApiTabProps) {
                 <button
                   onClick={() => {
                     const template = { ...DEFAULT_BODIES[selectedEndpoint] };
-                    if ("model" in template) (template as Record<string, unknown>).model = selectedModel;
+                    if ("model" in template)
+                      (template as Record<string, unknown>).model = selectedModel;
                     setRequestBody(JSON.stringify(template, null, 2));
                   }}
                   className="p-1.5 rounded hover:bg-black/5 dark:hover:bg-white/5 text-text-muted hover:text-text-main transition-colors"
@@ -724,8 +750,8 @@ export default function ApiTab(_props: ApiTabProps) {
               </div>
             </div>
             {isTranscriptionEndpoint && (
-              <p className="text-xs text-text-muted bg-amber-500/10 border border-amber-500/20 rounded px-2 py-1.5 flex items-start gap-1">
-                <span className="material-symbols-outlined text-[12px] text-amber-500 mt-0.5">
+              <p className="text-xs text-text-muted bg-gray-500/10 border border-gray-500/20 rounded px-2 py-1.5 flex items-start gap-1">
+                <span className="material-symbols-outlined text-[12px] text-gray-500 mt-0.5">
                   info
                 </span>
                 {t("transcriptionHint")}
@@ -762,9 +788,7 @@ export default function ApiTab(_props: ApiTabProps) {
                 <h3 className="text-sm font-semibold text-text-main">{t("response")}</h3>
                 {responseStatus !== null && (
                   <Badge
-                    variant={
-                      responseStatus >= 200 && responseStatus < 300 ? "success" : "error"
-                    }
+                    variant={responseStatus >= 200 && responseStatus < 300 ? "success" : "error"}
                     size="sm"
                   >
                     {responseStatus}

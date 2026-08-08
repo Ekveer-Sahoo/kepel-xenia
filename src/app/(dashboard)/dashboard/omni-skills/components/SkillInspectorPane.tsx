@@ -114,9 +114,7 @@ export function SkillInspectorPane({
       {/* Inspector header */}
       <div className="px-4 pt-4 pb-2 border-b border-border">
         <div className="flex items-center gap-2 mb-1">
-          <span className="material-symbols-outlined text-[18px] text-violet-400">
-            auto_fix_high
-          </span>
+          <span className="material-symbols-outlined text-[18px] text-gray-400">auto_fix_high</span>
           <h3 className="font-semibold text-text-main text-sm">{skill.name}</h3>
         </div>
         <p className="text-xs text-text-muted line-clamp-2">{skill.description}</p>
@@ -124,9 +122,9 @@ export function SkillInspectorPane({
           <span
             className={`text-[10px] px-1.5 py-0.5 rounded ${
               effectiveMode === "on"
-                ? "bg-emerald-500/10 text-emerald-400"
+                ? "bg-gray-500/10 text-gray-400"
                 : effectiveMode === "auto"
-                  ? "bg-amber-500/10 text-amber-400"
+                  ? "bg-gray-500/10 text-gray-400"
                   : "bg-surface/60 text-text-muted"
             }`}
           >
@@ -146,7 +144,7 @@ export function SkillInspectorPane({
             onClick={() => setActiveTab(tab.id)}
             className={`px-3 py-2 text-xs font-medium border-b-2 transition-colors ${
               activeTab === tab.id
-                ? "border-violet-500 text-violet-400"
+                ? "border-gray-500 text-gray-400"
                 : "border-transparent text-text-muted hover:text-text-main"
             }`}
           >
@@ -211,10 +209,10 @@ export function SkillInspectorPane({
                         <span
                           className={`px-1.5 py-0.5 rounded ${
                             exec.status === "success"
-                              ? "bg-emerald-500/10 text-emerald-400"
+                              ? "bg-gray-500/10 text-gray-400"
                               : exec.status === "error"
-                                ? "bg-red-500/10 text-red-400"
-                                : "bg-amber-500/10 text-amber-400"
+                                ? "bg-gray-500/10 text-gray-400"
+                                : "bg-gray-500/10 text-gray-400"
                           }`}
                         >
                           {exec.status}
@@ -254,7 +252,7 @@ export function SkillInspectorPane({
                 <span className="text-xs font-mono text-text-muted">{item.value}</span>
               </div>
             ))}
-            <button className="w-full mt-3 px-3 py-2 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-text-main hover:border-violet-500/50 transition-colors">
+            <button className="w-full mt-3 px-3 py-2 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-text-main hover:border-gray-500/50 transition-colors">
               {t("runTestPlaceholder")}
             </button>
           </div>
@@ -271,10 +269,10 @@ export function SkillInspectorPane({
             className={`flex-1 text-xs px-2 py-1.5 rounded border transition-colors ${
               effectiveMode === mode
                 ? mode === "on"
-                  ? "border-emerald-500 text-emerald-400 bg-emerald-500/5"
+                  ? "border-gray-500 text-gray-400 bg-gray-500/5"
                   : mode === "auto"
-                    ? "border-amber-500 text-amber-400 bg-amber-500/5"
-                    : "border-red-500 text-red-400 bg-red-500/5"
+                    ? "border-gray-500 text-gray-400 bg-gray-500/5"
+                    : "border-gray-500 text-gray-400 bg-gray-500/5"
                 : "border-border text-text-muted hover:border-border/80"
             }`}
           >
@@ -284,7 +282,7 @@ export function SkillInspectorPane({
         <button
           onClick={() => onUninstall(skill.id)}
           aria-label={t("uninstallSkill")}
-          className="flex-1 text-xs px-2 py-1.5 rounded border border-border text-red-400 hover:bg-red-500/10 transition-colors"
+          className="flex-1 text-xs px-2 py-1.5 rounded border border-border text-gray-400 hover:bg-gray-500/10 transition-colors"
         >
           {t("delete")}
         </button>

@@ -34,8 +34,8 @@ function makeAgentSkills(): AgentSkill[] {
       area: `area-${i}`,
       icon: "api",
       endpoints: [`GET /api/skill-${i}`],
-      rawUrl: `https://raw.githubusercontent.com/example/OmniRoute/main/skills/omni-skill-${i}/SKILL.md`,
-      githubUrl: `https://github.com/example/OmniRoute/blob/main/skills/omni-skill-${i}/SKILL.md`,
+      rawUrl: `https://raw.githubusercontent.com/example/Xenia/main/skills/omni-skill-${i}/SKILL.md`,
+      githubUrl: `https://github.com/example/Xenia/blob/main/skills/omni-skill-${i}/SKILL.md`,
     });
   }
   for (let i = 0; i < 20; i++) {
@@ -47,8 +47,8 @@ function makeAgentSkills(): AgentSkill[] {
       area: `cli-area-${i}`,
       icon: "terminal",
       cliCommands: [`skill${i} run`],
-      rawUrl: `https://raw.githubusercontent.com/example/OmniRoute/main/skills/cli-skill-${i}/SKILL.md`,
-      githubUrl: `https://github.com/example/OmniRoute/blob/main/skills/cli-skill-${i}/SKILL.md`,
+      rawUrl: `https://raw.githubusercontent.com/example/Xenia/main/skills/cli-skill-${i}/SKILL.md`,
+      githubUrl: `https://github.com/example/Xenia/blob/main/skills/cli-skill-${i}/SKILL.md`,
     });
   }
   return skills;
@@ -80,9 +80,7 @@ async function fulfillText(route: Route, body: string, status = 200) {
 test.describe("Agent Skills page", () => {
   test.setTimeout(600_000);
 
-  test("renders SkillsConceptCard with data-testid skills-concept-card-agent", async ({
-    page,
-  }) => {
+  test("renders SkillsConceptCard with data-testid skills-concept-card-agent", async ({ page }) => {
     const skills = makeAgentSkills();
 
     await page.route(/\/api\/agent-skills(?:\?.*)?$/, async (route) => {
@@ -125,9 +123,7 @@ test.describe("Agent Skills page", () => {
     await expect(cards).toHaveCount(42, { timeout: 15_000 });
   });
 
-  test("clicking omni-skill-0 card renders markdown in preview pane", async ({
-    page,
-  }) => {
+  test("clicking omni-skill-0 card renders markdown in preview pane", async ({ page }) => {
     const skills = makeAgentSkills();
     const mockMarkdown = "# API Skill 0\n\nThis skill manages connections.";
 
@@ -199,7 +195,7 @@ test.describe("Agent Skills page", () => {
     expect(
       finalUrl.includes("/dashboard/omni-skills") ||
         finalUrl.includes("/login") ||
-        finalUrl.includes("/onboarding"),
+        finalUrl.includes("/onboarding")
     ).toBe(true);
   });
 });

@@ -71,13 +71,13 @@ export function UpstreamCaField({ value, onChange, onSave }: UpstreamCaFieldProp
         </button>
       </div>
       {testResult === "ok" && (
-        <p className="text-xs text-emerald-500">
+        <p className="text-xs text-gray-500">
           <span className="material-symbols-outlined text-[12px] mr-1">check_circle</span>
           {t("upstreamCaTestOk") || "TLS test passed"}
         </p>
       )}
       {testResult === "error" && (
-        <p className="text-xs text-red-500">
+        <p className="text-xs text-gray-500">
           <span className="material-symbols-outlined text-[12px] mr-1">error</span>
           {t("upstreamCaTestError") || "TLS test failed — check the path and CA file"}
         </p>

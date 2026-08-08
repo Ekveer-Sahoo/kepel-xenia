@@ -64,9 +64,9 @@ function createQueueTimeoutError(
   const message =
     reason === "upstream-cooldown"
       ? `Request dropped after waiting ${maxWaitMs}ms for an upstream rate-limit cooldown for ${target}. ` +
-        `The provider cooldown outlasted OmniRoute's local wait budget; this is not local queue saturation.`
+        `The provider cooldown outlasted Xenia's local wait budget; this is not local queue saturation.`
       : `Request dropped after exceeding the local rate-limit queue budget maxWaitMs (${maxWaitMs}ms) for ` +
-        `${target} — this is OmniRoute's request queue ` +
+        `${target} — this is Xenia's request queue ` +
         `(resilienceSettings.requestQueue.maxWaitMs), not an upstream timeout. Raise it in ` +
         `Settings → Resilience if this is queue saturation rather than a slow provider.`;
   const queueErr = new Error(message, cause === undefined ? undefined : { cause }) as Error & {
@@ -783,13 +783,13 @@ export async function withRateLimit(provider, connectionId, model, fn, signal = 
     }
     // The watchdog's stop({ dropWaitingJobs: true }) wedge-recovery (above) rejects
     // queued jobs with this exact message. Rewrite it the same way as the timeout
-    // case — a clear, OmniRoute-owned, classifiable error — so combo's transient-error
+    // case — a clear, Xenia-owned, classifiable error — so combo's transient-error
     // handling (which already treats a 502 as retryable) falls back to the next target
     // immediately instead of surfacing Bottleneck's internal wording.
     if (err?.message === "rate-limit-watchdog-wedge-reset") {
       const wedgeErr = new Error(
         `Request dropped: the local rate-limit queue for ${model ? `${provider}/${model}` : provider} ` +
-          `was detected as wedged (stalled with nothing executing) and force-reset. This is OmniRoute's ` +
+          `was detected as wedged (stalled with nothing executing) and force-reset. This is Xenia's ` +
           `own queue recovering, not an upstream error.`,
         { cause: err }
       ) as Error & { code?: string };

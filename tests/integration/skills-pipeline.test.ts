@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { OMNIROUTE_WEB_SEARCH_FALLBACK_TOOL_NAME } from "../../open-sse/services/webSearchFallback.ts";
+import { XENIA_WEB_SEARCH_FALLBACK_TOOL_NAME } from "../../open-sse/services/webSearchFallback.ts";
 
 import { createChatPipelineHarness } from "./_chatPipelineHarness.ts";
 
@@ -799,9 +799,9 @@ test("web_search fallback converts built-in tools for unsupported providers and 
         JSON.stringify({
           organic: [
             {
-              title: "OmniRoute Search Result",
-              link: "https://example.com/omniroute",
-              snippet: "Fresh OmniRoute web search fallback result",
+              title: "Xenia Search Result",
+              link: "https://example.com/xenia",
+              snippet: "Fresh Xenia web search fallback result",
             },
           ],
         }),
@@ -811,10 +811,10 @@ test("web_search fallback converts built-in tools for unsupported providers and 
 
     upstreamBodies.push(body);
     return buildOpenAIToolCallResponse({
-      toolName: OMNIROUTE_WEB_SEARCH_FALLBACK_TOOL_NAME,
+      toolName: XENIA_WEB_SEARCH_FALLBACK_TOOL_NAME,
       toolCallId: "call_web_search",
       argumentsObject: {
-        query: "latest omniroute release notes",
+        query: "latest xenia release notes",
         max_results: 3,
       },
     });
@@ -826,9 +826,7 @@ test("web_search fallback converts built-in tools for unsupported providers and 
       body: {
         model: "openai/gpt-4o-mini",
         stream: false,
-        messages: [
-          { role: "user", content: "Search the web for the latest OmniRoute release notes" },
-        ],
+        messages: [{ role: "user", content: "Search the web for the latest Xenia release notes" }],
         tools: [{ type: "web_search", search_context_size: "medium" }],
       },
     })
@@ -838,14 +836,14 @@ test("web_search fallback converts built-in tools for unsupported providers and 
   assert.equal(response.status, 200);
   assert.equal(upstreamBodies.length, 1);
   assert.equal(upstreamBodies[0].tools[0].type, "function");
-  assert.equal(upstreamBodies[0].tools[0].function.name, OMNIROUTE_WEB_SEARCH_FALLBACK_TOOL_NAME);
+  assert.equal(upstreamBodies[0].tools[0].function.name, XENIA_WEB_SEARCH_FALLBACK_TOOL_NAME);
   assert.equal(searchCalls.length, 1);
   assert.equal(json.choices[0].finish_reason, "tool_calls");
   assert.equal(json.tool_results[0].tool_call_id, "call_web_search");
   const output = JSON.parse(json.tool_results[0].output);
   assert.equal(output.success, true);
   assert.equal(output.provider, "serper-search");
-  assert.equal(output.results[0].title, "OmniRoute Search Result");
+  assert.equal(output.results[0].title, "Xenia Search Result");
 });
 
 test("web_search fallback preserves Responses API output by appending function_call_output", async () => {
@@ -871,10 +869,10 @@ test("web_search fallback preserves Responses API output by appending function_c
     }
 
     return buildOpenAIToolCallResponse({
-      toolName: OMNIROUTE_WEB_SEARCH_FALLBACK_TOOL_NAME,
+      toolName: XENIA_WEB_SEARCH_FALLBACK_TOOL_NAME,
       toolCallId: "call_responses_web_search",
       argumentsObject: {
-        query: "latest omniroute roadmap",
+        query: "latest xenia roadmap",
       },
     });
   };
@@ -890,9 +888,7 @@ test("web_search fallback preserves Responses API output by appending function_c
           {
             type: "message",
             role: "user",
-            content: [
-              { type: "input_text", text: "Search the web for the latest OmniRoute roadmap" },
-            ],
+            content: [{ type: "input_text", text: "Search the web for the latest Xenia roadmap" }],
           },
         ],
         tools: [{ type: "web_search_preview", search_context_size: "low" }],
@@ -906,7 +902,7 @@ test("web_search fallback preserves Responses API output by appending function_c
   assert.equal(response.status, 200);
   assert.ok(functionCall, "should include the original function_call item");
   assert.ok(functionCallOutput, "should append function_call_output");
-  assert.equal(functionCall.name, OMNIROUTE_WEB_SEARCH_FALLBACK_TOOL_NAME);
+  assert.equal(functionCall.name, XENIA_WEB_SEARCH_FALLBACK_TOOL_NAME);
   assert.equal(functionCallOutput.call_id, "call_responses_web_search");
   const output =
     typeof functionCallOutput.output === "string"

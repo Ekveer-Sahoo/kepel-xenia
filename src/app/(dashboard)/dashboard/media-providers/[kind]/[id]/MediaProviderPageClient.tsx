@@ -117,7 +117,7 @@ export default function MediaProviderPageClient({
     <div className="flex flex-col gap-6">
       {activeKind === "stt" && providerId === "openrouter" && (
         <div className="text-xs text-text-muted border border-border rounded-lg p-3 flex items-start gap-2">
-          <span className="material-symbols-outlined text-[16px] text-blue-500 mt-0.5">info</span>
+          <span className="material-symbols-outlined text-[16px] text-gray-500 mt-0.5">info</span>
           <span>
             <strong>Existing connection:</strong> OpenRouter speech-to-text models use your
             configured OpenRouter connection. No separate credential is required.
@@ -177,9 +177,9 @@ export default function MediaProviderPageClient({
                 <span
                   className={`size-2 rounded-full shrink-0 ${
                     conn.testStatus === "active" || conn.testStatus === "success"
-                      ? "bg-green-500"
+                      ? "bg-gray-500"
                       : conn.testStatus === "error" || conn.testStatus === "unavailable"
-                        ? "bg-red-500"
+                        ? "bg-gray-500"
                         : "bg-text-muted"
                   }`}
                 />

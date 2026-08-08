@@ -12,9 +12,9 @@ interface BadgeUnlockEvent {
 
 const RARITY_COLORS: Record<string, string> = {
   common: "border-gray-500 bg-gray-800",
-  uncommon: "border-green-500 bg-green-900/30",
-  rare: "border-blue-500 bg-blue-900/30",
-  legendary: "border-yellow-500 bg-yellow-900/30",
+  uncommon: "border-gray-500 bg-gray-900/30",
+  rare: "border-gray-500 bg-gray-900/30",
+  legendary: "border-gray-500 bg-gray-900/30",
 };
 
 const RECONNECT_BASE_MS = 1000;

@@ -1,7 +1,7 @@
 import { logToolCall } from "../audit.ts";
 import { getMcpHttpAuthHeadersForInternalFetch } from "../httpAuthContext.ts";
 import { normalizeQuotaResponse } from "../../../src/shared/contracts/quota.ts";
-import { resolveOmniRouteBaseUrl } from "../../../src/shared/utils/resolveOmniRouteBaseUrl.ts";
+import { resolveXeniaBaseUrl } from "../../../src/shared/utils/resolveXeniaBaseUrl.ts";
 import {
   getComboModelProvider,
   getComboModelString,
@@ -11,14 +11,14 @@ import type { AutoRoutingStrategyValue } from "../../../src/shared/constants/rou
 import { rankBySpeed, DEFAULT_SPEED_WEIGHTS } from "../../services/autoCombo/speedRanking.ts";
 import type { SpeedCandidate } from "../../services/autoCombo/speedRanking.ts";
 
-const OMNIROUTE_BASE_URL = resolveOmniRouteBaseUrl();
-const OMNIROUTE_API_KEY = process.env.OMNIROUTE_API_KEY || "";
+const XENIA_BASE_URL = resolveXeniaBaseUrl();
+const XENIA_API_KEY = process.env.XENIA_API_KEY || "";
 
 async function apiFetch(path: string, options: RequestInit = {}): Promise<unknown> {
-  const url = `${OMNIROUTE_BASE_URL}${path}`;
+  const url = `${XENIA_BASE_URL}${path}`;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    ...(OMNIROUTE_API_KEY ? { Authorization: `Bearer ${OMNIROUTE_API_KEY}` } : {}),
+    ...(XENIA_API_KEY ? { Authorization: `Bearer ${XENIA_API_KEY}` } : {}),
     ...getMcpHttpAuthHeadersForInternalFetch(),
     ...((options.headers as Record<string, string>) || {}),
   };
@@ -31,7 +31,11 @@ async function apiFetch(path: string, options: RequestInit = {}): Promise<unknow
 }
 
 type JsonRecord = Record<string, unknown>;
-interface ComboModel { provider: string; model: string; inputCostPer1M: number; }
+interface ComboModel {
+  provider: string;
+  model: string;
+  inputCostPer1M: number;
+}
 interface PickFastestModelArgs {
   comboId?: string;
   /** When true, OPEN-circuit candidates are still scored (sorted to the bottom). */
@@ -59,12 +63,25 @@ interface TelemetrySources {
   analyticsTop: JsonRecord;
 }
 
-function isRecord(value: unknown): value is JsonRecord { return !!value && typeof value === "object" && !Array.isArray(value); }
-function toRecord(value: unknown): JsonRecord { return isRecord(value) ? value : {}; }
-function toArrayOfRecords(value: unknown): JsonRecord[] { return Array.isArray(value) ? value.filter(isRecord) : []; }
-function toString(value: unknown, fallback = ""): string { return typeof value === "string" ? value : fallback; }
+function isRecord(value: unknown): value is JsonRecord {
+  return !!value && typeof value === "object" && !Array.isArray(value);
+}
+function toRecord(value: unknown): JsonRecord {
+  return isRecord(value) ? value : {};
+}
+function toArrayOfRecords(value: unknown): JsonRecord[] {
+  return Array.isArray(value) ? value.filter(isRecord) : [];
+}
+function toString(value: unknown, fallback = ""): string {
+  return typeof value === "string" ? value : fallback;
+}
 function toNumber(value: unknown, fallback = 0): number {
-  const parsed = typeof value === "number" ? value : typeof value === "string" && value.trim().length > 0 ? Number(value) : Number.NaN;
+  const parsed =
+    typeof value === "number"
+      ? value
+      : typeof value === "string" && value.trim().length > 0
+        ? Number(value)
+        : Number.NaN;
   return Number.isFinite(parsed) ? parsed : fallback;
 }
 function getComboModels(combo: JsonRecord): ComboModel[] {
@@ -123,7 +140,9 @@ function providerAnalytics(sources: TelemetrySources, provider: string) {
   const perProvider = toRecord(sources.analyticsByProvider[provider]);
   return perProvider.requests
     ? perProvider
-    : toRecord(sources.analyticsTop.byProvider && toRecord(sources.analyticsTop.byProvider)[provider]);
+    : toRecord(
+        sources.analyticsTop.byProvider && toRecord(sources.analyticsTop.byProvider)[provider]
+      );
 }
 
 function buildCandidate(model: ComboModel, sources: TelemetrySources): SpeedCandidate {
@@ -145,15 +164,19 @@ function buildCandidate(model: ComboModel, sources: TelemetrySources): SpeedCand
     latencyStdDev: toNumber(analytics.latencyStdDev, NaN),
     errorRate: Number.isFinite(errorRate) ? errorRate : 0,
     failureRate: Number.isFinite(errorRate) ? errorRate : 0,
-    quotaRemaining: q?.quotaUsed != null && q?.quotaTotal
-      ? Math.max(0, 100 - q.quotaUsed / q.quotaTotal * 100)
-      : 100,
+    quotaRemaining:
+      q?.quotaUsed != null && q?.quotaTotal
+        ? Math.max(0, 100 - (q.quotaUsed / q.quotaTotal) * 100)
+        : 100,
     quotaTotal: q?.quotaTotal ?? 100,
     costPer1MTokens: model.inputCostPer1M ?? 0,
   };
 }
 
-function buildSpeedCandidates(scopedCombos: JsonRecord[], sources: TelemetrySources): SpeedCandidate[] {
+function buildSpeedCandidates(
+  scopedCombos: JsonRecord[],
+  sources: TelemetrySources
+): SpeedCandidate[] {
   const speedCandidates: SpeedCandidate[] = [];
   for (const combo of scopedCombos) {
     for (const model of getComboModels(combo)) {
@@ -179,11 +202,15 @@ function dedupeCandidates(candidates: SpeedCandidate[]): SpeedCandidate[] {
   return [...deduped.values()];
 }
 
-async function applyWinnerToCombo(targetCombo: JsonRecord, winner: { provider: string; model: string }) {
+async function applyWinnerToCombo(
+  targetCombo: JsonRecord,
+  winner: { provider: string; model: string }
+) {
   const comboId = toString(targetCombo.id);
   const comboData = toRecord(targetCombo.data);
   const baseConfig = toRecord(targetCombo.config);
-  const currentConfig = Object.keys(baseConfig).length > 0 ? baseConfig : toRecord(comboData.config);
+  const currentConfig =
+    Object.keys(baseConfig).length > 0 ? baseConfig : toRecord(comboData.config);
   const nextConfig = {
     ...currentConfig,
     auto: {
@@ -238,7 +265,9 @@ export async function handlePickFastestModel(args: PickFastestModelArgs) {
       return noCandidatesResult("No provider×model candidates available to rank");
     }
 
-    const weights = args.weights ? { ...DEFAULT_SPEED_WEIGHTS, ...args.weights } : DEFAULT_SPEED_WEIGHTS;
+    const weights = args.weights
+      ? { ...DEFAULT_SPEED_WEIGHTS, ...args.weights }
+      : DEFAULT_SPEED_WEIGHTS;
     const ranked = rankBySpeed(finalCandidates, weights, {
       includeUnhealthy: args.includeUnhealthy === true,
     });
@@ -276,18 +305,11 @@ export async function handlePickFastestModel(args: PickFastestModelArgs) {
       appliedToCombo,
     };
 
-    await logToolCall("omniroute_pick_fastest_model", args, result, Date.now() - start, true);
+    await logToolCall("xenia_pick_fastest_model", args, result, Date.now() - start, true);
     return { content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }] };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    await logToolCall(
-      "omniroute_pick_fastest_model",
-      args,
-      null,
-      Date.now() - start,
-      false,
-      msg
-    );
+    await logToolCall("xenia_pick_fastest_model", args, null, Date.now() - start, false, msg);
     return { content: [{ type: "text" as const, text: `Error: ${msg}` }], isError: true };
   }
 }

@@ -179,7 +179,7 @@ export default function AgentsPage() {
             <div className="text-xs text-text-muted mt-1">{t("builtIn")}</div>
           </div>
           <div className="rounded-xl border border-border/50 bg-card p-4 text-center">
-            <div className="text-2xl font-bold text-amber-500">{summary.custom}</div>
+            <div className="text-2xl font-bold text-gray-500">{summary.custom}</div>
             <div className="text-xs text-text-muted mt-1">{t("custom")}</div>
           </div>
         </div>
@@ -189,7 +189,7 @@ export default function AgentsPage() {
       <Card>
         <div className="flex items-center justify-between gap-3 mb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
                 support
               </span>
@@ -206,23 +206,21 @@ export default function AgentsPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <div className="rounded-lg border border-border/50 bg-black/[0.02] dark:bg-white/[0.02] p-3">
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="material-symbols-outlined text-[16px] text-blue-500">radar</span>
+              <span className="material-symbols-outlined text-[16px] text-gray-500">radar</span>
               <p className="text-sm font-medium">{t("setupGuideDetectCliTitle")}</p>
             </div>
             <p className="text-xs text-text-muted">{t("setupGuideDetectCliDesc")}</p>
           </div>
           <div className="rounded-lg border border-border/50 bg-black/[0.02] dark:bg-white/[0.02] p-3">
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="material-symbols-outlined text-[16px] text-amber-500">build</span>
+              <span className="material-symbols-outlined text-[16px] text-gray-500">build</span>
               <p className="text-sm font-medium">{t("setupGuideCustomAgentTitle")}</p>
             </div>
             <p className="text-xs text-text-muted">{t("setupGuideCustomAgentDesc")}</p>
           </div>
           <div className="rounded-lg border border-border/50 bg-black/[0.02] dark:bg-white/[0.02] p-3">
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="material-symbols-outlined text-[16px] text-emerald-500">
-                terminal
-              </span>
+              <span className="material-symbols-outlined text-[16px] text-gray-500">terminal</span>
               <p className="text-sm font-medium">{t("setupGuideCommandMissingTitle")}</p>
             </div>
             <p className="text-xs text-text-muted">{t("setupGuideCommandMissingDesc")}</p>
@@ -248,7 +246,7 @@ export default function AgentsPage() {
                 <div
                   className={`p-2 rounded-lg ${
                     agent.installed
-                      ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                      ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
                       : "bg-zinc-500/10 text-zinc-400"
                   }`}
                 >
@@ -264,7 +262,7 @@ export default function AgentsPage() {
                   <div className="font-semibold text-sm flex items-center gap-1.5">
                     {agent.name}
                     {agent.isCustom && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-medium">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400 font-medium">
                         {t("custom")}
                       </span>
                     )}
@@ -274,7 +272,7 @@ export default function AgentsPage() {
               </div>
               <div className="flex items-center gap-1">
                 {agent.installed ? (
-                  <span className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium">
+                  <span className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-gray-500/10 text-gray-600 dark:text-gray-400 font-medium">
                     <span className="material-symbols-outlined text-[12px]">check_circle</span>
                     {agent.version || t("installed")}
                   </span>
@@ -288,7 +286,7 @@ export default function AgentsPage() {
             </div>
             <div className="flex items-center justify-between mt-3 pt-3 border-t border-border/30">
               <div>
-                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-500 font-mono">
+                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-gray-500/10 text-gray-500 font-mono">
                   {agent.protocol}
                 </span>
                 {agent.installed && (
@@ -298,7 +296,7 @@ export default function AgentsPage() {
               {agent.isCustom && (
                 <button
                   onClick={() => handleRemoveAgent(agent.id)}
-                  className="text-xs text-red-500 hover:text-red-400 transition-colors flex items-center gap-0.5"
+                  className="text-xs text-gray-500 hover:text-gray-400 transition-colors flex items-center gap-0.5"
                   title={t("remove")}
                 >
                   <span className="material-symbols-outlined text-[14px]">delete</span>
@@ -314,7 +312,7 @@ export default function AgentsPage() {
       <Card>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-600 dark:text-gray-400">
               <span className="material-symbols-outlined text-[20px]">add_circle</span>
             </div>
             <div>

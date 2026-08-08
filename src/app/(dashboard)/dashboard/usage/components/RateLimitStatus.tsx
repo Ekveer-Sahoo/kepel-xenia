@@ -38,7 +38,7 @@ export default function RateLimitStatus() {
       {/* {t("modelLockouts")} */}
       <Card>
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 rounded-lg bg-orange-500/10 text-orange-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               lock_clock
             </span>
@@ -48,7 +48,7 @@ export default function RateLimitStatus() {
             <p className="text-sm text-text-muted">{t("lockoutsAutoRefreshHint")}</p>
           </div>
           {data.lockouts.length > 0 && (
-            <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-400 border border-orange-500/20">
+            <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-500/10 text-gray-400 border border-gray-500/20">
               {t("lockedCount", { count: data.lockouts.length })}
             </span>
           )}
@@ -70,11 +70,11 @@ export default function RateLimitStatus() {
               <div
                 key={i}
                 className="flex items-center justify-between px-3 py-2.5 rounded-lg
-                           bg-orange-500/5 border border-orange-500/15"
+                           bg-gray-500/5 border border-gray-500/15"
               >
                 <div className="flex items-center gap-3">
                   <span
-                    className="material-symbols-outlined text-[16px] text-orange-400"
+                    className="material-symbols-outlined text-[16px] text-gray-400"
                     aria-hidden="true"
                   >
                     lock
@@ -95,7 +95,7 @@ export default function RateLimitStatus() {
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-mono tabular-nums text-orange-400">
+                <span className="text-xs font-mono tabular-nums text-gray-400">
                   {t("timeLeft", { time: formatMs(lock.remainingMs) })}
                 </span>
               </div>

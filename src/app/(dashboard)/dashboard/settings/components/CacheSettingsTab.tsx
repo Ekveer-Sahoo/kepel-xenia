@@ -34,7 +34,8 @@ export default function CacheSettingsTab() {
       .then((config) => {
         if (!active) return;
         const ms = config.modelCatalogCacheTtlMs ?? DEFAULT_TTL_MS;
-        const str = typeof ms === "number" && Number.isFinite(ms) ? String(ms) : String(DEFAULT_TTL_MS);
+        const str =
+          typeof ms === "number" && Number.isFinite(ms) ? String(ms) : String(DEFAULT_TTL_MS);
         setValue(str);
         setSavedValue(str);
       })
@@ -138,13 +139,13 @@ export default function CacheSettingsTab() {
             </span>
           )}
         </div>
-        {validationError && <p className="text-xs text-red-500">{validationError}</p>}
+        {validationError && <p className="text-xs text-gray-500">{validationError}</p>}
         {message && (
           <p
             className={`text-xs ${
               message.type === "success"
-                ? "text-green-600 dark:text-green-400"
-                : "text-red-600 dark:text-red-400"
+                ? "text-gray-600 dark:text-gray-400"
+                : "text-gray-600 dark:text-gray-400"
             }`}
           >
             {message.text}

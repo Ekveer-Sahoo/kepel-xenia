@@ -20,7 +20,7 @@ import path from "node:path";
 // (the function combo.ts calls) picks it up.
 
 const TEST_DATA_DIR = fs.mkdtempSync(
-  path.join(os.tmpdir(), "omniroute-provider-model-context-override-4125-")
+  path.join(os.tmpdir(), "xenia-provider-model-context-override-4125-")
 );
 process.env.DATA_DIR = TEST_DATA_DIR;
 
@@ -103,7 +103,11 @@ test("GET surfaces contextWindowOverride on the custom model row", async () => {
     new Request("http://localhost/api/provider-models?provider=openai-compatible-demo")
   );
   const body = (await getRes.json()) as {
-    models: Array<{ id?: string; contextWindowOverride?: number; contextWindowOverrideSource?: string }>;
+    models: Array<{
+      id?: string;
+      contextWindowOverride?: number;
+      contextWindowOverrideSource?: string;
+    }>;
   };
 
   const row = body.models.find((m) => m.id === "m1");

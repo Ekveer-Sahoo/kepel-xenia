@@ -91,7 +91,7 @@ export default function MemoryCards({
         data-testid="memory-cards"
         className="flex flex-col items-center gap-3 p-6 rounded-xl bg-surface-raised border border-border/40 text-center transition-opacity duration-200"
       >
-        <span className="material-symbols-outlined text-3xl text-red-400" aria-hidden="true">
+        <span className="material-symbols-outlined text-3xl text-gray-400" aria-hidden="true">
           error_outline
         </span>
         <p className="text-sm text-text-muted">{error}</p>
@@ -124,14 +124,14 @@ export default function MemoryCards({
         label={t("cacheHits")}
         value={hits}
         sub={hitRate ?? ""}
-        valueClass="text-green-500"
+        valueClass="text-gray-500"
       />
       <StatCard
         icon="token"
         label={t("tokensSaved")}
         value={tokensSaved}
         sub={t("tokensSavedSub")}
-        valueClass="text-blue-400"
+        valueClass="text-gray-400"
       />
     </div>
   );

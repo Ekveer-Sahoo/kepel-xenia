@@ -37,7 +37,7 @@ export default function CliproxyapiSettingsTab() {
   const [message, setMessage] = useState<{ type: string; text: string } | null>(null);
   const [toolState, setToolState] = useState<VersionManagerEntry | null>(null);
   const [toolStateError, setToolStateError] = useState<string | null>(null);
-  // #1934: import CLIProxyAPI auth files (~/.cli-proxy-api/) as OmniRoute connections.
+  // #1934: import CLIProxyAPI auth files (~/.cli-proxy-api/) as Xenia connections.
   const [importing, setImporting] = useState(false);
   const [importResult, setImportResult] = useState<string | null>(null);
 
@@ -130,9 +130,9 @@ export default function CliproxyapiSettingsTab() {
 
   const statusColor =
     toolState?.status === "running"
-      ? "text-green-600 dark:text-green-400"
+      ? "text-gray-600 dark:text-gray-400"
       : toolState?.status === "error"
-        ? "text-red-600 dark:text-red-400"
+        ? "text-gray-600 dark:text-gray-400"
         : "text-text-muted";
 
   const statusIcon =
@@ -145,7 +145,7 @@ export default function CliproxyapiSettingsTab() {
   return (
     <div className="space-y-4">
       {/* Migration banner — new lifecycle management lives in the Services page */}
-      <div className="flex items-start gap-2 px-3 py-2.5 rounded-lg bg-blue-500/10 text-blue-700 dark:text-blue-300 text-xs">
+      <div className="flex items-start gap-2 px-3 py-2.5 rounded-lg bg-gray-500/10 text-gray-700 dark:text-gray-300 text-xs">
         <span className="material-symbols-outlined text-[14px] mt-0.5 shrink-0">info</span>
         <span>
           CLIProxyAPI lifecycle management (install, start, stop) has moved to{" "}
@@ -163,8 +163,8 @@ export default function CliproxyapiSettingsTab() {
         <div
           className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs ${
             message.type === "success"
-              ? "bg-green-500/10 text-green-600 dark:text-green-400"
-              : "bg-red-500/10 text-red-600 dark:text-red-400"
+              ? "bg-gray-500/10 text-gray-600 dark:text-gray-400"
+              : "bg-gray-500/10 text-gray-600 dark:text-gray-400"
           }`}
         >
           <span className="material-symbols-outlined text-[14px]">
@@ -176,8 +176,8 @@ export default function CliproxyapiSettingsTab() {
 
       <Card padding="md">
         <div className="flex items-center gap-3 mb-4">
-          <div className="size-8 rounded-lg flex items-center justify-center bg-indigo-500/10">
-            <span className="material-symbols-outlined text-indigo-500 text-xl">swap_horiz</span>
+          <div className="size-8 rounded-lg flex items-center justify-center bg-gray-500/10">
+            <span className="material-symbols-outlined text-gray-500 text-xl">swap_horiz</span>
           </div>
           <div>
             <h3 className="font-medium text-sm">{t("cliproxyapiFallback")}</h3>
@@ -261,9 +261,9 @@ export default function CliproxyapiSettingsTab() {
               <p
                 className={`text-sm font-medium ${
                   toolState.healthStatus === "healthy"
-                    ? "text-green-600 dark:text-green-400"
+                    ? "text-gray-600 dark:text-gray-400"
                     : toolState.healthStatus === "unhealthy"
-                      ? "text-red-600 dark:text-red-400"
+                      ? "text-gray-600 dark:text-gray-400"
                       : "text-text-muted"
                 }`}
               >

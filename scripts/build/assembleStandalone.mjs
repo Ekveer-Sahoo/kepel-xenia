@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * assembleStandalone.mjs - Shared standalone bundle assembler for OmniRoute.
+ * assembleStandalone.mjs - Shared standalone bundle assembler for Xenia.
  *
  * Task 0.1 Inventory: Copy/sync operations across the three build scripts
  * -----------------------------------------------------------------------
@@ -34,7 +34,7 @@
  * --- npm-UNIQUE ---
  * MITM tsc compile -> app/src/mitm/                           -               Y           -    UNIQUE (prepublish)
  * MCP server esbuild -> dist/open-sse/mcp-server/server.js    -               Y           -    UNIQUE (prepublish)
- * CLI esbuild -> bin/omniroute.mjs                            -               Y           -    UNIQUE (prepublish)
+ * CLI esbuild -> bin/xenia.mjs                            -               Y           -    UNIQUE (prepublish)
  * sidecar/doc copies (.env.example, docs/, sync-env, etc.)    -               Y           -    UNIQUE (prepublish)
  * prune + validate (pack-artifact-policy)                      -               Y           -    UNIQUE (prepublish)
  * data/ dir creation                                           -               Y           -    UNIQUE (prepublish)
@@ -48,10 +48,7 @@
 import fs from "node:fs/promises";
 import fsSync from "node:fs";
 import path from "node:path";
-import {
-  colocateLlmlinguaOptionals,
-  SEED_PACKAGES,
-} from "./colocateOptionals.mjs";
+import { colocateLlmlinguaOptionals, SEED_PACKAGES } from "./colocateOptionals.mjs";
 
 /**
  * Check whether a path exists (async).
@@ -232,7 +229,7 @@ const EXTRA_MODULE_ENTRIES = [
     // resolved at module-link time. Next.js's standalone output-file tracer (nft)
     // sometimes emits a hollow dist/node_modules/undici/ (package.json only), which
     // SHADOWS the fully-populated sibling node_modules/undici and crashes
-    // `omniroute --mcp` at startup. See #7701.
+    // `xenia --mcp` at startup. See #7701.
     label: "undici (MCP server static import — #7701)",
     src: ["node_modules", "undici"],
     dest: ["node_modules", "undici"],
@@ -750,8 +747,7 @@ export function assembleStandalone({
       rootDir: projectRoot,
       targetNodeModulesDir: path.join(resolvedOutDir, "node_modules"),
       seeds: [...SEED_PACKAGES, "@huggingface/transformers"],
-      log: (message) =>
-        console.log(`[assembleStandalone] ${message.trim()}`),
+      log: (message) => console.log(`[assembleStandalone] ${message.trim()}`),
     });
   }
 

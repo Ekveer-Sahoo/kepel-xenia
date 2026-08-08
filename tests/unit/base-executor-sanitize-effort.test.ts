@@ -564,7 +564,7 @@ test("sanitizeReasoningEffortForProvider: NVIDIA GLM-5.2 mapping is narrowly sco
 
 // ── Native DeepSeek (api.deepseek.com) ───────────────────────────────────────
 // DeepSeek V4 thinking mode accepts reasoning_effort ONLY as {high, max}. The
-// internal OmniRoute scale (low|medium|high|xhigh, xhigh = top) must be mapped
+// internal Xenia scale (low|medium|high|xhigh, xhigh = top) must be mapped
 // onto DeepSeek's native vocabulary so the client's requested effort is honored
 // instead of silently dropped to the default. This is the INVERSE of the
 // OpenRouter-DeepSeek path, whose normalized API expects xhigh, not max.

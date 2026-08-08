@@ -1,1 +1,1 @@
-- **feat(db):** add provider-scoped model aliases that survive rediscovery ([#9068](https://github.com/diegosouzapw/OmniRoute/issues/9068))
+- **feat(db):** add provider-scoped model aliases that survive rediscovery ([#9068](https://github.com/diegosouzapw/Xenia/issues/9068))

@@ -3,8 +3,8 @@
 // The CCR ("Content-Compression-Retrieve") engine can replace an ENTIRE
 // single-message user prompt with nothing but a bare
 // `[CCR retrieve hash=... chars=N]` marker. The MCP tool that could expand
-// that marker (`omniroute_ccr_retrieve`) is only ever exposed through
-// OmniRoute's own MCP server — never injected into the `tools` array of a
+// that marker (`xenia_ccr_retrieve`) is only ever exposed through
+// Xenia's own MCP server — never injected into the `tools` array of a
 // plain /v1/chat/completions OpenAI-compatible request. So for non-MCP
 // clients (OpenCode, Claude Code in "openai-compatible" mode, or any generic
 // proxy client), once a large first-turn prompt is compressed, the original
@@ -54,7 +54,10 @@ describe("issue #7746 — CCR must not reduce the sole user prompt to a bare, un
   });
 
   it("prompt fixture is realistically sized (>= default 600-char minChars)", () => {
-    assert.ok(REPORTER_PROMPT.length >= 600, `fixture must be >= 600 chars, got ${REPORTER_PROMPT.length}`);
+    assert.ok(
+      REPORTER_PROMPT.length >= 600,
+      `fixture must be >= 600 chars, got ${REPORTER_PROMPT.length}`
+    );
   });
 
   it("does not leave the model with only the bare CCR marker when no retrieve tool is available", () => {
@@ -62,11 +65,17 @@ describe("issue #7746 — CCR must not reduce the sole user prompt to a bare, un
     const body = makeOpenCodeStyleRequestBody();
     const result = ccrEngine.apply(body as Record<string, unknown>, { stepConfig: {} });
 
-    assert.equal(result.compressed, true, "CCR compressed the sole user message (reproducing the report)");
+    assert.equal(
+      result.compressed,
+      true,
+      "CCR compressed the sole user message (reproducing the report)"
+    );
 
     const messages = result.body.messages as Array<{ role: string; content: string }>;
     const compressedContent = messages[0].content;
-    const isBareMarkerOnly = /^\[CCR retrieve hash=[0-9a-f]{24} chars=\d+\]$/.test(compressedContent);
+    const isBareMarkerOnly = /^\[CCR retrieve hash=[0-9a-f]{24} chars=\d+\]$/.test(
+      compressedContent
+    );
 
     assert.equal(
       isBareMarkerOnly,
@@ -87,6 +96,10 @@ describe("issue #7746 — CCR must not reduce the sole user prompt to a bare, un
     const match = compressedContent.match(/\[CCR retrieve hash=([0-9a-f]{24}) chars=\d+\]/);
     assert.ok(match, "compressed content must still contain a resolvable CCR marker");
     const hash = match![1];
-    assert.equal(retrieveBlock(hash), REPORTER_PROMPT, "original prompt must be stored verbatim and retrievable");
+    assert.equal(
+      retrieveBlock(hash),
+      REPORTER_PROMPT,
+      "original prompt must be stored verbatim and retrievable"
+    );
   });
 });

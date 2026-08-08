@@ -9,8 +9,8 @@ const MODES: CompatMode[] = ["off", "auto", "always"];
 
 const MODE_STYLES: Record<CompatMode, string> = {
   off: "bg-black/5 dark:bg-white/5 text-text-muted border-border",
-  auto: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/40",
-  always: "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/40",
+  auto: "bg-gray-500/10 text-gray-600 dark:text-gray-400 border-gray-500/40",
+  always: "bg-gray-500/10 text-gray-600 dark:text-gray-400 border-gray-500/40",
 };
 
 function isCompatMode(value: unknown): value is CompatMode {
@@ -95,7 +95,7 @@ export default function ClaudeClassifierCompatToggle() {
           {t(`classifierCompatMode.${mode}`)}
         </button>
       </div>
-      {error ? <p className="mt-2 text-xs text-red-500">{error}</p> : null}
+      {error ? <p className="mt-2 text-xs text-gray-500">{error}</p> : null}
     </div>
   );
 }

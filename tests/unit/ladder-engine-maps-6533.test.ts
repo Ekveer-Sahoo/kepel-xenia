@@ -9,9 +9,9 @@ import assert from "node:assert/strict";
 import {
   aggressivenessOf,
   expectedReductionFactor,
-} from "@omniroute/open-sse/services/compression/adaptiveCompression/ladder.ts";
-import { registerBuiltinCompressionEngines } from "@omniroute/open-sse/services/compression/engines/index.ts";
-import { listCompressionEngines } from "@omniroute/open-sse/services/compression/engines/registry.ts";
+} from "@xenia/open-sse/services/compression/adaptiveCompression/ladder.ts";
+import { registerBuiltinCompressionEngines } from "@xenia/open-sse/services/compression/engines/index.ts";
+import { listCompressionEngines } from "@xenia/open-sse/services/compression/engines/registry.ts";
 
 registerBuiltinCompressionEngines();
 
@@ -45,7 +45,10 @@ test("aggressivenessOf ranks are internally consistent with described engine sev
   // Structural/reversible engines (session-dedup, ccr) must rank below the prose-rewriting
   // tier (caveman/aggressive/ultra).
   assert.ok(aggressivenessOf("ccr") < aggressivenessOf("caveman"));
-  assert.ok(aggressivenessOf("session-dedup") < aggressivenessOf("ccr") || aggressivenessOf("session-dedup") <= aggressivenessOf("ccr"));
+  assert.ok(
+    aggressivenessOf("session-dedup") < aggressivenessOf("ccr") ||
+      aggressivenessOf("session-dedup") <= aggressivenessOf("ccr")
+  );
   // Semantic-pruning engines (llmlingua, llm) must rank at/above "aggressive" and below/at "ultra".
   assert.ok(aggressivenessOf("llmlingua") >= aggressivenessOf("aggressive"));
   assert.ok(aggressivenessOf("llmlingua") <= aggressivenessOf("ultra"));

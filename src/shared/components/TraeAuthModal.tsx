@@ -212,12 +212,12 @@ export default function TraeAuthModal({
     <Modal isOpen={isOpen} title="Connect Trae SOLO" onClose={onClose}>
       <div className="flex flex-col gap-4">
         {/* Primary path: browser-based OAuth via trae.ai/authorization */}
-        <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg border border-emerald-200 dark:border-emerald-800">
-          <p className="text-sm text-emerald-900 dark:text-emerald-200 mb-2">
+        <div className="bg-gray-50 dark:bg-gray-900/20 p-4 rounded-lg border border-gray-200 dark:border-gray-800">
+          <p className="text-sm text-gray-900 dark:text-gray-200 mb-2">
             Authorize via <span className="font-mono">trae.ai</span> in a popup. The popup will
             close itself once the token has been imported.
           </p>
-          <p className="text-xs text-emerald-800 dark:text-emerald-300 mb-3">
+          <p className="text-xs text-gray-800 dark:text-gray-300 mb-3">
             <strong>Important:</strong> you must be logged in to{" "}
             <span className="font-mono">trae.ai</span> in <em>this</em> browser first. The authorize
             page only confirms an existing session — it cannot sign you in. If you see &quot;Login
@@ -243,8 +243,8 @@ export default function TraeAuthModal({
           <span className="flex-1 border-t border-border" />
         </div>
 
-        <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800">
-          <p className="text-sm text-blue-800 dark:text-blue-200">
+        <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
+          <p className="text-sm text-gray-800 dark:text-gray-200">
             Sign in to <span className="font-mono">solo.trae.ai</span>, open DevTools → Network,
             send any chat message, and copy the JWT from the{" "}
             <span className="font-mono">Authorization: Cloud-IDE-JWT &lt;token&gt;</span> request
@@ -255,7 +255,7 @@ export default function TraeAuthModal({
 
         <div>
           <label className="block text-sm font-medium mb-2">
-            Access Token (Cloud-IDE-JWT) <span className="text-red-500">*</span>
+            Access Token (Cloud-IDE-JWT) <span className="text-gray-500">*</span>
           </label>
           <textarea
             value={accessToken}
@@ -315,8 +315,8 @@ export default function TraeAuthModal({
         </div>
 
         {error && (
-          <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-200 dark:border-red-800">
-            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+          <div className="bg-gray-50 dark:bg-gray-900/20 p-3 rounded-lg border border-gray-200 dark:border-gray-800">
+            <p className="text-sm text-gray-600 dark:text-gray-400">{error}</p>
           </div>
         )}
 

@@ -8,7 +8,7 @@ import { after, it } from "node:test";
 
 const OPENCODE_VERSION = "1.18.8";
 const require = createRequire(import.meta.url);
-const testHome = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-opencode-8849-"));
+const testHome = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-opencode-8849-"));
 const originalHome = process.env.HOME;
 const originalFetch = globalThis.fetch;
 

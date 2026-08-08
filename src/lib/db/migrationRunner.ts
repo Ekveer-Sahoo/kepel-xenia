@@ -50,7 +50,7 @@ const console = {
  * `file://` URL, causing `fileURLToPath` to throw `ERR_INVALID_FILE_URL_PATH`.
  */
 function resolveMigrationsDir(): string {
-  const configuredDir = process.env.OMNIROUTE_MIGRATIONS_DIR;
+  const configuredDir = process.env.XENIA_MIGRATIONS_DIR;
   if (typeof configuredDir === "string" && configuredDir.trim().length > 0) {
     return path.resolve(configuredDir);
   }
@@ -103,9 +103,7 @@ function resolveMigrationsDir(): string {
   const fromCwd = checkLocations(process.cwd());
   if (fromCwd) return fromCwd;
 
-  throw new Error(
-    "[Migration] Could not resolve migrations directory. Set OMNIROUTE_MIGRATIONS_DIR."
-  );
+  throw new Error("[Migration] Could not resolve migrations directory. Set XENIA_MIGRATIONS_DIR.");
 }
 
 const MIGRATIONS_DIR = resolveMigrationsDir();
@@ -116,21 +114,21 @@ const MIGRATIONS_DIR = resolveMigrationsDir();
  * it likely means the migration tracking table was accidentally wiped,
  * and running all migrations from scratch could cause data loss.
  *
- * Set the threshold to 0 (via `OMNIROUTE_MAX_PENDING_MIGRATIONS`) to disable
+ * Set the threshold to 0 (via `XENIA_MAX_PENDING_MIGRATIONS`) to disable
  * this safety check.
  */
 const DEFAULT_MAX_PENDING_MIGRATIONS_ON_EXISTING_DB = 50;
 
 /**
  * Resolve the mass-migration safety threshold, allowing an operator to override
- * the default via the `OMNIROUTE_MAX_PENDING_MIGRATIONS` env var (#3416). This
+ * the default via the `XENIA_MAX_PENDING_MIGRATIONS` env var (#3416). This
  * is read at CALL TIME inside runMigrations() so a backup restore can raise the
  * limit (or `0` to disable the check) without a code change. Mirrors the
- * `OMNIROUTE_MIGRATIONS_DIR` convention used in resolveMigrationsDir(). Falls
+ * `XENIA_MIGRATIONS_DIR` convention used in resolveMigrationsDir(). Falls
  * back to the default on missing or invalid (non-numeric / negative) input.
  */
 function resolveMaxPendingMigrations(): number {
-  const raw = process.env.OMNIROUTE_MAX_PENDING_MIGRATIONS;
+  const raw = process.env.XENIA_MAX_PENDING_MIGRATIONS;
   if (typeof raw === "string" && raw.trim().length > 0) {
     const parsed = Number.parseInt(raw.trim(), 10);
     if (Number.isFinite(parsed) && parsed >= 0) {
@@ -170,7 +168,7 @@ const fts5SupportCache = new WeakMap<SqliteAdapter, boolean>();
  */
 function ensureMigrationsTable(db: SqliteAdapter): void {
   db.exec(`
-    CREATE TABLE IF NOT EXISTS _omniroute_migrations (
+    CREATE TABLE IF NOT EXISTS _xenia_migrations (
       version TEXT PRIMARY KEY,
       name TEXT NOT NULL,
       applied_at TEXT NOT NULL DEFAULT (datetime('now'))
@@ -189,7 +187,7 @@ function supportsFts5(db: SqliteAdapter): boolean {
   }
 
   try {
-    const probeTable = `__omniroute_fts5_probe_${crypto.randomUUID().replace(/-/g, "_")}`;
+    const probeTable = `__xenia_fts5_probe_${crypto.randomUUID().replace(/-/g, "_")}`;
     db.transaction(() => {
       db.exec(`CREATE VIRTUAL TABLE "${probeTable}" USING fts5(content);`);
       db.exec(`DROP TABLE "${probeTable}";`);
@@ -238,7 +236,7 @@ function getMigrationFiles(): Array<{ version: string; name: string; path: strin
 
   // Detect version collisions early: two files sharing the same numeric prefix
   // would otherwise be silently skipped by the runner (only the first applied
-  // would record version=NNN in _omniroute_migrations; the rest would never run).
+  // would record version=NNN in _xenia_migrations; the rest would never run).
   // SUPERSEDED_DUPLICATE_MIGRATIONS lists legitimate "renamed" pairs and is OK.
   const byVersion = new Map<string, string[]>();
   for (const f of files) {
@@ -268,7 +266,7 @@ function getMigrationFiles(): Array<{ version: string; name: string; path: strin
     );
   }
 
-  // Extra directories registered via OMNIROUTE_EXTRA_MIGRATIONS_DIRS, appended
+  // Extra directories registered via XENIA_EXTRA_MIGRATIONS_DIRS, appended
   // AFTER the numeric set so a distribution's own schema always lands on top of
   // the upstream one. Their versions are namespaced (`ee-134`), so they cannot
   // collide with a numeric slot, and every downstream consumer here — the applied
@@ -309,7 +307,7 @@ function filterSupersededDuplicateMigrations(
  * Get list of already-applied migration versions.
  */
 function getAppliedVersions(db: SqliteAdapter): Set<string> {
-  const rows = db.prepare("SELECT version FROM _omniroute_migrations").all() as Array<{
+  const rows = db.prepare("SELECT version FROM _xenia_migrations").all() as Array<{
     version: string;
   }>;
   return new Set(rows.map((r) => r.version));
@@ -319,9 +317,7 @@ function getAppliedVersions(db: SqliteAdapter): Set<string> {
  * Get applied migration records (version + name) for mismatch detection.
  */
 function getAppliedRecords(db: SqliteAdapter): Array<{ version: string; name: string }> {
-  return db
-    .prepare("SELECT version, name FROM _omniroute_migrations ORDER BY version")
-    .all() as Array<{
+  return db.prepare("SELECT version, name FROM _xenia_migrations ORDER BY version").all() as Array<{
     version: string;
     name: string;
   }>;
@@ -679,7 +675,7 @@ function reconcileRenumberedMigrations(
     }
 
     const legacyRow = db
-      .prepare("SELECT version, name FROM _omniroute_migrations WHERE version = ? AND name = ?")
+      .prepare("SELECT version, name FROM _xenia_migrations WHERE version = ? AND name = ?")
       .get(compatibility.fromVersion, compatibility.fromName) as
       { version: string; name: string } | undefined;
     if (!legacyRow) {
@@ -687,18 +683,18 @@ function reconcileRenumberedMigrations(
     }
 
     const targetRow = db
-      .prepare("SELECT version FROM _omniroute_migrations WHERE version = ?")
+      .prepare("SELECT version FROM _xenia_migrations WHERE version = ?")
       .get(compatibility.toVersion) as { version: string } | undefined;
 
     const applyRepair = db.transaction(() => {
       if (targetRow) {
-        db.prepare("DELETE FROM _omniroute_migrations WHERE version = ? AND name = ?").run(
+        db.prepare("DELETE FROM _xenia_migrations WHERE version = ? AND name = ?").run(
           compatibility.fromVersion,
           compatibility.fromName
         );
       } else {
         db.prepare(
-          "UPDATE _omniroute_migrations SET version = ?, name = ? WHERE version = ? AND name = ?"
+          "UPDATE _xenia_migrations SET version = ?, name = ? WHERE version = ? AND name = ?"
         ).run(
           compatibility.toVersion,
           compatibility.toName,
@@ -721,7 +717,7 @@ function reconcileRenumberedMigrations(
     // placed at that version number — e.g. 028_create_files_and_batches.sql
     // would be skipped because getAppliedVersions() still sees version "028".
     const residualRow = db
-      .prepare("SELECT version, name FROM _omniroute_migrations WHERE version = ?")
+      .prepare("SELECT version, name FROM _xenia_migrations WHERE version = ?")
       .get(compatibility.fromVersion) as { version: string; name: string } | undefined;
     if (residualRow) {
       console.warn(
@@ -729,9 +725,7 @@ function reconcileRenumberedMigrations(
           `(name: "${residualRow.name}") still present after compat rewrite — ` +
           `removing to unblock new migration at this version slot.`
       );
-      db.prepare("DELETE FROM _omniroute_migrations WHERE version = ?").run(
-        compatibility.fromVersion
-      );
+      db.prepare("DELETE FROM _xenia_migrations WHERE version = ?").run(compatibility.fromVersion);
     }
   }
 
@@ -752,7 +746,7 @@ function rehomeLegacyVersionSlotMigrations(
     }
 
     const legacyRow = db
-      .prepare("SELECT version, name FROM _omniroute_migrations WHERE version = ? AND name = ?")
+      .prepare("SELECT version, name FROM _xenia_migrations WHERE version = ? AND name = ?")
       .get(legacy.version, legacy.name) as { version: string; name: string } | undefined;
     if (!legacyRow) {
       continue;
@@ -761,18 +755,18 @@ function rehomeLegacyVersionSlotMigrations(
     const legacyVersion = `legacy-${legacy.version}-${legacy.name}`;
     const applyRepair = db.transaction(() => {
       const existingLegacyRow = db
-        .prepare("SELECT version FROM _omniroute_migrations WHERE version = ?")
+        .prepare("SELECT version FROM _xenia_migrations WHERE version = ?")
         .get(legacyVersion) as { version: string } | undefined;
 
       if (existingLegacyRow) {
-        db.prepare("DELETE FROM _omniroute_migrations WHERE version = ? AND name = ?").run(
+        db.prepare("DELETE FROM _xenia_migrations WHERE version = ? AND name = ?").run(
           legacy.version,
           legacy.name
         );
         return;
       }
 
-      db.prepare("UPDATE _omniroute_migrations SET version = ? WHERE version = ? AND name = ?").run(
+      db.prepare("UPDATE _xenia_migrations SET version = ? WHERE version = ? AND name = ?").run(
         legacyVersion,
         legacy.version,
         legacy.name
@@ -854,14 +848,14 @@ export function runMigrations(db: SqliteAdapter, options?: { isNewDb?: boolean }
     );
     console.error(
       `[Migration] The version-only tracking will skip these (version already applied), ` +
-        `but please report this to the OmniRoute maintainers.`
+        `but please report this to the Xenia maintainers.`
     );
   }
 
   // ── Gap Reconciliation: Identify non-contiguous missing migrations ──
   // Do not rely on any highest-version-applied heuristic. We must explicitly
   // iterate through all missing files on disk and apply them if they are missing
-  // from the _omniroute_migrations table.
+  // from the _xenia_migrations table.
   const numericApplied = Array.from(applied)
     .map((v) => Number.parseInt(v, 10))
     .filter((n) => !Number.isNaN(n));
@@ -902,7 +896,7 @@ export function runMigrations(db: SqliteAdapter, options?: { isNewDb?: boolean }
   // Skip in test environments where fresh DBs legitimately have many pending migrations.
   const isTestEnvironment = isAutomatedTestProcess();
 
-  // #3416: resolve the threshold at call time so OMNIROUTE_MAX_PENDING_MIGRATIONS
+  // #3416: resolve the threshold at call time so XENIA_MAX_PENDING_MIGRATIONS
   // can override the default (0 disables the check). The abort message below
   // interpolates this resolved value, so it auto-reflects any override.
   const maxPendingMigrations = resolveMaxPendingMigrations();
@@ -935,7 +929,7 @@ export function runMigrations(db: SqliteAdapter, options?: { isNewDb?: boolean }
           : "";
       const bypassHint =
         ` To bypass this check (e.g. after restoring a backup where the migration ` +
-        `tracking table was wiped), set OMNIROUTE_MAX_PENDING_MIGRATIONS=0 in your ` +
+        `tracking table was wiped), set XENIA_MAX_PENDING_MIGRATIONS=0 in your ` +
         `server.env or DATA_DIR/.env and restart.`;
       const msg =
         `[Migration] 🛑 ABORT: Detected ${actionablePending.length} pending migrations on an existing database ` +
@@ -951,7 +945,7 @@ export function runMigrations(db: SqliteAdapter, options?: { isNewDb?: boolean }
         console.error(
           `[Migration] 🛑 ABORT (repeat — see earlier detail): ` +
             `${actionablePending.length} pending > threshold ${maxPendingMigrations}. ` +
-            `Set OMNIROUTE_MAX_PENDING_MIGRATIONS=0 to bypass.`
+            `Set XENIA_MAX_PENDING_MIGRATIONS=0 to bypass.`
         );
         throw memoizedSafetyAbort;
       }
@@ -990,7 +984,7 @@ export function runMigrations(db: SqliteAdapter, options?: { isNewDb?: boolean }
         const sql = fs.readFileSync(migration.path, "utf-8");
         db.exec(sql);
       }
-      db.prepare("INSERT INTO _omniroute_migrations (version, name) VALUES (?, ?)").run(
+      db.prepare("INSERT INTO _xenia_migrations (version, name) VALUES (?, ?)").run(
         migration.version,
         migration.name
       );
@@ -1005,9 +999,10 @@ export function runMigrations(db: SqliteAdapter, options?: { isNewDb?: boolean }
       // "duplicate column name" means the column already exists — end state achieved, mark applied.
       if (message.includes("duplicate column name")) {
         const applyMarkerOnly = db.transaction(() => {
-          db.prepare(
-            "INSERT OR IGNORE INTO _omniroute_migrations (version, name) VALUES (?, ?)"
-          ).run(migration.version, migration.name);
+          db.prepare("INSERT OR IGNORE INTO _xenia_migrations (version, name) VALUES (?, ?)").run(
+            migration.version,
+            migration.name
+          );
         });
         applyMarkerOnly();
         count++;
@@ -1072,7 +1067,7 @@ export function getMigrationStatus(db: SqliteAdapter): {
   ensureMigrationsTable(db);
 
   const appliedRows = db
-    .prepare("SELECT version, name, applied_at FROM _omniroute_migrations ORDER BY version")
+    .prepare("SELECT version, name, applied_at FROM _xenia_migrations ORDER BY version")
     .all() as Array<{ version: string; name: string; applied_at: string }>;
 
   const appliedVersions = new Set(appliedRows.map((r) => r.version));

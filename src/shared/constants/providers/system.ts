@@ -8,7 +8,7 @@ export const SYSTEM_PROVIDERS = {
     alias: "auto",
     name: "Auto (Zero-Config)",
     icon: "auto_awesome",
-    color: "#6366F1",
+    color: "#757575",
     textIcon: "Auto",
     systemOnly: true,
     description: "Zero-config auto-routing with LKGP across all connected providers",

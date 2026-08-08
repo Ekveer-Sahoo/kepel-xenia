@@ -1,4 +1,4 @@
-# 🚀 OmniRoute — Бесплатный AI-шлюз (Русский)
+# 🚀 Xenia — Бесплатный AI-шлюз (Русский)
 
 🌐 **Языки:** 🇺🇸 [English](../../../README.md) · 🇸🇦 [ar](../ar/README.md) · 🇧🇬 [bg](../bg/README.md) · 🇧🇩 [bn](../bn/README.md) · 🇨🇿 [cs](../cs/README.md) · 🇩🇰 [da](../da/README.md) · 🇩🇪 [de](../de/README.md) · 🇪🇸 [es](../es/README.md) · 🇮🇷 [fa](../fa/README.md) · 🇫🇮 [fi](../fi/README.md) · 🇫🇷 [fr](../fr/README.md) · 🇮🇳 [gu](../gu/README.md) · 🇮🇱 [he](../he/README.md) · 🇮🇳 [hi](../hi/README.md) · 🇭🇺 [hu](../hu/README.md) · 🇮🇩 [id](../id/README.md) · 🇮🇹 [it](../it/README.md) · 🇯🇵 [ja](../ja/README.md) · 🇰🇷 [ko](../ko/README.md) · 🇮🇳 [mr](../mr/README.md) · 🇲🇾 [ms](../ms/README.md) · 🇳🇱 [nl](../nl/README.md) · 🇳🇴 [no](../no/README.md) · 🇵🇭 [phi](../phi/README.md) · 🇵🇱 [pl](../pl/README.md) · 🇵🇹 [pt](../pt/README.md) · 🇧🇷 [pt-BR](../pt-BR/README.md) · 🇷🇴 [ro](../ro/README.md) · 🇷🇺 [ru](../ru/README.md) · 🇸🇰 [sk](../sk/README.md) · 🇸🇪 [sv](../sv/README.md) · 🇰🇪 [sw](../sw/README.md) · 🇮🇳 [ta](../ta/README.md) · 🇮🇳 [te](../te/README.md) · 🇹🇭 [th](../th/README.md) · 🇹🇷 [tr](../tr/README.md) · 🇺🇦 [uk-UA](../uk-UA/README.md) · 🇵🇰 [ur](../ur/README.md) · 🇻🇳 [vi](../vi/README.md) · 🇨🇳 [zh-CN](../zh-CN/README.md) · 🇹🇼 [zh-TW](../zh-TW/README.md)
 
@@ -6,11 +6,11 @@
 
 <div align="center">
 
-<img src="../../screenshots/MainOmniRoute.png" alt="Панель OmniRoute" width="820"/>
+<img src="../../screenshots/MainXenia.png" alt="Панель Xenia" width="820"/>
 
 <br/>
 
-# 🚀 OmniRoute — Бесплатный AI-шлюз
+# 🚀 Xenia — Бесплатный AI-шлюз
 
 ### Код без остановок. Один endpoint — **278 провайдеров**, **90+ бесплатных**.
 
@@ -38,32 +38,32 @@
 ### 💬 Сообщество
 
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/U47eFqAXCn)
-[![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/omnirouteOficial)
+[![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/xeniaOficial)
 [![WhatsApp Global](https://img.shields.io/badge/WhatsApp_Global-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t)
 [![WhatsApp Brasil](https://img.shields.io/badge/WhatsApp_Brasil-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)
 
-**Вопросы, советы по провайдерам, roadmap и поддержка → [Discord](https://discord.gg/U47eFqAXCn) · [Telegram](https://t.me/omnirouteOficial) · WhatsApp [🌍 Global](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t) / [🇧🇷 Brasil](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)**
+**Вопросы, советы по провайдерам, roadmap и поддержка → [Discord](https://discord.gg/U47eFqAXCn) · [Telegram](https://t.me/xeniaOficial) · WhatsApp [🌍 Global](https://chat.whatsapp.com/JI7cDQ1GyaiDHhVBpLxf8b?mode=gi_t) / [🇧🇷 Brasil](https://chat.whatsapp.com/LTSpdFhXTxjH4R6CCNiKWz)**
 
 <br/>
 
-<a href="https://trendshift.io/repositories/23589" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23589" alt="diegosouzapw%2FOmniRoute | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+<a href="https://trendshift.io/repositories/23589" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23589" alt="diegosouzapw%2FXenia | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-[![npm](https://img.shields.io/npm/v/omniroute?logo=npm&style=flat-square)](https://www.npmjs.com/package/omniroute)
+[![npm](https://img.shields.io/npm/v/xenia?logo=npm&style=flat-square)](https://www.npmjs.com/package/xenia)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](../../../LICENSE)
-[![Stars](https://img.shields.io/github/stars/diegosouzapw/OmniRoute?style=social)](https://github.com/diegosouzapw/OmniRoute)
+[![Stars](https://img.shields.io/github/stars/diegosouzapw/Xenia?style=social)](https://github.com/diegosouzapw/Xenia)
 
-[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)
-![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)
-[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)
-![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)
-![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
-[![Website](https://img.shields.io/badge/Website-omniroute.online-blue?logo=google-chrome&logoColor=white)](https://omniroute.online)
+[![npm version](https://img.shields.io/npm/v/xenia?color=cb3837&logo=npm)](https://www.npmjs.com/package/xenia)
+![NPM Monthly](https://img.shields.io/npm/dm/xenia?label=npm/month&color=cb3837&logo=npm)
+[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/xenia?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/xenia)
+![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/xenia?label=docker%20pulls&logo=docker&color=2496ED)
+![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/xenia/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
+[![Website](https://img.shields.io/badge/Website-xenia.online-blue?logo=google-chrome&logoColor=white)](https://xenia.online)
 
 <br/>
 
-[**🚀 Быстрый старт**](#-быстрый-старт) • [**🎯 Комбо**](#-комбо--главная-фича) • [**🌐 Провайдеры**](#-278-ai-провайдеров--90-бесплатных) • [**🔌 CLI и MCP**](#-полный-cli--a2a-и-mcp) • [**🗜️ Сжатие**](#️-экономьте-1595-токенов--автоматически) • [**🌍 Сайт**](https://omniroute.online)
+[**🚀 Быстрый старт**](#-быстрый-старт) • [**🎯 Комбо**](#-комбо--главная-фича) • [**🌐 Провайдеры**](#-278-ai-провайдеров--90-бесплатных) • [**🔌 CLI и MCP**](#-полный-cli--a2a-и-mcp) • [**🗜️ Сжатие**](#️-экономьте-1595-токенов--автоматически) • [**🌍 Сайт**](https://xenia.online)
 
-[💥 Обещание](#-обещание) • [🤔 Зачем](#-зачем-omniroute) • [🏆 Чем отличается](#-чем-omniroute-отличается) • [🤖 Совместимые CLI](#-совместимые-cli-и-агенты) • [🖥️ Где запускать](#️-где-запускается-omniroute--везде) • [🔒 Приватность](#-приватно-и-local-first) • [🎬 В деле](#-omniroute-в-деле) • [📚 Дальше](#-узнать-больше) • [📧 Поддержка](#-поддержка-и-сообщество)
+[💥 Обещание](#-обещание) • [🤔 Зачем](#-зачем-xenia) • [🏆 Чем отличается](#-чем-xenia-отличается) • [🤖 Совместимые CLI](#-совместимые-cli-и-агенты) • [🖥️ Где запускать](#️-где-запускается-xenia--везде) • [🔒 Приватность](#-приватно-и-local-first) • [🎬 В деле](#-xenia-в-деле) • [📚 Дальше](#-узнать-больше) • [📧 Поддержка](#-поддержка-и-сообщество)
 
 </div>
 
@@ -75,7 +75,7 @@
 
 </div>
 
-> Собирать free-tier вручную — боль: десятки SDK, лимиты и непонятный остаток. OmniRoute сводит **документированные** free-tier **43 пулов / 460+ моделей** в одно честное число и показывает его live на `/dashboard/free-tiers`.
+> Собирать free-tier вручную — боль: десятки SDK, лимиты и непонятный остаток. Xenia сводит **документированные** free-tier **43 пулов / 460+ моделей** в одно честное число и показывает его live на `/dashboard/free-tiers`.
 >
 > - **~1.53B free tokens / мес** (steady) — в первый месяц до **~2.15B** с signup-кредитами.
 > - **Честная математика** — каждый shared pool считается **один раз**. «Если крутить rate limit 24/7» выйдет ~10B — такие цифры мы **не** публикуем.
@@ -92,7 +92,7 @@
 
 </div>
 
-> Один endpoint. **278 провайдеров.** Код не останавливается — OmniRoute сам выбирает самый дешёвый рабочий вариант.
+> Один endpoint. **278 провайдеров.** Код не останавливается — Xenia сам выбирает самый дешёвый рабочий вариант.
 
 <table>
   <tr>
@@ -111,20 +111,20 @@
 
 <div align="center">
 
-# 🤔 Зачем OmniRoute?
+# 🤔 Зачем Xenia?
 
 </div>
 
 > Хватит прыгать между десятью кабинетами, мёртвыми ключами и неожиданными счетами.
 
-| ❌ Боль каждый день | ✅ Как решает OmniRoute |
-|---|---|
-| 📉 Подписка сгорает неиспользованной | **Выжимаем подписку** — трекинг квоты, тратим до reset |
-| 🛑 Rate limit посреди кода | **4-tier auto-fallback** — Subscription → API → Cheap → Free |
-| 🔥 Tool-output (`git diff`, логи) жжёт токены | **RTK + Caveman** — 15–95% на сжимаемом |
-| 💸 Дорогие API ($20–50/мес за провайдера) | **Cost-optimized routing** — самый выгодный живой вариант |
-| 🧰 У каждого IDE свой сетап | **Один endpoint, один дашборд** |
-| 🌍 AI заблокирован в регионе | **3-level proxy** + TLS fingerprint stealth |
+| ❌ Боль каждый день                           | ✅ Как решает Xenia                                          |
+| --------------------------------------------- | ------------------------------------------------------------ |
+| 📉 Подписка сгорает неиспользованной          | **Выжимаем подписку** — трекинг квоты, тратим до reset       |
+| 🛑 Rate limit посреди кода                    | **4-tier auto-fallback** — Subscription → API → Cheap → Free |
+| 🔥 Tool-output (`git diff`, логи) жжёт токены | **RTK + Caveman** — 15–95% на сжимаемом                      |
+| 💸 Дорогие API ($20–50/мес за провайдера)     | **Cost-optimized routing** — самый выгодный живой вариант    |
+| 🧰 У каждого IDE свой сетап                   | **Один endpoint, один дашборд**                              |
+| 🌍 AI заблокирован в регионе                  | **3-level proxy** + TLS fingerprint stealth                  |
 
 <div align="center">
 
@@ -135,7 +135,7 @@
                           │ http://localhost:20128/v1
                           ▼
 ┌──────────────────────────────────────────────────────────┐
-│              OmniRoute — умный роутер                      │
+│              Xenia — умный роутер                      │
 │  RTK + Caveman · 18 стратегий · circuit breakers          │
 │  TLS stealth · MCP · A2A · guardrails                     │
 └─────────────────────────┬────────────────────────────────┘
@@ -157,43 +157,43 @@
 
 </div>
 
-> **Combo** — цепочка моделей, по которой OmniRoute ходит **сам**. Квота кончилась, провайдер упал, цена взлетела — комбо тихо уходит на следующий шаг. **Именно это делает OmniRoute «неубиваемым».** 🛡️
+> **Combo** — цепочка моделей, по которой Xenia ходит **сам**. Квота кончилась, провайдер упал, цена взлетела — комбо тихо уходит на следующий шаг. **Именно это делает Xenia «неубиваемым».** 🛡️
 
 ### ⚡ Без настройки — просто `auto`
 
-Комбо создавать не обязательно. Поставьте модель `auto` (или вариант) — OmniRoute соберёт виртуальное комбо из подключённых провайдеров:
+Комбо создавать не обязательно. Поставьте модель `auto` (или вариант) — Xenia соберёт виртуальное комбо из подключённых провайдеров:
 
-| Model ID | На что оптимизирует |
-|---|---|
-| `auto` | 🎯 Баланс (LKGP — держится за последний удачный провайдер) |
-| `auto/coding` | 🧑‍💻 Качество кода |
-| `auto/fast` | ⚡ Минимальная latency |
-| `auto/cheap` | 💰 Минимальная цена за токен |
-| `auto/offline` | 🔋 Максимум headroom по квоте / rate limit |
-| `auto/smart` | 🔭 Качество + 10% exploration |
+| Model ID       | На что оптимизирует                                        |
+| -------------- | ---------------------------------------------------------- |
+| `auto`         | 🎯 Баланс (LKGP — держится за последний удачный провайдер) |
+| `auto/coding`  | 🧑‍💻 Качество кода                                           |
+| `auto/fast`    | ⚡ Минимальная latency                                     |
+| `auto/cheap`   | 💰 Минимальная цена за токен                               |
+| `auto/offline` | 🔋 Максимум headroom по квоте / rate limit                 |
+| `auto/smart`   | 🔭 Качество + 10% exploration                              |
 
 ### 🔀 Или соберите своё — 18 стратегий
 
-| # | Стратегия | Что делает |
-|---|---|---|
-| 1 | `priority` | Идёт по списку по порядку — выжимает каждый target 🥇 |
-| 2 | `fill-first` | Сначала полностью заполняет квоту target |
-| 3 | `weighted` | Взвешенный random |
-| 4 | `round-robin` | Цикл по targets |
-| 5 | `p2c` | Power-of-two-choices load balancing |
-| 6 | `least-used` | Наименьшая текущая нагрузка |
-| 7 | `random` | Uniform random (с dedupe) |
-| 8 | `strict-random` | Random без dedupe 🎲 |
-| 9 | `cost-optimized` | Минимум $ за запрос из live pricing 💸 |
-| 10 | `headroom` | Больше всего оставшейся квоты |
-| 11 | `reset-window` | Чья квота reset ближе |
-| 12 | `reset-aware` | Ранг по reset — короткие окна первыми 📊 |
-| 13 | `context-relay` | Передача контекста между targets 🧠 |
-| 14 | `context-optimized` | Лучший fit под размер контекста |
-| 15 | `lkgp` | Last-Known-Good Path — sticky к успеху |
-| 16 | `auto` | Live scoring по 12 факторам 🤖 |
-| 17 | `fusion` | Панель моделей + judge → один ответ 🧬 |
-| 18 | `pipeline` | Цепочка: output шага N → input N+1 🔗 |
+| #   | Стратегия           | Что делает                                            |
+| --- | ------------------- | ----------------------------------------------------- |
+| 1   | `priority`          | Идёт по списку по порядку — выжимает каждый target 🥇 |
+| 2   | `fill-first`        | Сначала полностью заполняет квоту target              |
+| 3   | `weighted`          | Взвешенный random                                     |
+| 4   | `round-robin`       | Цикл по targets                                       |
+| 5   | `p2c`               | Power-of-two-choices load balancing                   |
+| 6   | `least-used`        | Наименьшая текущая нагрузка                           |
+| 7   | `random`            | Uniform random (с dedupe)                             |
+| 8   | `strict-random`     | Random без dedupe 🎲                                  |
+| 9   | `cost-optimized`    | Минимум $ за запрос из live pricing 💸                |
+| 10  | `headroom`          | Больше всего оставшейся квоты                         |
+| 11  | `reset-window`      | Чья квота reset ближе                                 |
+| 12  | `reset-aware`       | Ранг по reset — короткие окна первыми 📊              |
+| 13  | `context-relay`     | Передача контекста между targets 🧠                   |
+| 14  | `context-optimized` | Лучший fit под размер контекста                       |
+| 15  | `lkgp`              | Last-Known-Good Path — sticky к успеху                |
+| 16  | `auto`              | Live scoring по 12 факторам 🤖                        |
+| 17  | `fusion`            | Панель моделей + judge → один ответ 🧬                |
+| 18  | `pipeline`          | Цепочка: output шага N → input N+1 🔗                 |
 
 <sub>Auto-Combo scoring: **12 факторов** (health, quota, cost, latency, success rate, freshness…). Подробнее: [`docs/routing/AUTO-COMBO.md`](../../routing/AUTO-COMBO.md).</sub>
 
@@ -201,22 +201,22 @@
 
 Несколько ключей на **один** upstream-аккаунт? Burst на одном ключе может сжечь 5h/hourly quota на всех. **Quota-Share** честно делит time-based quota между ключами пула (work-conserving: idle-доля отдаётся другим).
 
-| Параметр | Управление |
-|---|---|
-| ⚖️ **Weight** | Доля ключа, напр. `50 / 30 / 20` |
+| Параметр          | Управление                                                  |
+| ----------------- | ----------------------------------------------------------- |
+| ⚖️ **Weight**     | Доля ключа, напр. `50 / 30 / 20`                            |
 | 📐 **Dimensions** | `%` · requests · tokens · `$`, окна **5h / 7d / per-model** |
-| 🚦 **Policy** | `hard` · `soft` · `burst` |
-| 🧱 **Cap** | Жёсткий потолок на ключ |
+| 🚦 **Policy**     | `hard` · `soft` · `burst`                                   |
+| 🧱 **Cap**        | Жёсткий потолок на ключ                                     |
 
 <sub>📖 [Quota Sharing Engine](../../routing/QUOTA_SHARE.md)</sub>
 
 ### 🧱 Три слоя устойчивости
 
-| Слой | Область | Механизм |
-|---|---|---|
-| 🔌 **Circuit breaker** | Весь провайдер | Перестаёт слать запросы в «падающий» upstream; probe recovery |
-| 💤 **Connection cooldown** | Один ключ / аккаунт | Пропускает «горячий» ключ, siblings продолжают |
-| 🎯 **Model lockout** | Одна модель | Блокирует только исчерпанную модель, не всю connection |
+| Слой                       | Область             | Механизм                                                      |
+| -------------------------- | ------------------- | ------------------------------------------------------------- |
+| 🔌 **Circuit breaker**     | Весь провайдер      | Перестаёт слать запросы в «падающий» upstream; probe recovery |
+| 💤 **Connection cooldown** | Один ключ / аккаунт | Пропускает «горячий» ключ, siblings продолжают                |
+| 🎯 **Model lockout**       | Одна модель         | Блокирует только исчерпанную модель, не всю connection        |
 
 ```
 Combo: "always-on"                         strategy: priority
@@ -233,26 +233,26 @@ Combo: "always-on"                         strategy: priority
 
 <div align="center">
 
-# 🏆 Чем OmniRoute отличается
+# 🏆 Чем Xenia отличается
 
 </div>
 
-| Фича | OmniRoute | Другие роутеры |
-|---|---|---|
-| 🌐 Провайдеры | **278** | 20–100 |
-| 🆓 Free | **90+ (40+ forever)** | 1–5 |
-| 🔀 Стратегии | **18** | 1–3 |
-| 🗜️ Сжатие токенов | **RTK + Caveman (15–95%)** | Нет / 20–40% |
-| 🧰 MCP server | **104 tools, 3 transports, 31 scopes** | Редко |
-| 🤝 A2A | **6 skills, JSON-RPC 2.0** | Нет |
-| 🧠 Memory (FTS5 + vector) | **Да** | Редко |
-| 🛡️ Guardrails | **Да** | Редко |
-| ☁️ Cloud agents | **Codex, Cursor, Devin, Jules** | Нет |
-| 🥷 TLS stealth | **JA3/JA4 via wreq-js** | Нет |
-| 🖥️ Платформы | **Web · Desktop · Termux · PWA** | Только web |
-| 🌍 i18n | **43 локали** | 0–4 |
+| Фича                      | Xenia                                  | Другие роутеры |
+| ------------------------- | -------------------------------------- | -------------- |
+| 🌐 Провайдеры             | **278**                                | 20–100         |
+| 🆓 Free                   | **90+ (40+ forever)**                  | 1–5            |
+| 🔀 Стратегии              | **18**                                 | 1–3            |
+| 🗜️ Сжатие токенов         | **RTK + Caveman (15–95%)**             | Нет / 20–40%   |
+| 🧰 MCP server             | **104 tools, 3 transports, 31 scopes** | Редко          |
+| 🤝 A2A                    | **6 skills, JSON-RPC 2.0**             | Нет            |
+| 🧠 Memory (FTS5 + vector) | **Да**                                 | Редко          |
+| 🛡️ Guardrails             | **Да**                                 | Редко          |
+| ☁️ Cloud agents           | **Codex, Cursor, Devin, Jules**        | Нет            |
+| 🥷 TLS stealth            | **JA3/JA4 via wreq-js**                | Нет            |
+| 🖥️ Платформы              | **Web · Desktop · Termux · PWA**       | Только web     |
+| 🌍 i18n                   | **43 локали**                          | 0–4            |
 
-<sub>📊 Сравнение с LiteLLM, OpenRouter, Portkey → [`docs/comparison/OMNIROUTE_VS_ALTERNATIVES.md`](../../comparison/OMNIROUTE_VS_ALTERNATIVES.md)</sub>
+<sub>📊 Сравнение с LiteLLM, OpenRouter, Portkey → [`docs/comparison/XENIA_VS_ALTERNATIVES.md`](../../comparison/XENIA_VS_ALTERNATIVES.md)</sub>
 
 <br/>
 
@@ -267,13 +267,13 @@ Combo: "always-on"                         strategy: priority
 - **🗜️ Compression hardening** — inflation guard по умолчанию, Caveman packs DE/FR/JA + Chinese (文言), RTK filters для Gradle & .NET.
 - **💸 Honest flat-rate cost** — subscription/coding-plan в analytics = **$0**; budget/quota/routing по-прежнему оценивают.
 - **⚖️ Quota-Share routing** — DRR, concurrency, multi-window buckets, session stickiness.
-- **🤖 One-command CLI setup** — `setup-*` для 12+ tools; `omniroute launch` / `launch-codex`.
+- **🤖 One-command CLI setup** — `setup-*` для 12+ tools; `xenia launch` / `launch-codex`.
 - **🛰️ Remote mode** — `connect` / `contexts` / `tokens` + OAuth helper для VPS.
 - **🧭 Smarter auto** — `auto/<category>:<tier>`, Fusion, task-aware routing, per-request overrides.
 - **🗜️ Pluggable compression** — 11 engines + Studios, LLMLingua-2, Ultra, fidelity gate, GCF v3.2.
 - **🕵️ MITM decrypt (TPROXY)** — CLI, игнорирующие proxy env; per-SNI CA.
-- **💸 Cost telemetry** — `X-OmniRoute-*` headers, cache-HIT savings, per-key USD quotas.
-- **🧠 Memory** — opt-in, int8 quantization, `x-omniroute-no-memory`.
+- **💸 Cost telemetry** — `X-Xenia-*` headers, cache-HIT savings, per-key USD quotas.
+- **🧠 Memory** — opt-in, int8 quantization, `x-xenia-no-memory`.
 - **🛡️ Security** — prompt-injection guard + DuckDuckGo last-resort search.
 - **🖼️ Endpoints** — `/v1/ocr`, `/v1/audio/translations`.
 - **🤝 Providers & agents** — Cursor Cloud Agent, Grok Build (xAI), Ollama card, Claude Sonnet 5, Zed, Requesty…
@@ -288,16 +288,16 @@ Combo: "always-on"                         strategy: priority
 
 > Один конфиг — `http://localhost:20128/v1` — и **любой** AI IDE/CLI едет на free & low-cost моделях.
 
-| | | | | | |
-|---|---|---|---|---|---|
-| [**Claude Code**](https://github.com/anthropics/claude-code) | [**Codex CLI**](https://github.com/openai/codex) | **Cline** | [**Kilo Code**](https://github.com/Kilo-Org/kilocode) | **Roo Code** | **Continue** |
-| [**OpenCode**](https://github.com/anomalyco/opencode) | **Copilot CLI** | **Cursor CLI** | **Factory Droid** | **Grok Build** | **OpenClaw** |
+|                                                              |                                                  |                |                                                       |                |              |
+| ------------------------------------------------------------ | ------------------------------------------------ | -------------- | ----------------------------------------------------- | -------------- | ------------ |
+| [**Claude Code**](https://github.com/anthropics/claude-code) | [**Codex CLI**](https://github.com/openai/codex) | **Cline**      | [**Kilo Code**](https://github.com/Kilo-Org/kilocode) | **Roo Code**   | **Continue** |
+| [**OpenCode**](https://github.com/anomalyco/opencode)        | **Copilot CLI**                                  | **Cursor CLI** | **Factory Droid**                                     | **Grok Build** | **OpenClaw** |
 
 <div align="center">
 <b>＋ также</b> · Aider · Goose · Hermes · Kiro · Antigravity · Windsurf · AMP · <b>любой OpenAI-compatible tool</b>
 </div>
 
-<sub>📖 Setup 33 tools → [`docs/reference/CLI-TOOLS.md`](../../reference/CLI-TOOLS.md) · OpenCode plugin → [`@omniroute/opencode-provider`](https://www.npmjs.com/package/@omniroute/opencode-provider)</sub>
+<sub>📖 Setup 33 tools → [`docs/reference/CLI-TOOLS.md`](../../reference/CLI-TOOLS.md) · OpenCode plugin → [`@xenia/opencode-provider`](https://www.npmjs.com/package/@xenia/opencode-provider)</sub>
 
 <br/>
 
@@ -311,16 +311,16 @@ Combo: "always-on"                         strategy: priority
 
 ### 🆓 Free forever — $0, без карты
 
-| Провайдер | Что даёт |
-|---|---|
-| **AgentRouter** | GPT-5, Claude, Gemini — $100 free credits |
-| **Qoder AI** | Kimi-K2, DeepSeek-R1 — unlimited FREE |
-| **Pollinations** | GPT-5, Claude, Llama 4 — без ключа |
-| **LongCat** | LongCat-2.0 — 10M one-time (KYC) |
-| **Cloudflare AI** | 50+ models — 10K neurons/day |
-| **NVIDIA NIM** | 129 models — ~40 RPM free |
-| **Cerebras** | Qwen3 235B — 1M tokens/day |
-| **Kiro** | Claude Sonnet/Haiku — ~50 credits/mo |
+| Провайдер         | Что даёт                                  |
+| ----------------- | ----------------------------------------- |
+| **AgentRouter**   | GPT-5, Claude, Gemini — $100 free credits |
+| **Qoder AI**      | Kimi-K2, DeepSeek-R1 — unlimited FREE     |
+| **Pollinations**  | GPT-5, Claude, Llama 4 — без ключа        |
+| **LongCat**       | LongCat-2.0 — 10M one-time (KYC)          |
+| **Cloudflare AI** | 50+ models — 10K neurons/day              |
+| **NVIDIA NIM**    | 129 models — ~40 RPM free                 |
+| **Cerebras**      | Qwen3 235B — 1M tokens/day                |
+| **Kiro**          | Claude Sonnet/Haiku — ~50 credits/mo      |
 
 📖 Machine-readable catalog → [`docs/reference/PROVIDER_REFERENCE.md`](../../reference/PROVIDER_REFERENCE.md)
 
@@ -328,20 +328,20 @@ Combo: "always-on"                         strategy: priority
 
 <div align="center">
 
-# 🖥️ Где запускается OmniRoute — везде
+# 🖥️ Где запускается Xenia — везде
 
 </div>
 
-| Платформа | Установка | Плюсы |
-|---|---|---|
-| 📦 **npm (global)** | `npm install -g omniroute` | Одна команда, любая ОС |
-| 🐳 **Docker** | `docker run … diegosouzapw/omniroute` | **AMD64 + ARM64** |
-| 🖥️ **Desktop (Electron)** | `npm run electron:build` | Окно + tray — Win/macOS/Linux |
-| 💪 **ARM** | native `arm64` | Pi, ARM servers, Apple Silicon |
-| 📱 **Android (Termux)** | `pkg install nodejs && npx -y omniroute` | На телефоне 24/7, без root |
-| 📲 **PWA** | «Add to Home Screen» | Fullscreen, offline |
-| 🧩 **OpenCode plugin** | `@omniroute/opencode-provider` | Нативная интеграция |
-| 🛠️ **Из исходников** | `npm install && npm run dev` | Хакинг и контрибьют |
+| Платформа                 | Установка                            | Плюсы                          |
+| ------------------------- | ------------------------------------ | ------------------------------ |
+| 📦 **npm (global)**       | `npm install -g xenia`               | Одна команда, любая ОС         |
+| 🐳 **Docker**             | `docker run … diegosouzapw/xenia`    | **AMD64 + ARM64**              |
+| 🖥️ **Desktop (Electron)** | `npm run electron:build`             | Окно + tray — Win/macOS/Linux  |
+| 💪 **ARM**                | native `arm64`                       | Pi, ARM servers, Apple Silicon |
+| 📱 **Android (Termux)**   | `pkg install nodejs && npx -y xenia` | На телефоне 24/7, без root     |
+| 📲 **PWA**                | «Add to Home Screen»                 | Fullscreen, offline            |
+| 🧩 **OpenCode plugin**    | `@xenia/opencode-provider`           | Нативная интеграция            |
+| 🛠️ **Из исходников**      | `npm install && npm run dev`         | Хакинг и контрибьют            |
 
 <sub>📖 [Docker](../../guides/DOCKER_GUIDE.md) · [Desktop](../../../electron/README.md) · [Termux](../../guides/TERMUX_GUIDE.md) · [PWA](../../guides/PWA_GUIDE.md) · [OpenCode](../../frameworks/OPENCODE.md)</sub>
 
@@ -353,9 +353,9 @@ Combo: "always-on"                         strategy: priority
 
 </div>
 
-> Ваши ключи, ваша машина, ваши данные. OmniRoute — **локальный прокси**, без «звонков домой».
+> Ваши ключи, ваша машина, ваши данные. Xenia — **локальный прокси**, без «звонков домой».
 
-- 🏠 **100% на вашем железе** — npm, Docker, desktop или телефон. Нет cloud-hop OmniRoute.
+- 🏠 **100% на вашем железе** — npm, Docker, desktop или телефон. Нет cloud-hop Xenia.
 - 🔐 **Credentials at rest** — API keys и OAuth в **AES-256-GCM**.
 - 🚫 **Zero telemetry по умолчанию** — промпты уходят только выбранным провайдерам.
 - 🛡️ **Жёсткий gateway** — scoping ключей, IP filter, rate limits, prompt-injection guard, loopback-only process routes.
@@ -371,25 +371,25 @@ Combo: "always-on"                         strategy: priority
 
 </div>
 
-> Это не «просто сервер» — **CLI-кокит** с **80+ командами** и открытыми agent-протоколами, чтобы AI управлял OmniRoute **сам**.
+> Это не «просто сервер» — **CLI-кокит** с **80+ командами** и открытыми agent-протоколами, чтобы AI управлял Xenia **сам**.
 
 ### ⌨️ Настоящий CLI
 
 ```bash
-omniroute               # gateway + dashboard (порт 20128)
-omniroute chat          # TUI-чат (/model /combo /skill /memory)
-omniroute setup         # мастер первого запуска
-omniroute doctor        # диагностика провайдеров, портов, native deps
+xenia               # gateway + dashboard (порт 20128)
+xenia chat          # TUI-чат (/model /combo /skill /memory)
+xenia setup         # мастер первого запуска
+xenia doctor        # диагностика провайдеров, портов, native deps
 ```
 
-### 🛰️ Remote mode — CLI здесь, OmniRoute на VPS
+### 🛰️ Remote mode — CLI здесь, Xenia на VPS
 
 ```bash
-omniroute connect 192.168.0.15            # пароль → scoped token
-omniroute models list                     # ← на REMOTE
-omniroute configure codex                 # remote model → local Codex profile
-omniroute tokens create --name ci --scope read
-omniroute contexts use default            # ← обратно на local
+xenia connect 192.168.0.15            # пароль → scoped token
+xenia models list                     # ← на REMOTE
+xenia configure codex                 # remote model → local Codex profile
+xenia tokens create --name ci --scope read
+xenia contexts use default            # ← обратно на local
 ```
 
 Scopes: `read` / `write` / `admin`. Process-spawning routes — только loopback.
@@ -397,15 +397,15 @@ Scopes: `read` / `write` / `admin`. Process-spawning routes — только loo
 
 ### 🤝 Подключите агента — он управляет шлюзом
 
-| Протокол | Endpoint | Зачем |
-|---|---|---|
-| 🧰 **MCP (stdio)** | `omniroute --mcp` | Claude Desktop, Cursor, любой MCP client |
-| 🌊 **MCP (HTTP)** | `http://localhost:20128/api/mcp/stream` | Remote MCP — **104 tools**, 31 scopes |
-| 📡 **MCP (SSE)** | `http://localhost:20128/api/mcp/sse` | Streaming MCP |
-| 🤝 **A2A** | `http://localhost:20128/.well-known/agent.json` | Agent-to-agent, JSON-RPC 2.0 + SSE |
+| Протокол           | Endpoint                                        | Зачем                                    |
+| ------------------ | ----------------------------------------------- | ---------------------------------------- |
+| 🧰 **MCP (stdio)** | `xenia --mcp`                                   | Claude Desktop, Cursor, любой MCP client |
+| 🌊 **MCP (HTTP)**  | `http://localhost:20128/api/mcp/stream`         | Remote MCP — **104 tools**, 31 scopes    |
+| 📡 **MCP (SSE)**   | `http://localhost:20128/api/mcp/sse`            | Streaming MCP                            |
+| 🤝 **A2A**         | `http://localhost:20128/.well-known/agent.json` | Agent-to-agent, JSON-RPC 2.0 + SSE       |
 
 ```bash
-claude mcp add-server omniroute --type http --url http://localhost:20128/api/mcp/stream
+claude mcp add-server xenia --type http --url http://localhost:20128/api/mcp/stream
 ```
 
 <sub>📖 [MCP](../../frameworks/MCP-SERVER.md) · [A2A](../../frameworks/A2A-SERVER.md) · [Agent Protocols](../../frameworks/AGENT_PROTOCOLS_GUIDE.md)</sub>
@@ -422,29 +422,29 @@ claude mcp add-server omniroute --type http --url http://localhost:20128/api/mcp
 
 ### 🧱 11-engine stack
 
-| # | Engine | Что делает |
-|---|---|---|
-| 1 | **Session-Dedup** | Убирает повторённый cross-turn контент |
-| 2 | **CCR** | Крупные блоки за retrieve-markers, fetch on demand |
-| 3 | **RTK** | Умная фильтрация tool-result, dedup, truncation |
-| 4 | **Headroom** | Lossless tabular compaction JSON arrays (~30%), GCF v3.2 |
-| 5 | **Relevance** | Extractive scoring относительно last user query |
-| 6 | **Caveman** | Rule-based prose (~65–75% на output) |
-| 7 | **LLMLingua-2** | ML semantic pruning (MobileBERT ONNX), code-safe |
-| 8 | **Lite** | Whitespace + image-URL trimming |
-| 9 | **Aggressive** | Summarization + progressive aging старых turns |
-| 10 | **Ultra** | Heuristic pruning + optional SLM tier |
+| #   | Engine            | Что делает                                               |
+| --- | ----------------- | -------------------------------------------------------- |
+| 1   | **Session-Dedup** | Убирает повторённый cross-turn контент                   |
+| 2   | **CCR**           | Крупные блоки за retrieve-markers, fetch on demand       |
+| 3   | **RTK**           | Умная фильтрация tool-result, dedup, truncation          |
+| 4   | **Headroom**      | Lossless tabular compaction JSON arrays (~30%), GCF v3.2 |
+| 5   | **Relevance**     | Extractive scoring относительно last user query          |
+| 6   | **Caveman**       | Rule-based prose (~65–75% на output)                     |
+| 7   | **LLMLingua-2**   | ML semantic pruning (MobileBERT ONNX), code-safe         |
+| 8   | **Lite**          | Whitespace + image-URL trimming                          |
+| 9   | **Aggressive**    | Summarization + progressive aging старых turns           |
+| 10  | **Ultra**         | Heuristic pruning + optional SLM tier                    |
 
 Код, URL и structured data **всегда** сохраняются byte-perfect.
 
-| Режим | Экономия | Когда |
-|---|---|---|
-| 🪶 **Lite** | ~15% | Безопасный always-on default |
-| 🪨 **Standard (Caveman)** | ~30% | Ежедневный coding |
-| ⚡ **Aggressive** | ~50% | Длинные tool-heavy сессии |
-| 🔥 **Ultra** | ~75% | Максимум экономии |
-| 🧰 **RTK** | 60–90% | Shell / test / build / git output |
-| 🔗 **Stacked (RTK → Caveman)** | **78–95%** | Промпты + tool logs |
+| Режим                          | Экономия   | Когда                             |
+| ------------------------------ | ---------- | --------------------------------- |
+| 🪶 **Lite**                    | ~15%       | Безопасный always-on default      |
+| 🪨 **Standard (Caveman)**      | ~30%       | Ежедневный coding                 |
+| ⚡ **Aggressive**              | ~50%       | Длинные tool-heavy сессии         |
+| 🔥 **Ultra**                   | ~75%       | Максимум экономии                 |
+| 🧰 **RTK**                     | 60–90%     | Shell / test / build / git output |
+| 🔗 **Stacked (RTK → Caveman)** | **78–95%** | Промпты + tool logs               |
 
 **Пример — Standard:**
 
@@ -462,7 +462,7 @@ average  = 1 − (1 − 0.80) × (1 − 0.46) = 89.2%
 range    = 78.4 – 94.6%
 ```
 
-Precedence (high → low): header `x-omniroute-compression` › combo override › named profile › adaptive › panel default › off.
+Precedence (high → low): header `x-xenia-compression` › combo override › named profile › adaptive › panel default › off.
 
 📖 [`COMPRESSION_GUIDE.md`](../../compression/COMPRESSION_GUIDE.md) · [`RTK_COMPRESSION.md`](../../compression/RTK_COMPRESSION.md) · [`COMPRESSION_ENGINES.md`](../../compression/COMPRESSION_ENGINES.md)
 
@@ -477,8 +477,8 @@ Precedence (high → low): header `x-omniroute-compression` › combo override �
 **1) Установка и запуск**
 
 ```bash
-npm install -g omniroute
-omniroute
+npm install -g xenia
+xenia
 ```
 
 > 💡 Видите `npm warn ERESOLVE` / peer-dep? [Это безвредно](../../getting-started/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).
@@ -503,7 +503,7 @@ Model:    auto            (zero-config smart routing — или любой provi
 curl http://localhost:20128/v1/models -H "Authorization: Bearer YOUR_KEY"
 ```
 
-Должны появиться подключённые модели. 🎉 Дальше пишите код — OmniRoute сам роутит и делает fallback.
+Должны появиться подключённые модели. 🎉 Дальше пишите код — Xenia сам роутит и делает fallback.
 
 Если клиент **не умеет** custom headers — tokenized aliases:
 
@@ -525,8 +525,8 @@ Ollama tags:      http://localhost:20128/vscode/YOUR_KEY/api/tags
 **🐳 Docker**
 
 ```bash
-docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+docker run -d --name xenia --restart unless-stopped --stop-timeout 40 \
+  -p 127.0.0.1:20128:20128 -v xenia-data:/app/data diegosouzapw/xenia:latest
 ```
 
 **🛠️ Из исходников**
@@ -539,13 +539,13 @@ PORT=20128 npm run dev
 **📦 pnpm**
 
 ```bash
-pnpm add -g omniroute@latest --allow-build=better-sqlite3 --allow-build=@swc/core && omniroute
+pnpm add -g xenia@latest --allow-build=better-sqlite3 --allow-build=@swc/core && xenia
 ```
 
 **🐧 Arch Linux (AUR)**
 
 ```bash
-yay -S omniroute-bin && systemctl --user enable --now omniroute.service
+yay -S xenia-bin && systemctl --user enable --now xenia.service
 ```
 
 **🔧 Nix (Flake)**
@@ -560,38 +560,38 @@ npm run dev
 
 ### Полезные флаги CLI
 
-| Команда | Описание |
-|---|---|
-| `omniroute` | Сервер (`PORT=20128`, API + dashboard) |
-| `omniroute --port 3000` | Порт 3000 |
-| `omniroute --mcp` | MCP server (stdio) |
-| `omniroute --no-open` | Не открывать браузер |
-| `omniroute --help` | Справка |
+| Команда             | Описание                               |
+| ------------------- | -------------------------------------- |
+| `xenia`             | Сервер (`PORT=20128`, API + dashboard) |
+| `xenia --port 3000` | Порт 3000                              |
+| `xenia --mcp`       | MCP server (stdio)                     |
+| `xenia --no-open`   | Не открывать браузер                   |
+| `xenia --help`      | Справка                                |
 
 Split-port:
 
 ```bash
-PORT=20128 DASHBOARD_PORT=20129 omniroute
+PORT=20128 DASHBOARD_PORT=20129 xenia
 # API:       http://localhost:20128/v1
 # Dashboard: http://localhost:20129
 ```
 
 ### Удаление
 
-| Команда | Действие |
-|---|---|
-| `npm run uninstall` | Убирает app, **сохраняет** `~/.omniroute` |
-| `npm run uninstall:full` | Удаляет app **и** все ключи/БД |
-| `npm uninstall -g omniroute` | Глобальный npm uninstall |
+| Команда                  | Действие                              |
+| ------------------------ | ------------------------------------- |
+| `npm run uninstall`      | Убирает app, **сохраняет** `~/.xenia` |
+| `npm run uninstall:full` | Удаляет app **и** все ключи/БД        |
+| `npm uninstall -g xenia` | Глобальный npm uninstall              |
 
 ### Старт с $0 — Free Stack
 
-| Шаг | Действие | Что открывается |
-|---|---|---|
-| 1 | Подключить **Kiro** (AWS Builder ID OAuth) | Claude Sonnet / Haiku |
-| 2 | Подключить **Qoder** (Google OAuth) | kimi-k2-thinking, qwen3-coder-plus… |
-| 3 | Подключить **Qwen** (Device Code) | qwen3-coder-plus/flash… |
-| 4 | `/dashboard/combos` → шаблон **Free Stack ($0)** | Round-robin free-провайдеров |
+| Шаг | Действие                                         | Что открывается                     |
+| --- | ------------------------------------------------ | ----------------------------------- |
+| 1   | Подключить **Kiro** (AWS Builder ID OAuth)       | Claude Sonnet / Haiku               |
+| 2   | Подключить **Qoder** (Google OAuth)              | kimi-k2-thinking, qwen3-coder-plus… |
+| 3   | Подключить **Qwen** (Device Code)                | qwen3-coder-plus/flash…             |
+| 4   | `/dashboard/combos` → шаблон **Free Stack ($0)** | Round-robin free-провайдеров        |
 
 IDE/CLI: `http://localhost:20128/v1` · API Key: любая строка (если `REQUIRE_API_KEY=false`).
 
@@ -601,7 +601,7 @@ IDE/CLI: `http://localhost:20128/v1` · API Key: любая строка (есл
 
 <div align="center">
 
-# 🎬 OmniRoute в деле
+# 🎬 Xenia в деле
 
 </div>
 
@@ -624,7 +624,7 @@ IDE/CLI: `http://localhost:20128/v1` · API Key: любая строка (есл
 </table>
 </div>
 
-> 🎬 **Сняли видео про OmniRoute?** Откройте [issue](https://github.com/diegosouzapw/OmniRoute/issues/new) или [discussion](https://github.com/diegosouzapw/OmniRoute/discussions) — добавим в этот раздел.
+> 🎬 **Сняли видео про Xenia?** Откройте [issue](https://github.com/diegosouzapw/Xenia/issues/new) или [discussion](https://github.com/diegosouzapw/Xenia/discussions) — добавим в этот раздел.
 
 <br/>
 
@@ -639,12 +639,12 @@ IDE/CLI: `http://localhost:20128/v1` · API Key: любая строка (есл
 
 <br/>
 
-| Tier | Примеры | Стоимость |
-|---|---|---|
-| 💳 **Subscription** | Claude Code Pro / Codex / Copilot | $10–200/мес |
-| 🔑 **API Key (free tiers)** | NVIDIA NIM, Cerebras, Groq | **Free** |
-| 💰 **Cheap** | GLM ~$0.5/1M · MiniMax ~$0.2–0.3/1M | Копейки |
-| 🆓 **Free forever** | Kiro, Qoder, Qwen, Pollinations, LongCat | **$0** |
+| Tier                        | Примеры                                  | Стоимость   |
+| --------------------------- | ---------------------------------------- | ----------- |
+| 💳 **Subscription**         | Claude Code Pro / Codex / Copilot        | $10–200/мес |
+| 🔑 **API Key (free tiers)** | NVIDIA NIM, Cerebras, Groq               | **Free**    |
+| 💰 **Cheap**                | GLM ~$0.5/1M · MiniMax ~$0.2–0.3/1M      | Копейки     |
+| 🆓 **Free forever**         | Kiro, Qoder, Qwen, Pollinations, LongCat | **$0**      |
 
 **Playbook A — выжать подписку + cheap backup:**
 
@@ -663,7 +663,7 @@ Combo: "free-forever"
   2. qw/qwen3-coder-plus
 ```
 
-> 💡 «Cost» в дашборде — **tracker экономии**, не счёт OmniRoute. OmniRoute вам **не** выставляет счета.
+> 💡 «Cost» в дашборде — **tracker экономии**, не счёт Xenia. Xenia вам **не** выставляет счета.
 
 📖 Free catalog → [`docs/reference/FREE_TIERS.md`](../../reference/FREE_TIERS.md)
 
@@ -702,15 +702,15 @@ Combo: "free-forever"
 
 <br/>
 
-| Variable | Default | Назначение |
-|---|---|---|
-| `PORT` | `20128` | API + dashboard |
-| `REQUIRE_API_KEY` | `false` | Требовать API key на `/v1` |
-| `DATA_DIR` | `~/.omniroute` | БД и конфиги |
-| `REQUEST_TIMEOUT_MS` | `600000` | Базовый timeout |
-| `STREAM_IDLE_TIMEOUT_MS` | inherits | Idle gap SSE |
+| Variable                 | Default    | Назначение                 |
+| ------------------------ | ---------- | -------------------------- |
+| `PORT`                   | `20128`    | API + dashboard            |
+| `REQUIRE_API_KEY`        | `false`    | Требовать API key на `/v1` |
+| `DATA_DIR`               | `~/.xenia` | БД и конфиги               |
+| `REQUEST_TIMEOUT_MS`     | `600000`   | Базовый timeout            |
+| `STREAM_IDLE_TIMEOUT_MS` | inherits   | Idle gap SSE               |
 
-**OmniRoute берёт деньги?** Нет — open-source на вашей машине. Платите только платным провайдерам.  
+**Xenia берёт деньги?** Нет — open-source на вашей машине. Платите только платным провайдерам.  
 **Free правда unlimited?** Часто да (Qoder, Pollinations…). Kiro — free, но ~50 credits/mo. Комбо из нескольких free = zero-cost устойчивость.  
 **Сжатие портит качество?** Сжимается **input**; code/URL/JSON protected.  
 **Регион заблокирован?** Proxy + stealth.
@@ -724,14 +724,14 @@ Combo: "free-forever"
 
 <br/>
 
-| Проблема | Быстрый фикс |
-|---|---|
-| "Language model did not provide messages" | Квота провайдера → combo fallback |
-| 429 rate limit | Цепочка: `cc/claude → glm/glm-4.7 → if/kimi-k2-thinking` |
-| OAuth expired | Auto-refresh; иначе Providers → re-auth |
-| `unsupported_country_region_territory` | Settings → Proxy |
-| Docker SQLite lock | `--stop-timeout 40` |
-| Node runtime | Node `>=22.0.0 <23` или `>=24.0.0 <27` |
+| Проблема                                  | Быстрый фикс                                             |
+| ----------------------------------------- | -------------------------------------------------------- |
+| "Language model did not provide messages" | Квота провайдера → combo fallback                        |
+| 429 rate limit                            | Цепочка: `cc/claude → glm/glm-4.7 → if/kimi-k2-thinking` |
+| OAuth expired                             | Auto-refresh; иначе Providers → re-auth                  |
+| `unsupported_country_region_territory`    | Settings → Proxy                                         |
+| Docker SQLite lock                        | `--stop-timeout 40`                                      |
+| Node runtime                              | Node `>=22.0.0 <23` или `>=24.0.0 <27`                   |
 
 🐛 **Баг?** `npm run system-info` → приложите `system-info.txt` к issue.  
 📖 [`TROUBLESHOOTING.md`](../../guides/TROUBLESHOOTING.md)
@@ -743,12 +743,12 @@ Combo: "free-forever"
 
 <br/>
 
-| Page | Screenshot | Page | Screenshot |
-|---|---|---|---|
-| Providers | ![Providers](../../screenshots/01-providers.png) | Combos | ![Combos](../../screenshots/02-combos.png) |
-| Analytics | ![Analytics](../../screenshots/03-analytics.png) | Health | ![Health](../../screenshots/04-health.png) |
-| Translator | ![Translator](../../screenshots/05-translator.png) | Settings | ![Settings](../../screenshots/06-settings.png) |
-| CLI Tools | ![CLI Tools](../../screenshots/07-cli-tools.png) | Usage Logs | ![Usage](../../screenshots/08-usage.png) |
+| Page       | Screenshot                                         | Page       | Screenshot                                     |
+| ---------- | -------------------------------------------------- | ---------- | ---------------------------------------------- |
+| Providers  | ![Providers](../../screenshots/01-providers.png)   | Combos     | ![Combos](../../screenshots/02-combos.png)     |
+| Analytics  | ![Analytics](../../screenshots/03-analytics.png)   | Health     | ![Health](../../screenshots/04-health.png)     |
+| Translator | ![Translator](../../screenshots/05-translator.png) | Settings   | ![Settings](../../screenshots/06-settings.png) |
+| CLI Tools  | ![CLI Tools](../../screenshots/07-cli-tools.png)   | Usage Logs | ![Usage](../../screenshots/08-usage.png)       |
 
 </details>
 
@@ -760,9 +760,9 @@ Combo: "free-forever"
 
 > 💬 Ссылки Discord / Telegram / WhatsApp — [в шапке README](#-сообщество).
 
-- 🌍 **Сайт:** [omniroute.online](https://omniroute.online)
-- 🐙 **GitHub:** [github.com/diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)
-- 🐛 **Issues:** [сообщить о баге](https://github.com/diegosouzapw/OmniRoute/issues) (с `npm run system-info`)
+- 🌍 **Сайт:** [xenia.online](https://xenia.online)
+- 🐙 **GitHub:** [github.com/diegosouzapw/Xenia](https://github.com/diegosouzapw/Xenia)
+- 🐛 **Issues:** [сообщить о баге](https://github.com/diegosouzapw/Xenia/issues) (с `npm run system-info`)
 - 🤝 **Contributing:** [CONTRIBUTING.md](../../../CONTRIBUTING.md) или label `good first issue`
 
 </div>
@@ -796,51 +796,51 @@ Combo: "free-forever"
 
 ### 📘 Старт
 
-| Документ | О чём |
-|---|---|
-| [User Guide](../../guides/USER_GUIDE.md) | Провайдеры, комбо, CLI, deploy |
-| [Setup Guide](../../guides/SETUP_GUIDE.md) | Установка, CLI tools, protocols, timeouts |
-| [CLI Tools](../../reference/CLI-TOOLS.md) | Claude Code, Codex, Cursor, Cline… |
-| [Remote Mode](../../guides/REMOTE-MODE.md) | CLI с ноутбука → OmniRoute на VPS |
-| [Quick Start](../../../README.md#-quick-start) | EN root: install → connect → point |
+| Документ                                       | О чём                                     |
+| ---------------------------------------------- | ----------------------------------------- |
+| [User Guide](../../guides/USER_GUIDE.md)       | Провайдеры, комбо, CLI, deploy            |
+| [Setup Guide](../../guides/SETUP_GUIDE.md)     | Установка, CLI tools, protocols, timeouts |
+| [CLI Tools](../../reference/CLI-TOOLS.md)      | Claude Code, Codex, Cursor, Cline…        |
+| [Remote Mode](../../guides/REMOTE-MODE.md)     | CLI с ноутбука → Xenia на VPS             |
+| [Quick Start](../../../README.md#-quick-start) | EN root: install → connect → point        |
 
 ### 🔧 Ops
 
-| Документ | О чём |
-|---|---|
-| [Docker Guide](../../guides/DOCKER_GUIDE.md) | Run, Compose, Caddy, tunnels |
-| [Podman](../../../contrib/podman/README.md) | Quadlet, SELinux |
-| [VM Deployment](../../ops/VM_DEPLOYMENT_GUIDE.md) | VM + nginx + Cloudflare |
-| [Termux](../../guides/TERMUX_GUIDE.md) | Android |
-| [Environment](../../reference/ENVIRONMENT.md) | Полный `.env` reference |
+| Документ                                          | О чём                        |
+| ------------------------------------------------- | ---------------------------- |
+| [Docker Guide](../../guides/DOCKER_GUIDE.md)      | Run, Compose, Caddy, tunnels |
+| [Podman](../../../contrib/podman/README.md)       | Quadlet, SELinux             |
+| [VM Deployment](../../ops/VM_DEPLOYMENT_GUIDE.md) | VM + nginx + Cloudflare      |
+| [Termux](../../guides/TERMUX_GUIDE.md)            | Android                      |
+| [Environment](../../reference/ENVIRONMENT.md)     | Полный `.env` reference      |
 
 ### 🧠 Архитектура и фичи
 
-| Документ | О чём |
-|---|---|
-| [Architecture](../../architecture/ARCHITECTURE.md) | Система и data flow |
-| [Compression Guide](../../compression/COMPRESSION_GUIDE.md) | Pipeline сжатия |
-| [Resilience Guide](../../architecture/RESILIENCE_GUIDE.md) | Breakers, cooldown, queue |
-| [Auto-Combo](../../routing/AUTO-COMBO.md) | Scoring и self-heal |
-| [Proxy Guide](../../ops/PROXY_GUIDE.md) | 3-level proxy |
-| [Free Tiers](../../reference/FREE_TIERS.md) | Free catalog |
+| Документ                                                    | О чём                     |
+| ----------------------------------------------------------- | ------------------------- |
+| [Architecture](../../architecture/ARCHITECTURE.md)          | Система и data flow       |
+| [Compression Guide](../../compression/COMPRESSION_GUIDE.md) | Pipeline сжатия           |
+| [Resilience Guide](../../architecture/RESILIENCE_GUIDE.md)  | Breakers, cooldown, queue |
+| [Auto-Combo](../../routing/AUTO-COMBO.md)                   | Scoring и self-heal       |
+| [Proxy Guide](../../ops/PROXY_GUIDE.md)                     | 3-level proxy             |
+| [Free Tiers](../../reference/FREE_TIERS.md)                 | Free catalog              |
 
 ### 🤖 Протоколы и API
 
-| Документ | О чём |
-|---|---|
-| [API Reference](../../reference/API_REFERENCE.md) | Все endpoints |
-| [MCP Server](../../frameworks/MCP-SERVER.md) | Tools, transports |
-| [A2A Server](../../frameworks/A2A-SERVER.md) | Skills, streaming |
+| Документ                                          | О чём             |
+| ------------------------------------------------- | ----------------- |
+| [API Reference](../../reference/API_REFERENCE.md) | Все endpoints     |
+| [MCP Server](../../frameworks/MCP-SERVER.md)      | Tools, transports |
+| [A2A Server](../../frameworks/A2A-SERVER.md)      | Skills, streaming |
 
 ### 📋 Проект
 
-| Документ | О чём |
-|---|---|
-| [CONTRIBUTING](../../../CONTRIBUTING.md) | Dev setup |
-| [CHANGELOG](../../../CHANGELOG.md) | История релизов |
-| [SECURITY](../../../SECURITY.md) | Vulnerability reporting |
-| [I18N](../../guides/I18N.md) | 43 языка, pipeline переводов |
+| Документ                                 | О чём                        |
+| ---------------------------------------- | ---------------------------- |
+| [CONTRIBUTING](../../../CONTRIBUTING.md) | Dev setup                    |
+| [CHANGELOG](../../../CHANGELOG.md)       | История релизов              |
+| [SECURITY](../../../SECURITY.md)         | Vulnerability reporting      |
+| [I18N](../../guides/I18N.md)             | 43 языка, pipeline переводов |
 
 ---
 
@@ -857,7 +857,7 @@ Combo: "free-forever"
 
 Полный гайд: [CONTRIBUTING.md](../../../CONTRIBUTING.md).
 
-[![Contributors](https://contrib.rocks/image?repo=diegosouzapw/OmniRoute&max=100&columns=20&anon=1)](https://github.com/diegosouzapw/OmniRoute/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=diegosouzapw/Xenia&max=100&columns=20&anon=1)](https://github.com/diegosouzapw/Xenia/graphs/contributors)
 
 ---
 
@@ -865,18 +865,18 @@ Combo: "free-forever"
 
 ## 📊 Star History
 
-<a href="https://www.star-history.com/?repos=diegosouzapw%2Fomniroute&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=diegosouzapw%2Fxenia&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=diegosouzapw/omniroute&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=diegosouzapw/omniroute&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=diegosouzapw/omniroute&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=diegosouzapw/xenia&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=diegosouzapw/xenia&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=diegosouzapw/xenia&type=date&legend=top-left" />
  </picture>
 </a>
 
 <br/><br/>
 
-**Сделано с ❤️ open-source сообществом · MIT License · [omniroute.online](https://omniroute.online)**
+**Сделано с ❤️ open-source сообществом · MIT License · [xenia.online](https://xenia.online)**
 
-⭐ Если OmniRoute помог сэкономить — поставьте star репозиторию.
+⭐ Если Xenia помог сэкономить — поставьте star репозиторию.
 
 </div>

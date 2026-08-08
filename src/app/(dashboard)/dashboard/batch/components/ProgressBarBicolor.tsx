@@ -20,16 +20,16 @@ export default function ProgressBarBicolor({
       {showLabels && (
         <div className="flex items-center justify-between text-xs text-[var(--color-text-muted)]">
           <span>
-            <span className="text-emerald-400">{completed}</span>
-            {failed > 0 && <span className="text-red-400"> / {failed} err</span>}
+            <span className="text-gray-400">{completed}</span>
+            {failed > 0 && <span className="text-gray-400"> / {failed} err</span>}
             <span> / {total}</span>
           </span>
           <span>{Math.round(donePct + failedPct)}%</span>
         </div>
       )}
       <div className="h-1.5 rounded-full bg-[var(--color-bg-alt)] overflow-hidden flex">
-        <div className="h-full bg-emerald-500 transition-all" style={{ width: `${donePct}%` }} />
-        <div className="h-full bg-red-500 transition-all" style={{ width: `${failedPct}%` }} />
+        <div className="h-full bg-gray-500 transition-all" style={{ width: `${donePct}%` }} />
+        <div className="h-full bg-gray-500 transition-all" style={{ width: `${failedPct}%` }} />
       </div>
     </div>
   );

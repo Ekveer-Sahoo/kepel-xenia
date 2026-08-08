@@ -9,7 +9,7 @@ import os from "node:os";
 import path from "node:path";
 import { makeManagementSessionRequest } from "../helpers/managementSession.ts";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-settings-cas-7784-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-settings-cas-7784-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.REQUIRE_API_KEY = "false";
 if (!process.env.API_KEY_SECRET) {
@@ -149,7 +149,10 @@ describe("#7784 settings optimistic concurrency", () => {
       () => settingsDb.updateSettings({ debugMode: false }, { expectedRevision: revision }),
       (err: unknown) => {
         assert.ok(err instanceof settingsDb.SettingsRevisionConflictError);
-        assert.equal((err as settingsDb.SettingsRevisionConflictError).currentRevision, revision + 1);
+        assert.equal(
+          (err as settingsDb.SettingsRevisionConflictError).currentRevision,
+          revision + 1
+        );
         return true;
       }
     );

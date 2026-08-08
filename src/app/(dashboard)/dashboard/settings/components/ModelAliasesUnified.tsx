@@ -118,10 +118,7 @@ export default function ModelAliasesUnified() {
       const currentWildcards = Array.isArray(settingsData.wildcardAliases)
         ? settingsData.wildcardAliases
         : wildcardAliases;
-      const updated = [
-        ...currentWildcards,
-        { pattern: fromValue.trim(), target: toValue.trim() },
-      ];
+      const updated = [...currentWildcards, { pattern: fromValue.trim(), target: toValue.trim() }];
       const res = await fetch("/api/settings", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -181,7 +178,7 @@ export default function ModelAliasesUnified() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-5">
-        <div className="p-2 rounded-lg bg-purple-500/10 text-purple-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             swap_horiz
           </span>
@@ -201,7 +198,7 @@ export default function ModelAliasesUnified() {
         {status.message && (
           <span
             className={`text-xs font-medium flex items-center gap-1 ${
-              status.type === "success" ? "text-emerald-500" : "text-red-500"
+              status.type === "success" ? "text-gray-500" : "text-gray-500"
             }`}
           >
             <span className="material-symbols-outlined text-[14px]" aria-hidden="true">
@@ -305,16 +302,16 @@ export default function ModelAliasesUnified() {
           ) : (
             customEntries.map(([from, to]) => (
               <div key={from} className="flex items-center gap-3 px-4 py-2.5">
-                <code className="text-xs text-red-400/80 flex-1 truncate">{from}</code>
+                <code className="text-xs text-gray-400/80 flex-1 truncate">{from}</code>
                 <span className="material-symbols-outlined text-[14px] text-text-muted">
                   arrow_forward
                 </span>
-                <code className="text-xs text-emerald-400/80 flex-1 truncate">{to}</code>
+                <code className="text-xs text-gray-400/80 flex-1 truncate">{to}</code>
                 <button
                   type="button"
                   onClick={() => void removeExactAlias(from)}
                   disabled={saving}
-                  className="p-1 rounded hover:bg-red-500/10 text-text-muted hover:text-red-400 transition-all"
+                  className="p-1 rounded hover:bg-gray-500/10 text-text-muted hover:text-gray-400 transition-all"
                 >
                   <span className="material-symbols-outlined text-[16px]">close</span>
                 </button>
@@ -343,16 +340,16 @@ export default function ModelAliasesUnified() {
                 key={`${alias.pattern}-${alias.target}-${index}`}
                 className="flex items-center gap-3 px-4 py-2.5"
               >
-                <code className="text-xs text-purple-400 flex-1 truncate">{alias.pattern}</code>
+                <code className="text-xs text-gray-400 flex-1 truncate">{alias.pattern}</code>
                 <span className="material-symbols-outlined text-[14px] text-text-muted">
                   arrow_forward
                 </span>
-                <code className="text-xs text-emerald-400/80 flex-1 truncate">{alias.target}</code>
+                <code className="text-xs text-gray-400/80 flex-1 truncate">{alias.target}</code>
                 <button
                   type="button"
                   onClick={() => void removeWildcardAlias(index)}
                   disabled={saving}
-                  className="p-1 rounded hover:bg-red-500/10 text-text-muted hover:text-red-400 transition-all"
+                  className="p-1 rounded hover:bg-gray-500/10 text-text-muted hover:text-gray-400 transition-all"
                 >
                   <span className="material-symbols-outlined text-[16px]">close</span>
                 </button>
@@ -372,11 +369,11 @@ export default function ModelAliasesUnified() {
         <div className="rounded-lg border border-border/30 divide-y divide-border/20 max-h-60 overflow-y-auto">
           {builtInEntries.map(([from, to]) => (
             <div key={from} className="flex items-center gap-3 px-4 py-2 opacity-60">
-              <code className="text-xs text-red-400/60 flex-1 truncate">{from}</code>
+              <code className="text-xs text-gray-400/60 flex-1 truncate">{from}</code>
               <span className="material-symbols-outlined text-[14px] text-text-muted">
                 arrow_forward
               </span>
-              <code className="text-xs text-emerald-400/60 flex-1 truncate">{to}</code>
+              <code className="text-xs text-gray-400/60 flex-1 truncate">{to}</code>
               <span className="material-symbols-outlined text-[14px] text-text-muted">lock</span>
             </div>
           ))}

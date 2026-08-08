@@ -60,12 +60,12 @@ export function OmniSkillsList({
               value={searchTerm}
               onChange={(e) => onSearchTermChange(e.target.value)}
               placeholder={t("filterSkillsPlaceholder")}
-              className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+              className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
             <select
               value={modeFilter}
               onChange={(e) => onModeFilterChange(e.target.value as "all" | "on" | "off" | "auto")}
-              className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+              className="px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
             >
               <option value="all">{t("allModes")}</option>
               <option value="on">{t("onMode")}</option>
@@ -74,7 +74,7 @@ export function OmniSkillsList({
             </select>
             <button
               onClick={onApplyFilters}
-              className="px-4 py-2 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 transition-colors"
+              className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 transition-colors"
             >
               {t("applyFilters")}
             </button>
@@ -87,7 +87,7 @@ export function OmniSkillsList({
                 {popularDefaults.map((name) => (
                   <span
                     key={name}
-                    className="text-xs px-2 py-1 rounded bg-violet-500/10 text-violet-300 border border-violet-500/20"
+                    className="text-xs px-2 py-1 rounded bg-gray-500/10 text-gray-300 border border-gray-500/20"
                   >
                     {name}
                   </span>

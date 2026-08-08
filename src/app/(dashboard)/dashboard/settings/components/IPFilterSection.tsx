@@ -76,7 +76,7 @@ export default function IPFilterSection() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-5">
-        <div className="p-2 rounded-lg bg-red-500/10 text-red-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             security
           </span>
@@ -96,19 +96,19 @@ export default function IPFilterSection() {
             disabled={loading}
             className={`flex flex-col items-center gap-1.5 p-3 rounded-lg border text-center transition-all ${
               activeMode === m.value
-                ? "border-red-500/50 bg-red-500/5 ring-1 ring-red-500/20"
+                ? "border-gray-500/50 bg-gray-500/5 ring-1 ring-gray-500/20"
                 : "border-border/50 hover:border-border hover:bg-surface/30"
             }`}
           >
             <span
               className={`material-symbols-outlined text-[20px] ${
-                activeMode === m.value ? "text-red-400" : "text-text-muted"
+                activeMode === m.value ? "text-gray-400" : "text-text-muted"
               }`}
             >
               {m.icon}
             </span>
             <span
-              className={`text-xs font-medium ${activeMode === m.value ? "text-red-400" : "text-text-muted"}`}
+              className={`text-xs font-medium ${activeMode === m.value ? "text-gray-400" : "text-text-muted"}`}
             >
               {t(m.labelKey)}
             </span>
@@ -164,12 +164,12 @@ export default function IPFilterSection() {
                   <span
                     key={ip}
                     className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono
-                               bg-red-500/10 text-red-400 border border-red-500/20"
+                               bg-gray-500/10 text-gray-400 border border-gray-500/20"
                   >
                     {ip}
                     <button
                       onClick={() => removeIP(ip, "blacklist")}
-                      className="hover:text-red-300"
+                      className="hover:text-gray-300"
                     >
                       <span className="material-symbols-outlined text-[14px]">close</span>
                     </button>
@@ -190,12 +190,12 @@ export default function IPFilterSection() {
                   <span
                     key={ip}
                     className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono
-                               bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                               bg-gray-500/10 text-gray-400 border border-gray-500/20"
                   >
                     {ip}
                     <button
                       onClick={() => removeIP(ip, "whitelist")}
-                      className="hover:text-emerald-300"
+                      className="hover:text-gray-300"
                     >
                       <span className="material-symbols-outlined text-[14px]">close</span>
                     </button>
@@ -216,10 +216,10 @@ export default function IPFilterSection() {
                   <div
                     key={ban.ip}
                     className="flex items-center justify-between gap-2 px-3 py-2 rounded-lg
-                               bg-orange-500/5 border border-orange-500/20 text-sm"
+                               bg-gray-500/5 border border-gray-500/20 text-sm"
                   >
                     <div className="flex min-w-0 items-center gap-2">
-                      <span className="font-mono text-xs text-orange-400 shrink-0">{ban.ip}</span>
+                      <span className="font-mono text-xs text-gray-400 shrink-0">{ban.ip}</span>
                       <span className="text-xs text-text-muted truncate">— {ban.reason}</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -228,7 +228,7 @@ export default function IPFilterSection() {
                       </span>
                       <button
                         onClick={() => removeBan(ban.ip)}
-                        className="text-text-muted hover:text-orange-400"
+                        className="text-text-muted hover:text-gray-400"
                       >
                         <span className="material-symbols-outlined text-[16px]">delete</span>
                       </button>

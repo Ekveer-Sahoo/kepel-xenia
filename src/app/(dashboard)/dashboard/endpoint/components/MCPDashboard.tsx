@@ -425,7 +425,9 @@ export default function McpDashboardPage() {
               <p>
                 {t("scopesEnforced")}:{" "}
                 <span className="font-semibold">
-                  {(status?.scopesEnforced ?? status?.heartbeat?.scopesEnforced) ? t("yes") : t("no")}
+                  {(status?.scopesEnforced ?? status?.heartbeat?.scopesEnforced)
+                    ? t("yes")
+                    : t("no")}
                 </span>
               </p>
               <p>
@@ -501,7 +503,7 @@ export default function McpDashboardPage() {
             <Button
               size="sm"
               onClick={handleResetCircuitBreakers}
-              className="bg-red-500! hover:bg-red-600! text-white!"
+              className="bg-gray-500! hover:bg-gray-600! text-white!"
               disabled={actionBusy === "reset"}
             >
               {t("resetAllBreakers")}
@@ -610,7 +612,7 @@ export default function McpDashboardPage() {
                     <td className="py-2 pr-2 font-mono text-xs">{entry.toolName}</td>
                     <td className="py-2 pr-2">{entry.durationMs}ms</td>
                     <td className="py-2 pr-2">
-                      <span className={entry.success ? "text-green-500" : "text-red-500"}>
+                      <span className={entry.success ? "text-gray-500" : "text-gray-500"}>
                         {entry.success ? t("success") : entry.errorCode || t("failed")}
                       </span>
                     </td>

@@ -35,10 +35,7 @@ export default function BatchTestResultsModal({
   if (!batchTestResults) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh]"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh]" onClick={onClose}>
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       <div
         className="relative bg-bg-primary border border-border rounded-xl w-full max-w-[600px] max-h-[80vh] overflow-y-auto shadow-2xl"
@@ -58,21 +55,21 @@ export default function BatchTestResultsModal({
           {batchTestResults.error &&
           (!batchTestResults.results || batchTestResults.results.length === 0) ? (
             <div className="text-center py-6">
-              <span className="material-symbols-outlined text-red-500 text-[32px] mb-2 block">
+              <span className="material-symbols-outlined text-gray-500 text-[32px] mb-2 block">
                 error
               </span>
-              <p className="text-sm text-red-400">{String(batchTestResults.error)}</p>
+              <p className="text-sm text-gray-400">{String(batchTestResults.error)}</p>
             </div>
           ) : (
             <div className="flex flex-col gap-3">
               {batchTestResults.summary && (
                 <div className="flex items-center gap-3 text-xs mb-1">
                   <span className="text-text-muted">{providerInfo?.name || providerId}</span>
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-medium">
+                  <span className="px-2 py-0.5 rounded bg-gray-500/15 text-gray-400 font-medium">
                     {t("passedCount", { count: batchTestResults.summary.passed })}
                   </span>
                   {batchTestResults.summary.failed > 0 && (
-                    <span className="px-2 py-0.5 rounded bg-red-500/15 text-red-400 font-medium">
+                    <span className="px-2 py-0.5 rounded bg-gray-500/15 text-gray-400 font-medium">
                       {t("failedCount", { count: batchTestResults.summary.failed })}
                     </span>
                   )}
@@ -88,7 +85,7 @@ export default function BatchTestResultsModal({
                 >
                   <span
                     className={`material-symbols-outlined text-[16px] ${
-                      r.valid ? "text-emerald-500" : "text-red-500"
+                      r.valid ? "text-gray-500" : "text-gray-500"
                     }`}
                   >
                     {r.valid ? "check_circle" : "error"}
@@ -105,9 +102,7 @@ export default function BatchTestResultsModal({
                   )}
                   <span
                     className={`text-[10px] uppercase font-bold px-1.5 py-0.5 rounded ${
-                      r.valid
-                        ? "bg-emerald-500/15 text-emerald-400"
-                        : "bg-red-500/15 text-red-400"
+                      r.valid ? "bg-gray-500/15 text-gray-400" : "bg-gray-500/15 text-gray-400"
                     }`}
                   >
                     {r.valid ? t("okShort") : r.diagnosis?.type || t("errorShort")}

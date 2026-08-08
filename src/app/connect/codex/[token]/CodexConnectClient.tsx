@@ -183,7 +183,7 @@ export default function CodexConnectClient({ token }: { token: string }) {
 
         {status === "success" && (
           <div className="text-center">
-            <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10 text-green-500">
+            <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[26px]">check_circle</span>
             </div>
             <p className="font-medium text-text-main">Connected!</p>
@@ -195,7 +195,7 @@ export default function CodexConnectClient({ token }: { token: string }) {
 
         {status === "error" && (
           <div className="text-center">
-            <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-500/10 text-red-500">
+            <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[26px]">error</span>
             </div>
             <p className="mb-4 text-sm text-text-muted">{error}</p>

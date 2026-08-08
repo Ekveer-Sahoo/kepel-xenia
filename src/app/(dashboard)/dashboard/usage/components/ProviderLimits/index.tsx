@@ -41,10 +41,10 @@ import { isProviderQuotaVisible } from "@/shared/utils/providerQuotaVisibility";
 // never settles (browser connection-pool starvation under the RSC prefetch storm).
 const PROVIDER_LIMITS_FETCH_TIMEOUT_MS = 20_000;
 
-const LS_PURCHASE_FILTER = "omniroute:limits:purchaseFilter";
-const LS_STATUS_FILTER = "omniroute:limits:statusFilter";
-const LS_ENV_FILTER = "omniroute:limits:envFilter";
-const LS_PROVIDER_FILTER = "omniroute:limits:providerFilter";
+const LS_PURCHASE_FILTER = "xenia:limits:purchaseFilter";
+const LS_STATUS_FILTER = "xenia:limits:statusFilter";
+const LS_ENV_FILTER = "xenia:limits:envFilter";
+const LS_PROVIDER_FILTER = "xenia:limits:providerFilter";
 
 const MIN_FETCH_INTERVAL_MS = 30000;
 const QUOTA_BAR_GREEN_THRESHOLD = 50;
@@ -121,9 +121,9 @@ const getQuotaBarWidthClass = (pct: number) => {
 };
 
 const getQuotaToneClasses = (pct: number) => {
-  if (pct <= QUOTA_BAR_YELLOW_THRESHOLD) return "bg-red-500 text-red-500";
-  if (pct <= QUOTA_BAR_GREEN_THRESHOLD) return "bg-yellow-500 text-yellow-500";
-  return "bg-green-500 text-green-500";
+  if (pct <= QUOTA_BAR_YELLOW_THRESHOLD) return "bg-gray-500 text-gray-500";
+  if (pct <= QUOTA_BAR_GREEN_THRESHOLD) return "bg-gray-500 text-gray-500";
+  return "bg-gray-500 text-gray-500";
 };
 
 const STATUS_TONE: Record<
@@ -138,25 +138,25 @@ const STATUS_TONE: Record<
     dot: "var(--color-text-muted)",
   },
   critical: {
-    bar: "#ef4444",
-    text: "#ef4444",
+    bar: "#777777",
+    text: "#777777",
     bg: "rgba(239,68,68,0.10)",
     ring: "rgba(239,68,68,0.40)",
-    dot: "#ef4444",
+    dot: "#777777",
   },
   alert: {
-    bar: "#eab308",
-    text: "#eab308",
+    bar: "#b0b0b0",
+    text: "#b0b0b0",
     bg: "rgba(234,179,8,0.10)",
     ring: "rgba(234,179,8,0.40)",
-    dot: "#eab308",
+    dot: "#b0b0b0",
   },
   ok: {
-    bar: "#22c55e",
-    text: "#22c55e",
+    bar: "#898989",
+    text: "#898989",
     bg: "rgba(34,197,94,0.10)",
     ring: "rgba(34,197,94,0.40)",
-    dot: "#22c55e",
+    dot: "#898989",
   },
   empty: {
     bar: "var(--color-text-muted)",

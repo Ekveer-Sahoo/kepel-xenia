@@ -20,7 +20,7 @@ export function SkillCard({ skill, selected, onClick }: SkillCardProps): JSX.Ele
         onClick();
       }
     },
-    [onClick],
+    [onClick]
   );
 
   const previewItems: string[] =
@@ -65,10 +65,10 @@ export function SkillCard({ skill, selected, onClick }: SkillCardProps): JSX.Ele
           <span
             className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
               skill.category === "api"
-                ? "bg-blue-500/10 text-blue-700 dark:text-blue-400"
+                ? "bg-gray-500/10 text-gray-700 dark:text-gray-400"
                 : skill.category === "cli"
-                  ? "bg-violet-500/10 text-violet-700 dark:text-violet-400"
-                  : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
+                  ? "bg-gray-500/10 text-gray-700 dark:text-gray-400"
+                  : "bg-gray-500/10 text-gray-700 dark:text-gray-400"
             }`}
           >
             {skill.category === "api"
@@ -85,7 +85,7 @@ export function SkillCard({ skill, selected, onClick }: SkillCardProps): JSX.Ele
           )}
 
           {skill.isNew && (
-            <span className="rounded-full bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-700 dark:text-amber-400">
+            <span className="rounded-full bg-gray-500/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gray-700 dark:text-gray-400">
               new
             </span>
           )}

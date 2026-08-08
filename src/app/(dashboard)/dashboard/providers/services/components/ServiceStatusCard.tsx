@@ -8,13 +8,13 @@ import { useServiceStatus } from "../hooks/useServiceStatus";
 function StateDot({ state, health }: { state: string; health: string }) {
   const color =
     state === "running" && health === "ok"
-      ? "bg-green-500"
+      ? "bg-gray-500"
       : state === "running"
-        ? "bg-yellow-500"
+        ? "bg-gray-500"
         : state === "starting"
-          ? "bg-blue-400 animate-pulse"
+          ? "bg-gray-400 animate-pulse"
           : state === "error"
-            ? "bg-red-500"
+            ? "bg-gray-500"
             : "bg-border";
 
   return <span className={cn("inline-block size-2 rounded-full shrink-0", color)} />;
@@ -39,7 +39,7 @@ export function ServiceStatusCard({ name }: ServiceStatusCardProps) {
   if (error && !data) {
     return (
       <Card padding="md">
-        <p className="text-xs text-red-500">{error}</p>
+        <p className="text-xs text-gray-500">{error}</p>
       </Card>
     );
   }
@@ -75,9 +75,7 @@ export function ServiceStatusCard({ name }: ServiceStatusCardProps) {
           <div className="text-right shrink-0">
             <p className="text-xs font-mono text-text-muted">v{data.installedVersion}</p>
             {data.updateAvailable && data.latestVersion && (
-              <p className="text-xs text-yellow-600 dark:text-yellow-400">
-                → v{data.latestVersion}
-              </p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">→ v{data.latestVersion}</p>
             )}
           </div>
         )}
@@ -86,7 +84,7 @@ export function ServiceStatusCard({ name }: ServiceStatusCardProps) {
       {/* Adopted-process note — English literal, not an i18n key; see
           AutoRestartAdoptedToggle.tsx's header comment for why. */}
       {data.adopted && (
-        <p className="mt-2 text-xs text-yellow-600 dark:text-yellow-400 flex items-start gap-1">
+        <p className="mt-2 text-xs text-gray-600 dark:text-gray-400 flex items-start gap-1">
           <span className="material-symbols-outlined text-[14px] shrink-0 mt-0.5">info</span>
           <span>
             This process was adopted from an already-running instance, not started by this
@@ -96,7 +94,7 @@ export function ServiceStatusCard({ name }: ServiceStatusCardProps) {
         </p>
       )}
 
-      {data.lastError && <p className="mt-2 text-xs text-red-500 break-words">{data.lastError}</p>}
+      {data.lastError && <p className="mt-2 text-xs text-gray-500 break-words">{data.lastError}</p>}
     </Card>
   );
 }

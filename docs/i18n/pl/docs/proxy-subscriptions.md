@@ -1,8 +1,8 @@
 # Subskrypcje proxy operatora (styl Karing)
 
 > Notatki projektowe i implementacyjne dla operatorowego przepływu subskrypcji
-> proxy w OmniRoute. To jest cięcie v1: pojedynczy operator wkleja linki
-> subskrypcji, wybiera tryb (global lub rule), a OmniRoute wiąże wynikową pulę
+> proxy w Xenia. To jest cięcie v1: pojedynczy operator wkleja linki
+> subskrypcji, wybiera tryb (global lub rule), a Xenia wiąże wynikową pulę
 > proxy z istniejącą rezolucją scope. Multi-tenant per-API-key, zaawansowane
 > reguły ruchu, wagi per-rule sterowane latencją itd. są jawnie poza zakresem
 > i wymienione w §7.
@@ -11,27 +11,27 @@
 
 ## 1. Motywacja
 
-Dziś pula proxy OmniRoute jest ręcznie kuratorowana: każdy węzeł żyje w
+Dziś pula proxy Xenia jest ręcznie kuratorowana: każdy węzeł żyje w
 `proxy_registry` z ręcznie wpisanym host/port/credentials, a każde powiązanie z
 upstreamowymi dispatcherami (account → provider → combo → global → direct) to
 ręczny wiersz `proxy_assignments`. Operatorzy, którzy już utrzymują subskrypcję
 Clash/V2Ray/sing-box (np. z usługi airport), muszą przepisywać każdy węzeł do
-OmniRoute i ponownie je wiązać przy każdej zmianie listy upstream.
+Xenia i ponownie je wiązać przy każdej zmianie listy upstream.
 
-Celem v1 jest uczynienie OmniRoute first-class dla subskrypcji
+Celem v1 jest uczynienie Xenia first-class dla subskrypcji
 **dostarczanych przez operatora**, podobnie jak Karing / Clash / sing-box
 pozwalają wkleić URL `https://...` i zostawić zarządzanie cyklem życia klientowi.
 
 ## 2. Historie użytkownika
 
-| #   | Jako     | Chcę                                                                  | Aby                                                                                                                            |
-| --- | -------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| U1  | Operator | wkleić URL subskrypcji raz                                            | nie przepisywać węzłów przy każdym odświeżeniu airport                                                                         |
-| U2  | Operator | włączać/wyłączać subskrypcję                                          | móc wrócić do direct bez usuwania URL                                                                                          |
-| U3  | Operator | wybrać tryb **global**                                                | cały ruch każdego providera wychodził przez subskrypcję                                                                        |
-| U4  | Operator | wybrać tryb **rule** i wskazać konkretnych providerów                 | tylko wybrani providerzy szli przez proxy; pozostali zostawali direct                                                          |
-| U5  | Operator | podać lokalny endpoint SOCKS5 sing-box/clash                          | węzły SS/VMess/Trojan/VLESS (których dispatcher OmniRoute nie mówi natywnie) stawały się używalne przez lokalny mostek kernela |
-| U6  | Operator | widzieć status pobrania i niedawną zredagowaną (redacted) sumę węzłów | debugować „dlaczego pusto / błąd” bez wycieku credentials                                                                      |
+| #   | Jako     | Chcę                                                                  | Aby                                                                                                                        |
+| --- | -------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| U1  | Operator | wkleić URL subskrypcji raz                                            | nie przepisywać węzłów przy każdym odświeżeniu airport                                                                     |
+| U2  | Operator | włączać/wyłączać subskrypcję                                          | móc wrócić do direct bez usuwania URL                                                                                      |
+| U3  | Operator | wybrać tryb **global**                                                | cały ruch każdego providera wychodził przez subskrypcję                                                                    |
+| U4  | Operator | wybrać tryb **rule** i wskazać konkretnych providerów                 | tylko wybrani providerzy szli przez proxy; pozostali zostawali direct                                                      |
+| U5  | Operator | podać lokalny endpoint SOCKS5 sing-box/clash                          | węzły SS/VMess/Trojan/VLESS (których dispatcher Xenia nie mówi natywnie) stawały się używalne przez lokalny mostek kernela |
+| U6  | Operator | widzieć status pobrania i niedawną zredagowaną (redacted) sumę węzłów | debugować „dlaczego pusto / błąd” bez wycieku credentials                                                                  |
 
 ## 3. Poza zakresem (v1)
 

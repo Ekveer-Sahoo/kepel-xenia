@@ -4,7 +4,7 @@ title: Odniesienie do bramek jakości
 
 # Odniesienie do bramek jakości
 
-Ten dokument jest autorytatywnym odniesieniem dla wszystkich bramek jakości CI w OmniRoute.
+Ten dokument jest autorytatywnym odniesieniem dla wszystkich bramek jakości CI w Xenia.
 Opisuje każdą bramkę, co waliduje, w którym jobie CI działa, czy używa
 baseline ratchet albo polityki pass/fail, oraz czy blokuje build, czy jest advisory.
 
@@ -24,15 +24,15 @@ Skrypty leżą w `scripts/check/` (bramki polityk) oraz `scripts/quality/` (siln
 gałęzi kontrybutorów dzięki szybkim bramkom filtrowanym po ścieżkach, plus jeden advisory sygnał production-build dla
 zmian w kodzie:
 
-| Job                                              | Zakres                                                                                                                                                                                                                   | Blokująca                                                                              |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| `Build (advisory)`                               | Non-draft PR-y kodowe i gałęzie kolejki Mergify; Node 24, `npm-ci-retry`, `check:node-runtime`, `npm run build` z `OMNIROUTE_USE_TURBOPACK=1`; bez uploadu artefaktów, bo żaden downstream quality job ich nie konsumuje | **Advisory** (`continue-on-error: true`; usuń po tygodniu stabilnych runów release-PR) |
-| `Docs Gates (fast-path)`                         | PR-y docs/kod; API docs refs i docs-all                                                                                                                                                                                  | Tak                                                                                    |
-| `Fast Quality Gates`                             | PR-y kodowe; static checks, typecheck, dashboard typecheck, impacted unit tests                                                                                                                                          | Tak                                                                                    |
-| `Vitest (fast-path)`                             | PR-y kodowe; szybki suite vitest                                                                                                                                                                                         | Tak                                                                                    |
-| `Unit Tests fast-path`                           | PR-y kodowe; 4-shard suite unit                                                                                                                                                                                          | Tak                                                                                    |
-| `No new ESLint warnings`                         | PR-y kodowe; strażnik lint świadomy suppressions                                                                                                                                                                         | Tak dla own-origin, advisory dla forków                                                |
-| `Merge integrity (changelog + generated skills)` | Non-draft PR-y; sync changelog i wygenerowanych skills                                                                                                                                                                   | Tak dla own-origin, advisory dla forków                                                |
+| Job                                              | Zakres                                                                                                                                                                                                               | Blokująca                                                                              |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Build (advisory)`                               | Non-draft PR-y kodowe i gałęzie kolejki Mergify; Node 24, `npm-ci-retry`, `check:node-runtime`, `npm run build` z `XENIA_USE_TURBOPACK=1`; bez uploadu artefaktów, bo żaden downstream quality job ich nie konsumuje | **Advisory** (`continue-on-error: true`; usuń po tygodniu stabilnych runów release-PR) |
+| `Docs Gates (fast-path)`                         | PR-y docs/kod; API docs refs i docs-all                                                                                                                                                                              | Tak                                                                                    |
+| `Fast Quality Gates`                             | PR-y kodowe; static checks, typecheck, dashboard typecheck, impacted unit tests                                                                                                                                      | Tak                                                                                    |
+| `Vitest (fast-path)`                             | PR-y kodowe; szybki suite vitest                                                                                                                                                                                     | Tak                                                                                    |
+| `Unit Tests fast-path`                           | PR-y kodowe; 4-shard suite unit                                                                                                                                                                                      | Tak                                                                                    |
+| `No new ESLint warnings`                         | PR-y kodowe; strażnik lint świadomy suppressions                                                                                                                                                                     | Tak dla own-origin, advisory dla forków                                                |
+| `Merge integrity (changelog + generated skills)` | Non-draft PR-y; sync changelog i wygenerowanych skills                                                                                                                                                               | Tak dla own-origin, advisory dla forków                                                |
 
 ### Job: `lint`
 
@@ -195,12 +195,12 @@ Działa po `build`. Blokuje merge przy failure.
 
 Te działają na cronie (oraz `workflow_dispatch`), nigdy na PR-ach. Wszystkie są advisory.
 
-| Workflow               | Waliduje                                                                                                                                                   | Blokująca    |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| `nightly-property`     | Testy property fast-check z losowym seedem + wysokim run count                                                                                             | **Advisory** |
-| `nightly-resilience`   | Bramka heap-growth, chaos fault-injection, k6 load/soak                                                                                                    | **Advisory** |
-| `nightly-llm-security` | promptfoo injection guard (block mode) + probe garak (pomijane bez provider secret)                                                                        | **Advisory** |
-| `nightly-schemathesis` | Fuzzing kontraktu OpenAPI (schemathesis) względem żywego OmniRoute z użyciem `docs/openapi.yaml` — ujawnia naruszenia spec / nieobsłużone 500 (Fase 8 B.4) | **Advisory** |
+| Workflow               | Waliduje                                                                                                                                               | Blokująca    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ |
+| `nightly-property`     | Testy property fast-check z losowym seedem + wysokim run count                                                                                         | **Advisory** |
+| `nightly-resilience`   | Bramka heap-growth, chaos fault-injection, k6 load/soak                                                                                                | **Advisory** |
+| `nightly-llm-security` | promptfoo injection guard (block mode) + probe garak (pomijane bez provider secret)                                                                    | **Advisory** |
+| `nightly-schemathesis` | Fuzzing kontraktu OpenAPI (schemathesis) względem żywego Xenia z użyciem `docs/openapi.yaml` — ujawnia naruszenia spec / nieobsłużone 500 (Fase 8 B.4) | **Advisory** |
 
 ---
 
@@ -358,7 +358,7 @@ allowlist to fałszywe poczucie jakości.
 
 ## Tooling agentów: LSP-in-the-loop (opt-in)
 
-Poza bramkami CI OmniRoute dostarcza **opt-in** scaffold `agent-lsp`
+Poza bramkami CI Xenia dostarcza **opt-in** scaffold `agent-lsp`
 (projektowy `.mcp.json`, Fase 7 Task 15). Utwórz `.mcp.json`,
 by wystawić TypeScript language server agentom kodującym, żeby resolve’owały symbole /
 diagnostics **zanim** napiszą kod — companion compile-before-claim do

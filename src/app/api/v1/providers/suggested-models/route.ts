@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { CORS_HEADERS, handleCorsOptions } from "@/shared/utils/cors";
 import { isAuthenticated } from "@/shared/utils/apiAuth";
-import { buildErrorBody } from "@omniroute/open-sse/utils/error.ts";
+import { buildErrorBody } from "@xenia/open-sse/utils/error.ts";
 import {
   resolveHfPipelineTag,
   sortHfSuggestedModels,
   type HfModelSummary,
-} from "@omniroute/open-sse/services/hfModelSuggestions.ts";
+} from "@xenia/open-sse/services/hfModelSuggestions.ts";
 
 /**
  * GET /api/v1/providers/suggested-models?type=image
@@ -63,10 +63,10 @@ export async function GET(request: Request) {
   const { type, sortBy, limit } = parsed.data;
   const pipelineTag = resolveHfPipelineTag(type);
   if (!pipelineTag) {
-    return NextResponse.json(
-      buildErrorBody(400, `Unsupported suggested-models type: ${type}`),
-      { status: 400, headers: CORS_HEADERS }
-    );
+    return NextResponse.json(buildErrorBody(400, `Unsupported suggested-models type: ${type}`), {
+      status: 400,
+      headers: CORS_HEADERS,
+    });
   }
 
   try {

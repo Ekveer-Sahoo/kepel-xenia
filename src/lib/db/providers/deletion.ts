@@ -13,7 +13,7 @@ import { backupDbFile } from "../backup";
 import {
   removeConnectionHealth,
   removeConnectionIndex,
-} from "@omniroute/open-sse/services/apiKeyRotator.ts";
+} from "@xenia/open-sse/services/apiKeyRotator.ts";
 import { invalidateDbCache } from "../readCache";
 import { invalidateReasoningRoutingRuleCache } from "../reasoningRoutingRules";
 import { bumpProxyConfigGeneration } from "../settings";

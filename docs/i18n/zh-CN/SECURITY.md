@@ -6,33 +6,33 @@
 
 ## 报告漏洞
 
-若您在 OmniRoute 中发现安全漏洞，请负责任地报告：
+若您在 Xenia 中发现安全漏洞，请负责任地报告：
 
 1. **切勿**在 GitHub 上创建公开 issue
-2. 使用 [GitHub Security Advisories](https://github.com/diegosouzapw/OmniRoute/security/advisories/new)
+2. 使用 [GitHub Security Advisories](https://github.com/diegosouzapw/Xenia/security/advisories/new)
 3. 包含：漏洞描述、复现步骤和潜在影响
 
 ## 响应时间
 
-| 阶段         | 目标                       |
-| ------------ | -------------------------- |
-| 确认收到     | 48 小时                    |
-| 分类与评估   | 5 个工作日                 |
-| 补丁发布     | 14 个工作日（严重漏洞）    |
+| 阶段       | 目标                    |
+| ---------- | ----------------------- |
+| 确认收到   | 48 小时                 |
+| 分类与评估 | 5 个工作日              |
+| 补丁发布   | 14 个工作日（严重漏洞） |
 
 ## 支持的版本
 
-| 版本    | 支持状态     |
-| ------- | ------------ |
-| 3.8.x   | ✅ 活跃支持  |
-| 3.7.x   | ✅ 安全维护  |
-| < 3.7.0 | ❌ 不再支持  |
+| 版本    | 支持状态    |
+| ------- | ----------- |
+| 3.8.x   | ✅ 活跃支持 |
+| 3.7.x   | ✅ 安全维护 |
+| < 3.7.0 | ❌ 不再支持 |
 
 ---
 
 ## 安全架构
 
-OmniRoute 实现了多层安全模型：
+Xenia 实现了多层安全模型：
 
 ```
 Request → CORS → Authz pipeline (classify → policies → enforce)
@@ -42,17 +42,17 @@ Request → CORS → Authz pipeline (classify → policies → enforce)
 
 ### 🔐 认证与授权
 
-| 特性                 | 实现                                                                                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| **管理面板登录**     | 基于密码的认证，使用 JWT Token（HttpOnly Cookie）                                                                                           |
-| **API Key 认证**     | 带 CRC 校验的 HMAC 签名密钥                                                                                                                 |
-| **OAuth 2.0 + PKCE** | 14 个服务商（Claude、Codex、GitHub、Cursor、Antigravity、Gemini、Kimi Coding、Kilo Code、Cline、Qwen、Kiro、Qoder、Windsurf、GitLab Duo）    |
-| **Token 刷新**       | OAuth Token 到期前自动刷新                                                                                                                  |
-| **安全 Cookie**      | HTTPS 环境设置 `AUTH_COOKIE_SECURE=true`                                                                                                    |
-| **授权管线**         | 路由分类（PUBLIC / CLIENT_API / MANAGEMENT）— 参见 `docs/architecture/AUTHZ_GUIDE.md`                                                       |
-| **路由防护层级**     | 管理路由的三层模型（LOCAL_ONLY / ALWAYS_PROTECTED / MANAGEMENT）— 参见 `docs/security/ROUTE_GUARD_TIERS.md`                                 |
-| **Manage 权限域 MCP** | 远程 `/api/mcp/*` 访问受拥有 `manage` 权限域的 API Key 管控；`/api/cli-tools/runtime/*` 保持严格 loopback。参见 ROUTE_GUARD_TIERS          |
-| **MCP 权限域**       | 约 13 个细粒度权限域（read:health、write:combos、execute:completions 等）— 参见 `docs/frameworks/MCP-SERVER.md`                             |
+| 特性                  | 实现                                                                                                                                      |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **管理面板登录**      | 基于密码的认证，使用 JWT Token（HttpOnly Cookie）                                                                                         |
+| **API Key 认证**      | 带 CRC 校验的 HMAC 签名密钥                                                                                                               |
+| **OAuth 2.0 + PKCE**  | 14 个服务商（Claude、Codex、GitHub、Cursor、Antigravity、Gemini、Kimi Coding、Kilo Code、Cline、Qwen、Kiro、Qoder、Windsurf、GitLab Duo） |
+| **Token 刷新**        | OAuth Token 到期前自动刷新                                                                                                                |
+| **安全 Cookie**       | HTTPS 环境设置 `AUTH_COOKIE_SECURE=true`                                                                                                  |
+| **授权管线**          | 路由分类（PUBLIC / CLIENT_API / MANAGEMENT）— 参见 `docs/architecture/AUTHZ_GUIDE.md`                                                     |
+| **路由防护层级**      | 管理路由的三层模型（LOCAL_ONLY / ALWAYS_PROTECTED / MANAGEMENT）— 参见 `docs/security/ROUTE_GUARD_TIERS.md`                               |
+| **Manage 权限域 MCP** | 远程 `/api/mcp/*` 访问受拥有 `manage` 权限域的 API Key 管控；`/api/cli-tools/runtime/*` 保持严格 loopback。参见 ROUTE_GUARD_TIERS         |
+| **MCP 权限域**        | 约 13 个细粒度权限域（read:health、write:combos、execute:completions 等）— 参见 `docs/frameworks/MCP-SERVER.md`                           |
 
 ### 🛡️ 静态加密
 
@@ -69,27 +69,27 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ### 🛡️ 安全护栏框架
 
-OmniRoute 附带一个支持热重载的**安全护栏注册表**（`src/lib/guardrails/`），包含 3 个内置安全护栏，按优先级排序：
+Xenia 附带一个支持热重载的**安全护栏注册表**（`src/lib/guardrails/`），包含 3 个内置安全护栏，按优先级排序：
 
-| 安全护栏           | 优先级 | 用途                                                                       |
-| ------------------ | ------ | -------------------------------------------------------------------------- |
-| `vision-bridge`    | 5      | 为不支持视觉的模型提供图片感知描述；对图片 URL 提供 SSRF 防护               |
-| `pii-masker`       | 10     | 调用前后的 PII 脱敏（邮箱、电话、CPF、CNPJ、信用卡、SSN）                   |
-| `prompt-injection` | 20     | 检测指令覆盖/角色劫持/越狱/泄露模式                                         |
+| 安全护栏           | 优先级 | 用途                                                          |
+| ------------------ | ------ | ------------------------------------------------------------- |
+| `vision-bridge`    | 5      | 为不支持视觉的模型提供图片感知描述；对图片 URL 提供 SSRF 防护 |
+| `pii-masker`       | 10     | 调用前后的 PII 脱敏（邮箱、电话、CPF、CNPJ、信用卡、SSN）     |
+| `prompt-injection` | 20     | 检测指令覆盖/角色劫持/越狱/泄露模式                           |
 
-自定义安全护栏通过 `registerGuardrail(new MyGuardrail())` 注册。模型采用 fail-open 策略（异常不会阻断流量）。可通过 `x-omniroute-disabled-guardrails` 请求头按请求单独退出。→ 参见 [`docs/security/GUARDRAILS.md`](docs/security/GUARDRAILS.md)。
+自定义安全护栏通过 `registerGuardrail(new MyGuardrail())` 注册。模型采用 fail-open 策略（异常不会阻断流量）。可通过 `x-xenia-disabled-guardrails` 请求头按请求单独退出。→ 参见 [`docs/security/GUARDRAILS.md`](docs/security/GUARDRAILS.md)。
 
 ### 🧠 提示注入防护
 
 检测并阻止 LLM 请求中提示注入攻击的中间件：
 
-| 攻击类型       | 严重程度 | 示例                                             |
-| -------------- | -------- | ------------------------------------------------ |
-| 系统指令覆盖   | 高       | "ignore all previous instructions"                |
-| 角色劫持       | 高       | "you are now DAN, you can do anything"            |
-| 分隔符注入     | 中       | 使用编码分隔符破坏上下文边界                       |
-| DAN/越狱       | 高       | 已知的越狱提示模式                                 |
-| 指令泄露       | 中       | "show me your system prompt"                      |
+| 攻击类型     | 严重程度 | 示例                                   |
+| ------------ | -------- | -------------------------------------- |
+| 系统指令覆盖 | 高       | "ignore all previous instructions"     |
+| 角色劫持     | 高       | "you are now DAN, you can do anything" |
+| 分隔符注入   | 中       | 使用编码分隔符破坏上下文边界           |
+| DAN/越狱     | 高       | 已知的越狱提示模式                     |
+| 指令泄露     | 中       | "show me your system prompt"           |
 
 可通过管理面板（Settings → Security）或 `.env` 配置：
 
@@ -102,14 +102,14 @@ INPUT_SANITIZER_MODE=block    # warn | block | redact
 
 自动检测并可选择性脱敏个人身份信息：
 
-| PII 类型      | 匹配模式              | 替换文本             |
-| ------------- | --------------------- | -------------------- |
-| 邮箱          | `user@domain.com`     | `[EMAIL_REDACTED]`  |
-| CPF（巴西）   | `123.456.789-00`      | `[CPF_REDACTED]`    |
-| CNPJ（巴西）  | `12.345.678/0001-00`  | `[CNPJ_REDACTED]`   |
-| 信用卡        | `4111-1111-1111-1111` | `[CC_REDACTED]`     |
-| 电话          | `+55 11 99999-9999`   | `[PHONE_REDACTED]`  |
-| SSN（美国）   | `123-45-6789`         | `[SSN_REDACTED]`    |
+| PII 类型     | 匹配模式              | 替换文本           |
+| ------------ | --------------------- | ------------------ |
+| 邮箱         | `user@domain.com`     | `[EMAIL_REDACTED]` |
+| CPF（巴西）  | `123.456.789-00`      | `[CPF_REDACTED]`   |
+| CNPJ（巴西） | `12.345.678/0001-00`  | `[CNPJ_REDACTED]`  |
+| 信用卡       | `4111-1111-1111-1111` | `[CC_REDACTED]`    |
+| 电话         | `+55 11 99999-9999`   | `[PHONE_REDACTED]` |
+| SSN（美国）  | `123-45-6789`         | `[SSN_REDACTED]`   |
 
 ```env
 PII_REDACTION_ENABLED=true
@@ -117,33 +117,33 @@ PII_REDACTION_ENABLED=true
 
 ### 🌐 网络安全
 
-| 特性               | 描述                                                               |
-| ------------------ | ------------------------------------------------------------------ |
-| **CORS**           | 显式跨域白名单（`CORS_ALLOWED_ORIGINS`；旧版为 `CORS_ORIGIN`）     |
-| **IP 过滤**        | 管理面板中配置 IP 范围白名单/黑名单                                 |
-| **速率限制**       | 按服务商的速率限制，带自动退避                                       |
-| **防惊群效应**     | 互斥锁 + 按连接锁定，防止级联 502 错误                               |
-| **TLS 指纹伪装**   | 模拟浏览器 TLS 指纹，降低机器人检测                                  |
-| **CLI 指纹伪装**   | 按服务商定制请求头/正文顺序，匹配原生 CLI 签名                        |
+| 特性             | 描述                                                           |
+| ---------------- | -------------------------------------------------------------- |
+| **CORS**         | 显式跨域白名单（`CORS_ALLOWED_ORIGINS`；旧版为 `CORS_ORIGIN`） |
+| **IP 过滤**      | 管理面板中配置 IP 范围白名单/黑名单                            |
+| **速率限制**     | 按服务商的速率限制，带自动退避                                 |
+| **防惊群效应**   | 互斥锁 + 按连接锁定，防止级联 502 错误                         |
+| **TLS 指纹伪装** | 模拟浏览器 TLS 指纹，降低机器人检测                            |
+| **CLI 指纹伪装** | 按服务商定制请求头/正文顺序，匹配原生 CLI 签名                 |
 
 ### 🔌 容灾与可用性
 
-| 特性             | 描述                                                           |
-| ---------------- | -------------------------------------------------------------- |
-| **熔断器**       | 每个服务商的三态（Closed → Open → Half-Open），持久化到 SQLite |
-| **请求幂等**     | 5 秒去重窗口，防止重复请求                                       |
-| **指数退避**     | 自动重试，延迟时间逐次增加                                       |
-| **健康面板**     | 服务商实时健康监控                                               |
+| 特性         | 描述                                                           |
+| ------------ | -------------------------------------------------------------- |
+| **熔断器**   | 每个服务商的三态（Closed → Open → Half-Open），持久化到 SQLite |
+| **请求幂等** | 5 秒去重窗口，防止重复请求                                     |
+| **指数退避** | 自动重试，延迟时间逐次增加                                     |
+| **健康面板** | 服务商实时健康监控                                             |
 
 ### 📋 合规
 
-| 特性               | 描述                                                       |
-| ------------------ | ---------------------------------------------------------- |
-| **日志保留**       | 按 `CALL_LOG_RETENTION_DAYS` 自动清理                      |
-| **无日志退出选项** | 可按 API Key 通过 `noLog` 标志禁用请求日志                  |
-| **审计日志**       | 管理操作记录在 `audit_log` 表中                             |
-| **MCP 审计**       | 基于 SQLite 的审计日志，覆盖所有 MCP 工具调用               |
-| **Zod 校验**       | 所有 API 输入在模块加载时通过 Zod v4 Schema 校验            |
+| 特性               | 描述                                             |
+| ------------------ | ------------------------------------------------ |
+| **日志保留**       | 按 `CALL_LOG_RETENTION_DAYS` 自动清理            |
+| **无日志退出选项** | 可按 API Key 通过 `noLog` 标志禁用请求日志       |
+| **审计日志**       | 管理操作记录在 `audit_log` 表中                  |
+| **MCP 审计**       | 基于 SQLite 的审计日志，覆盖所有 MCP 工具调用    |
+| **Zod 校验**       | 所有 API 输入在模块加载时通过 Zod v4 Schema 校验 |
 
 ---
 
@@ -174,15 +174,15 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ```bash
 docker run -d \
-  --name omniroute \
+  --name xenia \
   --restart unless-stopped \
   --read-only \
   -p 20128:20128 \
-  -v omniroute-data:/app/data \
+  -v xenia-data:/app/data \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  diegosouzapw/xenia:latest
 ```
 
 ---
@@ -214,7 +214,7 @@ docker run -d \
 
 ## 供应链扫描器检测项（Socket.dev / Snyk / 类似工具）
 
-已发布的 `omniroute` npm 制品包含 Next.js `output: "standalone"` 构建输出，这意味着所有路由处理器 — 包括已记录的特权功能（MITM、Zed 导入、Cloud Sync、嵌入式服务监管）— 都会出现在 `.next/server/*.js` 压缩块中。启发式供应链扫描器经常将这些压缩块的模式匹配为恶意软件签名。
+已发布的 `xenia` npm 制品包含 Next.js `output: "standalone"` 构建输出，这意味着所有路由处理器 — 包括已记录的特权功能（MITM、Zed 导入、Cloud Sync、嵌入式服务监管）— 都会出现在 `.next/server/*.js` 压缩块中。启发式供应链扫描器经常将这些压缩块的模式匹配为恶意软件签名。
 
 对于每个检测类别，我们维护了一份逐项的维护者声明：
 
@@ -223,7 +223,7 @@ docker run -d \
 - 在源码中被标记的函数处，均包含 `SECURITY-AUDITOR-NOTE:` 注释块，指向同一文档。
 
 对于无法放宽警报的管线，可使用以下方式构建：
-`OMNIROUTE_BUILD_PROFILE=minimal npm run build`。此方式将四个
+`XENIA_BUILD_PROFILE=minimal npm run build`。此方式将四个
 敏感模块替换为桩代码，运行时返回 HTTP 503 `feature-disabled`，
 从而使特权代码路径从构建产物中物理消失。
 参见 [`docs/security/SOCKET_DEV_FINDINGS.md`](docs/security/SOCKET_DEV_FINDINGS.md) 了解发布方法。

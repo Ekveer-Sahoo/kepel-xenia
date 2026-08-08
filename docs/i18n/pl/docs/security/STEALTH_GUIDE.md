@@ -10,11 +10,11 @@ lastUpdated: 2026-06-28
 > **Last updated:** 2026-06-28 — v3.8.40
 > **Audience:** Engineers maintaining provider-specific stealth integrations.
 
-OmniRoute integruje się z providerami, których edge aktywnie fingerprintuje nieoficjalne klienty (TLS JA3/JA4, kolejność nagłówków, kształt body JSON, tokeny integralności). Ta strona dokumentuje powierzchnie stealth, które OmniRoute udostępnia, oraz miejsca ich implementacji.
+Xenia integruje się z providerami, których edge aktywnie fingerprintuje nieoficjalne klienty (TLS JA3/JA4, kolejność nagłówków, kształt body JSON, tokeny integralności). Ta strona dokumentuje powierzchnie stealth, które Xenia udostępnia, oraz miejsca ich implementacji.
 
 ## Uwaga prawna i etyczna
 
-Funkcje stealth istnieją po to, by OmniRoute mógł działać jako warstwa kompatybilności między oficjalnymi kontami użytkownika (Claude Code CLI, ChatGPT Desktop/Web, Antigravity, Cursor itd.) a ujednoliconym API OmniRoute. **Nie** służą do omijania fraud detection, współdzielenia poświadczeń ani naruszania Terms of Service providera. Maintainerzy oczekują, że operatorzy będą przestrzegać upstream ToS, które zaakceptowali przy tworzeniu kont.
+Funkcje stealth istnieją po to, by Xenia mógł działać jako warstwa kompatybilności między oficjalnymi kontami użytkownika (Claude Code CLI, ChatGPT Desktop/Web, Antigravity, Cursor itd.) a ujednoliconym API Xenia. **Nie** służą do omijania fraud detection, współdzielenia poświadczeń ani naruszania Terms of Service providera. Maintainerzy oczekują, że operatorzy będą przestrzegać upstream ToS, które zaakceptowali przy tworzeniu kont.
 
 ---
 
@@ -38,14 +38,14 @@ Dedykowany impersonator TLS dla `chatgpt.com`. Konfiguracja Cloudflare ChatGPT p
 - `withRandomTLSExtensionOrder: true`
 - `tlsFetchChatGpt(url, options)` obsługuje streaming (zapisuje body do pliku tymczasowego, tailed jako `ReadableStream`)
 - Hang detection: `raceWithTimeout` + `TlsClientHangError` wywołuje `resetClientCache()`, więc kolejne wywołanie respawnuje binding
-- Proxy resolution (priority): per-call `proxyUrl` → `OMNIROUTE_TLS_PROXY_URL` → `HTTPS_PROXY`/`HTTP_PROXY`/`ALL_PROXY` (natywny binding **nie** czyta tych env sam; trzeba je przekazać)
+- Proxy resolution (priority): per-call `proxyUrl` → `XENIA_TLS_PROXY_URL` → `HTTPS_PROXY`/`HTTP_PROXY`/`ALL_PROXY` (natywny binding **nie** czyta tych env sam; trzeba je przekazać)
 - Errors: `TlsClientUnavailableError` (brak binary), `TlsClientHangError` (binding w deadlocku)
 
 ---
 
 ## Pakiet stealth Claude Code
 
-Gdy `cliCompatMode` jest włączony, OmniRoute przekształca wychodzące żądania Claude tak, by były nieodróżnialne od ruchu `claude-cli`. Współpracują trzy moduły:
+Gdy `cliCompatMode` jest włączony, Xenia przekształca wychodzące żądania Claude tak, by były nieodróżnialne od ruchu `claude-cli`. Współpracują trzy moduły:
 
 ### `claudeCodeFingerprint.ts`
 
@@ -61,7 +61,7 @@ SHA256(SALT + msg[4] + msg[7] + msg[20] + version)[:3]
 
 ### `claudeCodeCCH.ts` (Client Content Hash)
 
-Server-side check integralności, który oficjalne Claude Code CLI liczy przez Bun/Zig. OmniRoute reimplementuje to z `xxhash-wasm`:
+Server-side check integralności, który oficjalne Claude Code CLI liczy przez Bun/Zig. Xenia reimplementuje to z `xxhash-wasm`:
 
 1. Serialize body z placeholdrem `cch=00000;`
 2. `xxhash64(bytes, seed) & 0xFFFFF`
@@ -107,7 +107,7 @@ Moduły siostrzane w tym samym bundle:
 
 ## Stealth Antigravity
 
-Żądania Antigravity zachowują tekst wywołującego bajt po bajcie. OmniRoute nie wstawia zero-width characters do promptów ani nie zmienia nazw/nie wstrzykuje tooli, by udawać klienta IDE.
+Żądania Antigravity zachowują tekst wywołującego bajt po bajcie. Xenia nie wstawia zero-width characters do promptów ani nie zmienia nazw/nie wstrzykuje tooli, by udawać klienta IDE.
 
 ### `antigravityHeaderScrub.ts`
 
@@ -117,13 +117,13 @@ Usuwa markery Stainless SDK (`x-stainless-lang`, `x-stainless-package-version`, 
 
 `ANTIGRAVITY_CREDITS=always` (konsumowane przez `open-sse/executors/antigravity.ts`) kieruje **każde** żądanie przez Antigravity AI Credit Overages (płatne kredyty Google) zamiast pozwolić free-tier quota Google bramkować ruch. Jest to udokumentowane jako feature, ale to **najczęstszy raport naruszenia ToS, jaki widzimy** — wiele kont Google Ultra zostało zbanowanych z `403 / "service disabled for ToS violation" / insufficient_quota` po kilku godzinach z `=always`.
 
-Egzekucja upstream jest po **stronie Google**, nie ma nic, co OmniRoute mógłby temu zapobiec. Nazwa zmiennej env i istniejąca dokumentacja sprawiają wrażenie bezpiecznego przełącznika; nim nie jest.
+Egzekucja upstream jest po **stronie Google**, nie ma nic, co Xenia mógłby temu zapobiec. Nazwa zmiennej env i istniejąca dokumentacja sprawiają wrażenie bezpiecznego przełącznika; nim nie jest.
 
 **Dlaczego to silniej przyciąga abuse detection niż użycie wyłącznie free-tier:**
 
 - Utrzymany zautomatyzowany spend na jednym koncie Google flaguje się inaczej niż free-tier hits-quota-and-stops.
 - Credit overages nie mają rate ceiling, więc źle skonfigurowany klient może spalić kilkaset USD w minutach i wyglądać jak odsprzedaż API key lub bot traffic.
-- Wielu użytkowników OmniRoute uderzających w overage credits równolegle z tego samego zewnętrznego IP wzmacnia sygnał.
+- Wielu użytkowników Xenia uderzających w overage credits równolegle z tego samego zewnętrznego IP wzmacnia sygnał.
 
 **Zalecana postawa:**
 
@@ -139,7 +139,7 @@ Punkty styku:
 
 - `open-sse/executors/antigravity.ts` — czyta `process.env.ANTIGRAVITY_CREDITS`
 - `src/lib/oauth/providers/antigravity.ts` — plumbing poświadczeń
-- Oryginalny raport incydentu: Discussion [#1183](https://github.com/diegosouzapw/OmniRoute/discussions/1183)
+- Oryginalny raport incydentu: Discussion [#1183](https://github.com/diegosouzapw/Xenia/discussions/1183)
 
 ---
 
@@ -162,7 +162,7 @@ Przełączanie per provider przez env (patrz poniżej). Gdy wyłączone, nagłó
 
 ## Proxy MITM (Antigravity, Linux/macOS/Windows)
 
-Dla CLI, których binarów nie da się przekierować przez `OPENAI_BASE_URL`, OmniRoute uruchamia lokalny proxy z terminacją TLS. Endpointy są pod `src/app/api/cli-tools/antigravity-mitm/`.
+Dla CLI, których binarów nie da się przekierować przez `OPENAI_BASE_URL`, Xenia uruchamia lokalny proxy z terminacją TLS. Endpointy są pod `src/app/api/cli-tools/antigravity-mitm/`.
 
 | Method | Endpoint                                | Purpose                                          |
 | ------ | --------------------------------------- | ------------------------------------------------ |
@@ -193,9 +193,9 @@ Cel interceptowanego hosta: **`daily-cloudcode-pa.googleapis.com`** (upstream An
 | Fedora / RHEL / CentOS   | `/etc/pki/ca-trust/source/anchors`          | `update-ca-trust`        |
 | openSUSE                 | `/etc/pki/trust/anchors`                    | `update-ca-certificates` |
 
-Nazwa pliku cert: `omniroute-mitm.crt`. Dopasowanie fingerprintu przez `getCertFingerprint()` (SHA-1 z DER).
+Nazwa pliku cert: `xenia-mitm.crt`. Dopasowanie fingerprintu przez `getCertFingerprint()` (SHA-1 z DER).
 
-Dodatkowo `updateNssDatabases()` instaluje do per-user NSS DB, gdy dostępne jest `certutil`: `~/.pki/nssdb`, `~/snap/chromium/.../nssdb`, wszystkie profile Firefox (w tym snap), pod nickiem **`OmniRoute MITM Root CA`**.
+Dodatkowo `updateNssDatabases()` instaluje do per-user NSS DB, gdy dostępne jest `certutil`: `~/.pki/nssdb`, `~/snap/chromium/.../nssdb`, wszystkie profile Firefox (w tym snap), pod nickiem **`Xenia MITM Root CA`**.
 
 ### macOS / Windows
 
@@ -243,7 +243,7 @@ IP providera jest **zawsze zachowane** — toggle tylko przekształca wire image
 
 ## Sanityzacja nagłówków inbound
 
-OmniRoute czyści inbound nagłówki klienta przed forwardem, by żądanie przychodzące z Cursor nie wyciekało `User-Agent: Cursor/X.Y.Z` do upstream Claude. Zobacz `src/shared/constants/upstreamHeaders.ts` — denylist utrzymywany w lockstep ze schematami Zod i testami jednostkowymi.
+Xenia czyści inbound nagłówki klienta przed forwardem, by żądanie przychodzące z Cursor nie wyciekało `User-Agent: Cursor/X.Y.Z` do upstream Claude. Zobacz `src/shared/constants/upstreamHeaders.ts` — denylist utrzymywany w lockstep ze schematami Zod i testami jednostkowymi.
 
 ---
 

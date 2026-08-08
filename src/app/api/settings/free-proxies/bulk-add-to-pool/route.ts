@@ -4,10 +4,7 @@ import { createErrorResponse, createErrorResponseFromUnknown } from "@/lib/api/e
 import { isValidationFailure, validateBody } from "@/shared/validation/helpers";
 import { freeProxyBulkAddSchema } from "@/shared/validation/freeProxySchemas";
 import { getFreeProxyById, promoteFreeProxyToPool } from "@/lib/localDb";
-import {
-  createProxyDispatcher,
-  proxyConfigToUrl,
-} from "@omniroute/open-sse/utils/proxyDispatcher.ts";
+import { createProxyDispatcher, proxyConfigToUrl } from "@xenia/open-sse/utils/proxyDispatcher.ts";
 
 type QuickTester = (
   host: string,

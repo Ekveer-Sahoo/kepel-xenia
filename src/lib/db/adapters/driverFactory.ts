@@ -76,23 +76,23 @@ function logSwallowedDriverError(driver: string, err: unknown): void {
 }
 
 declare global {
-  var __omnirouteSqlJsAdapters: Map<string, SqliteAdapter> | undefined;
-  var __omnirouteSqlJsInitPromises: Map<string, Promise<SqliteAdapter>> | undefined;
-  var __omnirouteSqlJsPreInitErrors: Map<string, string> | undefined;
+  var __xeniaSqlJsAdapters: Map<string, SqliteAdapter> | undefined;
+  var __xeniaSqlJsInitPromises: Map<string, Promise<SqliteAdapter>> | undefined;
+  var __xeniaSqlJsPreInitErrors: Map<string, string> | undefined;
 }
 
 function getSqlJsCache(): Map<string, SqliteAdapter> {
-  if (!globalThis.__omnirouteSqlJsAdapters) {
-    globalThis.__omnirouteSqlJsAdapters = new Map();
+  if (!globalThis.__xeniaSqlJsAdapters) {
+    globalThis.__xeniaSqlJsAdapters = new Map();
   }
-  return globalThis.__omnirouteSqlJsAdapters;
+  return globalThis.__xeniaSqlJsAdapters;
 }
 
 function getSqlJsPreInitErrorCache(): Map<string, string> {
-  if (!globalThis.__omnirouteSqlJsPreInitErrors) {
-    globalThis.__omnirouteSqlJsPreInitErrors = new Map();
+  if (!globalThis.__xeniaSqlJsPreInitErrors) {
+    globalThis.__xeniaSqlJsPreInitErrors = new Map();
   }
-  return globalThis.__omnirouteSqlJsPreInitErrors;
+  return globalThis.__xeniaSqlJsPreInitErrors;
 }
 
 /**
@@ -114,10 +114,10 @@ export function getSqlJsPreInitError(filePath: string): string | undefined {
  * fs.readFileSync + WASM decode independentemente (#6628 — thundering herd).
  */
 function getSqlJsPendingCache(): Map<string, Promise<SqliteAdapter>> {
-  if (!globalThis.__omnirouteSqlJsInitPromises) {
-    globalThis.__omnirouteSqlJsInitPromises = new Map();
+  if (!globalThis.__xeniaSqlJsInitPromises) {
+    globalThis.__xeniaSqlJsInitPromises = new Map();
   }
-  return globalThis.__omnirouteSqlJsInitPromises;
+  return globalThis.__xeniaSqlJsInitPromises;
 }
 
 /**
@@ -201,7 +201,7 @@ const openSyncDriver = createSyncDriverFactory(requireSqliteDriver);
  * pack-boot-specific flags keeps this from becoming a general operator override.
  */
 export function isPackBootForcedSqlJsSmoke(env: NodeJS.ProcessEnv): boolean {
-  return env.OMNIROUTE_PACK_BOOT_SMOKE === "1" && env.OMNIROUTE_PACK_BOOT_FORCE_SQLJS === "1";
+  return env.XENIA_PACK_BOOT_SMOKE === "1" && env.XENIA_PACK_BOOT_FORCE_SQLJS === "1";
 }
 
 /** Tenta abrir com better-sqlite3 e node:sqlite sincronamente. Retorna null se ambos falharem. */

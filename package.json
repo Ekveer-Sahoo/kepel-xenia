@@ -1,16 +1,16 @@
 {
-  "name": "omniroute",
+  "name": "xenia",
   "version": "3.8.50",
   "description": "Unified AI router with 290 providers, RTK+Caveman compression, auto fallback, MCP/A2A, desktop, PWA, and OpenAI-compatible APIs.",
   "type": "module",
   "bin": {
-    "omniroute": "bin/omniroute.mjs",
-    "omniroute-reset-password": "bin/reset-password.mjs"
+    "xenia": "bin/xenia.mjs",
+    "xenia-reset-password": "bin/reset-password.mjs"
   },
   "files": [
     "bin/",
     "dist/",
-    "@omniroute/",
+    "@xenia/",
     "open-sse/",
     "src/domain/",
     "src/lib/",
@@ -73,9 +73,9 @@
   "author": "diegosouzapw",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegosouzapw/OmniRoute"
+    "url": "https://github.com/diegosouzapw/Xenia"
   },
-  "homepage": "https://omniroute.online",
+  "homepage": "https://xenia.online",
   "scripts": {
     "dev": "node --max-old-space-size=8192 scripts/dev/run-next.mjs dev",
     "prebuild:docs": "node scripts/docs/gen-openapi-module.mjs",
@@ -90,10 +90,10 @@
     "eval:router:trends": "node --import tsx scripts/router-eval/trends.ts",
     "release:sync-changelog-i18n": "node scripts/release/sync-changelog-i18n.mjs",
     "build": "node scripts/build/build-next-isolated.mjs",
-    "build:secure": "OMNIROUTE_BUILD_PROFILE=minimal node scripts/build/build-next-isolated.mjs",
-    "build:backend": "cross-env OMNIROUTE_BUILD_BACKEND_ONLY=1 node scripts/build/build-next-isolated.mjs",
+    "build:secure": "XENIA_BUILD_PROFILE=minimal node scripts/build/build-next-isolated.mjs",
+    "build:backend": "cross-env XENIA_BUILD_BACKEND_ONLY=1 node scripts/build/build-next-isolated.mjs",
     "build:cli": "node --import tsx scripts/build/prepublish.ts",
-    "build:release": "rm -rf .build dist && OMNIROUTE_BUILD_SHA=$(git rev-parse --short HEAD) npm run build && npm run build:cli && node scripts/build/write-build-sha.mjs",
+    "build:release": "rm -rf .build dist && XENIA_BUILD_SHA=$(git rev-parse --short HEAD) npm run build && npm run build:cli && node scripts/build/write-build-sha.mjs",
     "build:native:tproxy": "cd src/mitm/tproxy/native && npx --yes node-gyp rebuild",
     "start": "node scripts/dev/run-next.mjs start",
     "homolog": "node scripts/homolog/run.mjs",
@@ -401,7 +401,7 @@
       "@swc/core",
       "better-sqlite3",
       "esbuild",
-      "omniroute",
+      "xenia",
       "sharp"
     ]
   },

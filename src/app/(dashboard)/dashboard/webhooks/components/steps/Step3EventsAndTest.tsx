@@ -129,7 +129,7 @@ export function Step3EventsAndTest({
 
           {testState === "ok" && testResult && (
             <div className="space-y-3">
-              <p className="text-xs font-medium text-emerald-500">
+              <p className="text-xs font-medium text-gray-500">
                 ✅ {testResult.status} &middot; {testResult.latencyMs}ms &middot; {t("testSuccess")}
               </p>
               {testResult.payloadSent && (
@@ -146,7 +146,7 @@ export function Step3EventsAndTest({
 
           {testState === "fail" && testResult && (
             <div className="space-y-3">
-              <p className="text-xs text-red-500">{testResult.error ?? t("testFailed")}</p>
+              <p className="text-xs text-gray-500">{testResult.error ?? t("testFailed")}</p>
               {testResult.payloadSent && (
                 <PayloadPreview payload={testResult.payloadSent} label={t("testPayloadSent")} />
               )}

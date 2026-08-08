@@ -327,8 +327,8 @@ function GroupRow({
           </span>
         </button>
         <span className="text-xs text-text-muted/40">
-          {group.items.filter((i) => !isHideableSidebarItemId(i.id) || !hiddenSet.has(i.id)).length}/
-          {group.items.length}
+          {group.items.filter((i) => !isHideableSidebarItemId(i.id) || !hiddenSet.has(i.id)).length}
+          /{group.items.length}
         </span>
         {canToggleSeparator && (
           <div className="flex items-center gap-2 border-l border-border/60 pl-3">
@@ -458,9 +458,7 @@ export default function SidebarTab() {
     patch({ [HIDDEN_SIDEBAR_GROUP_LABELS_SETTING_KEY]: next, [SIDEBAR_PRESET_KEY]: null });
   };
 
-  const visibleSections = SIDEBAR_SECTIONS.filter(
-    (s) => s.visibility !== "debug" || showDebug
-  );
+  const visibleSections = SIDEBAR_SECTIONS.filter((s) => s.visibility !== "debug" || showDebug);
 
   const orderedSections = applySectionOrder(visibleSections, sectionOrder).map((s) => ({
     ...s,
@@ -529,7 +527,7 @@ export default function SidebarTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             view_sidebar
           </span>
@@ -629,8 +627,8 @@ export default function SidebarTab() {
 
           {/* Confirm preset dialog */}
           {confirmPreset && (
-            <div className="mt-3 p-3 rounded-lg border border-amber-500/30 bg-amber-500/5 flex items-center gap-3">
-              <span className="material-symbols-outlined text-amber-500 text-[18px] shrink-0">
+            <div className="mt-3 p-3 rounded-lg border border-gray-500/30 bg-gray-500/5 flex items-center gap-3">
+              <span className="material-symbols-outlined text-gray-500 text-[18px] shrink-0">
                 warning
               </span>
               <p className="text-sm flex-1">

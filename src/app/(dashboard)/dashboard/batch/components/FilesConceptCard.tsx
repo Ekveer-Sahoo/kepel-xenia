@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
-const LS_KEY = "omniroute:concept-files-collapsed";
+const LS_KEY = "xenia:concept-files-collapsed";
 
 interface Props {
   className?: string;
@@ -13,9 +13,9 @@ const TYPE_PILLS: Array<{
   key: "filesConceptInput" | "filesConceptOutput" | "filesConceptError";
   color: string;
 }> = [
-  { key: "filesConceptInput", color: "bg-blue-500/15 text-blue-400 border-blue-500/25" },
-  { key: "filesConceptOutput", color: "bg-emerald-500/15 text-emerald-400 border-emerald-500/25" },
-  { key: "filesConceptError", color: "bg-red-500/15 text-red-400 border-red-500/25" },
+  { key: "filesConceptInput", color: "bg-gray-500/15 text-gray-400 border-gray-500/25" },
+  { key: "filesConceptOutput", color: "bg-gray-500/15 text-gray-400 border-gray-500/25" },
+  { key: "filesConceptError", color: "bg-gray-500/15 text-gray-400 border-gray-500/25" },
 ];
 
 export default function FilesConceptCard({ className = "" }: Props) {
@@ -92,7 +92,7 @@ export default function FilesConceptCard({ className = "" }: Props) {
         <ul className="flex flex-col gap-2 pl-1">
           <li className="flex items-start gap-2 text-sm text-[var(--color-text-muted)]">
             <span
-              className="material-symbols-outlined text-[16px] text-blue-400 mt-0.5 shrink-0"
+              className="material-symbols-outlined text-[16px] text-gray-400 mt-0.5 shrink-0"
               aria-hidden="true"
             >
               upload_file
@@ -101,7 +101,7 @@ export default function FilesConceptCard({ className = "" }: Props) {
           </li>
           <li className="flex items-start gap-2 text-sm text-[var(--color-text-muted)]">
             <span
-              className="material-symbols-outlined text-[16px] text-emerald-400 mt-0.5 shrink-0"
+              className="material-symbols-outlined text-[16px] text-gray-400 mt-0.5 shrink-0"
               aria-hidden="true"
             >
               download
@@ -110,7 +110,7 @@ export default function FilesConceptCard({ className = "" }: Props) {
           </li>
           <li className="flex items-start gap-2 text-sm text-[var(--color-text-muted)]">
             <span
-              className="material-symbols-outlined text-[16px] text-red-400 mt-0.5 shrink-0"
+              className="material-symbols-outlined text-[16px] text-gray-400 mt-0.5 shrink-0"
               aria-hidden="true"
             >
               error_outline
@@ -119,7 +119,7 @@ export default function FilesConceptCard({ className = "" }: Props) {
           </li>
           <li className="flex items-start gap-2 text-sm text-[var(--color-text-muted)]">
             <span
-              className="material-symbols-outlined text-[16px] text-yellow-400 mt-0.5 shrink-0"
+              className="material-symbols-outlined text-[16px] text-gray-400 mt-0.5 shrink-0"
               aria-hidden="true"
             >
               event_available

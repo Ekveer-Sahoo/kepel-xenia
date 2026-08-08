@@ -47,7 +47,7 @@ export default function Select({
         <label htmlFor={selectId} className="text-sm font-medium text-text-main">
           {label}
           {required && (
-            <span className="text-red-500 ml-1" aria-hidden="true">
+            <span className="text-gray-500 ml-1" aria-hidden="true">
               *
             </span>
           )}
@@ -69,7 +69,7 @@ export default function Select({
             "focus:ring-1 focus:ring-accent/30 focus:border-accent/50 focus:outline-none",
             "transition-all disabled:opacity-50 disabled:cursor-not-allowed",
             "text-[16px] sm:text-sm",
-            error ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : "",
+            error ? "border-gray-500 focus:border-gray-500 focus:ring-gray-500/20" : "",
             selectClassName
           )}
           {...props}
@@ -95,7 +95,7 @@ export default function Select({
         </div>
       </div>
       {error && (
-        <p id={errorId} className="text-xs text-red-500 flex items-center gap-1" role="alert">
+        <p id={errorId} className="text-xs text-gray-500 flex items-center gap-1" role="alert">
           <span className="material-symbols-outlined text-[14px]" aria-hidden="true">
             error
           </span>

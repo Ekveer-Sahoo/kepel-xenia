@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-auth-ag-retry-v2-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-auth-ag-retry-v2-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -152,12 +152,7 @@ test("Antigravity 429 rate-limited locks only the exact model so siblings stay e
 
   // The exhausted model itself is locked: getProviderCredentials reports
   // model-scope cooldown for that exact model on the only connection.
-  const sameModel = await auth.getProviderCredentials(
-    "antigravity",
-    null,
-    null,
-    "gemini-3-pro"
-  );
+  const sameModel = await auth.getProviderCredentials("antigravity", null, null, "gemini-3-pro");
   assert.ok(sameModel);
   assert.ok("allRateLimited" in sameModel && sameModel.allRateLimited);
   assert.equal(sameModel.cooldownScope, "model");

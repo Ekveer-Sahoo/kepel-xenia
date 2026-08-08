@@ -38,7 +38,7 @@ const TRUE_ENV_VALUES = new Set(["1", "true", "yes", "on"]);
 // ── State (globalThis singleton) ──────────────────────────────────────────
 
 declare global {
-  var __omnirouteCredentialHC:
+  var __xeniaCredentialHC:
     | {
         initialized: boolean;
         sweepTimer: ReturnType<typeof setTimeout> | null;
@@ -56,8 +56,8 @@ declare global {
 }
 
 function getSchedulerState() {
-  if (!globalThis.__omnirouteCredentialHC) {
-    globalThis.__omnirouteCredentialHC = {
+  if (!globalThis.__xeniaCredentialHC) {
+    globalThis.__xeniaCredentialHC = {
       initialized: false,
       sweepTimer: null,
       sweepInProgress: false,
@@ -65,7 +65,7 @@ function getSchedulerState() {
       perConnTiming: new Map(),
     };
   }
-  return globalThis.__omnirouteCredentialHC;
+  return globalThis.__xeniaCredentialHC;
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────
@@ -74,10 +74,9 @@ function isBuildProcess(): boolean {
   return typeof process !== "undefined" && process.env.NEXT_PHASE === "phase-production-build";
 }
 
-
 function isCredentialHealthCheckDisabled(): boolean {
   if (isBuildProcess() || isAutomatedTestProcess()) return true;
-  const val = process.env.OMNIROUTE_DISABLE_CREDENTIAL_HEALTH_CHECK;
+  const val = process.env.XENIA_DISABLE_CREDENTIAL_HEALTH_CHECK;
   return val ? TRUE_ENV_VALUES.has(val.trim().toLowerCase()) : false;
 }
 

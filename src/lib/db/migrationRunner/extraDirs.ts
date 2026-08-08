@@ -2,7 +2,7 @@
  * extraDirs.ts — additional migration directories with a namespaced version space.
  *
  * The runner's own directory (`MIGRATIONS_DIR`) owns the bare numeric version
- * space: `NNN_name.sql` is recorded in `_omniroute_migrations` as `NNN`. That
+ * space: `NNN_name.sql` is recorded in `_xenia_migrations` as `NNN`. That
  * single namespace is fine while one party appends to it, and breaks as soon as a
  * distribution ships its own migrations next to the upstream set — both sides draw
  * from the same numbers, and when they pick the same one the runner records a
@@ -12,7 +12,7 @@
  * This module lets an operator register extra directories, each under its own
  * namespace:
  *
- *   OMNIROUTE_EXTRA_MIGRATIONS_DIRS="ee=/opt/app/enterprise/db/migrations"
+ *   XENIA_EXTRA_MIGRATIONS_DIRS="ee=/opt/app/enterprise/db/migrations"
  *
  * Entries are separated by `path.delimiter` (`:` on POSIX, `;` on Windows) and a
  * file `NNN_name.sql` found there is recorded as `<namespace>-NNN`, so it can
@@ -29,7 +29,7 @@ import fs from "fs";
 import path from "path";
 
 /** Env var holding `namespace=dir` entries separated by `path.delimiter`. */
-export const EXTRA_MIGRATIONS_DIRS_ENV = "OMNIROUTE_EXTRA_MIGRATIONS_DIRS";
+export const EXTRA_MIGRATIONS_DIRS_ENV = "XENIA_EXTRA_MIGRATIONS_DIRS";
 
 /**
  * Namespaces become a version prefix (`ee-134`), so they stay lowercase,
@@ -107,9 +107,7 @@ export function parseExtraMigrationDirs(raw?: string | null): ExtraMigrationDir[
       );
     }
     if (!fs.statSync(dir).isDirectory()) {
-      throw new Error(
-        `[Migration] Path for namespace "${namespace}" is not a directory: ${dir}.`
-      );
+      throw new Error(`[Migration] Path for namespace "${namespace}" is not a directory: ${dir}.`);
     }
 
     seen.add(namespace);
@@ -128,9 +126,7 @@ export function parseExtraMigrationDirs(raw?: string | null): ExtraMigrationDir[
  * the namespace only separates this directory from upstream, not a directory from
  * itself — so that throws, mirroring the runner's own collision guard.
  */
-export function readNamespacedMigrationFiles(
-  entry: ExtraMigrationDir
-): NamespacedMigrationFile[] {
+export function readNamespacedMigrationFiles(entry: ExtraMigrationDir): NamespacedMigrationFile[] {
   const parsed = fs
     .readdirSync(entry.dir)
     .filter((f) => f.endsWith(".sql"))

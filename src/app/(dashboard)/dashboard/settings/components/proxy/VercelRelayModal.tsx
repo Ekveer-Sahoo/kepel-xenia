@@ -13,7 +13,7 @@ export default function VercelRelayModal({ isOpen, onClose, onDeployed }: Vercel
   const t = useTranslations("settings");
   const [token, setToken] = useState("");
   const [projectName, setProjectName] = useState(
-    process.env.NEXT_PUBLIC_VERCEL_RELAY_DEFAULT_PROJECT || "omniroute-relay"
+    process.env.NEXT_PUBLIC_VERCEL_RELAY_DEFAULT_PROJECT || "xenia-relay"
   );
   const [deploying, setDeploying] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -63,14 +63,18 @@ export default function VercelRelayModal({ isOpen, onClose, onDeployed }: Vercel
             </span>
             {t("vercelRelayModalTitle")}
           </h2>
-          <button onClick={onClose} aria-label={t("close")} className="text-text-muted hover:text-text">
+          <button
+            onClick={onClose}
+            aria-label={t("close")}
+            className="text-text-muted hover:text-text"
+          >
             <span className="material-symbols-outlined" aria-hidden="true">
               close
             </span>
           </button>
         </div>
 
-        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded p-3 text-xs text-yellow-300">
+        <div className="bg-gray-500/10 border border-gray-500/30 rounded p-3 text-xs text-gray-300">
           {t("vercelRelayWarning")}
         </div>
 
@@ -88,9 +92,7 @@ export default function VercelRelayModal({ isOpen, onClose, onDeployed }: Vercel
               placeholder="vercel_pat_..."
               autoComplete="off"
             />
-            <p className="text-xs text-text-muted mt-1">
-              {t("vercelRelayTokenHint")}
-            </p>
+            <p className="text-xs text-text-muted mt-1">{t("vercelRelayTokenHint")}</p>
           </div>
           <div>
             <label className="text-sm font-medium mb-1 block" htmlFor="vercel-project-name">
@@ -102,13 +104,13 @@ export default function VercelRelayModal({ isOpen, onClose, onDeployed }: Vercel
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
               className="w-full text-sm bg-surface-alt border border-border rounded px-3 py-2 focus:outline-none focus:border-primary"
-              placeholder="omniroute-relay"
+              placeholder="xenia-relay"
             />
           </div>
         </div>
 
         {error && (
-          <div className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded p-2">
+          <div className="text-sm text-gray-400 bg-gray-500/10 border border-gray-500/20 rounded p-2">
             {error}
           </div>
         )}

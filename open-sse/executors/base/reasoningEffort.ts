@@ -110,7 +110,7 @@ function withNvidiaGlm52TemplateKwargs(
 }
 
 /**
- * Map OmniRoute's reasoning-effort inputs onto the binary thinking switch exposed by
+ * Map Xenia's reasoning-effort inputs onto the binary thinking switch exposed by
  * NVIDIA's hosted GLM-5.2 chat template. This runs before DefaultExecutor's unsupported
  * parameter stripping so a nested `reasoning.effort` is not discarded first, and is also
  * reused by the final provider sanitizer for non-default execution paths.
@@ -145,7 +145,7 @@ export function supportsMaxEffortForProvider(provider: string, model: string): b
     supportsClaudeMaxEffort(model);
   // opencode-go proxies DeepSeek with the native DeepSeek API contract, which
   // accepts {high, max} literally. Without this opt-in, max would be
-  // normalized to xhigh (the OmniRoute-internal top tier) and rejected by the
+  // normalized to xhigh (the Xenia-internal top tier) and rejected by the
   // upstream. Scoped to opencode-go deliberately: OpenRouter's DeepSeek path
   // (pi#4055) is the documented inverse and expects xhigh, not max.
   // Ollama Cloud also accepts literal max (for example GLM 5.2 supports
@@ -160,8 +160,8 @@ export function supportsMaxEffortForProvider(provider: string, model: string): b
 }
 
 // ── Effort carrier helpers (#7044) ──────────────────────────────────────────
-// OmniRoute carries the requested effort on up to three shapes:
-//   1. top-level `reasoning_effort`        — OpenAI / OmniRoute-internal
+// Xenia carries the requested effort on up to three shapes:
+//   1. top-level `reasoning_effort`        — OpenAI / Xenia-internal
 //   2. `reasoning.effort`                  — OpenAI Responses shape
 //   3. `output_config.effort`              — Anthropic Messages native (Claude Code / Claude passthrough)
 // Carrier (3) was previously invisible to this sanitizer, so a native Claude request
@@ -277,7 +277,7 @@ export function sanitizeReasoningEffortForProvider(
   }
 
   // Native DeepSeek (api.deepseek.com) — V4 thinking mode accepts reasoning_effort
-  // ONLY as {high, max} (its own top tier is literally "max"). OmniRoute's internal
+  // ONLY as {high, max} (its own top tier is literally "max"). Xenia's internal
   // scale is low|medium|high|xhigh where xhigh is the top, so map onto DeepSeek's
   // vocabulary: xhigh → max (top→top), low|medium → high (below the enum floor).
   // high/max pass through unchanged. Without this, the claude→openai translator's

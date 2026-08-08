@@ -48,10 +48,10 @@ type CallLogEntry = {
 const TIME_RANGES: TimeRange[] = ["1h", "24h", "7d", "30d"];
 
 const STATE_STYLES: Record<ComboControlCenterSummary["healthState"], string> = {
-  healthy: "border-emerald-500/20 bg-emerald-500/10 text-emerald-400",
-  warning: "border-amber-500/20 bg-amber-500/10 text-amber-400",
-  critical: "border-red-500/20 bg-red-500/10 text-red-400",
-  idle: "border-blue-500/20 bg-blue-500/10 text-blue-400",
+  healthy: "border-gray-500/20 bg-gray-500/10 text-gray-400",
+  warning: "border-gray-500/20 bg-gray-500/10 text-gray-400",
+  critical: "border-gray-500/20 bg-gray-500/10 text-gray-400",
+  idle: "border-gray-500/20 bg-gray-500/10 text-gray-400",
 };
 
 function toArray<T>(value: unknown): T[] {
@@ -133,12 +133,12 @@ function targetHealthTone(target: ComboControlCenterTarget | ComboControlCenterT
   const health = "health" in target ? target.health : target;
   if (!health) return "border-border bg-surface text-text-muted";
   if (health.lastStatus === "error" || health.quotaIsExhausted) {
-    return "border-red-500/20 bg-red-500/10 text-red-300";
+    return "border-gray-500/20 bg-gray-500/10 text-gray-300";
   }
   if ((health.quotaRemainingPct ?? 100) < 25 || (health.successRate ?? 100) < 95) {
-    return "border-amber-500/20 bg-amber-500/10 text-amber-300";
+    return "border-gray-500/20 bg-gray-500/10 text-gray-300";
   }
-  return "border-emerald-500/20 bg-emerald-500/10 text-emerald-300";
+  return "border-gray-500/20 bg-gray-500/10 text-gray-300";
 }
 
 function TargetConfiguredRow({ target }: { target: ComboControlCenterTarget }) {
@@ -155,7 +155,7 @@ function TargetConfiguredRow({ target }: { target: ComboControlCenterTarget }) {
               {target.kind === "combo-ref" ? t("nestedCombo") : t("modelTarget")}
             </span>
             {target.weight > 0 && (
-              <span className="rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[11px] text-amber-300">
+              <span className="rounded-full border border-gray-500/20 bg-gray-500/10 px-2 py-0.5 text-[11px] text-gray-300">
                 {t("weight", { value: target.weight })}
               </span>
             )}
@@ -223,7 +223,7 @@ function RecentLogRow({ log }: { log: CallLogEntry }) {
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <div className="min-w-0">
           <p className="truncate text-sm text-text-main">
-            <span className={ok ? "text-emerald-400" : "text-red-400"}>{log.status || "—"}</span>{" "}
+            <span className={ok ? "text-gray-400" : "text-gray-400"}>{log.status || "—"}</span>{" "}
             {log.model || t("unknownModel")}
           </p>
           <p className="text-xs text-text-muted">
@@ -235,7 +235,7 @@ function RecentLogRow({ log }: { log: CallLogEntry }) {
         </div>
         <div className="text-xs text-text-muted">{fmtMs(log.duration)}</div>
       </div>
-      {log.error && <p className="mt-1 text-xs text-red-300">{log.error}</p>}
+      {log.error && <p className="mt-1 text-xs text-gray-300">{log.error}</p>}
     </div>
   );
 }
@@ -309,9 +309,9 @@ export default function ComboControlCenterClient({ comboId }: { comboId: string 
         <Link href="/dashboard/combos" className="text-sm text-primary hover:underline">
           ← {t("backToCombos")}
         </Link>
-        <Card className="border border-red-500/20 bg-red-500/10 p-6">
-          <h1 className="text-lg font-semibold text-red-300">{t("unavailable")}</h1>
-          <p className="mt-2 text-sm text-red-200">{error}</p>
+        <Card className="border border-gray-500/20 bg-gray-500/10 p-6">
+          <h1 className="text-lg font-semibold text-gray-300">{t("unavailable")}</h1>
+          <p className="mt-2 text-sm text-gray-200">{error}</p>
         </Card>
       </div>
     );
@@ -505,7 +505,7 @@ export default function ComboControlCenterClient({ comboId }: { comboId: string 
                     <span className="text-text-main">
                       {getProviderDisplayName(provider.provider)}
                     </span>
-                    <span className={provider.isExhausted ? "text-red-300" : "text-text-muted"}>
+                    <span className={provider.isExhausted ? "text-gray-300" : "text-text-muted"}>
                       {fmtPercent(provider.remainingPct)} · {provider.trend}
                     </span>
                   </div>

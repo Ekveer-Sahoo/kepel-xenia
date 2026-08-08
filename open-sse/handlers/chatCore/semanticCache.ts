@@ -1,14 +1,10 @@
-import {
-  generateSignature,
-  getCachedResponse,
-  isCacheableForRead,
-} from "@/lib/semanticCache";
+import { generateSignature, getCachedResponse, isCacheableForRead } from "@/lib/semanticCache";
 import { calculateCost } from "@/lib/usage/costCalculator";
 import { trackPendingRequest } from "@/lib/usageDb";
 import { synthesizeOpenAiSseFromJson } from "../../utils/jsonToSse.ts";
-import { attachOmniRouteMetaHeaders } from "@/domain/omnirouteResponseMeta";
+import { attachXeniaMetaHeaders } from "@/domain/xeniaResponseMeta";
 import { extractUsageFromResponse } from "../usageExtractor.ts";
-import { OMNIROUTE_RESPONSE_HEADERS } from "@/shared/constants/headers";
+import { XENIA_RESPONSE_HEADERS } from "@/shared/constants/headers";
 
 export async function checkSemanticCache({
   semanticCacheEnabled,
@@ -74,12 +70,12 @@ export async function checkSemanticCache({
       const cachedSse = stream ? synthesizeOpenAiSseFromJson(JSON.stringify(cached)) : "";
       const headers: Record<string, string> = {
         "Content-Type": cachedSse ? "text/event-stream" : "application/json",
-        [OMNIROUTE_RESPONSE_HEADERS.cache]: "HIT",
+        [XENIA_RESPONSE_HEADERS.cache]: "HIT",
       };
       // A cache HIT serves WITHOUT an upstream call, so the incremental cost billed to
-      // the client is 0 (consumers that sum X-OmniRoute-Response-Cost must not charge for
-      // hits). The original/would-have-been cost is surfaced via X-OmniRoute-Cost-Saved.
-      attachOmniRouteMetaHeaders(headers, {
+      // the client is 0 (consumers that sum X-Xenia-Response-Cost must not charge for
+      // hits). The original/would-have-been cost is surfaced via X-Xenia-Cost-Saved.
+      attachXeniaMetaHeaders(headers, {
         provider,
         model,
         cacheHit: true,

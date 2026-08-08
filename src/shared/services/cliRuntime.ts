@@ -254,7 +254,7 @@ const CLI_TOOLS: Record<string, any> = {
     },
   },
   // Config path reconciled with bin/cli/commands/setup-crush.mjs::resolveCrushTarget's
-  // default (~/.config/crush/crush.json) so the dashboard and `omniroute setup-crush`
+  // default (~/.config/crush/crush.json) so the dashboard and `xenia setup-crush`
   // agree on one canonical config location.
   crush: {
     defaultCommand: "crush",

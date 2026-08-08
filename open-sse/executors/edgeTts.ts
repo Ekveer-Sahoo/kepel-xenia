@@ -42,7 +42,7 @@ const DEFAULT_OUTPUT_FORMAT = "audio-24khz-48kbitrate-mono-mp3";
 const CONNECT_TIMEOUT_MS = 10_000;
 const SYNTH_TIMEOUT_MS = 30_000;
 
-// Per-client-IP throttle — EdgeTTS has no per-user key, so every OmniRoute
+// Per-client-IP throttle — EdgeTTS has no per-user key, so every Xenia
 // deployment shares the same trusted-token identity upstream. A single
 // abusive caller could get the shared token rate-limited/blocked for
 // everyone, so we cap requests per source IP before we ever open a socket.

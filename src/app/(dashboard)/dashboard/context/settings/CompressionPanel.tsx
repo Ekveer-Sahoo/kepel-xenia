@@ -273,7 +273,7 @@ export default function CompressionPanel() {
       {/* Master */}
       <div className="mb-5 flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="rounded-lg bg-blue-500/10 p-2 text-blue-500">
+          <div className="rounded-lg bg-gray-500/10 p-2 text-gray-500">
             <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
               compress
             </span>
@@ -282,7 +282,7 @@ export default function CompressionPanel() {
             <h3 className="text-lg font-semibold">{t("compressionTitle")}</h3>
             <p className="text-sm text-text-muted">{t("compressionDesc")}</p>
             <a
-              href="https://github.com/diegosouzapw/OmniRoute/blob/main/docs/compression/COMPRESSION_GUIDE.md"
+              href="https://github.com/diegosouzapw/Xenia/blob/main/docs/compression/COMPRESSION_GUIDE.md"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="compression-guide-link"
@@ -297,13 +297,13 @@ export default function CompressionPanel() {
         </div>
         <div className="flex items-center gap-3">
           {status === "saved" && (
-            <span className="flex items-center gap-1 text-xs font-medium text-emerald-500">
+            <span className="flex items-center gap-1 text-xs font-medium text-gray-500">
               <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
               {t("saved")}
             </span>
           )}
           {status === "error" && (
-            <span className="flex items-center gap-1 text-xs font-medium text-red-500">
+            <span className="flex items-center gap-1 text-xs font-medium text-gray-500">
               <span className="material-symbols-outlined text-[14px]">error</span> {t("saveFailed")}
             </span>
           )}

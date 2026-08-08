@@ -145,14 +145,14 @@ const EXPLORER_GROUP_OPTIONS: Array<{
 ];
 
 const CHART_COLORS = [
-  "#10b981",
-  "#06b6d4",
-  "#f59e0b",
-  "#8b5cf6",
-  "#ef4444",
-  "#14b8a6",
-  "#6366f1",
-  "#ec4899",
+  "#808080",
+  "#858585",
+  "#a7a7a7",
+  "#7c7c7c",
+  "#777777",
+  "#858585",
+  "#757575",
+  "#828282",
 ];
 
 const SHORT_WEEKDAY_INDEX: Record<string, number> = {
@@ -212,7 +212,7 @@ function generateCSV(analytics: UsageAnalyticsPayload, locale: string): string {
   const currencyFormatter = createCurrencyFormatter(locale);
   const lines: string[] = [];
 
-  lines.push("# OmniRoute Cost Report");
+  lines.push("# Xenia Cost Report");
   lines.push(`# Generated: ${new Date().toISOString()}`);
   lines.push("");
   lines.push("## Summary");
@@ -491,12 +491,12 @@ export default function CostOverviewTab() {
           </div>
           <div className="flex flex-wrap items-center gap-3">
             {summary.streak > 0 && (
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20">
-                <span className="material-symbols-outlined text-amber-400 text-sm">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-500/10 border border-gray-500/20">
+                <span className="material-symbols-outlined text-gray-400 text-sm">
                   local_fire_department
                 </span>
-                <span className="text-sm font-semibold text-amber-400">{summary.streak}</span>
-                <span className="text-xs text-amber-400/70">{t("dayStreak")}</span>
+                <span className="text-sm font-semibold text-gray-400">{summary.streak}</span>
+                <span className="text-xs text-gray-400/70">{t("dayStreak")}</span>
               </div>
             )}
             {analytics && summary.totalCost > 0 && (
@@ -505,7 +505,7 @@ export default function CostOverviewTab() {
                   onClick={() => {
                     const csv = generateCSV(analytics, locale);
                     const dateStr = new Date().toISOString().slice(0, 10);
-                    downloadFile(csv, `omniroute-costs-${range}-${dateStr}.csv`, "text/csv");
+                    downloadFile(csv, `xenia-costs-${range}-${dateStr}.csv`, "text/csv");
                   }}
                   className="flex items-center gap-1 px-2.5 py-1.5 text-xs text-text-muted hover:text-text-main hover:bg-surface/50 rounded-lg border border-border/30 transition-colors"
                   title={t("exportCSV")}
@@ -517,11 +517,7 @@ export default function CostOverviewTab() {
                   onClick={() => {
                     const json = generateJSON(analytics);
                     const dateStr = new Date().toISOString().slice(0, 10);
-                    downloadFile(
-                      json,
-                      `omniroute-costs-${range}-${dateStr}.json`,
-                      "application/json"
-                    );
+                    downloadFile(json, `xenia-costs-${range}-${dateStr}.json`, "application/json");
                   }}
                   className="flex items-center gap-1 px-2.5 py-1.5 text-xs text-text-muted hover:text-text-main hover:bg-surface/50 rounded-lg border border-border/30 transition-colors"
                   title={t("exportJSON")}
@@ -548,25 +544,25 @@ export default function CostOverviewTab() {
           label={t("spendToday")}
           value={formatCurrencyCost(locale, presetCosts["1d"] || 0)}
           loading={summaryLoading}
-          color="text-emerald-400"
+          color="text-gray-400"
         />
         <MetricCard
           label={t("spend7d")}
           value={formatCurrencyCost(locale, presetCosts["7d"] || 0)}
           loading={summaryLoading}
-          color="text-sky-400"
+          color="text-gray-400"
         />
         <MetricCard
           label={t("spend30d")}
           value={formatCurrencyCost(locale, presetCosts["30d"] || 0)}
           loading={summaryLoading}
-          color="text-violet-400"
+          color="text-gray-400"
         />
         <MetricCard
           label={t("selectedWindow")}
           value={formatCurrencyCost(locale, summary.totalCost || 0)}
           subValue={selectedRangeLabel}
-          color="text-amber-400"
+          color="text-gray-400"
         />
       </div>
 
@@ -679,10 +675,10 @@ export default function CostOverviewTab() {
                 <p
                   className={`text-lg font-semibold ${
                     (summary.fallbackRatePct || 0) > 10
-                      ? "text-red-400"
+                      ? "text-gray-400"
                       : (summary.fallbackRatePct || 0) > 5
-                        ? "text-amber-400"
-                        : "text-emerald-400"
+                        ? "text-gray-400"
+                        : "text-gray-400"
                   }`}
                 >
                   {(summary.fallbackRatePct || 0).toFixed(1)}%
@@ -692,10 +688,10 @@ export default function CostOverviewTab() {
                   style={{
                     color:
                       (summary.fallbackRatePct || 0) > 10
-                        ? "#f87171"
+                        ? "#999999"
                         : (summary.fallbackRatePct || 0) > 5
-                          ? "#fbbf24"
-                          : "#34d399",
+                          ? "#bfbfbf"
+                          : "#9d9d9d",
                   }}
                 >
                   {(summary.fallbackRatePct || 0) > 5 ? "warning" : "check_circle"}
@@ -719,13 +715,13 @@ export default function CostOverviewTab() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Card className="p-5">
             <div className="flex items-center gap-2 mb-3">
-              <span className="material-symbols-outlined text-sky-400 text-lg">trending_up</span>
+              <span className="material-symbols-outlined text-gray-400 text-lg">trending_up</span>
               <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wide">
                 {t("monthlyForecast")}
               </h3>
             </div>
             <div className="flex items-end gap-3">
-              <p className="text-3xl font-bold text-sky-400">
+              <p className="text-3xl font-bold text-gray-400">
                 {currencyFormatter.format(projectedMonthEnd)}
               </p>
               <p className="text-xs text-text-muted pb-1">
@@ -742,7 +738,7 @@ export default function CostOverviewTab() {
 
           <Card className="p-5">
             <div className="flex items-center gap-2 mb-3">
-              <span className="material-symbols-outlined text-violet-400 text-lg">
+              <span className="material-symbols-outlined text-gray-400 text-lg">
                 compare_arrows
               </span>
               <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wide">
@@ -753,9 +749,9 @@ export default function CostOverviewTab() {
               <p
                 className={`text-3xl font-bold ${
                   costChangePct > 0
-                    ? "text-red-400"
+                    ? "text-gray-400"
                     : costChangePct < 0
-                      ? "text-emerald-400"
+                      ? "text-gray-400"
                       : "text-text-main"
                 }`}
               >
@@ -765,9 +761,9 @@ export default function CostOverviewTab() {
               <span
                 className={`material-symbols-outlined text-lg pb-1 ${
                   costChangePct > 0
-                    ? "text-red-400"
+                    ? "text-gray-400"
                     : costChangePct < 0
-                      ? "text-emerald-400"
+                      ? "text-gray-400"
                       : "text-text-muted"
                 }`}
               >
@@ -994,9 +990,7 @@ function CostExplorerCard({
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between mb-5">
         <div>
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-emerald-400 text-xl">
-              travel_explore
-            </span>
+            <span className="material-symbols-outlined text-gray-400 text-xl">travel_explore</span>
             <h3 className="text-lg font-bold text-text-main">{t("costExplorerTitle")}</h3>
           </div>
           <p className="text-sm text-text-muted mt-1">{t("costExplorerDescription")}</p>
@@ -1090,7 +1084,7 @@ function CostExplorerCard({
                       <div className="flex items-center justify-end gap-2">
                         <div className="h-1.5 w-16 overflow-hidden rounded-full bg-surface/60">
                           <div
-                            className="h-full rounded-full bg-emerald-400"
+                            className="h-full rounded-full bg-gray-400"
                             style={{ width: `${Math.min(Math.max(row.sharePct, 0), 100)}%` }}
                           />
                         </div>
@@ -1150,10 +1144,10 @@ function ActivityHeatmap({
   const getIntensity = (value: number): string => {
     if (value === 0) return "bg-surface/30";
     const ratio = value / maxValue;
-    if (ratio < 0.25) return "bg-emerald-900/50";
-    if (ratio < 0.5) return "bg-emerald-700/60";
-    if (ratio < 0.75) return "bg-emerald-500/70";
-    return "bg-emerald-400";
+    if (ratio < 0.25) return "bg-gray-900/50";
+    if (ratio < 0.5) return "bg-gray-700/60";
+    if (ratio < 0.75) return "bg-gray-500/70";
+    return "bg-gray-400";
   };
 
   const weeks: Array<Array<{ date: string; value: number }>> = [];
@@ -1189,10 +1183,10 @@ function ActivityHeatmap({
         <span>{lessLabel}</span>
         <div className="flex gap-0.5">
           <div className="w-2.5 h-2.5 rounded-xs bg-surface/30" />
-          <div className="w-2.5 h-2.5 rounded-xs bg-emerald-900/50" />
-          <div className="w-2.5 h-2.5 rounded-xs bg-emerald-700/60" />
-          <div className="w-2.5 h-2.5 rounded-xs bg-emerald-500/70" />
-          <div className="w-2.5 h-2.5 rounded-xs bg-emerald-400" />
+          <div className="w-2.5 h-2.5 rounded-xs bg-gray-900/50" />
+          <div className="w-2.5 h-2.5 rounded-xs bg-gray-700/60" />
+          <div className="w-2.5 h-2.5 rounded-xs bg-gray-500/70" />
+          <div className="w-2.5 h-2.5 rounded-xs bg-gray-400" />
         </div>
         <span>{moreLabel}</span>
       </div>

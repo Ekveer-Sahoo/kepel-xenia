@@ -6,7 +6,7 @@ lastUpdated: 2026-06-28
 
 # 用户指南
 
-配置服务商、创建 Combo、集成 CLI 工具和部署 OmniRoute 的完整指南。
+配置服务商、创建 Combo、集成 CLI 工具和部署 Xenia 的完整指南。
 
 ---
 
@@ -33,27 +33,27 @@ lastUpdated: 2026-06-28
 
 ## 💰 定价概览
 
-| 级别                     | 服务商            | 费用        | 配额重置      | 最佳用途              |
-| ------------------------ | ----------------- | ----------- | ------------- | --------------------- |
-| **💳 订阅制**            | Claude Code (Pro) | $20/月      | 5 小时 + 每周 | 已有订阅              |
-|                          | Codex (Plus/Pro)  | $20-200/月  | 5 小时 + 每周 | OpenAI 用户           |
-|                          | GitHub Copilot    | $10-19/月   | 每月          | GitHub 用户           |
-| **🔑 API Key**           | DeepSeek          | 按量付费    | 无            | 低成本推理            |
-|                          | Groq              | 按量付费    | 无            | 超高速推理            |
-|                          | xAI (Grok)        | 按量付费    | 无            | Grok 4 推理           |
-|                          | Mistral           | 按量付费    | 无            | 欧盟托管模型          |
-|                          | Perplexity        | 按量付费    | 无            | 搜索增强              |
-|                          | Together AI       | 按量付费    | 无            | 开源模型              |
-|                          | Fireworks AI      | 按量付费    | 无            | 快速 FLUX 图像生成    |
-|                          | Cerebras          | 按量付费    | 无            | 晶圆级速度            |
-|                          | Cohere            | 按量付费    | 无            | Command R+ RAG        |
-|                          | NVIDIA NIM        | 按量付费    | 无            | 企业级模型            |
-| **💰 经济型**            | GLM-4.7           | $0.6/1M     | 每日 10:00    | 预算备用              |
-|                          | MiniMax M2.1      | $0.2/1M     | 5 小时滑动窗口 | 最便宜选项            |
-|                          | Kimi K2           | $9/月 固定  | 10M Token/月   | 费用可预测            |
-| **🆓 免费**              | Qoder             | $0          | 无限制        | 8 个模型免费          |
-|                          | Qwen              | $0          | 无限制        | 3 个模型免费          |
-|                          | Kiro              | $0          | ~50 积分/月    | Claude 免费           |
+| 级别           | 服务商            | 费用       | 配额重置       | 最佳用途           |
+| -------------- | ----------------- | ---------- | -------------- | ------------------ |
+| **💳 订阅制**  | Claude Code (Pro) | $20/月     | 5 小时 + 每周  | 已有订阅           |
+|                | Codex (Plus/Pro)  | $20-200/月 | 5 小时 + 每周  | OpenAI 用户        |
+|                | GitHub Copilot    | $10-19/月  | 每月           | GitHub 用户        |
+| **🔑 API Key** | DeepSeek          | 按量付费   | 无             | 低成本推理         |
+|                | Groq              | 按量付费   | 无             | 超高速推理         |
+|                | xAI (Grok)        | 按量付费   | 无             | Grok 4 推理        |
+|                | Mistral           | 按量付费   | 无             | 欧盟托管模型       |
+|                | Perplexity        | 按量付费   | 无             | 搜索增强           |
+|                | Together AI       | 按量付费   | 无             | 开源模型           |
+|                | Fireworks AI      | 按量付费   | 无             | 快速 FLUX 图像生成 |
+|                | Cerebras          | 按量付费   | 无             | 晶圆级速度         |
+|                | Cohere            | 按量付费   | 无             | Command R+ RAG     |
+|                | NVIDIA NIM        | 按量付费   | 无             | 企业级模型         |
+| **💰 经济型**  | GLM-4.7           | $0.6/1M    | 每日 10:00     | 预算备用           |
+|                | MiniMax M2.1      | $0.2/1M    | 5 小时滑动窗口 | 最便宜选项         |
+|                | Kimi K2           | $9/月 固定 | 10M Token/月   | 费用可预测         |
+| **🆓 免费**    | Qoder             | $0         | 无限制         | 8 个模型免费       |
+|                | Qwen              | $0         | 无限制         | 3 个模型免费       |
+|                | Kiro              | $0         | ~50 积分/月    | Claude 免费        |
 
 ---
 
@@ -135,9 +135,9 @@ Models:
   cc/claude-haiku-4-5-20251001
 ```
 
-**技巧：** 复杂任务用 Opus，追求速度用 Sonnet。OmniRoute 为每个模型单独追踪配额！
+**技巧：** 复杂任务用 Opus，追求速度用 Sonnet。Xenia 为每个模型单独追踪配额！
 
-Claude 和 Claude Code 兼容路由对 Opus 和 Sonnet 模型保留 `max` 思考级别。Haiku 模型不接受 `max` 级别，OmniRoute 会在发送到上游之前将该请求降级为较高的思考预算。
+Claude 和 Claude Code 兼容路由对 Opus 和 Sonnet 模型保留 `max` 思考级别。Haiku 模型不接受 `max` 级别，Xenia 会在发送到上游之前将该请求降级为较高的思考预算。
 
 #### OpenAI Codex (Plus/Pro)
 
@@ -259,7 +259,7 @@ Cost: $0 forever!
 ```
 Settings → Models → Advanced:
   OpenAI API Base URL: http://localhost:20128/v1
-  OpenAI API Key: [from omniroute dashboard]
+  OpenAI API Key: [from xenia dashboard]
   Model: cc/claude-opus-4-7
 ```
 
@@ -271,7 +271,7 @@ Settings → Models → Advanced:
 {
   "env": {
     "ANTHROPIC_BASE_URL": "http://localhost:20128",
-    "ANTHROPIC_AUTH_TOKEN": "your-omniroute-api-key"
+    "ANTHROPIC_AUTH_TOKEN": "your-xenia-api-key"
   }
 }
 ```
@@ -282,7 +282,7 @@ Settings → Models → Advanced:
 
 ```bash
 export OPENAI_BASE_URL="http://localhost:20128"
-export OPENAI_API_KEY="your-omniroute-api-key"
+export OPENAI_API_KEY="your-xenia-api-key"
 codex "your prompt"
 ```
 
@@ -294,14 +294,14 @@ codex "your prompt"
 {
   "agents": {
     "defaults": {
-      "model": { "primary": "omniroute/if/kimi-k2" }
+      "model": { "primary": "xenia/if/kimi-k2" }
     }
   },
   "models": {
     "providers": {
-      "omniroute": {
+      "xenia": {
         "baseUrl": "http://localhost:20128/v1",
-        "apiKey": "your-omniroute-api-key",
+        "apiKey": "your-xenia-api-key",
         "api": "openai-completions",
         "models": [{ "id": "if/kimi-k2", "name": "kimi-k2" }]
       }
@@ -328,42 +328,42 @@ Model: cc/claude-opus-4-7
 ### 全局 npm 安装（推荐）
 
 ```bash
-npm install -g omniroute
+npm install -g xenia
 
 # Create config directory
-mkdir -p ~/.omniroute
+mkdir -p ~/.xenia
 
 # Create .env file (see .env.example)
-cp .env.example ~/.omniroute/.env
+cp .env.example ~/.xenia/.env
 
 # Start server
-omniroute
+xenia
 # Or with custom port:
-omniroute --port 3000
+xenia --port 3000
 ```
 
-CLI 自动从 `~/.omniroute/.env` 或 `./.env` 加载环境变量。
+CLI 自动从 `~/.xenia/.env` 或 `./.env` 加载环境变量。
 
 ### 卸载
 
-当你不再需要 OmniRoute 时，我们提供了两个快速脚本来干净地移除：
+当你不再需要 Xenia 时，我们提供了两个快速脚本来干净地移除：
 
-| 命令                      | 作用                                                             |
-| ------------------------- | ---------------------------------------------------------------- |
-| `npm run uninstall`       | 移除系统应用，但**保留 `~/.omniroute` 中的数据库和配置**         |
-| `npm run uninstall:full`  | 移除应用并**永久删除���有配置、密钥和数据库**                     |
+| 命令                     | 作用                                                 |
+| ------------------------ | ---------------------------------------------------- |
+| `npm run uninstall`      | 移除系统应用，但**保留 `~/.xenia` 中的数据库和配置** |
+| `npm run uninstall:full` | 移除应用并**永久删除���有配置、密钥和数据库**        |
 
-> 注意：运行这些命令需要进入 OmniRoute 项目目录（如果你 clone 了项目）。如果全局安装，直接运行 `npm uninstall -g omniroute` 即可。
+> 注意：运行这些命令需要进入 Xenia 项目目录（如果你 clone 了项目）。如果全局安装，直接运行 `npm uninstall -g xenia` 即可。
 
 ### VPS 部署
 
 ```bash
-git clone https://github.com/diegosouzapw/OmniRoute.git
-cd OmniRoute && npm install && npm run build
+git clone https://github.com/diegosouzapw/Xenia.git
+cd Xenia && npm install && npm run build
 
 export JWT_SECRET="your-secure-secret-change-this"
 export INITIAL_PASSWORD="your-password"
-export DATA_DIR="/var/lib/omniroute"
+export DATA_DIR="/var/lib/xenia"
 export PORT="20128"
 export HOSTNAME="0.0.0.0"
 export NODE_ENV="production"
@@ -371,7 +371,7 @@ export NEXT_PUBLIC_BASE_URL="http://localhost:20128"
 export API_KEY_SECRET="endpoint-proxy-api-key-secret"
 
 npm run start
-# Or: pm2 start npm --name omniroute -- start
+# Or: pm2 start npm --name xenia -- start
 ```
 
 ### PM2 部署（低内存）
@@ -380,10 +380,10 @@ npm run start
 
 ```bash
 # With 512MB limit (default)
-pm2 start npm --name omniroute -- start
+pm2 start npm --name xenia -- start
 
 # Or with custom memory limit
-OMNIROUTE_MEMORY_MB=512 pm2 start npm --name omniroute -- start
+XENIA_MEMORY_MB=512 pm2 start npm --name xenia -- start
 
 # Or using ecosystem.config.js
 pm2 start ecosystem.config.js
@@ -395,12 +395,12 @@ pm2 start ecosystem.config.js
 module.exports = {
   apps: [
     {
-      name: "omniroute",
+      name: "xenia",
       script: "npm",
       args: "start",
       env: {
         NODE_ENV: "production",
-        OMNIROUTE_MEMORY_MB: "512",
+        XENIA_MEMORY_MB: "512",
         JWT_SECRET: "your-secret",
         INITIAL_PASSWORD: "your-password",
       },
@@ -415,24 +415,24 @@ module.exports = {
 
 ```bash
 # Build image (default = runner-cli with codex/claude/droid preinstalled)
-docker build -t omniroute:cli .
+docker build -t xenia:cli .
 
 # Portable mode (recommended)
-docker run -d --name omniroute -p 20128:20128 --env-file ./.env -v omniroute-data:/app/data omniroute:cli
+docker run -d --name xenia -p 20128:20128 --env-file ./.env -v xenia-data:/app/data xenia:cli
 ```
 
 关于集成了 CLI 二进制文件的主机集成模式，请参阅主文档中的 Docker 章节。
 
 ### Void Linux (xbps-src)
 
-Void Linux 用户可使用 `xbps-src` 交叉编译框架原生打包安装 OmniRoute。这种方式可自动化完成 Node.js 独立构建及所需的 `better-sqlite3` 原生绑定。
+Void Linux 用户可使用 `xbps-src` 交叉编译框架原生打包安装 Xenia。这种方式可自动化完成 Node.js 独立构建及所需的 `better-sqlite3` 原生绑定。
 
 <details>
 <summary><b>查看 xbps-src 模板</b></summary>
 
 ```bash
-# Template file for 'omniroute'
-pkgname=omniroute
+# Template file for 'xenia'
+pkgname=xenia
 version=3.8.0
 revision=1
 hostmakedepends="nodejs python3 make"
@@ -440,11 +440,11 @@ depends="openssl"
 short_desc="Universal AI gateway with smart routing for multiple LLM providers"
 maintainer="zenobit <zenobit@disroot.org>"
 license="MIT"
-homepage="https://github.com/diegosouzapw/OmniRoute"
-distfiles="https://github.com/diegosouzapw/OmniRoute/archive/refs/tags/v${version}.tar.gz"
+homepage="https://github.com/diegosouzapw/Xenia"
+distfiles="https://github.com/diegosouzapw/Xenia/archive/refs/tags/v${version}.tar.gz"
 checksum=009400afee90a9f32599d8fe734145cfd84098140b7287990183dde45ae2245b
-system_accounts="_omniroute"
-omniroute_homedir="/var/lib/omniroute"
+system_accounts="_xenia"
+xenia_homedir="/var/lib/xenia"
 export NODE_ENV=production
 export npm_config_engine_strict=false
 export npm_config_loglevel=error
@@ -494,26 +494,26 @@ do_check() {
 }
 
 do_install() {
-	vmkdir usr/lib/omniroute/.next
-	vcopy .next/standalone/. usr/lib/omniroute/.next/standalone
+	vmkdir usr/lib/xenia/.next
+	vcopy .next/standalone/. usr/lib/xenia/.next/standalone
 
 	# Prevent removal of empty Next.js app router dirs by the post-install hook
 	for _d in \
 		.next/standalone/.next/server/app/dashboard \
 		.next/standalone/.next/server/app/dashboard/settings \
 		.next/standalone/.next/server/app/dashboard/providers; do
-		touch "${DESTDIR}/usr/lib/omniroute/${_d}/.keep"
+		touch "${DESTDIR}/usr/lib/xenia/${_d}/.keep"
 	done
 
-	cat > "${WRKDIR}/omniroute" <<'EOF'
+	cat > "${WRKDIR}/xenia" <<'EOF'
 #!/bin/sh
 export PORT="${PORT:-20128}"
-export DATA_DIR="${DATA_DIR:-${XDG_DATA_HOME:-${HOME}/.local/share}/omniroute}"
+export DATA_DIR="${DATA_DIR:-${XDG_DATA_HOME:-${HOME}/.local/share}/xenia}"
 export APP_LOG_TO_FILE="${APP_LOG_TO_FILE:-false}"
 mkdir -p "${DATA_DIR}"
-exec node /usr/lib/omniroute/.next/standalone/server.js "$@"
+exec node /usr/lib/xenia/.next/standalone/server.js "$@"
 EOF
-	vbin "${WRKDIR}/omniroute"
+	vbin "${WRKDIR}/xenia"
 }
 
 post_install() {
@@ -525,28 +525,28 @@ post_install() {
 
 ### 环境变量
 
-| 变量                                    | 默认值                               | 说明                                                                                |
-| --------------------------------------- | ------------------------------------ | ----------------------------------------------------------------------------------- |
-| `JWT_SECRET`                            | `omniroute-default-secret-change-me` | JWT 签名密钥（**生产环境必须修改**）                                                |
-| `INITIAL_PASSWORD`                      | `CHANGEME`                           | 首次登录密码                                                                        |
-| `DATA_DIR`                              | `~/.omniroute`                       | 数据目录（数据库、用量、日志）                                                      |
-| `PORT`                                  | 框架默认                             | 服务端口（示例中使用 `20128`）                                                      |
-| `HOSTNAME`                              | 框架默认                             | 绑定主机（Docker 默认为 `0.0.0.0`）                                                 |
-| `NODE_ENV`                              | 运行时默认                           | 部署时设为 `production`                                                             |
-| `NEXT_PUBLIC_BASE_URL`                  | `http://localhost:20128`             | 面向前端和服务器公开的基础 URL（替代旧版 `BASE_URL`）                                |
-| `NEXT_PUBLIC_CLOUD_URL`                 | `https://omniroute.dev`              | Cloud Sync 端点基础 URL（替代旧版 `CLOUD_URL`）                                      |
-| `API_KEY_SECRET`                        | `endpoint-proxy-api-key-secret`      | 生成 API Key 的 HMAC 密钥                                                            |
-| `REQUIRE_API_KEY`                       | `false`                              | 对 `/v1/*` 强制使用 Bearer API Key                                                   |
-| `ALLOW_API_KEY_REVEAL`                  | `false`                              | 允许已认证的 Dashboard 用户按需显示完整 API Key 值                                   |
-| `PROVIDER_LIMITS_SYNC_INTERVAL_MINUTES` | `70`                                 | 缓存的 Provider Limits 数据服务端刷新周期；UI 刷新按钮仍可触发手动同步              |
-| `DISABLE_SQLITE_AUTO_BACKUP`            | `false`                              | 禁用在写入/导入/恢复前的自动 SQLite 快照；手动备份仍可使用                          |
-| `APP_LOG_TO_FILE`                       | `true`                               | 启用应用和审计日志写入磁盘                                                          |
-| `AUTH_COOKIE_SECURE`                    | `false`                              | 强制 `Secure` auth Cookie（在 HTTPS 反向代理之后）                                  |
-| `CLOUDFLARED_BIN`                       | 未设置                               | 使用已有的 `cloudflared` 二进制文件，而非托管下载                                    |
-| `CLOUDFLARED_PROTOCOL`                  | `http2`                              | 托管 Quick Tunnel 的传输协议（`http2`、`quic` 或 `auto`）                            |
-| `OMNIROUTE_MEMORY_MB`                   | `512`                                | Node.js 堆内存上限（MB）                                                             |
-| `PROMPT_CACHE_MAX_SIZE`                 | `50`                                 | 提示缓存条目上限                                                                    |
-| `SEMANTIC_CACHE_MAX_SIZE`               | `100`                                | 语义缓存条目上限                                                                    |
+| 变量                                    | 默认值                           | 说明                                                                   |
+| --------------------------------------- | -------------------------------- | ---------------------------------------------------------------------- |
+| `JWT_SECRET`                            | `xenia-default-secret-change-me` | JWT 签名密钥（**生产环境必须修改**）                                   |
+| `INITIAL_PASSWORD`                      | `CHANGEME`                       | 首次登录密码                                                           |
+| `DATA_DIR`                              | `~/.xenia`                       | 数据目录（数据库、用量、日志）                                         |
+| `PORT`                                  | 框架默认                         | 服务端口（示例中使用 `20128`）                                         |
+| `HOSTNAME`                              | 框架默认                         | 绑定主机（Docker 默认为 `0.0.0.0`）                                    |
+| `NODE_ENV`                              | 运行时默认                       | 部署时设为 `production`                                                |
+| `NEXT_PUBLIC_BASE_URL`                  | `http://localhost:20128`         | 面向前端和服务器公开的基础 URL（替代旧版 `BASE_URL`）                  |
+| `NEXT_PUBLIC_CLOUD_URL`                 | `https://xenia.dev`              | Cloud Sync 端点基础 URL（替代旧版 `CLOUD_URL`）                        |
+| `API_KEY_SECRET`                        | `endpoint-proxy-api-key-secret`  | 生成 API Key 的 HMAC 密钥                                              |
+| `REQUIRE_API_KEY`                       | `false`                          | 对 `/v1/*` 强制使用 Bearer API Key                                     |
+| `ALLOW_API_KEY_REVEAL`                  | `false`                          | 允许已认证的 Dashboard 用户按需显示完整 API Key 值                     |
+| `PROVIDER_LIMITS_SYNC_INTERVAL_MINUTES` | `70`                             | 缓存的 Provider Limits 数据服务端刷新周期；UI 刷新按钮仍可触发手动同步 |
+| `DISABLE_SQLITE_AUTO_BACKUP`            | `false`                          | 禁用在写入/导入/恢复前的自动 SQLite 快照；手动备份仍可使用             |
+| `APP_LOG_TO_FILE`                       | `true`                           | 启用应用和审计日志写入磁盘                                             |
+| `AUTH_COOKIE_SECURE`                    | `false`                          | 强制 `Secure` auth Cookie（在 HTTPS 反向代理之后）                     |
+| `CLOUDFLARED_BIN`                       | 未设置                           | 使用已有的 `cloudflared` 二进制文件，而非托管下载                      |
+| `CLOUDFLARED_PROTOCOL`                  | `http2`                          | 托管 Quick Tunnel 的传输协议（`http2`、`quic` 或 `auto`）              |
+| `XENIA_MEMORY_MB`                       | `512`                            | Node.js 堆内存上限（MB）                                               |
+| `PROMPT_CACHE_MAX_SIZE`                 | `50`                             | 提示缓存条目上限                                                       |
+| `SEMANTIC_CACHE_MAX_SIZE`               | `100`                            | 语义缓存条目上限                                                       |
 
 完整环境变量参考见 [README](../README.md)。
 
@@ -605,7 +605,7 @@ post_install() {
 
 **其他兼容服务商**（精选）: `cohere`, `databricks`, `snowflake`, `together`, `vertex`, `alibaba`, `alibaba-cn`, `bedrock` (via `aws-bedrock`), `azure-ai`, `openrouter`（透传目录）, `siliconflow`, `hyperbolic`, `huggingface`, `featherless-ai`, `cloudflare-ai`, `scaleway`, `deepinfra`, `vercel-ai-gateway`, `bazaarlink`, `friendliai`, `nous-research`, `reka`, `volcengine`, `ai21`, `gigachat`。每个服务商在 `providerRegistry.ts` 中维护各自的模型列表，当服务商暴露 `/models` 端点时可自动同步。
 
-**模型 ID 说明：** OmniRoute 使用服务商原生的 ID（`claude-opus-4-8`、`gpt-5.5`、`glm-5.1`、`MiniMax-M2.7`、`kimi-k2.5`、`grok-4.20-0309-reasoning`）。部分 ID 带有带点版本号，这是因为上游 API 要求如此。如果某模型未在上方列出，运行 `omniroute models --search <term>` 或调用 `GET /api/models/catalog` 确认可用性。
+**模型 ID 说明：** Xenia 使用服务商原生的 ID（`claude-opus-4-8`、`gpt-5.5`、`glm-5.1`、`MiniMax-M2.7`、`kimi-k2.5`、`grok-4.20-0309-reasoning`）。部分 ID 带有带点版本号，这是因为上游 API 要求如此。如果某模型未在上方列出，运行 `xenia models --search <term>` 或调用 `GET /api/models/catalog` 确认可用性。
 
 </details>
 
@@ -683,7 +683,7 @@ curl http://localhost:20128/api/models/catalog
 - 在 Docker 和其他自托管部署中，前往 **Dashboard → Endpoints** 使用
 - 创建一个临时的 `https://*.trycloudflare.com` URL，将流量转发到当前的 OpenAI 兼容 `/v1` 端点
 - 首次启用时按需安装 `cloudflared`；后续重启复用同一托管二进制文件
-- Quick Tunnel 在 OmniRoute 或容器重启后不会自动恢复；需要时从 Dashboard 重新启用
+- Quick Tunnel 在 Xenia 或容器重启后不会自动恢复；需要时从 Dashboard 重新启用
 - Tunnel URL 是临时的，每次停止/启动 Tunnel 都会变化
 - 托管 Quick Tunnel 默认使用 HTTP/2 传输，以避免在受限容器中产生 QUIC UDP 缓冲区噪音
 - 如需覆盖托管传输选择，设置 `CLOUDFLARED_PROTOCOL=quic` 或 `auto`
@@ -692,22 +692,22 @@ curl http://localhost:20128/api/models/catalog
 
 ### LLM 网关智能（Phase 9）
 
-- **语义缓存** — 自动缓存非流式、temperature=0 的响应（通过 `X-OmniRoute-No-Cache: true` 绕过）
+- **语义缓存** — 自动缓存非流式、temperature=0 的响应（通过 `X-Xenia-No-Cache: true` 绕过）
 - **请求幂等** — 通过 `Idempotency-Key` 或 `X-Request-Id` 头在 5 秒内对请求去重
-- **进度追踪** — 通过 `X-OmniRoute-Progress: true` 头选择加入 SSE `event: progress` 事件
+- **进度追踪** — 通过 `X-Xenia-Progress: true` 头选择加入 SSE `event: progress` 事件
 
 ---
 
 ### 翻译器实验场
 
-通过 **Dashboard → Translator** 访问。调试和可视化 OmniRoute 如何在服务商之间转换 API 请求。
+通过 **Dashboard → Translator** 访问。调试和可视化 Xenia 如何在服务商之间转换 API 请求。
 
-| 模式             | 用途                                                                      |
-| ---------------- | ------------------------------------------------------------------------- |
-| **Playground**   | 选择源/目标格式，粘贴请求，即时查看翻译后的输出                            |
-| **Chat Tester**  | 通过代理发送实时聊天消息，并检查完整的请求/响应周期                        |
-| **Test Bench**   | 跨多个格式组合运行批量测试，验证翻译正确性                                  |
-| **Live Monitor** | 实时观察请求流经代理时的翻译过程                                            |
+| 模式             | 用途                                                |
+| ---------------- | --------------------------------------------------- |
+| **Playground**   | 选择源/目标格式，粘贴请求，即时查看翻译后的输出     |
+| **Chat Tester**  | 通过代理发送实时聊天消息，并检查完整的请求/响应周期 |
+| **Test Bench**   | 跨多个格式组合运行批量测试，验证翻译正确性          |
+| **Live Monitor** | 实时观察请求流经代理时的翻译过程                    |
 
 **用途：**
 
@@ -723,14 +723,14 @@ curl http://localhost:20128/api/models/catalog
 
 **Dashboard 可见策略（账户级路由）：**
 
-| 策略                            | 说明                                                       |
-| ------------------------------- | ---------------------------------------------------------- |
-| **Fill First**                  | 按优先级顺序使用账户 — 主账户处理所有请求，直到不可用      |
-| **Round Robin**                 | 循环遍历所有账户，可配置粘性限制（默认：每账户 3 次调用）  |
-| **P2C (Power of Two Choices)**  | 随机选择 2 个账户，路由到更健康的那个 — 兼顾负载与健康感知 |
-| **Random**                      | 使用 Fisher-Yates 洗牌为每次请求随机选择账户                |
-| **Least Used**                  | 路由到 `lastUsedAt` 时间戳最早的账户，均匀分配流量          |
-| **Cost Optimized**              | 路由到优先级值最低的账户，优先选择成本最低的服务商          |
+| 策略                           | 说明                                                       |
+| ------------------------------ | ---------------------------------------------------------- |
+| **Fill First**                 | 按优先级顺序使用账户 — 主账户处理所有请求，直到不可用      |
+| **Round Robin**                | 循环遍历所有账户，可配置粘性限制（默认：每账户 3 次调用）  |
+| **P2C (Power of Two Choices)** | 随机选择 2 个账户，路由到更健康的那个 — 兼顾负载与健康感知 |
+| **Random**                     | 使用 Fisher-Yates 洗牌为每次请求随机选择账户               |
+| **Least Used**                 | 路由到 `lastUsedAt` 时间戳最早的账户，均匀分配流量         |
+| **Cost Optimized**             | 路由到优先级值最低的账户，优先选择成本最低的服务商         |
 
 **高级 Combo 和自动策略**（可按 Combo 配置或通过 `auto/*` 前缀 — 详见 [AUTO-COMBO.md](../routing/AUTO-COMBO.md)）：
 
@@ -753,7 +753,7 @@ curl http://localhost:20128/api/models/catalog
 X-Session-Id: your-session-key
 ```
 
-OmniRoute 也接受 `x_session_id`，并在 `X-OmniRoute-Session-Id` 中返回生效的会话 Key。
+Xenia 也接受 `x_session_id`，并在 `X-Xenia-Session-Id` 中返回生效的会话 Key。
 
 如果你使用 Nginx 发送下划线形式的头，启用：
 
@@ -789,7 +789,7 @@ Chain: production-fallback
 
 通过 **Dashboard → Settings → Resilience** 配置。
 
-OmniRoute 通过五个组件实现服务商级容灾：
+Xenia 通过五个组件实现服务商级容灾：
 
 1. **请求队列与限流** — 系统级请求整形：
    - **每分钟请求数 (RPM)** — 每个账户每分钟最大请求数
@@ -814,7 +814,7 @@ OmniRoute 通过五个组件实现服务商级容灾：
 
    服务商熔断器运行时状态仅在 **Dashboard → Health** 上显示。
 
-4. **等待冷却** — 如果所有候选连接都已在冷却中，OmniRoute 可以等待最早完成的冷却，然后自动重试同一个客户端请求。
+4. **等待冷却** — 如果所有候选连接都已在冷却中，Xenia 可以等待最早完成的冷却，然后自动重试同一个客户端请求。
 
 5. **速率限制自动检测** — 当上游服务商返回明确的等待窗口时，如果该设置已启用，这些提示会覆盖本地连接冷却。
 
@@ -826,11 +826,11 @@ OmniRoute 通过五个组件实现服务商级容灾：
 
 在 **Dashboard → Settings → System & Storage** 中管理数据库备份。
 
-| 操作                      | 说明                                                                                          |
-| ------------------------- | --------------------------------------------------------------------------------------------- |
-| **导出数据库**            | 下载当前 SQLite 数据库为 `.sqlite` 文件                                                       |
-| **全部导出 (.tar.gz)**    | 下载完整备份归档，包含：数据库、设置、Combo、服务商连接（不含凭据）、API Key 元数据           |
-| **导入数据库**            | 上传 `.sqlite` 文件以替换当前数据库。导入前会自动创建备份，除非设置 `DISABLE_SQLITE_AUTO_BACKUP=true` |
+| 操作                   | 说明                                                                                                  |
+| ---------------------- | ----------------------------------------------------------------------------------------------------- |
+| **导出数据库**         | 下载当前 SQLite 数据库为 `.sqlite` 文件                                                               |
+| **全部导出 (.tar.gz)** | 下载完整备份归档，包含：数据库、设置、Combo、服务商连接（不含凭据）、API Key 元数据                   |
+| **导入数据库**         | 上传 `.sqlite` 文件以替换当前数据库。导入前会自动创建备份，除非设置 `DISABLE_SQLITE_AUTO_BACKUP=true` |
 
 ```bash
 # API: Export database
@@ -848,7 +848,7 @@ curl -X POST http://localhost:20128/api/db-backups/import \
 
 **用途：**
 
-- 在机器之间迁移 OmniRoute
+- 在机器之间迁移 Xenia
 - 为灾难恢复创建外部备份
 - 在团队成员之间共享配置（全部导出 → 分享归档）
 
@@ -858,15 +858,15 @@ curl -X POST http://localhost:20128/api/db-backups/import \
 
 设置页面分为 **7 个标签页**，方便导航：
 
-| 标签页           | 内容                                                                                              |
-| ---------------- | ------------------------------------------------------------------------------------------------- |
-| **General**      | 系统存储工具、默认行为、Endpoint 隧道可见性                                                        |
-| **Appearance**   | 主题控制（浅色/深色/系统）、侧边栏可见性、Cloudflare/Tailscale/ngrok 隧道卡片的面板开关           |
-| **AI**           | 思考预算配置、全局系统提示注入、提示缓存统计                                                       |
-| **Security**     | 登录/密码设置、IP 访问控制、`/models` 的 API 认证、服务商屏蔽、提示注入安全护栏                    |
-| **Routing**      | 全局路由策略、通配符模型别名、容灾链、Combo 默认值                                                 |
-| **Resilience**   | 请求队列、连接冷却、服务商熔断器配置及等待冷却行为                                                 |
-| **Advanced**     | 全局代理配置（HTTP/SOCKS5）、按服务商的代理覆盖                                                    |
+| 标签页         | 内容                                                                                    |
+| -------------- | --------------------------------------------------------------------------------------- |
+| **General**    | 系统存储工具、默认行为、Endpoint 隧道可见性                                             |
+| **Appearance** | 主题控制（浅色/深色/系统）、侧边栏可见性、Cloudflare/Tailscale/ngrok 隧道卡片的面板开关 |
+| **AI**         | 思考预算配置、全局系统提示注入、提示缓存统计                                            |
+| **Security**   | 登录/密码设置、IP 访问控制、`/models` 的 API 认证、服务商屏蔽、提示注入安全护栏         |
+| **Routing**    | 全局路由策略、通配符模型别名、容灾链、Combo 默认值                                      |
+| **Resilience** | 请求队列、连接冷却、服务商熔断器配置及等待冷却行为                                      |
+| **Advanced**   | 全局代理配置（HTTP/SOCKS5）、按服务商的代理覆盖                                         |
 
 General 标签页不再重复显示只读的日志和缓存说明。数据库保留和优化设置通过 `/api/settings/database` 持久化；手动清除缓存使用 `DELETE /api/cache`。请求和代理日志行数上限由 `CALL_LOGS_TABLE_MAX_ROWS` 和 `PROXY_LOGS_TABLE_MAX_ROWS` 控制。
 
@@ -876,10 +876,10 @@ General 标签页不再重复显示只读的日志和缓存说明。数据库保
 
 通过 **Dashboard → Costs** 访问。
 
-| 标签页       | 用途                                                            |
-| ------------ | --------------------------------------------------------------- |
-| **Budget**   | 为每个 API Key 设置日/周/月预算上限，实时追踪消费               |
-| **Pricing**  | 查看和编辑模型定价条目 — 各服务商每 1K 输入/输出 Token 的费用   |
+| 标签页      | 用途                                                          |
+| ----------- | ------------------------------------------------------------- |
+| **Budget**  | 为每个 API Key 设置日/周/月预算上限，实时追踪消费             |
+| **Pricing** | 查看和编辑模型定价条目 — 各服务商每 1K 输入/输出 Token 的费用 |
 
 ```bash
 # API: Set a budget
@@ -897,7 +897,7 @@ curl http://localhost:20128/api/usage/budget
 
 ### 音频转录
 
-OmniRoute 通过 OpenAI 兼容端点支持音频转录：
+Xenia 通过 OpenAI 兼容端点支持音频转录：
 
 ```bash
 POST /v1/audio/transcriptions
@@ -946,21 +946,21 @@ curl -X POST http://localhost:20128/v1/audio/transcriptions \
 
 在 **Dashboard → Combos → Create/Edit → Strategy** 中按 Combo 配置负载均衡。
 
-| 策略               | 说明                                             |
-| ------------------ | ------------------------------------------------ |
-| **Round-Robin**    | 按顺序轮询模型                                   |
-| **Priority**       | 始终先尝试第一个模型，仅在出错时容灾切换         |
-| **Random**         | 每次请求从 Combo 中随机选择一个模型              |
-| **Weighted**       | 按每个模型分配的权重比例路由                     |
-| **Least-Used**     | 路由到最近请求最少的模型（使用 Combo 指标）      |
-| **Cost-Optimized** | 路由到当前可用的最廉价模型（使用定价表）         |
+| 策略               | 说明                                        |
+| ------------------ | ------------------------------------------- |
+| **Round-Robin**    | 按顺序轮询模型                              |
+| **Priority**       | 始终先尝试第一个模型，仅在出错时容灾切换    |
+| **Random**         | 每次请求从 Combo 中随机选择一个模型         |
+| **Weighted**       | 按每个模型分配的权重比例路由                |
+| **Least-Used**     | 路由到最近请求最少的模型（使用 Combo 指标） |
+| **Cost-Optimized** | 路由到当前可用的最廉价模型（使用定价表）    |
 
 全局 Combo 默认值可在 **Dashboard → Settings → Routing → Combo Defaults** 中设置。
 Combo 目标超时默认继承当前请求超时。仅在需要更短的按目标限制以触发更快容灾切换时，才在 Combo 默认值或单个 Combo 上使用 **Target timeout (seconds)**。
 
 零延时 Combo 优化是可选功能。保持 **Zero-latency optimizations** 禁用可避免这些延时特性竞跑容灾目标、基于 TTFT 历史跳过目标或压缩容灾请求；启用后允许配置的对冲、预测性 TTFT 跳过和主动容灾压缩，以路由/请求的保真度换取更低的尾部延时。
 
-当上游服务商要求严格的 `max_tokens`/`maxOutputTokens` 限制时，禁用 **Reasoning token buffer**。启用后，Combo 路由仅对已知输出上限的模型添加推理模型 Headroom，当安全的缓冲值超出客户端 Token 限制时保持其不变。如果客户端限制已高于已知上限，OmniRoute 在发送上游请求前会将其限制到该上限。
+当上游服务商要求严格的 `max_tokens`/`maxOutputTokens` 限制时，禁用 **Reasoning token buffer**。启用后，Combo 路由仅对已知输出上限的模型添加推理模型 Headroom，当安全的缓冲值超出客户端 Token 限制时保持其不变。如果客户端限制已高于已知上限，Xenia 在发送上游请求前会将其限制到该上限。
 
 ---
 
@@ -968,14 +968,14 @@ Combo 目标超时默认继承当前请求超时。仅在需要更短的按目�
 
 通过 **Dashboard → Health** 访问。实时系统健康概览，包含 6 张卡片：
 
-| 卡片                  | 显示内容                                 |
-| --------------------- | ---------------------------------------- |
-| **System Status**     | 运行时间、版本、内存用量、数据目录       |
-| **Provider Health**   | 全局服务商熔断器运行时状态               |
-| **Rate Limits**       | 每账户活跃的连接冷却及剩余时间           |
-| **Active Lockouts**   | 活跃的模型级封锁和临时排除               |
-| **Signature Cache**   | 去重缓存统计（活跃 Key、命中率）         |
-| **Latency Telemetry** | 各服务商的 p50/p95/p99 延时聚合          |
+| 卡片                  | 显示内容                           |
+| --------------------- | ---------------------------------- |
+| **System Status**     | 运行时间、版本、内存用量、数据目录 |
+| **Provider Health**   | 全局服务商熔断器运行时状态         |
+| **Rate Limits**       | 每账户活跃的连接冷却及剩余时间     |
+| **Active Lockouts**   | 活跃的模型级封锁和临时排除         |
+| **Signature Cache**   | 去重缓存统计（活跃 Key、命中率）   |
+| **Latency Telemetry** | 各服务商的 p50/p95/p99 延时聚合    |
 
 **技巧：** Health 页面每 10 秒自动刷新。使用熔断器卡片识别哪些服务商正在发生问题。
 
@@ -983,23 +983,23 @@ Combo 目标超时默认继承当前请求超时。仅在需要更短的按目�
 
 ## 🤖 自动路由（零配置）
 
-OmniRoute 内置了一个**得分驱动的自动路由器**，可跨所有已连接的服务商为每个请求选择最佳模型 — 无需维护 Combo。只需使用 `auto/*` 前缀发送请求，OmniRoute 即可即时构建虚拟 Combo，按延时、费用、成功率、上下文适配度、任务匹配度、近期故障、配额和熔断器状态对候选模型进行评分。
+Xenia 内置了一个**得分驱动的自动路由器**，可跨所有已连接的服务商为每个请求选择最佳模型 — 无需维护 Combo。只需使用 `auto/*` 前缀发送请求，Xenia 即可即时构建虚拟 Combo，按延时、费用、成功率、上下文适配度、任务匹配度、近期故障、配额和熔断器状态对候选模型进行评分。
 
-| 前缀           | 优化目标                                                                   |
-| -------------- | -------------------------------------------------------------------------- |
-| `auto`         | 均衡默认值（延时 × 费用 × 成功率）                                         |
-| `auto/coding`  | 编码任务：优先 Claude、GPT-5、GLM、Kimi、Qwen Coder、DeepSeek 编码模型     |
-| `auto/cheap`   | 最低 $/Token，接受较高延时                                                  |
-| `auto/fast`    | 最低延时，忽略费用                                                         |
-| `auto/offline` | 仅本地服务商（Ollama、vLLM、llama.cpp）— 适用于离线环境                    |
-| `auto/smart`   | 推理质量优先（Opus、GPT-5 xhigh、R1、GLM 5.1 reasoning）                   |
-| `auto/lkgp`    | "最后已知成功服务商" — 粘性路由到最近一次成功的目标                        |
+| 前缀           | 优化目标                                                               |
+| -------------- | ---------------------------------------------------------------------- |
+| `auto`         | 均衡默认值（延时 × 费用 × 成功率）                                     |
+| `auto/coding`  | 编码任务：优先 Claude、GPT-5、GLM、Kimi、Qwen Coder、DeepSeek 编码模型 |
+| `auto/cheap`   | 最低 $/Token，接受较高延时                                             |
+| `auto/fast`    | 最低延时，忽略费用                                                     |
+| `auto/offline` | 仅本地服务商（Ollama、vLLM、llama.cpp）— 适用于离线环境                |
+| `auto/smart`   | 推理质量优先（Opus、GPT-5 xhigh、R1、GLM 5.1 reasoning）               |
+| `auto/lkgp`    | "最后已知成功服务商" — 粘性路由到最近一次成功的目标                    |
 
 示例：
 
 ```bash
 curl -X POST http://localhost:20128/v1/chat/completions \
-  -H "Authorization: Bearer $OMNIROUTE_KEY" \
+  -H "Authorization: Bearer $XENIA_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "auto/coding",
@@ -1014,13 +1014,13 @@ curl -X POST http://localhost:20128/v1/chat/completions \
 
 ## 🔌 MCP 与 A2A 集成
 
-OmniRoute 同时是一个 **MCP 服务端**（Model Context Protocol）和一个 **A2A 服务端**（Agent-to-Agent JSON-RPC 2.0）。任何兼容 MCP 的 IDE 或代理主机都可以直接调用 OmniRoute 工具 — 无需额外包装。
+Xenia 同时是一个 **MCP 服务端**（Model Context Protocol）和一个 **A2A 服务端**（Agent-to-Agent JSON-RPC 2.0）。任何兼容 MCP 的 IDE 或代理主机都可以直接调用 Xenia 工具 — 无需额外包装。
 
 ### MCP 传输方式
 
 - **SSE**: `http://localhost:20128/api/mcp/sse`
 - **Streamable HTTP**: `http://localhost:20128/api/mcp/stream`
-- **stdio**: `omniroute --mcp`（适用于偏好 stdio 的 IDE 插件）
+- **stdio**: `xenia --mcp`（适用于偏好 stdio 的 IDE 插件）
 
 ### 连接 Claude Desktop
 
@@ -1029,8 +1029,8 @@ OmniRoute 同时是一个 **MCP 服务端**（Model Context Protocol）和一个
 ```json
 {
   "mcpServers": {
-    "omniroute": {
-      "command": "omniroute",
+    "xenia": {
+      "command": "xenia",
       "args": ["--mcp"]
     }
   }
@@ -1049,7 +1049,7 @@ MCP 工具分为 10 个权限域：`analytics`、`auth`、`billing`、`combos`�
 
 ## 🧠 技能系统
 
-OmniRoute 暴露一个可扩展的**技能框架** (`src/lib/skills/`)，使代理和 A2A 端点可以运行领域特定的例程（如 `code-review`、`summarize`、`extract-facts`、`web-research`）。
+Xenia 暴露一个可扩展的**技能框架** (`src/lib/skills/`)，使代理和 A2A 端点可以运行领域特定的例程（如 `code-review`、`summarize`、`extract-facts`、`web-research`）。
 
 - **市场 UI** — 通过 **Dashboard → Skills** 浏览和安装技能
 - **按 Key 的权限域** — 限制哪些 API Key 可调用哪些技能
@@ -1061,7 +1061,7 @@ OmniRoute 暴露一个可扩展的**技能框架** (`src/lib/skills/`)，使代�
 
 ## 💾 记忆系统
 
-OmniRoute 通过混合检索持久化**长期对话记忆**：
+Xenia 通过混合检索持久化**长期对话记忆**：
 
 - **SQLite FTS5** 用于对历史轮次进行关键词搜索
 - **Qdrant 向量存储**（可选）用于语义召回
@@ -1074,11 +1074,11 @@ OmniRoute 通过混合检索持久化**长期对话记忆**：
 
 ## 🔔 Webhook
 
-订阅 OmniRoute 事件，实现实时监控和自动化。
+订阅 Xenia 事件，实现实时监控和自动化。
 
 - 在 **Dashboard → Webhooks** 中创建 Webhook，配置目标 URL 和 HMAC 签名密钥
 - 可用事件：`request.completed`、`request.failed`、`provider.unavailable`、`budget.exceeded`、`combo.switched`、`circuit_breaker.opened`、`circuit_breaker.closed`
-- 每个载荷包含 `X-OmniRoute-Signature`（HMAC-SHA256）供验证
+- 每个载荷包含 `X-Xenia-Signature`（HMAC-SHA256）供验证
 - 重试：3 次尝试，指数退避，然后进入死信队列
 
 完整 Schema 见 [WEBHOOKS.md](../frameworks/WEBHOOKS.md)。
@@ -1087,11 +1087,11 @@ OmniRoute 通过混合检索持久化**长期对话记忆**：
 
 ## ☁️ 云代理
 
-OmniRoute 集成了云编程代理（**OpenAI Codex Cloud**、**Devin**、**Jules**、**Antigravity**），使你能够在处理本地路由的同一 Dashboard 中派发长时间运行的任务。
+Xenia 集成了云编程代理（**OpenAI Codex Cloud**、**Devin**、**Jules**、**Antigravity**），使你能够在处理本地路由的同一 Dashboard 中派发长时间运行的任务。
 
 - 在 **Dashboard → Cloud Agents** 中创建任务，或通过 `POST /api/v1/agents/tasks`
 - 按任务追踪状态、日志和产物
-- 每个服务商使用自备 API Key — 凭据永不离开 OmniRoute 实例
+- 每个服务商使用自备 API Key — 凭据永不离开 Xenia 实例
 
 完整参考：[CLOUD_AGENT.md](../frameworks/CLOUD_AGENT.md)。
 
@@ -1099,30 +1099,30 @@ OmniRoute 集成了云编程代理（**OpenAI Codex Cloud**、**Devin**、**Jule
 
 ## 🛠️ 编程式管理
 
-你可以通过 HTTP，使用具有 `manage` 权限域的 **Bearer Key** 来管理 OmniRoute 的每一项资源（服务商、Combo、Key、设置）。
+你可以通过 HTTP，使用具有 `manage` 权限域的 **Bearer Key** 来管理 Xenia 的每一项资源（服务商、Combo、Key、设置）。
 
 在 **Dashboard → API Keys → New Key → Scope: manage** 中生成 Key，然后：
 
 ```bash
 # List providers
 curl http://localhost:20128/api/providers \
-  -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY"
+  -H "Authorization: Bearer $XENIA_MANAGE_KEY"
 
 # Add a provider connection
 curl -X POST http://localhost:20128/api/providers \
-  -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY" \
+  -H "Authorization: Bearer $XENIA_MANAGE_KEY" \
   -H "Content-Type: application/json" \
   -d '{ "provider": "openai", "apiKey": "sk-...", "name": "main" }'
 
 # Create a combo
 curl -X POST http://localhost:20128/api/combos \
-  -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY" \
+  -H "Authorization: Bearer $XENIA_MANAGE_KEY" \
   -H "Content-Type: application/json" \
   -d '{ "name": "premium", "strategy": "priority", "models": [{ "model": "cc/claude-opus-4-7" }, { "model": "glm/glm-5.1" }] }'
 
 # List/create API keys
-curl http://localhost:20128/api/keys -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY"
-curl -X POST http://localhost:20128/api/keys -H "Authorization: Bearer $OMNIROUTE_MANAGE_KEY" \
+curl http://localhost:20128/api/keys -H "Authorization: Bearer $XENIA_MANAGE_KEY"
+curl -X POST http://localhost:20128/api/keys -H "Authorization: Bearer $XENIA_MANAGE_KEY" \
   -d '{ "name": "ci-bot", "scopes": ["chat"] }'
 ```
 
@@ -1132,38 +1132,38 @@ curl -X POST http://localhost:20128/api/keys -H "Authorization: Bearer $OMNIROUT
 
 ## 💻 内置 CLI
 
-OmniRoute 内置了 CLI 工具（`omniroute …`），用于设置、诊断和运行时控制。这与 Dashboard 中的「CLI Tools」页面是**分开的**，后者用于配置第三方 CLI（Claude Code、Cursor、Codex、Cline 等）使之能够对接 OmniRoute。
+Xenia 内置了 CLI 工具（`xenia …`），用于设置、诊断和运行时控制。这与 Dashboard 中的「CLI Tools」页面是**分开的**，后者用于配置第三方 CLI（Claude Code、Cursor、Codex、Cline 等）使之能够对接 Xenia。
 
 ```bash
-omniroute setup                    # 交互式向导（密码、服务商、Combo）
-omniroute setup --non-interactive  # 适合 CI 环境
-omniroute doctor                   # 健康诊断（数据目录、数据库、服务商、端口）
-omniroute providers available      # 列出支持的服务商
-omniroute providers list           # 列出已配置的连接
-omniroute providers test <id>      # 实时测试服务商连接
-omniroute combos list              # 列出 Combo
-omniroute combos switch <name>     # 设置默认 Combo
-omniroute models                   # 列出可用模型（--json、--search）
-omniroute keys add | list | remove # 从终端管理 API Key
-omniroute backup                   # 快照配置 + 数据库
-omniroute restore [<timestamp>]    # 从快照恢复
-omniroute health                   # 详细健康信息（熔断器、缓存、内存）
-omniroute quota                    # 服务商配额用量
-omniroute mcp status               # MCP 服务端状态
-omniroute a2a status               # A2A 服务端状态
-omniroute tunnel list|create|stop  # Cloudflare/Tailscale/ngrok 隧道
-omniroute reset-password           # 重置管理员密码
-omniroute --mcp                    # 通过 stdio 启动 MCP 服务端
-omniroute --port 3000              # 在自定义端口启动服务端
+xenia setup                    # 交互式向导（密码、服务商、Combo）
+xenia setup --non-interactive  # 适合 CI 环境
+xenia doctor                   # 健康诊断（数据目录、数据库、服务商、端口）
+xenia providers available      # 列出支持的服务商
+xenia providers list           # 列出已配置的连接
+xenia providers test <id>      # 实时测试服务商连接
+xenia combos list              # 列出 Combo
+xenia combos switch <name>     # 设置默认 Combo
+xenia models                   # 列出可用模型（--json、--search）
+xenia keys add | list | remove # 从终端管理 API Key
+xenia backup                   # 快照配置 + 数据库
+xenia restore [<timestamp>]    # 从快照恢复
+xenia health                   # 详细健康信息（熔断器、缓存、内存）
+xenia quota                    # 服务商配额用量
+xenia mcp status               # MCP 服务端状态
+xenia a2a status               # A2A 服务端状态
+xenia tunnel list|create|stop  # Cloudflare/Tailscale/ngrok 隧道
+xenia reset-password           # 重置管理员密码
+xenia --mcp                    # 通过 stdio 启动 MCP 服务端
+xenia --port 3000              # 在自定义端口启动服务端
 ```
 
-提示：将 `omniroute doctor --json` 与你的监控工具结合，用于对不健康的服务商连接发出告警。
+提示：将 `xenia doctor --json` 与你的监控工具结合，用于对不健康的服务商连接发出告警。
 
 ---
 
 ## 🖥️ 桌面应用 (Electron)
 
-OmniRoute 提供适用于 Windows、macOS 和 Linux 的原生桌面应用。
+Xenia 提供适用于 Windows、macOS 和 Linux 的原生桌面应用。
 
 ### 安装
 
@@ -1193,20 +1193,20 @@ npm run build:linux    # Linux (.AppImage)
 
 ### 核心特性
 
-| 特性                          | 说明                                        |
-| ----------------------------- | ------------------------------------------- |
-| **Server Readiness**          | 显示窗口前轮询服务端（无白屏）              |
-| **System Tray**               | 最小化到托盘，从托盘菜单切换端口、退出      |
-| **Port Management**           | 从托盘切换服务端端口（自动重启服务端）      |
-| **Content Security Policy**   | 通过会话头启用严格 CSP                      |
-| **Single Instance**           | 同一时间只能运行一个应用实例                |
-| **Offline Mode**              | 内置 Next.js 服务端，无需联网即可运行       |
+| 特性                        | 说明                                   |
+| --------------------------- | -------------------------------------- |
+| **Server Readiness**        | 显示窗口前轮询服务端（无白屏）         |
+| **System Tray**             | 最小化到托盘，从托盘菜单切换端口、退出 |
+| **Port Management**         | 从托盘切换服务端端口（自动重启服务端） |
+| **Content Security Policy** | 通过会话头启用严格 CSP                 |
+| **Single Instance**         | 同一时间只能运行一个应用实例           |
+| **Offline Mode**            | 内置 Next.js 服务端，无需联网即可运行  |
 
 ### 环境变量
 
-| 变量                  | 默认值   | 说明                        |
-| --------------------- | -------- | --------------------------- |
-| `OMNIROUTE_PORT`      | `20128`  | 服务端端口                  |
-| `OMNIROUTE_MEMORY_MB` | `512`    | Node.js 堆内存上限（64–16384 MB） |
+| 变量              | 默认值  | 说明                              |
+| ----------------- | ------- | --------------------------------- |
+| `XENIA_PORT`      | `20128` | 服务端端口                        |
+| `XENIA_MEMORY_MB` | `512`   | Node.js 堆内存上限（64–16384 MB） |
 
 📖 完整文档：[`electron/README.md`](../../electron/README.md)

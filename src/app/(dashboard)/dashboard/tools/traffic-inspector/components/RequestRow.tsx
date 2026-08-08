@@ -16,12 +16,12 @@ interface RequestRowProps {
 
 function statusColor(status: InterceptedRequest["status"]): string {
   if (status === "in-flight") return "text-gray-400";
-  if (status === "error") return "text-red-400";
+  if (status === "error") return "text-gray-400";
   if (typeof status === "number") {
-    if (status < 300) return "text-green-400";
-    if (status < 400) return "text-yellow-400";
-    if (status < 500) return "text-orange-400";
-    return "text-red-400";
+    if (status < 300) return "text-gray-400";
+    if (status < 400) return "text-gray-400";
+    if (status < 500) return "text-gray-400";
+    return "text-gray-400";
   }
   return "text-text-muted";
 }
@@ -55,7 +55,7 @@ export function RequestRow({ request, selected, onClick, onSameContext, style }:
       style={style}
       className={cn(
         "flex items-stretch gap-1 border-b border-border/40 cursor-pointer hover:bg-bg-subtle",
-        "focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500",
+        "focus:outline-none focus-visible:ring-1 focus-visible:ring-gray-500",
         selected && "bg-surface"
       )}
     >
@@ -87,7 +87,7 @@ export function RequestRow({ request, selected, onClick, onSameContext, style }:
         {request.contextKey && (
           <button
             type="button"
-            className="text-[10px] text-text-muted font-mono opacity-60 hover:opacity-100 hover:text-blue-400 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 rounded"
+            className="text-[10px] text-text-muted font-mono opacity-60 hover:opacity-100 hover:text-gray-400 focus:outline-none focus-visible:ring-1 focus-visible:ring-gray-500 rounded"
             title={t("filterByContext")}
             onClick={(e) => {
               e.stopPropagation();

@@ -239,9 +239,9 @@ function spawnServer(binPath, port, dataDir) {
       JWT_SECRET: "pack-boot-smoke-secret-with-sufficient-length-000",
       API_KEY_SECRET: "pack-boot-smoke-api-key-secret-long",
       DISABLE_SQLITE_AUTO_BACKUP: "true",
-      OMNIROUTE_SKIP_SYSTEM_TRUST: "1",
-      OMNIROUTE_PACK_BOOT_SMOKE: "1",
-      OMNIROUTE_PACK_BOOT_FORCE_SQLJS: "1",
+      XENIA_SKIP_SYSTEM_TRUST: "1",
+      XENIA_PACK_BOOT_SMOKE: "1",
+      XENIA_PACK_BOOT_FORCE_SQLJS: "1",
     },
     stdio: ["ignore", "pipe", "pipe"],
     detached: true,
@@ -321,7 +321,7 @@ async function main() {
   const expectedVersion = JSON.parse(
     fs.readFileSync(path.join(ROOT, "package.json"), "utf8")
   ).version;
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-pack-boot-"));
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-pack-boot-"));
   let child = null;
   let tail = [];
   let exitCode = 1;
@@ -342,7 +342,7 @@ async function main() {
       encoding: "utf8",
       maxBuffer: 64 * 1024 * 1024,
     });
-    const packageRoot = path.join(prefix, "lib", "node_modules", "omniroute");
+    const packageRoot = path.join(prefix, "lib", "node_modules", "xenia");
     const missingSqlJsFiles = findMissingSqlJsRuntimeFiles(packageRoot);
     if (missingSqlJsFiles.length > 0) {
       throw new Error(
@@ -354,7 +354,7 @@ async function main() {
     const port = pickPort();
     const dataDir = path.join(tmp, "data");
     fs.mkdirSync(dataDir, { recursive: true });
-    const binPath = path.join(prefix, "bin", "omniroute");
+    const binPath = path.join(prefix, "bin", "xenia");
 
     // BOOT #1 — boot, prove the forced sql.js tier, PATCH a setting, then shut down cleanly
     // so the sql.js adapter's graceful persist actually lands on disk. The in-flow stopChild

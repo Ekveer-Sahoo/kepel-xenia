@@ -2,8 +2,8 @@ import { skillExecutor } from "./executor";
 import { skillRegistry } from "./registry";
 import { builtinSkills } from "./builtins";
 import { detectProvider } from "./injection";
-import { OMNIROUTE_WEB_SEARCH_FALLBACK_TOOL_NAME } from "@omniroute/open-sse/services/webSearchFallback.ts";
-import { OMNIROUTE_WEB_FETCH_FALLBACK_TOOL_NAME } from "@omniroute/open-sse/services/webFetchInterception.ts";
+import { XENIA_WEB_SEARCH_FALLBACK_TOOL_NAME } from "@xenia/open-sse/services/webSearchFallback.ts";
+import { XENIA_WEB_FETCH_FALLBACK_TOOL_NAME } from "@xenia/open-sse/services/webFetchInterception.ts";
 import { logger } from "../../../open-sse/utils/logger.ts";
 
 const log = logger("SKILLS_INTERCEPTION");
@@ -28,8 +28,8 @@ interface ExecutionContext {
 }
 
 const BUILTIN_TOOL_ALIASES: Record<string, string> = {
-  [OMNIROUTE_WEB_SEARCH_FALLBACK_TOOL_NAME]: "web_search",
-  [OMNIROUTE_WEB_FETCH_FALLBACK_TOOL_NAME]: "web_fetch",
+  [XENIA_WEB_SEARCH_FALLBACK_TOOL_NAME]: "web_search",
+  [XENIA_WEB_FETCH_FALLBACK_TOOL_NAME]: "web_fetch",
 };
 
 function resolveBuiltinHandlerName(
@@ -303,7 +303,7 @@ export async function handleToolCallExecution(
       // Anthropic only permits tool_result blocks in user messages. This helper
       // returns a single assistant response, so there is no valid place to put a
       // server-side skill result as tool_result here. Keep client-native tool_use
-      // blocks untouched, remove the OmniRoute-handled tool_use blocks, and expose
+      // blocks untouched, remove the Xenia-handled tool_use blocks, and expose
       // their results as plain assistant text instead of corrupting history with
       // assistant-side tool_result blocks. See #2815.
       //
@@ -319,9 +319,7 @@ export async function handleToolCallExecution(
       );
       const resultTextBlocks = results.map((r) => ({
         type: "text",
-        text: `[Skill result: ${toolNamesById.get(r.id) || r.id}]\n${JSON.stringify(
-          r.result
-        )}`,
+        text: `[Skill result: ${toolNamesById.get(r.id) || r.id}]\n${JSON.stringify(r.result)}`,
       }));
       const firstRemainingToolUseIndex = remainingContent.findIndex(
         (block: any) => block?.type === "tool_use"

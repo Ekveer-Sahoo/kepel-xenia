@@ -27,7 +27,7 @@ function forceNodeSqlite() {
 }
 
 function createTempDatabasePath(t: TestContext) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-node-sqlite-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-node-sqlite-"));
   const databasePath = path.join(dir, "database.sqlite");
   t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
   return databasePath;
@@ -277,12 +277,12 @@ describe("driverFactory", () => {
 
   test("pack-boot sql.js forcing requires both smoke-only markers", () => {
     assert.equal(isPackBootForcedSqlJsSmoke({}), false);
-    assert.equal(isPackBootForcedSqlJsSmoke({ OMNIROUTE_PACK_BOOT_SMOKE: "1" }), false);
-    assert.equal(isPackBootForcedSqlJsSmoke({ OMNIROUTE_PACK_BOOT_FORCE_SQLJS: "1" }), false);
+    assert.equal(isPackBootForcedSqlJsSmoke({ XENIA_PACK_BOOT_SMOKE: "1" }), false);
+    assert.equal(isPackBootForcedSqlJsSmoke({ XENIA_PACK_BOOT_FORCE_SQLJS: "1" }), false);
     assert.equal(
       isPackBootForcedSqlJsSmoke({
-        OMNIROUTE_PACK_BOOT_SMOKE: "1",
-        OMNIROUTE_PACK_BOOT_FORCE_SQLJS: "1",
+        XENIA_PACK_BOOT_SMOKE: "1",
+        XENIA_PACK_BOOT_FORCE_SQLJS: "1",
       }),
       true
     );

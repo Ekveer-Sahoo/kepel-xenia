@@ -6,7 +6,7 @@ lastUpdated: 2026-07-30
 
 # MySQL conformance semantics and failure-mode matrix
 
-- **Tracking issue:** [#8075](https://github.com/diegosouzapw/OmniRoute/issues/8075)
+- **Tracking issue:** [#8075](https://github.com/diegosouzapw/Xenia/issues/8075)
 - **Governing proposal:** [Pluggable persistence boundary](persistence-backend-boundary.md)
 - **Measured baseline:** [SQLite coupling inventory](sqlite-coupling-inventory.md)
 - **Target:** MySQL 8.0 with InnoDB
@@ -17,7 +17,7 @@ lastUpdated: 2026-07-30
 
 The persistence-boundary ADR requires conformance tests to compare observable behavior, not only
 repository method signatures. This document turns the MySQL/InnoDB differences that can change
-OmniRoute behavior into an implementation-ready specification. It provides:
+Xenia behavior into an implementation-ready specification. It provides:
 
 - a required server and session profile;
 - evidence from the current SQLite implementation;
@@ -867,7 +867,7 @@ A MySQL adapter PR for any domain MUST NOT start until reviewers can answer all 
 
 ## 12. Reference sources
 
-### 12.1 OmniRoute sources
+### 12.1 Xenia sources
 
 - `docs/architecture/persistence-backend-boundary.md`
 - `docs/architecture/sqlite-coupling-inventory.md`

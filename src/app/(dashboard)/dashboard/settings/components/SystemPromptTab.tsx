@@ -61,7 +61,7 @@ export default function SystemPromptTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-5">
-        <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             edit_note
           </span>
@@ -71,7 +71,7 @@ export default function SystemPromptTab() {
         </div>
         <div className="flex items-center gap-3">
           {status === "saved" && (
-            <span className="text-xs font-medium text-emerald-500 flex items-center gap-1">
+            <span className="text-xs font-medium text-gray-500 flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
               {t("saved")}
             </span>
@@ -101,7 +101,7 @@ export default function SystemPromptTab() {
                 rows={9}
                 className="w-full px-4 py-3 rounded-lg border border-border/50 bg-surface/30 text-sm
                            placeholder:text-text-muted/50 resize-y min-h-[220px]
-                           focus:outline-none focus:ring-1 focus:ring-amber-500/30 focus:border-amber-500/50
+                           focus:outline-none focus:ring-1 focus:ring-gray-500/30 focus:border-gray-500/50
                            transition-colors"
                 disabled={loading}
               />
@@ -126,7 +126,7 @@ export default function SystemPromptTab() {
                 rows={9}
                 className="w-full px-4 py-3 rounded-lg border border-border/50 bg-surface/30 text-sm
                            placeholder:text-text-muted/50 resize-y min-h-[220px]
-                           focus:outline-none focus:ring-1 focus:ring-amber-500/30 focus:border-amber-500/50
+                           focus:outline-none focus:ring-1 focus:ring-gray-500/30 focus:border-gray-500/50
                            transition-colors"
                 disabled={loading}
               />

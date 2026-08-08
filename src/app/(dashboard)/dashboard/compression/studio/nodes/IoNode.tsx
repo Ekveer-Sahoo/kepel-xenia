@@ -18,7 +18,7 @@ export function IoNode({ data }: NodeProps) {
   const { variant, tokens, savingsPercent } = data as IoNodeData;
 
   const isInput = variant === "input";
-  const color = isInput ? "#6366f1" : "#22c55e"; // indigo for input, green for output
+  const color = isInput ? "#757575" : "#898989"; // indigo for input, green for output
 
   return (
     <div
@@ -55,7 +55,7 @@ export function IoNode({ data }: NodeProps) {
       {!isInput && savingsPercent != null && (
         <div
           className="mt-1 text-[11px] font-semibold"
-          style={{ color: "#22c55e" }}
+          style={{ color: "#898989" }}
           data-testid="io-savings-percent"
         >
           {`-${(savingsPercent as number).toFixed(1)}%`}

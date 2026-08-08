@@ -306,7 +306,7 @@ export default function ToolDetailClient({ toolId, category }: ToolDetailClientP
           {category === "code" ? t("comparison.code.title") : t("comparison.agent.title")}
         </span>
         {tool.baseUrlSupport && tool.baseUrlSupport !== "none" && (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-600 dark:text-green-400">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-500/10 text-gray-600 dark:text-gray-400">
             <span className="material-symbols-outlined text-[12px]">link</span>
             {tool.baseUrlSupport === "full" ? t("card.baseUrlFull") : t("card.baseUrlPartial")}
           </span>

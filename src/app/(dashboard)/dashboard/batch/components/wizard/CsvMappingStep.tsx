@@ -162,21 +162,21 @@ export default function CsvMappingStep({
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2 text-xs">
           <span
-            className={`material-symbols-outlined text-sm ${hasCustomId ? "text-emerald-400" : "text-[var(--color-text-muted)]"}`}
+            className={`material-symbols-outlined text-sm ${hasCustomId ? "text-gray-400" : "text-[var(--color-text-muted)]"}`}
           >
             {hasCustomId ? "check_circle" : "radio_button_unchecked"}
           </span>
-          <span className={hasCustomId ? "text-emerald-400" : "text-[var(--color-text-muted)]"}>
+          <span className={hasCustomId ? "text-gray-400" : "text-[var(--color-text-muted)]"}>
             {t("wizardCsvCustomIdMapped")}
           </span>
         </div>
         <div className="flex items-center gap-2 text-xs">
           <span
-            className={`material-symbols-outlined text-sm ${hasContent ? "text-emerald-400" : "text-[var(--color-text-muted)]"}`}
+            className={`material-symbols-outlined text-sm ${hasContent ? "text-gray-400" : "text-[var(--color-text-muted)]"}`}
           >
             {hasContent ? "check_circle" : "radio_button_unchecked"}
           </span>
-          <span className={hasContent ? "text-emerald-400" : "text-[var(--color-text-muted)]"}>
+          <span className={hasContent ? "text-gray-400" : "text-[var(--color-text-muted)]"}>
             {t("wizardCsvContentMapped")}
           </span>
         </div>
@@ -195,16 +195,16 @@ export default function CsvMappingStep({
       {/* Conversion feedback */}
       {conversionResult && (
         <div className="flex flex-col gap-1 text-xs">
-          <span className="text-emerald-400">
+          <span className="text-gray-400">
             {t("wizardCsvRowsParsed", { count: conversionResult.rowsParsed })}
           </span>
           {conversionResult.rowsSkipped > 0 && (
-            <span className="text-yellow-400">
+            <span className="text-gray-400">
               {t("wizardCsvRowsSkipped", { count: conversionResult.rowsSkipped })}
             </span>
           )}
           {conversionResult.errors.slice(0, 5).map((e) => (
-            <span key={e.row} className="text-red-400">
+            <span key={e.row} className="text-gray-400">
               {t("wizardCsvRowError", { row: e.row, reason: e.reason })}
             </span>
           ))}

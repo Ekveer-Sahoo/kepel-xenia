@@ -1,5 +1,5 @@
 // @ts-nocheck
-// Regression test for #6912: OmniRoute never renamed a client-sent
+// Regression test for #6912: Xenia never renamed a client-sent
 // `max_completion_tokens` back to `max_tokens` for providers/models whose
 // registry entry only documents the legacy field (Volcengine Ark / DeepSeek).
 // chatCore.ts already renamed the OTHER direction (max_tokens ->
@@ -13,19 +13,17 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-repro-6912-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-repro-6912-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
 const { clearCache } = await import("../../src/lib/semanticCache.ts");
 const { clearIdempotency } = await import("../../src/lib/idempotencyLayer.ts");
 const { clearInflight } = await import("../../open-sse/services/requestDedup.ts");
-const { resetAll: resetAccountSemaphores } = await import(
-  "../../open-sse/services/accountSemaphore.ts"
-);
-const { handleChatCore, clearUpstreamProxyConfigCache } = await import(
-  "../../open-sse/handlers/chatCore.ts"
-);
+const { resetAll: resetAccountSemaphores } =
+  await import("../../open-sse/services/accountSemaphore.ts");
+const { handleChatCore, clearUpstreamProxyConfigCache } =
+  await import("../../open-sse/handlers/chatCore.ts");
 const { resetPayloadRulesConfigForTests } = await import("../../open-sse/services/payloadRules.ts");
 
 const originalFetch = globalThis.fetch;
@@ -142,7 +140,11 @@ test("#6912: chatCore renames max_completion_tokens to max_tokens for volcengine
     },
   });
 
-  assert.equal(call.body.max_tokens, 30, "expected max_completion_tokens to be normalized to max_tokens for volcengine");
+  assert.equal(
+    call.body.max_tokens,
+    30,
+    "expected max_completion_tokens to be normalized to max_tokens for volcengine"
+  );
   assert.equal(call.body.max_completion_tokens, undefined);
 });
 
@@ -159,7 +161,11 @@ test("#6912: chatCore does not clobber an already-present max_tokens", async () 
     },
   });
 
-  assert.equal(call.body.max_tokens, 500, "existing max_tokens must win over max_completion_tokens");
+  assert.equal(
+    call.body.max_tokens,
+    500,
+    "existing max_tokens must win over max_completion_tokens"
+  );
   assert.equal(call.body.max_completion_tokens, undefined);
 });
 

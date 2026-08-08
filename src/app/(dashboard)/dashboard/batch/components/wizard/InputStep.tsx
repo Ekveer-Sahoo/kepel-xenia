@@ -45,7 +45,12 @@ export default function InputStep({ input, onChange, destination }: InputStepPro
   const isCsv = input.kind === "csv";
 
   function handleKindChange(kind: "jsonl" | "csv") {
-    onChange({ kind, fileName: null, rawContent: null, csvMapping: kind === "csv" ? {} : undefined });
+    onChange({
+      kind,
+      fileName: null,
+      rawContent: null,
+      csvMapping: kind === "csv" ? {} : undefined,
+    });
     setCsvJsonl(null);
   }
 
@@ -182,7 +187,7 @@ export default function InputStep({ input, onChange, destination }: InputStepPro
 
       {/* Large file warning */}
       {isLargeFile && (
-        <div className="rounded-lg border border-yellow-500/25 bg-yellow-500/10 px-3 py-2 text-xs text-yellow-400">
+        <div className="rounded-lg border border-gray-500/25 bg-gray-500/10 px-3 py-2 text-xs text-gray-400">
           {t("wizardInputLargeFileWarning")}
         </div>
       )}
@@ -198,7 +203,7 @@ export default function InputStep({ input, onChange, destination }: InputStepPro
             onJsonlReady={handleJsonlReady}
           />
           {csvMappingReady && (
-            <p className="mt-3 text-xs text-emerald-400">{t("wizardInputCsvJsonlReady")}</p>
+            <p className="mt-3 text-xs text-gray-400">{t("wizardInputCsvJsonlReady")}</p>
           )}
         </div>
       )}

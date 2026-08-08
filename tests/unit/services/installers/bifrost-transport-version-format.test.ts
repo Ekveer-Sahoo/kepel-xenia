@@ -26,31 +26,27 @@ import path from "node:path";
 
 describe("formatTransportVersion (pure)", () => {
   it("prepends v to bare semver", async () => {
-    const { formatTransportVersion } = await import(
-      "../../../../src/lib/services/installers/bifrost.ts"
-    );
+    const { formatTransportVersion } =
+      await import("../../../../src/lib/services/installers/bifrost.ts");
     assert.equal(formatTransportVersion("1.6.3"), "v1.6.3");
     assert.equal(formatTransportVersion("2.0.0-beta.1"), "v2.0.0-beta.1");
   });
 
   it("leaves an already-v-prefixed version untouched", async () => {
-    const { formatTransportVersion } = await import(
-      "../../../../src/lib/services/installers/bifrost.ts"
-    );
+    const { formatTransportVersion } =
+      await import("../../../../src/lib/services/installers/bifrost.ts");
     assert.equal(formatTransportVersion("v1.6.3"), "v1.6.3");
   });
 
   it('passes through "latest" untouched', async () => {
-    const { formatTransportVersion } = await import(
-      "../../../../src/lib/services/installers/bifrost.ts"
-    );
+    const { formatTransportVersion } =
+      await import("../../../../src/lib/services/installers/bifrost.ts");
     assert.equal(formatTransportVersion("latest"), "latest");
   });
 
   it('defaults null to "latest"', async () => {
-    const { formatTransportVersion } = await import(
-      "../../../../src/lib/services/installers/bifrost.ts"
-    );
+    const { formatTransportVersion } =
+      await import("../../../../src/lib/services/installers/bifrost.ts");
     assert.equal(formatTransportVersion(null), "latest");
   });
 });
@@ -62,8 +58,8 @@ describe("resolveSpawnArgs BIFROST_TRANSPORT_VERSION (real filesystem)", () => {
   let fakeBinDir: string;
 
   before(() => {
-    dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-bifrost-vfix-"));
-    fakeBinDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-bifrost-vfix-bin-"));
+    dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-bifrost-vfix-"));
+    fakeBinDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-bifrost-vfix-bin-"));
     process.env.DATA_DIR = dataDir;
     process.env.PATH = `${fakeBinDir}:${ORIGINAL_PATH}`;
 
@@ -91,9 +87,7 @@ describe("resolveSpawnArgs BIFROST_TRANSPORT_VERSION (real filesystem)", () => {
   });
 
   it("BIFROST_TRANSPORT_VERSION is v-prefixed, matching what bin.js requires", async () => {
-    const { resolveSpawnArgs } = await import(
-      "../../../../src/lib/services/installers/bifrost.ts"
-    );
+    const { resolveSpawnArgs } = await import("../../../../src/lib/services/installers/bifrost.ts");
 
     const args = resolveSpawnArgs(8080);
 

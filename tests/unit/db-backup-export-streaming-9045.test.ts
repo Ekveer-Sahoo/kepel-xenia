@@ -15,10 +15,7 @@ test("response body is a ReadableStream (not a Buffer) — structural check (#90
   );
 
   // The fix uses createReadStream / ReadableStream for streaming the backup file
-  assert.ok(
-    source.includes("createReadStream"),
-    "route must use createReadStream for streaming"
-  );
+  assert.ok(source.includes("createReadStream"), "route must use createReadStream for streaming");
   assert.ok(
     source.includes("ReadableStream"),
     "route must use ReadableStream for the response body"
@@ -62,14 +59,8 @@ test("temp file cleanup on stream completion, error, and abort (#9045)", () => {
   );
 
   // The fix must clean up the temp file on stream completion and client abort
-  assert.ok(
-    source.includes("cleanup"),
-    "route must have a cleanup function for temp file removal"
-  );
-  assert.ok(
-    source.includes("unlink("),
-    "route must call unlink on the temp file during cleanup"
-  );
+  assert.ok(source.includes("cleanup"), "route must have a cleanup function for temp file removal");
+  assert.ok(source.includes("unlink("), "route must call unlink on the temp file during cleanup");
   assert.ok(
     source.includes("abort"),
     "route must clean up temp file on request abort (client disconnect)"
@@ -79,7 +70,7 @@ test("temp file cleanup on stream completion, error, and abort (#9045)", () => {
 test("streaming keeps memory bounded — simulate with a large file (#9045)", async () => {
   // Create a large-ish temp file to simulate a DB backup
   const tmpDir = os.tmpdir();
-  const tmpPath = path.join(tmpDir, "omniroute-9045-test-streaming.sqlite");
+  const tmpPath = path.join(tmpDir, "xenia-9045-test-streaming.sqlite");
   const fileSize = 10 * 1024 * 1024; // 10 MB
 
   try {
@@ -135,7 +126,7 @@ test("streaming keeps memory bounded — simulate with a large file (#9045)", as
 
 test("stream content matches file content (data integrity) (#9045)", async () => {
   const tmpDir = os.tmpdir();
-  const tmpPath = path.join(tmpDir, "omniroute-9045-test-integrity.sqlite");
+  const tmpPath = path.join(tmpDir, "xenia-9045-test-integrity.sqlite");
 
   try {
     // Write a known pattern

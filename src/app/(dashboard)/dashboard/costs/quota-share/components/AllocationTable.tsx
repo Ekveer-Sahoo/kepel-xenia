@@ -12,14 +12,14 @@ interface AllocationTableProps {
 }
 
 const SLICE_PALETTE = [
-  "#a78bfa",
-  "#60a5fa",
-  "#34d399",
-  "#fbbf24",
-  "#f87171",
-  "#22d3ee",
-  "#f472b6",
-  "#94a3b8",
+  "#a0a0a0",
+  "#9a9a9a",
+  "#9d9d9d",
+  "#bfbfbf",
+  "#999999",
+  "#a1a1a1",
+  "#a1a1a1",
+  "#a1a1a1",
 ];
 
 export default function AllocationTable({ allocations, usage, keyLabels }: AllocationTableProps) {
@@ -70,7 +70,7 @@ export default function AllocationTable({ allocations, usage, keyLabels }: Alloc
                     <span className="font-mono truncate text-text-main">{label}</span>
                     {borrowing && (
                       <span
-                        className="text-[9px] px-1 py-0.5 rounded bg-amber-500/15 text-amber-400 font-bold shrink-0"
+                        className="text-[9px] px-1 py-0.5 rounded bg-gray-500/15 text-gray-400 font-bold shrink-0"
                         title={t("borrowingIndicator")}
                       >
                         {t("borrowingIndicator")}
@@ -89,9 +89,9 @@ export default function AllocationTable({ allocations, usage, keyLabels }: Alloc
                     <span
                       className={
                         deficit > 0
-                          ? "text-red-400"
+                          ? "text-gray-400"
                           : deficit < 0
-                            ? "text-emerald-400"
+                            ? "text-gray-400"
                             : "text-text-muted"
                       }
                     >
@@ -111,10 +111,10 @@ export default function AllocationTable({ allocations, usage, keyLabels }: Alloc
                   <span
                     className={`text-[9px] px-1.5 py-0.5 rounded font-semibold ${
                       alloc.policy === "hard"
-                        ? "bg-red-500/10 text-red-400"
+                        ? "bg-gray-500/10 text-gray-400"
                         : alloc.policy === "soft"
-                          ? "bg-amber-500/10 text-amber-400"
-                          : "bg-emerald-500/10 text-emerald-400"
+                          ? "bg-gray-500/10 text-gray-400"
+                          : "bg-gray-500/10 text-gray-400"
                     }`}
                   >
                     {t(`policy${alloc.policy[0].toUpperCase()}${alloc.policy.slice(1)}`)}

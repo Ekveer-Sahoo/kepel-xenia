@@ -144,12 +144,12 @@ export default function CodexToolCard({
     setApplying(true);
     setMessage(null);
     try {
-      // Use sk_omniroute for localhost if no key, otherwise use selected key
+      // Use sk_xenia for localhost if no key, otherwise use selected key
       const keyToUse =
         selectedApiKey && selectedApiKey.trim()
           ? selectedApiKey
           : !cloudEnabled
-            ? "sk_omniroute"
+            ? "sk_xenia"
             : selectedApiKey;
 
       // Send both apiKey (as fallback) and keyId to look up the unmasked string natively
@@ -346,9 +346,9 @@ export default function CodexToolCard({
   };
 
   const getManualConfigs = () => {
-    const keyToUse = !cloudEnabled ? "sk_omniroute" : "<YOUR_OMNIROUTE_API_KEY>";
+    const keyToUse = !cloudEnabled ? "sk_xenia" : "<YOUR_XENIA_API_KEY>";
 
-    let configContent = `# OmniRoute Configuration for Codex CLI
+    let configContent = `# Xenia Configuration for Codex CLI
 model = "${selectedModel || CODEX_DEFAULT_MODELS[0]}"`;
 
     if (reasoningEffort && reasoningEffort !== "none") {
@@ -357,10 +357,10 @@ model = "${selectedModel || CODEX_DEFAULT_MODELS[0]}"`;
 
     if (wireApi === "responses") {
       configContent += `
-model_provider = "omniroute"
+model_provider = "xenia"
 
-[model_providers.omniroute]
-name = "OmniRoute"
+[model_providers.xenia]
+name = "Xenia"
 base_url = "${getEffectiveBaseUrl()}"
 wire_api = "responses"
 env_key = "OPENAI_API_KEY"
@@ -368,7 +368,7 @@ env_key = "OPENAI_API_KEY"
     } else {
       configContent += `
 
-# Utilize the built-in OpenAI provider pointed to OmniRoute
+# Utilize the built-in OpenAI provider pointed to Xenia
 openai_base_url = "${getEffectiveBaseUrl()}"
 `;
     }
@@ -433,10 +433,10 @@ openai_base_url = "${getEffectiveBaseUrl()}"
 
           {!checkingCodex && codexStatus && !cliReady && (
             <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-                <span className="material-symbols-outlined text-yellow-500">warning</span>
+              <div className="flex items-center gap-3 p-4 bg-gray-500/10 border border-gray-500/30 rounded-lg">
+                <span className="material-symbols-outlined text-gray-500">warning</span>
                 <div className="flex-1">
-                  <p className="font-medium text-yellow-600 dark:text-yellow-400">
+                  <p className="font-medium text-gray-600 dark:text-gray-400">
                     {codexStatus.installed
                       ? t("cliNotRunnable", { tool: "Codex" })
                       : t("cliNotInstalled", { tool: "Codex" })}
@@ -566,7 +566,7 @@ openai_base_url = "${getEffectiveBaseUrl()}"
                     </select>
                   ) : (
                     <span className="flex-1 text-xs text-text-muted px-2 py-1.5">
-                      {cloudEnabled ? t("noApiKeysCreateOne") : t("defaultOmnirouteKey")}
+                      {cloudEnabled ? t("noApiKeysCreateOne") : t("defaultXeniaKey")}
                     </span>
                   )}
                 </div>
@@ -599,7 +599,7 @@ openai_base_url = "${getEffectiveBaseUrl()}"
                   {selectedModel && (
                     <button
                       onClick={() => setSelectedModel("")}
-                      className="p-1 text-text-muted hover:text-red-500 rounded transition-colors"
+                      className="p-1 text-text-muted hover:text-gray-500 rounded transition-colors"
                       title={t("clear")}
                     >
                       <span className="material-symbols-outlined text-[14px]">close</span>
@@ -687,7 +687,7 @@ openai_base_url = "${getEffectiveBaseUrl()}"
                           delete next[defaultModel];
                           setModelMappings(next);
                         }}
-                        className="p-1 text-text-muted hover:text-red-500 rounded transition-colors"
+                        className="p-1 text-text-muted hover:text-gray-500 rounded transition-colors"
                         title={t("clear")}
                       >
                         <span className="material-symbols-outlined text-[14px]">close</span>
@@ -699,7 +699,7 @@ openai_base_url = "${getEffectiveBaseUrl()}"
 
               {message && (
                 <div
-                  className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs ${message.type === "success" ? "bg-green-500/10 text-green-600" : "bg-red-500/10 text-red-600"}`}
+                  className={`flex items-center gap-2 px-2 py-1.5 rounded text-xs ${message.type === "success" ? "bg-gray-500/10 text-gray-600" : "bg-gray-500/10 text-gray-600"}`}
                 >
                   <span className="material-symbols-outlined text-[14px]">
                     {message.type === "success" ? "check_circle" : "error"}
@@ -801,7 +801,7 @@ openai_base_url = "${getEffectiveBaseUrl()}"
                           </button>
                           <button
                             onClick={() => handleDeleteProfile(p.id)}
-                            className="p-0.5 text-text-muted hover:text-red-500 transition-colors"
+                            className="p-0.5 text-text-muted hover:text-gray-500 transition-colors"
                             title={t("deleteProfile")}
                           >
                             <span className="material-symbols-outlined text-[14px]">delete</span>

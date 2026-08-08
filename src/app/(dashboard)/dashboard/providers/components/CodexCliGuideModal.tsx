@@ -167,7 +167,7 @@ export default function CodexCliGuideModal({ isOpen, onClose }: CodexCliGuideMod
         )}
         {error && (
           <div className="flex flex-col items-center justify-center py-12 text-text-muted gap-3">
-            <span className="material-symbols-outlined text-[40px] text-red-500/50">
+            <span className="material-symbols-outlined text-[40px] text-gray-500/50">
               error_outline
             </span>
             <p className="text-sm">

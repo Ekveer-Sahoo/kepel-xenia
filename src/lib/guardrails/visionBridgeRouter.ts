@@ -4,7 +4,7 @@
  */
 
 import { getResolvedModelCapabilities } from "@/lib/modelCapabilities";
-import { PROVIDER_MODELS, PROVIDER_ID_TO_ALIAS } from "@omniroute/open-sse/config/providerModels";
+import { PROVIDER_MODELS, PROVIDER_ID_TO_ALIAS } from "@xenia/open-sse/config/providerModels";
 import { hasUsableCredentialsForModel } from "./visionBridgeCredentials";
 
 export interface VisionModelCandidate {

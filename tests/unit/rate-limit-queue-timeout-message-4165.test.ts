@@ -6,7 +6,7 @@
  * would kill an already-dispatched provider call that is making progress.
  *
  * The queue-only timer still rewrites pre-dispatch expiry into a clear,
- * OmniRoute-owned error that names the knob (`resilienceSettings.requestQueue.maxWaitMs`)
+ * Xenia-owned error that names the knob (`resilienceSettings.requestQueue.maxWaitMs`)
  * and explicitly says it is NOT an upstream timeout.
  */
 import test from "node:test";
@@ -15,7 +15,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-rl-queue-timeout-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-rl-queue-timeout-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");

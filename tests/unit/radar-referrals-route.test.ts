@@ -27,7 +27,7 @@ import { SignJWT } from "jose";
 // Isolate DB + feature flag state
 // ---------------------------------------------------------------------------
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-radar-referrals-api-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-radar-referrals-api-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.STORAGE_ENCRYPTION_KEY = "test-encryption-key-for-radar-referrals-tests-32b!";
 process.env.JWT_SECRET = "test-jwt-secret-for-radar-referrals-tests";
@@ -52,7 +52,7 @@ async function authHeaders(): Promise<Record<string, string>> {
 
 function mockGetRequest(
   url = "http://localhost:20128/api/radar/referrals",
-  headers: Record<string, string> = {},
+  headers: Record<string, string> = {}
 ): Request {
   return new Request(url, { method: "GET", headers });
 }
@@ -71,7 +71,7 @@ function resetStorage() {
 
 function baseFeed(): Record<string, unknown> {
   return {
-    feed: "omniroute-radar",
+    feed: "xenia-radar",
     schemaVersion: 1,
     version: "2026-08-07.1",
     generatedAt: new Date().toISOString(),
@@ -138,7 +138,7 @@ test("GET /api/radar/referrals: flag on, authenticated, cached feed => returns f
       fixed: [
         {
           provider: "groq",
-          url: "https://groq.com/?ref=omniroute",
+          url: "https://groq.com/?ref=xenia",
           kind: "fixo",
           validUntil: null,
           requiredAction: null,
@@ -169,7 +169,7 @@ test("GET /api/radar/referrals: flag on, authenticated, cached feed => returns f
 test("GET /api/radar/referrals: never proxies the private feed server (route source has no upstream fetch)", async () => {
   const routeSrc = fs.readFileSync(
     path.resolve(process.cwd(), "src/app/api/radar/referrals/route.ts"),
-    "utf-8",
+    "utf-8"
   );
   assert.ok(!/fetch\(/.test(routeSrc), "referrals route must never call fetch() upstream");
 });

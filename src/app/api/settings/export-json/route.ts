@@ -46,7 +46,7 @@ export function filterPaidComboSteps<T extends { models?: unknown }>(combos: T[]
 
 /**
  * GET /api/settings/export-json
- * Exports a legacy OmniRoute-compatible JSON backup.
+ * Exports a legacy Xenia-compatible JSON backup.
  */
 export async function GET(request: Request) {
   if (await isAuthRequired(request)) {
@@ -75,9 +75,10 @@ export async function GET(request: Request) {
 
     // #6328: honor hidePaidModels at the export boundary so backup files
     // cannot silently smuggle paid model ids back in on import.
-    const combos = rawSettings.hidePaidModels === true
-      ? filterPaidComboSteps(combosRaw as Array<{ models?: unknown }>)
-      : combosRaw;
+    const combos =
+      rawSettings.hidePaidModels === true
+        ? filterPaidComboSteps(combosRaw as Array<{ models?: unknown }>)
+        : combosRaw;
 
     const exportData: Record<string, unknown> = {
       settings: safeSettings,
@@ -88,7 +89,7 @@ export async function GET(request: Request) {
       // Metadata to identify export version
       _meta: {
         exportedAt: new Date().toISOString(),
-        version: "omniroute-v3-legacy-export",
+        version: "xenia-v3-legacy-export",
         includesHistory: includeHistory,
       },
     };
@@ -106,7 +107,7 @@ export async function GET(request: Request) {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        "Content-Disposition": `attachment; filename="omniroute-legacy-backup-${new Date().toISOString().replace(/[:.]/g, "-")}.json"`,
+        "Content-Disposition": `attachment; filename="xenia-legacy-backup-${new Date().toISOString().replace(/[:.]/g, "-")}.json"`,
       },
     });
   } catch (error) {

@@ -208,24 +208,22 @@ export function OmniSkillsPageClient(): JSX.Element {
         </Card>
         <Card className="p-4">
           <p className="text-xs text-text-muted uppercase tracking-wide">{t("enabledSkills")}</p>
-          <p className="text-2xl font-bold text-emerald-400 mt-1">{enabledCount}</p>
+          <p className="text-2xl font-bold text-gray-400 mt-1">{enabledCount}</p>
         </Card>
         <Card className="p-4">
-          <p className="text-xs text-text-muted uppercase tracking-wide">
-            {t("totalExecutions")}
-          </p>
-          <p className="text-2xl font-bold text-violet-400 mt-1">{execTotal}</p>
+          <p className="text-xs text-text-muted uppercase tracking-wide">{t("totalExecutions")}</p>
+          <p className="text-2xl font-bold text-gray-400 mt-1">{execTotal}</p>
         </Card>
         <Card className="p-4">
           <p className="text-xs text-text-muted uppercase tracking-wide">{t("successRate")}</p>
-          <p className="text-2xl font-bold text-amber-400 mt-1">{successRate}%</p>
+          <p className="text-2xl font-bold text-gray-400 mt-1">{successRate}%</p>
         </Card>
       </div>
 
       <div className="flex justify-end">
         <button
           onClick={() => setShowInstallModal(true)}
-          className="px-4 py-2 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 transition-colors"
+          className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 transition-colors"
         >
           {t("installSkillButton")}
         </button>
@@ -239,7 +237,7 @@ export function OmniSkillsPageClient(): JSX.Element {
             onClick={() => setActiveTab(id)}
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
               activeTab === id
-                ? "border-violet-500 text-violet-400"
+                ? "border-gray-500 text-gray-400"
                 : "border-transparent text-text-muted hover:text-text-main"
             }`}
           >
@@ -328,7 +326,7 @@ export function OmniSkillsPageClient(): JSX.Element {
               value={installJson}
               onChange={(e) => setInstallJson(e.target.value)}
               placeholder={t("installJsonPlaceholder")}
-              className="w-full h-48 p-3 rounded-lg bg-background border border-border text-sm font-mono resize-none focus:outline-none focus:ring-1 focus:ring-violet-500"
+              className="w-full h-48 p-3 rounded-lg bg-background border border-border text-sm font-mono resize-none focus:outline-none focus:ring-1 focus:ring-gray-500"
             />
             <div className="flex items-center gap-3 mt-3">
               <input
@@ -358,7 +356,7 @@ export function OmniSkillsPageClient(): JSX.Element {
               <button
                 onClick={handleInstall}
                 disabled={installing || !installJson.trim()}
-                className="px-4 py-1.5 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 transition-colors"
+                className="px-4 py-1.5 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors"
               >
                 {installing ? t("installing") : t("installSkillButton")}
               </button>
@@ -367,8 +365,8 @@ export function OmniSkillsPageClient(): JSX.Element {
               <div
                 className={`mt-3 p-3 rounded-lg text-sm ${
                   installStatus.type === "success"
-                    ? "bg-emerald-500/10 text-emerald-400"
-                    : "bg-red-500/10 text-red-400"
+                    ? "bg-gray-500/10 text-gray-400"
+                    : "bg-gray-500/10 text-gray-400"
                 }`}
               >
                 {installStatus.message}

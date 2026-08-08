@@ -169,32 +169,32 @@ const STRATEGIES = [
     name: "contains",
     labelKey: "evalsStrategyContainsLabel",
     icon: "search",
-    color: "text-sky-400",
-    bg: "bg-sky-500/10",
+    color: "text-gray-400",
+    bg: "bg-gray-500/10",
     descriptionKey: "evalsStrategyContainsDescription",
   },
   {
     name: "exact",
     labelKey: "evalsStrategyExactLabel",
     icon: "check_circle",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10",
+    color: "text-gray-400",
+    bg: "bg-gray-500/10",
     descriptionKey: "evalsStrategyExactDescription",
   },
   {
     name: "regex",
     labelKey: "evalsStrategyRegexLabel",
     icon: "code",
-    color: "text-amber-400",
-    bg: "bg-amber-500/10",
+    color: "text-gray-400",
+    bg: "bg-gray-500/10",
     descriptionKey: "evalsStrategyRegexDescription",
   },
   {
     name: "custom",
     labelKey: "evalsStrategyCustomLabel",
     icon: "tune",
-    color: "text-violet-400",
-    bg: "bg-violet-500/10",
+    color: "text-gray-400",
+    bg: "bg-gray-500/10",
     descriptionKey: "evalsStrategyCustomDescription",
   },
 ];
@@ -576,7 +576,7 @@ export default function EvalsTab() {
   function handleExportSuite(suite: EvalSuite) {
     try {
       const exportPayload = {
-        format: "omniroute.eval-suite.v1",
+        format: "xenia.eval-suite.v1",
         exportedAt: new Date().toISOString(),
         id: suite.id,
         name: suite.name || suite.id,
@@ -1019,25 +1019,25 @@ export default function EvalsTab() {
           <span className="text-xs text-text-muted uppercase font-semibold tracking-wide">
             {t("statsSuites")}
           </span>
-          <div className="text-2xl font-bold mt-1 text-violet-400">{suites.length}</div>
+          <div className="text-2xl font-bold mt-1 text-gray-400">{suites.length}</div>
         </Card>
         <Card className="px-4 py-3 text-center">
           <span className="text-xs text-text-muted uppercase font-semibold tracking-wide">
             {t("statsTestCases")}
           </span>
-          <div className="text-2xl font-bold mt-1 text-sky-400">{totalCases}</div>
+          <div className="text-2xl font-bold mt-1 text-gray-400">{totalCases}</div>
         </Card>
         <Card className="px-4 py-3 text-center">
           <span className="text-xs text-text-muted uppercase font-semibold tracking-wide">
             {t("statsModels")}
           </span>
-          <div className="text-2xl font-bold mt-1 text-emerald-400">{uniqueModels.length}</div>
+          <div className="text-2xl font-bold mt-1 text-gray-400">{uniqueModels.length}</div>
         </Card>
         <Card className="px-4 py-3 text-center">
           <span className="text-xs text-text-muted uppercase font-semibold tracking-wide">
             {t("statsCoverage")}
           </span>
-          <div className="text-2xl font-bold mt-1 text-amber-400">
+          <div className="text-2xl font-bold mt-1 text-gray-400">
             {t("statsStrategiesCount", { count: STRATEGIES.length })}
           </div>
         </Card>
@@ -1111,7 +1111,7 @@ export default function EvalsTab() {
       {scorecard && (
         <Card className="p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-400">
               <span className="material-symbols-outlined text-[20px]">analytics</span>
             </div>
             <div>
@@ -1125,25 +1125,25 @@ export default function EvalsTab() {
               <p className="text-xs uppercase tracking-wide text-text-muted">
                 {t("scorecardSuites")}
               </p>
-              <p className="text-2xl font-bold text-violet-400 mt-1">{scorecard.suites}</p>
+              <p className="text-2xl font-bold text-gray-400 mt-1">{scorecard.suites}</p>
             </Card>
             <Card className="px-4 py-3">
               <p className="text-xs uppercase tracking-wide text-text-muted">
                 {t("scorecardCases")}
               </p>
-              <p className="text-2xl font-bold text-sky-400 mt-1">{scorecard.totalCases}</p>
+              <p className="text-2xl font-bold text-gray-400 mt-1">{scorecard.totalCases}</p>
             </Card>
             <Card className="px-4 py-3">
               <p className="text-xs uppercase tracking-wide text-text-muted">
                 {t("scorecardPassed")}
               </p>
-              <p className="text-2xl font-bold text-emerald-400 mt-1">{scorecard.totalPassed}</p>
+              <p className="text-2xl font-bold text-gray-400 mt-1">{scorecard.totalPassed}</p>
             </Card>
             <Card className="px-4 py-3">
               <p className="text-xs uppercase tracking-wide text-text-muted">
                 {t("scorecardPassRate")}
               </p>
-              <p className="text-2xl font-bold text-amber-400 mt-1">{scorecard.overallPassRate}%</p>
+              <p className="text-2xl font-bold text-gray-400 mt-1">{scorecard.overallPassRate}%</p>
             </Card>
           </div>
 
@@ -1193,23 +1193,23 @@ export default function EvalsTab() {
         {showHowItWorks && (
           <div className="px-6 pb-6 border-t border-border/10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-              <div className="flex flex-col items-center text-center p-4 rounded-lg bg-violet-500/5 border border-violet-500/10">
-                <div className="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center mb-3">
-                  <span className="text-lg font-bold text-violet-400">1</span>
+              <div className="flex flex-col items-center text-center p-4 rounded-lg bg-gray-500/5 border border-gray-500/10">
+                <div className="w-10 h-10 rounded-full bg-gray-500/20 flex items-center justify-center mb-3">
+                  <span className="text-lg font-bold text-gray-400">1</span>
                 </div>
                 <h4 className="text-sm font-semibold text-text-main mb-1">{t("define")}</h4>
                 <p className="text-xs text-text-muted">{t("defineStepDescription")}</p>
               </div>
-              <div className="flex flex-col items-center text-center p-4 rounded-lg bg-sky-500/5 border border-sky-500/10">
-                <div className="w-10 h-10 rounded-full bg-sky-500/20 flex items-center justify-center mb-3">
-                  <span className="text-lg font-bold text-sky-400">2</span>
+              <div className="flex flex-col items-center text-center p-4 rounded-lg bg-gray-500/5 border border-gray-500/10">
+                <div className="w-10 h-10 rounded-full bg-gray-500/20 flex items-center justify-center mb-3">
+                  <span className="text-lg font-bold text-gray-400">2</span>
                 </div>
                 <h4 className="text-sm font-semibold text-text-main mb-1">{t("run")}</h4>
                 <p className="text-xs text-text-muted">{t("runStepDescription")}</p>
               </div>
-              <div className="flex flex-col items-center text-center p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/10">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center mb-3">
-                  <span className="text-lg font-bold text-emerald-400">3</span>
+              <div className="flex flex-col items-center text-center p-4 rounded-lg bg-gray-500/5 border border-gray-500/10">
+                <div className="w-10 h-10 rounded-full bg-gray-500/20 flex items-center justify-center mb-3">
+                  <span className="text-lg font-bold text-gray-400">3</span>
                 </div>
                 <h4 className="text-sm font-semibold text-text-main mb-1">{t("evaluate")}</h4>
                 <p className="text-xs text-text-muted">{t("evaluateStepDescription")}</p>
@@ -1245,7 +1245,7 @@ export default function EvalsTab() {
 
       <Card className="p-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-400">
             <span className="material-symbols-outlined text-[20px]">history</span>
           </div>
           <div>
@@ -1274,7 +1274,7 @@ export default function EvalsTab() {
 
             if (column.key === "passRate") {
               return (
-                <span className="text-xs font-semibold text-emerald-400">
+                <span className="text-xs font-semibold text-gray-400">
                   {Number((row.summary as EvalRunSummary)?.passRate || 0)}%
                 </span>
               );
@@ -1306,7 +1306,7 @@ export default function EvalsTab() {
       <Card className="p-6">
         <div className="flex flex-col gap-3 mb-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-violet-500/10 text-violet-500">
+            <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
               <span className="material-symbols-outlined text-[20px]">science</span>
             </div>
             <div>
@@ -1376,7 +1376,7 @@ export default function EvalsTab() {
               />
             </div>
             {runProgress.failedSuites > 0 && (
-              <p className="mt-2 text-xs text-amber-400">
+              <p className="mt-2 text-xs text-gray-400">
                 {t("runAllFailedSuites", { count: runProgress.failedSuites })}
               </p>
             )}
@@ -1430,7 +1430,7 @@ export default function EvalsTab() {
                         <span
                           className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide ${
                             suite.source === "custom"
-                              ? "bg-sky-500/10 text-sky-400"
+                              ? "bg-gray-500/10 text-gray-400"
                               : "bg-text-muted/10 text-text-muted"
                           }`}
                         >
@@ -1442,10 +1442,10 @@ export default function EvalsTab() {
                           <span
                             className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
                               latestScore === 100
-                                ? "bg-emerald-500/10 text-emerald-400"
+                                ? "bg-gray-500/10 text-gray-400"
                                 : latestScore >= 80
-                                  ? "bg-amber-500/10 text-amber-400"
-                                  : "bg-red-500/10 text-red-400"
+                                  ? "bg-gray-500/10 text-gray-400"
+                                  : "bg-gray-500/10 text-gray-400"
                             }`}
                           >
                             {latestScore}% {t("passSuffix")}
@@ -1610,7 +1610,7 @@ export default function EvalsTab() {
 
                             <div className="flex items-center gap-4 mb-4 p-3 rounded-lg bg-surface/30 border border-border/20">
                               <div className="flex items-center gap-2">
-                                <span className="text-lg font-bold text-emerald-400">
+                                <span className="text-lg font-bold text-gray-400">
                                   {run.summary.passRate}%
                                 </span>
                                 <span className="text-xs text-text-muted">{t("passRate")}</span>
@@ -1660,8 +1660,8 @@ export default function EvalsTab() {
                                             <span
                                               className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
                                                 result.passed
-                                                  ? "bg-emerald-500/10 text-emerald-400"
-                                                  : "bg-red-500/10 text-red-400"
+                                                  ? "bg-gray-500/10 text-gray-400"
+                                                  : "bg-gray-500/10 text-gray-400"
                                               }`}
                                             >
                                               {result.passed
@@ -1669,7 +1669,7 @@ export default function EvalsTab() {
                                                 : t("resultFailed")}
                                             </span>
                                             {result.error ? (
-                                              <span className="rounded-full bg-red-500/10 px-2 py-0.5 text-[10px] font-semibold text-red-400">
+                                              <span className="rounded-full bg-gray-500/10 px-2 py-0.5 text-[10px] font-semibold text-gray-400">
                                                 {t("errorBadge")}
                                               </span>
                                             ) : null}
@@ -1703,7 +1703,7 @@ export default function EvalsTab() {
                                               {actualOutput}
                                             </pre>
                                             {result.error ? (
-                                              <p className="mt-2 text-xs text-red-400">
+                                              <p className="mt-2 text-xs text-gray-400">
                                                 {result.error}
                                               </p>
                                             ) : null}
@@ -1846,7 +1846,11 @@ export default function EvalsTab() {
   );
 }
 
-const HeroSection = memo(function HeroSection({ t }: { t: (key: string, values?: Record<string, unknown>) => string }) {
+const HeroSection = memo(function HeroSection({
+  t,
+}: {
+  t: (key: string, values?: Record<string, unknown>) => string;
+}) {
   return (
     <Card className="p-0 overflow-hidden">
       <div
@@ -1857,7 +1861,7 @@ const HeroSection = memo(function HeroSection({ t }: { t: (key: string, values?:
         }}
       >
         <div className="flex items-start gap-4">
-          <div className="p-3 rounded-xl bg-violet-500/10 text-violet-500">
+          <div className="p-3 rounded-xl bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[28px]">science</span>
           </div>
           <div className="flex-1">
@@ -1867,23 +1871,23 @@ const HeroSection = memo(function HeroSection({ t }: { t: (key: string, values?:
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-4">
               <div className="flex items-center gap-1.5 text-xs text-text-muted">
-                <span className="material-symbols-outlined text-[16px] text-emerald-400">
+                <span className="material-symbols-outlined text-[16px] text-gray-400">
                   verified
                 </span>
                 {t("qualityValidation")}
               </div>
               <div className="flex items-center gap-1.5 text-xs text-text-muted">
-                <span className="material-symbols-outlined text-[16px] text-sky-400">compare</span>
+                <span className="material-symbols-outlined text-[16px] text-gray-400">compare</span>
                 {t("modelComparison")}
               </div>
               <div className="flex items-center gap-1.5 text-xs text-text-muted">
-                <span className="material-symbols-outlined text-[16px] text-amber-400">
+                <span className="material-symbols-outlined text-[16px] text-gray-400">
                   bug_report
                 </span>
                 {t("regressionDetection")}
               </div>
               <div className="flex items-center gap-1.5 text-xs text-text-muted">
-                <span className="material-symbols-outlined text-[16px] text-violet-400">speed</span>
+                <span className="material-symbols-outlined text-[16px] text-gray-400">speed</span>
                 {t("latencyBenchmarks")}
               </div>
             </div>

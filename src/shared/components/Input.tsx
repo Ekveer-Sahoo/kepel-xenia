@@ -75,7 +75,7 @@ export default function Input({
         <label htmlFor={inputId} className="text-sm font-medium text-text-main">
           {label}
           {required && (
-            <span className="text-red-500 ml-1" aria-hidden="true">
+            <span className="text-gray-500 ml-1" aria-hidden="true">
               *
             </span>
           )}
@@ -120,7 +120,7 @@ export default function Input({
             // iOS zoom fix
             "text-[16px] sm:text-sm",
             icon && "pl-10",
-            error ? "border-red-500 focus:border-red-500 focus:ring-red-500/20" : "",
+            error ? "border-gray-500 focus:border-gray-500 focus:ring-gray-500/20" : "",
             inputClassName
           )}
           {...props}
@@ -129,7 +129,7 @@ export default function Input({
       {showCapsLock && (
         <p
           id={capsLockId}
-          className="text-xs text-amber-500 dark:text-amber-400 flex items-center gap-1 animate-in fade-in duration-200"
+          className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 animate-in fade-in duration-200"
           role="status"
           aria-live="polite"
         >
@@ -140,7 +140,7 @@ export default function Input({
         </p>
       )}
       {error && (
-        <p id={errorId} className="text-xs text-red-500 flex items-center gap-1" role="alert">
+        <p id={errorId} className="text-xs text-gray-500 flex items-center gap-1" role="alert">
           <span className="material-symbols-outlined text-[14px]" aria-hidden="true">
             error
           </span>

@@ -31,7 +31,7 @@ The safest implementation is a new provider id, `devin-cli-agentic`, with a sepa
 
 ## Architecture
 
-Claude Code sends Anthropic Messages requests to local OmniRoute. OmniRoute resolves model ids prefixed with `devin-cli-agentic/` to a new Claude-format provider. The new executor translates the complete Anthropic request into an explicit text prompt for Devin ACP, including system text, structured message history, tool schemas, and prior tool results.
+Claude Code sends Anthropic Messages requests to local Xenia. Xenia resolves model ids prefixed with `devin-cli-agentic/` to a new Claude-format provider. The new executor translates the complete Anthropic request into an explicit text prompt for Devin ACP, including system text, structured message history, tool schemas, and prior tool results.
 
 Devin remains a model backend. The executor starts the official fixed no-tools summarizer
 role with `devin acp --agent-type summarizer` and frames the serialized request as an
@@ -73,7 +73,7 @@ Build-time network access installs Claude Code `2.1.220` and Devin CLI `3000.2.1
 
 ## Agentic Contract
 
-The serializer preserves request order, `system`, `tool_choice`, exact tool schemas, `text`, `tool_use`, `tool_result`, `thinking`, and `redacted_thinking`. It rejects unsupported blocks and caps large tool results with an explicit truncation marker and original size. The parser accepts exactly one standalone `<tool>` envelope, validates with Zod/JSON Schema infrastructure already present in OmniRoute, rejects unknown tools and mixed narrative/action output, and performs at most one bounded repair prompt. Tool ids combine a per-request nonce with canonical arguments so repeated identical calls remain unique while their association is stable within the turn.
+The serializer preserves request order, `system`, `tool_choice`, exact tool schemas, `text`, `tool_use`, `tool_result`, `thinking`, and `redacted_thinking`. It rejects unsupported blocks and caps large tool results with an explicit truncation marker and original size. The parser accepts exactly one standalone `<tool>` envelope, validates with Zod/JSON Schema infrastructure already present in Xenia, rejects unknown tools and mixed narrative/action output, and performs at most one bounded repair prompt. Tool ids combine a per-request nonce with canonical arguments so repeated identical calls remain unique while their association is stable within the turn.
 
 ## Required Proof
 
@@ -81,16 +81,16 @@ The offline profile must prove the ACP lifecycle, fragmented frames, stderr, ear
 
 ## Safety Incident During Baseline
 
-The first focused test was run without `DATA_DIR` isolation and initialized `/Users/lucasisrael/.omniroute/storage.sqlite`; logs reported schema-column additions. No Anthropic data was accessed. The external database will not be touched again or destructively rolled back. Every bridge command and test now must set `HOME`, `DATA_DIR`, `SQLITE_FILE`, and temporary directories inside `.sandbox`, and an automated guard must reject paths outside the task workspace.
+The first focused test was run without `DATA_DIR` isolation and initialized `/Users/lucasisrael/.xenia/storage.sqlite`; logs reported schema-column additions. No Anthropic data was accessed. The external database will not be touched again or destructively rolled back. Every bridge command and test now must set `HOME`, `DATA_DIR`, `SQLITE_FILE`, and temporary directories inside `.sandbox`, and an automated guard must reject paths outside the task workspace.
 
 ## Live Completion Repair
 
 The first authenticated live attempt disproved four assumptions in the initial container
 design. The official CLI reports a valid login even when its server-status request fails;
 that request uses the exact hosts `server.codeium.com` and `unleash.codeium.com`, which the
-guard denied. The OmniRoute executor also built a fresh allowlisted child environment that
+guard denied. The Xenia executor also built a fresh allowlisted child environment that
 omitted the proxy, so `devin acp` could not leave the internal network. Model discovery emits
-family identifiers such as `swe-1.7`, while the OmniRoute catalog uses canonical ids such as
+family identifiers such as `swe-1.7`, while the Xenia catalog uses canonical ids such as
 `swe-1-7`. Finally, browser login redirects to a loopback listener inside the one-off
 container, which is not reachable from the host browser.
 
@@ -100,7 +100,7 @@ retaining suffix-based access only for Devin and Cognition; telemetry destinatio
 Sentry remain denied. Compose supplies `DEVIN_BRIDGE_PROXY_URL` with the single accepted value
 `http://network-guard:8080`, and the executor derives `HTTP_PROXY` and `HTTPS_PROXY` from that
 explicit bridge setting instead of inheriting arbitrary host proxy variables. Claude services
-mount only the Claude config volume, and only the OmniRoute live service mounts the Devin auth
+mount only the Claude config volume, and only the Xenia live service mounts the Devin auth
 volume.
 
 Fresh login uses the official `devin auth login --force-manual-token-flow`, which is intended

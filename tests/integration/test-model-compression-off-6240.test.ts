@@ -3,12 +3,12 @@
 //
 // Root cause: Phase 4A of handleChatCore (open-sse/handlers/chatCore.ts) injects the Output
 // Styles system message whenever the operator's global `compression.enabled` flag is on,
-// completely independent of the per-request `x-omniroute-compression` header/mode. The internal
+// completely independent of the per-request `x-xenia-compression` header/mode. The internal
 // "Test model" request builder (src/lib/api/modelTestRunner.ts::buildInternalChatRequest) never
 // sent that header, so a globally-enabled output style always leaked into test-model calls.
 //
 // This test locks the *chatCore* half of the fix directly: with Output Styles globally enabled,
-// a request carrying `x-omniroute-compression: off` must NOT get the styles system message
+// a request carrying `x-xenia-compression: off` must NOT get the styles system message
 // injected, while an otherwise-identical request without the header still does (so we're
 // actually testing the new gate, not something else disabling output styles).
 import test from "node:test";
@@ -17,7 +17,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-testmodel-compression-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-testmodel-compression-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.REQUIRE_API_KEY = "false";
 process.env.API_KEY_SECRET = process.env.API_KEY_SECRET || "test-testmodel-compression-secret";
@@ -101,7 +101,7 @@ async function runChatCore(opts: {
   }
 }
 
-test("chatCore: x-omniroute-compression: off suppresses Output Styles injection even with the operator's global style enabled (#6240)", async () => {
+test("chatCore: x-xenia-compression: off suppresses Output Styles injection even with the operator's global style enabled (#6240)", async () => {
   const provider = "openai";
   const model = "gpt-4";
 
@@ -132,14 +132,14 @@ test("chatCore: x-omniroute-compression: off suppresses Output Styles injection 
   });
   const plainFirstMessage = withoutOptOut?.messages?.[0];
   assert.equal(plainFirstMessage?.role, "system");
-  assert.match(plainFirstMessage?.content ?? "", /OmniRoute Output Styles/);
+  assert.match(plainFirstMessage?.content ?? "", /Xenia Output Styles/);
 
-  // The "Test model" connection test sends x-omniroute-compression: off — must be clean.
+  // The "Test model" connection test sends x-xenia-compression: off — must be clean.
   const testModelBody = await runChatCore({
     provider,
     model,
     connectionId: connection.id,
-    headers: new Headers({ "x-omniroute-compression": "off" }),
+    headers: new Headers({ "x-xenia-compression": "off" }),
   });
   const testModelFirstMessage = testModelBody?.messages?.[0];
   assert.ok(
@@ -147,7 +147,7 @@ test("chatCore: x-omniroute-compression: off suppresses Output Styles injection 
     "Test-model request (compression:off) must not receive an injected Output Styles system message"
   );
   const anyMessageHasMarker = (testModelBody?.messages ?? []).some((m) =>
-    (m?.content ?? "").includes("OmniRoute Output Styles")
+    (m?.content ?? "").includes("Xenia Output Styles")
   );
   assert.equal(
     anyMessageHasMarker,

@@ -6,9 +6,9 @@ lastUpdated: 2026-08-06
 
 # Operator Proxy Subscriptions (Karing-style)
 
-> Feature design + implementation notes for OmniRoute's operator-level proxy
+> Feature design + implementation notes for Xenia's operator-level proxy
 > subscription flow. This is the v1 cut: a single operator pastes subscription
-> links, picks a mode (global or rule), and OmniRoute binds the resulting proxy
+> links, picks a mode (global or rule), and Xenia binds the resulting proxy
 > pool into the existing scope resolution. Multi-tenant per-API-key, advanced
 > traffic rules, latency-driven per-rule weights, and so on are explicitly
 > out-of-scope and listed in §7.
@@ -17,27 +17,27 @@ lastUpdated: 2026-08-06
 
 ## 1. Motivation
 
-Today, OmniRoute's proxy pool is hand-curated: every node lives in
+Today, Xenia's proxy pool is hand-curated: every node lives in
 `proxy_registry` with hand-written host/port/credentials, and every binding to
 the upstream dispatchers (account → provider → combo → global → direct) is a
 manual `proxy_assignments` row. Operators who already maintain a Clash/V2Ray/
 sing-box subscription (e.g. from an airport service) have to retype every node
-into OmniRoute and re-bind them whenever the upstream list changes.
+into Xenia and re-bind them whenever the upstream list changes.
 
-The goal of v1 is to make OmniRoute first-class for **operator-supplied**
+The goal of v1 is to make Xenia first-class for **operator-supplied**
 subscriptions, similar to how Karing / Clash / sing-box let users paste a
 `https://...` URL and have the client manage the lifecycle.
 
 ## 2. User stories
 
-| # | As a(n) | I want to | So that |
-|---|---------|-----------|---------|
-| U1 | Operator | paste a subscription URL once | I don't retype nodes every time the airport refreshes |
-| U2 | Operator | toggle the subscription on/off | I can fall back to direct without deleting the URL |
-| U3 | Operator | pick **global** mode | every provider's traffic exits via the subscription |
-| U4 | Operator | pick **rule** mode and select specific providers | only selected providers route through the proxy; others stay direct |
-| U5 | Operator | supply a local sing-box/clash SOCKS5 endpoint | SS/VMess/Trojan/VLESS nodes (which OmniRoute's dispatcher can't speak natively) become usable through a local kernel bridge |
-| U6 | Operator | see fetch status and a recent redacted node summary | I can debug "why is this empty / erroring" without leaking credentials |
+| #   | As a(n)  | I want to                                           | So that                                                                                                                 |
+| --- | -------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| U1  | Operator | paste a subscription URL once                       | I don't retype nodes every time the airport refreshes                                                                   |
+| U2  | Operator | toggle the subscription on/off                      | I can fall back to direct without deleting the URL                                                                      |
+| U3  | Operator | pick **global** mode                                | every provider's traffic exits via the subscription                                                                     |
+| U4  | Operator | pick **rule** mode and select specific providers    | only selected providers route through the proxy; others stay direct                                                     |
+| U5  | Operator | supply a local sing-box/clash SOCKS5 endpoint       | SS/VMess/Trojan/VLESS nodes (which Xenia's dispatcher can't speak natively) become usable through a local kernel bridge |
+| U6  | Operator | see fetch status and a recent redacted node summary | I can debug "why is this empty / erroring" without leaking credentials                                                  |
 
 ## 3. Non-goals (v1)
 
@@ -110,22 +110,22 @@ existing `addProxyToScopePool(scope, scopeId, proxyId)` API. This means:
 
 ### 5.1 New table `proxy_subscriptions`
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | TEXT PK | UUID |
-| `name` | TEXT NOT NULL | display name |
-| `url` | TEXT NOT NULL | subscription URL |
-| `enabled` | INTEGER NOT NULL DEFAULT 0 | 1 = active |
-| `mode` | TEXT NOT NULL DEFAULT `'global'` | `'global'` or `'rule'` |
-| `rule_providers` | TEXT NULL | JSON array of provider IDs (mode='rule' only) |
-| `local_core_endpoint` | TEXT NULL | loopback SOCKS5/HTTP for SS/VMess/etc. (e.g. `socks5://127.0.0.1:2080`) |
-| `update_interval_minutes` | INTEGER NOT NULL DEFAULT 60 | background refresh cadence |
-| `last_fetched_at` | TEXT NULL | ISO timestamp of last successful fetch |
-| `status` | TEXT NOT NULL DEFAULT `'empty'` | `'ok'` / `'error'` / `'empty'` |
-| `error` | TEXT NULL | last error / warning text (redacted) |
-| `last_nodes` | TEXT NULL | JSON array, redacted node summaries |
-| `created_at` | TEXT NOT NULL | ISO |
-| `updated_at` | TEXT NOT NULL | ISO |
+| Column                    | Type                             | Notes                                                                   |
+| ------------------------- | -------------------------------- | ----------------------------------------------------------------------- |
+| `id`                      | TEXT PK                          | UUID                                                                    |
+| `name`                    | TEXT NOT NULL                    | display name                                                            |
+| `url`                     | TEXT NOT NULL                    | subscription URL                                                        |
+| `enabled`                 | INTEGER NOT NULL DEFAULT 0       | 1 = active                                                              |
+| `mode`                    | TEXT NOT NULL DEFAULT `'global'` | `'global'` or `'rule'`                                                  |
+| `rule_providers`          | TEXT NULL                        | JSON array of provider IDs (mode='rule' only)                           |
+| `local_core_endpoint`     | TEXT NULL                        | loopback SOCKS5/HTTP for SS/VMess/etc. (e.g. `socks5://127.0.0.1:2080`) |
+| `update_interval_minutes` | INTEGER NOT NULL DEFAULT 60      | background refresh cadence                                              |
+| `last_fetched_at`         | TEXT NULL                        | ISO timestamp of last successful fetch                                  |
+| `status`                  | TEXT NOT NULL DEFAULT `'empty'`  | `'ok'` / `'error'` / `'empty'`                                          |
+| `error`                   | TEXT NULL                        | last error / warning text (redacted)                                    |
+| `last_nodes`              | TEXT NULL                        | JSON array, redacted node summaries                                     |
+| `created_at`              | TEXT NOT NULL                    | ISO                                                                     |
+| `updated_at`              | TEXT NOT NULL                    | ISO                                                                     |
 
 Index: `idx_proxy_subscriptions_enabled (enabled)` for the scheduler tick.
 
@@ -133,8 +133,8 @@ Index: `idx_proxy_subscriptions_enabled (enabled)` for the scheduler tick.
 
 Added one column:
 
-| Column | Type | Notes |
-|---|---|---|
+| Column            | Type      | Notes                                                                              |
+| ----------------- | --------- | ---------------------------------------------------------------------------------- |
 | `subscription_id` | TEXT NULL | FK by convention (no enforced FK; subscription row lives in `proxy_subscriptions`) |
 
 Existing rows on upgrade: `subscription_id = NULL`, behavior unchanged.
@@ -172,15 +172,15 @@ extra field each) and `proxies.ts` (3 SQL statements: INSERT/UPDATE/SELECT).
 The existing `proxyDispatcher` only speaks **http / https / socks5 / vercel /
 deno / cloudflare**. v1 follows that:
 
-| Parser-detected type | Goes into pool directly? | Needs `localCoreEndpoint`? |
-|---|---|---|
-| `http` / `https` | yes | no |
-| `socks5` | yes | no |
-| `ss` / `ssr` | no | yes (sing-box/clash → loopback SOCKS5) |
-| `vmess` / `vless` | no | yes |
-| `trojan` | no | yes |
-| `hysteria` / `tuic` / `wireguard` | no | yes |
-| `relay` (vercel/deno/cloudflare) | yes | no |
+| Parser-detected type              | Goes into pool directly? | Needs `localCoreEndpoint`?             |
+| --------------------------------- | ------------------------ | -------------------------------------- |
+| `http` / `https`                  | yes                      | no                                     |
+| `socks5`                          | yes                      | no                                     |
+| `ss` / `ssr`                      | no                       | yes (sing-box/clash → loopback SOCKS5) |
+| `vmess` / `vless`                 | no                       | yes                                    |
+| `trojan`                          | no                       | yes                                    |
+| `hysteria` / `tuic` / `wireguard` | no                       | yes                                    |
+| `relay` (vercel/deno/cloudflare)  | yes                      | no                                     |
 
 Without `localCoreEndpoint`, SS-class nodes are surfaced in the status as a
 warning but **not routed**. This matches the "fail-closed, but don't lie about
@@ -202,10 +202,10 @@ Output:
 
 ```ts
 type ParsedSubscription = {
-  nodes: DirectlyUsableNode[];   // http/https/socks5/relay
-  needsCore: NeedsCoreNode[];    // ss/vmess/... — redacted summary
-  rawProtocols: string[];        // for diagnostics
-  parserWarnings: string[];      // per-line parse errors, redacted
+  nodes: DirectlyUsableNode[]; // http/https/socks5/relay
+  needsCore: NeedsCoreNode[]; // ss/vmess/... — redacted summary
+  rawProtocols: string[]; // for diagnostics
+  parserWarnings: string[]; // per-line parse errors, redacted
 };
 
 type DirectlyUsableNode = {
@@ -296,6 +296,7 @@ warning banner shows which protocols were skipped.
 - The interval timer is `.unref()`'d so it never blocks process exit.
 
 The scheduler is started on:
+
 - First `GET /api/v1/management/proxy-subscriptions` (dashboard open).
 - Any `syncSubscription` call (defensive — for CLI / automation paths that
   bypass the GET).

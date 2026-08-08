@@ -38,9 +38,9 @@ interface StatusMessage {
 }
 
 function statusClassName(tone: StatusTone) {
-  if (tone === "success") return "bg-emerald-500/10 border-emerald-500/20 text-emerald-400";
-  if (tone === "error") return "bg-red-500/10 border-red-500/20 text-red-400";
-  return "bg-sky-500/10 border-sky-500/20 text-sky-400";
+  if (tone === "success") return "bg-gray-500/10 border-gray-500/20 text-gray-400";
+  if (tone === "error") return "bg-gray-500/10 border-gray-500/20 text-gray-400";
+  return "bg-gray-500/10 border-gray-500/20 text-gray-400";
 }
 
 function useModelCapabilityOverridesData() {
@@ -295,7 +295,7 @@ function ModelOverrideTargetButton({
     >
       <span className="truncate font-mono">{entry.label}</span>
       {count > 0 && (
-        <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400">
+        <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-gray-500/15 text-gray-400">
           {count}
         </span>
       )}
@@ -421,7 +421,7 @@ function ModelOverrideRow({
       <button
         type="button"
         onClick={() => onRemove(override.target, override.key)}
-        className="text-red-400 hover:bg-red-500/10 rounded px-2 py-1"
+        className="text-gray-400 hover:bg-gray-500/10 rounded px-2 py-1"
       >
         {t("remove")}
       </button>

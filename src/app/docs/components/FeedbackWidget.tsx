@@ -40,7 +40,7 @@ export function FeedbackWidget({ slug }: { slug: string }) {
         </button>
         <button
           onClick={() => handleFeedback("no")}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-border rounded-lg hover:border-red-400 hover:text-red-400 transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-border rounded-lg hover:border-gray-400 hover:text-gray-400 transition-colors"
         >
           <span className="material-symbols-outlined text-sm">thumb_down</span>
           No

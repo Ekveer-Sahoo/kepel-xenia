@@ -43,11 +43,11 @@ export class ServerSupervisor {
     this.crashLog = [];
     this.instrumentationFailureHintPrinted = false;
 
-    const showLog = process.env.OMNIROUTE_SHOW_LOG === "1";
+    const showLog = process.env.XENIA_SHOW_LOG === "1";
     // #5238: skip the explicit CLI --max-old-space-size when the user pinned the
     // heap via NODE_OPTIONS (a CLI arg would shadow/override their value). The
     // calibrated heap is already carried by env.NODE_OPTIONS either way.
-    // #6321: stdout used to be discarded (`"ignore"`) whenever `--log`/OMNIROUTE_SHOW_LOG
+    // #6321: stdout used to be discarded (`"ignore"`) whenever `--log`/XENIA_SHOW_LOG
     // wasn't set (the default) — any debug/pino output written to stdout vanished
     // silently, so a boot that never becomes ready looked like a dead hang with zero
     // output even at APP_LOG_LEVEL=debug. Pipe stdout too and buffer it alongside

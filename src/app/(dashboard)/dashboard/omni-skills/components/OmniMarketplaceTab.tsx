@@ -52,7 +52,9 @@ export function OmniMarketplaceTab({
       if (!res.ok) {
         setMpError((data as { error?: string }).error || t("marketplaceError"));
       } else {
-        setMpResults(Array.isArray(data) ? data : (data as { skills?: MarketplaceSkill[] }).skills || []);
+        setMpResults(
+          Array.isArray(data) ? data : (data as { skills?: MarketplaceSkill[] }).skills || []
+        );
       }
     } catch (err) {
       setMpError(err instanceof Error ? err.message : t("marketplaceError"));
@@ -151,19 +153,21 @@ export function OmniMarketplaceTab({
             type="text"
             value={skillsProvider === "skillsmp" ? mpQuery : shQuery}
             onChange={(e) =>
-              skillsProvider === "skillsmp" ? setMpQuery(e.target.value) : setShQuery(e.target.value)
+              skillsProvider === "skillsmp"
+                ? setMpQuery(e.target.value)
+                : setShQuery(e.target.value)
             }
             onKeyDown={(e) =>
               e.key === "Enter" &&
               (skillsProvider === "skillsmp" ? searchMarketplace() : searchSkillsSh())
             }
             placeholder={t("searchMarketplacePlaceholder")}
-            className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-violet-500"
+            className="flex-1 px-3 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:ring-1 focus:ring-gray-500"
           />
           <button
             onClick={() => (skillsProvider === "skillsmp" ? searchMarketplace() : searchSkillsSh())}
             disabled={skillsProvider === "skillsmp" ? mpLoading : shLoading}
-            className="px-4 py-2 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 transition-colors"
+            className="px-4 py-2 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors"
           >
             {skillsProvider === "skillsmp"
               ? mpLoading
@@ -175,7 +179,7 @@ export function OmniMarketplaceTab({
           </button>
         </div>
         {(skillsProvider === "skillsmp" ? mpError : shError) && (
-          <div className="p-3 rounded-lg bg-red-500/10 text-red-400 text-sm mb-4">
+          <div className="p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm mb-4">
             {skillsProvider === "skillsmp" ? mpError : shError}
           </div>
         )}
@@ -193,7 +197,7 @@ export function OmniMarketplaceTab({
                 <button
                   onClick={() => installFromMarketplace(skill)}
                   disabled={mpInstallingId === skill.name}
-                  className="px-4 py-1.5 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 transition-colors"
+                  className="px-4 py-1.5 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors"
                 >
                   {mpInstallingId === skill.name ? t("installing") : t("installSkillButton")}
                 </button>
@@ -217,7 +221,7 @@ export function OmniMarketplaceTab({
                 <button
                   onClick={() => installFromSkillsSh(skill)}
                   disabled={shInstallingId === skill.id}
-                  className="px-4 py-1.5 text-sm font-medium rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-50 transition-colors"
+                  className="px-4 py-1.5 text-sm font-medium rounded-lg bg-gray-500 text-white hover:bg-gray-600 disabled:opacity-50 transition-colors"
                 >
                   {shInstallingId === skill.id ? t("installing") : t("installSkillButton")}
                 </button>

@@ -38,19 +38,17 @@ import path from "node:path";
 // default exactly like a vanilla install).
 // ---------------------------------------------------------------------------
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-radar-inertia-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-radar-inertia-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 process.env.STORAGE_ENCRYPTION_KEY = "test-encryption-key-for-radar-inertia-tests-32b!";
 delete process.env.RADAR_ENABLED;
 
 const core = await import("../../src/lib/db/core.ts");
 const { clearAllFeatureFlagOverrides } = await import("../../src/lib/db/featureFlags.ts");
-const { isFeatureFlagEnabled, resolveAllFeatureFlags } = await import(
-  "../../src/shared/utils/featureFlags.ts"
-);
-const { FREE_MODEL_BUDGETS, computeFreeModelTotals } = await import(
-  "../../open-sse/config/freeModelCatalog.ts"
-);
+const { isFeatureFlagEnabled, resolveAllFeatureFlags } =
+  await import("../../src/shared/utils/featureFlags.ts");
+const { FREE_MODEL_BUDGETS, computeFreeModelTotals } =
+  await import("../../open-sse/config/freeModelCatalog.ts");
 const { getRadarCatalog, baselineToMergedEntries } = await import("../../src/lib/radar/index.ts");
 
 function resetState() {
@@ -94,7 +92,7 @@ test("Radar inertia — flag off means zero behavioral delta", async (t) => {
     assert.equal(syncRes.status, 404, "POST /api/radar/sync must 404 when disabled");
 
     const settingsRes = await settingsPost(
-      mockPostRequest("http://localhost:20128/api/radar/settings", { optIn: true }),
+      mockPostRequest("http://localhost:20128/api/radar/settings", { optIn: true })
     );
     assert.equal(settingsRes.status, 404, "POST /api/radar/settings must 404 when disabled");
   });
@@ -105,7 +103,7 @@ test("Radar inertia — flag off means zero behavioral delta", async (t) => {
     assert.equal(
       isFeatureFlagEnabled("RADAR_ENABLED"),
       false,
-      "RADAR_ENABLED must resolve to disabled by default",
+      "RADAR_ENABLED must resolve to disabled by default"
     );
 
     const resolved = resolveAllFeatureFlags().find((f) => f.key === "RADAR_ENABLED");
@@ -113,12 +111,12 @@ test("Radar inertia — flag off means zero behavioral delta", async (t) => {
     assert.equal(
       resolved!.effectiveValue,
       "false",
-      "RADAR_ENABLED effective value must be 'false' with no override present",
+      "RADAR_ENABLED effective value must be 'false' with no override present"
     );
     assert.equal(
       resolved!.source,
       "default",
-      "RADAR_ENABLED must resolve from the definition default, not a DB/env override",
+      "RADAR_ENABLED must resolve from the definition default, not a DB/env override"
     );
   });
 
@@ -135,12 +133,16 @@ test("Radar inertia — flag off means zero behavioral delta", async (t) => {
         },
       });
 
-      assert.equal(cacheReadCount, 0, "getRadarCatalog() must short-circuit before reading the cache");
+      assert.equal(
+        cacheReadCount,
+        0,
+        "getRadarCatalog() must short-circuit before reading the cache"
+      );
       assert.equal(result.meta, null, "meta must be null — no feed is active");
       assert.equal(
         result.entries.length,
         FREE_MODEL_BUDGETS.length,
-        "entry count must match the baseline catalog exactly",
+        "entry count must match the baseline catalog exactly"
       );
 
       const baselineKeys = new Set(FREE_MODEL_BUDGETS.map((m) => `${m.provider}:${m.modelId}`));
@@ -148,18 +150,26 @@ test("Radar inertia — flag off means zero behavioral delta", async (t) => {
       assert.deepEqual(
         resultKeys,
         baselineKeys,
-        "entries must be exactly the baseline provider:modelId set — no additions, no removals",
+        "entries must be exactly the baseline provider:modelId set — no additions, no removals"
       );
 
       for (const entry of result.entries) {
-        assert.equal(entry.origin, "baseline", `entry ${entry.provider}:${entry.modelId} must be origin:baseline`);
-        assert.equal(entry.disabledBy, undefined, "no entry should carry Radar disabledBy provenance");
+        assert.equal(
+          entry.origin,
+          "baseline",
+          `entry ${entry.provider}:${entry.modelId} must be origin:baseline`
+        );
+        assert.equal(
+          entry.disabledBy,
+          undefined,
+          "no entry should carry Radar disabledBy provenance"
+        );
       }
 
       // Cross-check against the explicit baseline converter too — same shape.
       const converted = baselineToMergedEntries(FREE_MODEL_BUDGETS);
       assert.equal(converted.length, result.entries.length);
-    },
+    }
   );
 
   await t.test(
@@ -172,7 +182,7 @@ test("Radar inertia — flag off means zero behavioral delta", async (t) => {
       //
       // As asserções comparam os totais contra valores RECOMPUTADOS a partir de
       // FREE_MODEL_BUDGETS, e não contra números cravados: o catálogo cresce a
-      // cada release do OmniRoute, e um total fixo quebraria o teste pelo motivo
+      // cada release do Xenia, e um total fixo quebraria o teste pelo motivo
       // errado (catálogo mudou) em vez do certo (Radar mutou o catálogo).
       const totals = computeFreeModelTotals();
 
@@ -211,8 +221,12 @@ test("Radar inertia — flag off means zero behavioral delta", async (t) => {
       // Re-running getRadarCatalog() (flag off) must not perturb the totals either.
       getRadarCatalog();
       const totalsAfter = computeFreeModelTotals();
-      assert.deepEqual(totalsAfter, totals, "computeFreeModelTotals() must be idempotent across a getRadarCatalog() call");
-    },
+      assert.deepEqual(
+        totalsAfter,
+        totals,
+        "computeFreeModelTotals() must be idempotent across a getRadarCatalog() call"
+      );
+    }
   );
 });
 

@@ -17,7 +17,7 @@
  * also does not get a free pass on a metric we have no data for.  This mirrors
  * the behavior of the existing `LatencyStrategyImpl` and is intentional — the
  * function is the canonical ranking for the "fastest reliable provider-model"
- * UX in the playground + MCP `omniroute_pick_fastest_model` tool, and is
+ * UX in the playground + MCP `xenia_pick_fastest_model` tool, and is
  * reused by the runtime `LatencyStrategyImpl` so the runtime router picks the
  * same winner as the user-facing preview.
  *
@@ -242,10 +242,16 @@ function weightedSpeedScore(factors: SpeedFactors, weights: SpeedRankingWeights)
 function applySpeedPenalties(weightedSum: number, factors: SpeedFactors): number {
   const reliabilityMultiplier = Math.max(0.05, Math.pow(0.25 + 0.75 * factors.reliability, 2));
   const stabilityMultiplier = Math.max(0.05, Math.pow(0.25 + 0.75 * factors.stability, 2));
-  return clamp01(weightedSum * reliabilityMultiplier * stabilityMultiplier * Math.max(0.25, factors.health));
+  return clamp01(
+    weightedSum * reliabilityMultiplier * stabilityMultiplier * Math.max(0.25, factors.health)
+  );
 }
 
-function speedReason(candidate: SpeedCandidate, factors: SpeedFactors, metrics: SpeedRankedCandidate["metrics"]): string {
+function speedReason(
+  candidate: SpeedCandidate,
+  factors: SpeedFactors,
+  metrics: SpeedRankedCandidate["metrics"]
+): string {
   const reasonParts = [
     `ttft=${metrics.avgTtftMs == null ? "n/a" : `${Math.round(metrics.avgTtftMs)}ms`}`,
     `tps=${metrics.avgTokensPerSecond == null ? "n/a" : metrics.avgTokensPerSecond.toFixed(1)}`,
@@ -322,7 +328,7 @@ export function rankBySpeed(
 /**
  * Convenience selector — returns the top-ranked candidate or `null` when the
  * pool is empty.  Used by the runtime `LatencyStrategyImpl` and the MCP
- * `omniroute_pick_fastest_model` tool when only the winner is needed.
+ * `xenia_pick_fastest_model` tool when only the winner is needed.
  */
 export function pickFastest(
   candidates: ReadonlyArray<SpeedCandidate>,

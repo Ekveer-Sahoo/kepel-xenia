@@ -7,14 +7,14 @@ lastUpdated: 2026-06-28
 # Mapa repozytorium
 
 > **Jednowierszowy opis każdego katalogu i pliku w katalogu głównym.**
-> Ostatnia aktualizacja: 2026-06-28 — OmniRoute v3.8.40
+> Ostatnia aktualizacja: 2026-06-28 — Xenia v3.8.40
 >
 > Użyj tej mapy, aby szybko nawigować po bazie kodu. Po głębsze analizy przejdź do dedykowanych dokumentów.
 
 ## Drzewo najwyższego poziomu
 
 ```
-OmniRoute/
+Xenia/
 ├── src/                  # Aplikacja Next.js 16 (UI + trasy API + libs + domain + server)
 ├── open-sse/             # Workspace silnika streamingu (handlery, executory, translator, serwer MCP)
 ├── electron/             # Nakładka desktopowa (Electron 41 + electron-builder 26.10)
@@ -25,9 +25,9 @@ OmniRoute/
 ├── public/               # Statyczne zasoby Next.js, manifest PWA, service worker, ikony
 ├── config/               # Statyczna konfiguracja + stan quality-gate (i18n, payloadRules, quality/)
 ├── images/               # Zasoby graficzne marketing / README
-├── @omniroute/           # Publikowalne pakiety towarzyszące (opencode-plugin, opencode-provider)
+├── @xenia/           # Publikowalne pakiety towarzyszące (opencode-plugin, opencode-provider)
 ├── skills/               # Paczki skilli CLI/agent (cli-* + omni-* + config-codex-cli)
-├── examples/             # Przykładowe pluginy + starter omniroute-cmd-hello
+├── examples/             # Przykładowe pluginy + starter xenia-cmd-hello
 ├── contrib/              # Wkłady społeczności (podman/)
 ├── .source/              # Konfiguracja źródła Fumadocs (source.config.mjs + server/browser/dynamic)
 ├── .github/              # Workflowy GitHub Actions + szablony issue + szablon PR
@@ -260,7 +260,7 @@ src/
 
 ## `open-sse/` — Workspace silnika streamingu
 
-Osobny workspace npm (`@omniroute/open-sse`). Obsługuje przetwarzanie żądań + wykonanie u providerów.
+Osobny workspace npm (`@xenia/open-sse`). Obsługuje przetwarzanie żądań + wykonanie u providerów.
 
 ```
 open-sse/
@@ -302,7 +302,7 @@ open-sse/
 | Plik             | Cel                                                                                 |
 | ---------------- | ----------------------------------------------------------------------------------- |
 | `main.js`        | Główny proces Electron (BrowserWindow, wbudowany serwer Next.js, tray, auto-update) |
-| `preload.js`     | Most IPC (contextBridge → `window.omniroute`)                                       |
+| `preload.js`     | Most IPC (contextBridge → `window.xenia`)                                           |
 | `package.json`   | Konfiguracja electron-builder + Electron 41 + zależności electron-builder 26.10     |
 | `assets/`        | Ikony aplikacji (Windows .ico, macOS .icns, Linux .png)                             |
 | `dist-electron/` | Wyjście builda (w .gitignore)                                                       |
@@ -313,29 +313,29 @@ open-sse/
 
 ## `bin/` — CLI
 
-| Plik                                                                                                        | Cel                                                                                                                           |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `omniroute.mjs`                                                                                             | Główne wejście CLI — `omniroute serve`, `omniroute setup`, `omniroute doctor`, `omniroute providers`, `omniroute combos` itd. |
-| `reset-password.mjs`                                                                                        | Samodzielne CLI resetu hasła                                                                                                  |
-| `cli/commands/setup.mjs`                                                                                    | Interaktywny + nieinteraktywny kreator setupu                                                                                 |
-| `cli/commands/doctor.mjs`                                                                                   | Diagnostyka zdrowia systemu (8+ checków)                                                                                      |
-| `cli/commands/providers.mjs`                                                                                | Lista/test/walidacja providerów                                                                                               |
-| `cli/{args,data-dir,encryption,io,provider-catalog,provider-store,provider-test,settings-store,sqlite}.mjs` | Moduły helperów CLI                                                                                                           |
-| `cli/tray/tray.ts`                                                                                          | Integracja system tray (cross-platform: NotifyIcon na Windows, systray2 na macOS/Linux)                                       |
-| `cli/tray/tray.ps1`                                                                                         | Backend PowerShell NotifyIcon (Windows, zero nowych binariów)                                                                 |
-| `cli/tray/autostart.ts`                                                                                     | Autostart cross-platform (LaunchAgent / .desktop / rejestr)                                                                   |
-| `cli/runtime/sqliteRuntime.mjs`                                                                             | 5-krokowy łańcuch rozwiązywania sterownika SQLite (bundled → runtime → lazy-install → node:sqlite → sql.js)                   |
-| `cli/runtime/magicBytes.mjs`                                                                                | Walidacja magic-byte binariów (ELF / Mach-O / Mach-O fat / PE)                                                                |
-| `cli/runtime/index.mjs`                                                                                     | `warmUpRuntimes()` — wstępnie rozwiązuje sterowniki przy postinstall / pierwszym starcie                                      |
-| `nodeRuntimeSupport.mjs`                                                                                    | Walidacja wspieranej wersji Node.js przy instalacji                                                                           |
+| Plik                                                                                                        | Cel                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `xenia.mjs`                                                                                                 | Główne wejście CLI — `xenia serve`, `xenia setup`, `xenia doctor`, `xenia providers`, `xenia combos` itd.   |
+| `reset-password.mjs`                                                                                        | Samodzielne CLI resetu hasła                                                                                |
+| `cli/commands/setup.mjs`                                                                                    | Interaktywny + nieinteraktywny kreator setupu                                                               |
+| `cli/commands/doctor.mjs`                                                                                   | Diagnostyka zdrowia systemu (8+ checków)                                                                    |
+| `cli/commands/providers.mjs`                                                                                | Lista/test/walidacja providerów                                                                             |
+| `cli/{args,data-dir,encryption,io,provider-catalog,provider-store,provider-test,settings-store,sqlite}.mjs` | Moduły helperów CLI                                                                                         |
+| `cli/tray/tray.ts`                                                                                          | Integracja system tray (cross-platform: NotifyIcon na Windows, systray2 na macOS/Linux)                     |
+| `cli/tray/tray.ps1`                                                                                         | Backend PowerShell NotifyIcon (Windows, zero nowych binariów)                                               |
+| `cli/tray/autostart.ts`                                                                                     | Autostart cross-platform (LaunchAgent / .desktop / rejestr)                                                 |
+| `cli/runtime/sqliteRuntime.mjs`                                                                             | 5-krokowy łańcuch rozwiązywania sterownika SQLite (bundled → runtime → lazy-install → node:sqlite → sql.js) |
+| `cli/runtime/magicBytes.mjs`                                                                                | Walidacja magic-byte binariów (ELF / Mach-O / Mach-O fat / PE)                                              |
+| `cli/runtime/index.mjs`                                                                                     | `warmUpRuntimes()` — wstępnie rozwiązuje sterowniki przy postinstall / pierwszym starcie                    |
+| `nodeRuntimeSupport.mjs`                                                                                    | Walidacja wspieranej wersji Node.js przy instalacji                                                         |
 
 ---
 
 ## `skills/` — Publiczne skille agentów
 
-| Plik                         | Cel                                                                                       |
-| ---------------------------- | ----------------------------------------------------------------------------------------- |
-| `skills/omniroute*/SKILL.md` | 10 manifestów skilli dla zewnętrznych agentów AI (Claude Desktop, ChatGPT, Cursor, Cline) |
+| Plik                     | Cel                                                                                       |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| `skills/xenia*/SKILL.md` | 10 manifestów skilli dla zewnętrznych agentów AI (Claude Desktop, ChatGPT, Cursor, Cline) |
 
 ---
 
@@ -396,7 +396,7 @@ open-sse/
 | `RELEASE_CHECKLIST.md`      | Pełny flow release (skille, husky, conventional commits, deploy)                     |
 | `COVERAGE_PLAN.md`          | Cele pokrycia i stan bieżący                                                         |
 | `FREE_TIERS.md`             | Wyselekcjonowani providerzy free-tier (48+ free + 11 OAuth)                          |
-| `CLI-TOOLS.md`              | Integracje zewnętrznych CLI + wewnętrzne CLI OmniRoute                               |
+| `CLI-TOOLS.md`              | Integracje zewnętrznych CLI + wewnętrzne CLI Xenia                                   |
 | `I18N.md`                   | Architektura i18n, dodawanie języka, 30 locale                                       |
 | `UNINSTALL.md`              | Kroki czystej deinstalacji                                                           |
 | `PROVIDER_REFERENCE.md`     | **Auto-generowany** katalog 236 providerów (regen: `npm run gen:provider-reference`) |
@@ -548,7 +548,7 @@ Dostarczane szablony konfiguracji plus zacommitowane bazowe linie quality-gate
 Te katalogi z prefiksem podkreślenia zawierają treść niedostarczaną:
 
 - **`_ideia/`** — notatki projektowe (kategorie defer / notfit / viable)
-- **`_mono_repo/`** — historyczne podprojekty (omnirouteCloud, omnirouteSite, vscode-extension)
+- **`_mono_repo/`** — historyczne podprojekty (xeniaCloud, xeniaSite, vscode-extension)
 - **`_references/`** — klony tylko do odczytu powiązanych projektów OSS (LiteLLM, 9router, ClawRouter, CLIProxyAPI, modelrelay, new-api itd.) do cross-reference podczas developmentu
 - **`_tasks/`** — pliki śledzenia zadań per-release (nieformalne)
 

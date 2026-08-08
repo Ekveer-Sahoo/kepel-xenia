@@ -1,13 +1,13 @@
-import { handleAudioSpeech } from "@omniroute/open-sse/handlers/audioSpeech.ts";
+import { handleAudioSpeech } from "@xenia/open-sse/handlers/audioSpeech.ts";
 import { withInjectionGuard } from "@/middleware/promptInjectionGuard";
 import {
   getProviderCredentialsWithQuotaPreflight,
   clearRecoveredProviderState,
 } from "@/sse/services/auth";
-import { parseSpeechModel, getSpeechProvider } from "@omniroute/open-sse/config/audioRegistry.ts";
+import { parseSpeechModel, getSpeechProvider } from "@xenia/open-sse/config/audioRegistry.ts";
 import { resolveDynamicAudioProviders } from "@/app/api/v1/_shared/audioProviderNodes";
-import { errorResponse } from "@omniroute/open-sse/utils/error.ts";
-import { HTTP_STATUS } from "@omniroute/open-sse/config/constants.ts";
+import { errorResponse } from "@xenia/open-sse/utils/error.ts";
+import { HTTP_STATUS } from "@xenia/open-sse/config/constants.ts";
 import { enforceApiKeyPolicy } from "@/shared/utils/apiKeyPolicy";
 import { v1AudioSpeechSchema } from "@/shared/validation/schemas";
 import { isValidationFailure, validateBody } from "@/shared/validation/helpers";
@@ -15,7 +15,7 @@ import {
   isAllRateLimitedCredentials,
   rateLimitedProviderResponse,
 } from "@/app/api/v1/_shared/rateLimit";
-import { attachOmniRouteMetaToResponse } from "@/domain/omnirouteResponseMeta";
+import { attachXeniaMetaToResponse } from "@/domain/xeniaResponseMeta";
 import { calculateModalCost } from "@/lib/usage/costCalculator";
 import { generateRequestId } from "@/shared/utils/requestId";
 import { getClientIpFromRequest } from "@/lib/ipUtils";
@@ -99,7 +99,7 @@ async function postHandler(request, context) {
     const costUsd = await calculateModalCost("audio", provider, resolvedModel || body.model, {
       characters,
     });
-    response = attachOmniRouteMetaToResponse(response, {
+    response = attachXeniaMetaToResponse(response, {
       provider,
       model: resolvedModel || body.model,
       costUsd,

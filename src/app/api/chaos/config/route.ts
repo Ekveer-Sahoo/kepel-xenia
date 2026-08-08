@@ -9,7 +9,7 @@
 
 import { NextResponse } from "next/server";
 import { requireManagementAuth } from "@/lib/api/requireManagementAuth";
-import { buildErrorBody, sanitizeErrorMessage } from "@omniroute/open-sse/utils/error";
+import { buildErrorBody, sanitizeErrorMessage } from "@xenia/open-sse/utils/error";
 import {
   getChaosConfig,
   setChaosConfig,

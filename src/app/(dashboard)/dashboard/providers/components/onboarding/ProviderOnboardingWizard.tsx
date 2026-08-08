@@ -135,14 +135,14 @@ function StepPill({ active, done, label }: { active: boolean; done: boolean; lab
 
 function getProviderIconClass(providerId: string): string {
   const classes = [
-    "bg-indigo-500",
-    "bg-sky-500",
-    "bg-emerald-500",
-    "bg-violet-500",
-    "bg-amber-500",
-    "bg-rose-500",
-    "bg-cyan-500",
-    "bg-fuchsia-500",
+    "bg-gray-500",
+    "bg-gray-500",
+    "bg-gray-500",
+    "bg-gray-500",
+    "bg-gray-500",
+    "bg-gray-500",
+    "bg-gray-500",
+    "bg-gray-500",
   ];
   const index = [...providerId].reduce((sum, char) => sum + char.charCodeAt(0), 0) % classes.length;
   return classes[index];
@@ -900,7 +900,7 @@ export default function ProviderOnboardingWizard() {
             <div className="rounded-lg border border-border bg-bg-subtle p-4 text-sm text-text-muted">
               {text(
                 "onboardingOAuthFlowDescription",
-                "OmniRoute will open the existing OAuth flow for this provider. After login, the wizard reloads the saved connection and runs the same connection test as the provider page."
+                "Xenia will open the existing OAuth flow for this provider. After login, the wizard reloads the saved connection and runs the same connection test as the provider page."
               )}
             </div>
             <div className="flex flex-wrap gap-2">

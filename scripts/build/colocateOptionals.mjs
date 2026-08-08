@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * OmniRoute — Co-locate the LLMLingua-2 optional dependency closure into the standalone bundle.
+ * Xenia — Co-locate the LLMLingua-2 optional dependency closure into the standalone bundle.
  *
  * The compression "ultra" SLM tier (PR #4257) runs `@atjsh/llmlingua-2` +
  * `@huggingface/transformers` + `@tensorflow/tfjs` + `js-tiktoken` inside a worker thread
@@ -129,9 +129,7 @@ export function colocateLlmlinguaOptionals({
   if (!existsSync(targetNm)) {
     return {
       skipped: true,
-      reason: targetNodeModulesDir
-        ? "no target node_modules"
-        : "no standalone dist/node_modules",
+      reason: targetNodeModulesDir ? "no target node_modules" : "no standalone dist/node_modules",
     };
   }
 
@@ -144,10 +142,7 @@ export function colocateLlmlinguaOptionals({
 
   // Check the complete closure rather than only the entry package. A partially
   // populated bundle must still receive any missing transitive dependencies.
-  if (
-    closure.length > 0 &&
-    closure.every((name) => existsSync(join(targetNm, name)))
-  ) {
+  if (closure.length > 0 && closure.every((name) => existsSync(join(targetNm, name)))) {
     return { skipped: true, reason: "already co-located" };
   }
 
@@ -162,9 +157,7 @@ export function colocateLlmlinguaOptionals({
       cpSync(join(rootNm, name), dest, { recursive: true });
       copied++;
     } catch (err) {
-      log(
-        `  ⚠️  LLMLingua optional co-location failed for ${name}: ${err.message}`
-      );
+      log(`  ⚠️  LLMLingua optional co-location failed for ${name}: ${err.message}`);
     }
   }
 

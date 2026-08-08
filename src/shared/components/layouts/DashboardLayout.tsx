@@ -16,7 +16,7 @@ import {
 import { installBasePathFetch } from "@/shared/utils/basePathFetch";
 
 const SIDEBAR_COLLAPSED_KEY = "sidebar-collapsed";
-const isE2EMode = process.env.NEXT_PUBLIC_OMNIROUTE_E2E_MODE === "1";
+const isE2EMode = process.env.NEXT_PUBLIC_XENIA_E2E_MODE === "1";
 
 export default function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -91,19 +91,11 @@ export default function DashboardLayout({ children }) {
         />
       )}
 
-      {/* Sidebar - Desktop: keep visibility independent from Tailwind hidden/lg:flex ordering. */}
-      <div className="dashboard-sidebar-desktop">
-        <Sidebar
-          collapsed={collapsed}
-          onToggleCollapse={handleToggleCollapse}
-          isMacElectron={isMacElectron}
-        />
-      </div>
-
-      {/* Sidebar - Mobile: full viewport height with proper scroll containment */}
+      {/* Sidebar - Mobile: full viewport height with proper scroll containment. Slides in
+          from the right, matching the desktop sidebar's right-side placement. */}
       <div
-        className={`fixed inset-y-0 start-0 z-50 transform lg:hidden transition-transform duration-300 ease-in-out h-dvh overflow-y-auto ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed inset-y-0 end-0 z-50 transform lg:hidden transition-transform duration-300 ease-in-out h-dvh overflow-y-auto ${
+          sidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <Sidebar onClose={() => setSidebarOpen(false)} isMacElectron={isMacElectron} />
@@ -129,6 +121,15 @@ export default function DashboardLayout({ children }) {
           </div>
         </div>
       </main>
+
+      {/* Sidebar - Desktop: rendered after main content so it docks on the right edge. */}
+      <div className="dashboard-sidebar-desktop">
+        <Sidebar
+          collapsed={collapsed}
+          onToggleCollapse={handleToggleCollapse}
+          isMacElectron={isMacElectron}
+        />
+      </div>
 
       {/* Global notification toast system */}
       <NotificationToast />

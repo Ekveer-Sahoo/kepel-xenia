@@ -1,4 +1,4 @@
-import type { CompressionStats } from "@omniroute/open-sse/services/compression/types";
+import type { CompressionStats } from "@xenia/open-sse/services/compression/types";
 
 export interface CompressionAnnotationProps {
   stats: CompressionStats;
@@ -26,7 +26,7 @@ export function CompressionAnnotation({ stats }: CompressionAnnotationProps) {
       {sorted.map(([name, n]) => (
         <span
           key={name}
-          className="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20"
+          className="px-1.5 py-0.5 rounded text-[10px] bg-gray-500/10 text-gray-400 border border-gray-500/20"
         >
           {name}×{n}
         </span>

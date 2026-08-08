@@ -117,7 +117,7 @@ export default function CodexFastTierTab() {
   return (
     <Card>
       <div className="flex items-center gap-3 mb-3">
-        <div className="p-2 rounded-lg bg-sky-500/10 text-sky-500">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             bolt
           </span>
@@ -128,13 +128,13 @@ export default function CodexFastTierTab() {
         </div>
         <div className="flex items-center gap-3">
           {status === "saved" && (
-            <span className="text-xs font-medium text-emerald-500 flex items-center gap-1">
+            <span className="text-xs font-medium text-gray-500 flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">check_circle</span>{" "}
               {t("saved")}
             </span>
           )}
           {status === "error" && (
-            <span className="text-xs font-medium text-rose-500 flex items-center gap-1">
+            <span className="text-xs font-medium text-gray-500 flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">error</span>{" "}
               {t("codexFastTierSaveError")}
             </span>

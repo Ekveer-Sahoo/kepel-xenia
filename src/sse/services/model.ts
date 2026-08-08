@@ -14,9 +14,9 @@ import {
   getModelInfoCore,
   splitSyncedEffortSuffix,
   stripContextWindowSuffix,
-} from "@omniroute/open-sse/services/model.ts";
-import { REGISTRY } from "@omniroute/open-sse/config/providerRegistry.ts";
-import { getRegisteredProviderEffortBaseModelId } from "@omniroute/open-sse/utils/registeredEffortVariants.ts";
+} from "@xenia/open-sse/services/model.ts";
+import { REGISTRY } from "@xenia/open-sse/config/providerRegistry.ts";
+import { getRegisteredProviderEffortBaseModelId } from "@xenia/open-sse/utils/registeredEffortVariants.ts";
 
 export { parseModel, stripContextWindowSuffix };
 

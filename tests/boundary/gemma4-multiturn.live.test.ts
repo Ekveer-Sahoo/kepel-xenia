@@ -8,12 +8,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-const BASE = process.env.OMNIROUTE_TEST_BASE || "http://localhost:20128/v1";
-const AUTH = process.env.OMNIROUTE_TEST_BEARER
-    ? `Bearer ${process.env.OMNIROUTE_TEST_BEARER}`
-    : "";
-const COOKIE =
-  process.env.OMNIROUTE_TEST_COOKIE || "";
+const BASE = process.env.XENIA_TEST_BASE || "http://localhost:20128/v1";
+const AUTH = process.env.XENIA_TEST_BEARER ? `Bearer ${process.env.XENIA_TEST_BEARER}` : "";
+const COOKIE = process.env.XENIA_TEST_COOKIE || "";
 
 const MODEL = "gemini/gemma-4-26b-a4b-it";
 

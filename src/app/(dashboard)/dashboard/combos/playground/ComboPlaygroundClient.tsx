@@ -236,11 +236,11 @@ export default function ComboPlaygroundClient() {
                     <div
                       className={`border rounded-lg p-3 ${
                         target.status === "available"
-                          ? "border-green-500/30 bg-green-500/5"
+                          ? "border-gray-500/30 bg-gray-500/5"
                           : target.status === "error"
-                            ? "border-red-500/30 bg-red-500/5"
+                            ? "border-gray-500/30 bg-gray-500/5"
                             : target.status === "unknown"
-                              ? "border-yellow-500/30 bg-yellow-500/5"
+                              ? "border-gray-500/30 bg-gray-500/5"
                               : "border-border bg-surface/50"
                       }`}
                     >
@@ -280,12 +280,12 @@ export default function ComboPlaygroundClient() {
           {result.warnings.length > 0 && (
             <Card>
               <div className="p-4 space-y-2">
-                <h3 className="text-sm font-semibold text-yellow-600 dark:text-yellow-400">
+                <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-400">
                   {t("playgroundWarningCount", { count: result.warnings.length })}
                 </h3>
                 {result.warnings.map((w, i) => (
                   <p key={i} className="text-sm text-text-muted flex items-start gap-2">
-                    <span className="text-yellow-500 mt-0.5">⚠️</span>
+                    <span className="text-gray-500 mt-0.5">⚠️</span>
                     {w}
                   </p>
                 ))}
@@ -296,11 +296,11 @@ export default function ComboPlaygroundClient() {
           {result.errors.length > 0 && (
             <Card>
               <div className="p-4 space-y-2">
-                <h3 className="text-sm font-semibold text-red-600 dark:text-red-400">
+                <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-400">
                   {t("playgroundErrorCount", { count: result.errors.length })}
                 </h3>
                 {result.errors.map((e, i) => (
-                  <p key={i} className="text-sm text-red-500 flex items-start gap-2">
+                  <p key={i} className="text-sm text-gray-500 flex items-start gap-2">
                     <span className="mt-0.5">🚫</span>
                     {e}
                   </p>

@@ -16,7 +16,7 @@ import { reorderConnections } from "./providers/deletion";
 import {
   removeConnectionHealth,
   removeConnectionIndex,
-} from "@omniroute/open-sse/services/apiKeyRotator.ts";
+} from "@xenia/open-sse/services/apiKeyRotator.ts";
 import { invalidateReasoningRoutingRuleCache } from "./reasoningRoutingRules";
 import { normalizeProviderSpecificData } from "@/lib/providers/requestDefaults";
 import { bumpProxyConfigGeneration } from "./settings";

@@ -61,9 +61,9 @@ export default function GamificationAdminPage() {
                   <tr key={a.apiKeyId} className="border-b border-border/50 last:border-b-0">
                     <td className="p-2 font-mono text-xs">{a.apiKeyId.slice(0, 16)}...</td>
                     <td className="p-2 text-right">{a.xpLastHour.toLocaleString()}</td>
-                    <td className="p-2 text-right text-red-400">{a.zScore.toFixed(2)}</td>
+                    <td className="p-2 text-right text-gray-400">{a.zScore.toFixed(2)}</td>
                     <td className="p-2 text-center">
-                      <span className="px-2 py-0.5 text-xs bg-red-500/20 text-red-400 rounded-full">
+                      <span className="px-2 py-0.5 text-xs bg-gray-500/20 text-gray-400 rounded-full">
                         Suspicious
                       </span>
                     </td>

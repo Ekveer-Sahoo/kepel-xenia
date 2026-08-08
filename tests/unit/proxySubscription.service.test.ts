@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-sub-svc-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-sub-svc-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
@@ -170,7 +170,9 @@ test("deleteSubscription unbinds and removes its proxy rows", async () => {
   assert.equal(rows.length, 0, "subscription proxy rows should be removed");
 
   const assignments = db
-    .prepare("SELECT 1 FROM proxy_assignments a JOIN proxy_registry p ON p.id=a.proxy_id WHERE p.source='subscription' LIMIT 1")
+    .prepare(
+      "SELECT 1 FROM proxy_assignments a JOIN proxy_registry p ON p.id=a.proxy_id WHERE p.source='subscription' LIMIT 1"
+    )
     .get();
   assert.equal(assignments, undefined, "no subscription proxy should remain assigned");
 

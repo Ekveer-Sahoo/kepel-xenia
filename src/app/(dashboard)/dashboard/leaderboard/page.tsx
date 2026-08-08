@@ -19,9 +19,9 @@ const SCOPE_LABEL_KEYS: Record<LeaderboardScope, string> = {
 };
 
 const MEDAL_COLORS = [
-  "from-amber-400 to-yellow-600", // gold
+  "from-gray-400 to-gray-600", // gold
   "from-gray-300 to-gray-500", // silver
-  "from-amber-600 to-orange-800", // bronze
+  "from-gray-600 to-gray-800", // bronze
 ];
 
 const MEDAL_EMOJI = ["🥇", "🥈", "🥉"];
@@ -108,8 +108,8 @@ export default function LeaderboardPage() {
             }}
             className={`px-4 py-2 text-sm font-medium rounded-lg border transition-colors ${
               scope === s
-                ? "bg-violet-500 border-violet-500 text-white"
-                : "border-border text-text-muted hover:text-text-main hover:border-violet-500/50"
+                ? "bg-gray-500 border-gray-500 text-white"
+                : "border-border text-text-muted hover:text-text-main hover:border-gray-500/50"
             }`}
           >
             {tg(SCOPE_LABEL_KEYS[s])}
@@ -133,7 +133,7 @@ export default function LeaderboardPage() {
         </Card>
       )}
 
-      {error && <div className="p-3 rounded-lg bg-red-500/10 text-red-400 text-sm">{error}</div>}
+      {error && <div className="p-3 rounded-lg bg-gray-500/10 text-gray-400 text-sm">{error}</div>}
 
       {loading ? (
         <div className="flex items-center justify-center min-h-[200px]">

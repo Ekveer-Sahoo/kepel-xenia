@@ -1,11 +1,8 @@
 import { createHash } from "crypto";
 
-import {
-  getProviderConnections,
-  updateProviderConnection,
-} from "@/lib/db/providers";
+import { getProviderConnections, updateProviderConnection } from "@/lib/db/providers";
 import { getCachedProviderConnectionById } from "@/lib/localDb";
-import { clearProviderFailure, clearModelLock } from "@omniroute/open-sse/services/accountFallback";
+import { clearProviderFailure, clearModelLock } from "@xenia/open-sse/services/accountFallback";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -258,8 +255,8 @@ export async function buildProviderHealthAutopilotReport(
   const [{ getAllCircuitBreakerStatuses }, { getAllModelLockouts }, quotaMonitor] =
     await Promise.all([
       import("@/shared/utils/circuitBreaker"),
-      import("@omniroute/open-sse/services/accountFallback"),
-      import("@omniroute/open-sse/services/quotaMonitor.ts").catch(() => null),
+      import("@xenia/open-sse/services/accountFallback"),
+      import("@xenia/open-sse/services/quotaMonitor.ts").catch(() => null),
     ]);
 
   const connections = (await getProviderConnections(
@@ -306,8 +303,7 @@ export async function buildProviderHealthAutopilotReport(
       (connection) => connection.provider === provider
     );
     const breaker = breakers.find((entry) => (entry as JsonRecord).name === provider) as
-      | JsonRecord
-      | undefined;
+      JsonRecord | undefined;
     const providerLockouts = lockouts.filter(
       (lockout) => providerFromLockout(lockout) === provider
     );

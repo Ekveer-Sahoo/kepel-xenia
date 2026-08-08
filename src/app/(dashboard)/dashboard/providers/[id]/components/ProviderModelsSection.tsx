@@ -181,7 +181,7 @@ export default function ProviderModelsSection({
     >
       <span
         className="material-symbols-outlined text-[16px]"
-        style={{ color: isAutoSyncEnabled ? "#22c55e" : "var(--color-text-muted)" }}
+        style={{ color: isAutoSyncEnabled ? "#898989" : "var(--color-text-muted)" }}
       >
         {isAutoSyncEnabled ? "toggle_on" : "toggle_off"}
       </span>
@@ -193,7 +193,7 @@ export default function ProviderModelsSection({
     <button
       onClick={handleClearAllModels}
       disabled={clearingModels}
-      className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-red-300 dark:border-red-800 bg-transparent cursor-pointer text-[12px] text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-gray-300 dark:border-gray-800 bg-transparent cursor-pointer text-[12px] text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900/20 disabled:opacity-50 disabled:cursor-not-allowed"
       title={t("clearAllModels")}
     >
       <span className="material-symbols-outlined text-[16px]">delete_sweep</span>

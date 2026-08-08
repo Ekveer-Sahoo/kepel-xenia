@@ -116,28 +116,28 @@ type BreakerTone = { dot: string; bg: string; ring: string; label: string; icon:
 
 const BREAKER_TONE: Record<string, BreakerTone> = {
   CLOSED: {
-    dot: "#22c55e",
+    dot: "#898989",
     bg: "rgba(34,197,94,0.10)",
     ring: "rgba(34,197,94,0.30)",
     label: "OK",
     icon: "check_circle",
   },
   HALF_OPEN: {
-    dot: "#eab308",
+    dot: "#b0b0b0",
     bg: "rgba(234,179,8,0.10)",
     ring: "rgba(234,179,8,0.30)",
     label: "RECOV",
     icon: "sync",
   },
   DEGRADED: {
-    dot: "#f97316",
+    dot: "#909090",
     bg: "rgba(249,115,22,0.10)",
     ring: "rgba(249,115,22,0.30)",
     label: "DEG",
     icon: "warning",
   },
   OPEN: {
-    dot: "#ef4444",
+    dot: "#777777",
     bg: "rgba(239,68,68,0.10)",
     ring: "rgba(239,68,68,0.30)",
     label: "OPEN",
@@ -146,7 +146,7 @@ const BREAKER_TONE: Record<string, BreakerTone> = {
 };
 
 const FALLBACK_BREAKER_TONE: BreakerTone = {
-  dot: "#64748b",
+  dot: "#727272",
   bg: "rgba(100,116,139,0.10)",
   ring: "rgba(100,116,139,0.30)",
   label: "UNK",
@@ -154,18 +154,18 @@ const FALLBACK_BREAKER_TONE: BreakerTone = {
 };
 
 const FEED_KIND_META: Record<FeedEventKind, { icon: string; color: string; group: FeedFilter }> = {
-  "circuit-opened": { icon: "block", color: "#ef4444", group: "circuits" },
-  "circuit-degraded": { icon: "warning", color: "#f97316", group: "circuits" },
-  "circuit-recovered": { icon: "sync", color: "#eab308", group: "circuits" },
-  "circuit-closed": { icon: "check_circle", color: "#22c55e", group: "circuits" },
-  "cooldown-added": { icon: "ac_unit", color: "#3b82f6", group: "cooldowns" },
-  "cooldown-cleared": { icon: "lock_open", color: "#22c55e", group: "cooldowns" },
-  "lockout-added": { icon: "lock", color: "#f97316", group: "lockouts" },
-  "lockout-cleared": { icon: "lock_open", color: "#22c55e", group: "lockouts" },
-  "session-new": { icon: "fingerprint", color: "#06b6d4", group: "sessions" },
-  "quota-alert": { icon: "warning", color: "#eab308", group: "quotas" },
-  "quota-exhausted": { icon: "error", color: "#ef4444", group: "quotas" },
-  "quota-recovered": { icon: "check_circle", color: "#22c55e", group: "quotas" },
+  "circuit-opened": { icon: "block", color: "#777777", group: "circuits" },
+  "circuit-degraded": { icon: "warning", color: "#909090", group: "circuits" },
+  "circuit-recovered": { icon: "sync", color: "#b0b0b0", group: "circuits" },
+  "circuit-closed": { icon: "check_circle", color: "#898989", group: "circuits" },
+  "cooldown-added": { icon: "ac_unit", color: "#7a7a7a", group: "cooldowns" },
+  "cooldown-cleared": { icon: "lock_open", color: "#898989", group: "cooldowns" },
+  "lockout-added": { icon: "lock", color: "#909090", group: "lockouts" },
+  "lockout-cleared": { icon: "lock_open", color: "#898989", group: "lockouts" },
+  "session-new": { icon: "fingerprint", color: "#858585", group: "sessions" },
+  "quota-alert": { icon: "warning", color: "#b0b0b0", group: "quotas" },
+  "quota-exhausted": { icon: "error", color: "#777777", group: "quotas" },
+  "quota-recovered": { icon: "check_circle", color: "#898989", group: "quotas" },
 };
 
 function fmtMs(ms: number | undefined | null): string {
@@ -567,7 +567,7 @@ export default function RuntimePageClient() {
           label={t("kpiSessions")}
           value={counts.sessions}
           hint={t("hintStickyBound", { count: counts.stickyBound })}
-          tone="#06b6d4"
+          tone="#858585"
           onClick={() => setFeedFilter("sessions")}
           active={feedFilter === "sessions"}
         />
@@ -586,10 +586,10 @@ export default function RuntimePageClient() {
           }
           tone={
             counts.openCircuits > 0
-              ? "#ef4444"
+              ? "#777777"
               : counts.halfCircuits + counts.degradedCircuits + counts.unknownCircuits > 0
-                ? "#eab308"
-                : "#22c55e"
+                ? "#b0b0b0"
+                : "#898989"
           }
           onClick={() => setFeedFilter("circuits")}
           active={feedFilter === "circuits"}
@@ -599,7 +599,7 @@ export default function RuntimePageClient() {
           label={t("kpiCooldowns")}
           value={counts.cooldowns}
           hint={t("hintConnsCooling")}
-          tone={counts.cooldowns > 0 ? "#3b82f6" : "#22c55e"}
+          tone={counts.cooldowns > 0 ? "#7a7a7a" : "#898989"}
           onClick={() => setFeedFilter("cooldowns")}
           active={feedFilter === "cooldowns"}
         />
@@ -608,7 +608,7 @@ export default function RuntimePageClient() {
           label={t("kpiLockouts")}
           value={counts.lockouts}
           hint={t("hintModelsBlocked")}
-          tone={counts.lockouts > 0 ? "#f97316" : "#22c55e"}
+          tone={counts.lockouts > 0 ? "#909090" : "#898989"}
           onClick={() => setFeedFilter("lockouts")}
           active={feedFilter === "lockouts"}
         />
@@ -625,11 +625,11 @@ export default function RuntimePageClient() {
             subtitle={t("resilienceSubtitle")}
             trailing={
               <div className="flex items-center gap-3 text-[11px]">
-                <span className="text-green-500">✓ {overallHealthy}</span>
-                <span className="text-amber-500">
+                <span className="text-gray-500">✓ {overallHealthy}</span>
+                <span className="text-gray-500">
                   ⚠ {counts.halfCircuits + counts.degradedCircuits + counts.unknownCircuits}
                 </span>
-                <span className="text-red-500">⛔ {counts.openCircuits}</span>
+                <span className="text-gray-500">⛔ {counts.openCircuits}</span>
               </div>
             }
           />
@@ -637,7 +637,7 @@ export default function RuntimePageClient() {
           <div className="mb-4 mt-2">
             <div className="h-2 rounded-sm bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden">
               <div
-                className="h-full rounded-sm bg-gradient-to-r from-green-500 via-amber-500 to-red-500/40"
+                className="h-full rounded-sm bg-gradient-to-r from-gray-500 via-gray-500 to-gray-500/40"
                 style={{ width: `${overallPercent}%` }}
               />
             </div>
@@ -734,7 +734,7 @@ export default function RuntimePageClient() {
                           )}
                         </div>
                       </div>
-                      <div className="text-[11px] tabular-nums text-blue-400">
+                      <div className="text-[11px] tabular-nums text-gray-400">
                         {fmtMs(remaining)}
                       </div>
                       <div className="text-[10px] text-text-muted truncate">
@@ -780,7 +780,7 @@ export default function RuntimePageClient() {
                       style={{ gridTemplateColumns: "minmax(0,1.5fr) minmax(0,1fr) 70px" }}
                     >
                       <div className="flex items-center gap-2 min-w-0">
-                        <span className="material-symbols-outlined text-[14px] text-orange-400 shrink-0">
+                        <span className="material-symbols-outlined text-[14px] text-gray-400 shrink-0">
                           lock
                         </span>
                         <span className="text-[12px] text-text-main truncate font-medium">
@@ -790,7 +790,7 @@ export default function RuntimePageClient() {
                       <div className="text-[10px] text-text-muted truncate">
                         {lk.reason || "rate limit"}
                       </div>
-                      <div className="text-[11px] tabular-nums text-orange-400 text-right">
+                      <div className="text-[11px] tabular-nums text-gray-400 text-right">
                         {remaining > 0 ? fmtMs(remaining) : "—"}
                       </div>
                     </div>
@@ -946,7 +946,7 @@ export default function RuntimePageClient() {
                       </td>
                       <td className="py-2 px-2">
                         {s.connectionId ? (
-                          <span className="font-mono text-[10px] text-cyan-400">
+                          <span className="font-mono text-[10px] text-gray-400">
                             {shortId(s.connectionId, 12)}
                           </span>
                         ) : (
@@ -1107,11 +1107,11 @@ function LayerSection({
   children: React.ReactNode;
 }) {
   const toneMap = {
-    red: { bg: "rgba(239,68,68,0.10)", text: "#ef4444" },
-    amber: { bg: "rgba(234,179,8,0.10)", text: "#eab308" },
-    green: { bg: "rgba(34,197,94,0.10)", text: "#22c55e" },
-    blue: { bg: "rgba(59,130,246,0.10)", text: "#3b82f6" },
-    orange: { bg: "rgba(249,115,22,0.10)", text: "#f97316" },
+    red: { bg: "rgba(239,68,68,0.10)", text: "#777777" },
+    amber: { bg: "rgba(234,179,8,0.10)", text: "#b0b0b0" },
+    green: { bg: "rgba(34,197,94,0.10)", text: "#898989" },
+    blue: { bg: "rgba(59,130,246,0.10)", text: "#7a7a7a" },
+    orange: { bg: "rgba(249,115,22,0.10)", text: "#909090" },
   } as const;
   const tone = toneMap[badgeTone];
   return (
@@ -1155,9 +1155,9 @@ function QuotaGroup({
 }) {
   const t = useTranslations("runtime");
   const toneMap = {
-    red: { text: "#ef4444", bg: "rgba(239,68,68,0.08)", border: "rgba(239,68,68,0.20)" },
-    amber: { text: "#eab308", bg: "rgba(234,179,8,0.08)", border: "rgba(234,179,8,0.20)" },
-    orange: { text: "#f97316", bg: "rgba(249,115,22,0.08)", border: "rgba(249,115,22,0.20)" },
+    red: { text: "#777777", bg: "rgba(239,68,68,0.08)", border: "rgba(239,68,68,0.20)" },
+    amber: { text: "#b0b0b0", bg: "rgba(234,179,8,0.08)", border: "rgba(234,179,8,0.20)" },
+    orange: { text: "#909090", bg: "rgba(249,115,22,0.08)", border: "rgba(249,115,22,0.20)" },
   } as const;
   const tc = toneMap[tone];
   return (

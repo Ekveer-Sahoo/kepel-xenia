@@ -78,7 +78,7 @@ export default function PoliciesPanel() {
     return (
       <Card className="p-6 mt-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]">verified_user</span>
           </div>
           <div>
@@ -94,7 +94,7 @@ export default function PoliciesPanel() {
     <Card className="p-6 mt-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-red-500/10 text-red-500">
+          <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500">
             <span className="material-symbols-outlined text-[20px]">gpp_maybe</span>
           </div>
           <div>
@@ -120,7 +120,9 @@ export default function PoliciesPanel() {
                   className="flex items-center justify-between px-3 py-2 rounded-lg bg-surface/30 border border-border/20"
                 >
                   <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[16px] text-red-400">lock</span>
+                    <span className="material-symbols-outlined text-[16px] text-gray-400">
+                      lock
+                    </span>
                     <span className="font-mono text-sm text-text-main">{identifier}</span>
                     {typeof id === "object" && id.lockedAt && (
                       <span className="text-xs text-text-muted">

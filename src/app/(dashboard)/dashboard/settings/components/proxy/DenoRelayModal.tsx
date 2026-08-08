@@ -14,7 +14,7 @@ export default function DenoRelayModal({ isOpen, onClose, onDeployed }: DenoRela
   const [denoToken, setDenoToken] = useState("");
   const [orgDomain, setOrgDomain] = useState("");
   const [projectName, setProjectName] = useState(
-    process.env.NEXT_PUBLIC_DENO_RELAY_DEFAULT_PROJECT || "omniroute-deno-relay"
+    process.env.NEXT_PUBLIC_DENO_RELAY_DEFAULT_PROJECT || "xenia-deno-relay"
   );
   const [deploying, setDeploying] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -83,7 +83,7 @@ export default function DenoRelayModal({ isOpen, onClose, onDeployed }: DenoRela
           </button>
         </div>
 
-        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded p-3 text-xs text-yellow-300">
+        <div className="bg-gray-500/10 border border-gray-500/30 rounded p-3 text-xs text-gray-300">
           {t("denoRelayWarning")}
         </div>
 
@@ -127,13 +127,13 @@ export default function DenoRelayModal({ isOpen, onClose, onDeployed }: DenoRela
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
               className="w-full text-sm bg-surface-alt border border-border rounded px-3 py-2 focus:outline-none focus:border-primary"
-              placeholder="omniroute-deno-relay"
+              placeholder="xenia-deno-relay"
             />
           </div>
         </div>
 
         {error && (
-          <div className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded p-2">
+          <div className="text-sm text-gray-400 bg-gray-500/10 border border-gray-500/20 rounded p-2">
             {error}
           </div>
         )}

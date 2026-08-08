@@ -284,8 +284,8 @@ export default function ChatTab({ configState, onMetricsUpdate }: ChatTabProps) 
             <span
               className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
                 responseStatus < 400
-                  ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                  : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                  ? "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400"
+                  : "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400"
               }`}
             >
               {responseStatus}
@@ -306,7 +306,7 @@ export default function ChatTab({ configState, onMetricsUpdate }: ChatTabProps) 
           )}
           <button
             onClick={handleClear}
-            className="p-1 rounded hover:bg-red-500/10 text-text-muted hover:text-red-500 transition-colors"
+            className="p-1 rounded hover:bg-gray-500/10 text-text-muted hover:text-gray-500 transition-colors"
             title={t("clearChat")}
           >
             <span className="material-symbols-outlined text-[16px]">delete</span>
@@ -322,7 +322,7 @@ export default function ChatTab({ configState, onMetricsUpdate }: ChatTabProps) 
               <span className="material-symbols-outlined text-[48px] text-text-muted/30">chat</span>
               <p>{t("startConversation")}</p>
               {!configState.model && (
-                <p className="text-amber-500 text-xs">{t("setModelInConfigFirst")}</p>
+                <p className="text-gray-500 text-xs">{t("setModelInConfigFirst")}</p>
               )}
             </div>
           </div>
@@ -383,7 +383,7 @@ export default function ChatTab({ configState, onMetricsUpdate }: ChatTabProps) 
         )}
 
         {error && (
-          <div className="text-center p-2 text-sm text-red-500 bg-red-500/10 rounded border border-red-500/20">
+          <div className="text-center p-2 text-sm text-gray-500 bg-gray-500/10 rounded border border-gray-500/20">
             {error}
           </div>
         )}

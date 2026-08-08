@@ -33,7 +33,7 @@ const LEGACY_HARDCODED_HOST = "daily-cloudcode-pa.googleapis.com";
 const originalPlatformDescriptor = Object.getOwnPropertyDescriptor(process, "platform")!;
 const originalPath = process.env.PATH;
 
-const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-7275-"));
+const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-7275-"));
 const binDir = path.join(tmpRoot, "bin");
 fs.mkdirSync(binDir, { recursive: true });
 const captureFile = path.join(tmpRoot, "certutil-argv.log");
@@ -56,9 +56,8 @@ Object.defineProperty(process, "platform", { value: "win32", configurable: true 
 process.env.PATH = `${binDir}${path.delimiter}${originalPath}`;
 
 // Imported AFTER forcing win32: IS_WIN inside install.ts is a load-time const.
-const { checkCertInstalled, certutilThumbprint, buildWindowsDelstoreScript } = await import(
-  "../../src/mitm/cert/install.ts"
-);
+const { checkCertInstalled, certutilThumbprint, buildWindowsDelstoreScript } =
+  await import("../../src/mitm/cert/install.ts");
 
 test.after(() => {
   Object.defineProperty(process, "platform", originalPlatformDescriptor);
@@ -70,7 +69,10 @@ function fakeCertFile(seed: string): string {
   const der = crypto.createHash("sha256").update(seed).digest();
   const pem =
     "-----BEGIN CERTIFICATE-----\n" +
-    der.toString("base64").match(/.{1,64}/g)!.join("\n") +
+    der
+      .toString("base64")
+      .match(/.{1,64}/g)!
+      .join("\n") +
     "\n-----END CERTIFICATE-----\n";
   const certPath = path.join(tmpRoot, `${seed}.crt`);
   fs.writeFileSync(certPath, pem);

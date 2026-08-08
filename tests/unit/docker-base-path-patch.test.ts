@@ -11,50 +11,41 @@ import {
 
 test("patchBasePathLiterals rewrites empty basePath literals", () => {
   const input = 'const cfg={basePath:"",assetPrefix:void 0};"basePath":""';
-  const output = patchBasePathLiterals(input, "/omniroute");
-  assert.match(output, /basePath:"\/omniroute"/);
-  assert.match(output, /"basePath":"\/omniroute"/);
+  const output = patchBasePathLiterals(input, "/xenia");
+  assert.match(output, /basePath:"\/xenia"/);
+  assert.match(output, /"basePath":"\/xenia"/);
 });
 
 test("patchJsonManifestFile updates nested basePath fields", () => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-basepath-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-basepath-"));
   const filePath = path.join(dir, "routes-manifest.json");
-  fs.writeFileSync(
-    filePath,
-    JSON.stringify({ basePath: "", nested: { basePath: "" } }, null, 2)
-  );
-  assert.equal(patchJsonManifestFile(filePath, "/omniroute"), true);
+  fs.writeFileSync(filePath, JSON.stringify({ basePath: "", nested: { basePath: "" } }, null, 2));
+  assert.equal(patchJsonManifestFile(filePath, "/xenia"), true);
   const parsed = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  assert.equal(parsed.basePath, "/omniroute");
-  assert.equal(parsed.nested.basePath, "/omniroute");
+  assert.equal(parsed.basePath, "/xenia");
+  assert.equal(parsed.nested.basePath, "/xenia");
 });
 
 test("patchStandaloneBasePath rewrites a root-path standalone tree", () => {
-  const appRoot = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-standalone-"));
+  const appRoot = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-standalone-"));
   const distRoot = path.join(appRoot, ".build", "next");
   fs.mkdirSync(path.join(distRoot, "server"), { recursive: true });
-  fs.writeFileSync(
-    path.join(distRoot, "routes-manifest.json"),
-    JSON.stringify({ basePath: "" })
-  );
-  fs.writeFileSync(
-    path.join(distRoot, "server", "chunk.js"),
-    'export const config={basePath:""};'
-  );
-  fs.writeFileSync(path.join(appRoot, "BUILD_OMNIROUTE_BASE_PATH"), "\n");
+  fs.writeFileSync(path.join(distRoot, "routes-manifest.json"), JSON.stringify({ basePath: "" }));
+  fs.writeFileSync(path.join(distRoot, "server", "chunk.js"), 'export const config={basePath:""};');
+  fs.writeFileSync(path.join(appRoot, "BUILD_XENIA_BASE_PATH"), "\n");
 
   const result = patchStandaloneBasePath({
     appRoot,
     fromBasePath: "",
-    toBasePath: "/omniroute",
+    toBasePath: "/xenia",
   });
 
   assert.equal(result.changed, true);
   assert.equal(
     JSON.parse(fs.readFileSync(path.join(distRoot, "routes-manifest.json"), "utf8")).basePath,
-    "/omniroute"
+    "/xenia"
   );
-  assert.match(fs.readFileSync(path.join(distRoot, "server", "chunk.js"), "utf8"), /\/omniroute/);
+  assert.match(fs.readFileSync(path.join(distRoot, "server", "chunk.js"), "utf8"), /\/xenia/);
 });
 
 test("patchStandaloneBasePath rejects mismatched non-root builds", () => {
@@ -63,7 +54,7 @@ test("patchStandaloneBasePath rejects mismatched non-root builds", () => {
       patchStandaloneBasePath({
         appRoot: process.cwd(),
         fromBasePath: "/custom",
-        toBasePath: "/omniroute",
+        toBasePath: "/xenia",
       }),
     /does not match the image build/
   );

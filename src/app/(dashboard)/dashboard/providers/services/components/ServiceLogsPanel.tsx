@@ -18,7 +18,7 @@ function LogLineRow({ line, locale }: { line: LogLine; locale: string }) {
       <span
         className={cn(
           "text-text-muted shrink-0 select-none",
-          line.stream === "stderr" && "text-red-400 dark:text-red-400"
+          line.stream === "stderr" && "text-gray-400 dark:text-gray-400"
         )}
       >
         {line.stream === "stderr" ? "ERR" : "OUT"}
@@ -95,7 +95,7 @@ export function ServiceLogsPanel({ name }: ServiceLogsPanelProps) {
       </div>
       <div className="h-80 overflow-y-auto bg-bg-main py-1">
         {error ? (
-          <p className="text-xs text-red-600 dark:text-red-400 px-4 py-4">{error}</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400 px-4 py-4">{error}</p>
         ) : lines.length === 0 ? (
           <p className="text-xs text-text-muted px-4 py-4">{t("noLogs")}</p>
         ) : (

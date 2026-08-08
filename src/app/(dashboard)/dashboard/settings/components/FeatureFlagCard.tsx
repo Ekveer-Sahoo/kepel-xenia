@@ -25,34 +25,34 @@ const CATEGORY_STYLES: Record<
   { bg: string; border: string; text: string }
 > = {
   security: {
-    bg: "bg-red-50 dark:bg-red-500/15",
-    border: "border-red-200 dark:border-red-500/20",
-    text: "text-red-700 dark:text-red-300",
+    bg: "bg-gray-50 dark:bg-gray-500/15",
+    border: "border-gray-200 dark:border-gray-500/20",
+    text: "text-gray-700 dark:text-gray-300",
   },
   network: {
-    bg: "bg-sky-50 dark:bg-blue-500/15",
-    border: "border-sky-200 dark:border-blue-500/20",
-    text: "text-sky-700 dark:text-blue-300",
+    bg: "bg-gray-50 dark:bg-gray-500/15",
+    border: "border-gray-200 dark:border-gray-500/20",
+    text: "text-gray-700 dark:text-gray-300",
   },
   policies: {
-    bg: "bg-amber-50 dark:bg-amber-500/15",
-    border: "border-amber-200 dark:border-amber-500/20",
-    text: "text-amber-700 dark:text-amber-300",
+    bg: "bg-gray-50 dark:bg-gray-500/15",
+    border: "border-gray-200 dark:border-gray-500/20",
+    text: "text-gray-700 dark:text-gray-300",
   },
   runtime: {
-    bg: "bg-violet-50 dark:bg-purple-500/15",
-    border: "border-violet-200 dark:border-purple-500/20",
-    text: "text-violet-700 dark:text-purple-300",
+    bg: "bg-gray-50 dark:bg-gray-500/15",
+    border: "border-gray-200 dark:border-gray-500/20",
+    text: "text-gray-700 dark:text-gray-300",
   },
   cli: {
-    bg: "bg-emerald-50 dark:bg-green-500/15",
-    border: "border-emerald-200 dark:border-green-500/20",
-    text: "text-emerald-700 dark:text-green-300",
+    bg: "bg-gray-50 dark:bg-gray-500/15",
+    border: "border-gray-200 dark:border-gray-500/20",
+    text: "text-gray-700 dark:text-gray-300",
   },
   health: {
-    bg: "bg-cyan-50 dark:bg-cyan-500/15",
-    border: "border-cyan-200 dark:border-cyan-500/20",
-    text: "text-cyan-700 dark:text-cyan-300",
+    bg: "bg-gray-50 dark:bg-gray-500/15",
+    border: "border-gray-200 dark:border-gray-500/20",
+    text: "text-gray-700 dark:text-gray-300",
   },
 };
 
@@ -61,15 +61,15 @@ const SOURCE_STYLES: Record<
   { bg: string; border: string; text: string; label: string }
 > = {
   db: {
-    bg: "bg-sky-50 dark:bg-blue-500/20",
-    border: "border-sky-200 dark:border-blue-500/30",
-    text: "text-sky-700 dark:text-blue-300",
+    bg: "bg-gray-50 dark:bg-gray-500/20",
+    border: "border-gray-200 dark:border-gray-500/30",
+    text: "text-gray-700 dark:text-gray-300",
     label: "DB",
   },
   env: {
-    bg: "bg-amber-50 dark:bg-amber-500/20",
-    border: "border-amber-200 dark:border-amber-500/30",
-    text: "text-amber-700 dark:text-amber-300",
+    bg: "bg-gray-50 dark:bg-gray-500/20",
+    border: "border-gray-200 dark:border-gray-500/30",
+    text: "text-gray-700 dark:text-gray-300",
     label: "ENV",
   },
   default: {
@@ -109,7 +109,7 @@ function EnvPrecedenceWarning({
 }) {
   if (flag.key !== "EXPOSE_CC_DISCOVERY_ALIASES" || flag.source !== "env") return null;
   return (
-    <p className="mb-3 rounded border border-amber-200 bg-amber-50 px-2 py-1 text-xs text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300">
+    <p className="mb-3 rounded border border-gray-200 bg-gray-50 px-2 py-1 text-xs text-gray-800 dark:border-gray-500/30 dark:bg-gray-500/10 dark:text-gray-300">
       {text}
     </p>
   );
@@ -128,7 +128,7 @@ export default function FeatureFlagCard({
 
   const cardBorder =
     flag.type === "boolean" && enabled
-      ? "border-emerald-300 shadow-emerald-500/10 dark:border-green-500/30"
+      ? "border-gray-300 shadow-gray-500/10 dark:border-gray-500/30"
       : "border-border";
 
   return (
@@ -157,7 +157,7 @@ export default function FeatureFlagCard({
               disabled={saving}
               onClick={() => onToggle(flag.key, enabled ? "false" : "true")}
               className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-50 ${
-                enabled ? "bg-emerald-500" : "bg-slate-300 dark:bg-white/20"
+                enabled ? "bg-gray-500" : "bg-slate-300 dark:bg-white/20"
               }`}
             >
               <span
@@ -192,7 +192,7 @@ export default function FeatureFlagCard({
         </span>
 
         {flag.warningLevel === "caution" && (
-          <span className="text-sm text-amber-500 dark:text-amber-300" aria-label={t("caution")}>
+          <span className="text-sm text-gray-500 dark:text-gray-300" aria-label={t("caution")}>
             ⚠️
           </span>
         )}

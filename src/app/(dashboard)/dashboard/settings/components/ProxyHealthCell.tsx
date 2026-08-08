@@ -26,15 +26,15 @@ export function ProxyHealthCell({ testResult, health }: ProxyHealthCellProps) {
     if (testResult.success) {
       return (
         <div className="flex flex-col gap-0.5">
-          <span className="text-emerald-400">{t("testPassed")}</span>
+          <span className="text-gray-400">{t("testPassed")}</span>
           {testResult.latencyMs != null && (
             <span
               className={
                 testResult.latencyMs < 1000
-                  ? "text-emerald-400"
+                  ? "text-gray-400"
                   : testResult.latencyMs < 3000
-                    ? "text-amber-400"
-                    : "text-red-400"
+                    ? "text-gray-400"
+                    : "text-gray-400"
               }
             >
               {testResult.latencyMs}ms
@@ -43,9 +43,7 @@ export function ProxyHealthCell({ testResult, health }: ProxyHealthCellProps) {
         </div>
       );
     }
-    return (
-      <span className="text-red-400">✗ {testResult.error || t("failed")}</span>
-    );
+    return <span className="text-gray-400">✗ {testResult.error || t("failed")}</span>;
   }
 
   if (health) {

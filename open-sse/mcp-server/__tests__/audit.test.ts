@@ -23,7 +23,7 @@ function createStatementMock() {
 // module graph. The old better-sqlite3 doMock therefore never engaged: the code
 // opened a REAL sqlite file in the temp DATA_DIR ("no such table" on stderr)
 // and every mock assertion counted 0 calls. The shutdown tests now inject the
-// mock through the audit connection cache (globalThis.__omnirouteMcpAuditDb),
+// mock through the audit connection cache (globalThis.__xeniaMcpAuditDb),
 // and the fallback test uses the __setBetterSqliteLoaderForTests seam.
 describe("MCP audit shutdown", () => {
   let dataDir: string;
@@ -31,8 +31,8 @@ describe("MCP audit shutdown", () => {
 
   beforeEach(() => {
     vi.resetModules();
-    globalThis.__omnirouteMcpAuditDb = undefined;
-    dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-mcp-audit-"));
+    globalThis.__xeniaMcpAuditDb = undefined;
+    dataDir = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-mcp-audit-"));
     dbFile = path.join(dataDir, "storage.sqlite");
     fs.writeFileSync(dbFile, "");
     process.env.DATA_DIR = dataDir;
@@ -40,38 +40,33 @@ describe("MCP audit shutdown", () => {
 
   afterEach(() => {
     delete process.env.DATA_DIR;
-    globalThis.__omnirouteMcpAuditDb = undefined;
+    globalThis.__xeniaMcpAuditDb = undefined;
     vi.restoreAllMocks();
   });
 
-  it(
-    "checkpoints and closes the audit database during shutdown",
-    async () => {
-      const mockDb: MockAuditDb = {
-        prepare: vi.fn(() => createStatementMock()),
-        pragma: vi.fn(),
-        close: vi.fn(),
-        open: true,
-      };
+  it("checkpoints and closes the audit database during shutdown", async () => {
+    const mockDb: MockAuditDb = {
+      prepare: vi.fn(() => createStatementMock()),
+      pragma: vi.fn(),
+      close: vi.fn(),
+      open: true,
+    };
 
-      const audit = await import("../audit.ts");
-      // Inject through the connection cache — the seam the module itself uses.
-      globalThis.__omnirouteMcpAuditDb = mockDb as unknown as typeof globalThis.__omnirouteMcpAuditDb;
+    const audit = await import("../audit.ts");
+    // Inject through the connection cache — the seam the module itself uses.
+    globalThis.__xeniaMcpAuditDb = mockDb as unknown as typeof globalThis.__xeniaMcpAuditDb;
 
-      await audit.logToolCall("omniroute_get_health", { ok: true }, { ok: true }, 12, true);
-      expect(mockDb.prepare).toHaveBeenCalledTimes(1);
+    await audit.logToolCall("xenia_get_health", { ok: true }, { ok: true }, 12, true);
+    expect(mockDb.prepare).toHaveBeenCalledTimes(1);
 
-      expect(audit.closeAuditDb()).toBe(true);
-      expect(mockDb.pragma).toHaveBeenCalledWith("wal_checkpoint(TRUNCATE)");
-      expect(mockDb.close).toHaveBeenCalledTimes(1);
-      expect(audit.closeAuditDb()).toBe(false);
-    },
-    // Explicit generous timeout (vitest default is 5000ms): under contended
-    // CI-runner load, vi.resetModules() + a fresh dynamic import + mocked DB
-    // calls can exceed the default budget though the behavior is correct
-    // (issue #6803).
-    30000
-  );
+    expect(audit.closeAuditDb()).toBe(true);
+    expect(mockDb.pragma).toHaveBeenCalledWith("wal_checkpoint(TRUNCATE)");
+    expect(mockDb.close).toHaveBeenCalledTimes(1);
+    expect(audit.closeAuditDb()).toBe(false);
+  }, // CI-runner load, vi.resetModules() + a fresh dynamic import + mocked DB // Explicit generous timeout (vitest default is 5000ms): under contended
+  // calls can exceed the default budget though the behavior is correct
+  // (issue #6803).
+  30000);
 
   it("still closes the audit database when checkpoint fails", async () => {
     const mockDb: MockAuditDb = {
@@ -84,9 +79,9 @@ describe("MCP audit shutdown", () => {
     };
 
     const audit = await import("../audit.ts");
-    globalThis.__omnirouteMcpAuditDb = mockDb as unknown as typeof globalThis.__omnirouteMcpAuditDb;
+    globalThis.__xeniaMcpAuditDb = mockDb as unknown as typeof globalThis.__xeniaMcpAuditDb;
 
-    await audit.logToolCall("omniroute_get_health", {}, {}, 5, true);
+    await audit.logToolCall("xenia_get_health", {}, {}, 5, true);
     expect(audit.closeAuditDb()).toBe(true);
     expect(mockDb.close).toHaveBeenCalledTimes(1);
   });
@@ -125,7 +120,7 @@ describe("MCP audit shutdown", () => {
     });
 
     try {
-      await audit.logToolCall("omniroute_get_health", { ok: true }, { ok: true }, 4, true);
+      await audit.logToolCall("xenia_get_health", { ok: true }, { ok: true }, 4, true);
       expect(DatabaseSync).toHaveBeenCalledWith(dbFile);
       expect(mockNodeDb.prepare).toHaveBeenCalled();
 

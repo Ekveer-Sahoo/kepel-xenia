@@ -17,8 +17,8 @@ import {
 } from "@/lib/providers/requestDefaults";
 import { type CodexGlobalServiceMode } from "@/lib/providers/codexFastTier";
 import { CC_COMPATIBLE_DEFAULT_CHAT_PATH } from "./providerDetailConstants";
-import { getRegistryEntry } from "@omniroute/open-sse/config/providerRegistry";
-import type { AlternateFormat } from "@omniroute/open-sse/config/providers/alternateFormats";
+import { getRegistryEntry } from "@xenia/open-sse/config/providerRegistry";
+import type { AlternateFormat } from "@xenia/open-sse/config/providers/alternateFormats";
 import {
   type ProviderMessageTranslator,
   providerText,
@@ -167,7 +167,9 @@ export function evaluateTestAllEntry(
   autoHideFailed: boolean
 ): TestAllModelOutcome {
   const ok = entry?.status === "ok";
-  const transient = [entry?.rateLimited, entry?.isTimeout, entry?.isTransient, entry?.isQuota].some(Boolean);
+  const transient = [entry?.rateLimited, entry?.isTimeout, entry?.isTransient, entry?.isQuota].some(
+    Boolean
+  );
   return {
     status: ok ? "ok" : "error",
     // #9511: quota errors (isQuota) are surfaced on the icon but kept visible

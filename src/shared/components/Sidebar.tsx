@@ -12,7 +12,7 @@ import {
   toggleExpandedSection,
 } from "@/shared/utils/sidebarExpansionState";
 import { APP_CONFIG } from "@/shared/constants/appConfig";
-import OmniRouteLogo from "./OmniRouteLogo";
+import XeniaLogo from "./XeniaLogo";
 import Button from "./Button";
 import Input from "./Input";
 import { ConfirmModal } from "./Modal";
@@ -39,7 +39,7 @@ import {
   type SidebarItemOrder,
 } from "@/shared/constants/sidebarVisibility";
 
-const isE2EMode = process.env.NEXT_PUBLIC_OMNIROUTE_E2E_MODE === "1";
+const isE2EMode = process.env.NEXT_PUBLIC_XENIA_E2E_MODE === "1";
 const DEFAULT_EXPANDED: SidebarSectionId = "omni-proxy";
 const EXPANDED_SECTIONS_KEY = "sidebar-expanded-sections";
 const PINNED_SECTIONS_KEY = "sidebar-pinned-sections";
@@ -56,7 +56,14 @@ type SidebarProps = {
   isMacElectron?: boolean;
 };
 
-type HoveredItem = { id: string; label: string; x: number; y: number } | null;
+type HoveredItem = {
+  id: string;
+  label: string;
+  subtitle?: string;
+  x: number;
+  y: number;
+  anchorRight: boolean;
+} | null;
 
 function loadFromStorage<T>(key: string, fallback: T): T {
   try {
@@ -371,15 +378,16 @@ export default function Sidebar({
   };
 
   const handleMouseEnter = useCallback(
-    (e: React.MouseEvent<HTMLElement>, id: string, label: string) => {
-      if (!collapsed) return;
+    (e: React.MouseEvent<HTMLElement>, id: string, label: string, subtitle?: string) => {
       const rect = e.currentTarget.getBoundingClientRect();
       const sidebarRect = sidebarRef.current?.getBoundingClientRect();
       setHoveredItem({
         id,
         label,
-        x: (sidebarRect?.right ?? 64) + 8,
-        y: rect.top + rect.height / 2,
+        subtitle,
+        x: collapsed ? (sidebarRect?.left ?? window.innerWidth - 64) - 8 : rect.left,
+        y: collapsed ? rect.top + rect.height / 2 : rect.top,
+        anchorRight: collapsed,
       });
     },
     [collapsed]
@@ -389,12 +397,13 @@ export default function Sidebar({
 
   const renderNavLink = (item) => {
     const active = !item.external && activeHref === item.href;
+    // Flat, plain list: no per-row fill — active/hover read via text color and a
+    // thin left accent bar only, so the list stays quiet at rest (compact rows).
     const className = cn(
-      "flex items-center gap-3 rounded-lg transition-all group",
-      collapsed ? "justify-center px-2 py-2.5" : "px-3 py-1.5",
-      active
-        ? "bg-primary/10 text-primary"
-        : "text-text-muted hover:bg-surface/50 hover:text-text-main"
+      "relative flex items-center rounded-md transition-colors group",
+      collapsed ? "justify-center px-2 py-2" : "gap-3 px-3 py-1 pl-3.5",
+      "hover:bg-black/5 dark:hover:bg-white/5",
+      active ? "text-primary" : "text-text-muted hover:text-text-main"
     );
     const iconClassName = cn(
       "material-symbols-outlined text-[18px] shrink-0",
@@ -402,21 +411,24 @@ export default function Sidebar({
     );
     const content = (
       <>
-        <span className={iconClassName} style={getIconStyle(item.id)}>
-          {item.icon}
-        </span>
+        {active && !collapsed && (
+          <span className="absolute inset-y-1 left-0 w-0.5 rounded-full bg-primary" />
+        )}
+        {collapsed && (
+          <span className={iconClassName} style={getIconStyle(item.id)}>
+            {item.icon}
+          </span>
+        )}
         {!collapsed && (
-          <div className="flex min-w-0 flex-col">
-            <span className="truncate text-sm font-medium">{item.label}</span>
-            {item.subtitle && (
-              <span className="truncate text-[10px] text-text-muted/60">{item.subtitle}</span>
-            )}
-          </div>
+          <span className={cn("truncate text-sm", active ? "font-semibold" : "font-medium")}>
+            {item.label}
+          </span>
         )}
       </>
     );
     const sharedProps = {
-      onMouseEnter: (e: React.MouseEvent<HTMLElement>) => handleMouseEnter(e, item.id, item.label),
+      onMouseEnter: (e: React.MouseEvent<HTMLElement>) =>
+        handleMouseEnter(e, item.id, item.label, item.subtitle),
       onMouseLeave: handleMouseLeave,
     };
 
@@ -455,7 +467,7 @@ export default function Sidebar({
       <aside
         ref={sidebarRef}
         className={cn(
-          "flex h-full min-h-0 flex-col border-r border-black/5 bg-sidebar transition-all duration-300 ease-in-out dark:border-white/5",
+          "flex h-full min-h-0 flex-col border-l border-black/5 bg-sidebar transition-all duration-300 ease-in-out dark:border-white/5",
           collapsed ? "w-16" : "w-[220px]"
         )}
         style={{ paddingTop: isMacElectron ? "var(--desktop-safe-top)" : undefined }}
@@ -467,40 +479,29 @@ export default function Sidebar({
           {t("skipToContent")}
         </a>
 
-        {(onToggleCollapse || !isMacElectron) && (
+        {onToggleCollapse && (
           <div
             className={cn(
               "flex items-center gap-2 pb-2",
               isMacElectron ? "pt-3" : "pt-5",
               collapsed ? "px-3 justify-center" : "px-4"
             )}
-            aria-hidden="true"
           >
-            {!isMacElectron && (
-              <>
-                <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
-                <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-                <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
-              </>
-            )}
             {!collapsed && <div className="flex-1" />}
-            {onToggleCollapse && (
-              <button
-                onClick={onToggleCollapse}
-                title={collapsed ? t("expandSidebar") : t("collapseSidebar")}
-                aria-expanded={!collapsed}
-                aria-label={collapsed ? t("expandSidebar") : t("collapseSidebar")}
-                className={cn(
-                  "rounded-md p-1 text-text-muted/50 transition-colors hover:bg-black/5 hover:text-text-muted dark:hover:bg-white/5",
-                  collapsed && !isMacElectron && "mt-2",
-                  isMacElectron && "ms-auto"
-                )}
-              >
-                <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
-                  {collapsed ? "chevron_right" : "chevron_left"}
-                </span>
-              </button>
-            )}
+            <button
+              onClick={onToggleCollapse}
+              title={collapsed ? t("expandSidebar") : t("collapseSidebar")}
+              aria-expanded={!collapsed}
+              aria-label={collapsed ? t("expandSidebar") : t("collapseSidebar")}
+              className={cn(
+                "rounded-md p-1 text-text-muted/50 transition-colors hover:bg-black/5 hover:text-text-muted dark:hover:bg-white/5",
+                isMacElectron && "ms-auto"
+              )}
+            >
+              <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
+                {collapsed ? "chevron_left" : "chevron_right"}
+              </span>
+            </button>
           </div>
         )}
 
@@ -510,15 +511,15 @@ export default function Sidebar({
             prefetch={false}
             className={cn("flex items-center", collapsed ? "justify-center" : "gap-2.5")}
           >
-            <div className="flex items-center justify-center size-8 rounded bg-linear-to-br from-[#E54D5E] to-[#C93D4E] shrink-0">
+            <div className="flex items-center justify-center size-8 shrink-0 text-text-main">
               {customLogo ? (
                 <img
                   src={customLogo}
                   alt={customAppName || APP_CONFIG.name}
-                  className="size-5 object-contain"
+                  className="size-7 object-contain"
                 />
               ) : (
-                <OmniRouteLogo size={18} className="text-white" />
+                <XeniaLogo size={26} />
               )}
             </div>
             {!collapsed && (
@@ -526,7 +527,7 @@ export default function Sidebar({
                 <h1 className="text-sm font-semibold tracking-tight text-text-main truncate">
                   {customAppName || APP_CONFIG.name}
                 </h1>
-                <span className="text-[10px] text-text-muted">v{APP_CONFIG.version}</span>
+                <span className="text-[10px] text-text-muted">by Kepel</span>
               </div>
             )}
           </Link>
@@ -680,7 +681,7 @@ export default function Sidebar({
             title={t("restart")}
             className={cn(
               "flex items-center justify-center gap-2 rounded-lg font-medium transition-all",
-              "text-amber-500 hover:bg-amber-500/10 border border-amber-500/20 hover:border-amber-500/40",
+              "text-gray-500 hover:bg-gray-500/10 border border-gray-500/20 hover:border-gray-500/40",
               collapsed ? "p-2" : "flex-1 min-w-0 px-2 py-1.5 text-xs"
             )}
           >
@@ -692,7 +693,7 @@ export default function Sidebar({
             title={t("shutdown")}
             className={cn(
               "flex items-center justify-center gap-2 rounded-lg font-medium transition-all",
-              "text-red-500 hover:bg-red-500/10 border border-red-500/20 hover:border-red-500/40",
+              "text-gray-500 hover:bg-gray-500/10 border border-gray-500/20 hover:border-gray-500/40",
               collapsed ? "p-2" : "flex-1 min-w-0 px-2 py-1.5 text-xs"
             )}
           >
@@ -702,18 +703,35 @@ export default function Sidebar({
         </div>
       </aside>
 
-      {/* Styled tooltip for collapsed (mini) sidebar */}
-      {collapsed && hoveredItem && (
-        <div
-          className="fixed z-[200] pointer-events-none flex items-center"
-          style={{ left: hoveredItem.x, top: hoveredItem.y, transform: "translateY(-50%)" }}
-        >
-          <div className="w-0 h-0 border-t-[5px] border-b-[5px] border-r-[6px] border-t-transparent border-b-transparent border-r-sidebar dark:border-r-sidebar" />
-          <div className="px-2.5 py-1.5 bg-sidebar text-text-main text-xs font-medium rounded-md shadow-lg border border-black/10 dark:border-white/10 whitespace-nowrap">
-            {hoveredItem.label}
+      {/* Hover popup — the label (mini sidebar) or the item's description
+          (full sidebar, since rows no longer show it inline) */}
+      {hoveredItem &&
+        (hoveredItem.anchorRight ? (
+          <div
+            className="fixed z-[200] pointer-events-none flex items-center"
+            style={{
+              left: hoveredItem.x,
+              top: hoveredItem.y,
+              transform: "translate(-100%, -50%)",
+            }}
+          >
+            <div className="px-2.5 py-1.5 bg-sidebar text-text-main text-xs font-medium rounded-md shadow-lg border border-black/10 dark:border-white/10 whitespace-nowrap">
+              {hoveredItem.label}
+            </div>
+            <div className="w-0 h-0 border-t-[5px] border-b-[5px] border-l-[6px] border-t-transparent border-b-transparent border-l-sidebar dark:border-l-sidebar" />
           </div>
-        </div>
-      )}
+        ) : (
+          hoveredItem.subtitle && (
+            <div
+              className="fixed z-[200] pointer-events-none"
+              style={{ left: hoveredItem.x, top: hoveredItem.y, transform: "translateY(-100%)" }}
+            >
+              <div className="mb-1.5 max-w-[240px] rounded-md border border-black/10 bg-sidebar px-2.5 py-1.5 text-xs text-text-muted shadow-lg dark:border-white/10">
+                {hoveredItem.subtitle}
+              </div>
+            </div>
+          )
+        ))}
 
       <ConfirmModal
         isOpen={showShutdownModal}
@@ -742,7 +760,7 @@ export default function Sidebar({
       {isDisconnected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
           <div className="text-center p-8">
-            <div className="flex items-center justify-center size-16 rounded-full bg-red-500/20 text-red-500 mx-auto mb-4">
+            <div className="flex items-center justify-center size-16 rounded-full bg-gray-500/20 text-gray-500 mx-auto mb-4">
               <span className="material-symbols-outlined text-[32px]">power_off</span>
             </div>
             <h2 className="text-xl font-semibold text-white mb-2">{t("serverDisconnected")}</h2>

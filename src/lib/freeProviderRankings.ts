@@ -9,7 +9,7 @@
  */
 
 import { NOAUTH_PROVIDERS, OAUTH_PROVIDERS, APIKEY_PROVIDERS } from "@/shared/constants/providers";
-import { REGISTRY } from "@omniroute/open-sse/config/providerRegistry";
+import { REGISTRY } from "@xenia/open-sse/config/providerRegistry";
 import { listModelIntelligence } from "./db/modelIntelligence";
 import { getProviderConnections } from "./db/providers";
 import { getCustomModels } from "./db/models";
@@ -250,7 +250,10 @@ const TERMINAL_CONNECTION_STATUSES = new Set(["credits_exhausted", "banned", "ex
  * quota lockout (model lockout, `open-sse/services/accountFallback.ts`) is a
  * deferred Phase 3 and is intentionally NOT consulted here.
  */
-export function isProviderUsable(connections: ConnectionState[], now: number = Date.now()): boolean {
+export function isProviderUsable(
+  connections: ConnectionState[],
+  now: number = Date.now()
+): boolean {
   return connections.some((conn) => {
     const status = (conn.testStatus || "").trim().toLowerCase();
     if (TERMINAL_CONNECTION_STATUSES.has(status)) return false;

@@ -13,7 +13,7 @@ import {
   getUpstreamProxyConfig,
 } from "@/lib/db/upstreamProxy";
 import { getProviderConnections } from "@/lib/db/providers";
-import { clearCliproxyapiUrlCache } from "@omniroute/open-sse/executors/cliproxyapi.ts";
+import { clearCliproxyapiUrlCache } from "@xenia/open-sse/executors/cliproxyapi.ts";
 import {
   ensurePersistentManagementPasswordHash,
   getStoredManagementPassword,
@@ -155,10 +155,7 @@ function attemptedKeysOf(body: Record<string, unknown> | null | undefined): stri
   if (!body || typeof body !== "object") return [];
   return Object.keys(body).filter(
     (k) =>
-      k !== "currentPassword" &&
-      k !== "newPassword" &&
-      k !== "password" &&
-      k !== "expectedRevision"
+      k !== "currentPassword" && k !== "newPassword" && k !== "password" && k !== "expectedRevision"
   );
 }
 

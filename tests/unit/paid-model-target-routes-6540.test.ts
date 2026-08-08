@@ -5,16 +5,15 @@ import os from "node:os";
 import path from "node:path";
 import { makeManagementSessionRequest } from "../helpers/managementSession.ts";
 
-const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-paid-target-routes-6540-"));
+const TEST_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-paid-target-routes-6540-"));
 process.env.DATA_DIR = TEST_DATA_DIR;
 
 const core = await import("../../src/lib/db/core.ts");
 const settingsDb = await import("../../src/lib/db/settings.ts");
 const settingsRoute = await import("../../src/app/api/settings/route.ts");
 const comboDefaultsRoute = await import("../../src/app/api/settings/combo-defaults/route.ts");
-const backgroundDegradationRoute = await import(
-  "../../src/app/api/settings/background-degradation/route.ts"
-);
+const backgroundDegradationRoute =
+  await import("../../src/app/api/settings/background-degradation/route.ts");
 
 // A provider present in the free-model catalog (so providerHasFreeModels is
 // true) but a model id that is NOT one of its documented free models.

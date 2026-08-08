@@ -10,7 +10,7 @@ export default function MemoryConceptCard() {
   return (
     <div className="rounded-xl border border-border bg-bg-subtle/50 p-4">
       <div className="flex items-start gap-3">
-        <div className="p-2 rounded-lg bg-violet-500/10 text-violet-500 shrink-0">
+        <div className="p-2 rounded-lg bg-gray-500/10 text-gray-500 shrink-0">
           <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             psychology
           </span>

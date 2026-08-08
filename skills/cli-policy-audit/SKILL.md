@@ -11,8 +11,8 @@ Inspect audit logs, manage access policies, view telemetry data, and review requ
 ## Quick install
 
 ```bash
-npm install -g omniroute   # or: npx omniroute
-omniroute --version
+npm install -g xenia   # or: npx xenia
+xenia --version
 ```
 
 ## Subcommands
@@ -22,7 +22,7 @@ omniroute --version
 **Example:**
 
 ```bash
-omniroute audit
+xenia audit
 ```
 
 ### `audit tail`
@@ -36,7 +36,7 @@ omniroute audit
 **Example:**
 
 ```bash
-omniroute audit tail
+xenia audit tail
 ```
 
 ### `audit search <query>`
@@ -53,7 +53,7 @@ omniroute audit tail
 **Example:**
 
 ```bash
-omniroute audit search <query>
+xenia audit search <query>
 ```
 
 ### `audit export <file>`
@@ -68,7 +68,7 @@ omniroute audit search <query>
 **Example:**
 
 ```bash
-omniroute audit export <file>
+xenia audit export <file>
 ```
 
 ### `audit stats`
@@ -81,7 +81,7 @@ omniroute audit export <file>
 **Example:**
 
 ```bash
-omniroute audit stats
+xenia audit stats
 ```
 
 ### `audit get <id>`
@@ -93,7 +93,7 @@ omniroute audit stats
 **Example:**
 
 ```bash
-omniroute audit get <id>
+xenia audit get <id>
 ```
 
 ### `logs`
@@ -116,7 +116,7 @@ omniroute audit get <id>
 **Example:**
 
 ```bash
-omniroute logs
+xenia logs
 ```
 
 ### `policy`
@@ -124,7 +124,7 @@ omniroute logs
 **Example:**
 
 ```bash
-omniroute policy
+xenia policy
 ```
 
 ### `policy list`
@@ -137,7 +137,7 @@ omniroute policy
 **Example:**
 
 ```bash
-omniroute policy list
+xenia policy list
 ```
 
 ### `policy get <id>`
@@ -145,7 +145,7 @@ omniroute policy list
 **Example:**
 
 ```bash
-omniroute policy get <id>
+xenia policy get <id>
 ```
 
 ### `policy create`
@@ -153,7 +153,7 @@ omniroute policy get <id>
 **Example:**
 
 ```bash
-omniroute policy create
+xenia policy create
 ```
 
 ### `policy update <id>`
@@ -161,7 +161,7 @@ omniroute policy create
 **Example:**
 
 ```bash
-omniroute policy update <id>
+xenia policy update <id>
 ```
 
 ### `policy delete <id>`
@@ -173,7 +173,7 @@ omniroute policy update <id>
 **Example:**
 
 ```bash
-omniroute policy delete <id>
+xenia policy delete <id>
 ```
 
 ### `policy evaluate`
@@ -186,7 +186,7 @@ omniroute policy delete <id>
 **Example:**
 
 ```bash
-omniroute policy evaluate
+xenia policy evaluate
 ```
 
 ### `policy export <file>`
@@ -194,7 +194,7 @@ omniroute policy evaluate
 **Example:**
 
 ```bash
-omniroute policy export <file>
+xenia policy export <file>
 ```
 
 ### `policy import <file>`
@@ -206,7 +206,7 @@ omniroute policy export <file>
 **Example:**
 
 ```bash
-omniroute policy import <file>
+xenia policy import <file>
 ```
 
 ### `telemetry`
@@ -214,7 +214,7 @@ omniroute policy import <file>
 **Example:**
 
 ```bash
-omniroute telemetry
+xenia telemetry
 ```
 
 ### `telemetry summary`
@@ -227,7 +227,7 @@ omniroute telemetry
 **Example:**
 
 ```bash
-omniroute telemetry summary
+xenia telemetry summary
 ```
 
 ### `telemetry export`
@@ -240,5 +240,5 @@ omniroute telemetry summary
 **Example:**
 
 ```bash
-omniroute telemetry export
+xenia telemetry export
 ```

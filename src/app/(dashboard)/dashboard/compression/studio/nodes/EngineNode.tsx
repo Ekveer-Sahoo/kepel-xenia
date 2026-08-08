@@ -6,12 +6,12 @@ import { StatusDot } from "@/shared/components/flow/StatusDot";
 // ── Layer pill color map (10-layer model) ─────────────────────────────────
 
 const LAYER_COLORS: Record<string, string> = {
-  L1: "#3b82f6", // prose — blue
-  L3: "#f97316", // tool — orange
-  L4: "#22c55e", // code — green
-  L5: "#a855f7", // MCP — purple
-  L6: "#9ca3af", // history — gray
-  L9: "#ec4899", // pruning — pink
+  L1: "#7a7a7a", // prose — blue
+  L3: "#909090", // tool — orange
+  L4: "#898989", // code — green
+  L5: "#808080", // MCP — purple
+  L6: "#a2a2a2", // history — gray
+  L9: "#828282", // pruning — pink
 };
 
 /** Map engine name → layer tags for the pill display */
@@ -29,9 +29,9 @@ const ENGINE_LAYER_MAP: Record<string, string[]> = {
 };
 
 function getSavingsColor(savingsPercent: number): string {
-  if (savingsPercent >= 30) return "#22c55e";
-  if (savingsPercent >= 15) return "#f59e0b";
-  return "#6b7280";
+  if (savingsPercent >= 30) return "#898989";
+  if (savingsPercent >= 15) return "#a7a7a7";
+  return "#727272";
 }
 
 // ── Node data shape ───────────────────────────────────────────────────────
@@ -72,14 +72,14 @@ export function EngineNode({ data }: NodeProps) {
   const tokOut = compressedTokens as number;
   const techniques = (techniquesUsed as string[]).slice(0, 2);
 
-  const borderColor = skipped ? "var(--color-border)" : running ? "#f59e0b" : color;
+  const borderColor = skipped ? "var(--color-border)" : running ? "#a7a7a7" : color;
 
   return (
     <div
       className="rounded-lg border-2 bg-bg transition-all duration-300 min-w-[150px] max-w-[180px]"
       style={{
         borderColor,
-        boxShadow: running ? `0 0 14px #f59e0b40` : skipped ? "none" : `0 0 10px ${color}30`,
+        boxShadow: running ? `0 0 14px #a7a7a740` : skipped ? "none" : `0 0 10px ${color}30`,
       }}
     >
       <Handle
@@ -98,7 +98,7 @@ export function EngineNode({ data }: NodeProps) {
         className="flex items-center gap-1.5 px-2.5 pt-2 pb-1"
         style={{ borderBottom: "1px solid var(--color-border)" }}
       >
-        {running && <StatusDot color="#f59e0b" sizeClass="size-1.5" />}
+        {running && <StatusDot color="#a7a7a7" sizeClass="size-1.5" />}
         <span className="text-xs font-semibold truncate flex-1" title={engine as string}>
           {engine as string}
         </span>
@@ -151,8 +151,8 @@ export function EngineNode({ data }: NodeProps) {
                 key={layer}
                 className="text-[9px] px-1 rounded-sm font-medium"
                 style={{
-                  backgroundColor: `${LAYER_COLORS[layer] ?? "#6b7280"}22`,
-                  color: LAYER_COLORS[layer] ?? "#6b7280",
+                  backgroundColor: `${LAYER_COLORS[layer] ?? "#727272"}22`,
+                  color: LAYER_COLORS[layer] ?? "#727272",
                 }}
               >
                 {layer}

@@ -106,7 +106,7 @@ function readTables(dbPath) {
 }
 
 function findDb(dataDir) {
-  const candidates = ["storage.sqlite", "omniroute.sqlite", "data.sqlite"];
+  const candidates = ["storage.sqlite", "xenia.sqlite", "data.sqlite"];
   for (const name of candidates) {
     const p = path.join(dataDir, name);
     if (fs.existsSync(p)) return p;
@@ -117,7 +117,7 @@ function findDb(dataDir) {
 
 /** Boot an installed CLI and poll health. Returns { ok, version, failures, tail }. */
 async function bootAndProbe({ prefix, dataDir, port, expectVersion, label }) {
-  const binPath = path.join(prefix, "bin", "omniroute");
+  const binPath = path.join(prefix, "bin", "xenia");
   if (!fs.existsSync(binPath)) {
     return { ok: false, failures: [`${label}: bin not found at ${binPath}`], tail: [] };
   }
@@ -129,7 +129,7 @@ async function bootAndProbe({ prefix, dataDir, port, expectVersion, label }) {
       JWT_SECRET: "install-upgrade-gate-secret-with-sufficient-length",
       API_KEY_SECRET: "install-upgrade-gate-api-key-secret-long",
       DISABLE_SQLITE_AUTO_BACKUP: "true",
-      OMNIROUTE_SKIP_SYSTEM_TRUST: "1",
+      XENIA_SKIP_SYSTEM_TRUST: "1",
     },
     stdio: ["ignore", "pipe", "pipe"],
     detached: true,
@@ -151,7 +151,11 @@ async function bootAndProbe({ prefix, dataDir, port, expectVersion, label }) {
   let result = { ok: false, failures: [`${label}: never became healthy`], tail };
   while (Date.now() < deadline) {
     if (childExit !== null) {
-      result = { ok: false, failures: [`${label}: exited with code ${childExit} before serving`], tail };
+      result = {
+        ok: false,
+        failures: [`${label}: exited with code ${childExit} before serving`],
+        tail,
+      };
       break;
     }
     try {
@@ -162,7 +166,9 @@ async function bootAndProbe({ prefix, dataDir, port, expectVersion, label }) {
         // `status` may legitimately report degraded (no providers configured) — the gate
         // targets boot crashes and version mismatches, not health of a bare install.
         if (expectVersion && body.version !== expectVersion) {
-          failures.push(`${label}: health reports version ${body.version}, expected ${expectVersion}`);
+          failures.push(
+            `${label}: health reports version ${body.version}, expected ${expectVersion}`
+          );
         }
         result = { ok: failures.length === 0, version: body.version, failures, tail };
         break;
@@ -192,13 +198,15 @@ function npmInstallInto(prefix, spec) {
 
 function resolvePreviousVersion(current, explicit) {
   if (explicit) return explicit;
-  const out = execFileSync("npm", ["view", "omniroute", "dist-tags.latest"], { encoding: "utf8" });
+  const out = execFileSync("npm", ["view", "xenia", "dist-tags.latest"], { encoding: "utf8" });
   const latest = out.trim();
-  if (!latest) throw new Error("could not resolve omniroute@latest from npm");
+  if (!latest) throw new Error("could not resolve xenia@latest from npm");
   if (latest === current) {
     // The version under test is already published (re-run of a shipped release): step back
     // to the highest published version strictly below it.
-    const all = JSON.parse(execFileSync("npm", ["view", "omniroute", "versions", "--json"], { encoding: "utf8" }));
+    const all = JSON.parse(
+      execFileSync("npm", ["view", "xenia", "versions", "--json"], { encoding: "utf8" })
+    );
     const stable = all.filter((v) => !/-(rc|alpha|beta|pre|next)/.test(v) && v !== current);
     return stable[stable.length - 1];
   }
@@ -218,7 +226,7 @@ async function main() {
   }
   const version = JSON.parse(fs.readFileSync(path.join(ROOT, "package.json"), "utf8")).version;
   const allowlist = loadAllowlist(ROOT);
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "omniroute-install-upgrade-"));
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "xenia-install-upgrade-"));
   const failures = [];
   const warnings = [];
 
@@ -257,12 +265,12 @@ async function main() {
       warn("PHASE B skipped (--skip-upgrade)");
     } else {
       const previous = resolvePreviousVersion(version, explicitFrom);
-      log(`PHASE B — upgrade path: omniroute@${previous} → v${version}`);
+      log(`PHASE B — upgrade path: xenia@${previous} → v${version}`);
       const bPrefix = path.join(tmp, "b-prefix");
       const bData = path.join(tmp, "b-data");
       fs.mkdirSync(bData, { recursive: true });
 
-      npmInstallInto(bPrefix, `omniroute@${previous}`);
+      npmInstallInto(bPrefix, `xenia@${previous}`);
       const before = await bootAndProbe({
         prefix: bPrefix,
         dataDir: bData,
@@ -273,7 +281,9 @@ async function main() {
       if (!before.ok) {
         // A broken PREVIOUS version is not this release's fault — degrade to a warning so a
         // historically bad publish cannot block the current one.
-        warnings.push(`previous version ${previous} did not boot cleanly — upgrade path unverified`);
+        warnings.push(
+          `previous version ${previous} did not boot cleanly — upgrade path unverified`
+        );
         for (const f of before.failures) warn(f);
       } else {
         const beforeDb = findDb(bData);
@@ -334,7 +344,10 @@ async function main() {
 
 // Only run the (expensive) gate when invoked directly — importing this module for the pure
 // helper above must not pack, install or boot anything.
-if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname)) {
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname)
+) {
   main().catch((err) => {
     console.error(`[install-upgrade] crashed: ${err?.message ?? err}`);
     process.exit(1);

@@ -107,8 +107,6 @@ function mergeUpdateStep(steps: UpdateStep[], nextStep: UpdateStep) {
 // Quick-start link classes, extracted so each <Link> still fits on one line with
 // prefetch={false} (#8281) — this file is size-frozen.
 const INLINE_LINK = "text-primary hover:underline";
-const DOCS_LINK =
-  "hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-border text-text-muted hover:text-text-main hover:bg-bg-subtle transition-colors";
 
 export default function HomePageClient({ machineId }: HomePageClientProps) {
   const router = useRouter();
@@ -145,28 +143,28 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
     if (platform === "darwin") {
       return {
         label: "Download DMG (macOS)",
-        url: `https://github.com/diegosouzapw/OmniRoute/releases/download/v${cleanLatest}/OmniRoute-${cleanLatest}.dmg`,
-        desc: `A new version of the OmniRoute desktop app is available. Please download and install the macOS DMG installer to update (current: v${versionInfo?.current || ""}).`,
+        url: `https://github.com/diegosouzapw/Xenia/releases/download/v${cleanLatest}/Xenia-${cleanLatest}.dmg`,
+        desc: `A new version of the Xenia desktop app is available. Please download and install the macOS DMG installer to update (current: v${versionInfo?.current || ""}).`,
       };
     }
     if (platform === "win32") {
       return {
         label: "Download EXE (Windows)",
-        url: `https://github.com/diegosouzapw/OmniRoute/releases/download/v${cleanLatest}/OmniRoute.Setup.${cleanLatest}.exe`,
-        desc: `A new version of the OmniRoute desktop app is available. Please download and install the Windows EXE installer to update (current: v${versionInfo?.current || ""}).`,
+        url: `https://github.com/diegosouzapw/Xenia/releases/download/v${cleanLatest}/Xenia.Setup.${cleanLatest}.exe`,
+        desc: `A new version of the Xenia desktop app is available. Please download and install the Windows EXE installer to update (current: v${versionInfo?.current || ""}).`,
       };
     }
     if (platform === "linux") {
       return {
         label: "Download AppImage (Linux)",
-        url: `https://github.com/diegosouzapw/OmniRoute/releases/download/v${cleanLatest}/OmniRoute-${cleanLatest}.AppImage`,
-        desc: `A new version of the OmniRoute desktop app is available. Please download the Linux AppImage package to update (current: v${versionInfo?.current || ""}).`,
+        url: `https://github.com/diegosouzapw/Xenia/releases/download/v${cleanLatest}/Xenia-${cleanLatest}.AppImage`,
+        desc: `A new version of the Xenia desktop app is available. Please download the Linux AppImage package to update (current: v${versionInfo?.current || ""}).`,
       };
     }
     return {
       label: "Download Update",
-      url: `https://github.com/diegosouzapw/OmniRoute/releases/tag/v${cleanLatest}`,
-      desc: `A new version of the OmniRoute desktop app is available. Please download the respective app format for your system to update (current: v${versionInfo?.current || ""}).`,
+      url: `https://github.com/diegosouzapw/Xenia/releases/tag/v${cleanLatest}`,
+      desc: `A new version of the Xenia desktop app is available. Please download the respective app format for your system to update (current: v${versionInfo?.current || ""}).`,
     };
   }, [platform, versionInfo?.latest, versionInfo?.current]);
 
@@ -556,7 +554,7 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
               {
                 step: "restart",
                 status: "pending",
-                message: "Waiting for OmniRoute to restart with the new version.",
+                message: "Waiting for Xenia to restart with the new version.",
               },
             ]
           : [
@@ -568,7 +566,7 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
               {
                 step: "restart",
                 status: "pending",
-                message: "Waiting for OmniRoute to restart with the new version.",
+                message: "Waiting for Xenia to restart with the new version.",
               },
             ];
 
@@ -600,14 +598,14 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
               next = mergeUpdateStep(next, {
                 step: "complete",
                 status: "done",
-                message: `OmniRoute is now running v${targetVersion}.`,
+                message: `Xenia is now running v${targetVersion}.`,
               });
 
               return next;
             });
             setUpdating(false);
             setUpdatePhase("done");
-            notify.success(`OmniRoute updated to v${targetVersion}.`);
+            notify.success(`Xenia updated to v${targetVersion}.`);
             await fetchData();
             return;
           }
@@ -631,7 +629,7 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
             next = mergeUpdateStep(next, {
               step: "restart",
               status: "pending",
-              message: `Waiting for OmniRoute to come back on v${targetVersion}.`,
+              message: `Waiting for Xenia to come back on v${targetVersion}.`,
             });
 
             return next;
@@ -656,7 +654,7 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
             next = mergeUpdateStep(next, {
               step: "restart",
               status: "running",
-              message: "Service restart in progress. Waiting for OmniRoute to come back online...",
+              message: "Service restart in progress. Waiting for Xenia to come back online...",
             });
 
             return next;
@@ -811,7 +809,7 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
                     ? "Update Complete!"
                     : updatePhase === "failed"
                       ? "Update Failed"
-                      : "Updating OmniRoute..."}
+                      : "Updating Xenia..."}
                 </h3>
                 <p className="text-xs text-text-muted mt-0.5">
                   {updatePhase === "done"
@@ -834,9 +832,9 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
                       s.status === "running"
                         ? "border-primary/40 bg-primary/5"
                         : s.status === "done"
-                          ? "border-green-500/30 bg-green-500/5"
+                          ? "border-gray-500/30 bg-gray-500/5"
                           : s.status === "failed"
-                            ? "border-red-500/30 bg-red-500/5"
+                            ? "border-gray-500/30 bg-gray-500/5"
                             : "border-border bg-bg-subtle"
                     }`}
                   >
@@ -845,15 +843,15 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
                         progress_activity
                       </span>
                     ) : s.status === "done" ? (
-                      <span className="material-symbols-outlined text-green-500 text-[18px]">
+                      <span className="material-symbols-outlined text-gray-500 text-[18px]">
                         check_circle
                       </span>
                     ) : s.status === "failed" ? (
-                      <span className="material-symbols-outlined text-red-500 text-[18px]">
+                      <span className="material-symbols-outlined text-gray-500 text-[18px]">
                         error
                       </span>
                     ) : (
-                      <span className="material-symbols-outlined text-amber-500 text-[18px]">
+                      <span className="material-symbols-outlined text-gray-500 text-[18px]">
                         warning
                       </span>
                     )}
@@ -866,7 +864,7 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
 
               {/* Error message */}
               {updateSteps.find((s) => s.step === "error") && (
-                <div className="mt-1 px-3 py-2.5 rounded-lg border border-red-500/30 bg-red-500/5 text-red-500">
+                <div className="mt-1 px-3 py-2.5 rounded-lg border border-gray-500/30 bg-gray-500/5 text-gray-500">
                   <p className="text-xs font-mono break-all">
                     {updateSteps.find((s) => s.step === "error")?.message}
                   </p>
@@ -875,8 +873,8 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
 
               {/* Completion message */}
               {updatePhase === "done" && (
-                <div className="mt-1 px-3 py-2.5 rounded-lg border border-green-500/30 bg-green-500/5">
-                  <p className="text-sm font-semibold text-green-500 flex items-center gap-2">
+                <div className="mt-1 px-3 py-2.5 rounded-lg border border-gray-500/30 bg-gray-500/5">
+                  <p className="text-sm font-semibold text-gray-500 flex items-center gap-2">
                     <span className="material-symbols-outlined text-[18px]">check_circle</span>
                     {updateSteps.find((s) => s.step === "complete")?.message || "Update complete!"}
                   </p>
@@ -1031,7 +1029,7 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
                       variant="secondary"
                       onClick={() =>
                         openExternal(
-                          `https://github.com/diegosouzapw/OmniRoute/releases/tag/v${versionInfo.latest}`
+                          `https://github.com/diegosouzapw/Xenia/releases/tag/v${versionInfo.latest}`
                         )
                       }
                       className="font-semibold text-xs py-1"
@@ -1096,22 +1094,13 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
       {showQuickStartOnHome && (
         <Card>
           <div className="flex flex-col gap-5">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-lg font-semibold">{t("quickStart")}</h2>
-                <p className="text-sm text-text-muted">{t("quickStartDesc")}</p>
-              </div>
-              <Link href="/docs" prefetch={false} className={DOCS_LINK}>
-                <span className="material-symbols-outlined text-[14px]">menu_book</span>
-                {t("fullDocs")}
-              </Link>
+            <div>
+              <h2 className="text-lg font-semibold">{t("quickStart")}</h2>
+              <p className="text-sm text-text-muted">{t("quickStartDesc")}</p>
             </div>
 
             <ol className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
               <li className="rounded-lg border border-border bg-bg-subtle p-4 flex gap-3">
-                <div className="flex items-center justify-center size-8 rounded-lg bg-primary/10 text-primary shrink-0">
-                  <span className="material-symbols-outlined text-[18px]">key</span>
-                </div>
                 <div>
                   <span className="font-semibold">{t("step1Title")}</span>
                   <p className="text-text-muted mt-0.5">
@@ -1130,9 +1119,6 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
                 </div>
               </li>
               <li className="rounded-lg border border-border bg-bg-subtle p-4 flex gap-3">
-                <div className="flex items-center justify-center size-8 rounded-lg bg-green-500/10 text-green-500 shrink-0">
-                  <span className="material-symbols-outlined text-[18px]">dns</span>
-                </div>
                 <div>
                   <span className="font-semibold">{t("step2Title")}</span>
                   <p className="text-text-muted mt-0.5">
@@ -1147,9 +1133,6 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
                 </div>
               </li>
               <li className="rounded-lg border border-border bg-bg-subtle p-4 flex gap-3">
-                <div className="flex items-center justify-center size-8 rounded-lg bg-blue-500/10 text-blue-500 shrink-0">
-                  <span className="material-symbols-outlined text-[18px]">link</span>
-                </div>
                 <div>
                   <span className="font-semibold">{t("step3Title")}</span>
                   <p className="text-text-muted mt-0.5">
@@ -1158,9 +1141,6 @@ export default function HomePageClient({ machineId }: HomePageClientProps) {
                 </div>
               </li>
               <li className="rounded-lg border border-border bg-bg-subtle p-4 flex gap-3">
-                <div className="flex items-center justify-center size-8 rounded-lg bg-amber-500/10 text-amber-500 shrink-0">
-                  <span className="material-symbols-outlined text-[18px]">analytics</span>
-                </div>
                 <div>
                   <span className="font-semibold">{t("step4Title")}</span>
                   <p className="text-text-muted mt-0.5">
@@ -1218,13 +1198,13 @@ function ProviderOverviewCard({
   const tc = useTranslations("common");
 
   const statusVariant =
-    item.errors > 0 ? "text-red-500" : item.connected > 0 ? "text-green-500" : "text-text-muted";
+    item.errors > 0 ? "text-gray-500" : item.connected > 0 ? "text-gray-500" : "text-text-muted";
 
   const authTypeConfig = {
     "no-auth": { color: "bg-stone-500", label: "No Auth" },
-    free: { color: "bg-green-500", label: tc("free") },
-    oauth: { color: "bg-blue-500", label: t("oauthLabel") },
-    apikey: { color: "bg-amber-500", label: t("apiKeyLabel") },
+    free: { color: "bg-gray-500", label: tc("free") },
+    oauth: { color: "bg-gray-500", label: t("oauthLabel") },
+    apikey: { color: "bg-gray-500", label: t("apiKeyLabel") },
   };
   const authInfo = authTypeConfig[item.authType] || authTypeConfig.apikey;
 
@@ -1257,7 +1237,7 @@ function ProviderOverviewCard({
           {metrics && metrics.totalRequests > 0 && (
             <div className="flex items-center gap-2 mt-0.5">
               <span className="text-[10px] text-text-muted">
-                <span className="text-emerald-500">{metrics.totalSuccesses}</span>/
+                <span className="text-gray-500">{metrics.totalSuccesses}</span>/
                 {t("requestsShort", { count: metrics.totalRequests })}
               </span>
               <span className="text-[10px] text-text-muted">{metrics.successRate}%</span>
@@ -1317,7 +1297,7 @@ function ProviderModelsModal({
             ? t("modelAvailable", { count: models.length })
             : t("modelsAvailable", { count: models.length })}
           {provider.total > 0 && (
-            <span className="ml-auto text-xs text-green-500">
+            <span className="ml-auto text-xs text-gray-500">
               ●{" "}
               {provider.connected === 1
                 ? t("connectionsActive", { count: provider.connected })

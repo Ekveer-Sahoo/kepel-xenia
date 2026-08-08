@@ -124,11 +124,11 @@ export function ApiKeyUsageLimitCard({
   };
 
   return (
-    <Card className="p-5 border-emerald-500/20">
+    <Card className="p-5 border-gray-500/20">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-emerald-400 text-lg">paid</span>
+            <span className="material-symbols-outlined text-gray-400 text-lg">paid</span>
             <h3 className="text-sm font-semibold text-text-main">{t("apiKeyUsdQuota")}</h3>
             {payload?.key.name && (
               <span className="truncate rounded bg-surface px-2 py-0.5 text-xs text-text-muted">
@@ -146,7 +146,7 @@ export function ApiKeyUsageLimitCard({
           onClick={() => setEnabled((prev) => !prev)}
           className={`inline-flex shrink-0 items-center justify-center gap-1.5 rounded-md border px-3 py-2 text-xs font-semibold transition-colors ${
             enabled
-              ? "border-emerald-500/30 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+              ? "border-gray-500/30 bg-gray-500/15 text-gray-700 dark:text-gray-300"
               : "border-border bg-black/5 text-text-muted dark:bg-white/5"
           } ${loading || !payload ? "opacity-50" : ""}`}
         >
@@ -197,7 +197,7 @@ export function ApiKeyUsageLimitCard({
         </div>
       </div>
 
-      {error && <p className="mt-3 text-xs text-red-500">{error}</p>}
+      {error && <p className="mt-3 text-xs text-gray-500">{error}</p>}
       <div className="mt-4 flex justify-end">
         <button
           type="button"

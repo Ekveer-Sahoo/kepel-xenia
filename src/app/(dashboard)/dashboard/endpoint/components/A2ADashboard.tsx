@@ -75,11 +75,11 @@ const TASK_STATES: Array<"all" | A2ATaskState> = [
 ];
 
 function stateClass(state: A2ATaskState) {
-  if (state === "completed") return "bg-green-500/15 text-green-500";
-  if (state === "failed") return "bg-red-500/15 text-red-500";
-  if (state === "working") return "bg-amber-500/15 text-amber-500";
+  if (state === "completed") return "bg-gray-500/15 text-gray-500";
+  if (state === "failed") return "bg-gray-500/15 text-gray-500";
+  if (state === "working") return "bg-gray-500/15 text-gray-500";
   if (state === "cancelled") return "bg-gray-500/15 text-gray-400";
-  return "bg-blue-500/15 text-blue-500";
+  return "bg-gray-500/15 text-gray-500";
 }
 
 export default function A2ADashboardPage() {
@@ -440,16 +440,16 @@ export default function A2ADashboardPage() {
                     task.metadata?.fsmPhase || (task.metadata?.workflowFSM as any)?.currentPhase;
                   let fsmBadgeColor = "bg-gray-500/15 text-gray-500";
                   if (fsmPhase === "plan" || fsmPhase === "plan_review")
-                    fsmBadgeColor = "bg-purple-500/15 text-purple-500";
-                  else if (fsmPhase === "execute") fsmBadgeColor = "bg-blue-500/15 text-blue-500";
+                    fsmBadgeColor = "bg-gray-500/15 text-gray-500";
+                  else if (fsmPhase === "execute") fsmBadgeColor = "bg-gray-500/15 text-gray-500";
                   else if (
                     ["code_review", "quality_review", "security", "test", "output_review"].includes(
                       fsmPhase
                     )
                   )
-                    fsmBadgeColor = "bg-amber-500/15 text-amber-500";
-                  else if (fsmPhase === "done") fsmBadgeColor = "bg-green-500/15 text-green-500";
-                  else if (fsmPhase === "failed") fsmBadgeColor = "bg-red-500/15 text-red-500";
+                    fsmBadgeColor = "bg-gray-500/15 text-gray-500";
+                  else if (fsmPhase === "done") fsmBadgeColor = "bg-gray-500/15 text-gray-500";
+                  else if (fsmPhase === "failed") fsmBadgeColor = "bg-gray-500/15 text-gray-500";
 
                   return (
                     <tr key={task.id} className="border-b border-border/40">

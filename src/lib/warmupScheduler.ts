@@ -3,8 +3,8 @@ import { getSettings } from "@/lib/db/settings";
 import { resolveProxyForConnection } from "@/lib/db/settings";
 import { extractResolvedProxyConfig } from "@/lib/tokenHealthCheck";
 import { refreshAndUpdateCredentials } from "@/lib/usage/providerLimits";
-import { runWithProxyContext } from "@omniroute/open-sse/utils/proxyFetch";
-import { logger } from "@omniroute/open-sse/utils/logger";
+import { runWithProxyContext } from "@xenia/open-sse/utils/proxyFetch";
+import { logger } from "@xenia/open-sse/utils/logger";
 import { matchesCron } from "@/lib/jobs/cronMatch";
 import { getCircuitBreakerStore } from "./warmupScheduler/circuitBreakerFactory";
 import { TERMINAL_CONNECTION_STATUSES } from "@/lib/quota/connectionRecovery";
@@ -36,13 +36,13 @@ function getWarmupMessage(): string {
 }
 
 declare global {
-  var __omnirouteWarmupScheduler: {
+  var __xeniaWarmupScheduler: {
     timer: NodeJS.Timeout | null;
     executing: boolean;
     lastFireMinute: number;
   };
 }
-const STATE = (globalThis.__omnirouteWarmupScheduler ??= {
+const STATE = (globalThis.__xeniaWarmupScheduler ??= {
   timer: null,
   executing: false,
   lastFireMinute: -1,
@@ -51,16 +51,16 @@ const STATE = (globalThis.__omnirouteWarmupScheduler ??= {
 const TRUE_ENV_VALUES = new Set(["1", "true", "yes", "on"]);
 
 function isEnabled(): boolean {
-  const raw = process.env.OMNIROUTE_WARMUP_ENABLED;
+  const raw = process.env.XENIA_WARMUP_ENABLED;
   return raw ? TRUE_ENV_VALUES.has(raw.trim().toLowerCase()) : false;
 }
 
 function getCron(): string {
-  return process.env.OMNIROUTE_WARMUP_CRON || "0 7 * * *";
+  return process.env.XENIA_WARMUP_CRON || "0 7 * * *";
 }
 
 function getConcurrency(): number {
-  const raw = process.env.OMNIROUTE_WARMUP_CONCURRENCY;
+  const raw = process.env.XENIA_WARMUP_CONCURRENCY;
   const parsed = raw ? parseInt(raw, 10) : NaN;
   return Math.min(10, Math.max(1, Number.isFinite(parsed) ? parsed : 3));
 }
@@ -91,7 +91,7 @@ function toPacificTime(date: Date): Date {
 export function startWarmupScheduler(): NodeJS.Timeout | null {
   if (STATE.timer) return STATE.timer;
   if (!isEnabled()) {
-    log.info("disabled (OMNIROUTE_WARMUP_ENABLED not set)");
+    log.info("disabled (XENIA_WARMUP_ENABLED not set)");
     return null;
   }
   const cron = getCron();
@@ -200,7 +200,7 @@ async function executeWarmup(): Promise<void> {
       urlSuffix: "?beta=true",
       headers,
       proxyConfig,
-      model: process.env.OMNIROUTE_WARMUP_MODEL || "claude-3-5-haiku-20241022",
+      model: process.env.XENIA_WARMUP_MODEL || "claude-3-5-haiku-20241022",
     });
   }
 
@@ -235,7 +235,7 @@ async function executeWarmup(): Promise<void> {
 }
 
 async function getWarmupHeaders(): Promise<Record<string, string>> {
-  const { getClaudeCliHeaders } = await import("@omniroute/open-sse/config/providers/shared");
+  const { getClaudeCliHeaders } = await import("@xenia/open-sse/config/providers/shared");
   return getClaudeCliHeaders();
 }
 

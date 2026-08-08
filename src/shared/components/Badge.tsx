@@ -5,10 +5,10 @@ import { cn } from "@/shared/utils/cn";
 const variants = {
   default: "bg-black/5 dark:bg-white/10 text-text-muted",
   primary: "bg-primary/10 text-primary",
-  success: "bg-green-500/10 text-green-600 dark:text-green-400",
-  warning: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400",
-  error: "bg-red-500/10 text-red-600 dark:text-red-400",
-  info: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+  success: "bg-gray-500/10 text-gray-600 dark:text-gray-400",
+  warning: "bg-gray-500/10 text-gray-600 dark:text-gray-400",
+  error: "bg-gray-500/10 text-gray-600 dark:text-gray-400",
+  info: "bg-gray-500/10 text-gray-600 dark:text-gray-400",
 };
 
 const sizes = {
@@ -48,10 +48,10 @@ export default function Badge({
           aria-hidden="true"
           className={cn(
             "size-1.5 rounded-full",
-            variant === "success" && "bg-green-500",
-            variant === "warning" && "bg-yellow-500",
-            variant === "error" && "bg-red-500",
-            variant === "info" && "bg-blue-500",
+            variant === "success" && "bg-gray-500",
+            variant === "warning" && "bg-gray-500",
+            variant === "error" && "bg-gray-500",
+            variant === "info" && "bg-gray-500",
             variant === "primary" && "bg-primary",
             variant === "default" && "bg-gray-500"
           )}

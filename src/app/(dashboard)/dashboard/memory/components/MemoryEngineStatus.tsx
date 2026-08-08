@@ -14,9 +14,9 @@ type ChipColor = "green" | "gray" | "red";
 
 function StatusChip({ color }: { color: ChipColor }) {
   const colorMap: Record<ChipColor, string> = {
-    green: "bg-emerald-500",
+    green: "bg-gray-500",
     gray: "bg-border",
-    red: "bg-red-500",
+    red: "bg-gray-500",
   };
   return (
     <span
@@ -40,7 +40,7 @@ function ConfigureLink({
       type="button"
       data-testid={testId}
       onClick={onClick}
-      className="text-xs text-violet-400 hover:text-violet-300 underline-offset-2 hover:underline mt-1 inline-flex items-center gap-0.5"
+      className="text-xs text-gray-400 hover:text-gray-300 underline-offset-2 hover:underline mt-1 inline-flex items-center gap-0.5"
     >
       {label}
       <span aria-hidden="true">→</span>
@@ -77,21 +77,20 @@ export default function MemoryEngineStatus({ status, onConfigure }: Props) {
     },
     {
       label: t("engine.vectorStoreLabel"),
-      chip:
-        status.vectorStore.available
-          ? "green"
-          : status.vectorStore.backend === "none"
-            ? "gray"
-            : "red",
+      chip: status.vectorStore.available
+        ? "green"
+        : status.vectorStore.backend === "none"
+          ? "gray"
+          : "red",
       reason: status.vectorStore.reason,
       cta:
         status.vectorStore.backend === "none" ? (
-          <span className="text-xs text-amber-400 flex items-center gap-1">
+          <span className="text-xs text-gray-400 flex items-center gap-1">
             <span className="material-symbols-outlined text-[12px]">terminal</span>
             {t("engine.vectorStoreInstallHint")}
           </span>
         ) : status.vectorStore.needsReindex > 0 ? (
-          <span className="text-xs text-amber-400 flex items-center gap-1">
+          <span className="text-xs text-gray-400 flex items-center gap-1">
             <span className="material-symbols-outlined text-[12px]">warning</span>
             {t("engine.needsReindex", { count: status.vectorStore.needsReindex })}
           </span>

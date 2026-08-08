@@ -25,7 +25,7 @@ import {
 
 const projectRoot = process.cwd();
 const distDir = path.resolve(process.env.NEXT_DIST_DIR || ".build/next");
-const backupRoot = path.join(os.tmpdir(), `omniroute-build-isolated-${process.pid}-${Date.now()}`);
+const backupRoot = path.join(os.tmpdir(), `xenia-build-isolated-${process.pid}-${Date.now()}`);
 
 export function getTransientBuildPaths(rootDir = projectRoot, env = process.env) {
   const paths = [
@@ -36,7 +36,7 @@ export function getTransientBuildPaths(rootDir = projectRoot, env = process.env)
     },
   ];
 
-  if (env.OMNIROUTE_BUILD_MOVE_TASKS === "1") {
+  if (env.XENIA_BUILD_MOVE_TASKS === "1") {
     paths.push({
       label: "task planning workspace",
       sourcePath: path.join(rootDir, "_tasks"),
@@ -127,7 +127,7 @@ export function resolveNextBuildBundlerFlag(baseEnv = process.env) {
   // on a 32-core box; ~20min -> 7min on ubuntu-latest), artifact validated
   // end-to-end (standalone smoke + e2e/package/electron CI jobs). Webpack stays as
   // the explicit escape hatch (=0) for bundler-compat regressions.
-  return baseEnv.OMNIROUTE_USE_TURBOPACK === "0" ? "--webpack" : "--turbopack";
+  return baseEnv.XENIA_USE_TURBOPACK === "0" ? "--webpack" : "--turbopack";
 }
 
 /**
@@ -138,7 +138,7 @@ export function resolveNextBuildBundlerFlag(baseEnv = process.env) {
  * once per real build without re-deriving the path.
  */
 export function getWindowsBuildProfileDir() {
-  return path.join(os.tmpdir(), `omniroute-build-winhome-${process.pid}`);
+  return path.join(os.tmpdir(), `xenia-build-winhome-${process.pid}`);
 }
 
 export function resolveNextBuildEnv(baseEnv = process.env, platform = process.platform) {
@@ -175,10 +175,10 @@ export function resolveNextBuildEnv(baseEnv = process.env, platform = process.pl
   // stalling/OOMing local `npm run build` (npm-global installs). #4076/#4104 fixed
   // this only in the Docker builder stage (ENV NODE_OPTIONS); the local/native path
   // was left unprotected. Respect an existing --max-old-space-size (Docker already
-  // sets one — don't clobber/duplicate) and let OMNIROUTE_BUILD_MEMORY_MB override.
+  // sets one — don't clobber/duplicate) and let XENIA_BUILD_MEMORY_MB override.
   // NOTE (#6409): --max-old-space-size only bounds V8's JS heap — it does NOT bound
   // Turbopack's native (Rust, off-V8-heap) memory, which is the default bundler as of
-  // #6283. On memory-constrained machines, set OMNIROUTE_USE_TURBOPACK=0 (webpack
+  // #6283. On memory-constrained machines, set XENIA_USE_TURBOPACK=0 (webpack
   // fallback) instead of raising this heap value; see docs/reference/ENVIRONMENT.md.
   if (!/--max-old-space-size/.test(env.NODE_OPTIONS || "")) {
     // Default 8 GB (was 4 GB): the clean module graph peaks ~3.9 GB during the webpack
@@ -186,7 +186,7 @@ export function resolveNextBuildEnv(baseEnv = process.env, platform = process.pl
     // headroom without risk. NOTE: heap size does NOT fix a poisoned scope — if the build
     // OOMs/livelocks far above this, check for worktrees/cruft leaking into the tsconfig
     // scope (run `npm run check:build-scope`), not for "more heap". See incident 2026-06-25.
-    const heapMb = Number(baseEnv.OMNIROUTE_BUILD_MEMORY_MB) || 8192;
+    const heapMb = Number(baseEnv.XENIA_BUILD_MEMORY_MB) || 8192;
     env.NODE_OPTIONS = `${env.NODE_OPTIONS || ""} --max-old-space-size=${heapMb}`.trim();
   }
 
@@ -270,7 +270,7 @@ export async function main() {
 
     if (isBackendOnlyBuild()) {
       console.log(
-        "[build-next-isolated] OMNIROUTE_BUILD_BACKEND_ONLY set — building API only (dashboard UI stubbed)"
+        "[build-next-isolated] XENIA_BUILD_BACKEND_ONLY set — building API only (dashboard UI stubbed)"
       );
       stubbedPages = stubDashboardPages(projectRoot);
       process.once("SIGINT", onFatalSignal);
@@ -337,7 +337,7 @@ export async function main() {
         );
         if (basePathWrite.status !== 0) {
           console.warn(
-            "[build-next-isolated] Non-fatal error writing BUILD_OMNIROUTE_BASE_PATH sentinel"
+            "[build-next-isolated] Non-fatal error writing BUILD_XENIA_BASE_PATH sentinel"
           );
         }
       } catch (assembleErr) {

@@ -257,7 +257,7 @@
     "entries": "條目",
     "until": "直到",
     "disableCombo": "禁用組合",
-    "liveMonitorDescriptionPrefix": "實時顯示請求流經OmniRoute時產生的事件。使用",
+    "liveMonitorDescriptionPrefix": "實時顯示請求流經Xenia時產生的事件。使用",
     "runningCount": "運行中數量",
     "noActiveConnectionsInGroup": "此分組中沒有活躍連接",
     "savedSuccessfully": "保存成功",
@@ -324,7 +324,7 @@
     "comboNamePlaceholder": "Combo名稱",
     "memoryRss": "記憶體RSS",
     "disableProvider": "禁用提供者",
-    "welcomeDesc": "歡迎使用OmniRoute。",
+    "welcomeDesc": "歡迎使用Xenia。",
     "nameLabel": "名稱",
     "allOperational": "全部運行正常",
     "backupNow": "立即備份",
@@ -394,7 +394,7 @@
     "showConfiguredOnly": "顯示已設定僅",
     "showFreeOnly": "僅免費",
     "addFirstProvider": "新增您的第一個提供者",
-    "addFirstProviderDesc": "連接AI提供者以開始通過OmniRoute路由請求。您可以使用免費提供者、API Key或OAuth帳戶。",
+    "addFirstProviderDesc": "連接AI提供者以開始通過Xenia路由請求。您可以使用免費提供者、API Key或OAuth帳戶。",
     "learnMore": "瞭解更多",
     "includeDomains": "包含域名",
     "promptCache": "提示快取",
@@ -935,7 +935,7 @@
     "batchConceptRetentionNote": "結果和錯誤檔案保留 30 天（Anthropic：29 天）"
   },
   "disabled": "已禁用",
-  "featureFlagOmnirouteEmergencyFallbackDescription": "將預算耗盡的請求路由到緊急免費備用提供者/模型。",
+  "featureFlagXeniaEmergencyFallbackDescription": "將預算耗盡的請求路由到緊急免費備用提供者/模型。",
   "featureFlagArenaEloSyncEnabledDescription": "啟用定期同步Arena AI排行榜ELO，用於模型智能排名。",
   "featureFlagExposeCcDiscoveryAliasesDescription": "__MISSING__:Advertise claude/&lt;provider&gt;/&lt;model&gt; mirror ids on /v1/models so Claude Code gateway model discovery lists non-Claude models. Warning: doubles catalog entries for all clients when enabled globally.",
   "sidebar": {
@@ -980,8 +980,8 @@
     "auditLog": "審計日誌",
     "shutdown": "停止服務",
     "restart": "重新啟動服務",
-    "shutdownConfirm": "確定要停止OmniRoute嗎？",
-    "restartConfirm": "確定要重新啟動OmniRoute嗎？",
+    "shutdownConfirm": "確定要停止Xenia嗎？",
+    "restartConfirm": "確定要重新啟動Xenia嗎？",
     "version": "v{version}",
     "debug": "調試",
     "system": "系統",
@@ -1214,11 +1214,11 @@
     "trafficInspector": "流量檢查器",
     "trafficInspectorSubtitle": "監控LLM呼叫 + 調試任何HTTPS流量",
     "cliCode": "CLI代碼的",
-    "cliCodeSubtitle": "指向OmniRoute的代碼工具",
+    "cliCodeSubtitle": "指向Xenia的代碼工具",
     "cliAgents": "CLI智能體",
     "cliAgentsSubtitle": "自主CLI智能體",
     "acpAgents": "ACP智能體",
-    "acpAgentsSubtitle": "由OmniRoute生成的CLI",
+    "acpAgentsSubtitle": "由Xenia生成的CLI",
     "skipToContent": "跳到內容",
     "mainNavigation": "主導航",
     "unpinSection": "取消固定分區",
@@ -1503,7 +1503,7 @@
     "cliTools": "CLI工具",
     "cliToolsDescription": "設定CLI工具",
     "home": "首頁",
-    "homeDescription": "歡迎使用OmniRoute",
+    "homeDescription": "歡迎使用Xenia",
     "endpoint": "端點",
     "endpointDescription": "管理代理端點、MCP、A2A和API端點",
     "mcp": "MCP",
@@ -1522,7 +1522,7 @@
     "cacheDescription": "監控提供者提示快取效率和本地語意回應複用。",
     "limitsDescription": "為每個API Key和提供者設定速率限制和配額",
     "runtimeDescription": "實時運行時可觀測性—斷路器、冷卻、模型鎖定、工作階段和配額告警",
-    "apiManagerDescription": "管理OmniRoute實例的API Key和訪問控制",
+    "apiManagerDescription": "管理Xenia實例的API Key和訪問控制",
     "batchDescription": "通過批次API呼叫非同步處理大量請求",
     "contextCavemanDescription": "基於規則的消息壓縮、語言包、分析和輸出模式控制。",
     "contextRtkDescription": "針對工具輸出、終端日誌和構建結果的命令感知壓縮。",
@@ -2031,7 +2031,7 @@
     "direct": "直連",
     "routeUnableToLoad": "無法載入路由解釋",
     "routeNoRequestLogs": "沒有可用的請求日誌",
-    "routeNoRequestLogsDescription": "請先通過OmniRoute發送流量。路由解釋是根據持久化的結構化呼叫日誌生成的。",
+    "routeNoRequestLogsDescription": "請先通過Xenia發送流量。路由解釋是根據持久化的結構化呼叫日誌生成的。",
     "routeDecisionSummary": "決策摘要",
     "routeConfidence": "{confidence} 置信度",
     "routeScore": "路由評分",
@@ -2103,7 +2103,7 @@
     "keyName": "金鑰名稱",
     "keyNamePlaceholder": "例如：生產環境金鑰、開發環境金鑰",
     "keyNameDesc": "使用清晰的名稱標識該金鑰的用途",
-    "managementAccessDesc": "允許此API Key管理OmniRoute設定。",
+    "managementAccessDesc": "允許此API Key管理Xenia設定。",
     "selfServiceVisibility": "自助可見性",
     "selfServiceVisibilityDesc": "控制此金鑰可查看自身用量和共享上游配額的範圍。",
     "ownUsageVisibility": "自身成本和Token用量",
@@ -2302,7 +2302,7 @@
     "imagePromptPlaceholder": "日落時分有山脈的寧靜風景……",
     "videoPromptPlaceholder": "花朵綻放的延時攝影……",
     "musicPromptPlaceholder": "帶有合成器鋪底的歡快電子音樂……",
-    "speechTextPlaceholder": "你好！歡迎使用OmniRoute，您的智能AI網關……",
+    "speechTextPlaceholder": "你好！歡迎使用Xenia，您的智能AI網關……",
     "transcriptionPlaceholder": "上傳音頻檔案以進行轉錄……",
     "noImagesReturned": "未返回圖像。服務商可能已接受請求，但返回了空資料。",
     "generatedImageAlt": "已生成圖像 {index}",
@@ -2484,7 +2484,7 @@
     "video": "視頻",
     "videoSample": "山脈上空雲層的延時攝影",
     "webFetch": "網頁抓取",
-    "webSearchSample": "什麼是OmniRoute AI網關？",
+    "webSearchSample": "什麼是Xenia AI網關？",
     "noActiveProviderDescription": "無活動搜尋提供者。請在“提供者”中設定。",
     "configureProviders": "設定提供者",
     "compareQuery": "要比較的查詢",
@@ -2562,7 +2562,7 @@
     "configurationSaved": "設定保存成功。",
     "failedToSave": "保存設定失敗。",
     "noApiKeysCreateOne": "無API Key - 在“金鑰”頁面創建一個",
-    "defaultOmnirouteKey": "sk_omniroute（預設）",
+    "defaultXeniaKey": "sk_xenia（預設）",
     "selectModel": "選擇模型",
     "selectModelForAlias": "選擇 {alias} 的模型",
     "selectModelForTool": "選擇 {tool} 的模型",
@@ -2607,13 +2607,13 @@
       "xhigh": "超高"
     },
     "howItWorks": "工作原理：",
-    "antigravityHowWorksDesc": "Antigravity會向Google端點發起請求，MITM會攔截這些請求並重定向到OmniRoute。",
-    "antigravityStep1": "1. 啟動MITM，讓請求通過OmniRoute路由。",
+    "antigravityHowWorksDesc": "Antigravity會向Google端點發起請求，MITM會攔截這些請求並重定向到Xenia。",
+    "antigravityStep1": "1. 啟動MITM，讓請求通過Xenia路由。",
     "antigravityStep2Prefix": "2. 新增",
     "antigravityStep2Suffix": "新增到您的主機檔案中作為 127.0.0.1。",
     "antigravityStep3": "3. 打開Antigravity，請求就會被代理。",
-    "mitmHowWorksDesc": "{toolName} 會先向原始提供者端點發起請求，隨後由MITM攔截並重定向到OmniRoute。",
-    "mitmStep1": "1. 啟動MITM，讓請求經由OmniRoute路由。",
+    "mitmHowWorksDesc": "{toolName} 會先向原始提供者端點發起請求，隨後由MITM攔截並重定向到Xenia。",
+    "mitmStep1": "1. 啟動MITM，讓請求經由Xenia路由。",
     "mitmStep2Prefix": "2. 將",
     "mitmStep2Suffix": "新增到你的hosts檔案，並指向 127.0.0.1。",
     "mitmStep3": "3. 打開 {toolName}，後續請求就會自動通過代理轉發。",
@@ -2659,13 +2659,13 @@
     "applied": "已應用！",
     "failed": "失敗",
     "resetDone": "重置！",
-    "omnirouteConfiguredOpenAiCompatible": "OmniRoute已設定為OpenAI相容提供者",
+    "xeniaConfiguredOpenAiCompatible": "Xenia已設定為OpenAI相容提供者",
     "provider": "提供者",
     "model": "模型",
     "providers": "提供者",
     "auth": "授權",
     "noApiKeysAvailable": "沒有可用的API Key",
-    "usingDefaultOmniroute": "使用預設值：sk_omniroute",
+    "usingDefaultXenia": "使用預設值：sk_xenia",
     "updateConfig": "更新設定",
     "applyConfig": "應用設定",
     "noBackupsAvailable": "沒有可用的備份。",
@@ -2695,19 +2695,19 @@
       "claude": "當您需要強大的規劃工作流程和使用Claude Code進行長多檔案重構時使用。",
       "codex": "當您的團隊在OpenAI Codex CLI流程和基於設定檔的身份驗證方面實現標準化時使用。",
       "droid": "當您需要專注於快速編碼和命令執行循環的輕量級終端代理時使用。",
-      "openclaw": "當您需要Open Claw風格的編碼代理但通過OmniRoute策略路由時使用。",
-      "cline": "當您在編輯器內設定編碼代理並希望使用OmniRoute模型引導設定時使用。",
+      "openclaw": "當您需要Open Claw風格的編碼代理但通過Xenia策略路由時使用。",
+      "cline": "當您在編輯器內設定編碼代理並希望使用Xenia模型引導設定時使用。",
       "kilo": "當您的工作流程依賴於Kilo Code命令和快速迭代編輯時使用。",
-      "cursor": "在Cursor中編碼並且需要通過OmniRoute自定義OpenAI相容模型時使用。",
+      "cursor": "在Cursor中編碼並且需要通過Xenia自定義OpenAI相容模型時使用。",
       "continue": "在IDE中運行“Continue”並且需要可移植的基於JSON的提供程式設定時使用。",
       "opencode": "當您更喜歡通過OpenCode進行終端本機代理運行和腳本自動化時使用。",
-      "kiro": "在整合Kiro並從OmniRoute集中控制模型路由時使用。",
-      "windsurf": "當您需要Windsurf AI IDE並通過OmniRoute路由模型時使用。",
-      "antigravity": "當必須通過MITM攔截Antigravity/Kiro流量並將其路由到OmniRoute時使用。",
-      "copilot": "當您想要Copilot聊天風格的UX同時強制執行OmniRoute鍵和路由規則時使用。",
-      "amp": "當您想要Amp簡寫工作流，但仍需要OmniRoute別名和路由規則支援時使用。",
+      "kiro": "在整合Kiro並從Xenia集中控制模型路由時使用。",
+      "windsurf": "當您需要Windsurf AI IDE並通過Xenia路由模型時使用。",
+      "antigravity": "當必須通過MITM攔截Antigravity/Kiro流量並將其路由到Xenia時使用。",
+      "copilot": "當您想要Copilot聊天風格的UX同時強制執行Xenia鍵和路由規則時使用。",
+      "amp": "當您想要Amp簡寫工作流，但仍需要Xenia別名和路由規則支援時使用。",
       "hermes": "當您需要輕量級終端原生AI助手來處理快速任務時使用。",
-      "hermes-agent": "需要使用Hermes智能體 (by Nousresearch) 時使用,預設、委派、視覺與輔助模型均通過OmniRoute路由。",
+      "hermes-agent": "需要使用Hermes智能體 (by Nousresearch) 時使用,預設、委派、視覺與輔助模型均通過Xenia路由。",
       "custom": "用於自定義工具實現或通用OpenAI相容設定。"
     },
     "toolDescriptions": {
@@ -2821,7 +2821,7 @@
         },
         "notes": {
           "0": "OpenCode需要設定API Key。",
-          "1": "將基礎URL設定為您的OmniRoute端點。"
+          "1": "將基礎URL設定為您的Xenia端點。"
         }
       },
       "kiro": {
@@ -2832,7 +2832,7 @@
           },
           "2": {
             "title": "Base URL",
-            "desc": "粘貼你的OmniRoute端點URL"
+            "desc": "粘貼你的Xenia端點URL"
           },
           "3": {
             "title": "API Key"
@@ -2861,7 +2861,7 @@
           },
           "4": {
             "title": "API Key",
-            "desc": "選擇你的OmniRoute API Key"
+            "desc": "選擇你的Xenia API Key"
           },
           "5": {
             "title": "選擇模型",
@@ -2871,7 +2871,7 @@
       }
     },
     "autoConfiguredTab": "自動設定",
-    "toolCategoriesDesc": "設定AI編程助手通過OmniRoute路由",
+    "toolCategoriesDesc": "設定AI編程助手通過Xenia路由",
     "allToolsTab": "所有工具",
     "guidedClientsTab": "引導客戶端",
     "mitmClientsTab": "MITM客戶端",
@@ -2884,8 +2884,8 @@
     "customCliNameLabel": "CLI名稱",
     "customCliNamePlaceholder": "例如我的團隊CLI",
     "customCliDefaultModelLabel": "預設型號",
-    "customCliDefaultModelHelp": "使用任何OmniRoute模型ID或組合。大多數與OpenAI相容的CLI只需要 /v1 基本URL加上模型字串。",
-    "customCliKeyHelper": "對於本地安裝OmniRoute可以使用sk_omniroute。在雲模式下，選擇您的管理API Key之一。",
+    "customCliDefaultModelHelp": "使用任何Xenia模型ID或組合。大多數與OpenAI相容的CLI只需要 /v1 基本URL加上模型字串。",
+    "customCliKeyHelper": "對於本地安裝Xenia可以使用sk_xenia。在雲模式下，選擇您的管理API Key之一。",
     "customCliAliasMappingsLabel": "別名映射",
     "customCliAliasMappingsHelp": "需要穩定簡寫名稱的包裝器腳本或設定檔的可選幫助程式別名。",
     "customCliAddAlias": "新增別名",
@@ -2893,7 +2893,7 @@
     "customCliAliasPlaceholder": "例如評論",
     "customCliTargetModelLabel": "目標型號",
     "customCliEndpointHintLabel": "如何連接端點",
-    "customCliEndpointHint": "將任何OpenAI相容客戶端指向OmniRoute /v1 基本URL。原始聊天完成端點是 {endpoint}。當工具需要提供程式物件時使用JSON塊，或者在讀取OPENAI_* 變量時使用env腳本。",
+    "customCliEndpointHint": "將任何OpenAI相容客戶端指向Xenia /v1 基本URL。原始聊天完成端點是 {endpoint}。當工具需要提供程式物件時使用JSON塊，或者在讀取OPENAI_* 變量時使用env腳本。",
     "customCliEnvBlockTitle": "環境 / shell片段",
     "customCliJsonBlockTitle": "提供者JSON塊",
     "networkError": "網路錯誤",
@@ -2917,13 +2917,13 @@
     "hermesSelectBeforePreview": "在預覽之前，請為角色選擇模型，或確保角色已載入。",
     "hermesPreviewFailed": "生成預覽失敗",
     "hermesSavedTo": "已保存至 {path}",
-    "hermesFirstSetupTitle": "首次於 {date} 通過OmniRoute設定",
+    "hermesFirstSetupTitle": "首次於 {date} 通過Xenia設定",
     "hermesSinceSetup": "距設定已有 {time}",
     "hermesConfiguredRoles": "{configured}/{total} 個角色",
     "hermesQuickApply": "快速將相同模型應用到所有角色：",
     "hermesApplyModelToAll": "將 {model} 應用到每個角色",
-    "hermesViaOmniRoute": "{provider}（通過OmniRoute）",
-    "hermesNotOmniRoute": "{provider}（非OmniRoute）",
+    "hermesViaXenia": "{provider}（通過Xenia）",
+    "hermesNotXenia": "{provider}（非Xenia）",
     "hermesRemovePendingRole": "從待處理更改中移除此角色",
     "hermesApply": "應用到Hermes Agent",
     "hermesRolesWillUpdate": "{count, plural, one {將更新 # 個角色} other {將更新 # 個角色}}",
@@ -2954,7 +2954,7 @@
     "ccOnboardingTitle": "__MISSING__:settings.json for gateway model discovery",
     "ccOnboardingCopy": "__MISSING__:Copy",
     "ccOnboardingCopied": "__MISSING__:Copied",
-    "ccOnboardingKeyPlaceholder": "__MISSING__:<your OmniRoute API key>",
+    "ccOnboardingKeyPlaceholder": "__MISSING__:<your Xenia API key>",
     "ccOnboardingWindowNote": "__MISSING__:Claude Code assumes a 200K context window for any model id it does not recognize. For a model with a different real window, add CLAUDE_CODE_AUTO_COMPACT_WINDOW just under it so auto-compaction does not fire too early."
   },
   "combos": {
@@ -3042,7 +3042,7 @@
     "concurrencyPerModel": "每模型併發數",
     "queueTimeout": "排隊超時（毫秒）",
     "contextRelayHandoffThreshold": "交接閾值",
-    "contextRelayHandoffThresholdHelp": "當配額使用達到該閾值時，OmniRoute會在當前活躍賬戶耗盡前生成結構化交接摘要。",
+    "contextRelayHandoffThresholdHelp": "當配額使用達到該閾值時，Xenia會在當前活躍賬戶耗盡前生成結構化交接摘要。",
     "contextRelayMaxMessages": "摘要最大消息數",
     "contextRelayMaxMessagesHelp": "限制壓縮進接力摘要中的最近歷史消息數量。",
     "contextRelaySummaryModel": "摘要模型",
@@ -3636,7 +3636,7 @@
     "moderationsDesc": "內容安全審核與分類",
     "responsesDesc": "適用於Codex和高級智能體工作流的OpenAI Responses API",
     "listModelsDesc": "列出所有已連接提供者下的可用模型",
-    "settingsApiDesc": "通過API讀取和修改OmniRoute設定",
+    "settingsApiDesc": "通過API讀取和修改Xenia設定",
     "settingsApi": "設定API",
     "categoryCore": "核心API",
     "categoryMedia": "媒體與多模態",
@@ -3723,9 +3723,9 @@
     "openMcpDashboard": "打開MCP管理",
     "openA2aDashboard": "打開A2A管理",
     "mcpQuickStartTitle": "MCP快速開始",
-    "mcpQuickStartStep1": "通過 `omniroute --mcp` 啟動MCP服務。",
+    "mcpQuickStartStep1": "通過 `xenia --mcp` 啟動MCP服務。",
     "mcpQuickStartStep2": "將你的MCP客戶端設定為通過stdio傳輸連接。",
-    "mcpQuickStartStep3": "呼叫 `omniroute_get_health`、`omniroute_list_combos` 等工具驗證連通性。",
+    "mcpQuickStartStep3": "呼叫 `xenia_get_health`、`xenia_list_combos` 等工具驗證連通性。",
     "a2aQuickStartTitle": "A2A快速開始",
     "a2aQuickStartStep1": "通過 `/.well-known/agent.json` 發現Agent Card。",
     "a2aQuickStartStep2": "向 `POST /a2a` 發送 `message/send` 或 `message/stream` JSON-RPC請求。",
@@ -3744,9 +3744,9 @@
     "videoDesc": "使用ComfyUI和Stable Video Diffusion等AI模型生成視頻。",
     "tailscaleRequestFailed": "載入Tailscale狀態失敗",
     "tailscaleEnableFailed": "啟用Tailscale Funnel失敗",
-    "tailscaleWaitingForLogin": "請在打開的瀏覽器標籤頁中完成Tailscale登入。OmniRoute會自動重試。",
+    "tailscaleWaitingForLogin": "請在打開的瀏覽器標籤頁中完成Tailscale登入。Xenia會自動重試。",
     "tailscaleLoginTimedOut": "等待Tailscale登入超時",
-    "tailscaleWaitingForFunnel": "請在打開的瀏覽器標籤頁中為此設備啟用Funnel。OmniRoute會繼續輪詢。",
+    "tailscaleWaitingForFunnel": "請在打開的瀏覽器標籤頁中為此設備啟用Funnel。Xenia會繼續輪詢。",
     "tailscaleFunnelTimedOut": "等待啟用Tailscale Funnel超時",
     "tailscaleStarted": "Tailscale Funnel已啟用",
     "tailscaleDisableFailed": "禁用Tailscale Funnel失敗",
@@ -3770,7 +3770,7 @@
     "tailscaleBinaryPath": "二進制檔案：{path}",
     "tailscaleLastError": "最近錯誤：{error}",
     "tailscaleInstallTitle": "安裝Tailscale",
-    "tailscaleInstallIntro": "在此機器上安裝Tailscale，並準備讓OmniRoute啟用Funnel。",
+    "tailscaleInstallIntro": "在此機器上安裝Tailscale，並準備讓Xenia啟用Funnel。",
     "tailscaleInstallPasswordHint": "在macOS和Linux上，安裝軟件包和啟動守護行程可能需要sudo。",
     "tailscaleSudoPlaceholder": "可選sudo密碼",
     "tailscaleInstalling": "正在安裝",
@@ -3850,7 +3850,7 @@
     "vscodeAliasModelsLabel": "VS Code模型",
     "vscodeAliasChatLabel": "VS Code聊天",
     "localServer": "本地伺服器",
-    "cloudOmniroute": "Cloud OmniRoute",
+    "cloudXenia": "Cloud Xenia",
     "copyUrl": "複製網址",
     "badgeLoopbackTooltip": "此端點僅可本地訪問（僅限迴環）",
     "badgeAlwaysProtectedTooltip": "此端點始終受保護，需要授權",
@@ -3930,7 +3930,7 @@
     "disableLabel": "禁用 {label}",
     "enableLabel": "啟用 {label}",
     "transportMode": "傳輸模式",
-    "transportStdioDesc": "本地—IDE通過omniroute --mcp啟動行程",
+    "transportStdioDesc": "本地—IDE通過xenia --mcp啟動行程",
     "transportSseDesc": "遠程—基於HTTP的Server-Sent Events",
     "transportStreamableHttpDesc": "遠程—現代雙向HTTP",
     "copy": "複製",
@@ -4083,7 +4083,7 @@
     "compactOld": "緊湊舊版",
     "concept": {
       "title": "對話記憶",
-      "description": "OmniRoute從每次對話中學習，記住事實、事件、程式和語意概念，使回應更加準確和上下文感知。",
+      "description": "Xenia從每次對話中學習，記住事實、事件、程式和語意概念，使回應更加準確和上下文感知。",
       "howWorksToggle": "它是如何工作的",
       "howWorksContent": "1. 自動提取：在每個回應結束時，事實和事件會被自動檢測並保存。\n2. 檢索：在每個回應之前，通過FTS5（精確）、向量（語意）或混合RRF搜尋最相關的記憶。\n3. 注入：相關記憶被注入到助手上下文中，以提高回應質量。\n4. 管理：使用此頁面查看、編輯、導出和壓縮舊記憶。"
     },
@@ -4192,7 +4192,7 @@
       "enableDesc": "啟用後，Qdrant將作為主要向量存儲使用",
       "banner": "二級向量存儲——內建sqlite-vec（一級）的外部可擴展替代方案。僅在需要非常大的記憶集或跨實例共享記憶時啟用；大多數用戶使用sqlite-vec即可。啟用後它將作為主存儲，並在不可達時自動回退到sqlite-vec。",
       "hostHelp": "Local Docker: http://localhost:6333 ·Qdrant Cloud: your cluster URL",
-      "collectionHelp": "任意名稱——OmniRoute會在首次使用時自動創建。",
+      "collectionHelp": "任意名稱——Xenia會在首次使用時自動創建。",
       "embeddingModelHelp": "在首次使用時自動設定向量維度。已有記憶不會被回填，資料存在後更改模型需要新建集合。",
       "testConnection": "測試連接",
       "testing": "測試中...",
@@ -4340,7 +4340,7 @@
   },
   "health": {
     "title": "系統健康狀況",
-    "description": "實時監控您的OmniRoute實例",
+    "description": "實時監控您的Xenia實例",
     "healthy": "健康",
     "degraded": "降級",
     "down": "下線",
@@ -4476,7 +4476,7 @@
   },
   "telemetry": {
     "title": "系統遙測",
-    "description": "來自此OmniRoute行程的捲動請求、運行時、工作階段和記憶體信號。",
+    "description": "來自此Xenia行程的捲動請求、運行時、工作階段和記憶體信號。",
     "uptime": "運行時間",
     "totalRequests": "請求總數",
     "avgLatency": "平均延遲",
@@ -4673,7 +4673,7 @@
     "passwordsMismatch": "密碼不匹配",
     "setupComplete": "設定完成！",
     "goToDashboard": "轉到看板→",
-    "welcomeDesc": "OmniRoute是您的本地AI API代理。它通過負載均衡、故障轉移和使用情況跟蹤將請求路由到多個AI提供者。",
+    "welcomeDesc": "Xenia是您的本地AI API代理。它通過負載均衡、故障轉移和使用情況跟蹤將請求路由到多個AI提供者。",
     "multiProvider": "多提供者",
     "usageTracking": "使用情況追蹤",
     "securityDesc": "設定密碼以保護您的看板，或暫時跳過。",
@@ -4687,7 +4687,7 @@
     "noProviderFound": "未找到提供者。您可以稍後從看板新增一個。",
     "testFailed": "測試失敗，但您可以稍後設定。",
     "couldNotTest": "現在無法測試。您可以從看板測試。",
-    "doneDesc": "你都準備好了！您的OmniRoute實例已設定並準備好代理AI請求。",
+    "doneDesc": "你都準備好了！您的Xenia實例已設定並準備好代理AI請求。",
     "yourEndpoint": "您的端點：",
     "continue": "繼續",
     "retry": "重試",
@@ -4697,7 +4697,7 @@
     "provider": "提供者",
     "apiKeyHelp": "API Key是AI服務的密碼。從提供者的網站（例如platform.openai.com、console.anthropic.com）獲取一個。",
     "tier": {
-      "subtitle": "OmniRoute將提供者組織為三層，因此路由首先優先選擇最可靠、成本最低的路徑。",
+      "subtitle": "Xenia將提供者組織為三層，因此路由首先優先選擇最可靠、成本最低的路徑。",
       "flowCaption": "請求會先流經您的訂閱配額，然後是按token付費的廉價服務商，最後是免費層級服務商——自動運行，零設定。",
       "afterSetup": "設定後。",
       "tier1": {
@@ -4714,7 +4714,7 @@
       },
       "configure": "設定提供者"
     },
-    "tierFlowDiagramAlt": "OmniRoute 3 層回退圖",
+    "tierFlowDiagramAlt": "Xenia 3 層回退圖",
     "apiKeyMgmt": "API Key管理"
   },
   "providers": {
@@ -4725,7 +4725,7 @@
     "showFreeOnly": "僅顯示免費",
     "addProvider": "新增提供者",
     "addFirstProvider": "新增您的第一個提供者",
-    "addFirstProviderDesc": "連接AI提供者以開始通過OmniRoute路由請求。您可以使用免費提供者、API Key或OAuth帳戶。",
+    "addFirstProviderDesc": "連接AI提供者以開始通過Xenia路由請求。您可以使用免費提供者、API Key或OAuth帳戶。",
     "learnMore": "瞭解更多",
     "importFromFile": "從檔案導入",
     "importFromFileTitle": "從檔案導入服務商",
@@ -4748,7 +4748,7 @@
     "adaptaTutorial": {
       "title": "如何連接Adapta Web",
       "introPrefix": "Adapta通過Clerk身份驗證。該令牌",
-      "introSuffix": "是一個長效JWT，可讓OmniRoute自動刷新工作階段。",
+      "introSuffix": "是一個長效JWT，可讓Xenia自動刷新工作階段。",
       "or": "或",
       "step1Title": "打開Adapta聊天",
       "step1DescPrefix": "打開",
@@ -4767,7 +4767,7 @@
       "step5Title": "粘貼到此處並保存",
       "step5DescPrefix": "點擊",
       "step5DescMiddle": "粘貼",
-      "step5DescSuffix": "值到API Key欄位，然後保存。OmniRoute將自動刷新工作階段。",
+      "step5DescSuffix": "值到API Key欄位，然後保存。Xenia將自動刷新工作階段。",
       "tipLabel": "提示：",
       "tipPrefix": "該",
       "tipSuffix": "cookie是長期有效的，通常可持續數月。您只需在退出登入或Adapta使工作階段失效時更新它。"
@@ -5137,7 +5137,7 @@
     "compatDoNotPreserveDeveloper": "不保留developer角色",
     "compatBadgeNoPreserve": "不保留",
     "compatProtocolLabel": "客戶端請求協議",
-    "compatProtocolHint": "以下選項在OmniRoute識別到該請求形態（OpenAI Chat、Responses API或Anthropic Messages）時生效。",
+    "compatProtocolHint": "以下選項在Xenia識別到該請求形態（OpenAI Chat、Responses API或Anthropic Messages）時生效。",
     "compatProtocolOpenAI": "OpenAI Chat Completions",
     "compatProtocolOpenAIResponses": "OpenAI Responses API",
     "compatProtocolClaude": "Anthropic Messages",
@@ -5172,15 +5172,15 @@
     "paramFiltersResetSuccess": "參數過濾器設定已重置為預設值",
     "paramFiltersResetError": "重置參數過濾器設定失敗：{error}",
     "interceptionSectionTitle": "網頁工具攔截",
-    "interceptionSectionHint": "將此提供者的原生web_search / web_fetch工具呼叫路由到OmniRoute自身的搜尋和獲取端點，而不是讓提供者原生運行它們。預設關閉—現有行為保持不變。",
+    "interceptionSectionHint": "將此提供者的原生web_search / web_fetch工具呼叫路由到Xenia自身的搜尋和獲取端點，而不是讓提供者原生運行它們。預設關閉—現有行為保持不變。",
     "interceptSearchLabel": "攔截web_search",
-    "interceptSearchHint": "將原生的web_search工具呼叫重寫為OmniRoute的 /v1/search。",
+    "interceptSearchHint": "將原生的web_search工具呼叫重寫為Xenia的 /v1/search。",
     "interceptFetchLabel": "攔截web_fetch",
-    "interceptFetchHint": "將原生的web_fetch工具呼叫重寫為OmniRoute的 /v1/web/fetch。",
+    "interceptFetchHint": "將原生的web_fetch工具呼叫重寫為Xenia的 /v1/web/fetch。",
     "interceptionLoadError": "載入攔截設定失敗：{error}",
     "interceptionSaveError": "保存攔截設定失敗：{error}",
     "compatUpstreamHeadersLabel": "上游額外請求標頭",
-    "compatUpstreamHeadersHint": "與修改廠商連接/API設定同屬高權限能力，僅可信管理員應使用。這些頭會在OmniRoute按廠商API Key自動加好鑑權頭之後再合併。若「名稱」與系統已加的頭相同（例如都叫Authorization），則以你填的值為準，會整段替換自動那條（含Bearer令牌），上游請求裡不再使用面板裡保存的金鑰來生成Authorization。填錯可能導致 401，請謹慎。每個請求標頭單獨一行；部分網關需要額外Authentication等可在此加。滑鼠移入或聚焦「值」可暫時看明文。點空白處、關閉本面板或切走焦點即保存。",
+    "compatUpstreamHeadersHint": "與修改廠商連接/API設定同屬高權限能力，僅可信管理員應使用。這些頭會在Xenia按廠商API Key自動加好鑑權頭之後再合併。若「名稱」與系統已加的頭相同（例如都叫Authorization），則以你填的值為準，會整段替換自動那條（含Bearer令牌），上游請求裡不再使用面板裡保存的金鑰來生成Authorization。填錯可能導致 401，請謹慎。每個請求標頭單獨一行；部分網關需要額外Authentication等可在此加。滑鼠移入或聚焦「值」可暫時看明文。點空白處、關閉本面板或切走焦點即保存。",
     "compatUpstreamHeaderName": "請求標頭名稱",
     "compatUpstreamHeaderValue": "值",
     "compatUpstreamAddRow": "新增請求標頭",
@@ -5342,7 +5342,7 @@
     "codexImportTabUpload": "上傳檔案",
     "codexImportTabPaste": "粘貼JSON",
     "codexImportFileLabel": "選擇auth.json",
-    "codexImportFileHint": "選擇從Codex或OmniRoute導出的auth.json檔案。",
+    "codexImportFileHint": "選擇從Codex或Xenia導出的auth.json檔案。",
     "codexImportPasteLabel": "粘貼JSON內容",
     "codexImportEmailLabel": "賬戶郵箱",
     "codexImportEmailHint": "從檔案中自動檢測；如果需要的話進行編輯。",
@@ -5436,7 +5436,7 @@
     "ccCompatibleNamePlaceholder": "Claude Code中轉站生產環境",
     "ccCompatiblePrefixHint": "用於prefix/model-id這類模型別名。",
     "ccCompatiblePrefixPlaceholder": "cc",
-    "ccCompatibleValidationHint": "這個提供者只適用於僅向Claude Code客戶端提供服務的中轉站。OmniRoute會把任何進入的請求改寫為Claude Code相容的傳輸格式，以通過這些中轉站的驗證。如果你只是想使用Claude Code CLI，或者不清楚這類中轉站是什麼，請使用普通Anthropic-compatible提供者。",
+    "ccCompatibleValidationHint": "這個提供者只適用於僅向Claude Code客戶端提供服務的中轉站。Xenia會把任何進入的請求改寫為Claude Code相容的傳輸格式，以通過這些中轉站的驗證。如果你只是想使用Claude Code CLI，或者不清楚這類中轉站是什麼，請使用普通Anthropic-compatible提供者。",
     "claudeExtraUsageShort": "額外用量",
     "claudeExtraUsageToggleTitle": "為此連接屏蔽Claude額外用量統計",
     "codex5hToggleTitle": "為此連接跟蹤Codex 5 小時配額",
@@ -5483,7 +5483,7 @@
     "googlePseInfo": "設定Google Programmable Search Engine以啟用Web Search。",
     "antigravityProjectIdHint": "Antigravity雲代碼請求的可選覆蓋。留空以使用Google OAuth期間發現的項目。",
     "antigravityClientProfileLabel": "客戶端設定",
-    "antigravityClientProfileHint": "選擇OmniRoute向API呈現的Antigravity客戶端身份。",
+    "antigravityClientProfileHint": "選擇Xenia向API呈現的Antigravity客戶端身份。",
     "antigravityClientProfileIde": "IDE",
     "antigravityClientProfileCli": "CLI",
     "codexFastTierActiveChip": "Codex Fast層級已啟用",
@@ -5512,7 +5512,7 @@
     "tierOverrideFree": "免費",
     "tierOverrideCheap": "低成本",
     "tierOverridePremium": "高級",
-    "tierOverrideHelpText": "將此提供者固定到特定的路由層級，而不是讓OmniRoute根據模型定價進行推斷。",
+    "tierOverrideHelpText": "將此提供者固定到特定的路由層級，而不是讓Xenia根據模型定價進行推斷。",
     "museSparkWebCookieHint": "從Muse Spark Web工作階段複製Cookie。",
     "museSparkWebCookiePlaceholder": "Muse Spark Web Cookie",
     "oauth": "OAuth",
@@ -5603,7 +5603,7 @@
     "zedNoCredentials": "在鑰匙串中未找到Zed憑據",
     "zedUnsupportedCredentials": "找到 {count} 個鑰匙串憑據，但沒有與支援的提供者匹配的憑據",
     "zedManualTitle": "手動導入令牌",
-    "zedManualDescription": "當OmniRoute在Docker中運行或金鑰鏈不可用時使用此選項。粘貼Zed存儲在 <path>~/.config/zed/settings.json</path> 下的API Key，或從Zed AI設定面板中複製它。",
+    "zedManualDescription": "當Xenia在Docker中運行或金鑰鏈不可用時使用此選項。粘貼Zed存儲在 <path>~/.config/zed/settings.json</path> 下的API Key，或從Zed AI設定面板中複製它。",
     "zedPasteApiKey": "粘貼API Key…",
     "zedSaving": "正在保存…",
     "zedImportAction": "導入",
@@ -5653,9 +5653,9 @@
     "webFetchTooltip": "從網頁URL抽取內容的提供者(HTML → Markdown、抓取、截圖)",
     "webFetchProvidersHeading": "網頁抓取提供者",
     "compatibleProvidersDesc": "您託管或設定的OpenAI相容和Anthropic相容端點。將任意OpenAI SDK指向您的URL並在此處路由請求。",
-    "oauthProvidersDesc": "通過OAuth認證的提供者——登入一次，OmniRoute自動處理令牌輪換。",
+    "oauthProvidersDesc": "通過OAuth認證的提供者——登入一次，Xenia自動處理令牌輪換。",
     "webCookieProvidersDesc": "這些提供者使用瀏覽器網路工作階段、cookie或網路令牌而不是API Key。打開提供程式以新增所需的工作階段憑據。",
-    "apiKeyProvidersDesc": "標準API Key提供者。新增金鑰後，OmniRoute代為路由、重試和限流。",
+    "apiKeyProvidersDesc": "標準API Key提供者。新增金鑰後，Xenia代為路由、重試和限流。",
     "noAuthProvidersDesc": "無需憑證的開放端點——無需註冊即可立即使用。",
     "upstreamProxyProvidersDesc": "通過上游代理路由出站流量。適用於企業網路或流量審計場景。",
     "webFetchProvidersDesc": "從網頁URL抓取和提取內容的提供者。用於將實時網頁資料注入提示詞。",
@@ -5732,7 +5732,7 @@
     "onboardingModelsPath": "模型路徑",
     "onboardingCreateSaveTest": "創建、保存和測試",
     "onboardingConnectProvider": "連接 {provider}",
-    "onboardingOAuthFlowDescription": "OmniRoute將打開該提供者的現有OAuth流程。登入後，嚮導將重新載入已保存的連接並運行與提供程式頁面相同的連接測試。",
+    "onboardingOAuthFlowDescription": "Xenia將打開該提供者的現有OAuth流程。登入後，嚮導將重新載入已保存的連接並運行與提供程式頁面相同的連接測試。",
     "onboardingStartOAuthFlow": "啟動OAuth流程",
     "onboardingProviderDescriptions": {
       "360ai": "在ai.360.cn獲取API Key",
@@ -5748,7 +5748,7 @@
       "ant-ling": "使用API Key連接Ant-Ling。",
       "api-airforce": "從https://panel.api.airforce獲取您的API Key—相容OpenAI的端點位於https://api.airforce/v1",
       "arcee-ai": "在arcee.ai獲取API Key",
-      "azure-ai": "Foundry使用OpenAI v1 接口，並將部署名稱作為模型。OmniRoute會將根資源URL規範化為v1 chat和 /models端點。",
+      "azure-ai": "Foundry使用OpenAI v1 接口，並將部署名稱作為模型。Xenia會將根資源URL規範化為v1 chat和 /models端點。",
       "azure-openai": "使用您的Azure OpenAI API Key。Base URL應為您的資源端點，例如https://my-resource.openai.azure.com。",
       "bai": "b.ai相容OpenAI的LLM網關（與TheB.AI不同）的Bearer API Key。在https://docs.b.ai創建金鑰，然後使用https://api.b.ai/v1 作為相容OpenAI的base URL。",
       "baichuan": "在platform.baichuan-ai.com獲取API Key",
@@ -5779,7 +5779,7 @@
       "dgrid": "在https://dgrid.ai創建DGrid API Key，然後使用https://api.dgrid.ai/v1 作為相容OpenAI的base URL。",
       "dify": "從您的Dify實例獲取API Key。",
       "digitalocean": "使用API Key連接DigitalOcean。",
-      "dit": "dit.ai (Distributed Intelligence Trade) 是一個相容OpenAI的路由器/網關，具有動態按請求計費功能，在https://api.dit.ai/v1 上公開 /v1/chat/completions。OmniRoute使用OpenAI協議；支出/節省分析位於dit.ai看板中。",
+      "dit": "dit.ai (Distributed Intelligence Trade) 是一個相容OpenAI的路由器/網關，具有動態按請求計費功能，在https://api.dit.ai/v1 上公開 /v1/chat/completions。Xenia使用OpenAI協議；支出/節省分析位於dit.ai看板中。",
       "doubao": "在console.volcengine.com獲取API Key",
       "empower": "Empower在https://app.empower.dev/api/v1 上公開了相容OpenAI的聊天，並在empower-functions上支援工具呼叫。",
       "factory": "在https://app.factory.ai/settings/api-keys獲取您的Factory API Key，然後將其作為Bearer令牌粘貼。相容OpenAI的端點位於https://api.factory.ai/v1。",
@@ -5816,7 +5816,7 @@
       "internlm": "使用API Key連接InternLM。",
       "jina-ai": "用於Jina AI rerank API的Bearer API Key。",
       "jina-reader": "使用API Key連接Jina Reader。",
-      "kenari": "Kenari在https://kenari.id/v1/chat/completions提供了相容OpenAI的聊天補全端點，以及涵蓋Claude、GPT、DeepSeek、GLM、Kimi等的實時 /v1/models目錄。OmniRoute使用OpenAI協議並通過直通方式列出模型。",
+      "kenari": "Kenari在https://kenari.id/v1/chat/completions提供了相容OpenAI的聊天補全端點，以及涵蓋Claude、GPT、DeepSeek、GLM、Kimi等的實時 /v1/models目錄。Xenia使用OpenAI協議並通過直通方式列出模型。",
       "kie": "使用API Key連接KIE.AI。",
       "kilo-gateway": "使用API Key連接Kilo Gateway。",
       "kimi": "使用API Key連接Kimi。",
@@ -5833,23 +5833,23 @@
       "minimax-cn": "使用API Key連接Minimax (China)。",
       "minimax": "使用API Key連接Minimax Coding。",
       "mistral": "免費實驗層級：對所有模型的速率限制訪問，無需信用卡",
-      "modal": "Modal通常在 /v1 上提供用戶託管的OpenAI相容應用。OmniRoute將探測 /v1/models並將聊天流量路由到 /v1/chat/completions。",
+      "modal": "Modal通常在 /v1 上提供用戶託管的OpenAI相容應用。Xenia將探測 /v1/models並將聊天流量路由到 /v1/chat/completions。",
       "modelscope": "通過ModelScope API-Inference提供的免費層級—需要阿里巴巴賬號。",
       "monsterapi": "在monsterapi.ai獲取API Key",
       "moonshot": "使用API Key連接Moonshot AI。",
       "morph": "免費層級：每月 250K額度，$0",
       "nanogpt": "使用API Key連接NanoGPT。",
       "nebius": "註冊即送約 $1 試用額度用於API測試",
-      "nlpcloud": "NLP Cloud使用專有的聊天機器人API，而非OpenAI chat/completions。OmniRoute將OpenAI消息適配為input/context/history，並公開受支援聊天機器人模型的本地目錄。",
+      "nlpcloud": "NLP Cloud使用專有的聊天機器人API，而非OpenAI chat/completions。Xenia將OpenAI消息適配為input/context/history，並公開受支援聊天機器人模型的本地目錄。",
       "nomic": "在atlas.nomic.ai獲取API Key",
       "nous-research": "Nous公開了一個相容OpenAI的 /v1 接口以及龐大的遠程 /models目錄。/chat/completions端點需要有效的API Key以進行程式化推理。",
       "novita": "註冊即送 $0.50 試用額度（有效期約 1 年）",
       "nscale": "註冊即送 $5 免費額度用於推理測試",
       "nube": "使用API Key連接Nube.sh。",
       "nvidia": "免費開發者訪問權限：約 40 RPM，70+ 款模型（Kimi K2.5、GLM 4.7、DeepSeek V3.2...）",
-      "oci": "OCI公開了相容OpenAI的chat和responses端點。Project ID在OmniRoute中是可選的，但Responses和智能體工作流可能需要它。",
+      "oci": "OCI公開了相容OpenAI的chat和responses端點。Project ID在Xenia中是可選的，但Responses和智能體工作流可能需要它。",
       "ollama-cloud": "使用API Key連接Ollama Cloud。",
-      "openadapter": "OpenAdapter在https://api.openadapter.in/v1/chat/completions公開了一個相容OpenAI的chat completions端點，聚合了 70+ 款開源模型（DeepSeek、Qwen、Kimi、MiniMax、GLM、Llama、Mistral、…）。OmniRoute使用OpenAI協議。",
+      "openadapter": "OpenAdapter在https://api.openadapter.in/v1/chat/completions公開了一個相容OpenAI的chat completions端點，聚合了 70+ 款開源模型（DeepSeek、Qwen、Kimi、MiniMax、GLM、Llama、Mistral、…）。Xenia使用OpenAI協議。",
       "openai": "使用API Key連接OpenAI。",
       "opencode-go": "使用API Key連接OpenCode Go。",
       "opencode-zen": "使用API Key連接OpenCode Zen。",
@@ -5867,9 +5867,9 @@
       "puter": "在puter.com/dashboard獲取令牌 → 複製Auth Token",
       "qiniu": "在https://portal.qiniu.com/ai-inference/api-key創建Qiniu AI推理API Key，然後將其作為Bearer令牌粘貼在此處。相容OpenAI的端點位於https://api.qnaigc.com/v1，通過一個金鑰代理DeepSeek、Claude、Kimi等多種模型。",
       "recraft": "使用API Key連接Recraft。",
-      "reka": "Reka Chat在 /v1 上相容OpenAI。OmniRoute探測 /v1/models並將聊天流量路由到 /v1/chat/completions。",
+      "reka": "Reka Chat在 /v1 上相容OpenAI。Xenia探測 /v1/models並將聊天流量路由到 /v1/chat/completions。",
       "requesty": "在https://app.requesty.ai創建API Key，然後將其作為Bearer令牌粘貼在此處。相容OpenAI的端點位於https://router.requesty.ai/v1，並提供實時的 /v1/models目錄。",
-      "runwayml": "Runway視頻生成基於任務。OmniRoute提交文生視頻或圖生視頻作業，輪詢 /v1/tasks/[id]，並將完成的視頻輸出規範化為類似OpenAI的 /v1/videos/generations回應。",
+      "runwayml": "Runway視頻生成基於任務。Xenia提交文生視頻或圖生視頻作業，輪詢 /v1/tasks/[id]，並將完成的視頻輸出規範化為類似OpenAI的 /v1/videos/generations回應。",
       "sambanova": "註冊即送 $5 免費額度（30 天有效期），無需信用卡",
       "sap": "模型發現使用AI_API_URL上的 /v2/lm/scenarios/foundation-models/models。Chat請求使用deploymentUrl/chat/completions並需要AI-Resource-Group。",
       "sarvam": "使用API Key連接Sarvam AI。",
@@ -5880,14 +5880,14 @@
       "sparkdesk": "在console.xfyun.cn獲取API Key",
       "stability-ai": "使用API Key連接Stability AI。",
       "stepfun": "在platform.stepfun.com獲取API Key",
-      "sumopod": "SumoPod在https://ai.sumopod.com/v1/chat/completions提供了相容OpenAI的chat completions端點，以及實時的 /v1/models目錄。OmniRoute使用OpenAI協議並通過直通方式列出模型。",
+      "sumopod": "SumoPod在https://ai.sumopod.com/v1/chat/completions提供了相容OpenAI的chat completions端點，以及實時的 /v1/models目錄。Xenia使用OpenAI協議並通過直通方式列出模型。",
       "suno": "粘貼來自suno.ai的session cookie（Clerk認證）",
       "synthetic": "使用API Key連接Synthetic。",
       "tencent": "在console.cloud.tencent.com獲取API Key",
       "thebai": "用於TheB.AI相容OpenAI網關的Bearer API Key。",
       "tinyfish": "來自agent.tinyfish.ai/api-keys的X-API-Key",
       "together": "使用API Key連接Together AI。",
-      "tokenrouter": "TokenRouter在https://api.tokenrouter.com/v1/chat/completions提供了相容OpenAI的chat completions端點，以及可用的 /v1/models目錄。OmniRoute使用OpenAI協議。",
+      "tokenrouter": "TokenRouter在https://api.tokenrouter.com/v1/chat/completions提供了相容OpenAI的chat completions端點，以及可用的 /v1/models目錄。Xenia使用OpenAI協議。",
       "topaz": "使用API Key連接Topaz。",
       "typhoon": "使用API Key連接Typhoon AI。",
       "udio": "粘貼來自udio.com的session cookie（Supabase認證）",
@@ -5903,12 +5903,12 @@
       "wafer": "來自https://wafer.ai的API Key",
       "wandb": "使用API Key連接Weights & Biases Inference。",
       "writer": "使用API Key連接Writer。",
-      "x5lab": "X5Lab在https://api.x5lab.dev/v1/chat/completions提供了相容OpenAI的chat completions端點，以及實時的 /v1/models目錄。OmniRoute使用OpenAI協議並通過直通方式列出模型。",
+      "x5lab": "X5Lab在https://api.x5lab.dev/v1/chat/completions提供了相容OpenAI的chat completions端點，以及實時的 /v1/models目錄。Xenia使用OpenAI協議並通過直通方式列出模型。",
       "xai": "使用API Key連接xAI (Grok)。",
       "xiaomi-mimo": "使用API Key連接Xiaomi MiMo。",
       "yi": "在platform.lingyiwanwu.com獲取API Key",
       "zai": "來自https://open.bigmodel.cn/usercenter/apikeys的API Key",
-      "zenmux": "ZenMux在 /api/v1/chat/completions提供了相容OpenAI的chat completions端點，以及Anthropic Messages (/api/anthropic/v1/messages) 和Google Gemini (/api/vertex-ai) 協議接口。OmniRoute使用OpenAI協議。",
+      "zenmux": "ZenMux在 /api/v1/chat/completions提供了相容OpenAI的chat completions端點，以及Anthropic Messages (/api/anthropic/v1/messages) 和Google Gemini (/api/vertex-ai) 協議接口。Xenia使用OpenAI協議。",
       "galadriel": "使用API Key連接Galadriel。",
       "predibase": "$25 免費試用額度（30 天有效期）",
       "chenzk": "相容OpenAI的網關，在chenzk.top提供實時模型目錄。",
@@ -5928,7 +5928,7 @@
       "cline": "使用現有的OAuth流程連接Cline。",
       "cursor": "使用現有的OAuth流程連接Cursor IDE。",
       "github": "使用現有的OAuth流程連接GitHub Copilot。",
-      "gitlab-duo": "具有ai_features + read_user作用域的OAuth應用程式。在此OmniRoute實例上設定GITLAB_DUO_OAUTH_CLIENT_ID以及可選的GITLAB_DUO_OAUTH_CLIENT_SECRET。",
+      "gitlab-duo": "具有ai_features + read_user作用域的OAuth應用程式。在此Xenia實例上設定GITLAB_DUO_OAUTH_CLIENT_ID以及可選的GITLAB_DUO_OAUTH_CLIENT_SECRET。",
       "kilocode": "使用現有的OAuth流程連接Kilo Code。",
       "kimi-coding": "使用現有的OAuth流程連接Kimi Coding。",
       "kiro": "免費層：50 積分/月（約 25K–100K令牌）。⚠️ Kiro服務條款禁止使用第三方代理/測試框架。",
@@ -5979,10 +5979,10 @@
     "bulkAddFormatHintCloudflare": "每行一個金鑰。格式：name|accountId|apiKey（Cloudflare賬戶ID + API令牌）。",
     "lmarenaWebCookieHint": "打開arena.ai，登入，然後從網路請求中複製完整的Cookie請求標頭。包含arena-auth-prod-v1.0 和arena-auth-prod-v1.1（如果存在更多分塊也一併包含），最好附帶cf_clearance。請勿僅粘貼空的arena-auth-prod-v1 cookie。可選：如果create-evaluation仍返回 403，可提供providerSpecificData.recaptchaV3Token。",
     "kimiOfficialSupporterBadge": "創始好友",
-    "kimiOfficialSupporterTooltip": "Kimi（Moonshot AI）是OmniRoute的創始開源好友",
+    "kimiOfficialSupporterTooltip": "Kimi（Moonshot AI）是Xenia的創始開源好友",
     "cheaperInferenceSupporterBadge": "開源好友",
-    "cheaperInferenceSupporterTooltip": "Cheaper Inference 作為開源好友支持 OmniRoute",
-    "kimiPartnerLinkNote": "合作伙伴連結—支援OmniRoute，您無需承擔額外費用",
+    "cheaperInferenceSupporterTooltip": "Cheaper Inference 作為開源好友支持 Xenia",
+    "kimiPartnerLinkNote": "合作伙伴連結—支援Xenia，您無需承擔額外費用",
     "ccAliasSectionTitle": "__MISSING__:Expose in Claude Code (claude/…)",
     "ccAliasSectionHint": "__MISSING__:Advertise this provider's models under claude/&lt;provider&gt;/&lt;model&gt; mirror ids so Claude Code's gateway model discovery can list them. Off by default — enabling this doubles catalog entries for all clients.",
     "ccAliasProviderLevelLabel": "__MISSING__:Provider default",
@@ -6038,7 +6038,7 @@
     "routingBlockTextHint": "新系統塊的完整文本。使用字面字串;系統塊僅存儲文本。",
     "routingIdempotencyKeyHint": "可選。設定後,如果已有以該鍵開頭的塊存在,則跳過此操作,避免重試時重複插入。",
     "routingBillingEntrypointHint": "作為 'cc_entrypoint=' 注入的值。Anthropic接受 'sdk-cli'(Agent SDK)、'cli'(Claude Code CLI)或其他文件化的值。",
-    "routingBillingVersionFormatHint": "cc_version= 後 3 字符構建哈希的計算方式。'ex-machina' = sha256(CCH_SALT + 第一條用戶消息字符 + 版本)(每條消息獨立)。'omniroute-daystamp' = sha256(YYYY-MM-DD + 版本)(按天穩定)。",
+    "routingBillingVersionFormatHint": "cc_version= 後 3 字符構建哈希的計算方式。'ex-machina' = sha256(CCH_SALT + 第一條用戶消息字符 + 版本)(每條消息獨立)。'xenia-daystamp' = sha256(YYYY-MM-DD + 版本)(按天穩定)。",
     "routingBillingCchAlgoHint": "5 字符cch= 令牌的計算方式。'sha256-first-user' = 第一條用戶消息文本的sha256;'xxhash64-body' = 由請求體級簽名稍後填充;'static-zero' = 字面佔位符 '00000'。",
     "routingObfuscateWordsHint": "要混淆的小寫詞語。ZWJ插入對大小寫不敏感,所以 'opencode' 也會匹配 'OpenCode' 與 'OPENCODE'。",
     "routingObfuscateTargetsHint": "掃描詞語的請求體範圍:系統塊、用戶/助手消息以及工具描述。",
@@ -6115,8 +6115,8 @@
     "memoryTitle": "記憶",
     "memoryDesc": "跨工作階段持久化對話記憶",
     "memoryEnabled": "啟用記憶",
-    "memoryEnabledDesc": "啟用後，OmniRoute會注入相關的歷史上下文。",
-    "memoryTokenCostWarning": "注意：啟用記憶功能後，OmniRoute會在每個聊天請求中注入最多 {tokens} 個令牌的檢索上下文——這會增加令牌使用量和成本。若要跳過特定請求的注入，請發送 \"x-omniroute-no-memory: true\" 請求標頭。",
+    "memoryEnabledDesc": "啟用後，Xenia會注入相關的歷史上下文。",
+    "memoryTokenCostWarning": "注意：啟用記憶功能後，Xenia會在每個聊天請求中注入最多 {tokens} 個令牌的檢索上下文——這會增加令牌使用量和成本。若要跳過特定請求的注入，請發送 \"x-xenia-no-memory: true\" 請求標頭。",
     "maxTokens": "最大Tokens",
     "retentionDays": "保留時長",
     "recent": "最近",
@@ -6300,7 +6300,7 @@
     "invalidFaviconFileType": "檔案類型無效。請上傳PNG、ICO、SVG、GIF或WebP。",
     "failedToReadFile": "讀取檔案失敗",
     "startOnLogin": "登入時啟動",
-    "startOnLoginDesc": "系統啟動時自動啟動OmniRoute並在後台托盤靜默運行。",
+    "startOnLoginDesc": "系統啟動時自動啟動Xenia並在後台托盤靜默運行。",
     "flushCache": "刷新快取",
     "flushing": "正在刷新...",
     "size": "尺寸",
@@ -6338,7 +6338,7 @@
     "healthcheckProxyUrl": "代理URL",
     "healthcheckLatency": "延遲",
     "proxyDocumentationScopeTitle": "代理作用域解析",
-    "proxyDocumentationScopeDescBefore": "OmniRoute按優先級順序解析出站代理：",
+    "proxyDocumentationScopeDescBefore": "Xenia按優先級順序解析出站代理：",
     "proxyDocumentationScopeOrder": "組合 → 賬戶 → 提供者 → 全域",
     "proxyDocumentationScopeDescAfter": "。最具體的作用域優先。",
     "proxyDocumentationAddTitle": "新增自定義代理",
@@ -6980,7 +6980,7 @@
     "qdrantEmbeddingModel": "嵌入模型",
     "qdrantHelpTitle": "快速設定幫助",
     "qdrantHelpQuickTitle": "快速設定（Qdrant + OpenRouter）",
-    "qdrantHelpStep1": "1. 主機：Qdrant IP/URL，連接埠：6333，集合：omniroute_memory。",
+    "qdrantHelpStep1": "1. 主機：Qdrant IP/URL，連接埠：6333，集合：xenia_memory。",
     "qdrantHelpStep2": "2. 如果使用nvidia/llama-nemotron-embed-vl-1b-v2:free，請使用集合維度 2048。",
     "qdrantHelpStep3": "3. 模型欄位：openrouter/nvidia/llama-nemotron-embed-vl-1b-v2:free。",
     "qdrantHelpStep4": "4. 保存，測試連接，然後測試搜尋。",
@@ -7073,9 +7073,9 @@
     "oneproxySuccess": "成功",
     "oneproxyFailed": "失敗",
     "routingAntigravitySignatureTitle": "Antigravity簽名快取模式",
-    "routingAntigravitySignatureDesc": "控制OmniRoute在Antigravity相容的工具呼叫流程中是僅複用已存儲的Gemini thought簽名,還是接受經校驗的客戶端提交簽名。",
+    "routingAntigravitySignatureDesc": "控制Xenia在Antigravity相容的工具呼叫流程中是僅複用已存儲的Gemini thought簽名,還是接受經校驗的客戶端提交簽名。",
     "routingAntigravitySignatureEnabledLabel": "啟用",
-    "routingAntigravitySignatureEnabledDesc": "當前行為。忽略客戶端提交的簽名,繼續使用OmniRoute已存儲的流程。",
+    "routingAntigravitySignatureEnabledDesc": "當前行為。忽略客戶端提交的簽名,繼續使用Xenia已存儲的流程。",
     "routingAntigravitySignatureBypassLabel": "繞過",
     "routingAntigravitySignatureBypassDesc": "經過輕量校驗後接受客戶端提交的簽名,無效時回退到已存儲的簽名。",
     "routingAntigravitySignatureBypassStrictLabel": "嚴格繞過",
@@ -7084,12 +7084,12 @@
     "routingServerRejectedSave": "⚠ 伺服器拒絕保存：",
     "routingAddTransformOp": "新增變換操作",
     "routingClientCacheControlTitle": "客戶端快取控制",
-    "routingClientCacheControlDesc": "設定OmniRoute是否保留客戶端提交的cache_control標記",
-    "routingClientCacheControlAutoDesc": "對於確定性的Claude相容流程,按原樣保留客戶端提交的cache_control。如果請求未攜帶cache_control,OmniRoute不會注入任何由橋接器擁有的標記,以相容Claude Code相容的第三方代理。",
+    "routingClientCacheControlDesc": "設定Xenia是否保留客戶端提交的cache_control標記",
+    "routingClientCacheControlAutoDesc": "對於確定性的Claude相容流程,按原樣保留客戶端提交的cache_control。如果請求未攜帶cache_control,Xenia不會注入任何由橋接器擁有的標記,以相容Claude Code相容的第三方代理。",
     "routingClientCacheControlAlwaysLabel": "始終保留",
     "routingClientCacheControlAlwaysDesc": "始終按原樣將客戶端提交的cache_control請求標頭轉發給上游提供者。",
     "routingClientCacheControlNeverLabel": "從不保留",
-    "routingClientCacheControlNeverDesc": "始終移除客戶端的cache_control請求標頭,在原生提供者流程支援時由OmniRoute管理快取。",
+    "routingClientCacheControlNeverDesc": "始終移除客戶端的cache_control請求標頭,在原生提供者流程支援時由Xenia管理快取。",
     "routingZeroConfigTitle": "零設定自動路由",
     "routingZeroConfigDesc": "啟用使用auto/ 前綴的自動提供者選擇。啟用後,發往auto、auto/coding、auto/fast等的請求將在所有已連接提供者之間動態路由。",
     "routingDefaultAutoVariant": "預設自動變體",
@@ -7099,7 +7099,7 @@
     "visionBridgeEnabledDesc": "切換預呼叫橋接,將圖像內容替換為提取出的文本。",
     "visionBridgeModel": "橋樑模型",
     "visionBridgeModelPlaceholder": "openai/gpt-4o-mini",
-    "visionBridgeModelHint": "可使用任何支援視覺的OmniRoute模型ID。",
+    "visionBridgeModelHint": "可使用任何支援視覺的Xenia模型ID。",
     "visionBridgePrompt": "橋接提示",
     "visionBridgePromptPlaceholder": "簡要描述一下這張圖片。",
     "visionBridgePromptHint": "在將提取出的描述注入回原始請求前,先發送給視覺模型。",
@@ -7217,7 +7217,7 @@
     "redisLauncherRunning": "運行中",
     "redisLauncherReachable": "可達",
     "redisLauncherError": "錯誤：{message}",
-    "redisLauncherHint": "等同於運行 `omniroute redis up`。容器命名為 `omniroute-redis` 並監聽 127.0.0.1:6379。",
+    "redisLauncherHint": "等同於運行 `xenia redis up`。容器命名為 `xenia-redis` 並監聽 127.0.0.1:6379。",
     "compressionSettingsAutoTriggerMode": "自動觸發模式",
     "compressionSettingsMcpDescriptionCompression": "MCP描述壓縮",
     "mcpAccessibilityTitle": "MCP無障礙輸出",
@@ -7327,7 +7327,7 @@
     "cliproxyapiStatus": "CLIProxyAPI狀態",
     "cliproxyapiNotDetected": "未檢測到",
     "cliproxyapiImportAuthTitle": "從CLIProxyAPI導入賬戶",
-    "cliproxyapiImportAuthDesc": "導入CLIProxyAPI已保存在 ~/.cli-proxy-api/ 中的OAuth賬戶作為OmniRoute連接，無需重新登入。支援的賬戶類型（Gemini、Codex、Claude、Antigravity、Qwen、Kimi）將被導入，其他類型跳過。",
+    "cliproxyapiImportAuthDesc": "導入CLIProxyAPI已保存在 ~/.cli-proxy-api/ 中的OAuth賬戶作為Xenia連接，無需重新登入。支援的賬戶類型（Gemini、Codex、Claude、Antigravity、Qwen、Kimi）將被導入，其他類型跳過。",
     "cliproxyapiImportAuthButton": "導入帳戶",
     "payloadRulesTitle": "負載規則",
     "payloadRulesDesc": "按模型與協議設定請求payload的變更。修改會持久化到設定中,並在保存後立即熱載入到運行時。",
@@ -7371,7 +7371,7 @@
     "modelCooldownsReasonRemaining": "原因：{reason} • 剩餘：{remaining}",
     "modelCooldownsReactivate": "重新激活",
     "responsesStateTitle": "回應狀態",
-    "responsesStateDesc": "控制OmniRoute如何處理previous_response_id。",
+    "responsesStateDesc": "控制Xenia如何處理previous_response_id。",
     "responsesStateModeLabel": "previous_response_id處理",
     "responsesStateModeAuto": "自動",
     "responsesStateModeStrip": "剝離",
@@ -7380,7 +7380,7 @@
     "responsesStateSaveError": "更新回應狀態設定失敗",
     "codexFastTierTitle": "Codex快速層",
     "codexFastTierDesc": "為OpenAI Codex請求全域注入service_tier=priority。",
-    "codexFastTierHint": "啟用後，OmniRoute會將service_tier=priority新增到尚未指定層的連接的出站Codex請求中。優先級需要OpenAI Enterprise API Key或ChatGPT-auth Codex路徑；其他金鑰類型將從OpenAI收到與層相關的錯誤。Codex提供程式頁面上的每個連接設定優先。",
+    "codexFastTierHint": "啟用後，Xenia會將service_tier=priority新增到尚未指定層的連接的出站Codex請求中。優先級需要OpenAI Enterprise API Key或ChatGPT-auth Codex路徑；其他金鑰類型將從OpenAI收到與層相關的錯誤。Codex提供程式頁面上的每個連接設定優先。",
     "codexFastTierSaveError": "無法更新Codex Fast Tier設定",
     "codexAutoPingTitle": "Codex自動Ping",
     "codexAutoPingDesc": "按連接選擇加入：在Codex工作階段窗口重置後立即發送一個微小請求，避免冷啟動。",
@@ -7396,7 +7396,7 @@
     "codexFastTierModelCheckbox": "為 {model} 啟用快速層",
     "claudeFastModeTitle": "Claude快速模式",
     "claudeFastModeDesc": "選擇選定的Claude請求進入Anthropic快速模式（速度：“快速”）。",
-    "claudeFastModeHint": "Anthropic並未正式支援SDK樣式客戶端的快速模式。啟用後，OmniRoute會轉發X-CPA-Force-Fast-Mode標頭，以便配對的CLIProxyAPI構建可以選擇欺騙入口點。只有列出的Opus模型才會受到Anthropic客戶端檢查的控制。訂閱層、最大計劃和快速模式信用餘額仍然在伺服器端強制執行 - 即使打開切換，Anthropic也可能返回out_of_credits。",
+    "claudeFastModeHint": "Anthropic並未正式支援SDK樣式客戶端的快速模式。啟用後，Xenia會轉發X-CPA-Force-Fast-Mode標頭，以便配對的CLIProxyAPI構建可以選擇欺騙入口點。只有列出的Opus模型才會受到Anthropic客戶端檢查的控制。訂閱層、最大計劃和快速模式信用餘額仍然在伺服器端強制執行 - 即使打開切換，Anthropic也可能返回out_of_credits。",
     "claudeFastModeModelsLabel": "應用於模型 ({count})",
     "claudeFastModeModelCheckbox": "為 {model} 啟用快速模式",
     "claudeFastModeSaveError": "無法更新Claude快速模式設定",
@@ -7492,7 +7492,7 @@
     "resilienceWaitForCooldownEffect": "等待伺服器並在第一個冷卻時間到期時重試",
     "resilienceWaitForCooldownDesc": "這僅影響當前請求。它不存儲連接或提供者狀態。",
     "resilienceEnableServerWait": "啟用伺服器端等待",
-    "resilienceEnableServerWaitDesc": "啟用後，OmniRoute會等待第一次冷卻時間到期並自動重試。",
+    "resilienceEnableServerWaitDesc": "啟用後，Xenia會等待第一次冷卻時間到期並自動重試。",
     "resilienceMaxAttempts": "最大嘗試次數",
     "resilienceMaxWaitPerAttempt": "每次嘗試的最長等待時間",
     "resilienceComboCooldownWaitTitle": "配額共享組合冷卻等待",
@@ -7527,7 +7527,7 @@
     "vercelRelaySuccess": "Vercel Relay部署成功",
     "vercelRelayButton": "部署Vercel Relay",
     "vercelRelayModalTitle": "部署Vercel Relay",
-    "vercelRelayWarning": "警告：需要Vercel部署令牌。此令牌僅用於創建無伺服器中繼，OmniRoute不會存儲該令牌。",
+    "vercelRelayWarning": "警告：需要Vercel部署令牌。此令牌僅用於創建無伺服器中繼，Xenia不會存儲該令牌。",
     "vercelRelayTokenLabel": "Vercel訪問令牌",
     "vercelRelayProjectNameLabel": "Vercel項目名稱",
     "vercelRelayFreeTierNote": "中繼是在Vercel免費層上部署的輕量級代理端點，用於繞過本地網路/區域限制。",
@@ -7536,7 +7536,7 @@
     "deployRelayButton": "部署中繼",
     "denoRelayButton": "部署Deno中繼",
     "denoRelayModalTitle": "部署Deno中繼",
-    "denoRelayWarning": "警告：需要Deno Deploy組織令牌。此令牌僅用於創建中繼應用，絕不會被OmniRoute存儲。",
+    "denoRelayWarning": "警告：需要Deno Deploy組織令牌。此令牌僅用於創建中繼應用，絕不會被Xenia存儲。",
     "denoRelayTokenLabel": "Deno Deploy組織令牌",
     "denoRelayOrgDomainLabel": "組織域名",
     "denoRelayProjectNameLabel": "Deno應用名稱",
@@ -8001,7 +8001,7 @@
     "port": "連接埠 {port}",
     "externalBadge": "外部管理",
     "externalTitle": "檢測到外部 9Router",
-    "externalDescription": "OmniRoute在 {host}:{port} 發現了 9Router。其生命週期、日誌、更新和服務金鑰仍由外部安裝管理。",
+    "externalDescription": "Xenia在 {host}:{port} 發現了 9Router。其生命週期、日誌、更新和服務金鑰仍由外部安裝管理。",
     "start": "啟動",
     "starting": "正在啟動…",
     "stop": "停止",
@@ -8013,9 +8013,9 @@
     "install": "安裝",
     "installing": "正在安裝…",
     "autoStart": "自動啟動",
-    "autoStartDescription": "在OmniRoute啟動時自動啟動 {name}",
+    "autoStartDescription": "在Xenia啟動時自動啟動 {name}",
     "apiKey": "API Key",
-    "apiKeyDescription": "OmniRoute用於向 {name} 身份驗證的金鑰",
+    "apiKeyDescription": "Xenia用於向 {name} 身份驗證的金鑰",
     "keyRotated": "金鑰已輪換— {name} 已重新啟動以應用新金鑰",
     "keyRotateFailed": "輪換金鑰失敗",
     "keyRevealFailed": "顯示金鑰失敗",
@@ -8034,7 +8034,7 @@
     "version": "Version",
     "versionHint": "輸入“latest”或具體版本號（例如 1.2.3）。",
     "servicePort": "Port",
-    "servicePortHint": "OmniRoute和 9Router必須使用不同連接埠。9Router預設連接埠為 20130。",
+    "servicePortHint": "Xenia和 9Router必須使用不同連接埠。9Router預設連接埠為 20130。",
     "installationFailed": "Installation failed (HTTP {status})",
     "installationSucceeded": "9Router安裝成功。正在啟動…",
     "networkInstallFailed": "網路錯誤 — 無法連接安裝端點",
@@ -8052,7 +8052,7 @@
     "providerExposure": "提供者Exposure",
     "providerExposureDescription": "將 9Router模型作為路由目標暴露在 <prefix>9router/</prefix> 前綴下。",
     "providerExposureLabel": "以 <prefix>9router/…</prefix> 形式暴露",
-    "providerExposureHint": "啟用後，已發現的模型會出現在OmniRoute各處的提供者選擇器中。",
+    "providerExposureHint": "啟用後，已發現的模型會出現在Xenia各處的提供者選擇器中。",
     "providerExposureUpdateFailed": "Failed to update (HTTP {status})",
     "providerExposureNetworkFailed": "網路錯誤 — 無法更新提供者暴露設定",
     "webUi": "9Router Web UI",
@@ -8073,7 +8073,7 @@
     "saved": "已保存",
     "saveFailed": "保存設定失敗",
     "modelMapping": "模型映射",
-    "modelMappingDescription": "將OmniRoute模型ID映射到CLIProxyAPI模型ID（例如，<example>\"gpt-4o\": \"openai-gpt-4o\"</example>）",
+    "modelMappingDescription": "將Xenia模型ID映射到CLIProxyAPI模型ID（例如，<example>\"gpt-4o\": \"openai-gpt-4o\"</example>）",
     "modelMappingEditor": "模型映射JSON編輯器",
     "mappingSaved": "映射已保存",
     "mappingSaveFailed": "保存映射失敗",
@@ -8133,7 +8133,7 @@
   },
   "translator": {
     "title": "翻譯器",
-    "metaTitle": "翻譯器演練場 | OmniRoute",
+    "metaTitle": "翻譯器演練場 | Xenia",
     "metaDescription": "調試、測試和可視化提供者之間的API格式轉換",
     "playgroundTitle": "翻譯器演練場",
     "playground": "演練場",
@@ -8141,11 +8141,11 @@
     "chatTester": "聊天測試儀",
     "testBench": "測試臺",
     "liveMonitor": "實時監控",
-    "modeDescriptionPlayground": "粘貼任意API請求體，查看OmniRoute如何在不同提供者格式之間進行轉換（OpenAI ↔ Claude ↔ Gemini ↔ Responses API）。",
-    "modeDescriptionChatTester": "通過OmniRoute發送真實聊天請求，並檢查完整往返流程：輸入、轉換後的請求、提供者回應以及轉換後的輸出。",
+    "modeDescriptionPlayground": "粘貼任意API請求體，查看Xenia如何在不同提供者格式之間進行轉換（OpenAI ↔ Claude ↔ Gemini ↔ Responses API）。",
+    "modeDescriptionChatTester": "通過Xenia發送真實聊天請求，並檢查完整往返流程：輸入、轉換後的請求、提供者回應以及轉換後的輸出。",
     "modeDescriptionTestBench": "運行預定義的場景並比較提供者和模型之間的相容性。",
-    "modeDescriptionLiveMonitor": "實時查看請求流經OmniRoute時產生的翻譯事件。",
-    "modeDescriptionFallback": "調試、測試並可視化OmniRoute如何在提供者之間轉換API請求。",
+    "modeDescriptionLiveMonitor": "實時查看請求流經Xenia時產生的翻譯事件。",
+    "modeDescriptionFallback": "調試、測試並可視化Xenia如何在提供者之間轉換API請求。",
     "recentTranslations": "最近的翻譯",
     "noTranslations": "還沒有翻譯",
     "source": "來源",
@@ -8162,7 +8162,7 @@
     "notAvailableSymbol": "—",
     "liveAutoRefreshing": "直播—自動刷新",
     "paused": "已暫停",
-    "eventsAppearHint": "請求流經OmniRoute時，翻譯事件會顯示在這裡。你可以通過下面任一方式生成事件：",
+    "eventsAppearHint": "請求流經Xenia時，翻譯事件會顯示在這裡。你可以通過下面任一方式生成事件：",
     "chatTesterTab": "聊天測試選項卡",
     "testBenchTab": "測試臺選項卡",
     "externalApiCalls": "外部API呼叫",
@@ -8171,12 +8171,12 @@
     "ok": "好的",
     "errorShort": "錯誤率",
     "formatConverter": "格式轉換器",
-    "formatConverterDescription": "粘貼或輸入JSON請求體。翻譯器會自動識別源格式並將其轉換為目標格式。你可以藉此調試OmniRoute在各種格式之間的轉換行為（OpenAI ↔ Claude ↔ Gemini ↔ Responses API）。",
+    "formatConverterDescription": "粘貼或輸入JSON請求體。翻譯器會自動識別源格式並將其轉換為目標格式。你可以藉此調試Xenia在各種格式之間的轉換行為（OpenAI ↔ Claude ↔ Gemini ↔ Responses API）。",
     "translationPathHubSpoke": "{source} → OpenAI（中間格式）→ {target}",
     "translationPathDirect": "{source} → {target}（直接轉換器）",
     "translationPathPassthrough": "格式相同—無需轉換",
     "openaiIntermediatePanel": "OpenAI中間格式",
-    "autoFeaturesTitle": "OmniRoute自動處理的內容",
+    "autoFeaturesTitle": "Xenia自動處理的內容",
     "autoFeaturesCount": "8 項功能",
     "featureReasoningCache": "推理快取",
     "featureReasoningCacheDesc": "當客戶端在對話歷史中省略thinking-mode模型（DeepSeek V4、Kimi K2、Qwen）的快取reasoning_content時，會重新注入。",
@@ -8311,7 +8311,7 @@
     "clientRequest": "客戶端請求",
     "clientRequestDescription": "您的客戶端發送的請求正文",
     "formatDetected": "檢測到格式",
-    "formatDetectedDescription": "OmniRoute會根據請求結構自動識別API格式",
+    "formatDetectedDescription": "Xenia會根據請求結構自動識別API格式",
     "openaiIntermediate": "OpenAI中間格式",
     "openaiIntermediateDescription": "所有格式都會先歸一化為OpenAI格式（通用橋接層）",
     "providerFormat": "提供者格式",
@@ -8329,12 +8329,12 @@
     "eventSourcesLabel": "事件來源：",
     "eventSourceTranslatorPage": "• Translator頁面（Chat Tester、Test Bench）",
     "eventSourceMainPipeline": "• 主請求流水線（CLI/IDE/API流量）",
-    "liveMonitorDescriptionPrefix": "這裡會顯示API呼叫流經OmniRoute時產生的翻譯事件。事件來自記憶體緩衝區（重新啟動後會重置）。使用",
+    "liveMonitorDescriptionPrefix": "這裡會顯示API呼叫流經Xenia時產生的翻譯事件。事件來自記憶體緩衝區（重新啟動後會重置）。使用",
     "liveMonitorDescriptionSuffix": "，或外部API呼叫來生成事件。",
     "streamTransformer": "流轉換器",
     "modeDescriptionStreamTransformer": "通過回應轉換器運行聊天完成SSE流。",
     "streamTransformerTitle": "回應流轉換器",
-    "streamTransformerDescription": "粘貼聊天完成SSE流，通過OmniRoute的回應轉換器運行它，並在連接客戶端之前檢查發出的回應。* 事件。",
+    "streamTransformerDescription": "粘貼聊天完成SSE流，通過Xenia的回應轉換器運行它，並在連接客戶端之前檢查發出的回應。* 事件。",
     "loadTextSample": "載入文本樣本",
     "loadToolSample": "載入工具呼叫示例",
     "transformToResponses": "轉換為回應",
@@ -8377,7 +8377,7 @@
     "simpleAppUsesLabel": "我的應用程式使用",
     "simpleAppUsesHint": "您的應用程式使用的API格式（例如，Anthropic SDK = claude）。",
     "simpleSendToLabel": "發送到",
-    "simpleSendToHint": "實際將請求發送到哪裡（在OmniRoute中連接的提供者）。",
+    "simpleSendToHint": "實際將請求發送到哪裡（在Xenia中連接的提供者）。",
     "simpleStartWithLabel": "開始於",
     "simpleStartWithExamplePlaceholder": "選擇一個現成的示例",
     "simpleStartWithCustomOption": "粘貼您的請求（高級）",
@@ -8486,7 +8486,7 @@
     "define": "定義",
     "defineStepDescription": "使用包含、正則表達式或完全匹配等策略創建帶有輸入提示和預期輸出標準的測試用例。",
     "run": "運行",
-    "runStepDescription": "通過OmniRoute對你的LLM端點執行測試用例。每個案例都會作為真實API請求發送。",
+    "runStepDescription": "通過Xenia對你的LLM端點執行測試用例。每個案例都會作為真實API請求發送。",
     "evaluate": "評估",
     "evaluateStepDescription": "將回應與預期標準比較。查看每種情況的通過/失敗情況以及延遲指標和詳細反饋。",
     "evalsStrategyContainsLabel": "包含",
@@ -8547,14 +8547,14 @@
     "noResultsYet": "還沒有結果",
     "testCasesCount": "測試用例 ({count})",
     "noTestCasesDefined": "沒有定義測試用例",
-    "runEvalHint": "點擊“運行評測”即可對你的LLM端點執行所有案例。每次測試都會通過OmniRoute發送真實請求。",
+    "runEvalHint": "點擊“運行評測”即可對你的LLM端點執行所有案例。每次測試都會通過Xenia發送真實請求。",
     "notifyNoTestCases": "沒有為此套件定義測試用例",
     "notifyAllCasesPassed": "所有 {total} 案例均已通過 ✅",
     "notifySomeCasesFailed": "{passed}/{total} 通過，{failed} 失敗",
     "notifyEvalRunFailed": "評估運行失敗",
     "notifyEvalTitle": "評估：{name}",
     "modelEvals": "模型評估",
-    "evalsHeroDescription": "通過運行預定義評測套件來測試和驗證你的LLM端點。每個套件都包含多個測試用例，會經由OmniRoute發送真實提示，並將回應與預期標準比較，幫助你發現迴歸、比較模型，並確保跨提供者的回應質量。",
+    "evalsHeroDescription": "通過運行預定義評測套件來測試和驗證你的LLM端點。每個套件都包含多個測試用例，會經由Xenia發送真實提示，並將回應與預期標準比較，幫助你發現迴歸、比較模型，並確保跨提供者的回應質量。",
     "qualityValidation": "質量驗證",
     "modelComparison": "模型對比",
     "regressionDetection": "迴歸檢測",
@@ -8936,7 +8936,7 @@
     "loading": "正在載入...",
     "invalidPassword": "密碼無效",
     "errorOccurredRetry": "發生錯誤。請再試一次。",
-    "configureInstance": "開始設定你的OmniRoute實例",
+    "configureInstance": "開始設定你的Xenia實例",
     "runOnboardingWizard": "運行入門嚮導來設定您的密碼並連接您的第一個AI提供者。",
     "startOnboarding": "開始引導",
     "secureYourInstance": "保護您的實例",
@@ -8956,14 +8956,14 @@
     "featureUsageTrackingDesc": "監控成本和Tokens",
     "resetPassword": "重置密碼",
     "resetDescription": "選擇一種方法來恢復對看板的訪問權限",
-    "stopServer": "停止OmniRoute伺服器",
+    "stopServer": "停止Xenia伺服器",
     "processing": "處理中...",
     "pleaseWait": "我們正在完成授權，請稍候。",
     "authSuccess": "授權成功！",
     "copyUrl": "複製此網址",
     "accessDenied": "訪問已拒絕",
     "methodCliTitle": "方法 1：CLI重置",
-    "methodCliDescription": "在運行OmniRoute的伺服器上運行以下命令：",
+    "methodCliDescription": "在運行Xenia的伺服器上運行以下命令：",
     "methodCliHint": "這將提示您設定新密碼。必須首先停止伺服器。",
     "methodManualTitle": "方法 2：手動重置",
     "methodManualDescription": "從資料庫中刪除密碼並在啟動時設定新密碼：",
@@ -8986,12 +8986,12 @@
     "waitingForQoderAuthorization": "正在等待Qoder授權...",
     "exchangingCodeForTokens": "正在用授權碼換取Tokens...",
     "nodeIncompatibleTitle": "不相容的Node.js版本",
-    "nodeIncompatibleDesc": "你當前運行的是Node.js {version}，它不在OmniRoute支援的安全運行時策略內。請使用已打補丁的Node.js 20.x或 22.x LTS版本。",
+    "nodeIncompatibleDesc": "你當前運行的是Node.js {version}，它不在Xenia支援的安全運行時策略內。請使用已打補丁的Node.js 20.x或 22.x LTS版本。",
     "nodeIncompatibleFixLabel": "修復：安裝已打補丁的Node.js 22 LTS版本",
-    "nodeIncompatibleHint": "OmniRoute要求Node.js 22.22.2+（22.x LTS）或 24.0.0+（24.x LTS）。為保證穩定性，建議使用Node 24 LTS。"
+    "nodeIncompatibleHint": "Xenia要求Node.js 22.22.2+（22.x LTS）或 24.0.0+（24.x LTS）。為保證穩定性，建議使用Node 24 LTS。"
   },
   "landing": {
-    "brandName": "OmniRoute",
+    "brandName": "Xenia",
     "navigateHome": "導航至主頁",
     "toggleMenu": "切換菜單",
     "featuresLink": "特點",
@@ -9011,6 +9011,8 @@
     "featureEasySetupDesc": "使用npx命令在幾分鐘內啟動並運行。",
     "featureModelFallbackTitle": "模型回退",
     "featureModelFallbackDesc": "發生故障或高延遲時自動切換提供者。",
+    "featureAutoFailoverTitle": "Automatic Account Switching",
+    "featureAutoFailoverDesc": "Rotates to your next connected account the instant one hits a rate limit or quota.",
     "featureUsageTrackingTitle": "使用情況追蹤",
     "featureUsageTrackingDesc": "所有模型的詳細分析和成本監控。",
     "featureOAuthApiKeysTitle": "OAuth與API Key",
@@ -9021,17 +9023,17 @@
     "featureCliSupportDesc": "適用於Claude Code、Codex、Cline、Cursor等工具。",
     "featureDashboardTitle": "看板",
     "featureDashboardDesc": "用於實時流量分析的可視化看板。",
-    "howItWorks": "OmniRoute工作原理",
+    "howItWorks": "Xenia工作原理",
     "howItWorksDescription": "資料從您的應用程式通過我們的智能路由層無縫流向最適合該工作的提供者。",
     "howItWorksStep1Title": "1. CLI和SDK",
     "howItWorksStep1Description": "您的請求從您最喜歡的工具或我們的統一SDK開始。只需更改基本URL即可。",
-    "howItWorksStep2Title": "2. OmniRoute中樞",
+    "howItWorksStep2Title": "2. Xenia中樞",
     "howItWorksStep2Description": "我們的引擎分析提示、檢查提供者的運行狀況以及最低延遲或成本的路線。",
     "howItWorksStep3Title": "3. AI提供者",
     "howItWorksStep3Description": "請求會被立即轉發給OpenAI、Anthropic、Gemini或其他提供者完成處理。",
     "getStartedIn30Seconds": "30 秒內開始",
-    "getStartedDescription": "安裝OmniRoute，通過Web看板設定你的提供者，然後開始路由AI請求。",
-    "installOmniRoute": "安裝OmniRoute",
+    "getStartedDescription": "安裝Xenia，通過Web看板設定你的提供者，然後開始路由AI請求。",
+    "installXenia": "安裝Xenia",
     "installStepDescription": "運行npx命令立即啟動伺服器",
     "openDashboard": "打開看板",
     "openDashboardStepDescription": "通過Web界面設定提供者和API Key",
@@ -9040,7 +9042,7 @@
     "terminal": "終端",
     "copy": "複製",
     "copied": "✓ 已複製",
-    "startingOmniRoute": "正在啟動OmniRoute...",
+    "startingXenia": "正在啟動Xenia...",
     "serverRunningOnLabel": "伺服器運行於",
     "dashboardLabel": "看板",
     "readyToRoute": "已準備好開始路由！ ✓",
@@ -9057,7 +9059,7 @@
     "legal": "法律",
     "mitLicense": "MIT許可證",
     "footerTagline": "AI生成的統一端點。輕鬆連接、路由和管理您的AI提供者。",
-    "copyright": "© {year} OmniRoute。保留所有權利。",
+    "copyright": "© {year} Xenia。保留所有權利。",
     "flowToolClaudeCode": "Claude Code",
     "flowToolOpenAICodex": "OpenAI Codex",
     "flowToolCline": "Cline",
@@ -9068,7 +9070,7 @@
     "flowProviderGithubCopilot": "GitHub Copilot",
     "interactiveDiagram": "可交互流程圖",
     "ctaTitle": "準備好簡化你的AI基礎設施了嗎？",
-    "ctaDescription": "加入更多開發者，一起用OmniRoute簡化AI整合流程。開源且可免費開始使用。",
+    "ctaDescription": "加入更多開發者，一起用Xenia簡化AI整合流程。開源且可免費開始使用。",
     "startFree": "免費開始",
     "readDocumentation": "閱讀文件"
   },
@@ -9113,9 +9115,9 @@
     "quickStartStep4Prefix": "將您的IDE或API客戶端指向",
     "quickStartStep4Suffix": "例如使用提供者前綴",
     "deploySetupTitle": "設定指南",
-    "deploySetupText": "OmniRoute的分步安裝、環境設定和首次運行演練。",
+    "deploySetupText": "Xenia的分步安裝、環境設定和首次運行演練。",
     "deployElectronTitle": "電子桌面",
-    "deployElectronText": "在Windows、macOS和Linux上將OmniRoute作為本機桌面應用程式運行。",
+    "deployElectronText": "在Windows、macOS和Linux上將Xenia作為本機桌面應用程式運行。",
     "deployDockerTitle": "Docker",
     "deployDockerText": "使用Docker Compose進行容器化部署；為生產堆棧和Kubernetes做好準備。",
     "deployVmTitle": "虛擬機",
@@ -9123,9 +9125,9 @@
     "deployFlyTitle": "飛行大作戰",
     "deployFlyText": "使用一個Fly.toml和一個部署命令部署到Fly.io邊緣運行時。",
     "deployPwaTitle": "漸進式網頁應用",
-    "deployPwaText": "在Android、iOS和桌面瀏覽器上將OmniRoute作為漸進式Web應用程式安裝。",
+    "deployPwaText": "在Android、iOS和桌面瀏覽器上將Xenia作為漸進式Web應用程式安裝。",
     "deployTermuxTitle": "Termux（Android）",
-    "deployTermuxText": "通過Termux在Android上以無界面模式運行OmniRoute，並從移動瀏覽器訪問看板。",
+    "deployTermuxText": "通過Termux在Android上以無界面模式運行Xenia，並從移動瀏覽器訪問看板。",
     "featureRoutingTitle": "多提供者路由",
     "featureRoutingText": "通過單一OpenAI相容端點將請求路由到 30+ AI提供者，支援聊天、Responses、音頻和圖像API。",
     "featureCombosTitle": "組合和平衡",
@@ -9171,24 +9173,24 @@
     "clientClaudeBullet1Middle": "（Claude）或",
     "clientClaudeBullet1Suffix": "（Antigravity）前綴。",
     "clientWindsurfTitle": "Windsurf",
-    "clientWindsurfBullet1": "將OmniRoute用作OpenAI相容的base URL，並保留顯式提供者前綴，以實現確定性路由。",
+    "clientWindsurfBullet1": "將Xenia用作OpenAI相容的base URL，並保留顯式提供者前綴，以實現確定性路由。",
     "clientWindsurfBullet2": "常規流量將模型指向 `/v1/chat/completions`，併為Codex風格流程保留 `/v1/responses`。",
     "clientWindsurfBullet3": "使用看板 -> CLI工具獲取現成的Windsurf設定指南。",
     "clientClineTitle": "Cline",
     "clientClineBullet1": "Cline最適合使用顯式的提供者/模型前綴，這樣路由器無需猜測後端。",
-    "clientClineBullet2": "常規模型使用 `/v1/chat/completions`，並在不同賬戶間複用同一個OmniRoute base URL。",
+    "clientClineBullet2": "常規模型使用 `/v1/chat/completions`，並在不同賬戶間複用同一個Xenia base URL。",
     "clientClineBullet3": "調試Cline運行時問題前，請使用提供者看板驗證OAuth/API Key。",
     "clientKimiTitle": "Kimi Coding",
-    "clientKimiBullet1": "輪換底層賬戶或提供者組合時，將OmniRoute用作穩定的base URL。",
+    "clientKimiBullet1": "輪換底層賬戶或提供者組合時，將Xenia用作穩定的base URL。",
     "clientKimiBullet2": "在編碼流程中優先使用帶前綴的模型，讓回退和審計軌跡保持明確。",
     "clientKimiBullet3": "當你希望為使用工具的客戶端啟用原生Responses風格路由時，請使用 `/v1/responses`。",
     "protocolsTitle": "協議：MCP與A2A",
-    "protocolsDescription": "除了OpenAI相容API之外，OmniRoute還提供兩類操作協議：用於工具執行的MCP，以及用於智能體協作工作流的A2A。",
+    "protocolsDescription": "除了OpenAI相容API之外，Xenia還提供兩類操作協議：用於工具執行的MCP，以及用於智能體協作工作流的A2A。",
     "protocolMcpTitle": "MCP（Model Context Protocol）",
-    "protocolMcpDesc": "通過stdio使用MCP，讓客戶端發現並呼叫OmniRoute工具，同時具備審計可見性。",
-    "protocolMcpStep1": "使用 `omniroute --mcp` 啟動MCP傳輸。",
+    "protocolMcpDesc": "通過stdio使用MCP，讓客戶端發現並呼叫Xenia工具，同時具備審計可見性。",
+    "protocolMcpStep1": "使用 `xenia --mcp` 啟動MCP傳輸。",
     "protocolMcpStep2": "將你的MCP客戶端指向stdio傳輸。",
-    "protocolMcpStep3": "呼叫 `omniroute_get_health` 和 `omniroute_list_combos` 驗證連通性。",
+    "protocolMcpStep3": "呼叫 `xenia_get_health` 和 `xenia_list_combos` 驗證連通性。",
     "protocolA2aTitle": "A2A（Agent2Agent）",
     "protocolA2aDesc": "使用A2A JSON-RPC以同步方式或通過SSE流式方式提交任務。",
     "protocolA2aStep1": "讀取 `/.well-known/agent.json` 進行智能體發現。",
@@ -9248,7 +9250,7 @@
     "mgmtPayloadRulesGetNote": "獲取載荷轉換規則。",
     "mgmtPayloadRulesUpdateNote": "更新載荷轉換規則。",
     "mcpToolsTitle": "MCP工具",
-    "mcpToolsDescription": "OmniRoute通過Model Context Protocol暴露 {count} 個工具，用於Agent編排。",
+    "mcpToolsDescription": "Xenia通過Model Context Protocol暴露 {count} 個工具，用於Agent編排。",
     "mcpToolsCount": "{count} 個工具",
     "mcpToolsToc": "MCP工具",
     "mcpToolsRoutingTitle": "路由與發現",
@@ -9292,10 +9294,10 @@
     "clearHistory": "隨時清除使用記錄",
     "configureRetention": "設定日誌保留策略",
     "backupRestore": "備份和恢復您的資料庫",
-    "privacyMetadataTitle": "隱私政策 | OmniRoute",
-    "privacyMetadataDescription": "OmniRoute AI API代理路由器的隱私政策。",
-    "termsMetadataTitle": "服務條款 | OmniRoute",
-    "termsMetadataDescription": "OmniRoute AI API代理路由器的服務條款。",
+    "privacyMetadataTitle": "隱私政策 | Xenia",
+    "privacyMetadataDescription": "Xenia AI API代理路由器的隱私政策。",
+    "termsMetadataTitle": "服務條款 | Xenia",
+    "termsMetadataDescription": "Xenia AI API代理路由器的服務條款。",
     "backToHome": "返回首頁",
     "lastUpdated": "最後更新：{date}",
     "policyLastUpdatedDate": "2026 年 2 月 13 日",
@@ -9303,7 +9305,7 @@
     "questionsVisit": "有問題嗎？訪問我們的",
     "githubRepository": "GitHub倉庫",
     "privacySection1Title": "1. 本地優先架構",
-    "privacySection1Text": "OmniRoute是一款本地優先的應用。所有資料處理和存儲都只發生在你的設備上，不存在集中式伺服器收集你的資訊。",
+    "privacySection1Text": "Xenia是一款本地優先的應用。所有資料處理和存儲都只發生在你的設備上，不存在集中式伺服器收集你的資訊。",
     "privacySection2Title": "2. 我們存儲的資料",
     "privacyDataStoredIn": "以下資料存儲在本地",
     "privacyDataProviderConfigurationsDesc": "連接URL、提供者類型和優先級設定",
@@ -9311,9 +9313,9 @@
     "privacyDataUsageLogsDesc": "請求計數、令牌使用情況、模型名稱、時間戳和回應時間",
     "privacyDataApplicationSettingsDesc": "主題偏好、路由策略和組合設定",
     "privacySection3Title": "3. 無遙測",
-    "privacySection3Text": "OmniRoute不收集遙測、分析或崩潰報告。不會向我們或任何第三方發送資料。你的使用模式、API呼叫和設定都會保持私密。",
+    "privacySection3Text": "Xenia不收集遙測、分析或崩潰報告。不會向我們或任何第三方發送資料。你的使用模式、API呼叫和設定都會保持私密。",
     "privacySection4Title": "4. 第三方AI提供者",
-    "privacySection4Text": "當你通過OmniRoute發起API呼叫時，請求會被轉發到你設定的AI提供者（例如：OpenAI、Anthropic、Google）。這些提供者有各自的隱私政策，請查閱：",
+    "privacySection4Text": "當你通過Xenia發起API呼叫時，請求會被轉發到你設定的AI提供者（例如：OpenAI、Anthropic、Google）。這些提供者有各自的隱私政策，請查閱：",
     "privacyOpenAiPolicy": "OpenAI隱私政策",
     "privacyAnthropicPolicy": "Anthropic隱私政策",
     "privacyGooglePolicy": "Google隱私政策",
@@ -9325,21 +9327,21 @@
     "privacySection7TextStart": "由於所有資料都存儲在本地，因此您擁有完全的控制權。您可以隨時刪除您的資料，方法是刪除",
     "privacySection7TextEnd": "目錄或使用看板中的資料庫備份和恢復功能。",
     "termsSection1Title": "1. 概述",
-    "termsSection1Text": "OmniRoute是一款本地優先的AI API代理路由器，完全運行在你的設備上。它通過負載均衡、故障回退和用量跟蹤，將請求路由到多個AI提供者。",
+    "termsSection1Text": "Xenia是一款本地優先的AI API代理路由器，完全運行在你的設備上。它通過負載均衡、故障回退和用量跟蹤，將請求路由到多個AI提供者。",
     "termsSection2Title": "2. 用戶的責任",
     "termsResponsibilityApiKeys": "你需要自行負責管理自己的API Key，以及第三方AI提供者（OpenAI、Anthropic、Google等）的憑證。",
-    "termsResponsibilityCompliance": "你必須遵守通過OmniRoute訪問的每個AI提供者的服務條款。",
-    "termsResponsibilitySecurity": "你需要負責本地OmniRoute安裝的安全，包括設定密碼和限制網路訪問。",
+    "termsResponsibilityCompliance": "你必須遵守通過Xenia訪問的每個AI提供者的服務條款。",
+    "termsResponsibilitySecurity": "你需要負責本地Xenia安裝的安全，包括設定密碼和限制網路訪問。",
     "termsSection3Title": "3. 工作原理",
-    "termsSection3Text": "OmniRoute充當中間代理。發送到OmniRoute的API呼叫會被轉換後轉發到你設定的AI提供者。除必要的協議轉換外，OmniRoute不會修改你的請求或回應內容。",
+    "termsSection3Text": "Xenia充當中間代理。發送到Xenia的API呼叫會被轉換後轉發到你設定的AI提供者。除必要的協議轉換外，Xenia不會修改你的請求或回應內容。",
     "termsSection4Title": "4. 資料處理",
     "termsDataStoredLocally": "所有資料都保存在你本機上的SQLite資料庫中。",
-    "termsNoTransmission": "除非你明確啟用雲同步功能，否則OmniRoute不會將任何資料傳輸到外部伺服器。",
+    "termsNoTransmission": "除非你明確啟用雲同步功能，否則Xenia不會將任何資料傳輸到外部伺服器。",
     "termsDataLocationText": "使用日誌、API Key和設定存儲在",
     "termsSection5Title": "5. 免責聲明",
-    "termsSection5Text": "OmniRoute按“原樣”提供，不附帶任何形式的保證。我們不對API使用成本、服務中斷或資料丟失造成的任何損失負責。請始終為設定做好備份。",
+    "termsSection5Text": "Xenia按“原樣”提供，不附帶任何形式的保證。我們不對API使用成本、服務中斷或資料丟失造成的任何損失負責。請始終為設定做好備份。",
     "termsSection6Title": "6. 開源",
-    "termsSection6Text": "OmniRoute是開源軟件。您可以根據其許可條款自由檢查、修改和分發它。"
+    "termsSection6Text": "Xenia是開源軟件。您可以根據其許可條款自由檢查、修改和分發它。"
   },
   "agents": {
     "title": "CLI智能體",
@@ -9360,13 +9362,13 @@
     "scanning": "正在掃描系統中的CLI智能體...",
     "opencodeIntegration": "OpenCode整合",
     "opencodeDetected": "已檢測到opencode {version}",
-    "opencodeDesc": "生成可直接使用的 {configFile}，其中會填入你的OmniRoute Base URL和全部可用模型。將它放到項目根目錄後運行 {command} 即可。",
+    "opencodeDesc": "生成可直接使用的 {configFile}，其中會填入你的Xenia Base URL和全部可用模型。將它放到項目根目錄後運行 {command} 即可。",
     "downloadConfig": "下載 {file}",
     "downloaded": "已下載！",
     "setupGuideTitle": "設定指南",
     "openCliTools": "打開CLI Tools",
     "setupGuideDetectCliTitle": "檢測已安裝的CLI",
-    "setupGuideDetectCliDesc": "安裝或更新CLI後點擊“刷新”，讓OmniRoute重新掃描可執行檔案和版本資訊。",
+    "setupGuideDetectCliDesc": "安裝或更新CLI後點擊“刷新”，讓Xenia重新掃描可執行檔案和版本資訊。",
     "setupGuideCustomAgentTitle": "註冊自定義可執行檔案",
     "setupGuideCustomAgentDesc": "如果你的CLI不在內置列表中，請使用“新增自定義智能體”，並填寫可執行檔案名與版本命令。",
     "setupGuideCommandMissingTitle": "修復“command not found”",
@@ -9378,25 +9380,25 @@
     "versionCommandPlaceholder": "版本命令佔位符",
     "architectureTitle": "架構",
     "flowLocalBinary": "3 · 自有認證的 CLI 行程",
-    "flowOmniRoute": "OmniRoute",
+    "flowXenia": "Xenia",
     "agentNamePlaceholder": "智能體名稱佔位符",
-    "architectureDescription": "瞭解OmniRoute如何在客戶端、路由器和智能體目標之間轉發請求。",
+    "architectureDescription": "瞭解Xenia如何在客戶端、路由器和智能體目標之間轉發請求。",
     "flowExecute": "執行",
-    "flowSpawn": "2 · OmniRoute 啟動本地二進制",
+    "flowSpawn": "2 · Xenia 啟動本地二進制",
     "cliToolsRedirectCta": "打開CLI Tools",
     "comparisonTitle": "CLI工具與智能體目標有什麼區別？",
     "comparisonCliToolsLabel": "CLI工具頁面",
-    "comparisonCliToolsTitle": "你的IDE通過OmniRoute發送請求",
-    "comparisonCliToolsDesc": "設定Claude Code、Codex、Cursor和其他IDE，將OmniRoute用作它們的API base URL。OmniRoute作為代理，將請求路由到你設定的提供者。",
+    "comparisonCliToolsTitle": "你的IDE通過Xenia發送請求",
+    "comparisonCliToolsDesc": "設定Claude Code、Codex、Cursor和其他IDE，將Xenia用作它們的API base URL。Xenia作為代理，將請求路由到你設定的提供者。",
     "comparisonAgentsLabel": "當前頁面（智能體目標）",
-    "comparisonAgentsTitle": "OmniRoute將請求發送到本地CLI工具",
-    "comparisonAgentsDesc": "OmniRoute可以啟動本地CLI二進制檔案（claude、codex、goose）作為執行後端。CLI工具使用自己的認證處理請求並返回結果。",
-    "comparisonSummary": "簡而言之：CLI工具 = 你設定工具指向OmniRoute。智能體目標 = OmniRoute將工具用作端點。",
+    "comparisonAgentsTitle": "Xenia將請求發送到本地CLI工具",
+    "comparisonAgentsDesc": "Xenia可以啟動本地CLI二進制檔案（claude、codex、goose）作為執行後端。CLI工具使用自己的認證處理請求並返回結果。",
+    "comparisonSummary": "簡而言之：CLI工具 = 你設定工具指向Xenia。智能體目標 = Xenia將工具用作端點。",
     "agentUseCaseHint": "可通過ACP協議用作執行目標",
     "flowDiagramClient": "客戶端應用",
     "flowDiagramClientDesc": "SDK、API或上游服務",
-    "flowDiagramOmniRoute": "OmniRoute",
-    "flowDiagramOmniRouteDesc": "接收請求並選擇目標",
+    "flowDiagramXenia": "Xenia",
+    "flowDiagramXeniaDesc": "接收請求並選擇目標",
     "flowDiagramSpawn": "啟動行程",
     "flowDiagramSpawnDesc": "通過stdio啟動CLI二進制檔案",
     "flowDiagramCli": "CLI智能體",
@@ -9414,19 +9416,19 @@
     "browseAllSkillsOnGithub": "瀏覽GitHub上的所有Skills",
     "apiSkills": "APISkills",
     "cliSkills": "CLI Skills",
-    "apiSkillsSubtitle": "{count} 個Skills—通過REST / HTTP控制OmniRoute",
-    "cliSkillsSubtitle": "{count} 個Skills—通過omniroute終端可執行檔案控制OmniRoute",
+    "apiSkillsSubtitle": "{count} 個Skills—通過REST / HTTP控制Xenia",
+    "cliSkillsSubtitle": "{count} 個Skills—通過xenia終端可執行檔案控制Xenia",
     "howToUseStep1": "在你想讓智能體瞭解的Skills上點擊 <bold>{copyUrl}</bold>。",
     "howToUseStep2": "在你的AI智能體(Claude、Cursor、Cline…)中輸入:",
     "howToUseStep2Code": "在 [pasted-url] 處使用該Skills",
-    "howToUseStep3": "智能體會獲取SKILL.md並學習OmniRoute的API或CLI—無需手動文件。"
+    "howToUseStep3": "智能體會獲取SKILL.md並學習Xenia的API或CLI—無需手動文件。"
   },
   "cloudAgents": {
     "title": "雲智能體",
     "description": "管理自主編碼智能體（Jules、Devin、Codex Cloud）",
     "loading": "正在載入任務...",
     "aboutTitle": "關於雲智能體",
-    "aboutDescription": "雲智能體是遠程人工智能編碼助手，可以自主執行任務。它們的工作方式與本地CLI智能體不同 - 您可以通過OmniRoute的API與它們交互。",
+    "aboutDescription": "雲智能體是遠程人工智能編碼助手，可以自主執行任務。它們的工作方式與本地CLI智能體不同 - 您可以通過Xenia的API與它們交互。",
     "howItWorksTitle": "工作原理：",
     "howItWorksDesc": "創建任務 → 智能體分析並提出計劃 → 您批准 → 智能體執行 → 結果返回",
     "newTaskTitle": "創建新任務",
@@ -9455,7 +9457,7 @@
     "settingsTitle": "雲智能體設定",
     "settingsDesc": "為雲智能體設定本地偏好。",
     "settingEnableAgents": "啟用雲智能體",
-    "settingEnableAgentsDesc": "允許OmniRoute編排自主編碼智能體。",
+    "settingEnableAgentsDesc": "允許Xenia編排自主編碼智能體。",
     "settingAutoPR": "自動創建PR",
     "settingAutoPRDesc": "任務完成後自動創建包含變更的Pull Request。",
     "settingRequireApproval": "需要方案審批",
@@ -9619,8 +9621,8 @@
     "tableProvider": "提供者",
     "tableModel": "模型",
     "performanceTitle": "性能",
-    "semanticCacheSectionDesc": "OmniRoute自己維護的確定性回應快取。開啟後，重複的非流式、temperature=0 請求可以直接在本地命中，不再訪問上游provider。",
-    "semanticCacheDisabledDesc": "Semantic Cache當前已禁用。重新在設定中開啟之前，OmniRoute不會再做本地回應複用。",
+    "semanticCacheSectionDesc": "Xenia自己維護的確定性回應快取。開啟後，重複的非流式、temperature=0 請求可以直接在本地命中，不再訪問上游provider。",
+    "semanticCacheDisabledDesc": "Semantic Cache當前已禁用。重新在設定中開啟之前，Xenia不會再做本地回應複用。",
     "semanticEntriesDesc": "這裡展示的是保存在SQLite裡的semantic cache記錄，不包含provider-side prompt cache的活動。",
     "searchEntries": "搜尋條目...",
     "search": "搜尋",
@@ -9726,20 +9728,20 @@
     "deviceCodeYourCode": "您的代碼",
     "deviceCodeWaiting": "等待授權...",
     "googleLoopbackTitle": "無法從此地址完成 Google 登入",
-    "googleLoopbackWhatHappens": "Google 只有在批准登入的瀏覽器能存取 <code>{redirectUri}</code> 時才會釋放授權碼。在這裡，該地址指向這台電腦，而非 OmniRoute 伺服器 — 因此同意畫面會卡住而不是重新導向，且沒有可複製的回呼 URL。",
+    "googleLoopbackWhatHappens": "Google 只有在批准登入的瀏覽器能存取 <code>{redirectUri}</code> 時才會釋放授權碼。在這裡，該地址指向這台電腦，而非 Xenia 伺服器 — 因此同意畫面會卡住而不是重新導向，且沒有可複製的回呼 URL。",
     "googleLoopbackRecommended": "建議 — 在您自己的電腦上執行，然後將結果貼上到下方：",
-    "googleLoopbackHelperNote": "它在本機開啟 Google 同意畫面（在 127.0.0.1 可運作的地方），並輸出一行 omniroute-cred-v1.… 的 blob。將該 blob 貼上到下方的步驟 2 欄位 — 它同時接受憑證 blob 和回呼 URL。",
-    "googleLoopbackTunnelLabel": "或透過 SSH 轉發儀表板連接埠，然後透過隧道重新載入 OmniRoute：",
+    "googleLoopbackHelperNote": "它在本機開啟 Google 同意畫面（在 127.0.0.1 可運作的地方），並輸出一行 xenia-cred-v1.… 的 blob。將該 blob 貼上到下方的步驟 2 欄位 — 它同時接受憑證 blob 和回呼 URL。",
+    "googleLoopbackTunnelLabel": "或透過 SSH 轉發儀表板連接埠，然後透過隧道重新載入 Xenia：",
     "googleLoopbackTunnelNote": "將 {userPlaceholder} 替換為您的 SSH 使用者名稱，保持終端機開啟，然後開啟 {localUrl} 並從那裡重新連線。",
     "googleLoopbackHeadlessAlt": "若要完全無人值守使用且沒有本機回呼，<a>設定您自己的 Google OAuth 憑證</a>加上公開的基礎 URL。",
-    "remoteAccessInfo": "遠程訪問：由於您是遠程訪問OmniRoute，授權後您會看到一個錯誤頁面（localhost未找到）。這是正常的—只需從瀏覽器地址欄複製完整URL並粘貼到下方。",
+    "remoteAccessInfo": "遠程訪問：由於您是遠程訪問Xenia，授權後您會看到一個錯誤頁面（localhost未找到）。這是正常的—只需從瀏覽器地址欄複製完整URL並粘貼到下方。",
     "loopbackMismatchTitle": "__MISSING__:Sign-in can't complete from this address",
     "loopbackMismatchWhatHappened": "__MISSING__:What's happening",
-    "loopbackMismatchExplanation": "__MISSING__:After you approve the login, {providerName} always sends the browser back to <code>{redirectUri}</code>. That address points at the computer running this browser, not at the OmniRoute server — so the authorization code never reaches OmniRoute and the provider fails the sign-in without showing an error.",
+    "loopbackMismatchExplanation": "__MISSING__:After you approve the login, {providerName} always sends the browser back to <code>{redirectUri}</code>. That address points at the computer running this browser, not at the Xenia server — so the authorization code never reaches Xenia and the provider fails the sign-in without showing an error.",
     "loopbackMismatchHowToFix": "__MISSING__:How to fix it",
-    "loopbackMismatchStep1": "__MISSING__:On this computer, open a terminal and start an SSH tunnel to the OmniRoute server:",
+    "loopbackMismatchStep1": "__MISSING__:On this computer, open a terminal and start an SSH tunnel to the Xenia server:",
     "loopbackMismatchStep1Note": "__MISSING__:Replace {userPlaceholder} with your SSH username. Keep this terminal open until the connection shows as active — both ports are needed: one serves the dashboard, the other receives the callback.",
-    "loopbackMismatchStep2": "__MISSING__:In this browser, reopen OmniRoute through the tunnel:",
+    "loopbackMismatchStep2": "__MISSING__:In this browser, reopen Xenia through the tunnel:",
     "loopbackMismatchStep3": "__MISSING__:Then connect {providerName} again from the new tab. The callback now reaches the server and the login completes normally.",
     "loopbackMismatchAlternative": "__MISSING__:No SSH access? If this provider offers a token import tab, connect with a token instead — that path doesn't use a loopback callback.",
     "step1OpenUrl": "步驟 1：在瀏覽器中打開此URL",
@@ -10171,16 +10173,16 @@
     "musicSample": "一首帶有溫暖鋼琴和柔和絃樂的平靜氛圍音樂",
     "noAudioUrl": "回應中未包含音頻URL：{response}",
     "music": "音樂",
-    "embeddingSample": "OmniRoute在多個服務商之間路由AI請求。",
+    "embeddingSample": "Xenia在多個服務商之間路由AI請求。",
     "embedding": "嵌入",
     "imageSample": "日落時分充滿未來感的城市，電影級光效",
     "image": "圖像",
-    "ttsSample": "來自OmniRoute的問候。這是一次文字轉語音測試。",
+    "ttsSample": "來自Xenia的問候。這是一次文字轉語音測試。",
     "textToSpeech": "文字轉語音",
     "videoSample": "一架紙飛機飛越充滿未來感的城市",
     "video": "視頻",
     "webFetch": "網頁獲取",
-    "webSearchSample": "什麼是OmniRoute？",
+    "webSearchSample": "什麼是Xenia？",
     "webSearch": "網頁搜尋",
     "documentUrl": "文件URL",
     "browserAudioUnsupported": "您的瀏覽器不支援音頻。",
@@ -10236,7 +10238,7 @@
     "cacheUp": "線上",
     "semantic": "Semantic Cache",
     "upstream": "上游",
-    "semanticCacheHit": "語意快取命中（由OmniRoute提供）",
+    "semanticCacheHit": "語意快取命中（由Xenia提供）",
     "upstreamResponse": "上游提供者回應",
     "noApiKey": "無API Key",
     "requestedRoutedTitle": "請求 {requested}，路由為 {routed}",
@@ -10534,12 +10536,12 @@
   },
   "plugins": {
     "title": "外掛",
-    "description": "安裝和管理外掛以擴展OmniRoute功能",
+    "description": "安裝和管理外掛以擴展Xenia功能",
     "loading": "載入外掛中…",
     "scanning": "掃描中…",
     "scanForPlugins": "掃描外掛",
     "noPlugins": "未安裝外掛",
-    "noPluginsDescription": "將外掛目錄放入 ~/.omniroute/plugins/ 並點擊掃描。",
+    "noPluginsDescription": "將外掛目錄放入 ~/.xenia/plugins/ 並點擊掃描。",
     "activate": "激活",
     "deactivate": "停用",
     "uninstall": "卸載",
@@ -10569,7 +10571,7 @@
     "installedTab": "已安裝",
     "marketplaceTab": "市場",
     "marketplaceUrlLabel": "自定義市場URL",
-    "marketplaceUrlPlaceholder": "留空以使用官方Omniroute註冊表",
+    "marketplaceUrlPlaceholder": "留空以使用官方Xenia註冊表",
     "saveMarketplaceUrl": "保存並重新載入",
     "marketplaceUrlSaved": "市場URL已更新",
     "marketplaceEmpty": "在市場中未找到外掛。",
@@ -10692,7 +10694,7 @@
   },
   "agentBridge": {
     "title": "AgentBridge",
-    "subtitle": "使用IDE智能體與OmniRoute模型—無需設定",
+    "subtitle": "使用IDE智能體與Xenia模型—無需設定",
     "riskBannerTitle": "自行承擔風險",
     "riskBannerBody": "AgentBridge攔截來自IDE智能體的HTTPS流量。通過激活它，您接受遵守每個代理服務條款的責任。切勿在禁止TLS檢查的設備或網路上使用。",
     "riskBannerDismiss": "關閉",
@@ -10742,7 +10744,7 @@
     "investigatingNotice": "該代理正在接受調查。主機和API接口仍在確認中。一旦上游API文件完成，設定將可用。",
     "modelMappingsLabel": "模型映射",
     "sourceModel": "源模型（代理原生）",
-    "targetModel": "目標模型 (OmniRoute)",
+    "targetModel": "目標模型 (Xenia)",
     "noMappings": "未設定模型映射。運行設定嚮導以自動檢測模型。",
     "selectModel": "選擇…",
     "saveMappings": "保存映射",
@@ -10849,7 +10851,7 @@
   },
   "relay": {
     "title": "Serverless中繼代理",
-    "description": "創建代理至OmniRoute的公開API端點，支援速率限制和訪問控制",
+    "description": "創建代理至Xenia的公開API端點，支援速率限制和訪問控制",
     "created": "中繼令牌已創建",
     "createFailed": "創建令牌失敗",
     "toggleFailed": "切換令牌狀態失敗",
@@ -11012,25 +11014,25 @@
     "concept": {
       "code": {
         "title": "CLI代碼的",
-        "phrase": "指向OmniRoute的代碼工具",
-        "flow": "你 → CLI代碼 → OmniRoute → 提供者",
+        "phrase": "指向Xenia的代碼工具",
+        "flow": "你 → CLI代碼 → Xenia → 提供者",
         "seeOther": "查看 →"
       },
       "agent": {
         "title": "CLI智能體",
-        "phrase": "通用自主CLI智能體，您可以指向OmniRoute",
-        "flow": "您 → CLI智能體 → OmniRoute → 提供者",
+        "phrase": "通用自主CLI智能體，您可以指向Xenia",
+        "flow": "您 → CLI智能體 → Xenia → 提供者",
         "seeOther": "查看 →"
       },
       "acp": {
         "title": "ACP代理",
-        "phrase": "OmniRoute作為執行後端（反向流）生成的CLI",
-        "flow": "客戶端 → OmniRoute → 生成CLI (stdio/ACP) → 回應",
+        "phrase": "Xenia作為執行後端（反向流）生成的CLI",
+        "flow": "客戶端 → Xenia → 生成CLI (stdio/ACP) → 回應",
         "seeOther": "查看 →"
       }
     },
     "comparison": {
-      "title": "瞭解OmniRoute中的 3 種CLI類型",
+      "title": "瞭解Xenia中的 3 種CLI類型",
       "thisPage": "[此頁面 ✓]",
       "open": "打開 →",
       "code": {
@@ -11088,7 +11090,7 @@
   },
   "cliCode": {
     "pageTitle": "CLI代碼的",
-    "pageSubtitle": "指向OmniRoute的代碼工具",
+    "pageSubtitle": "指向Xenia的代碼工具",
     "searchPlaceholder": "搜尋CLI…",
     "filterDetectionLabel": "檢測",
     "filterBaseUrlLabel": "基礎URL",
@@ -11113,7 +11115,7 @@
   },
   "acpAgents": {
     "pageTitle": "ACP智能體",
-    "pageSubtitle": "OmniRoute作為執行後端生成的CLI",
+    "pageSubtitle": "Xenia作為執行後端生成的CLI",
     "scanning": "正在檢測代理…",
     "refresh": "刷新",
     "setupGuideTitle": "設定指南",
@@ -11148,7 +11150,7 @@
     "catalog": {
       "omni-auth": {
         "name": "身份驗證",
-        "description": "管理API Key身份驗證和工作階段令牌。從此處開始通過Bearer令牌驗證請求、獲取工作階段Cookie，並設定OmniRoute API的登入要求。"
+        "description": "管理API Key身份驗證和工作階段令牌。從此處開始通過Bearer令牌驗證請求、獲取工作階段Cookie，並設定Xenia API的登入要求。"
       },
       "omni-providers": {
         "name": "提供者",
@@ -11164,7 +11166,7 @@
       },
       "omni-api-keys": {
         "name": "API Key",
-        "description": "創建、列出、輪換和撤銷OmniRoute API Key。控制每個金鑰的作用域、支出限額和過期時間。金鑰用於控制對所有代理和管理端點的訪問。"
+        "description": "創建、列出、輪換和撤銷Xenia API Key。控制每個金鑰的作用域、支出限額和過期時間。金鑰用於控制對所有代理和管理端點的訪問。"
       },
       "omni-usage-logs": {
         "name": "用量與日誌",
@@ -11200,15 +11202,15 @@
       },
       "omni-cli-tools": {
         "name": "CLI工具",
-        "description": "管理通過API公開的CLI工具整合。列出、設定和呼叫擴展OmniRoute自動化能力的CLI工具外掛。"
+        "description": "管理通過API公開的CLI工具整合。列出、設定和呼叫擴展Xenia自動化能力的CLI工具外掛。"
       },
       "omni-tunnels": {
         "name": "隧道",
-        "description": "創建和管理安全隧道（ngrok、Cloudflare Tunnel、自定義），以將OmniRoute暴露到互聯網或與遠程智能體和CI流水線共享訪問權限。"
+        "description": "創建和管理安全隧道（ngrok、Cloudflare Tunnel、自定義），以將Xenia暴露到互聯網或與遠程智能體和CI流水線共享訪問權限。"
       },
       "omni-sync-cloud": {
         "name": "雲同步",
-        "description": "在雲存儲之間同步OmniRoute設定、提供者連接和設定。管理雲Worker身份驗證和遠程備份目標。"
+        "description": "在雲存儲之間同步Xenia設定、提供者連接和設定。管理雲Worker身份驗證和遠程備份目標。"
       },
       "omni-db-backups": {
         "name": "資料庫與備份",
@@ -11220,11 +11222,11 @@
       },
       "omni-mcp": {
         "name": "MCP伺服器",
-        "description": "連接到OmniRoute MCP伺服器（37 個工具，3 種傳輸方式：SSE/stdio/HTTP）。涵蓋 16 個權限範圍內的路由、快取、壓縮、記憶體、Skills、提供者和審計工具。"
+        "description": "連接到Xenia MCP伺服器（37 個工具，3 種傳輸方式：SSE/stdio/HTTP）。涵蓋 16 個權限範圍內的路由、快取、壓縮、記憶體、Skills、提供者和審計工具。"
       },
       "omni-agents-a2a": {
         "name": "智能體與A2A協議",
-        "description": "通過JSON-RPC 2.0 智能體-to-智能體協議與OmniRoute交互。包含 6 個內置A2A Skills：smart-routing、quota-management、provider-discovery、cost-analysis、health-report、list-capabilities。"
+        "description": "通過JSON-RPC 2.0 智能體-to-智能體協議與Xenia交互。包含 6 個內置A2A Skills：smart-routing、quota-management、provider-discovery、cost-analysis、health-report、list-capabilities。"
       },
       "omni-version-manager": {
         "name": "版本管理器",
@@ -11236,7 +11238,7 @@
       },
       "cli-serve": {
         "name": "CLI: 服務",
-        "description": "從CLI啟動、停止和重新啟動OmniRoute伺服器。管理守護行程模式、連接埠設定、自動恢復、系統托盤整合以及看板打開快捷方式。"
+        "description": "從CLI啟動、停止和重新啟動Xenia伺服器。管理守護行程模式、連接埠設定、自動恢復、系統托盤整合以及看板打開快捷方式。"
       },
       "cli-health": {
         "name": "CLI: 健康檢查",
@@ -11248,7 +11250,7 @@
       },
       "cli-keys": {
         "name": "CLI: API Key",
-        "description": "從CLI創建、列出、輪換和撤銷OmniRoute API Key。管理用於提供者身份驗證的OAuth流程，並檢查金鑰範圍和過期時間。"
+        "description": "從CLI創建、列出、輪換和撤銷Xenia API Key。管理用於提供者身份驗證的OAuth流程，並檢查金鑰範圍和過期時間。"
       },
       "cli-models": {
         "name": "CLI: 模型",
@@ -11256,7 +11258,7 @@
       },
       "cli-chat": {
         "name": "CLI: 對話",
-        "description": "從CLI發送對話補全、流式傳輸回應並啟動交互式REPL工作階段。支援所有OmniRoute提供者、組合路由和系統提示詞設定。"
+        "description": "從CLI發送對話補全、流式傳輸回應並啟動交互式REPL工作階段。支援所有Xenia提供者、組合路由和系統提示詞設定。"
       },
       "cli-routing": {
         "name": "CLI: 路由與組合",
@@ -11284,7 +11286,7 @@
       },
       "cli-a2a": {
         "name": "CLI: A2A協議",
-        "description": "從CLI與OmniRoute A2A伺服器交互。發送任務、檢查Skills執行歷史，並以交互方式測試JSON-RPC 2.0 智能體-to-智能體協議。"
+        "description": "從CLI與Xenia A2A伺服器交互。發送任務、檢查Skills執行歷史，並以交互方式測試JSON-RPC 2.0 智能體-to-智能體協議。"
       },
       "cli-tunnel": {
         "name": "CLI: 隧道",
@@ -11292,7 +11294,7 @@
       },
       "cli-backup-sync": {
         "name": "CLI: 備份與同步",
-        "description": "通過CLI備份和恢復OmniRoute資料。觸發增量快照、同步到雲存儲、管理備份計劃以及從歸檔檔案恢復。"
+        "description": "通過CLI備份和恢復Xenia資料。觸發增量快照、同步到雲存儲、管理備份計劃以及從歸檔檔案恢復。"
       },
       "cli-policy-audit": {
         "name": "CLI: 策略與審計",
@@ -11316,11 +11318,11 @@
       },
       "cli-skill-collector": {
         "name": "CLI: 智能體Skills收集器",
-        "description": "檢測已安裝的CLI編程工具（Claude Code、Codex、Cursor、Copilot、Cline等），在GitHub上搜尋匹配的智能體Skills，並通過OmniRoute的內置API將其安裝到檢測到的工具中。"
+        "description": "檢測已安裝的CLI編程工具（Claude Code、Codex、Cursor、Copilot、Cline等），在GitHub上搜尋匹配的智能體Skills，並通過Xenia的內置API將其安裝到檢測到的工具中。"
       },
       "config-codex-cli": {
         "name": "設定: Codex CLI",
-        "description": "分步智能體工作流，用於在任何機器（Linux、macOS、Windows）上設定OpenAI Codex CLI，以將OmniRoute用作相容OpenAI的後端。檢測操作系統和shell，寫入config.toml和 7 個命名設定檔，設定環境變量，並驗證設定。"
+        "description": "分步智能體工作流，用於在任何機器（Linux、macOS、Windows）上設定OpenAI Codex CLI，以將Xenia用作相容OpenAI的後端。檢測操作系統和shell，寫入config.toml和 7 個命名設定檔，設定環境變量，並驗證設定。"
       },
       "omni-github-skills": {
         "name": "GitHub Skills發現",
@@ -11328,16 +11330,16 @@
       }
     },
     "pageTitle": "智能體Skills",
-    "pageSubtitle": "教你的智能體操作OmniRoute— 22 個API區域 + 20 個CLI家族",
+    "pageSubtitle": "教你的智能體操作Xenia— 22 個API區域 + 20 個CLI家族",
     "conceptCard": {
       "agent": {
         "title": "智能體Skills—外呼",
-        "description": "智能體Skills是機器可讀的SKILL.md文件，外部AI智能體（Claude Code、Cursor、Copilot等）從GitHub獲取這些文件，以瞭解如何通過REST或CLI操作OmniRoute。它們由代理讀取，而不是由OmniRoute執行。",
+        "description": "智能體Skills是機器可讀的SKILL.md文件，外部AI智能體（Claude Code、Cursor、Copilot等）從GitHub獲取這些文件，以瞭解如何通過REST或CLI操作Xenia。它們由代理讀取，而不是由Xenia執行。",
         "crossLinkLabel": "瞭解區別 →"
       },
       "omni": {
         "title": "全能Skills—入站",
-        "description": "Omni Skills是OmniRoute在每個請求中注入到模型上下文中的沙盒工具。它們由OmniRoute執行，而不是由代理讀取。",
+        "description": "Omni Skills是Xenia在每個請求中注入到模型上下文中的沙盒工具。它們由Xenia執行，而不是由代理讀取。",
         "crossLinkLabel": "瞭解差異 →"
       },
       "comparison": {
@@ -11345,18 +11347,18 @@
         "colOmni": "全能Skills",
         "whatIs": {
           "label": "它是什麼",
-          "agent": "機器可讀的SKILL.md，教外部智能體如何操作OmniRoute",
-          "omni": "OmniRoute注入到LLM請求中的可執行工具"
+          "agent": "機器可讀的SKILL.md，教外部智能體如何操作Xenia",
+          "omni": "Xenia注入到LLM請求中的可執行工具"
         },
         "direction": {
           "label": "方向",
-          "agent": "外部—外部智能體學習控制OmniRoute",
-          "omni": "入站—OmniRoute為經過它的模型提供工具"
+          "agent": "外部—外部智能體學習控制Xenia",
+          "omni": "入站—Xenia為經過它的模型提供工具"
         },
         "executor": {
           "label": "執行者",
           "agent": "外部智能體（讀取markdown → 通過API/CLI執行）",
-          "omni": "OmniRoute本身（攔截tool_calls，Docker沙箱）"
+          "omni": "Xenia本身（攔截tool_calls，Docker沙箱）"
         },
         "storage": {
           "label": "存儲",
@@ -11365,8 +11367,8 @@
         },
         "tagline": {
           "label": "標語",
-          "agent": "教你的智能體使用OmniRoute",
-          "omni": "為OmniRoute模型提供可執行工具"
+          "agent": "教你的智能體使用Xenia",
+          "omni": "為Xenia模型提供可執行工具"
         }
       }
     },
@@ -11382,7 +11384,7 @@
     "coverageLabel": "覆蓋率",
     "mcpUrl": "MCP URL",
     "a2aLink": "A2A",
-    "mcpPrompt": "將此MCP端點新增到您的智能體，為其提供 37 個OmniRoute工具。",
+    "mcpPrompt": "將此MCP端點新增到您的智能體，為其提供 37 個Xenia工具。",
     "a2aPrompt": "向您的編排器註冊此智能體Card，以啟用A2A任務委派。",
     "refresh": "刷新",
     "copyUrl": "複製URL",
@@ -11507,7 +11509,7 @@
     "rank": "排名",
     "name": "名稱",
     "score": "分數",
-    "leaderboardEmpty": "此範圍暫無記錄。開始使用OmniRoute以在排行榜上顯示！",
+    "leaderboardEmpty": "此範圍暫無記錄。開始使用Xenia以在排行榜上顯示！",
     "profileLoadFailed": "載入個人資料資料失敗",
     "levelTitles": {
       "beginner": "新手",
@@ -11527,7 +11529,7 @@
     "dayStreak": "連續 {count} 天",
     "levelProgress": "等級 {current} → {next}",
     "totalXpEarned": "累計獲得 {count} XP",
-    "maintainStreak": "每天堅持使用OmniRoute以保持您的連續記錄！",
+    "maintainStreak": "每天堅持使用Xenia以保持您的連續記錄！",
     "badgesTitle": "徽章 ({earned}/{total})",
     "noBadges": "暫無可用徽章。",
     "hiddenBadge": "隱藏成就",
@@ -11552,22 +11554,22 @@
       "first-token": {
         "name": "首個Token",
         "description": "完成了您的首次API請求",
-        "criteria": "通過OmniRoute完成您的首次API請求。"
+        "criteria": "通過Xenia完成您的首次API請求。"
       },
       "token-consumer": {
         "name": "Token消費者",
         "description": "完成了 1,000 次API請求",
-        "criteria": "通過OmniRoute完成 1,000 次API請求。"
+        "criteria": "通過Xenia完成 1,000 次API請求。"
       },
       "token-machine": {
         "name": "Token機器",
         "description": "完成了 10,000 次API請求",
-        "criteria": "通過OmniRoute完成 10,000 次API請求。"
+        "criteria": "通過Xenia完成 10,000 次API請求。"
       },
       "token-whale": {
         "name": "Token巨鯨",
         "description": "完成了 100,000 次API請求",
-        "criteria": "通過OmniRoute完成 100,000 次API請求。"
+        "criteria": "通過Xenia完成 100,000 次API請求。"
       },
       "generous": {
         "name": "慷慨",
@@ -11617,22 +11619,22 @@
       "daily-user": {
         "name": "每日用戶",
         "description": "連續 3 天活躍",
-        "criteria": "連續 3 天使用OmniRoute。"
+        "criteria": "連續 3 天使用Xenia。"
       },
       "weekly-warrior": {
         "name": "每週勇士",
         "description": "連續 7 天活躍",
-        "criteria": "連續 7 天使用OmniRoute。"
+        "criteria": "連續 7 天使用Xenia。"
       },
       "monthly-master": {
         "name": "每月大師",
         "description": "連續 30 天活躍",
-        "criteria": "連續 30 天使用OmniRoute。"
+        "criteria": "連續 30 天使用Xenia。"
       },
       "unstoppable": {
         "name": "勢不可擋",
         "description": "連續 365 天活躍",
-        "criteria": "連續 365 天使用OmniRoute。"
+        "criteria": "連續 365 天使用Xenia。"
       },
       "early-adopter": {
         "name": "早期採用者",
@@ -11647,7 +11649,7 @@
       "contributor": {
         "name": "貢獻者",
         "description": "合併了 1 個拉取請求",
-        "criteria": "將 1 個拉取請求合併到OmniRoute中。"
+        "criteria": "將 1 個拉取請求合併到Xenia中。"
       },
       "community-leader": {
         "name": "社區領袖",
@@ -11748,16 +11750,16 @@
       "PROXY_AUTO_SELECT_ENABLED": {
         "description": "當連接未分配代理時，自動選擇第一個可用的註冊表代理。預設關閉，否則一個註冊表代理會成為所有流量的全域備用代理 (#3332)。"
       },
-      "OMNIROUTE_CONTROL_PLANE_PROXY_DIRECT_FALLBACK": {
+      "XENIA_CONTROL_PLANE_PROXY_DIRECT_FALLBACK": {
         "description": "當代理可達性檢查失敗時，允許OAuth和服務商驗證流程繞過固定的代理。預設關閉，因為這可能會改變賬戶的出口IP。"
       },
       "MITM_DISABLE_TLS_VERIFY": {
         "description": "禁用MITM代理的TLS證書驗證。"
       },
-      "OMNIROUTE_ALLOW_PRIVATE_PROVIDER_URLS": {
+      "XENIA_ALLOW_PRIVATE_PROVIDER_URLS": {
         "description": "允許指向私有或內部網路的服務商URL。"
       },
-      "OMNIROUTE_ALLOW_LOCAL_PROVIDER_URLS": {
+      "XENIA_ALLOW_LOCAL_PROVIDER_URLS": {
         "description": "允許localhost、局域網 (LAN) 和私有IP地址段上的服務商。本地相容OpenAI的模型需要此設定，且預設啟用。雲元資料端點（如 169.254.169.254）仍將被攔截。"
       },
       "ENABLE_CC_COMPATIBLE_PROVIDER": {
@@ -11775,28 +11777,28 @@
       "RESPONSES_PASSTHROUGH_DROP_COMMENTARY": {
         "description": "在將Responses API透傳流轉發給客戶端之前，從中移除內部註釋階段的輸出項。禁用此標誌以接收原始上游註釋。"
       },
-      "OMNIROUTE_MCP_ENFORCE_SCOPES": {
+      "XENIA_MCP_ENFORCE_SCOPES": {
         "description": "對MCP工具訪問強制執行作用域限制。"
       },
-      "OMNIROUTE_MCP_COMPRESS_DESCRIPTIONS": {
+      "XENIA_MCP_COMPRESS_DESCRIPTIONS": {
         "description": "壓縮MCP工具描述以減少token使用量。"
       },
-      "OMNIROUTE_ENABLE_RUNTIME_BACKGROUND_TASKS": {
+      "XENIA_ENABLE_RUNTIME_BACKGROUND_TASKS": {
         "description": "在運行時啟用後台任務處理。"
       },
-      "OMNIROUTE_DISABLE_BACKGROUND_SERVICES": {
+      "XENIA_DISABLE_BACKGROUND_SERVICES": {
         "description": "禁用所有後台服務，包括配額刷新和同步。"
       },
-      "OMNIROUTE_RTK_TRUST_PROJECT_FILTERS": {
+      "XENIA_RTK_TRUST_PROJECT_FILTERS": {
         "description": "信任項目級RTK過濾器而無需驗證。"
       },
-      "OMNIROUTE_ENABLE_LIVE_WS": {
+      "XENIA_ENABLE_LIVE_WS": {
         "description": "導入時在環回連接埠 20132 上啟動實時看板WebSocket伺服器。將該標誌設定為 0 或false可禁用它。局域網暴露還需要LIVE_WS_HOST=0.0.0.0 和LIVE_WS_ALLOWED_ORIGINS。"
       },
-      "OMNIROUTE_CODEX_WS_ENABLED": {
+      "XENIA_CODEX_WS_ENABLED": {
         "description": "允許Codex通過WebSocket使用Responses。禁用時，Codex將回退到HTTP Responses。"
       },
-      "OMNIROUTE_EMERGENCY_FALLBACK": {
+      "XENIA_EMERGENCY_FALLBACK": {
         "description": "將預算耗盡的請求路由到緊急免費備用提供者和模型。"
       },
       "STREAM_RECOVERY_ENABLED": {
@@ -11823,16 +11825,16 @@
       "PRICING_SYNC_ENABLED": {
         "description": "自動同步定價資料。PRICING_SYNC_ENABLED環境變量也必須為true。"
       },
-      "OMNIROUTE_AUTO_SYNC_CODEX_PROFILES": {
+      "XENIA_AUTO_SYNC_CODEX_PROFILES": {
         "description": "提供者-模型同步後，從實時目錄重新生成 ~/.codex/*.config.toml設定檔。這絕不會更改活動或預設的Codex設定，並且預設關閉。"
       },
-      "OMNIROUTE_AUTO_SYNC_CLAUDE_PROFILES": {
+      "XENIA_AUTO_SYNC_CLAUDE_PROFILES": {
         "description": "提供者-模型同步後，從實時目錄重新生成 ~/.claude/profiles/<name>/settings.json設定檔。這絕不會更改活動或預設的Claude設定，並且預設關閉。"
       },
-      "OMNIROUTE_DISABLE_LOCAL_HEALTHCHECK": {
+      "XENIA_DISABLE_LOCAL_HEALTHCHECK": {
         "description": "禁用本地實例健康檢查端點。"
       },
-      "OMNIROUTE_DISABLE_TOKEN_HEALTHCHECK": {
+      "XENIA_DISABLE_TOKEN_HEALTHCHECK": {
         "description": "禁用token驗證健康檢查。"
       },
       "SKILLS_SANDBOX_NETWORK_ENABLED": {
@@ -12181,8 +12183,8 @@
     "noProviderOverrides": "無覆蓋—所有活躍提供者都將使用其預設模型參與"
   },
   "kimiSponsorBanner": {
-    "title": "Kimi（Moonshot AI）是OmniRoute的創始開源好友",
-    "description": "Kimi K3 為OmniRoute帶來了 1M token的上下文窗口和前沿的編碼性能，而成本僅為極小一部分。",
+    "title": "Kimi（Moonshot AI）是Xenia的創始開源好友",
+    "description": "Kimi K3 為Xenia帶來了 1M token的上下文窗口和前沿的編碼性能，而成本僅為極小一部分。",
     "cta": "獲取Kimi Code",
     "partnerLinkNote": "合作伙伴連結",
     "dismissAriaLabel": "關閉"
@@ -12209,14 +12211,14 @@
     "activateDescription": "雷達通過社群來源的智慧增強免費模型目錄——更新的模型可用性、配額和設置指南。",
     "privacyNoUpload": "尚未上傳任何內容——您的數據保持本地",
     "privacyOnlySigned": "只下載經過加密簽名的元數據",
-    "privacyLocalOnly": "所有處理都在您的 OmniRoute 實例上進行",
+    "privacyLocalOnly": "所有處理都在您的 Xenia 實例上進行",
     "activateButton": "啟用",
     "activating": "正在啟用...",
     "claimSectionTitle": "Don't have a supporter key yet?",
     "contributorButton": "I'm a contributor",
     "contributorHint": "Verify your GitHub account — 5+ merged pull requests or a top-100 contributor spot unlocks a free supporter key.",
     "supporterButton": "Support the project",
-    "supporterHint": "Support OmniRoute to get a supporter key with the live catalog and extra perks.",
+    "supporterHint": "Support Xenia to get a supporter key with the live catalog and extra perks.",
     "colProvider": "提供者",
     "colModel": "模型",
     "colQuota": "配額",
@@ -12231,7 +12233,7 @@
     "capThinking": "思考",
     "catalogTab": "Catalog",
     "freeCreditsTab": "Free credits",
-    "freeCreditsSubtitle": "Referral links from Radar-tracked providers — using them costs you nothing extra and helps support OmniRoute.",
+    "freeCreditsSubtitle": "Referral links from Radar-tracked providers — using them costs you nothing extra and helps support Xenia.",
     "fixedLinksEmpty": "No referral links available yet. Sync Radar to check for updates.",
     "requiredActionLabel": "What to do:",
     "claimButton": "Claim credits",

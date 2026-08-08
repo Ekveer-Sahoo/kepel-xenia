@@ -87,14 +87,14 @@ const UNIT_OPTIONS: QuotaUnit[] = ["percent", "requests", "tokens", "usd"];
 const WINDOW_OPTIONS: QuotaWindow[] = ["5h", "hourly", "daily", "weekly", "monthly"];
 
 const SLICE_PALETTE = [
-  "#a78bfa",
-  "#60a5fa",
-  "#34d399",
-  "#fbbf24",
-  "#f87171",
-  "#22d3ee",
-  "#f472b6",
-  "#94a3b8",
+  "#a0a0a0",
+  "#9a9a9a",
+  "#9d9d9d",
+  "#bfbfbf",
+  "#999999",
+  "#a1a1a1",
+  "#a1a1a1",
+  "#a1a1a1",
 ];
 
 /** A few representative model names to show in the preview. */
@@ -566,7 +566,7 @@ export default function PoolWizard({
                 {t("wizardConnectionsLabel")}
               </label>
               {lockedProvider && (
-                <p className="text-[10px] text-amber-400 mb-1.5">
+                <p className="text-[10px] text-gray-400 mb-1.5">
                   {t("wizardSingleProviderNote")} ({lockedProvider})
                 </p>
               )}
@@ -626,7 +626,7 @@ export default function PoolWizard({
                   ))}
               </div>
               {connections.length === 0 && (
-                <p className="text-[10px] text-amber-400 mt-1">{t("noEligibleConnections")}</p>
+                <p className="text-[10px] text-gray-400 mt-1">{t("noEligibleConnections")}</p>
               )}
             </div>
 
@@ -784,7 +784,7 @@ export default function PoolWizard({
                     <button
                       type="button"
                       onClick={() => removeDimension(i)}
-                      className="p-0.5 rounded hover:bg-red-500/10 text-text-muted hover:text-red-400 cursor-pointer"
+                      className="p-0.5 rounded hover:bg-gray-500/10 text-text-muted hover:text-gray-400 cursor-pointer"
                     >
                       <span className="material-symbols-outlined text-[16px]">close</span>
                     </button>
@@ -794,7 +794,7 @@ export default function PoolWizard({
             </div>
 
             {dimensionsEdited && (
-              <p className="text-[10px] text-amber-400">{t("wizardDimensionsEditedNotice")}</p>
+              <p className="text-[10px] text-gray-400">{t("wizardDimensionsEditedNotice")}</p>
             )}
 
             {/* Helper note when pool has multiple connections */}
@@ -890,7 +890,7 @@ export default function PoolWizard({
                       <button
                         type="button"
                         onClick={() => removeAllocation(a.apiKeyId)}
-                        className="p-0.5 rounded hover:bg-red-500/10 text-text-muted hover:text-red-400 cursor-pointer"
+                        className="p-0.5 rounded hover:bg-gray-500/10 text-text-muted hover:text-gray-400 cursor-pointer"
                       >
                         <span className="material-symbols-outlined text-[16px]">close</span>
                       </button>
@@ -905,10 +905,10 @@ export default function PoolWizard({
               <span
                 className={`font-bold tabular-nums ${
                   totalWeight === 100
-                    ? "text-emerald-400"
+                    ? "text-gray-400"
                     : totalWeight > 100
-                      ? "text-red-400"
-                      : "text-amber-400"
+                      ? "text-gray-400"
+                      : "text-gray-400"
                 }`}
               >
                 {t("totalLabel", { percent: totalWeight })}{" "}
@@ -992,7 +992,7 @@ export default function PoolWizard({
             )}
 
             {error && (
-              <p className="text-[11px] text-red-400 bg-red-500/10 px-3 py-2 rounded">{error}</p>
+              <p className="text-[11px] text-gray-400 bg-gray-500/10 px-3 py-2 rounded">{error}</p>
             )}
 
             <div className="flex items-center justify-between pt-2 border-t border-border/40">
