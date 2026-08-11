@@ -2,8 +2,14 @@ import { injectMemoryAndSkills } from "./chatCore/memorySkillsInjection.ts";
 import { resolveChatCoreRequestSetup } from "./chatCore/requestSetup.ts";
 import { buildFailureUsageRecord } from "./chatCore/failureUsage.ts";
 import { estimateFinalInputTokens } from "./chatCore/contextEstimation.ts";
-import { extractSystemRoleMessages } from "./chatCore/claudeSystemRole.ts";
-export { extractSystemRoleMessages } from "./chatCore/claudeSystemRole.ts";
+import {
+  extractSystemRoleMessages,
+  extractLeadingSystemRoleMessages,
+} from "./chatCore/claudeSystemRole.ts";
+export {
+  extractSystemRoleMessages,
+  extractLeadingSystemRoleMessages,
+} from "./chatCore/claudeSystemRole.ts";
 import { checkIdempotencyCache } from "./chatCore/idempotency.ts";
 import { checkSemanticCache } from "./chatCore/semanticCache.ts";
 import {
@@ -2076,12 +2082,19 @@ export async function handleChatCore({
 
       // Legacy models reject role:"system" messages. Opus accepts them behind
       // its beta, and hoisting them breaks the prompt cache prefix.
+      // A leading role:"system" message is never valid at messages[0] on
+      // Anthropic's API even for models that support mid-conversation system
+      // messages — the initial system prompt must always go through the
+      // top-level `system` field. Only genuinely mid-conversation entries
+      // (after the first non-system turn) may stay as-is.
       if (isClaudeCodeSemanticPassthrough) {
         if (
           provider !== "claude" ||
           !shouldUseMidConversationSystem(translatedBody, effectiveModel)
         ) {
           extractSystemRoleMessages(translatedBody);
+        } else {
+          extractLeadingSystemRoleMessages(translatedBody);
         }
         if (Array.isArray(translatedBody.messages)) {
           translatedBody.messages = splitMisplacedToolResults(
