@@ -30,7 +30,11 @@
  *   - Expired and least-recently-used entries are removed before a store is rejected.
  *
  * Conservative guards:
- *   - Never touch `role: "system"`.
+ *   - Never touch `role: "system"`, `role: "tool"`, or `role: "assistant"` — only
+ *     `role: "user"` blocks are eligible. Tool outputs and prior assistant turns are
+ *     replayed as history on every later request; a caller with no way to expand the
+ *     marker (most callers — see protocolInstruction.ts) would see its own history
+ *     truncate into an opaque placeholder instead of the real content.
  *   - Only replace if it shrinks (marker shorter than original).
  *   - Only replace blocks ≥ minChars (default 600).
  *   - `stackable: true`, `stackPriority: 4` (runs just after session-dedup(3)).
@@ -806,6 +810,18 @@ function processMessages(
     // outputs with `[CCR retrieve hash=…]` placeholders therefore breaks the agent
     // loop. Preserve tool outputs verbatim so the LLM can keep reasoning.
     if (msg.role === "tool") return { ...msg };
+
+    // A prior assistant turn is replayed as conversation history on every later
+    // request. Replacing it with a marker means the model's own earlier answer
+    // now trails off into `[CCR retrieve hash=… chars=N]` — a placeholder it was
+    // never taught to expand (the protocol instruction only teaches the marker →
+    // tool contract when it is injected, and even then the model would have to
+    // stop and call a tool mid-reasoning just to recall its own prior words).
+    // In practice the model just continues from the truncation point or stalls,
+    // which reads to the user as an answer that "doesn't complete". Preserve
+    // assistant turns verbatim for the same reason tool outputs are preserved.
+    if (msg.role === "assistant") return { ...msg };
+
     if (msg.role === "user" && Array.isArray(msg.content)) {
       const parts = msg.content as Array<Record<string, unknown>>;
       if (parts.length > 0 && parts.every((p) => p?.["type"] === "tool_result")) {

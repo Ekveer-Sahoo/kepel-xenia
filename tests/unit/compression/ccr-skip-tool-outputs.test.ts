@@ -8,8 +8,9 @@
  * opaque placeholder where the actual tool result should be and stalls.
  *
  * Fix: CCR must preserve tool-role messages and Anthropic-style tool_result
- * parts verbatim. The compression engine still applies to plain user /
- * assistant text blocks (where the LLM can reason about the marker).
+ * parts verbatim. The same problem applies to assistant-role messages (a prior
+ * turn replayed as history) — see the sibling `ccr-skip-assistant-outputs`
+ * test — so the compression engine only ever replaces plain user text blocks.
  *
  * Run: node --import tsx/esm --test tests/unit/compression/ccr-skip-tool-outputs.test.ts
  */
