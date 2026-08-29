@@ -26,6 +26,7 @@ import {
   ccrEngine,
   MAX_CCR_ENTRIES,
 } from "../../../open-sse/services/compression/engines/ccr/index.ts";
+import { MCP_CAPABLE_TOOLS } from "../../helpers/ccrCaller.ts";
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -253,7 +254,11 @@ describe("ccr security: [HIGH] ccrEngine.apply scopes the stored block to the pr
   beforeEach(() => resetCcrStore());
 
   const bigBlock = makeText("a large block that CCR would normally compress ", 5000);
-  const makeBody = () => ({ messages: [{ role: "user", content: bigBlock }] });
+  // MCP-capable: CCR only compresses for callers that can expand a marker (#7746).
+  const makeBody = () => ({
+    messages: [{ role: "user", content: bigBlock }],
+    tools: MCP_CAPABLE_TOOLS,
+  });
 
   it("apply with a principalId stores the block retrievable ONLY by that principal", () => {
     const result = ccrEngine.apply(makeBody(), {

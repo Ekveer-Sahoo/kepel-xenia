@@ -10,6 +10,13 @@
 // proxy client), once a large first-turn prompt is compressed, the original
 // text becomes permanently unreachable from the model's point of view.
 //
+// The first fix kept a 200-char preamble in front of the marker. That satisfied
+// "not a bare marker" without fixing the loss: a prompt carrying several
+// distinct instructions still reached the model with only the first one intact,
+// truncated mid-sentence, and the model had no way to tell that the remainder
+// had ever existed. CCR now skips non-MCP callers entirely, which is what these
+// assertions pin down.
+//
 // Run: node --import tsx/esm --test tests/unit/compression/ccr-non-mcp-full-prompt-loss-7746.test.ts
 import { describe, it, before } from "node:test";
 import assert from "node:assert/strict";
@@ -60,42 +67,75 @@ describe("issue #7746 — CCR must not reduce the sole user prompt to a bare, un
     );
   });
 
-  it("does not leave the model with only the bare CCR marker when no retrieve tool is available", () => {
+  it("does not compress at all when the caller cannot resolve the retrieve tool", () => {
     resetCcrStore();
     const body = makeOpenCodeStyleRequestBody();
     const result = ccrEngine.apply(body as Record<string, unknown>, { stepConfig: {} });
 
     assert.equal(
       result.compressed,
-      true,
-      "CCR compressed the sole user message (reproducing the report)"
-    );
-
-    const messages = result.body.messages as Array<{ role: string; content: string }>;
-    const compressedContent = messages[0].content;
-    const isBareMarkerOnly = /^\[CCR retrieve hash=[0-9a-f]{24} chars=\d+\]$/.test(
-      compressedContent
-    );
-
-    assert.equal(
-      isBareMarkerOnly,
       false,
-      "BUG #7746: CCR replaced the ENTIRE sole user message with nothing but the bare " +
-        `[CCR retrieve hash=...] marker, permanently losing the original prompt for any ` +
-        `non-MCP caller that cannot resolve the marker. Got: ${JSON.stringify(compressedContent)}`
+      "BUG #7746: CCR compressed a prompt for a caller with no way to expand the " +
+        "resulting marker. The replaced text is unrecoverable from the model's " +
+        "point of view, so this is silent data loss, not compression."
     );
   });
 
-  it("the original prompt remains fully retrievable by hash even after the guard applies", () => {
+  it("delivers the sole user prompt to the model verbatim — no marker, no truncation", () => {
     resetCcrStore();
     const body = makeOpenCodeStyleRequestBody();
     const result = ccrEngine.apply(body as Record<string, unknown>, { stepConfig: {} });
 
     const messages = result.body.messages as Array<{ role: string; content: string }>;
-    const compressedContent = messages[0].content;
-    const match = compressedContent.match(/\[CCR retrieve hash=([0-9a-f]{24}) chars=\d+\]/);
-    assert.ok(match, "compressed content must still contain a resolvable CCR marker");
-    const hash = match![1];
+    const delivered = messages[0].content;
+
+    assert.equal(
+      delivered,
+      REPORTER_PROMPT,
+      "the non-MCP caller's prompt must reach the model exactly as sent"
+    );
+    assert.ok(
+      !delivered.includes("[CCR retrieve"),
+      `no CCR marker may appear. Got: ${JSON.stringify(delivered.slice(-120))}`
+    );
+  });
+
+  it("instructions past the preamble cutoff are not dropped", () => {
+    // The reported symptom: a prompt of several numbered instructions arrived
+    // with only the first intact, cut mid-sentence. Assert on content the old
+    // 200-char preamble guard would have discarded.
+    resetCcrStore();
+    const body = makeOpenCodeStyleRequestBody();
+    const result = ccrEngine.apply(body as Record<string, unknown>, { stepConfig: {} });
+
+    const messages = result.body.messages as Array<{ role: string; content: string }>;
+    const delivered = messages[0].content;
+
+    for (const n of [2, 7, 12]) {
+      assert.ok(
+        delivered.includes(`\n${n}. `),
+        `instruction ${n} must survive — it sits past the 200-char preamble cutoff`
+      );
+    }
+  });
+
+  it("an MCP-capable caller still gets compression, with the original retrievable", () => {
+    resetCcrStore();
+    const body = {
+      ...makeOpenCodeStyleRequestBody(),
+      tools: [{ type: "function", function: { name: "xenia_ccr_retrieve" } }],
+    };
+    const result = ccrEngine.apply(body as Record<string, unknown>, { stepConfig: {} });
+
+    assert.equal(result.compressed, true, "MCP-capable callers must still benefit from CCR");
+
+    // Match on a concrete hash — the injected protocol instruction also mentions
+    // the marker format, so a bare "[CCR retrieve" substring finds that instead.
+    const MARKER = /\[CCR retrieve hash=([0-9a-f]{24}) chars=\d+\]/;
+    const messages = result.body.messages as Array<{ role: string; content: string }>;
+    const hit = messages.map((m) => MARKER.exec(m.content ?? "")).find(Boolean);
+    assert.ok(hit, "an MCP-capable caller should receive a marker");
+    const hash = hit![1];
     assert.equal(
       retrieveBlock(hash),
       REPORTER_PROMPT,

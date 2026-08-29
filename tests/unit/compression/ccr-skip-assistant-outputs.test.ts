@@ -22,6 +22,7 @@ import {
   ccrEngine,
   resetCcrStore,
 } from "../../../open-sse/services/compression/engines/ccr/index.ts";
+import { MCP_CAPABLE_TOOLS } from "../../helpers/ccrCaller.ts";
 
 const LARGE_ASSISTANT_TEXT = "A".repeat(2000) + " end of assistant turn.";
 const LARGE_USER_TEXT = "B".repeat(2000) + " end of user turn.";
@@ -50,6 +51,8 @@ describe("ccr engine — skip assistant outputs", () => {
     resetCcrStore();
     const body = {
       messages: [{ role: "user", content: LARGE_USER_TEXT }],
+      // MCP-capable: CCR only compresses for callers that can expand a marker (#7746).
+      tools: MCP_CAPABLE_TOOLS,
     };
     const result = ccrEngine.apply(body, { stepConfig: {} });
     assert.equal(result.compressed, true);

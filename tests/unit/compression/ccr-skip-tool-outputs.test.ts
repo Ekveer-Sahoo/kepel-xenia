@@ -23,6 +23,7 @@ import {
   resetCcrStore,
 } from "../../../open-sse/services/compression/engines/ccr/index.ts";
 import { registerBuiltinCompressionEngines } from "../../../open-sse/services/compression/index.ts";
+import { MCP_CAPABLE_TOOLS } from "../../helpers/ccrCaller.ts";
 
 const LARGE_TOOL_OUTPUT = `Total 247 lines in current working directory.
 drwxr-xr-x  18 herjarsa herjarsa   4096 Jul 20 13:12 .
@@ -140,6 +141,8 @@ describe("ccr engine — skip tool outputs", () => {
     const body = {
       model: "gpt-4",
       messages: [{ role: "user", content: LARGE_USER_TEXT }],
+      // MCP-capable: CCR only compresses for callers that can expand a marker (#7746).
+      tools: MCP_CAPABLE_TOOLS,
     };
 
     const result = ccrEngine.apply(body as Record<string, unknown>);
@@ -149,9 +152,12 @@ describe("ccr engine — skip tool outputs", () => {
       true,
       "plain role:user text block above minChars MUST still be compressed (regression guard)"
     );
+    // An MCP-capable caller is also served the one-time protocol instruction, so
+    // the user turn is no longer at index 0 — pick it by role.
     const messages = result.body.messages as Array<{ role: string; content: string }>;
+    const userMsg = messages.find((m) => m.role === "user")!;
     assert.ok(
-      messages[0].content.match(/\[CCR retrieve hash=[0-9a-f]{24} chars=\d+\]/),
+      userMsg.content.match(/\[CCR retrieve hash=[0-9a-f]{24} chars=\d+\]/),
       "plain user text must still be replaced with a CCR marker"
     );
   });

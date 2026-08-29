@@ -8,6 +8,7 @@ import {
   storeBlock,
   resetCcrStore,
 } from "../../../open-sse/services/compression/engines/ccr/index.ts";
+import { MCP_CAPABLE_TOOLS } from "../../helpers/ccrCaller.ts";
 
 // T08/H8 — graduated retrieval feedback. Frequently-retrieved CCR blocks resist compression
 // progressively (effective minChars ramps up), and at/above the threshold are never compressed.
@@ -78,7 +79,8 @@ describe("ccrEngine.apply — retrieval-aware compression (H8)", () => {
   const block = (len: number) => "x".repeat(len);
   const run = (content: string, retrievalRampFactor = 2) =>
     ccrEngine.apply(
-      { messages: [{ role: "user", content }] },
+      // MCP-capable: CCR only compresses for callers that can expand a marker (#7746).
+      { messages: [{ role: "user", content }], tools: MCP_CAPABLE_TOOLS },
       { stepConfig: { minChars: BASE, retrievalRampFactor }, principalId: P }
     );
 

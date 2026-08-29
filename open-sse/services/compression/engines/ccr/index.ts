@@ -35,6 +35,9 @@
  *     replayed as history on every later request; a caller with no way to expand the
  *     marker (most callers — see protocolInstruction.ts) would see its own history
  *     truncate into an opaque placeholder instead of the real content.
+ *   - Only run at all when the caller advertises `xenia_ccr_retrieve` (#7746).
+ *     A caller that cannot expand a marker cannot get the text back, so
+ *     compressing for it is silent data loss, not compression.
  *   - Only replace if it shrinks (marker shorter than original).
  *   - Only replace blocks ≥ minChars (default 600).
  *   - `stackable: true`, `stackPriority: 4` (runs just after session-dedup(3)).
@@ -50,7 +53,10 @@ import {
 } from "../../../../../src/lib/db/ccrBlocks.ts";
 import { createCompressionStats } from "../../stats.ts";
 import { queryBlock, type CcrQuery } from "./ccrQuery.ts";
-import { injectCcrProtocolInstruction } from "./protocolInstruction.ts";
+import {
+  callerSupportsCcrRetrieve,
+  injectCcrProtocolInstruction,
+} from "./protocolInstruction.ts";
 import type {
   CompressionEngine,
   CompressionEngineApplyOptions,
@@ -730,14 +736,14 @@ export function buildCcrReference(
 }
 
 /**
- * #7746 guard: how many leading characters of the original block to keep in front
- * of the marker. `maybeCcrReplace` treats an entire message/part as ONE candidate
- * block (see module docstring), so a bare marker alone would silently discard the
- * ENTIRE prompt for any caller that cannot resolve `xenia_ccr_retrieve`
- * (every plain OpenAI-compatible client — it is only ever exposed as an MCP tool).
- * Keeping a short, human-readable preamble means the model still sees the start
- * of the user's intent even when the marker itself is unreachable, while the full
- * text remains verbatim-retrievable by hash for MCP-capable callers.
+ * How many leading characters of the original block to keep in front of the
+ * marker. Callers that reach this point can always expand the marker (`apply`
+ * skips the engine otherwise — see #7746), so the preamble is a readability
+ * aid, not a safety net: it lets the model see what a block is about and
+ * decide whether retrieving it is worth a tool call. It must never be relied
+ * on to carry meaning on its own — `maybeCcrReplace` treats an entire
+ * message/part as ONE candidate block (see module docstring), so anything past
+ * this cutoff lives only in the store until retrieved.
  */
 const MARKER_PREAMBLE_CHARS = 200;
 
@@ -967,6 +973,20 @@ export const ccrEngine: CompressionEngine = {
 
     const messages = body["messages"];
     if (!Array.isArray(messages) || messages.length === 0) {
+      return { body, compressed: false, stats: null };
+    }
+
+    // #7746: CCR is only safe when the caller can actually expand the marker.
+    // `xenia_ccr_retrieve` is exposed exclusively as an MCP tool, so a caller
+    // that does not advertise it (every plain OpenAI-compatible client) has no
+    // way to recover the replaced text — the content is simply gone from the
+    // model's point of view. The former guard kept a 200-char preamble in front
+    // of the marker, which made the loss less conspicuous without preventing
+    // it: a prompt carrying several distinct instructions still arrived with
+    // only the first one intact, truncated mid-sentence. Compression that
+    // cannot be reversed is not compression, so skip the engine entirely and
+    // let the request through verbatim.
+    if (!callerSupportsCcrRetrieve(body)) {
       return { body, compressed: false, stats: null };
     }
 

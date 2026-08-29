@@ -21,6 +21,7 @@ import {
   registerBuiltinCompressionEngines,
   getCompressionEngine,
 } from "../../../open-sse/services/compression/index.ts";
+import { MCP_CAPABLE_TOOLS } from "../../helpers/ccrCaller.ts";
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -40,7 +41,20 @@ const SMALL_TEXT = "Short content that should NOT be compressed.";
 const SYSTEM_TEXT = "You are a helpful assistant with system instructions.";
 
 function makeBody(messages: Array<{ role: string; content: string }>) {
-  return { model: "gpt-4", messages };
+  // MCP-capable: CCR only compresses for callers that can expand a marker (#7746).
+  return { model: "gpt-4", messages, tools: MCP_CAPABLE_TOOLS };
+}
+
+/**
+ * The user turn as the model receives it. MCP-capable callers also get the
+ * one-time CCR protocol instruction prepended, so the original first message is
+ * no longer at index 0 — pick the turn by role instead of by position.
+ */
+function deliveredContent(result: { body: { messages: unknown } }, role = "user"): string {
+  const messages = result.body.messages as Array<{ role: string; content: string }>;
+  const msg = messages.find((m) => m.role === role);
+  if (!msg) throw new Error(`no ${role} message in result`);
+  return msg.content;
 }
 
 // ─── tests ────────────────────────────────────────────────────────────────────
@@ -70,8 +84,7 @@ describe("ccr engine", () => {
 
     assert.equal(result.compressed, true, "should report compressed=true");
 
-    const messages = result.body.messages as Array<{ role: string; content: string }>;
-    const content = messages[0].content;
+    const content = deliveredContent(result);
 
     // Marker must be present
     assert.match(
@@ -83,10 +96,14 @@ describe("ccr engine", () => {
     // Original large text must be gone
     assert.ok(!content.includes(LARGE_TEXT), "original large block text must be replaced");
 
-    // Body must be shorter
-    const originalLen = JSON.stringify(body).length;
-    const compressedLen = JSON.stringify(result.body).length;
-    assert.ok(compressedLen < originalLen, "compressed body must be shorter than original");
+    // The replaced turn must be shorter. Compare the message rather than the whole
+    // body: an MCP-capable caller is also served the one-time CCR protocol
+    // instruction, whose cost is amortised over the rest of the conversation and
+    // can exceed a single marker's saving on the very first request.
+    assert.ok(
+      content.length < LARGE_TEXT.length,
+      "the compressed turn must be shorter than the original"
+    );
   });
 
   it("stores and retrieves the verbatim block by hash", () => {
@@ -94,8 +111,7 @@ describe("ccr engine", () => {
     const body = makeBody([{ role: "user", content: LARGE_TEXT }]);
     const result = ccrEngine.apply(body as Record<string, unknown>);
 
-    const messages = result.body.messages as Array<{ role: string; content: string }>;
-    const content = messages[0].content;
+    const content = deliveredContent(result);
 
     // Extract hash from marker
     const match = content.match(/\[CCR retrieve hash=([0-9a-f]{24}) chars=\d+\]/);
@@ -152,8 +168,7 @@ describe("ccr engine", () => {
     const body = makeBody([{ role: "user", content: LARGE_TEXT }]);
     const result = ccrEngine.apply(body as Record<string, unknown>);
 
-    const messages = result.body.messages as Array<{ role: string; content: string }>;
-    const content = messages[0].content;
+    const content = deliveredContent(result);
     const match = content.match(/\[CCR retrieve hash=([0-9a-f]{24}) chars=\d+\]/);
     assert.ok(match, "marker must be present");
     const hash = match[1];
@@ -184,6 +199,8 @@ describe("ccr engine", () => {
     resetCcrStore();
     const body = {
       model: "gpt-4",
+      // MCP-capable: CCR only compresses for callers that can expand a marker (#7746).
+      tools: MCP_CAPABLE_TOOLS,
       messages: [
         {
           role: "user",
@@ -202,13 +219,14 @@ describe("ccr engine", () => {
       role: string;
       content: Array<{ type: string; text: string }>;
     }>;
-    const largePart = messages[0].content[0];
+    const userMsg = messages.find((m) => m.role === "user")!;
+    const largePart = userMsg.content[0];
     assert.ok(
       largePart.text.match(/\[CCR retrieve hash=[0-9a-f]{24} chars=\d+\]/),
       "large text part must be replaced by a CCR marker"
     );
     // Small part untouched
-    const smallPart = messages[0].content[1];
+    const smallPart = userMsg.content[1];
     assert.equal(smallPart.text, "and a small follow-up");
   });
 });
@@ -219,8 +237,7 @@ describe("ccr MCP retrieve handler (pure function)", () => {
 
     const body = makeBody([{ role: "user", content: LARGE_TEXT }]);
     const result = ccrEngine.apply(body as Record<string, unknown>);
-    const messages = result.body.messages as Array<{ role: string; content: string }>;
-    const match = messages[0].content.match(/\[CCR retrieve hash=([0-9a-f]{24}) chars=\d+\]/);
+    const match = deliveredContent(result).match(/\[CCR retrieve hash=([0-9a-f]{24}) chars=\d+\]/);
     assert.ok(match, "marker must be present");
     const hash = match[1];
 

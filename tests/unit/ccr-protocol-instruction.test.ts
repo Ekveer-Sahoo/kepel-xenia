@@ -83,12 +83,14 @@ describe("ccr protocol instruction (#8033)", () => {
     assert.equal(occurrences.length, 1, "instruction must be present exactly once");
   });
 
-  it("plain OpenAI-compatible caller (no tools) → NO instruction at all", () => {
+  it("plain OpenAI-compatible caller (no tools) → no compression, no instruction", () => {
     resetCcrStore();
     const body = makeBody([{ role: "user", content: LARGE_TEXT }]);
     const result = ccrEngine.apply(body);
 
-    assert.equal(result.compressed, true, "large block should still compress");
+    // #7746: a caller that cannot resolve the retrieve tool is skipped outright —
+    // there is nothing to explain because nothing was replaced.
+    assert.equal(result.compressed, false, "a non-MCP caller's prompt must not be compressed");
     const messages = result.body["messages"] as Array<{ role: string; content: unknown }>;
 
     assert.equal(messages.length, 1, "no system message should be injected");
