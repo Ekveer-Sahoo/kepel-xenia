@@ -15,8 +15,17 @@ import type { CompressionConfig } from "../../../open-sse/services/compression/t
  */
 describe("stacked pipeline honors engines map when stackedPipeline is missing (#6463)", () => {
   function body(): Record<string, unknown> {
+    // These tests observe WHICH engines ran, so the fixture needs material each
+    // engine can act on outside the live turn: caveman targets user messages,
+    // and the trailing user turn is preserved verbatim by the live-turn guard.
     return {
       messages: [
+        {
+          role: "user",
+          content:
+            "Please provide a detailed explanation of the authentication configuration and how it works",
+        },
+        { role: "assistant", content: "Here is the explanation you requested." },
         {
           role: "tool",
           content: Array.from({ length: 8 }, () => "same noisy tool output line").join("\n"),

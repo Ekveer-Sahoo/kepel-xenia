@@ -2,6 +2,7 @@ import type { CompressionConfig, CompressionResult } from "./types.ts";
 import type { CachingDetectionContext } from "./cachingAware.ts";
 import type { RiskGateConfig } from "./riskGate/riskGate.ts";
 import { resolveRiskGate, withRiskGate } from "./riskGate/strategyWrap.ts";
+import { withLiveTurnGuard, withLiveTurnGuardAsync } from "./liveTurn.ts";
 import {
   resolveQuantumLock,
   quantumCachingContext,
@@ -20,12 +21,16 @@ export function withCompressionEntrypointGuards<T extends CompressionEntrypointO
   options: T | undefined,
   run: (body: Record<string, unknown>) => CompressionResult
 ): CompressionResult {
-  return withQuantumLock(
-    body,
-    resolveQuantumLock(options),
-    quantumCachingContext(body, options),
-    (quantumBody) =>
-      withRiskGate(quantumBody, resolveRiskGate(options), (riskBody) => run(riskBody))
+  // Outermost: whatever the engines do, the user's live instruction is restored
+  // verbatim before the body leaves the gateway (see liveTurn.ts).
+  return withLiveTurnGuard(body, (guardedBody) =>
+    withQuantumLock(
+      guardedBody,
+      resolveQuantumLock(options),
+      quantumCachingContext(guardedBody, options),
+      (quantumBody) =>
+        withRiskGate(quantumBody, resolveRiskGate(options), (riskBody) => run(riskBody))
+    )
   );
 }
 
@@ -34,10 +39,12 @@ export function withCompressionEntrypointGuardsAsync<T extends CompressionEntryp
   options: T | undefined,
   run: (body: Record<string, unknown>) => Promise<CompressionResult>
 ): Promise<CompressionResult> {
-  return withQuantumLockAsync(
-    body,
-    resolveQuantumLock(options),
-    quantumCachingContext(body, options),
-    run
+  return withLiveTurnGuardAsync(body, (guardedBody) =>
+    withQuantumLockAsync(
+      guardedBody,
+      resolveQuantumLock(options),
+      quantumCachingContext(guardedBody, options),
+      run
+    )
   );
 }
