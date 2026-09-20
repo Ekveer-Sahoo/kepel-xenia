@@ -50,7 +50,7 @@ jobs:
           tar -czf xenia-build.tar.gz .build dist
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: xenia-build
           path: xenia-build.tar.gz
